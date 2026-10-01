@@ -20,13 +20,18 @@ _Generated from the database by `python -m pipeline export-all`; edits here are 
 |---|---|---|---|
 | — | — | — | — |
 
-## Decisions (31)
+## Decisions (36)
 
 | time | decision | token | mcap | stated reason | inferred reason (ours) | conf | status |
 |---|---|---|---|---|---|---|---|
+| 00:01:22 | SKIP | Q4 |  |  |  | 0.7 | draft |
+| 00:02:27 | SKIP | Q4 |  |  |  | 0.7 | draft |
+| 00:05:07 | SKIP | TITS |  |  |  | 0.7 | draft |
+| 00:05:16 | SKIP | かのくん |  |  |  | 0.7 | draft |
 | 00:05:34 | BUY | BLACK | 3290.0 |  |  | 0.95 | draft |
 | 00:05:35 | SELL | BLACK |  |  |  | 0.95 | draft |
 | 00:05:39 | BUY | かのくん |  |  |  | 0.95 | draft |
+| 00:05:51 | SKIP | かのくん |  |  |  | 0.7 | draft |
 | 00:06:02 | SELL | かのくん |  |  |  | 0.95 | draft |
 | 00:07:20 | BUY | DIT | 11600.0 |  |  | 0.95 | draft |
 | 00:07:23 | ADD | DIT |  |  |  | 0.95 | draft |
@@ -56,4 +61,4 @@ _Generated from the database by `python -m pipeline export-all`; edits here are 
 | 00:29:42 | BUY | TITCOIN | 8930.0 |  |  | 0.95 | draft |
 | 00:29:48 | SELL | TITCOIN |  |  |  | 0.95 | draft |
 
-Frames extracted: 8
+Frames extracted: 15

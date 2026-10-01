@@ -182,6 +182,7 @@ source,src_4b0b80d9dcb3cabb,/home/user/RErereresearch/data/raw/video/live/twitch
 source,src_71ba357f91ab320e,stream://pump_curve/2026-10-01/decu-stream,web,Decu's on-stream trades (tape excerpt + one full tx),,,decu,,document,True,file,,,
 source,src_dc10ce46ef42cf06,stream://pump_curve/2026-10-01/decu-choice-set,web,Decu BUY vs SKIP among creator-dump candidates,,,decu,,document,True,file,,,
 source,src_467688af2719b8a7,stream://pump_curve/2026-10-01/consistent-winners,web,Consistently profitable human-paced wallets (whole tape),,,,,document,True,file,,,
+source,src_a1521940bb4b435b,stream://twitch_decu/2026-10-01/screen-visits,web,Token pages Decu opened on stream (URL-bar OCR),,,decu,,document,True,file,,,
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,
