@@ -38,3 +38,11 @@ H6 was registered at 17:33 (`reports/hypotheses/h6_preregistration.json`). The h
 - If H5 fails and H6 passes, H6 takes it.
 
 H6's holdout criteria are the same as H5's except for sample size: at least 8 trades, expectancy > 0, profit factor > 1.2. Decu trades too rarely for 30 trades in 2 hours, so this would be a weak, small-sample confirmation and will be reported as such.
+
+## Outcome (19:25 UTC)
+
+Both H5 and H6 failed their first tests:
+- **H5:** 250 trades, −40.64 SOL, PF 0.28.
+- **H6:** 7 trades, −0.98 SOL, PF 0.35.
+
+See `reports/failures/`. **No hypothesis reaches the holdout.** No strategy was run on the 19:15–21:15 data, and the split stays `open` (not burned). It remains a clean test period for any hypothesis registered later, provided it is registered before anyone looks at that data.

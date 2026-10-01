@@ -1,12 +1,15 @@
 # Overnight research summary — 2026-10-01
 
-_Draft written ~17:45 UTC. H5 and H6 are still being tested; their results and the holdout outcome are added below when known._
+_Written 17:45 UTC; final test results added 19:25 UTC._
 
 ## Short answer
 
-**I have not found a profitable strategy a bot can run.** Every pre-registered test so far failed, each one negative at every latency from 0.1 to 10 s:
+**I have not found a profitable strategy a bot can run.** All six pre-registered tests failed, each one negative at every latency from 0.1 to 10 s:
 - four rule-based strategies;
-- one copy-trading basket.
+- copying a basket of unknown winners;
+- copying Decu.
+
+**Nothing reached the holdout.** The 19:15–21:15 data is untouched and stays available as a clean test period.
 
 The traders themselves do make money:
 - **Decu**, trading live on stream, netted about **+89 SOL in 2.5 hours** across all venues: 33 tokens, 29 of 32 closed profitably.
@@ -85,12 +88,14 @@ Screen readings come from the stream frames.
 | H2 | later, calmer entries | 14:00–17:15 | 124 | −4.92 | 0.42 | **FAIL** |
 | H3 | Decu's post-dev-dump timing, 20-s hold | 14:45–17:15 | 487 | −77.07 | 0.20 | **FAIL** |
 | H4 | copy 49 unknown consistent winners | 15:20–17:15 | 680 | −37.50 | 0.39 | **FAIL** (the wallets themselves: +117) |
-| H5 | H3 entry + Decu-like exits (cut fast, let runners run) | 17:45–19:15 | | | | pending |
-| H6 | copy Decu's wallet at 1 s | 17:45–19:15 | | | | pending |
+| H5 | H3 entry + Decu-like exits (cut fast, let runners run) | 17:45–19:15 | 250 | −40.64 | 0.28 | **FAIL** |
+| H6 | copy Decu's wallet at 1 s | 17:45–19:15 | 7 | −0.98 | 0.35 | **FAIL** (too few trades as well) |
 
 Each failure is written up in `reports/failures/`.
 
-On the full train period (in-sample), copying is positive for 6 of 10 wallets tested, including Decu (+0.92 SOL over 16 trades at 1 s). That is why H6 exists. It contradicts an earlier copy result that was computed with a simulator bug; that inference is now marked *weakened*.
+On the full train period (in-sample), copying was positive for 6 of 10 wallets tested, including Decu (+0.92 SOL over 16 trades at 1 s). That is why H6 existed. Out of sample, copying Decu lost.
+
+H5 shows that Decu's exit style does not rescue a mechanical entry: most entries never moved and were cut at a loss. The exits only pay on entries as selective as Decu's own. It contradicts an earlier copy result that was computed with a simulator bug; that inference is now marked *weakened*.
 
 ## Things that went wrong and were fixed (all in git history)
 
@@ -108,8 +113,20 @@ On the full train period (in-sample), copying is positive for 6 of 10 wallets te
   - 16:36:08–16:36:16;
   - Decu video 16:11:39–16:15:19.
 - **Missed trades:** the tape misses ~4% of curve trades (websocket drops). Pump tokens quoted in another token instead of SOL are excluded by design.
+- **kolscan's per-wallet coverage has gaps.** It relayed none of Decu's 41 curve trades between 18:00 and 19:00. For the 13:38–16:11 session it matched the tape, so the +89 SOL figure stands. Later figures that rely on kolscan would undercount.
 - **AMM and Raydium Launchpad trades** are recorded raw but not decoded. Exits after migration appear only through kolscan, which covers only tracked wallets. The simulator cannot model AMM exits, so H5 exits on the curve, near migration.
 - **Small samples.** Decu's picks are dozens, not hundreds. Every finding states its n.
+
+## What I would do next
+
+1. **Decode PumpSwap and Raydium Launchpad events** from the raw logs already recorded. Most of Decu's profit (migration exits, Launchpad tokens) is invisible without this, and so is all of Setuh's trading.
+2. **Model the selection, not the timing.** Decu's picks win where the mechanical candidates lose (p≈0.006). The visible inputs are:
+   - the linked X post: its author, follower count and narrative;
+   - the labelled wallets in their tracker;
+   - copycat waves of the same name.
+
+   These can be measured: metadata URIs and fxtwitter are both reachable. The next hypothesis should be a *selection* model trained on more of Decu's decisions, with its own frozen holdout.
+3. **Collect more footage-coded decisions.** Decu streams daily. Each session adds dozens of BUY/SKIP decisions with screen readings.
 
 ## Needed from you
 
