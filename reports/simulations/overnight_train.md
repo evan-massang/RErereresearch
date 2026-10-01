@@ -1,6 +1,6 @@
 # Overnight tape analysis — train period
 
-Window: 2026-10-01 12:15 → 12:55 UTC (0.67 h). Tape: 101,305 bonding-curve trades, 2,020 tokens, 15,591 wallets.
+Window: 2026-10-01 12:15 → 13:22 UTC (1.13 h). Tape: 188,438 bonding-curve trades, 3,438 tokens, 22,502 wallets.
 
 All numbers are bonding-curve trades only, from on-chain events. PnL in SOL after the on-chain 1.25% fee, before priority fees. Copy tests add a 0.001 SOL priority fee per tx, 20% slippage tolerance and 2% random tx failure (assumptions).
 
@@ -23,20 +23,20 @@ All numbers are bonding-curve trades only, from on-chain events. PnL in SOL afte
 
 ```
 {
- "closed_trips": 3,
- "open_or_incomplete": 3,
- "pnl_sol": 0.4162,
- "win_rate": 0.333,
- "avg_win_sol": 0.6976,
+ "closed_trips": 4,
+ "open_or_incomplete": 4,
+ "pnl_sol": 0.4467,
+ "win_rate": 0.5,
+ "avg_win_sol": 0.3641,
  "avg_loss_sol": -0.1407,
- "profit_factor": 2.479,
- "median_hold_s": 35.0,
- "median_size_sol": 0.667,
- "median_entry_mcap_sol": 56.5,
- "median_age_at_entry_s": 13.7,
- "share_multi_buy": 0.667,
+ "profit_factor": 2.587,
+ "median_hold_s": 28.2,
+ "median_size_sol": 0.481,
+ "median_entry_mcap_sol": 56.1,
+ "median_age_at_entry_s": 13.0,
+ "share_multi_buy": 0.5,
  "share_multi_sell": 0.0,
- "best_trade_share_of_pnl": 1.676,
+ "best_trade_share_of_pnl": 1.562,
  "share_entries_creation_block": 0.0,
  "share_entries_within_5_slots": 0.0,
  "pnl_from_creation_block_entries_sol": 0,
@@ -45,18 +45,18 @@ All numbers are bonding-curve trades only, from on-chain events. PnL in SOL afte
 ```
 Selection vs random same-moment tokens:
 ```
-{"n": 3, "median_pick_return": -0.0986, "median_random_return": -0.1417, "median_difference": -0.2109, "share_pick_beats_random": 0.333, "sign_test_p": 1.0}
+{"n": 4, "median_pick_return": 0.0087, "median_random_return": -0.0396, "median_difference": 0.0262, "share_pick_beats_random": 0.5, "sign_test_p": 1.0}
 ```
 Copy test (0.5 SOL per entry):
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 1 | -0.278 | -0.2747 | 0.0 | 0.0 | 3 | 0.014 |  |
-| 1.0s | 1 | -0.274 | -0.2710 | 0.0 | 0.0 | 3 | 0.014 |  |
-| 2.0s | 1 | -0.269 | -0.2657 | 0.0 | 0.0 | 3 | 0.014 |  |
-| 3.0s | 1 | -0.248 | -0.2450 | 0.0 | 0.0 | 4 | 0.015 |  |
-| 5.0s | 1 | -0.253 | -0.2499 | 0.0 | 0.0 | 4 | 0.014 |  |
-| 10.0s | 1 | -0.181 | -0.1781 | 0.0 | 0.0 | 5 | 0.015 |  |
+| 0.5s | 5 | -1.129 | -0.2255 | 0.0 | 0.0 | 2 | 0.065 |  |
+| 1.0s | 5 | -1.099 | -0.2194 | 0.0 | 0.0 | 2 | 0.065 |  |
+| 2.0s | 5 | -1.005 | -0.2005 | 0.0 | 0.0 | 2 | 0.066 |  |
+| 3.0s | 5 | -1.049 | -0.2094 | 0.0 | 0.0 | 2 | 0.066 |  |
+| 5.0s | 4 | -0.860 | -0.2143 | 0.0 | 0.0 | 3 | 0.055 |  |
+| 10.0s | 5 | -1.098 | -0.2192 | 0.0 | 0.0 | 4 | 0.065 |  |
 
 ### leck
 
@@ -82,121 +82,130 @@ Copy test (0.5 SOL per entry):
 
 ## Most profitable tracked wallets in this window
 
-8 wallets had ≥5 closed bonding-curve round trips.
+17 wallets had ≥5 closed bonding-curve round trips.
 
 | name | trips | PnL SOL | win rate | PF | median hold s | median entry mcap SOL | best-trade share |
 |---|---|---|---|---|---|---|---|
-| Henn | 9 | 5.9749 | 0.333 | 5.624 | 7.3 | 47.6 | 0.723 |
-| R4 | 5 | 3.4689 | 0.4 | 4.501 | 53.8 | 81.6 | 1.251 |
-| ban | 11 | 2.6478 | 0.545 | 6.322 | 15.9 | 55.9 | 0.622 |
-| Letterbomb | 5 | 1.7003 | 0.8 | 9.852 | 56.5 | 66.3 | 0.779 |
-| ram | 7 | 0.7661 | 0.714 | 3.179 | 52.1 | 38.0 | 0.842 |
+| Limfork.eth | 12 | 8.9776 | 0.583 | 7.667 | 90.4 | 108.8 | 0.435 |
+| Henn | 10 | 5.8366 | 0.3 | 5.081 | 8.1 | 49.6 | 0.74 |
+| Megga | 6 | 3.7285 | 0.333 | 3.909 | 53.5 | 64.8 | 0.765 |
+| KOREAN | 7 | 3.3213 | 0.857 | 142.514 | 11.0 | 69.5 | 0.404 |
+| R4 | 11 | 3.1744 | 0.364 | 2.325 | 54.7 | 99.9 | 1.367 |
+| ban | 13 | 1.7552 | 0.462 | 2.263 | 25.1 | 62.0 | 0.938 |
+| EustazZ | 8 | 0.8088 | 0.5 | 2.716 | 34.5 | 45.3 | 1.025 |
+| ram | 8 | 0.6291 | 0.625 | 2.287 | 44.4 | 36.4 | 1.026 |
 | Qavec | 5 | 0.4501 | 0.4 | 2.949 | 11.7 | 68.2 | 1.195 |
-| Kev | 6 | -0.7716 | 0.167 | 0.151 | 7.9 | 46.5 | None |
-| Flames | 8 | -1.2903 | 0.125 | 0.109 | 32.3 | 52.6 | None |
+| Letterbomb | 9 | 0.2532 | 0.667 | 1.149 | 48.4 | 66.3 | 5.229 |
+| Zuki | 6 | -0.2913 | 0.5 | 0.747 | 85.1 | 71.4 | None |
+| Flames | 13 | -0.6762 | 0.308 | 0.685 | 34.8 | 53.9 | None |
+| Kev | 7 | -0.7618 | 0.286 | 0.162 | 8.4 | 50.0 | None |
+| Maze | 5 | -0.8398 | 0.4 | 0.107 | 28.1 | 46.2 | None |
+| dv | 7 | -1.5368 | 0.286 | 0.139 | 29.5 | 72.7 | None |
+| Esee06257 | 7 | -1.8091 | 0.143 | 0.234 | 23.9 | 65.6 | None |
+| TIL | 5 | -2.0218 | 0.2 | 0.126 | 23.3 | 56.8 | None |
 
 ## Top wallets: is their selection better than random, and can it be copied?
 
-### Henn (`FRbUNvGx…`)
+### Limfork.eth (`BQVz7fQ1…`)
 
-Selection edge: `{"n": 9, "median_pick_return": -0.224, "median_random_return": -0.0064, "median_difference": -0.2215, "share_pick_beats_random": 0.222, "sign_test_p": 0.1797}`
+Selection edge: `{"n": 12, "median_pick_return": -0.0205, "median_random_return": 0.0035, "median_difference": -0.0268, "share_pick_beats_random": 0.417, "sign_test_p": 0.7744}`
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 8 | -1.087 | -0.1358 | 0.0 | 0.0 | 1 | 0.104 |  |
-| 1.0s | 8 | -0.998 | -0.1246 | 0.0 | 0.0 | 1 | 0.105 |  |
-| 2.0s | 9 | -0.868 | -0.0965 | 0.1111111111111111 | 0.01857332592859324 | 0 | 0.121 |  |
-| 3.0s | 9 | -1.059 | -0.1176 | 0.0 | 0.0 | 0 | 0.118 |  |
-| 5.0s | 6 | -0.683 | -0.1139 | 0.0 | 0.0 | 0 | 0.079 |  |
-| 10.0s | 2 | -0.232 | -0.1155 | 0.0 | 0.0 | 2 | 0.027 |  |
+| 0.5s | 9 | -0.279 | -0.0310 | 0.0 | 0.0 | 0 | 0.138 |  |
+| 1.0s | 9 | -0.283 | -0.0314 | 0.0 | 0.0 | 0 | 0.137 |  |
+| 2.0s | 9 | -0.278 | -0.0309 | 0.0 | 0.0 | 0 | 0.130 |  |
+| 3.0s | 9 | -0.278 | -0.0309 | 0.0 | 0.0 | 0 | 0.128 |  |
+| 5.0s | 7 | -0.229 | -0.0327 | 0.0 | 0.0 | 0 | 0.099 |  |
+| 10.0s | 7 | -0.220 | -0.0315 | 0.0 | 0.0 | 0 | 0.100 |  |
+
+### Henn (`FRbUNvGx…`)
+
+Selection edge: `{"n": 10, "median_pick_return": -0.1812, "median_random_return": -0.0, "median_difference": -0.179, "share_pick_beats_random": 0.2, "sign_test_p": 0.1094}`
+
+| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
+|---|---|---|---|---|---|---|---|---|
+| 0.5s | 11 | -1.301 | -0.1182 | 0.0 | 0.0 | 0 | 0.145 |  |
+| 1.0s | 11 | -1.210 | -0.1100 | 0.0 | 0.0 | 0 | 0.146 |  |
+| 2.0s | 11 | -1.006 | -0.0914 | 0.09090909090909091 | 0.01607203983747172 | 0 | 0.149 |  |
+| 3.0s | 11 | -1.041 | -0.0946 | 0.0 | 0.0 | 0 | 0.149 |  |
+| 5.0s | 8 | -0.750 | -0.0937 | 0.0 | 0.0 | 0 | 0.108 |  |
+| 10.0s | 3 | -0.395 | -0.1313 | 0.0 | 0.0 | 2 | 0.040 |  |
+
+### Megga (`H31vEBxS…`)
+
+Selection edge: `{"n": 6, "median_pick_return": -0.0904, "median_random_return": -0.031, "median_difference": -0.0723, "share_pick_beats_random": 0.333, "sign_test_p": 0.6875}`
+
+| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
+|---|---|---|---|---|---|---|---|---|
+| 0.5s | 8 | -0.215 | -0.0268 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 1.0s | 8 | -0.215 | -0.0268 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 2.0s | 8 | -0.215 | -0.0268 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 3.0s | 8 | -0.215 | -0.0268 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 5.0s | 8 | -0.215 | -0.0268 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 10.0s | 6 | -0.155 | -0.0258 | 0.0 | 0.0 | 0 | 0.089 |  |
+
+### KOREAN (`6KR7Sors…`)
+
+Selection edge: `{"n": 7, "median_pick_return": 0.3184, "median_random_return": 0.0, "median_difference": 0.3171, "share_pick_beats_random": 0.857, "sign_test_p": 0.125}`
+
+| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
+|---|---|---|---|---|---|---|---|---|
+| 0.5s | 8 | -0.203 | -0.0254 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 1.0s | 8 | -0.203 | -0.0254 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 2.0s | 8 | -0.203 | -0.0254 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 3.0s | 8 | -0.203 | -0.0254 | 0.0 | 0.0 | 0 | 0.117 |  |
+| 5.0s | 7 | -0.177 | -0.0253 | 0.0 | 0.0 | 0 | 0.103 |  |
+| 10.0s | 5 | -0.126 | -0.0252 | 0.0 | 0.0 | 0 | 0.074 |  |
 
 ### R4 (`Cv5GgkpX…`)
 
-Selection edge: `{"n": 5, "median_pick_return": -0.1824, "median_random_return": -0.0067, "median_difference": -0.1203, "share_pick_beats_random": 0.4, "sign_test_p": 1.0}`
+Selection edge: `{"n": 11, "median_pick_return": -0.1451, "median_random_return": -0.0456, "median_difference": -0.1368, "share_pick_beats_random": 0.455, "sign_test_p": 1.0}`
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 5 | 0.280 | 0.0560 | 0.2 | 1.71856681670053 | 0 | 0.080 |  |
-| 1.0s | 5 | 0.316 | 0.0632 | 0.4 | 1.8126879454636922 | 0 | 0.080 |  |
-| 2.0s | 5 | 0.072 | 0.0144 | 0.4 | 1.1719654379351399 | 0 | 0.077 |  |
-| 3.0s | 5 | 0.139 | 0.0277 | 0.4 | 1.3567554585532062 | 0 | 0.078 |  |
-| 5.0s | 5 | 0.212 | 0.0425 | 0.4 | 1.6555218261582914 | 0 | 0.079 |  |
-| 10.0s | 4 | 2.026 | 0.5064 | 0.5 | 11.339677338393619 | 1 | 0.088 |  |
+| 0.5s | 11 | 0.039 | 0.0035 | 0.2727272727272727 | 1.0384927130490365 | 0 | 0.164 |  |
+| 1.0s | 11 | 0.011 | 0.0010 | 0.2727272727272727 | 1.0105682224257528 | 0 | 0.164 |  |
+| 2.0s | 11 | -0.071 | -0.0065 | 0.36363636363636365 | 0.9368098560581405 | 0 | 0.163 |  |
+| 3.0s | 11 | -0.187 | -0.0170 | 0.36363636363636365 | 0.8321758972386778 | 0 | 0.161 |  |
+| 5.0s | 11 | -0.018 | -0.0017 | 0.36363636363636365 | 0.9828526333385195 | 0 | 0.164 |  |
+| 10.0s | 8 | -0.419 | -0.0523 | 0.25 | 0.5372847963214892 | 3 | 0.113 |  |
 
 ### ban (`EqiFgyNw…`)
 
-Selection edge: `{"n": 11, "median_pick_return": -0.0209, "median_random_return": -0.0014, "median_difference": -0.0174, "share_pick_beats_random": 0.364, "sign_test_p": 0.5488}`
+Selection edge: `{"n": 13, "median_pick_return": -0.0264, "median_random_return": -0.0283, "median_difference": -0.0189, "share_pick_beats_random": 0.385, "sign_test_p": 0.5811}`
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 9 | -0.850 | -0.0943 | 0.0 | 0.0 | 1 | 0.122 |  |
-| 1.0s | 8 | -0.721 | -0.0900 | 0.0 | 0.0 | 1 | 0.109 |  |
-| 2.0s | 8 | -0.703 | -0.0878 | 0.125 | 0.005204222631896412 | 1 | 0.109 |  |
-| 3.0s | 8 | -0.785 | -0.0980 | 0.0 | 0.0 | 1 | 0.108 |  |
-| 5.0s | 8 | -0.801 | -0.0999 | 0.0 | 0.0 | 1 | 0.108 |  |
-| 10.0s | 6 | -0.527 | -0.0877 | 0.0 | 0.0 | 1 | 0.082 |  |
+| 0.5s | 14 | -0.360 | -0.0257 | 0.0 | 0.0 | 0 | 0.202 |  |
+| 1.0s | 13 | -0.332 | -0.0255 | 0.0 | 0.0 | 0 | 0.188 |  |
+| 2.0s | 13 | -0.332 | -0.0255 | 0.0 | 0.0 | 0 | 0.188 |  |
+| 3.0s | 13 | -0.332 | -0.0255 | 0.0 | 0.0 | 0 | 0.188 |  |
+| 5.0s | 13 | -0.332 | -0.0255 | 0.0 | 0.0 | 0 | 0.188 |  |
+| 10.0s | 10 | -0.252 | -0.0252 | 0.0 | 0.0 | 0 | 0.145 |  |
 
-### Letterbomb (`BtMBMPko…`)
+### EustazZ (`FqamE7xr…`)
 
-Selection edge: `{"n": 5, "median_pick_return": 0.2548, "median_random_return": -0.0, "median_difference": 0.2549, "share_pick_beats_random": 0.8, "sign_test_p": 0.375}`
+Selection edge: `{"n": 8, "median_pick_return": -0.068, "median_random_return": -0.0082, "median_difference": -0.0472, "share_pick_beats_random": 0.375, "sign_test_p": 0.7266}`
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 4 | 0.225 | 0.0568 | 0.25 | 1.8223481806138462 | 2 | 0.063 |  |
-| 1.0s | 3 | -0.281 | -0.0927 | 0.0 | 0.0 | 3 | 0.043 |  |
-| 2.0s | 3 | -0.290 | -0.0959 | 0.0 | 0.0 | 2 | 0.042 |  |
-| 3.0s | 1 | -0.039 | -0.0354 | 0.0 | 0.0 | 4 | 0.018 |  |
-| 5.0s | 2 | -0.053 | -0.0251 | 0.0 | 0.0 | 3 | 0.032 |  |
-| 10.0s | 0 | -0.005 | 0.0000 | – | – | 5 | 0.005 |  |
+| 0.5s | 10 | -0.230 | -0.0230 | 0.2 | 0.7523243107854707 | 0 | 0.143 |  |
+| 1.0s | 10 | -0.186 | -0.0186 | 0.2 | 0.7908115680513949 | 0 | 0.144 |  |
+| 2.0s | 10 | -0.143 | -0.0143 | 0.2 | 0.831650221386987 | 0 | 0.144 |  |
+| 3.0s | 10 | -0.144 | -0.0144 | 0.2 | 0.829728507749115 | 0 | 0.144 |  |
+| 5.0s | 10 | 0.122 | 0.0122 | 0.4 | 1.1546252788777835 | 0 | 0.148 |  |
+| 10.0s | 10 | -0.101 | -0.0101 | 0.2 | 0.8821817732660602 | 0 | 0.145 |  |
 
 ### ram (`57rXqaQs…`)
 
-Selection edge: `{"n": 7, "median_pick_return": 0.0511, "median_random_return": -0.0052, "median_difference": 0.1021, "share_pick_beats_random": 0.714, "sign_test_p": 0.4531}`
+Selection edge: `{"n": 8, "median_pick_return": 0.0339, "median_random_return": -0.0078, "median_difference": 0.0619, "share_pick_beats_random": 0.625, "sign_test_p": 0.7266}`
 
 | delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
 |---|---|---|---|---|---|---|---|---|
-| 0.5s | 5 | -0.146 | -0.0290 | 0.2 | 0.38613650378507514 | 2 | 0.072 |  |
-| 1.0s | 5 | -0.141 | -0.0281 | 0.2 | 0.4123211470970757 | 2 | 0.072 |  |
-| 2.0s | 5 | -0.144 | -0.0286 | 0.2 | 0.40137555256293767 | 2 | 0.072 |  |
-| 3.0s | 5 | -0.144 | -0.0286 | 0.2 | 0.40137555256293767 | 2 | 0.072 |  |
-| 5.0s | 5 | 0.082 | 0.0165 | 0.2 | 1.3506581221220122 | 2 | 0.075 |  |
-| 10.0s | 5 | 0.071 | 0.0141 | 0.2 | 1.302907916349031 | 1 | 0.074 |  |
-
-### Qavec (`gangJEP5…`)
-
-Selection edge: `{"n": 5, "median_pick_return": -0.0351, "median_random_return": -0.0136, "median_difference": 0.0115, "share_pick_beats_random": 0.6, "sign_test_p": 1.0}`
-
-| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
-|---|---|---|---|---|---|---|---|---|
-| 0.5s | 5 | -0.120 | -0.0239 | 0.4 | 0.4071444513146064 | 0 | 0.072 |  |
-| 1.0s | 5 | -0.132 | -0.0263 | 0.4 | 0.324317089911378 | 0 | 0.071 |  |
-| 2.0s | 4 | -0.258 | -0.0646 | 0.25 | 0.06910093904262776 | 1 | 0.055 |  |
-| 3.0s | 4 | -0.014 | -0.0035 | 0.25 | 0.9185406020912409 | 1 | 0.058 |  |
-| 5.0s | 5 | -0.216 | -0.0432 | 0.4 | 0.3915216271756041 | 0 | 0.070 |  |
-| 10.0s | 2 | -0.109 | -0.0546 | 0.0 | 0.0 | 1 | 0.028 |  |
-
-### Kev (`BTf4A2ex…`)
-
-Selection edge: `{"n": 6, "median_pick_return": -0.0622, "median_random_return": -0.0071, "median_difference": -0.0622, "share_pick_beats_random": 0.333, "sign_test_p": 0.6875}`
-
-| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
-|---|---|---|---|---|---|---|---|---|
-| 0.5s | 6 | -0.706 | -0.1176 | 0.0 | 0.0 | 0 | 0.079 |  |
-| 1.0s | 6 | -0.611 | -0.1018 | 0.0 | 0.0 | 0 | 0.080 |  |
-| 2.0s | 6 | -0.731 | -0.1216 | 0.16666666666666666 | 0.05817825106720826 | 1 | 0.079 |  |
-| 3.0s | 5 | -0.590 | -0.1177 | 0.0 | 0.0 | 2 | 0.068 |  |
-| 5.0s | 4 | -0.395 | -0.0983 | 0.0 | 0.0 | 2 | 0.055 |  |
-| 10.0s | 2 | -0.345 | -0.1715 | 0.0 | 0.0 | 2 | 0.027 |  |
-
-### Flames (`6aXFYXbF…`)
-
-Selection edge: `{"n": 8, "median_pick_return": -0.1436, "median_random_return": 0.0, "median_difference": -0.1819, "share_pick_beats_random": 0.0, "sign_test_p": 0.0078}`
-
-| delay | trades | PnL SOL | expectancy | win rate | PF | failed tx | fee drag | note |
-|---|---|---|---|---|---|---|---|---|
-| 0.5s | 8 | -0.692 | -0.0864 | 0.25 | 0.2320479807576891 | 1 | 0.109 |  |
-| 1.0s | 7 | -0.613 | -0.0873 | 0.2857142857142857 | 0.26504952814266863 | 2 | 0.097 |  |
-| 2.0s | 8 | -0.586 | -0.0731 | 0.375 | 0.35567316328723736 | 1 | 0.111 |  |
-| 3.0s | 7 | -0.518 | -0.0737 | 0.2857142857142857 | 0.3798751088492359 | 2 | 0.098 |  |
-| 5.0s | 6 | -0.570 | -0.0949 | 0.16666666666666666 | 0.26089277295897695 | 3 | 0.096 |  |
-| 10.0s | 5 | -0.173 | -0.0343 | 0.2 | 0.5984945479308763 | 4 | 0.073 |  |
+| 0.5s | 6 | -0.571 | -0.0950 | 0.16666666666666666 | 0.13801350328690723 | 2 | 0.081 |  |
+| 1.0s | 6 | -0.533 | -0.0887 | 0.16666666666666666 | 0.1562788512321915 | 2 | 0.082 |  |
+| 2.0s | 6 | -0.369 | -0.0614 | 0.3333333333333333 | 0.35004703142163973 | 2 | 0.084 |  |
+| 3.0s | 6 | -0.339 | -0.0564 | 0.3333333333333333 | 0.39373585130306893 | 2 | 0.084 |  |
+| 5.0s | 6 | -0.153 | -0.0253 | 0.3333333333333333 | 0.7264932976628143 | 2 | 0.087 |  |
+| 10.0s | 6 | -0.006 | -0.0009 | 0.3333333333333333 | 0.9893606329431591 | 1 | 0.088 |  |
