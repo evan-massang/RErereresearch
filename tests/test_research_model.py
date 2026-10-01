@@ -304,3 +304,16 @@ def test_reregister_keeps_identity_and_refuses_changed_definition(video):
     assert con.execute("SELECT count(*) FROM hypothesis_basis WHERE hypothesis_id = ?", [h]).fetchone()[0] == 1
     with pytest.raises(ValueError, match="different measurable definition"):
         findings.reregister_hypothesis(con, "HX:", **{**kw, "measurable_definition": "d2"})
+
+
+def test_integrity_flags_hypothesis_whose_basis_was_deleted(video):
+    con, sid, tid, trader = video
+    f1 = findings.add_finding(con, trader_id=trader, funnel_stage="entry", evidence_type="stated",
+                              statement="SYNTHETIC", evidence=[("observation", _said(con, sid, trader), "supports")],
+                              is_synthetic=True)
+    h = findings.add_hypothesis(con, statement="SYNTHETIC h", measurable_definition="d", rationale="r",
+                                basis_finding_ids=[f1], is_synthetic=True)
+    assert h not in findings.check_integrity(con)
+    con.execute("DELETE FROM finding_evidence WHERE finding_id = ?", [f1])
+    con.execute("DELETE FROM findings WHERE finding_id = ?", [f1])
+    assert "no longer exist" in findings.check_integrity(con)[h][0]

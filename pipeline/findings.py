@@ -205,6 +205,19 @@ def check_integrity(con: duckdb.DuckDBPyConnection) -> dict[str, list[str]]:
         problems = _rule_problems(con, fid)
         if problems:
             out[fid] = problems
+    # hypotheses must still rest on what they were registered on
+    for hid, n_basis, n_missing, parent in con.execute("""
+            SELECT h.hypothesis_id, count(b.finding_id), count(b.finding_id) FILTER (WHERE f.finding_id IS NULL),
+                   h.parent_id
+            FROM hypotheses h LEFT JOIN hypothesis_basis b USING (hypothesis_id)
+            LEFT JOIN findings f ON f.finding_id = b.finding_id GROUP BY h.hypothesis_id, h.parent_id""").fetchall():
+        problems = []
+        if n_missing:
+            problems.append(f"{n_missing} basis finding(s) no longer exist")
+        if parent is None and n_basis - n_missing == 0:
+            problems.append("root hypothesis has no basis finding")
+        if problems:
+            out[hid] = problems
     return out
 
 
