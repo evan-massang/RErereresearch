@@ -1,0 +1,22 @@
+WEBVTT
+Kind: captions
+Language: en
+
+NOTE SYNTHETIC TEST FIXTURE - not real captions.
+
+00:00:00.000 --> 00:00:01.500 align:start position:0%
+synthetic<00:00:00.400><c> caption</c><00:00:00.800><c> line</c><00:00:01.000><c> one</c>
+
+00:00:01.500 --> 00:00:01.510 align:start position:0%
+synthetic caption line one
+
+00:00:01.510 --> 00:00:03.000 align:start position:0%
+synthetic caption line one
+placeholder &amp; test line two
+
+00:00:03.000 --> 00:00:04.500
+placeholder &amp; test line two
+the quick brown fox is a test sentence
+
+00:00:04.500 --> 00:00:06.000
+end of synthetic fixture

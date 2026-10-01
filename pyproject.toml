@@ -1,0 +1,10 @@
+[project]
+name = "research-pipeline"
+version = "0.1.0"
+description = "Modular research archive: video/web ingestion, transcripts, frames, evidence-linked observations"
+requires-python = ">=3.10"
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-q"
