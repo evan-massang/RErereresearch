@@ -1,0 +1,38 @@
+{
+ "window_recv": [
+  1790857038.4652758,
+  1790859765.3967397
+ ],
+ "min_closed_trips": 5,
+ "excluded_special_accounts": [
+  "BwWK17cbHxwWBKZkUYvzxLcNQ1YVyaFezduWbtm2de6s"
+ ],
+ "groups": {
+  "creation_block_non_creator": {
+   "wallets": 175,
+   "profitable": 88,
+   "pnl_sol": 63.985
+  },
+  "human_paced": {
+   "wallets": 1317,
+   "profitable": 384,
+   "pnl_sol": -58.98
+  },
+  "creation_block_creator": {
+   "wallets": 36,
+   "profitable": 21,
+   "pnl_sol": 100.885
+  },
+  "sub5s_flipper": {
+   "wallets": 109,
+   "profitable": 52,
+   "pnl_sol": 26.753
+  }
+ },
+ "definitions": {
+  "creation_block": ">=50% of entries in the token's creation slot",
+  "sub5s_flipper": "median hold < 5 s",
+  "human_paced": "everything else"
+ },
+ "caveat": "bonding-curve trades only; positions that migrate are excluded; fees 1.25% included, priority fees not"
+}
