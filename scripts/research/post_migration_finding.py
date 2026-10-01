@@ -42,6 +42,26 @@ def main() -> dict:
         v = [r[i] / r[1] - 1 for r in rows]
         out["horizons"][h] = {"median": round(statistics.median(v), 3), "share_up": round(sum(x > 0 for x in v) / len(v), 3),
                               "share_ge_2x": round(sum(x >= 1 for x in v) / len(v), 3)}
+    # can a late buyer capture it? enter at the first swap >= L s after the first one, exit after H s,
+    # minus ~3.5% for AMM fees on both sides (own price impact NOT included, so this flatters the buyer)
+    ent = {}
+    for (pool,) in m.execute("""SELECT p.pool FROM amm_pools p JOIN amm_trades t USING (pool)
+                                WHERE p.mint IN (SELECT mint FROM curve_completes) AND t.recv < ?
+                                GROUP BY 1 HAVING min(t.recv) < ? - 1800""", [CUTOFF, CUTOFF]).fetchall():
+        x = m.execute("SELECT recv, sol / tok FROM amm_trades WHERE pool = ? AND recv < ? AND tok > 0 AND sol >= 0.01 "
+                      "ORDER BY recv, rowid", [pool, CUTOFF]).fetchall()
+        for L in (1, 3, 10):
+            e = next(((t, q) for t, q in x if t >= x[0][0] + L), None)
+            if e:
+                ex = [q for t, q in x if t <= e[0] + 60]
+                ent.setdefault(L, []).append(ex[-1] / e[1] - 1 - 0.035)
+    out["late_entry_hold_60s"] = {}
+    for L, v in ent.items():
+        sv = sorted(v)
+        out["late_entry_hold_60s"][f"{L}s"] = {
+            "n": len(v), "mean": round(statistics.mean(v), 3), "median": round(statistics.median(v), 3),
+            "win_rate": round(sum(a > 0 for a in v) / len(v), 3), "mean_without_best": round(statistics.mean(sv[:-1]), 3),
+            "best": round(sv[-1], 2)}
     p = ROOT / "research/observations/evidence_post_migration_2026-10-01.json"
     p.write_text(json.dumps(out, indent=1))
     return out
@@ -70,6 +90,16 @@ def record(o: dict) -> None:
         evidence=[("observation", obs, "supports")], n_supporting=round(h["5m"]["share_up"] * o["n_pools"]),
         n_observable=o["n_pools"], confidence=0.7,
         notes=f"{EX}; execution prices incl. fees/impact; 19 of 334 migrations lack a decoded pool")
+    le = o["late_entry_hold_60s"]["3s"]
+    findings.add_finding(
+        con, trader_id=None, funnel_stage="entry", evidence_type="observed",
+        statement=f"Buying every migrated token on PumpSwap 3 s after its first swap and selling 60 s later returns a "
+                  f"median {le['median']:+.1%} per trade after ~3.5% fees (win rate {le['win_rate']:.0%}, n={le['n']}); "
+                  f"the mean ({le['mean']:+.1%}) comes from one token that went {le['best']:.0f}x, and is "
+                  f"{le['mean_without_best']:+.1%} without it, before the buyer's own price impact. The post-migration "
+                  "rise is not capturable by buying every migration.",
+        evidence=[("observation", obs, "supports")], n_supporting=round(le["win_rate"] * le["n"]), n_observable=le["n"],
+        confidence=0.7, notes=f"{EX}; exploratory, pre-19:15 data; no hypothesis registered on it")
 
 
 if __name__ == "__main__":

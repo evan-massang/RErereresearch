@@ -22,5 +22,31 @@
    "share_up": 0.971,
    "share_ge_2x": 0.644
   }
+ },
+ "late_entry_hold_60s": {
+  "1s": {
+   "n": 273,
+   "mean": 0.222,
+   "median": -0.017,
+   "win_rate": 0.355,
+   "mean_without_best": 0.001,
+   "best": 60.11
+  },
+  "3s": {
+   "n": 273,
+   "mean": 0.219,
+   "median": -0.022,
+   "win_rate": 0.3,
+   "mean_without_best": -0.001,
+   "best": 60.11
+  },
+  "10s": {
+   "n": 272,
+   "mean": 0.245,
+   "median": -0.018,
+   "win_rate": 0.324,
+   "mean_without_best": 0.024,
+   "best": 60.11
+  }
  }
 }

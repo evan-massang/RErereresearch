@@ -1,0 +1,45 @@
+{
+ "train": {
+  "n": 721,
+  "picks": 11
+ },
+ "test": {
+  "n": 523,
+  "picks": 8
+ },
+ "test_auc": 0.524,
+ "top_k": {
+  "10": {
+   "decu_picks": 0,
+   "sim_trades": 10,
+   "pnl_sol": -0.817,
+   "expectancy_sol": -0.0817
+  },
+  "20": {
+   "decu_picks": 1,
+   "sim_trades": 20,
+   "pnl_sol": 1.686,
+   "expectancy_sol": 0.0843
+  },
+  "40": {
+   "decu_picks": 1,
+   "sim_trades": 36,
+   "pnl_sol": -3.069,
+   "expectancy_sol": -0.0853
+  },
+  "80": {
+   "decu_picks": 1,
+   "sim_trades": 69,
+   "pnl_sol": -5.297,
+   "expectancy_sol": -0.0768
+  }
+ },
+ "decu_picks_before_17": {
+  "n": 8,
+  "pnl_sol": 2.145
+ },
+ "decu_picks_after_17": {
+  "n": 7,
+  "pnl_sol": 1.985
+ }
+}

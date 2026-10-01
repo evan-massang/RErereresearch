@@ -183,10 +183,7 @@ def record(o: dict) -> None:
 
     ex = "claude:decu-choice-2026-10-01"
     con = db.connect()
-    con.execute("DELETE FROM finding_evidence WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?)",
-                [f"%{ex}%"])
-    con.execute("DELETE FROM findings WHERE notes LIKE ?", [f"%{ex}%"])
-    con.execute("DELETE FROM observations WHERE extractor = ?", [ex])
+    kept = findings.clear_previous(con, ex, ex)       # findings a hypothesis rests on are superseded, not deleted
     tid = annotations.trader_by_slug(con, "decu")
     p = ROOT / "research/observations/evidence_decu_choice_set_2026-10-01.json"
     sid, snap = ingest_document(con, str(p), title="Decu BUY vs SKIP among creator-dump candidates",
@@ -199,7 +196,7 @@ def record(o: dict) -> None:
                 "simulated bot PnL of each candidate (H3 primary execution).")
     g, n = o["sim_groups"], o["numeric"]
     best = max((v for k, v in g.items() if ">=" in k and v.get("n")), key=lambda v: v["expectancy_sol"])
-    findings.add_finding(
+    new_f = findings.add_finding(
         con, trader_id=tid, funnel_stage="matching", evidence_type="observed",
         statement=f"Among {o['n_candidates']} creator-dump candidates during the stream, Decu bought {o['n_picked']}. "
                   f"At the trigger their picks had about twice the live activity of the skips (unique buyers in 10 s "
@@ -214,6 +211,9 @@ def record(o: dict) -> None:
         n_observable=g["decu_picked"]["n"], confidence=0.6,
         notes=f"{ex}; exploratory and in-sample, few picks; Decu's selection uses something the tape features here "
               "do not capture (X link is on ~all candidates, so it does not separate them)")
+    for fid in kept:
+        findings.set_finding_status(con, fid, "superseded", f"Rebuilt on {o['window'][0][11:16]}-{o['window'][1][11:16]} "
+                                    "UTC data; kept because a hypothesis rests on it.", superseded_by=new_f)
 
 
 if __name__ == "__main__":

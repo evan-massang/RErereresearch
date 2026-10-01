@@ -126,6 +126,14 @@ H5 shows that Decu's exit style does not rescue a mechanical entry: most entries
 - **PumpSwap (AMM) trades are now decoded** from the raw logs (~19:30 UTC): 348 pools and 2.2M swaps. The layout was verified against Decu's QRCAT sale, whose amounts match kolscan exactly. 315 of 334 migrations have their pool decoded; 19 lost the pool-creation event. On curve plus AMM, Decu's day on pump tokens up to 19:15 is **+86.9 SOL** over 35 tokens (23 winners), with positions still open counted at cost. That includes AMM exits kolscan never relayed, such as Ansemmas, +33.6 SOL net. **Raydium Launchpad** trades (Setuh's main venue) are still not decoded. The simulator does not use the AMM data yet, so H5 had to exit on the curve, near migration.
 - **Small samples.** Decu's picks are dozens, not hundreds. Every finding states its n.
 
+
+## Follow-up (after the overnight run)
+
+- **Decu's picks hold up on a bigger sample.** Over 13:38–19:15 there were 1,244 creator-dump candidates, and Decu bought 19. A simulated bot entering on Decu's picks makes +0.28 SOL per 1-SOL trade, winning 60%. On the rest it makes -0.16, winning 12%. The picks are profitable both before 17:00 (+2.15 SOL) and after (+1.99).
+- **No model of their choice works.** A model of that choice built from 22 tape and metadata features was trained before 17:00 and tested after. It does no better than chance (AUC 0.524), and its top picks lose. Decu selects on something these features do not contain: what they read in the linked X post and in their labelled-wallet tracker. Capturing that needs text and narrative features, plus more footage-coded decisions.
+- **Buying every migration doesn't pay.** Buying each migrated token on PumpSwap 3 s after its first swap and selling 60 s later has a median of about −2% after fees. The positive average comes from a single 60× token; without it the average is about zero, before the buyer's own price impact.
+- **Data history fix.** Re-running the choice-set study had deleted the finding H6 was registered on. It was restored from git and marked *superseded*. Rebuilt findings that a hypothesis rests on are now superseded instead of deleted, and `check-findings` flags any hypothesis whose basis is missing.
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.

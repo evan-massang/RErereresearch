@@ -317,3 +317,19 @@ def test_integrity_flags_hypothesis_whose_basis_was_deleted(video):
     con.execute("DELETE FROM finding_evidence WHERE finding_id = ?", [f1])
     con.execute("DELETE FROM findings WHERE finding_id = ?", [f1])
     assert "no longer exist" in findings.check_integrity(con)[h][0]
+
+
+def test_clear_previous_keeps_findings_a_hypothesis_rests_on(video):
+    con, sid, tid, trader = video
+    f1 = findings.add_finding(con, trader_id=trader, funnel_stage="entry", evidence_type="stated", statement="SYNTHETIC a",
+                              evidence=[("observation", _said(con, sid, trader), "supports")], notes="SYNTHETIC-TAG",
+                              is_synthetic=True)
+    f2 = findings.add_finding(con, trader_id=trader, funnel_stage="entry", evidence_type="stated", statement="SYNTHETIC b",
+                              evidence=[("observation", _said(con, sid, trader), "supports")], notes="SYNTHETIC-TAG",
+                              is_synthetic=True)
+    findings.add_hypothesis(con, statement="SYNTHETIC h", measurable_definition="d", rationale="r",
+                            basis_finding_ids=[f1], is_synthetic=True)
+    assert findings.clear_previous(con, "SYNTHETIC-TAG", "none") == [f1]
+    left = {r[0] for r in con.execute("SELECT finding_id FROM findings WHERE notes = 'SYNTHETIC-TAG'").fetchall()}
+    assert left == {f1} and f2 not in left
+    assert findings.check_integrity(con) == {}

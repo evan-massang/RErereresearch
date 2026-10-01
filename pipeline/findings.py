@@ -335,3 +335,19 @@ def reregister_hypothesis(con: duckdb.DuckDBPyConnection, prefix: str, **kw) -> 
                 [oid, created, status, new])
     con.execute("UPDATE hypothesis_basis SET hypothesis_id = ? WHERE hypothesis_id = ?", [oid, new])
     return oid
+
+
+def clear_previous(con: duckdb.DuckDBPyConnection, tag: str, extractor: str) -> list[str]:
+    """For scripts that rebuild their findings: delete their earlier findings and observations, except
+    findings a hypothesis rests on (and the observations those cite). Returns the kept finding ids, which the
+    caller marks superseded by the rebuilt finding, so a registered hypothesis never loses its basis."""
+    kept = [r[0] for r in con.execute(
+        "SELECT finding_id FROM findings WHERE notes LIKE ? AND finding_id IN (SELECT finding_id FROM hypothesis_basis) "
+        "AND status <> 'superseded'", [f"%{tag}%"]).fetchall()]
+    con.execute("DELETE FROM finding_evidence WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?) "
+                "AND finding_id NOT IN (SELECT finding_id FROM hypothesis_basis)", [f"%{tag}%"])
+    con.execute("DELETE FROM findings WHERE notes LIKE ? AND finding_id NOT IN (SELECT finding_id FROM hypothesis_basis)",
+                [f"%{tag}%"])
+    con.execute("DELETE FROM observations WHERE extractor = ? AND observation_id NOT IN "
+                "(SELECT evidence_id FROM finding_evidence WHERE evidence_kind = 'observation')", [extractor])
+    return kept
