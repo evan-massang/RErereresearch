@@ -139,3 +139,77 @@ class StructureEntry:
             for m in [m for m, s in self._toks.items() if s.created < cutoff and m not in self._held]:
                 del self._toks[m]
         return out
+
+
+@dataclass
+class _Dev:
+    created: float
+    creator: str
+    dev_in: float = 0.0                                 # SOL the creator put into the curve
+    dev_out: float = 0.0                                # SOL the creator took out
+    first_sell: float | None = None
+    price: float = 0.0
+
+
+@dataclass
+class DevDumpEntry:
+    """H3 (from Decu's on-stream entries): buy a young token shortly after its creator's first sell, when the
+    creator put in a large launch buy and has already taken out more SOL than they put in."""
+
+    size_sol: float = 1.0
+    max_age_s: float = 30.0
+    min_dev_buy_sol: float = 2.9
+    max_since_dump_s: float = 20.0
+    hold_s: float = 20.0
+    stop_pct: float = 20.0
+    name: str = "h3_dev_dump_entry"
+    _toks: dict = field(default_factory=dict)
+    _held: dict = field(default_factory=dict)           # mint -> (t_decided, ref_price)
+    _done: set = field(default_factory=set)
+
+    def spec(self) -> dict:
+        return {k: getattr(self, k) for k in ("name", "size_sol", "max_age_s", "min_dev_buy_sol", "max_since_dump_s",
+                                               "hold_s", "stop_pct")}
+
+    def on_event(self, view, ev):
+        now = view.now
+        if ev.kind == "create":
+            self._toks[ev.mint] = _Dev(created=ev.ts, creator=ev.data["creator"])
+            return []
+        st = self._toks.get(ev.mint)
+        if st is None:
+            return []                                   # creation not seen: creator unknown, skip
+        d = ev.data
+        st.price = d["v_sol"] / d["v_tok"]
+        if d["trader"] == st.creator:
+            if d["side"] == "buy":
+                st.dev_in += d["sol"]
+            else:
+                st.dev_out += d["sol"]
+                if st.first_sell is None:
+                    st.first_sell = now
+        if ev.mint in self._held:
+            t0, ref = self._held[ev.mint]
+            if st.price <= ref * (1 - self.stop_pct / 100):
+                self._held.pop(ev.mint)
+                return [Sell(ev.mint, 1.0, tag="stop")]
+            return []
+        if ev.mint in self._done or now - st.created > self.max_age_s or st.first_sell is None:
+            return []
+        if st.dev_in < self.min_dev_buy_sol or st.dev_out <= st.dev_in or now - st.first_sell > self.max_since_dump_s:
+            return []
+        self._done.add(ev.mint)
+        self._held[ev.mint] = (now, st.price)
+        return [Buy(ev.mint, self.size_sol, tag=f"{self.name}_entry")]
+
+    def on_tick(self, view):
+        out = []
+        for m, (t0, _) in list(self._held.items()):
+            if view.now - t0 >= self.hold_s:
+                self._held.pop(m)
+                out.append(Sell(m, 1.0, tag="time_exit"))
+        if len(self._toks) > 20000:
+            cutoff = view.now - 2 * self.max_age_s
+            for m in [m for m, s in self._toks.items() if s.created < cutoff and m not in self._held]:
+                del self._toks[m]
+        return out

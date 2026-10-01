@@ -36,6 +36,8 @@ STATUS = ROOT / "data" / "stream_watcher_status.json"
 
 
 MIN_FREE_GB = 6.0
+# seed traders at 720p so Axiom panels are legible; everyone else at 480p to save disk
+QUALITY = {k: "best[height<=720]/best" for k in ("twitch:decu", "twitch:cupseyy", "twitch:setuhh")}
 
 
 def adopt_running() -> dict[int, str]:
@@ -113,7 +115,7 @@ def main() -> None:
                 "yt_dlp_info": {k: info.get(k) for k in ("uploader", "uploader_id", "release_timestamp", "timestamp",
                                                          "concurrent_view_count", "description")}}, indent=1))
             rec[key] = subprocess.Popen(
-                ["yt-dlp", "--no-warnings", "-q", "-f", "best[height<=480]/worst", "--hls-use-mpegts",
+                ["yt-dlp", "--no-warnings", "-q", "-f", QUALITY.get(key, "best[height<=480]/worst"), "--hls-use-mpegts",
                  "--no-part", "-o", str(d / f"{stem}.%(ext)s"), url],
                 stdout=subprocess.DEVNULL, stderr=open(d / f"{stem}.log", "w"), start_new_session=True)
             log.append({"event": "recording", "channel": key, "at": start.isoformat(), "title": info.get("title")})

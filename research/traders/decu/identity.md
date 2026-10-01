@@ -6,7 +6,7 @@ _Generated from the database. Statuses: **lead** = a search result or third part
 
 | platform | handle | url | first evidence | notes |
 |---|---|---|---|---|
-| twitch | decu | https://www.twitch.tv/decu | https://x.com/notdecu | Linked as the website of X @notdecu (fetched 2026-10-01). |
+| twitch | decu | https://www.twitch.tv/decu |  | Recorded from the channel; the wallet trading on screen is the one Decu published on X (4vw54…). |
 | wallet | 4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9 |  | https://x.com/notdecu/status/2049865699598672039 | Posted by X @notdecu on 2026-04-30 as 'My wallet (check for yourself)'; kolscan also lists it as decu. |
 | x | @notdecu | https://x.com/notdecu | https://x.com/notdecu | Profile @notdecu fetched 2026-10-01; links below are this account's own profile fields. |
 
