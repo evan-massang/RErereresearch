@@ -20,3 +20,5 @@ data/recorder.pid
 data/recorder_status.json
 data/logs/
 data/raw/streams_corrupt/
+data/stream_watcher_status.json
+data/stream_watcher.pid
