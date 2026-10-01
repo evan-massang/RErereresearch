@@ -537,3 +537,117 @@ def structure_features(con: duckdb.DuckDBPyConnection, mint: str, t: float) -> d
             "snipers_pct_now": round(sum(max(pos[u], 0) for u in snipers) / SUPPLY * 100, 3),
             "holders": len(held), "top10_pct": round(sum(held[:10]) / SUPPLY * 100, 3),
             "creator_prev_launches_1h": prev}
+
+
+# ------------------------------------------------------------------ PumpSwap (after migration)
+#
+# Event layouts verified 2026-10-01 against Decu's QRCAT sale 4V5vs6Tj… (6,198,744.697 tokens -> 3.0076 SOL,
+# matching kolscan) and the QRCAT CreatePoolEvent (pool 9NLMkbnu…, 206.9M tokens / 84.99 SOL).
+# Buy/Sell: disc(8) ts i64, base amount u64, limit u64, user base/quote reserves u64 x2, pool base/quote
+# reserves u64 x2 (pre-trade; the quote figure sits ~17.6 SOL below the reserve the swap math uses, so it is
+# kept only "as logged"), quote amount u64, lp fee bps/amount, protocol fee bps/amount, quote after lp fee,
+# user quote (net) u64; then pool, user, ... pubkeys; coin creator at 312, its fee bps/amount at 344/352.
+# CreatePool: disc ts i64, index u16, creator, base mint, quote mint, decimals u8 x2, 7 x u64, bump u8, pool.
+
+import base64 as _b64
+import hashlib as _hl
+import struct as _st
+
+_EV = {_hl.sha256(f"event:{n}".encode()).digest()[:8]: n for n in ("BuyEvent", "SellEvent", "CreatePoolEvent")}
+WSOL = "So11111111111111111111111111111111111111112"
+
+
+def _pk(d: bytes, o: int) -> str:
+    import base58
+    return base58.b58encode(d[o:o + 32]).decode()
+
+
+def decode_amm(rec: dict) -> dict | None:
+    data = rec.get("data")
+    if not data:
+        return None
+    d = _b64.b64decode(data)
+    kind = _EV.get(d[:8])
+    if kind == "CreatePoolEvent" and len(d) >= 205:
+        u = [_st.unpack_from("<Q", d, 116 + 8 * i)[0] for i in range(7)]
+        return {"e": "pool", "ts": _st.unpack_from("<q", d, 8)[0], "creator": _pk(d, 18), "mint": _pk(d, 50),
+                "quote_mint": _pk(d, 82), "base_dec": d[114], "quote_dec": d[115], "base_in": u[0], "quote_in": u[1],
+                "pool": _pk(d, 173)}
+    if kind in ("BuyEvent", "SellEvent") and len(d) >= 360:
+        u = [_st.unpack_from("<Q", d, 8 + 8 * i)[0] for i in range(14)]
+        return {"e": "swap", "buy": kind == "BuyEvent", "ts": u[0], "base": u[1], "pool_base": u[5], "pool_quote": u[6],
+                "quote": u[7], "lp_bps": u[8], "protocol_bps": u[10], "user_quote": u[13], "pool": _pk(d, 120),
+                "user": _pk(d, 152), "creator_bps": _st.unpack_from("<Q", d, 344)[0]}
+    return None
+
+
+def load_amm(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
+    """Decode PumpSwap pools created while recording (pump.fun migrations) and every swap in those pools.
+
+    Pools created before the recording started are skipped (their token is unknown without an extra lookup).
+    Amounts: tokens with 6 decimals, SOL with 9. Price per swap = quote / base (execution price).
+    """
+    import pandas as pd
+
+    con.execute("""CREATE TABLE IF NOT EXISTS amm_pools (src_file VARCHAR, sig VARCHAR, recv DOUBLE, ts BIGINT, pool VARCHAR,
+                   mint VARCHAR, creator VARCHAR, base_in DOUBLE, quote_in DOUBLE);
+                   CREATE TABLE IF NOT EXISTS amm_trades (src_file VARCHAR, sig VARCHAR, slot BIGINT, recv DOUBLE, ts BIGINT,
+                   pool VARCHAR, mint VARCHAR, usr VARCHAR, buy BOOLEAN, tok DOUBLE, sol DOUBLE, user_sol DOUBLE,
+                   pool_tok_logged DOUBLE, pool_sol_logged DOUBLE, fee_bps INTEGER);
+                   CREATE TABLE IF NOT EXISTS loaded_amm_files (name VARCHAR PRIMARY KEY, complete BOOLEAN);""")
+    import base58
+
+    done = {r[0] for r in con.execute("SELECT name FROM loaded_amm_files WHERE complete").fetchall()}
+    pools = dict(con.execute("SELECT pool, mint FROM amm_pools").fetchall())
+    pool_bytes = {base58.b58decode(p): p for p in pools}
+    swap_disc = {k for k, v in _EV.items() if v != "CreatePoolEvent"}
+    pool_disc = next(k for k, v in _EV.items() if v == "CreatePoolEvent")
+    added = {"pools": 0, "trades": 0, "files": 0}
+    # chronological order (file names do not sort by time across recorder restarts): a pool must be known
+    # before its swaps are read
+    for f in sorted(config.path("raw_streams", "pumpswap_raw").glob("*.jsonl.gz"), key=lambda x: x.stat().st_mtime):
+        if f.name in done:
+            continue
+        complete = _complete(f)
+        added["files"] += 1
+        for t in ("amm_pools", "amm_trades"):
+            con.execute(f"DELETE FROM {t} WHERE src_file = ?", [f.name])
+        prow, trow = [], []
+        for r in _read_file(f):
+            data = r.get("data")
+            if not data:
+                continue
+            head = _b64.b64decode(data[:220])                      # enough for the discriminator and the pool key
+            if head[:8] in swap_disc:
+                if head[120:152] not in pool_bytes:
+                    continue
+            elif head[:8] != pool_disc:
+                continue
+            ev = decode_amm(r)
+            if ev is None:
+                continue
+            if ev["e"] == "pool":
+                if ev["quote_mint"] != WSOL:
+                    continue
+                pools[ev["pool"]] = ev["mint"]
+                pool_bytes[base58.b58decode(ev["pool"])] = ev["pool"]
+                prow.append((f.name, r["sig"], r["recv"], ev["ts"], ev["pool"], ev["mint"], ev["creator"],
+                             ev["base_in"] / 10 ** ev["base_dec"], ev["quote_in"] / 1e9))
+            elif ev["pool"] in pools:
+                trow.append((f.name, r["sig"], r.get("slot"), r["recv"], ev["ts"], ev["pool"], pools[ev["pool"]],
+                             ev["user"], ev["buy"], ev["base"] / 1e6, ev["quote"] / 1e9, ev["user_quote"] / 1e9,
+                             ev["pool_base"] / 1e6, ev["pool_quote"] / 1e9,
+                             ev["lp_bps"] + ev["protocol_bps"] + ev["creator_bps"]))
+        for table, rows, cols in (("amm_pools", prow, ["src_file", "sig", "recv", "ts", "pool", "mint", "creator",
+                                                        "base_in", "quote_in"]),
+                                  ("amm_trades", trow, ["src_file", "sig", "slot", "recv", "ts", "pool", "mint", "usr",
+                                                        "buy", "tok", "sol", "user_sol", "pool_tok_logged",
+                                                        "pool_sol_logged", "fee_bps"])):
+            if rows:
+                con.register("_df", pd.DataFrame(rows, columns=cols))
+                con.execute(f"INSERT INTO {table} SELECT * FROM _df")
+                con.unregister("_df")
+        added["pools"] += len(prow)
+        added["trades"] += len(trow)
+        con.execute("INSERT OR REPLACE INTO loaded_amm_files VALUES (?, ?)", [f.name, complete])
+    return added

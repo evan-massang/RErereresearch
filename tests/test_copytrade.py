@@ -91,3 +91,20 @@ def test_basket_enters_once_and_follows_the_leader():
               execution=base_execution(tx_latency_s=0.5, fail_prob=0.0))
     assert len(res.trades) == 1
     assert res.trades[0].closed_at >= T0 + 30          # exit follows SYNTH_A (the opener), not SYNTH_B
+
+
+def test_pumpswap_sell_event_layout():
+    """A real (public) PumpSwap SellEvent: Decu's QRCAT sale, amounts as reported by kolscan for that tx."""
+    import json
+    from pathlib import Path
+
+    from pipeline.market import decode_amm
+
+    rec = json.loads((Path(__file__).parent / "fixtures" / "pumpswap_sell_event.json").read_text())
+    ev = decode_amm(rec)
+    assert ev["e"] == "swap" and ev["buy"] is False
+    assert abs(ev["base"] / 1e6 - 6198744.697) < 0.01
+    assert abs(ev["user_quote"] / 1e9 - 3.0076) < 0.0001
+    assert ev["user"] == "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9"
+    assert ev["pool"] == "9NLMkbnu2YSj67PFR1JJnvtqJbcZLu3TqC95kgYWEJp3"
+    assert (ev["lp_bps"], ev["protocol_bps"], ev["creator_bps"]) == (20, 5, 95)

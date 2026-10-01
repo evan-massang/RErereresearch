@@ -15,3 +15,5 @@ video, page, or trade. Tests load them with `is_synthetic=True`, and
 
 The synthetic video used by the tests is generated on the fly with FFmpeg
 (solid colour blocks + a sine tone) in `tests/conftest.py`.
+
+- `pumpswap_sell_event.json` is **not synthetic**: one real, public PumpSwap SellEvent (Decu's QRCAT sale, tx 4V5vs6Tj…) used to pin the decoder layout to known amounts.
