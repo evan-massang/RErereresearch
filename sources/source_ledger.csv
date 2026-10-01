@@ -160,6 +160,15 @@ source,src_44e48969432faa35,https://en.wikipedia.org/wiki/Leck,en.wikipedia.org,
 source,src_8648e8ccfe22bbc9,https://www.youtube.com/watch?v=X7msxvyQd_U,www.youtube.com,LIVE TRADING MEMECOINS - YouTube,,,leck,,search_citation,False,websearch,websearch:LeckSol youtube live trading memecoins,,
 source,src_d16b5ffc1b98d598,https://m.youtube.com/shorts/jVe7p3pWHno,m.youtube.com,day 1 of turning 0.7 sol into 100 solana #Leck #memecoins ...,,,leck,,search_citation,False,websearch,"websearch:""Leck"" youtube ""Solana"" memecoin channel 1 SOL challenge",,
 source,src_34ba1861e934aa70,https://www.youtube.com/watch?v=V6QLgJE_2nA,www.youtube.com,Exposing My SECRET Memecoin Trading Filters... - YouTube,,,leck,,search_citation,False,websearch,"websearch:""Exposing My SECRET Memecoin Trading Filters""",,
+source,src_c2ddec20dd2d074f,https://docs.j7tracker.io/docs,web,Overview — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_f9dcf8364d56ae14,https://docs.j7tracker.io/docs/feed,web,Connect — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_cacde1237f8a0c8e,https://docs.j7tracker.io/docs/feed-events,web,Events — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_79a52d2bfb880675,https://docs.j7tracker.io/docs/data-types,web,Data Types — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_432d7c31965a985c,https://docs.j7tracker.io/docs/accounts,web,Manage Accounts — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_b9739a9ef0985ffa,https://docs.j7tracker.io/docs/platforms,web,Platforms — j7tracker API,,2022-01-01 00:00:00+00,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_1a212260a7c71d97,https://docs.j7tracker.io/docs/errors,web,Errors & Limits — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_b62ea28f5df7c1f5,https://docs.j7tracker.io/docs/deploy,web,Deploy API — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
+source,src_5abadd47354ae6da,https://docs.j7tracker.io/docs/quick-start,web,Quick Start — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,
