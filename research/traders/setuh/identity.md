@@ -6,15 +6,12 @@ _Generated from the database. Statuses: **lead** = a search result or third part
 
 | platform | handle | url | first evidence | notes |
 |---|---|---|---|---|
+| other | Padre (Terminal) referral code 'setuh' |  |  | Setuh trades on Padre Terminal on stream; its balance panel shows the referral link trade.padre.gg/rk/setuh. |
 | telegram | SetuhTrades | https://t.me/SetuhTrades | https://x.com/Setuhx | Website field of X @Setuhx (fetched 2026-10-01). |
+| twitch | setuhh | https://www.twitch.tv/setuhh |  | Recorded from the channel; the Padre 'Terminal' referral link on screen is trade.padre.gg/rk/setuh. |
+| wallet | 62N1K57D37AUDGp68tnDYKPjGDsaAAtmo357nBtEtuR |  |  | On Setuh's own stream (16:16-16:17 UTC) a 1-SOL HARDCAT buy and a 100% sell appear ~4 s after this wallet's HARDCAT buy (16:16:34) and full sell (16:16:52); the stream's tracker labels the selling wallet 'setuh' and the wallet selector shows 12.2 SOL vs 12.197 on chain after the sell. kolscan lists it as 'set' with x.com/Setuhx. |
 | x | @Setuhx | https://x.com/Setuhx | https://x.com/Setuhx | Profile @Setuhx fetched 2026-10-01; links below are this account's own profile fields. |
 | youtube | @setuhh | https://www.youtube.com/@setuhh | https://x.com/Setuhx | Linked in the bio of X @Setuhx (fetched 2026-10-01). |
-
-## Accounts — probable
-
-| platform | handle | url | first evidence | notes |
-|---|---|---|---|---|
-| wallet | 62N1K57D37AUDGp68tnDYKPjGDsaAAtmo357nBtEtuR |  | https://kolscan.io/leaderboard | kolscan lists it as 'set' with X @Setuhx (kolscan, pump.fun-operated tracker, 2026-10-01). Not yet claimed by the trader in a fetched post. |
 
 ## Accounts — lead
 
@@ -22,7 +19,6 @@ _Generated from the database. Statuses: **lead** = a search result or third part
 |---|---|---|---|---|
 | other | Padre (Terminal) referral code 'setuh' | https://trade.padre.gg/sign-in?rk=setuh | https://trade.padre.gg/sign-in?rk=setuh | agent confidence: medium / reasoning: The referral code appears in the result URL itself, and the summaries say Setuh's X profile and videos promote this link. It is an affiliate link, not a wallet or tracker profile. / doubts: The code by itself does not show who owns it, and promoting a platform for referral income does not prove they trade on it. The connection to the X and YouTube accounts is summary-only. / independent domains: 2 |
 | other | TikTok topic 'Setuh Meme Coin Trading' (no account found) |  |  | agent confidence: low / reasoning: This suggests clips about Setuh may circulate on TikTok. / doubts: No TikTok account or video URL for Setuh came back. The summary itself said it could not tell what 'Setuh' refers to there. / independent domains: 0 |
-| twitch | setuhh | https://www.twitch.tv/setuhh | https://www.twitch.tv/setuhh | agent confidence: medium / reasoning: The handle 'setuhh' is identical to the YouTube handle. According to the summaries, the Twitch profile links to YouTube @setuhh, X and Kick, and the Linktree title lists Twitch. / doubts: No result showed this channel streaming memecoin trading. The bio 'realest gambler' could mean casino or gambling streams rather than trading. The Linktree's Twitch link target was not seen. Twitch has similarly named, unrelated channels (see ambiguity). / independent domains: 2 |
 | website | linktr.ee/setuh | https://linktr.ee/setuh | https://linktr.ee/setuh | agent confidence: high / reasoning: This appears to be the hub page. Its title names X and Twitch, and the summaries say it links YouTube, Twitch, X, a Discord and a Telegram group, with the same tagline as @Setuhx. / doubts: The exact link targets (which X, Twitch, Telegram and Discord URLs) were not visible. Opening this page is the cheapest way to confirm every other candidate. / independent domains: 1 |
 
 ## Accounts said to exist but not identified

@@ -50,7 +50,8 @@ def adopt_running() -> dict[int, str]:
             cmd = (proc / "cmdline").read_bytes().replace(b"\0", b" ").decode()
         except OSError:
             continue
-        if "yt-dlp" in cmd and "data/raw/video/live" in cmd:
+        # the yt-dlp process itself, not a shell whose command line merely mentions it
+        if "/yt-dlp " in cmd and "data/raw/video/live" in cmd and not cmd.startswith(("/bin/bash", "bash", "sh ")):
             for key, url in CHANNELS.items():
                 if url in cmd:
                     out[int(proc.name)] = key

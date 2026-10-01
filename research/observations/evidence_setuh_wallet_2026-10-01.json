@@ -1,0 +1,27 @@
+{
+ "note": "Setuh's wallet: HARDCAT buy and sell on Raydium Launchpad, fetched with getTransaction; the mint's Token-2022 metadata reads name 'hardcat', symbol 'HARDCAT'.",
+ "wallet": "62N1K57D37AUDGp68tnDYKPjGDsaAAtmo357nBtEtuR",
+ "mint": "9Z3LM2FXUWLBfXC8sgQxWPzaRvnHizAg18LL1Rz8UTbx",
+ "buy": {
+  "sig": "PKGWM51Y84n2RbCnBu37jhct4CKqSyvsGydTZitQQHscJLKDLMWpA8eCp1Y5qDk88JJCi4ujzY1tQX3Ajm3qSdu",
+  "slot": 452338677,
+  "block_time": 1790871394,
+  "block_time_utc": "2026-10-01T16:16:34+00:00",
+  "fee_payer_is_wallet": true,
+  "wallet_sol_change": -1.015068239,
+  "wallet_sol_after": 9.632489621,
+  "hardcat_before": 0,
+  "hardcat_after": 18252293.811939
+ },
+ "sell": {
+  "sig": "4pDK6aUPF9b5LqeTQ22uwRtJRwAZNp847KSzkeWRGWE5fkqKG9j1JjcFXKdKyYcoMDMS5yQBiZPJH1L4qskUATud",
+  "slot": 452338746,
+  "block_time": 1790871412,
+  "block_time_utc": "2026-10-01T16:16:52+00:00",
+  "fee_payer_is_wallet": true,
+  "wallet_sol_change": 2.56730371,
+  "wallet_sol_after": 12.196783333,
+  "hardcat_before": 18252293.811939,
+  "hardcat_after": 0.0
+ }
+}
