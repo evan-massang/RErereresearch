@@ -288,3 +288,19 @@ def test_exports(video):
     assert "Candidate decision moments" in ws and "SYNTHETIC test clip" in ws
     for f in config.path("observations").glob("*.csv"):
         assert f.read_text().count("\n") == 1                       # header only: nothing real yet
+
+
+def test_reregister_keeps_identity_and_refuses_changed_definition(video):
+    con, sid, tid, trader = video
+    f1 = findings.add_finding(con, trader_id=trader, funnel_stage="entry", evidence_type="stated",
+                              statement="SYNTHETIC", evidence=[("observation", _said(con, sid, trader), "supports")],
+                              is_synthetic=True)
+    kw = dict(statement="HX: SYNTHETIC", measurable_definition="d1", rationale="r", basis_finding_ids=[f1],
+              is_synthetic=True)
+    h = findings.reregister_hypothesis(con, "HX:", **kw)
+    created = con.execute("SELECT created_at FROM hypotheses WHERE hypothesis_id = ?", [h]).fetchone()[0]
+    assert findings.reregister_hypothesis(con, "HX:", **kw) == h
+    assert con.execute("SELECT created_at FROM hypotheses WHERE hypothesis_id = ?", [h]).fetchone()[0] == created
+    assert con.execute("SELECT count(*) FROM hypothesis_basis WHERE hypothesis_id = ?", [h]).fetchone()[0] == 1
+    with pytest.raises(ValueError, match="different measurable definition"):
+        findings.reregister_hypothesis(con, "HX:", **{**kw, "measurable_definition": "d2"})

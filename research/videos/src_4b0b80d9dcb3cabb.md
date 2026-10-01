@@ -35,7 +35,7 @@ _Generated from the database by `python -m pipeline export-all`; edits here are 
 | 00:09:33 | BUY | Sow  | 13000.0 |  |  | 0.95 | draft |
 | 00:09:37 | ADD | Sow  |  |  |  | 0.95 | draft |
 | 00:09:48 | SELL | Sow  |  |  |  | 0.95 | draft |
-| 00:11:35 | BUY | ㅤㅤㅤ | 12300.0 |  |  | 0.95 | draft |
+| 00:11:35 | BUY | ㅤㅤㅤ | 12500.0 |  |  | 0.95 | draft |
 | 00:11:42 | ADD | ㅤㅤㅤ |  |  |  | 0.95 | draft |
 | 00:12:05 | SELL | ㅤㅤㅤ |  |  |  | 0.95 | draft |
 | 00:12:16 | BUY | ㅤㅤㅤ | 13100.0 |  |  | 0.95 | draft |

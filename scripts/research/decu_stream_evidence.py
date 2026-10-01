@@ -35,8 +35,8 @@ DECUSLOP = "GQyqQaQ3PTF4wc1UDkyFM8Cd4NA28ygQVLrWGfczECLS"
 utc = lambda x: datetime.fromtimestamp(x, timezone.utc)
 
 con = db.connect()
-con.execute("DELETE FROM hypothesis_basis WHERE hypothesis_id IN (SELECT hypothesis_id FROM hypotheses WHERE rationale LIKE ?)", [f"%{EX}%"])
-con.execute("DELETE FROM hypotheses WHERE rationale LIKE ?", [f"%{EX}%"])
+# H3 is kept across re-runs (findings.reregister_hypothesis), so its basis links go first
+con.execute("DELETE FROM hypothesis_basis WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?)", [f"%{EX}%"])
 con.execute("DELETE FROM finding_evidence WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?)", [f"%{EX}%"])
 con.execute("DELETE FROM findings WHERE notes LIKE ?", [f"%{EX}%"])
 con.execute("DELETE FROM decision_metrics WHERE decision_id IN (SELECT decision_id FROM decisions WHERE extractor = ?)", [EX])
@@ -162,6 +162,13 @@ def obs(**kw):
     return observations.add_observation(con, **kw)
 
 
+# frames from earlier runs of this script (possibly at other timestamps) are removed with their files
+for (fid, lp) in con.execute("SELECT frame_id, local_path FROM frames WHERE source_id IN (?, ?)",
+                             [vids["360"], vids["720"]]).fetchall():
+    con.execute("DELETE FROM frames WHERE frame_id = ?", [fid])
+    (ROOT / lp if not Path(lp).is_absolute() else Path(lp)).unlink(missing_ok=True)
+
+
 def frame(src, t, path):
     return frames.extract_frames(con, src, timestamps=[t], media_path=path)[0]
 
@@ -212,14 +219,14 @@ S7 = (vids["720"], SEG720[0])
 coded = {}
 
 # Sow: Pulse card at 0-1 s, X profile hover, then the token page 3 s before the buy
-f569, f571, f573 = (frame(*S7[:1], t, S7[1]) for t in (569.0, 571.0, 573.0))
+f569, f571, f573 = (frame(*S7[:1], t, S7[1]) for t in (569.25, 571.25, 573.0))
 sow = decision_ids[first("Sow")["sig"]]
 o_sow_card = obs(source_id=vids["720"], modality="screen", kind="pulse_card", frame_id=f569, decision_id=sow,
-                 token_id=tokens[first("Sow")["mint"]], start_s=569.0,
+                 token_id=tokens[first("Sow")["mint"]], start_s=569.25,
                  content="Axiom Pulse, New Pairs top row: 'Sow  Sow Fun', age 0s, V $4K, MC $6.78K, linked X "
                          "@sowfunhq, card counter '16/225'.")
 o_sow_hover = obs(source_id=vids["720"], modality="screen", kind="x_profile_hover", frame_id=f571, decision_id=sow,
-                  start_s=571.0,
+                  start_s=571.25,
                   content="Cursor on the card's X link opens a preview of @sowfunhq ('sow.fun', 'launch a coin. Fund a "
                           "life. 45% of every trade funds a real Kiva borrower…', Joined Apr 2023, 3 Following, "
                           "7 Followers). Card now 1s old, MC $10.1K, 19 holders.")
@@ -238,22 +245,22 @@ decisions.add_reading(con, sow, "author_followers", observed_via="screen", value
 coded["Sow"] = [o_sow_card, o_sow_hover, o_sow_page]
 
 # blank-name token (ㅤㅤㅤ = Hangul filler characters): token page before the first buy, linked tweet before the 5-SOL re-entry
-f695, f733 = frame(*S7[:1], 695.0, S7[1]), frame(*S7[:1], 733.0, S7[1])
+f695, f733 = frame(*S7[:1], 695.25, S7[1]), frame(*S7[:1], 733.25, S7[1])
 hhh = first("ㅤㅤㅤ")
 d_hhh = decision_ids[hhh["sig"]]
-o_hhh_page = obs(source_id=vids["720"], modality="screen", kind="token_page", frame_id=f695, decision_id=d_hhh, start_s=695.0,
+o_hhh_page = obs(source_id=vids["720"], modality="screen", kind="token_page", frame_id=f695, decision_id=d_hhh, start_s=695.25,
                  token_id=tokens[hhh["mint"]],
-                 content="Token page, name renders blank, chart clock 09:23:14: age 8s, MC $12.3K, liquidity $13.7K, "
-                         "B.Curve 65.46%, holders 23, Top10 39.08%, Dev H 12.49%, Snipers H 39.84%, Insiders 0%, "
+                 content="Token page, name renders blank, chart clock 09:23:14: age 8s, MC $12.5K, liquidity $13.7K, "
+                         "B.Curve 65.82%, holders 23, Top10 39.08%, Dev H 12.49%, Snipers H 39.84%, Insiders 0%, "
                          "Bundlers 36.62%, 'Dev Tokens (395)'; Bought 0.")
-for metric, val in (("market_cap_usd", 12300), ("liquidity_usd", 13700), ("token_age_s", 8), ("bonding_curve_pct", 65.46),
+for metric, val in (("market_cap_usd", 12500), ("liquidity_usd", 13700), ("token_age_s", 8), ("bonding_curve_pct", 65.82),
                     ("holders", 23), ("top10_pct", 39.08), ("dev_pct", 12.49), ("snipers_pct", 39.84),
                     ("insiders_pct", 0), ("bundles_pct", 36.62), ("x_axiom_dev_tokens", 395)):
     decisions.add_reading(con, d_hhh, metric, observed_via="screen", value_num=val, frame_id=f695,
                           observation_id=o_hhh_page, as_of_offset_s=-3, unit="count" if metric.startswith("x_") else None)
 add = next(t for t in trades if t["mint"] == hhh["mint"] and t["buy"] and t["sol"] > 4)
 d_add = decision_ids[add["sig"]]
-o_tweet = obs(source_id=vids["720"], modality="screen", kind="tweet_preview", frame_id=f733, decision_id=d_add, start_s=733.0,
+o_tweet = obs(source_id=vids["720"], modality="screen", kind="tweet_preview", frame_id=f733, decision_id=d_add, start_s=733.25,
               token_id=tokens[hhh["mint"]],
               content="Hovering the blank-name card (Final Stretch, 46s, V $37K, MC $13.1K) shows the linked post by "
                       "@theghostfunsol (Joined Jul 2026, 1 follower), visible text: '@phantom literally gave us an ideal "
@@ -268,11 +275,11 @@ decisions.add_reading(con, d_add, "author_followers", observed_via="screen", val
 coded["ㅤㅤㅤ"] = [o_hhh_page, o_tweet]
 
 # BLACK: bought from the Pulse card at age ~0-1 s with the card's 2.5 SOL quick-buy
-f337 = frame(*S7[:1], 337.0, S7[1])
+f337 = frame(*S7[:1], 337.25, S7[1])
 black = first("BLACK")
 o_black = obs(source_id=vids["720"], modality="screen", kind="pulse_card", frame_id=f337,
-              decision_id=decision_ids[black["sig"]], start_s=337.0, token_id=tokens[black["mint"]],
-              content="Pulse New Pairs top row 'BLACK  Jackdaw Black', 0s, V $0, MC $3.29K, 1 holder; column quick-buy "
+              decision_id=decision_ids[black["sig"]], start_s=337.25, token_id=tokens[black["mint"]],
+              content="Pulse New Pairs top row 'BLACK  Jackdaw Black', 0s, V $24, MC $3.29K; column quick-buy "
                       "set to 2.5 SOL. The on-chain buy (2.444 SOL into the curve) lands in the same second; it is sold "
                       "1 s later for 5.094 SOL.")
 decisions.add_reading(con, decision_ids[black["sig"]], "market_cap_usd", observed_via="screen", value_num=3290,
@@ -282,10 +289,10 @@ coded["BLACK"] = [o_black]
 # tracker feed: labelled wallets incl. 'decuslop' = creator of the かのくん copy Decu bought 6 s later
 kano = first("かのくん")
 o_tracker = obs(source_id=vids["720"], modality="screen", kind="tracker_feed", frame_id=f337,
-                decision_id=decision_ids[kano["sig"]], start_s=337.0, token_id=tokens[kano["mint"]],
+                decision_id=decision_ids[kano["sig"]], start_s=337.25, token_id=tokens[kano["mint"]],
                 content="Left 'Trades' tracker panel lists labelled wallets' trades: 'decuslop' Kano-k… 2.0647, "
                         "2.0553, 1.9369, 5.5688, 1.3323 SOL (0-2 s ago), plus 'bwam dev', 'daumen', 'drill', 'flames', "
-                        "'korean', 'clowm'. Pulse New Pairs row 2: 'Kano-kun', 2s, @thedevorr, card counter '8/206', "
+                        "'korean', 'clowm'. Pulse New Pairs row 2: 'Kano-kun', 1s, V $4K, MC $6.76K, @thedevorr, card counter '8/206', "
                         "creator label 'decusl…'.")
 o_slop_chain = obs(source_id=tape_sid, snapshot_id=tape_snap, modality="onchain", kind="wallet_match",
                    decision_id=decision_ids[kano["sig"]], token_id=tokens[kano["mint"]], quote=DECUSLOP,
@@ -297,7 +304,7 @@ o_slop_chain = obs(source_id=tape_sid, snapshot_id=tape_snap, modality="onchain"
 coded["かのくん"] = [o_tracker, o_slop_chain]
 
 # DIT and TITCOIN: Pulse context just before the entry
-f437, f1782 = frame(*S7[:1], 437.0, S7[1]), frame(*S7[:1], 1782.0, S7[1])
+f437, f1782 = frame(*S7[:1], 437.0, S7[1]), frame(*S7[:1], 1782.5, S7[1])
 dit, tit = first("DIT"), first("TITCOIN")
 o_dit = obs(source_id=vids["720"], modality="screen", kind="pulse_card", frame_id=f437, decision_id=decision_ids[dit["sig"]],
             start_s=437.0, token_id=tokens[dit["mint"]],
@@ -309,7 +316,7 @@ decisions.add_reading(con, decision_ids[dit["sig"]], "market_cap_usd", observed_
 decisions.add_reading(con, decision_ids[dit["sig"]], "token_age_s", observed_via="screen", value_num=17,
                       frame_id=f437, observation_id=o_dit, as_of_offset_s=-5)
 o_tit = obs(source_id=vids["720"], modality="screen", kind="pulse_card", frame_id=f1782, decision_id=decision_ids[tit["sig"]],
-            start_s=1782.0, token_id=tokens[tit["mint"]],
+            start_s=1782.5, token_id=tokens[tit["mint"]],
             content="New Pairs: 'TITCOIN  Titcoin', 5s, @sh4wty (2.49K), V $3K, MC $8.93K, card counter '6/17', 10 "
                     "holders. Tracker top row: 'chester' TITCOIN 1.3103 SOL, 0s ago.")
 decisions.add_reading(con, decision_ids[tit["sig"]], "market_cap_usd", observed_via="screen", value_num=8930,
@@ -396,7 +403,7 @@ f_inf = findings.add_finding(
                           "Pulse momentum, and the creator's sell is incidental because nearly every new token's "
                           "creator sells in its first seconds — test against a base rate before relying on this")
 # --- H3: does the mechanical part of the pattern pay on its own? (pre-registered before 14:45 data is looked at)
-h3 = findings.add_hypothesis(con,
+h3 = findings.reregister_hypothesis(con, "H3:",
     statement="H3: buying a <=30 s old token within 20 s of its creator's first sell, when the creator put in >=2.9 SOL "
               "and has already taken out more than that, then holding ~20 s, has positive expectancy after costs — "
               "i.e. the visible, mechanical part of Decu's entry pattern pays without their narrative/wallet screening.",

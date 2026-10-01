@@ -294,3 +294,31 @@ def register_feature(con: duckdb.DuckDBPyConnection, name: str, *, human_observa
         "status": status, "notes": notes, "created_at": db.now(), "is_synthetic": is_synthetic,
     })
     return name
+
+
+def reregister_hypothesis(con: duckdb.DuckDBPyConnection, prefix: str, **kw) -> str:
+    """Re-run-safe add_hypothesis for scripts that rebuild their findings.
+
+    If a hypothesis whose statement starts with ``prefix`` exists, it is rebuilt on the new basis
+    findings but keeps its id, status and original created_at (its pre-registration time), so runs
+    stay linked. Changing an existing hypothesis's measurable definition is refused: a changed test
+    is a new hypothesis (a child with its own rationale), never an edit of a registered one.
+    """
+    old = con.execute("SELECT hypothesis_id, created_at, measurable_definition, status FROM hypotheses "
+                      "WHERE statement LIKE ?", [prefix + "%"]).fetchall()
+    if len(old) > 1:
+        raise ValueError(f"{len(old)} hypotheses start with {prefix!r}")
+    if old and old[0][2] != kw["measurable_definition"]:
+        raise ValueError(f"{prefix} is pre-registered with a different measurable definition; "
+                         "register a child hypothesis instead of editing it")
+    if old:
+        con.execute("DELETE FROM hypothesis_basis WHERE hypothesis_id = ?", [old[0][0]])
+        con.execute("DELETE FROM hypotheses WHERE hypothesis_id = ?", [old[0][0]])
+    new = add_hypothesis(con, **kw)
+    if not old:
+        return new
+    oid, created, _, status = old[0]
+    con.execute("UPDATE hypotheses SET hypothesis_id = ?, created_at = ?, status = ? WHERE hypothesis_id = ?",
+                [oid, created, status, new])
+    con.execute("UPDATE hypothesis_basis SET hypothesis_id = ? WHERE hypothesis_id = ?", [oid, new])
+    return oid

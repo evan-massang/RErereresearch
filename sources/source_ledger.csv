@@ -170,7 +170,7 @@ source,src_1a212260a7c71d97,https://docs.j7tracker.io/docs/errors,web,Errors & L
 source,src_b62ea28f5df7c1f5,https://docs.j7tracker.io/docs/deploy,web,Deploy API — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
 source,src_5abadd47354ae6da,https://docs.j7tracker.io/docs/quick-start,web,Quick Start — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
 source,src_8993a2d2c485f87e,https://x.com/Cupseyy,web,,,,cupsey,,document,True,http,,,identity verification pass
-source,src_47acc67d18bd8813,https://kolscan.io/leaderboard,web,,,,setuh;leck;cupsey,,document,True,file,,,KOL list extracted from kolscan.io page data on 2026-10-01
+source,src_47acc67d18bd8813,https://kolscan.io/leaderboard,web,,,,cupsey;leck;setuh,,document,True,file,,,KOL list extracted from kolscan.io page data on 2026-10-01
 source,src_8ee6bc98832ab8fe,/home/user/RErereresearch/data/raw/video/live/kick_solanaswaggy/20261001T122548Z.mp4,unknown,SolanaSwaggy live stream (Kick) — recorded segment 12:25:48–12:34 UTC,SolanaSwaggy,2026-10-01 12:25:48+00,solanaswaggy,,video,True,local,,,Live recording of kick.com/solanaswaggy; video t=0 is 2026-10-01T12:25:48+00:00 (stream latency ~7 s measured from the on-screen chart clock)
 source,src_1cdbe07672c58c2f,stream://pump_curve/2026-10-01/swaggy-evidence,web,Tape excerpt: swordbunny + copycat Boy launches,,,solanaswaggy,,document,True,file,,,
 source,src_089024e26085ab1e,stream://pump_curve/2026-10-01/event-study,web,Event study: flow and price around tracked-wallet entries,,,,,document,True,file,,,

@@ -85,6 +85,8 @@ def main(a_hm: str, b_hm: str) -> dict:
                               if r["wallet"] in kols][:8],
            "notes": "PnL after 1.25% fee per side and 0.002 SOL per tx; positions closed on the curve only."}
     p = ROOT / "research/observations/evidence_consistent_winners_2026-10-01.json"
+    if (config.path("hypothesis_reports") / "h4_basket.json").exists():
+        p = p.with_name(f"evidence_consistent_winners_rerun_{datetime.now(timezone.utc):%H%M}.json")
     p.write_text(json.dumps(out, indent=1, default=str))
     return out
 
@@ -114,10 +116,14 @@ def record(o: dict) -> None:
     from pipeline.ingest_web import ingest_document
 
     ex = "claude:consistent-winners-2026-10-01"
+    basket = sorted(r["wallet"] for r in o["qualifiers"])
+    bp = config.path("hypothesis_reports") / "h4_basket.json"
+    if bp.exists() and json.loads(bp.read_text())["wallets"] != basket:
+        raise SystemExit("H4's basket is frozen and differs from this run's qualifiers; record from the saved "
+                         "evidence (--from-evidence) instead of re-selecting")
     con = db.connect()
-    con.execute("DELETE FROM hypothesis_basis WHERE hypothesis_id IN (SELECT hypothesis_id FROM hypotheses "
-                "WHERE rationale LIKE ?)", [f"%{ex}%"])
-    con.execute("DELETE FROM hypotheses WHERE rationale LIKE ?", [f"%{ex}%"])
+    con.execute("DELETE FROM hypothesis_basis WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?)",
+                [f"%{ex}%"])
     con.execute("DELETE FROM finding_evidence WHERE finding_id IN (SELECT finding_id FROM findings WHERE notes LIKE ?)",
                 [f"%{ex}%"])
     con.execute("DELETE FROM findings WHERE notes LIKE ?", [f"%{ex}%"])
@@ -152,12 +158,11 @@ def record(o: dict) -> None:
                   "entries are followed at once by other buyers, the unknown ones' are not.",
         evidence=[("observation", obs, "supports")], n_supporting=len(q), n_observable=len(q) + len(k),
         confidence=0.6, notes=f"{ex}; medians of per-wallet medians; tape mid prices, no fees")
-    basket = sorted(r["wallet"] for r in o["qualifiers"])
-    bp = config.path("hypothesis_reports") / "h4_basket.json"
-    bp.write_text(json.dumps({"frozen_at": datetime.now(timezone.utc).isoformat(), "selection_window_utc": o["window"],
-                              "rule": "profitable in both halves, >=8 closed positions each, median entry age >=5 s, "
-                                      "<20% creation-block entries, median hold >=10 s", "wallets": basket}, indent=1))
-    findings.add_hypothesis(con,
+    if not bp.exists():
+        bp.write_text(json.dumps({"frozen_at": datetime.now(timezone.utc).isoformat(), "selection_window_utc": o["window"],
+                                  "rule": "profitable in both halves, >=8 closed positions each, median entry age >=5 s, "
+                                          "<20% creation-block entries, median hold >=10 s", "wallets": basket}, indent=1))
+    findings.reregister_hypothesis(con, "H4:",
         statement="H4: copying the basket of unknown consistent winners (no follower spike after their entries) is "
                   "profitable after realistic costs, unlike copying famous KOLs.",
         measurable_definition=f"MirrorBasket(wallets=reports/hypotheses/h4_basket.json [{len(basket)} wallets, frozen], "
@@ -173,7 +178,10 @@ def record(o: dict) -> None:
 
 
 if __name__ == "__main__":
-    o = main(*(sys.argv[1:3] if len(sys.argv) >= 3 else ("12:17", "15:15")))
+    if "--from-evidence" in sys.argv:          # rebuild DB rows from the saved selection, without re-selecting
+        o = json.loads((ROOT / "research/observations/evidence_consistent_winners_2026-10-01.json").read_text())
+    else:
+        o = main(*(sys.argv[1:3] if len(sys.argv) >= 3 and ":" in sys.argv[1] else ("12:17", "15:15")))
     if "--record" in sys.argv:
         record(o)
     print(json.dumps({k: o[k] for k in ("window", "wallets_with_positions", "active_both_halves",
