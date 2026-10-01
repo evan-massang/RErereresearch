@@ -1,0 +1,520 @@
+{
+ "window_utc": [
+  "2026-10-01T13:38:37+00:00",
+  "2026-10-01T16:11:39+00:00"
+ ],
+ "sells_counted_until": "window end + 30 min",
+ "tokens": [
+  {
+   "mint": "8ypYfW5cjafrfAZij8TZj5SFHAbPNpiRio96LMzypDkn",
+   "symbol": "BTC",
+   "sol_in": 3.8378,
+   "sol_out": 29.4939,
+   "net_sol": 25.6561,
+   "venues": [
+    "Pump AMM",
+    "Pump.fun"
+   ],
+   "msgs": 34,
+   "first_buy_utc": "2026-10-01T13:47:26.484305+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "D1K3bBkwbgPzqzM6Zb7pt7U63eCKgdvZgt3bJW6Zpump",
+   "symbol": "QRCAT",
+   "sol_in": 4.7914,
+   "sol_out": 17.2018,
+   "net_sol": 12.4104,
+   "venues": [
+    "Pump AMM",
+    "Pump.fun"
+   ],
+   "msgs": 28,
+   "first_buy_utc": "2026-10-01T15:12:05.112282+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "FbGfMBy1MwpQMZfVPrMPcSw3gu5spumtSsisS8M1FSKu",
+   "symbol": null,
+   "sol_in": 5.635,
+   "sol_out": 11.9437,
+   "net_sol": 6.3087,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 12,
+   "first_buy_utc": "2026-10-01T15:47:35.277794+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "69PsrRyutNzg5s4MvUFxZdvjJGqPC5BkWM8T6dnTp3Qy",
+   "symbol": null,
+   "sol_in": 3.635,
+   "sol_out": 9.7714,
+   "net_sol": 6.1364,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 10,
+   "first_buy_utc": "2026-10-01T14:13:30.044148+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "6H75PU1Z6Yt6gt9ow8aLpqSubJy6nyfW2jtHffVwDnCt",
+   "symbol": null,
+   "sol_in": 3.6,
+   "sol_out": 8.8082,
+   "net_sol": 5.2082,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 7,
+   "first_buy_utc": "2026-10-01T14:03:22.083496+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "5PuMW1WfwGWdhkyis8Zji16WoEWVr7CcAFR9Uo1Dpump",
+   "symbol": "token",
+   "sol_in": 3.8378,
+   "sol_out": 8.1318,
+   "net_sol": 4.294,
+   "venues": [
+    "Pump AMM",
+    "Pump.fun"
+   ],
+   "msgs": 14,
+   "first_buy_utc": "2026-10-01T15:36:31.621010+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "53HLakWM1neUL66RKDBJAzjtrMuV5uHeqYaQFkqyKSJc",
+   "symbol": null,
+   "sol_in": 4.3053,
+   "sol_out": 7.5724,
+   "net_sol": 3.2671,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 17,
+   "first_buy_utc": "2026-10-01T15:28:05.761222+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "5bkCkkrSDYoyHTAQbRjj9rDVBHn7eXsSCjqwEttS28x4",
+   "symbol": "lockedinu",
+   "sol_in": 2.8111,
+   "sol_out": 5.8113,
+   "net_sol": 3.0002,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 20,
+   "first_buy_utc": "2026-10-01T15:45:08.370990+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "B3K5qb6MeL6rBDASuzcFsLzhw75XodNccJwmqNuN8PMF",
+   "symbol": "PROHUMAN",
+   "sol_in": 5.7444,
+   "sol_out": 8.7394,
+   "net_sol": 2.995,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 12,
+   "first_buy_utc": "2026-10-01T14:54:13.698283+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "4ED62zZrAHLBVt9cTPNst4qAS1VsfrKFwAHCohtjpump",
+   "symbol": "BLACK",
+   "sol_in": 2.4444,
+   "sol_out": 5.094,
+   "net_sol": 2.6496,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 2,
+   "first_buy_utc": "2026-10-01T14:17:17.281501+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "BcsfpnxwR99KMTci532xEPvBa6gm8qo1N2YhJK7wNAwA",
+   "symbol": null,
+   "sol_in": 3.305,
+   "sol_out": 5.8062,
+   "net_sol": 2.5012,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T14:06:58.552462+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "3s7HNAvfm7sHCnrLQczFP8UBbgM8mpPoyKCWHvvRcJFG",
+   "symbol": null,
+   "sol_in": 5.965,
+   "sol_out": 8.24,
+   "net_sol": 2.275,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 12,
+   "first_buy_utc": "2026-10-01T15:49:24.832642+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "5dmQ6YxFuaVLUvZNVjV9qHLu9BSHMm4qRPRNqhxipump",
+   "symbol": "\u3164\u3164\u3164",
+   "sol_in": 8.6044,
+   "sol_out": 10.577,
+   "net_sol": 1.9725,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 18,
+   "first_buy_utc": "2026-10-01T14:23:18.890558+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "8v2v8CFFCMDDz9amsH3fuFErcA6KHeSF3EARv5hucSxp",
+   "symbol": "Q4",
+   "sol_in": 2.3451,
+   "sol_out": 4.2847,
+   "net_sol": 1.9396,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 7,
+   "first_buy_utc": "2026-10-01T15:43:21.507648+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "Kpm4y5EmtqCJgjvVRCR9BkFJV5QjwQtQK7MtQTifMWL",
+   "symbol": "PURGE",
+   "sol_in": 3.2022,
+   "sol_out": 5.0541,
+   "net_sol": 1.8519,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T15:35:07.138002+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "AMP4vkgjsxxHiSvw7FanZLKqZSM6SV33K59aDas1g6n5",
+   "symbol": "TITCOIN",
+   "sol_in": 2.9333,
+   "sol_out": 4.1881,
+   "net_sol": 1.2547,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 2,
+   "first_buy_utc": "2026-10-01T14:41:26.786857+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "SMr7WxbMnYxsVpKSGb4XMCPRpzrGTCUYATTxPCcHKUi",
+   "symbol": null,
+   "sol_in": 3.305,
+   "sol_out": 4.5031,
+   "net_sol": 1.1981,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T14:35:25.231799+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "AYRTq6bfnNzWMY5ACWTRUtMCwV8PAhux3wm84q5mpump",
+   "symbol": null,
+   "sol_in": 5.1824,
+   "sol_out": 6.1322,
+   "net_sol": 0.9498,
+   "venues": [
+    "Pump AMM"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T15:04:34.738348+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "DCquzHXBPXTTyvs6M2v7axPJmpS7YYsysWZiy6mZWufd",
+   "symbol": "\u304b\u306e\u304f\u3093",
+   "sol_in": 1.9556,
+   "sol_out": 2.7682,
+   "net_sol": 0.8127,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 2,
+   "first_buy_utc": "2026-10-01T14:17:22.767858+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "3RHBcUW7Kpe3db7GqH7jURWuDQYRHpuvFsszyDUCUPro",
+   "symbol": "Q4",
+   "sol_in": 2.27,
+   "sol_out": 2.9792,
+   "net_sol": 0.7092,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T14:13:03.025996+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "3mBG1Dt5TxujDN2XbFVrQPrYVSSMgwkQiYpLPoqKpump",
+   "symbol": "Sow ",
+   "sol_in": 2.9578,
+   "sol_out": 3.5619,
+   "net_sol": 0.6042,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 3,
+   "first_buy_utc": "2026-10-01T14:21:16.113476+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "Bmjp5mMjF5oe78AvJdndTUQj7L7PeUH2GpLygtcSxdcN",
+   "symbol": null,
+   "sol_in": 3.33,
+   "sol_out": 3.8423,
+   "net_sol": 0.5122,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T16:05:26.540412+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "7kirUUceLooDi7CfxEHoUBLvmi1MGntD9qpACVK7BsfQ",
+   "symbol": null,
+   "sol_in": 3.5801,
+   "sol_out": 4.0905,
+   "net_sol": 0.5104,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 6,
+   "first_buy_utc": "2026-10-01T15:55:55.156052+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "4J8NgVcocCwurvMSJ3msfFNVc7VSbfxQozkK5NXtpump",
+   "symbol": "Inumas",
+   "sol_in": 2.9578,
+   "sol_out": 3.2906,
+   "net_sol": 0.3329,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 3,
+   "first_buy_utc": "2026-10-01T13:58:55.693979+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "7DX7XHMRLj3iLDZoU2sN4VhTYx5QnpYVx14ynw83vq1V",
+   "symbol": null,
+   "sol_in": 2.27,
+   "sol_out": 2.5307,
+   "net_sol": 0.2607,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 3,
+   "first_buy_utc": "2026-10-01T14:15:28.035023+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "HyDTgY6b1kwwhY3RFNKvVDDScoDDbB7HVQqAJzRaVcM8",
+   "symbol": "DIT",
+   "sol_in": 3.2022,
+   "sol_out": 3.3294,
+   "net_sol": 0.1272,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T14:18:59.250217+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "aUfGsU6L4mHepsvp9ar5PFCfaZ899EQ6tVcp2gZ985D",
+   "symbol": null,
+   "sol_in": 3.27,
+   "sol_out": 3.3715,
+   "net_sol": 0.1015,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T15:07:56.028815+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "HVhRW3g1BQh5PTrjgEefrbFkjCFJb4mfYL3Xk9pbp4qG",
+   "symbol": null,
+   "sol_in": 3.565,
+   "sol_out": 3.6567,
+   "net_sol": 0.0917,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 6,
+   "first_buy_utc": "2026-10-01T14:59:17.727188+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "C7WsYzixPHZSG39ei9W4rdH2TcfWxtDSvBBACNLc3yJN",
+   "symbol": null,
+   "sol_in": 3.9001,
+   "sol_out": 3.9767,
+   "net_sol": 0.0766,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 9,
+   "first_buy_utc": "2026-10-01T16:01:29.988237+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "AUN5zKzrPGdAB5JhKuhn8PC445Yr4ecT6ZosFqyrRBHK",
+   "symbol": "QRCAT",
+   "sol_in": 4.9622,
+   "sol_out": 4.9284,
+   "net_sol": -0.0338,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T15:03:00.986240+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "6An8joAVPgL7YKzzPpGLnMohFgf25GGSpVsaLY2tVnjZ",
+   "symbol": null,
+   "sol_in": 3.27,
+   "sol_out": 3.1605,
+   "net_sol": -0.1095,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 3,
+   "first_buy_utc": "2026-10-01T14:14:55.858478+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "E891itQZ8bN6axHmEjQhZBdsm9GBdCDyNpt2JK3FC8Av",
+   "symbol": "TODD",
+   "sol_in": 2.9333,
+   "sol_out": 2.5615,
+   "net_sol": -0.3719,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 2,
+   "first_buy_utc": "2026-10-01T14:01:11.411607+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": null,
+   "sol_in": 2.3201,
+   "sol_out": 0.0,
+   "net_sol": -2.3201,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T14:13:03.026261+00:00",
+   "status": "open (no sell yet)"
+  }
+ ],
+ "n_tokens": 33,
+ "n_with_sells": 32,
+ "net_sol_tokens_with_sells": 89.493,
+ "top3_share": 0.496,
+ "losers": [
+  {
+   "mint": "AUN5zKzrPGdAB5JhKuhn8PC445Yr4ecT6ZosFqyrRBHK",
+   "symbol": "QRCAT",
+   "sol_in": 4.9622,
+   "sol_out": 4.9284,
+   "net_sol": -0.0338,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 5,
+   "first_buy_utc": "2026-10-01T15:03:00.986240+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "6An8joAVPgL7YKzzPpGLnMohFgf25GGSpVsaLY2tVnjZ",
+   "symbol": null,
+   "sol_in": 3.27,
+   "sol_out": 3.1605,
+   "net_sol": -0.1095,
+   "venues": [
+    "Raydium Launchpad"
+   ],
+   "msgs": 3,
+   "first_buy_utc": "2026-10-01T14:14:55.858478+00:00",
+   "status": "closed or partly sold"
+  },
+  {
+   "mint": "E891itQZ8bN6axHmEjQhZBdsm9GBdCDyNpt2JK3FC8Av",
+   "symbol": "TODD",
+   "sol_in": 2.9333,
+   "sol_out": 2.5615,
+   "net_sol": -0.3719,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 2,
+   "first_buy_utc": "2026-10-01T14:01:11.411607+00:00",
+   "status": "closed or partly sold"
+  }
+ ],
+ "open": [
+  {
+   "mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+   "symbol": null,
+   "sol_in": 2.3201,
+   "sol_out": 0.0,
+   "net_sol": -2.3201,
+   "venues": [
+    "Pump.fun"
+   ],
+   "msgs": 4,
+   "first_buy_utc": "2026-10-01T14:13:03.026261+00:00",
+   "status": "open (no sell yet)"
+  }
+ ],
+ "by_venue": {
+  "held through migration (Pump AMM exit)": {
+   "n": 3,
+   "net_sol": 42.36
+  },
+  "Raydium Launchpad": {
+   "n": 14,
+   "net_sol": 28.338
+  },
+  "pump.fun curve only": {
+   "n": 14,
+   "net_sol": 17.844
+  },
+  "other": {
+   "n": 1,
+   "net_sol": 0.95
+  }
+ },
+ "note": "SOL amounts as relayed by kolscan (fees inside the swap included; priority fees and tips not); tokens bought in the window, sells up to 30 min later."
+}

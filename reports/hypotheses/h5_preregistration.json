@@ -1,0 +1,19 @@
+{
+ "hypothesis": "H5",
+ "frozen_at_utc": "2026-10-01T17:26:23.885346+00:00",
+ "statement": "H5: H3's entry with Decu-like exits (cut non-movers fast, let runners go toward migration) has positive expectancy after costs.",
+ "measurable_definition": "DevDumpRunner(size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, stop_pct=25, follow_through_s=45, min_gain_pct=30, trail_pct=40, tp_mcap_sol=300, max_hold_s=1800); all exits on the bonding curve. Execution as H3 primary: 1 s latency, 125 bps, 0.01 SOL priority+tip/tx, 20% slippage tolerance, 2% failure. First test: 17:45-19:15 UTC (validation-period data recorded after registration). Pass: expectancy > 0, PF > 1.2, >=30 trades. Reported only: latency 0.1-10 s.",
+ "rationale": "H3 (20-s hold) failed its first test (14:45-17:15: 487 trades, -77.07 SOL, PF 0.20); Decu's session shows the profit comes from the few tokens they hold through migration (3 tokens, +42.4 SOL of +89.5) while non-movers are cut within about a minute. Among H3's candidates ~1.5% migrated at 2.8-11.7x from entry, so the payoff is skewed; whether the skew pays for the cut losers mechanically is the question. Exit thresholds are round values set before any 17:45+ data exists; no parameter was fitted.",
+ "parent": "H3 (hyp_e0b12067e4a043a7)",
+ "basis": "research/observations/evidence_decu_session_2026-10-01.json",
+ "test_window_utc": [
+  "2026-10-01T17:45:00+00:00",
+  "2026-10-01T19:15:00+00:00"
+ ],
+ "pass_criteria": {
+  "min_trades": 30,
+  "expectancy_sol_gt": 0,
+  "profit_factor_gt": 1.2
+ },
+ "note": "Frozen before 17:45 data exists; written to the research DB when it is free (locked by the running first tests at freeze time)."
+}

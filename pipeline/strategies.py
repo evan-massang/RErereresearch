@@ -213,3 +213,73 @@ class DevDumpEntry:
             for m in [m for m, s in self._toks.items() if s.created < cutoff and m not in self._held]:
                 del self._toks[m]
         return out
+
+
+@dataclass
+class DevDumpRunner(DevDumpEntry):
+    """H5: H3's entry with Decu-like exits: cut what does not move quickly, let runners go toward migration.
+
+    Exits, all on the bonding curve: stop at -stop_pct from entry; at follow_through_s, sell unless the price
+    is up >= min_gain_pct; trailing stop trail_pct below the peak since entry; take profit once the market cap
+    reaches tp_mcap_sol (near migration); time stop at max_hold_s.
+    """
+
+    stop_pct: float = 25.0
+    follow_through_s: float = 45.0
+    min_gain_pct: float = 30.0
+    trail_pct: float = 40.0
+    tp_mcap_sol: float = 300.0
+    max_hold_s: float = 1800.0
+    hold_s: float = 1800.0
+    name: str = "h5_dev_dump_runner"
+    _peak: dict = field(default_factory=dict)
+    _checked: set = field(default_factory=set)
+
+    def spec(self) -> dict:
+        return {k: getattr(self, k) for k in ("name", "size_sol", "max_age_s", "min_dev_buy_sol", "max_since_dump_s",
+                                               "stop_pct", "follow_through_s", "min_gain_pct", "trail_pct",
+                                               "tp_mcap_sol", "max_hold_s")}
+
+    def on_event(self, view, ev):
+        held_before = ev.mint in self._held
+        out = super().on_event(view, ev) if not held_before else []
+        if not held_before:
+            if any(o.tag.endswith("_entry") for o in out):
+                self._peak[ev.mint] = self._held[ev.mint][1]
+            return out
+        # a held position: update state ourselves (the parent's stop is replaced by the exits below)
+        st = self._toks.get(ev.mint)
+        d = ev.data
+        st.price = d["v_sol"] / d["v_tok"]
+        t0, ref = self._held[ev.mint]
+        self._peak[ev.mint] = max(self._peak[ev.mint], st.price)
+        reason = None
+        if st.price <= ref * (1 - self.stop_pct / 100):
+            reason = "stop"
+        elif st.price <= self._peak[ev.mint] * (1 - self.trail_pct / 100):
+            reason = "trail"
+        elif st.price * SUPPLY >= self.tp_mcap_sol:
+            reason = "take_profit"
+        if reason:
+            self._held.pop(ev.mint)
+            return [Sell(ev.mint, 1.0, tag=reason)]
+        return []
+
+    def on_tick(self, view):
+        out = []
+        for m, (t0, ref) in list(self._held.items()):
+            st = self._toks.get(m)
+            age = view.now - t0
+            if age >= self.max_hold_s:
+                self._held.pop(m)
+                out.append(Sell(m, 1.0, tag="time_exit"))
+            elif age >= self.follow_through_s and m not in self._checked:
+                self._checked.add(m)
+                if st is None or st.price < ref * (1 + self.min_gain_pct / 100):
+                    self._held.pop(m)
+                    out.append(Sell(m, 1.0, tag="no_follow_through"))
+        if len(self._toks) > 20000:
+            cutoff = view.now - 2 * self.max_age_s
+            for m in [m for m, s in self._toks.items() if s.created < cutoff and m not in self._held]:
+                del self._toks[m]
+        return out
