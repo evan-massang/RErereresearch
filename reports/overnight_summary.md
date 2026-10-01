@@ -80,6 +80,8 @@ Screen readings come from the stream frames.
 - Profitability **persists**: 85 wallets were profitable in both halves of the day, against 55 expected by chance.
 - Right after a famous KOL buys, the price jumps ~10–18% within seconds as followers pile in. After unknown consistent winners buy, it does not.
 
+- **After migration** (290 tokens, decoded PumpSwap trades), prices are typically **up in the first minutes**: a median +30% at 1 min and +37% at 5 min, and 64% reach 2× within 30 min. By 30 min the median is **−93%**. Holding through migration pays only if you sell into that short window, which is what Decu did with BTC, QRCAT and Ansemmas.
+
 ## Hypothesis tests (pre-registered, unchanged parameters)
 
 | | idea | window (UTC) | trades | PnL (SOL) | PF | verdict |

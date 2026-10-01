@@ -1,0 +1,26 @@
+{
+ "n_pools": 291,
+ "reference": "first AMM swap >= 0.01 SOL",
+ "horizons": {
+  "1m": {
+   "median": 0.308,
+   "share_up": 0.691,
+   "share_ge_2x": 0.392
+  },
+  "5m": {
+   "median": 0.372,
+   "share_up": 0.625,
+   "share_ge_2x": 0.361
+  },
+  "30m": {
+   "median": -0.924,
+   "share_up": 0.278,
+   "share_ge_2x": 0.22
+  },
+  "max_within_30m": {
+   "median": 2.234,
+   "share_up": 0.973,
+   "share_ge_2x": 0.646
+  }
+ }
+}
