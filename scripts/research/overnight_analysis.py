@@ -29,6 +29,7 @@ def main(split: str) -> dict:
         raise SystemExit("only train or validation; the holdout has its own one-shot script")
     rdb = db.connect()
     start_dt, end_dt, _ = get_split(rdb, SPLIT_SET, split)
+    rdb.close()                     # only the split times are needed; do not hold the research DB lock
     start, end = start_dt.timestamp(), min(end_dt.timestamp(), datetime.now(timezone.utc).timestamp())
     src = market.connect()
     loaded = market.load(src)
