@@ -26,7 +26,8 @@ from pipeline.sim import run  # noqa: E402
 from pipeline.sim.engine import sweep_latency  # noqa: E402
 from pipeline.sim.metrics import performance  # noqa: E402
 from pipeline.sim.splits import get_split, record_run  # noqa: E402
-from pipeline.strategies import DevDumpEntry, DevDumpRunner, StructureEntry, build_market_store  # noqa: E402
+from pipeline.strategies import (DevDumpEntry, DevDumpRunner, GoodDevLaunch, StructureEntry,  # noqa: E402
+                                 build_market_store)
 
 SPLIT_SET = "overnight-2026-10-01"
 U = lambda h, m: datetime(2026, 10, 1, h, m, tzinfo=timezone.utc)
@@ -60,6 +61,14 @@ HYPS = {
            "first_test": (U(17, 45), U(19, 15)), "in_sample": (U(12, 15), U(17, 15)),
            "pass": {"min_trades": 8, "min_expectancy_sol": 0.0, "min_profit_factor": 1.2},
            "sensitivity": {}},
+    "H7": {"prefix": "H7:", "factory": lambda trade_from=0.0: GoodDevLaunch(
+               size_sol=0.5, min_prior_migrations=1, min_migration_rate=0.2, stop_pct=30, follow_through_s=60,
+               min_gain_pct=20, trail_pct=40, tp_mcap_sol=300, max_hold_s=1800, trade_from=trade_from),
+           "warmup_from": U(12, 17),
+           "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=3000, fail_prob=0.02),
+           "first_test": (U(17, 15), U(19, 15)), "in_sample": (U(13, 17), U(17, 15)),
+           "pass": {"min_trades": 15, "min_expectancy_sol": 0.0, "min_profit_factor": 1.2},
+           "sensitivity": {}},
     "H3": {"prefix": "H3:", "factory": lambda: DevDumpEntry(
                size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, hold_s=20, stop_pct=20),
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
@@ -73,9 +82,12 @@ HYPS = {
 
 def tape(start: float, end: float) -> duckdb.DuckDBPyConnection:
     """In-memory copy holding only data before `end` (plus 15 min of history): later data does not exist here."""
-    src = market.connect()
-    market.load(src)
-    src.close()
+    try:                                    # pick up new recorder files; skipped if another process has the DB open
+        src = market.connect()
+        market.load(src)
+        src.close()
+    except duckdb.IOException:
+        pass
     con = duckdb.connect()
     con.execute(f"ATTACH '{config.path('data') / 'market.duckdb'}' AS src (READ_ONLY)")
     con.execute("CREATE TABLE curve_trades AS SELECT * FROM src.curve_trades WHERE recv >= ? AND recv < ?", [start - 900, end])
@@ -127,20 +139,25 @@ def main() -> None:
     now = datetime.now(timezone.utc).timestamp()
     if end > now:
         raise SystemExit(f"window ends {e:%H:%M} UTC, data not complete yet")
-    con = tape(start, end)
-    store = build_market_store(con, start, end)
+    run_start = h.get("warmup_from", start)
+    if "warmup_from" in h:                          # the strategy builds state from run_start, trades from start
+        factory = (lambda f=h["factory"], ts=start: f(trade_from=ts))
+    else:
+        factory = h["factory"]
+    con = tape(run_start, end)
+    store = build_market_store(con, run_start, end, history_s=0 if "warmup_from" in h else 900.0)
     base = base_execution(**h["execution"])
-    res = run(h["factory"](), store, start=start, end=end, execution=base)
+    res = run(factory(), store, start=run_start, end=end, execution=base)
     prim = performance(res)
     label = f"{a.hyp} {role} {s:%H:%M}-{e:%H:%M} UTC"
-    run_id = record_run(rdb, res, strategy=h["factory"](), split_set=SPLIT_SET, split_name=a.split,
+    run_id = record_run(rdb, res, strategy=factory(), split_set=SPLIT_SET, split_name=a.split,
                         hypothesis_id=hyp_id, notes=f"{label}; pre-registered parameters and execution")
     out = {"hypothesis": a.hyp, "hypothesis_id": hyp_id, "role": role, "window": [s.isoformat(), e.isoformat()],
-           "run_id": run_id, "execution": base.to_dict(), "strategy": h["factory"]().spec(),
+           "run_id": run_id, "execution": base.to_dict(), "strategy": factory().spec(),
            "primary": slim(prim),
            "verdict": verdict(prim, h.get("pass", PASS)) if role != "in_sample" else "in-sample, not a test",
            "latency_sweep": [{"delay_s": r["delay_s"], **slim(r["metrics"])} for r in
-                             sweep_latency(h["factory"], store, start=start, end=end, base=base,
+                             sweep_latency(factory, store, start=run_start, end=end, base=base,
                                            delays_s=(0.1, 0.5, 1, 2, 5, 10))],
            "sensitivity": {}}
     for name, v in h["sensitivity"].items():

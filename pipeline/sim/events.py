@@ -20,7 +20,7 @@ import hashlib
 from dataclasses import dataclass, field
 from typing import Any, Iterable, Mapping
 
-KINDS = {"create", "swap", "migrate", "social", "other"}
+KINDS = {"create", "swap", "complete", "migrate", "social", "other"}   # complete = curve finished (no flag on the pool)
 
 
 @dataclass(frozen=True)

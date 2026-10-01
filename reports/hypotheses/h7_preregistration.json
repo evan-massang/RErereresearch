@@ -1,0 +1,16 @@
+{
+ "hypothesis": "H7",
+ "frozen_at_utc": "2026-10-01T23:31:48.756861+00:00",
+ "statement": "H7: buying the launches of creators with a good same-day track record (>=1 earlier migration and a >=20% migration rate) at ~1 s, cutting non-movers and letting runners go toward migration, is profitable after costs.",
+ "measurable_definition": "GoodDevLaunch(size_sol=0.5, min_prior_migrations=1, min_migration_rate=0.2, stop_pct=30, follow_through_s=60, min_gain_pct=20, trail_pct=40, tp_mcap_sol=300, max_hold_s=1800). Dev record from every launch/completion seen since 12:17 UTC (store built from 12:17, no entries before the test window). Execution: 1 s latency, 125 bps, 0.01 SOL priority+tip/tx, 30% slippage tolerance, 2% failure. First test: 17:15-19:15 UTC (validation period; no strategy built on dev records has seen it). Pass: expectancy > 0, PF > 1.2, >= 15 trades. If it passes: holdout 19:15-21:15 once, same criteria. Reported only: latency 0.1-5 s, open positions marked at the end.",
+ "rationale": "User's idea, tested: track many good devs and buy their launches rather than copycats. On train launches (12:17-16:15) creators with an earlier migration and >=20% migration rate migrated 18% of the time vs 1.95% base (9.3x); serial launchers (10+ launches) 0.3x; copycats 0.8x. Simulated on train (13:17-17:15) the rule was about breakeven (40 trades, +0.04 SOL, PF 1.02, open positions -0.75); a buy-the-dip variant lost in-sample and is not registered. Thresholds are round values set before looking at 17:15+ data.",
+ "test_window_utc": [
+  "2026-10-01T17:15:00+00:00",
+  "2026-10-01T19:15:00+00:00"
+ ],
+ "pass_criteria": {
+  "min_trades": 15,
+  "expectancy_sol_gt": 0,
+  "profit_factor_gt": 1.2
+ }
+}

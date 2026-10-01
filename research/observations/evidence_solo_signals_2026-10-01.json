@@ -1,0 +1,91 @@
+{
+ "window": "launches 12:17-16:15 UTC",
+ "n": 8959,
+ "base_migration_rate": 0.0195,
+ "groups": {
+  "all": {
+   "n": 8959,
+   "migration_rate": 0.0195,
+   "lift": 1.0,
+   "share_peak_30m_ge_3x": 0.059
+  },
+  "dev_first_launch_today": {
+   "n": 3350,
+   "migration_rate": 0.0385,
+   "lift": 1.97,
+   "share_peak_30m_ge_3x": 0.036
+  },
+  "dev_10plus_launches_today": {
+   "n": 2776,
+   "migration_rate": 0.0065,
+   "lift": 0.33,
+   "share_peak_30m_ge_3x": 0.091
+  },
+  "dev_1plus_prior_migration": {
+   "n": 353,
+   "migration_rate": 0.0397,
+   "lift": 2.03,
+   "share_peak_30m_ge_3x": 0.156
+  },
+  "good_dev_rate_ge_20pct": {
+   "n": 44,
+   "migration_rate": 0.1818,
+   "lift": 9.31,
+   "share_peak_30m_ge_3x": 0.159
+  },
+  "vamp_name_seen_6h": {
+   "n": 5910,
+   "migration_rate": 0.0166,
+   "lift": 0.85,
+   "share_peak_30m_ge_3x": 0.063
+  },
+  "original_name": {
+   "n": 3049,
+   "migration_rate": 0.0253,
+   "lift": 1.29,
+   "share_peak_30m_ge_3x": 0.052
+  },
+  "deployed_via_j7": {
+   "n": 1932,
+   "migration_rate": 0.0078,
+   "lift": 0.4,
+   "share_peak_30m_ge_3x": 0.019
+  },
+  "deployed_via_pump_ui_ipfs": {
+   "n": 5614,
+   "migration_rate": 0.0248,
+   "lift": 1.27,
+   "share_peak_30m_ge_3x": 0.077
+  },
+  "cat_animal": {
+   "n": 1850,
+   "migration_rate": 0.0189,
+   "lift": 0.97,
+   "share_peak_30m_ge_3x": 0.064
+  },
+  "cat_politics": {
+   "n": 195,
+   "migration_rate": 0.0205,
+   "lift": 1.05,
+   "share_peak_30m_ge_3x": 0.021
+  },
+  "cat_ai_tech": {
+   "n": 279,
+   "migration_rate": 0.043,
+   "lift": 2.2,
+   "share_peak_30m_ge_3x": 0.054
+  },
+  "cat_crypto_meta": {
+   "n": 1013,
+   "migration_rate": 0.0276,
+   "lift": 1.42,
+   "share_peak_30m_ge_3x": 0.063
+  },
+  "cat_holiday": {
+   "n": 67,
+   "migration_rate": 0.0299,
+   "lift": 1.53,
+   "share_peak_30m_ge_3x": 0.075
+  }
+ }
+}
