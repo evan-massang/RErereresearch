@@ -10,6 +10,7 @@ the only way to get their footage.
 """
 import argparse
 import json
+import os
 import shutil
 import subprocess
 import sys
@@ -29,7 +30,8 @@ CHANNELS = {
     "kick:solanaswaggy": "https://kick.com/solanaswaggy",
     "kick:tradememecoins": "https://kick.com/tradememecoins",
     "twitch:d4rkuch1ha": "https://www.twitch.tv/d4rkuch1ha",
-    "twitch:dvces": "https://www.twitch.tv/dvces",
+    # "twitch:dvces": dropped 2026-10-01 16:40 UTC to save disk: not identified (480p unreadable, trades
+    # migrated tokens the tape does not decode); the 12:45-16:40 footage is kept.
 }
 OUT = ROOT / "data" / "raw" / "video" / "live"
 STATUS = ROOT / "data" / "stream_watcher_status.json"
@@ -55,6 +57,17 @@ def adopt_running() -> dict[int, str]:
             for key, url in CHANNELS.items():
                 if url in cmd:
                     out[int(proc.name)] = key
+        # an ffmpeg left writing after its yt-dlp parent was stopped: identify it by the file it holds open
+        elif cmd.startswith("ffmpeg"):
+            try:
+                targets = [os.readlink(fd) for fd in (proc / "fd").iterdir()]
+            except OSError:
+                continue
+            for t in targets:
+                if str(OUT) in t:
+                    key = Path(t).parent.name.replace("_", ":", 1)
+                    if key in CHANNELS:
+                        out[int(proc.name)] = key
     return out
 
 
@@ -125,8 +138,7 @@ def main() -> None:
                                       "recording": list(rec) + list(adopted.values()),
                                       "log": log[-50:]}, indent=1))
         time.sleep(a.poll_s)
-    for p in rec.values():
-        p.terminate()
+    # recordings are left running (own session); the next watcher adopts them, so a restart leaves no gap
 
 
 if __name__ == "__main__":
