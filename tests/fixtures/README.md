@@ -1,6 +1,7 @@
-# Test fixtures — ALL SYNTHETIC
+# Test fixtures — synthetic, except one real public chain event
 
-Every file in this directory was written by hand to exercise the pipeline.
+Every file in this directory except `pumpswap_sell_event.json` (see the note at the end) was written by hand to
+exercise the pipeline.
 None of it is research data: the names, channels, captions, page text,
 tickers and prices are invented placeholders and describe no real person,
 video, page, or trade. Tests load them with `is_synthetic=True`, and
