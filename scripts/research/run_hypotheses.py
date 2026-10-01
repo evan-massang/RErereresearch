@@ -26,7 +26,7 @@ from pipeline.sim import run  # noqa: E402
 from pipeline.sim.engine import sweep_latency  # noqa: E402
 from pipeline.sim.metrics import performance  # noqa: E402
 from pipeline.sim.splits import get_split, record_run  # noqa: E402
-from pipeline.strategies import DevDumpEntry, StructureEntry, build_market_store  # noqa: E402
+from pipeline.strategies import DevDumpEntry, DevDumpRunner, StructureEntry, build_market_store  # noqa: E402
 
 SPLIT_SET = "overnight-2026-10-01"
 U = lambda h, m: datetime(2026, 10, 1, h, m, tzinfo=timezone.utc)
@@ -48,6 +48,12 @@ HYPS = {
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.005, slippage_bps=2000, fail_prob=0.02),
            "first_test": (U(15, 20), U(17, 15)), "in_sample": (U(12, 17), U(15, 12)),
            "sensitivity": {"tip_0.01_sol": {"execution": dict(priority_fee_sol=0.01)}}},
+    "H5": {"prefix": "H5:", "factory": lambda: DevDumpRunner(
+               size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, stop_pct=25, follow_through_s=45,
+               min_gain_pct=30, trail_pct=40, tp_mcap_sol=300, max_hold_s=1800),
+           "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
+           "first_test": (U(17, 45), U(19, 15)), "in_sample": (U(13, 38), U(17, 15)),
+           "sensitivity": {}},
     "H3": {"prefix": "H3:", "factory": lambda: DevDumpEntry(
                size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, hold_s=20, stop_pct=20),
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
@@ -103,8 +109,14 @@ def main() -> None:
     else:
         s, e = h["in_sample"] if a.in_sample else h["first_test"]
         role = "in_sample" if a.in_sample else "first_test"
-        ts, te, _ = get_split(rdb, SPLIT_SET, "train")
-        assert ts <= s and e <= te, "train-split runs must stay inside the train period"
+        # the split the window lies in (H5's first test is on validation-period data recorded after it was frozen)
+        for name in ("train", "validation"):
+            ts, te, _ = get_split(rdb, SPLIT_SET, name)
+            if ts <= s and e <= te:
+                a.split = name
+                break
+        else:
+            raise SystemExit("window is not inside the train or validation period")
     start, end = s.timestamp(), e.timestamp()
     now = datetime.now(timezone.utc).timestamp()
     if end > now:
