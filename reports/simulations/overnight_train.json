@@ -1,0 +1,199 @@
+{
+ "split": "train",
+ "window": [
+  1790856900.0,
+  1790857362.991985
+ ],
+ "hours": 0.13,
+ "tape": {
+  "trades": 16274,
+  "tokens": 547,
+  "wallets": 4601
+ },
+ "loaded": {
+  "curve_trades": 16298,
+  "creates": 175,
+  "completes": 1,
+  "kolscan_msgs": 69
+ },
+ "seeds": {
+  "decu": {
+   "wallet": "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+   "summary": {
+    "closed_trips": 0,
+    "open_or_incomplete": 0
+   }
+  },
+  "cupsey": {
+   "wallet": "2fg5QD1eD7rzNNCsvnhmXFm5hqNgwTTG8p7kQ6f3rx6f",
+   "summary": {
+    "closed_trips": 0,
+    "open_or_incomplete": 0
+   }
+  },
+  "leck": {
+   "wallet": "98T65wcMEjoNLDTJszBHGZEX75QRe8QaANXokv4yw3Mp",
+   "summary": {
+    "closed_trips": 0,
+    "open_or_incomplete": 0
+   }
+  },
+  "setuh": {
+   "wallet": "62N1K57D37AUDGp68tnDYKPjGDsaAAtmo357nBtEtuR",
+   "summary": {
+    "closed_trips": 0,
+    "open_or_incomplete": 0
+   }
+  }
+ },
+ "leaders": [
+  {
+   "wallet": "EqiFgyNw6kgrmYstWyrP8VjKhka7XEmKTZzHSmwpr1Zb",
+   "name": "ban",
+   "summary": {
+    "wallet": "EqiFgyNw6kgrmYstWyrP8VjKhka7XEmKTZzHSmwpr1Zb",
+    "name": "ban",
+    "closed_trips": 5,
+    "open_or_incomplete": 0,
+    "pnl_sol": 2.0773,
+    "win_rate": 0.8,
+    "avg_win_sol": 0.5211,
+    "avg_loss_sol": -0.0072,
+    "profit_factor": 289.641,
+    "median_hold_s": 9.8,
+    "median_size_sol": 0.772,
+    "median_entry_mcap_sol": 94.5,
+    "median_age_at_entry_s": 17.5,
+    "share_multi_buy": 0.2,
+    "share_multi_sell": 0.0,
+    "best_trade_share_of_pnl": 0.792
+   },
+   "selection_edge": {
+    "n": 5,
+    "median_pick_return": -0.0121,
+    "median_random_return": -0.0021,
+    "median_difference": 0.0074,
+    "share_pick_beats_random": 0.6,
+    "sign_test_p": 1.0
+   },
+   "copy": {
+    "wallet": "EqiFgyNw6kgrmYstWyrP8VjKhka7XEmKTZzHSmwpr1Zb",
+    "mints": 5,
+    "events": 1516,
+    "sweep": [
+     {
+      "delay_s": 0.5,
+      "below_data_resolution": false,
+      "n_trades": 5,
+      "realized_pnl_sol": -0.324337054055895,
+      "expectancy_sol": -0.064867410811179,
+      "win_rate": 0.2,
+      "profit_factor": 0.1235194134251282,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.058917252480305125,
+      "network_fee_drag_sol": 0.01005,
+      "slippage_drag_sol": 0.025263644581037397,
+      "open_positions_at_end": 0,
+      "median_hold_s": 9.83626127243042
+     },
+     {
+      "delay_s": 1.0,
+      "below_data_resolution": false,
+      "n_trades": 4,
+      "realized_pnl_sol": -0.3590586689150676,
+      "expectancy_sol": -0.0897646672287669,
+      "win_rate": 0.25,
+      "profit_factor": 0.010126996711633944,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.045873181406138386,
+      "network_fee_drag_sol": 0.00804,
+      "slippage_drag_sol": 0.054229285886386036,
+      "open_positions_at_end": 1,
+      "median_hold_s": 17.491686820983887
+     },
+     {
+      "delay_s": 2.0,
+      "below_data_resolution": false,
+      "n_trades": 4,
+      "realized_pnl_sol": -0.39761332452125986,
+      "expectancy_sol": -0.09940333113031496,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.045385147790870134,
+      "network_fee_drag_sol": 0.00804,
+      "slippage_drag_sol": 0.12094546526558997,
+      "open_positions_at_end": 1,
+      "median_hold_s": 17.491686820983887
+     },
+     {
+      "delay_s": 3.0,
+      "below_data_resolution": false,
+      "n_trades": 4,
+      "realized_pnl_sol": -0.4517346804943613,
+      "expectancy_sol": -0.11293367012359032,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.04470006733551441,
+      "network_fee_drag_sol": 0.00804,
+      "slippage_drag_sol": 0.142230666819878,
+      "open_positions_at_end": 1,
+      "median_hold_s": 17.491686820983887
+     },
+     {
+      "delay_s": 5.0,
+      "below_data_resolution": false,
+      "n_trades": 4,
+      "realized_pnl_sol": -0.46686884323620154,
+      "expectancy_sol": -0.11671721080905038,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.044508495655237956,
+      "network_fee_drag_sol": 0.00804,
+      "slippage_drag_sol": 0.16143493629635,
+      "open_positions_at_end": 1,
+      "median_hold_s": 17.491686820983887
+     },
+     {
+      "delay_s": 10.0,
+      "below_data_resolution": false,
+      "n_trades": 2,
+      "realized_pnl_sol": -0.1576323058998262,
+      "expectancy_sol": -0.0788161529499131,
+      "win_rate": 0.0,
+      "profit_factor": 0.0,
+      "failed_tx": 0,
+      "protocol_fee_drag_sol": 0.023213768279749036,
+      "network_fee_drag_sol": 0.00402,
+      "slippage_drag_sol": 0.029111781181732545,
+      "open_positions_at_end": 3,
+      "median_hold_s": 35.17161965370178
+     }
+    ]
+   }
+  }
+ ],
+ "leaderboard_top": [
+  {
+   "wallet": "EqiFgyNw6kgrmYstWyrP8VjKhka7XEmKTZzHSmwpr1Zb",
+   "name": "ban",
+   "closed_trips": 5,
+   "open_or_incomplete": 0,
+   "pnl_sol": 2.0773,
+   "win_rate": 0.8,
+   "avg_win_sol": 0.5211,
+   "avg_loss_sol": -0.0072,
+   "profit_factor": 289.641,
+   "median_hold_s": 9.8,
+   "median_size_sol": 0.772,
+   "median_entry_mcap_sol": 94.5,
+   "median_age_at_entry_s": 17.5,
+   "share_multi_buy": 0.2,
+   "share_multi_sell": 0.0,
+   "best_trade_share_of_pnl": 0.792
+  }
+ ],
+ "leaderboard_n": 1
+}

@@ -15,3 +15,8 @@ data/*.duckdb.wal
 # yt-dlp cookies and API keys must never be committed
 cookies*.txt
 .env
+data/market.duckdb*
+data/recorder.pid
+data/recorder_status.json
+data/logs/
+data/raw/streams_corrupt/

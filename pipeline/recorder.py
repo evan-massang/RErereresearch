@@ -13,7 +13,7 @@ Two public, unauthenticated feeds:
 
 Raw messages are appended as JSON lines with our own receive time, so the
 feed latency itself is measurable. Files rotate hourly under
-data/raw/streams/<feed>/YYYYMMDD_HH.jsonl.gz. Run:
+data/raw/streams/<feed>/YYYYMMDD_HH_<pid>.jsonl.gz. Run:
 
     python -m pipeline.recorder --hours 8
 """
@@ -80,9 +80,14 @@ def decode_pump_event(data_b64: str) -> dict | None:
             is_buy = b[o + 16]
             user, o = _pk(b, o + 17)
             ts, vs, vt, rs, rt = struct.unpack_from("<qQQQQ", b, o)
+            o += 40 + 32                                      # skip reserves + fee_recipient
+            fee_bps = cfee_bps = None
+            if len(b) >= o + 16 + 32 + 16:
+                fee_bps, _fee = struct.unpack_from("<QQ", b, o)
+                cfee_bps, _cfee = struct.unpack_from("<QQ", b, o + 48)
             row = {"e": "trade", "mint": mint, "user": user, "buy": bool(is_buy), "sol": sol / 1e9,
                    "tok": tok / 1e6, "ts": ts, "vsol": vs / 1e9, "vtok": vt / 1e6, "rsol": rs / 1e9,
-                   "rtok": rt / 1e6}
+                   "rtok": rt / 1e6, "fee_bps": fee_bps, "cfee_bps": cfee_bps}
             if vs == 0:      # non-SOL quote (e.g. USDC-paired curve): keep raw bytes, decode later
                 row["raw"] = data_b64
             return row
@@ -117,7 +122,9 @@ class Sink:
         if hour != self._hour:
             if self._fh:
                 self._fh.close()
-            self._fh = gzip.open(self.dir / f"{hour}.jsonl.gz", "at", compresslevel=3)
+            # one file per process and hour: a killed process can leave a truncated gzip member,
+            # and nothing must ever be appended after one.
+            self._fh = gzip.open(self.dir / f"{hour}_{os.getpid()}.jsonl.gz", "at", compresslevel=3)
             self._hour = hour
         self._fh.write(json.dumps(obj, separators=(",", ":")) + "\n")
         self.count += 1
