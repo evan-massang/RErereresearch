@@ -108,12 +108,19 @@ H5 shows that Decu's exit style does not rescue a mechanical entry: most entries
 
 ## Data limits
 
-- **Recorder gaps:**
-  - 14:38:35–14:38:59;
-  - 15:43:29–15:43:39;
-  - 15:59:54–16:00:04;
-  - 16:36:08–16:36:16;
+- **Coverage:**
+  - Market tape: 12:17:18 to ~21:26 UTC, 1.76M bonding-curve trades, plus decoded PumpSwap.
+  - Decu footage: 13:38:37–16:11:39 (720p from 14:11:39), then 16:15:19–21:20:35.
+  - Setuh: 16:15:22–18:06.
+  - SolanaSwaggy: 12:25–14:50.
+  - d4rkuch1ha: 16:37–18:19.
+  - dvces footage (unidentified, 480p) was deleted at 20:35 to free disk.
+  - The Decu capture was stopped at 21:20:35 because no disk guard was running.
+- **Tape gaps over 5 s:**
+  - 12:34:03–12:41:36 (7.5 min, early recorder);
+  - 15 short gaps of 6–43 s from reconnects and restarts: 14:38:35–14:38:59, 15:43:29–15:43:39, 15:59:54–16:00:04, 16:32:23–16:32:33, 16:35:58–16:36:17, 16:42:46–16:42:56, 17:03:56–17:04:07, 18:15:50–18:16:00, 18:35:04–18:35:31, 19:12:24–19:12:34, 20:00:11–20:00:21, 20:34:18–20:35:01, 20:53:27–20:53:34, 20:57:47–20:57:53, 21:09:43–21:09:49;
   - Decu video 16:11:39–16:15:19.
+- **Stream watcher:** it ran out at 18:35 and was not restarted (the background-job limit). Streams starting after that were not detected.
 - **Missed trades:** the tape misses ~4% of curve trades (websocket drops). Pump tokens quoted in another token instead of SOL are excluded by design.
 - **kolscan's per-wallet coverage has gaps.** It relayed none of Decu's 41 curve trades between 18:00 and 19:00. For the 13:38–16:11 session it matched the tape, so the +89 SOL figure stands. Later figures that rely on kolscan would undercount.
 - **PumpSwap (AMM) trades are now decoded** from the raw logs (~19:30 UTC): 348 pools and 2.2M swaps. The layout was verified against Decu's QRCAT sale, whose amounts match kolscan exactly. 315 of 334 migrations have their pool decoded; 19 lost the pool-creation event. On curve plus AMM, Decu's day on pump tokens up to 19:15 is **+86.9 SOL** over 35 tokens (23 winners), with positions still open counted at cost. That includes AMM exits kolscan never relayed, such as Ansemmas, +33.6 SOL net. **Raydium Launchpad** trades (Setuh's main venue) are still not decoded. The simulator does not use the AMM data yet, so H5 had to exit on the curve, near migration.
