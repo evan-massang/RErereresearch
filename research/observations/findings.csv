@@ -1,0 +1,1 @@
+finding_id,trader_id,funnel_stage,evidence_type,statement,n_supporting,n_observable,n_contradicting,confidence,status,superseded_by,notes,created_at,updated_at,is_synthetic,trader,n_links_supporting,n_links_contradicting,n_links_derived_from,n_links_validated_by

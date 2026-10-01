@@ -1,8 +1,13 @@
-"""Archive locations.
+"""Project layout.
 
-Everything lives under one archive root so the whole archive can be moved,
-synced, or swapped for a test directory. Override with ``RR_ARCHIVE``.
-Paths stored in the database are relative to the archive root.
+Everything lives under one project root (the repo by default) so the archive
+can be moved or swapped for a test directory. Override with ``RR_ROOT``.
+Paths stored in the database are relative to the root.
+
+    data/        machine data: raw downloads, processed media, DuckDB, Parquet
+    research/    human-readable research archive (committed)
+    reports/     trader profiles, cross-trader analysis, hypotheses, simulations, failures
+    sources/     source ledger (generated from the DB, committed)
 """
 
 from __future__ import annotations
@@ -12,29 +17,46 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
 
-# Sub-directories of the archive root, keyed by purpose.
 LAYOUT = {
-    "db": "db",                      # research.duckdb
-    "parquet": "parquet",            # one Parquet file per table (portable snapshot)
-    "raw_video": "raw/video",        # <platform>/<external_id>/ media + info.json
-    "raw_subtitles": "raw/subtitles",  # <source_id>/ caption files as downloaded
-    "raw_web": "raw/web",            # <source_id>/ HTML snapshots
-    "raw_documents": "raw/documents",  # manually supplied files (PDF, CSV, ...)
-    "audio": "derived/audio",        # <source_id>/ 16 kHz mono WAV for ASR
-    "transcripts": "derived/transcripts",  # <source_id>/ transcript JSON
-    "frames": "derived/frames",      # <source_id>/ extracted stills
-    "clips": "derived/clips",        # <source_id>/ extracted clips
-    "exports": "exports",            # ad-hoc analysis outputs
+    # data/ — large or regenerable; only data/parquet is committed
+    "data": "data",
+    "parquet": "data/parquet",
+    "raw_video": "data/raw/video",              # <platform>/<external_id>/ media + info.json
+    "raw_subtitles": "data/raw/subtitles",      # <source_id>/ caption files as fetched
+    "raw_web": "data/raw/web",                  # <source_id>/ page/document snapshots
+    "raw_documents": "data/raw/documents",      # files supplied by hand
+    "audio": "data/processed/audio",            # <source_id>/ 16 kHz mono WAV for ASR
+    "asr": "data/processed/transcripts",        # <source_id>/ ASR output JSON
+    "frames": "data/processed/frames",          # <source_id>/ extracted stills
+    "clips": "data/processed/clips",            # <source_id>/ cut clips
+    "exports": "data/exports",                  # scratch analysis outputs
+    # research/ — committed, human-readable
+    "traders": "research/traders",              # <slug>/ identity.md, notes, model.md
+    "videos": "research/videos",                # per-video worksheets (generated)
+    "transcripts": "research/transcripts",      # <trader>/<source>.txt, rg-searchable (generated)
+    "evidence_frames": "research/frames",       # <source_id>/ frames cited as evidence (copied)
+    "trades": "research/trades",                # trade episodes CSV (generated)
+    "rejected_tokens": "research/rejected_tokens",  # SKIP decisions CSV (generated)
+    "narratives": "research/narratives",
+    "observations": "research/observations",    # observations / findings CSV (generated)
+    # reports/
+    "trader_profiles": "reports/trader_profiles",
+    "cross_trader": "reports/cross_trader_analysis",
+    "hypothesis_reports": "reports/hypotheses",
+    "simulation_reports": "reports/simulations",
+    "failure_reports": "reports/failures",
+    # sources/
+    "ledger": "sources",
 }
 
 
-def archive_root() -> Path:
-    return Path(os.environ.get("RR_ARCHIVE", REPO_ROOT / "archive")).resolve()
+def root() -> Path:
+    return Path(os.environ.get("RR_ROOT", REPO_ROOT)).resolve()
 
 
 def path(kind: str, *parts: str) -> Path:
-    """Return (and create) a directory inside the archive."""
-    p = archive_root() / LAYOUT[kind]
+    """Return (and create) a directory inside the project root."""
+    p = root() / LAYOUT[kind]
     for part in parts:
         p = p / part
     p.mkdir(parents=True, exist_ok=True)
@@ -42,25 +64,24 @@ def path(kind: str, *parts: str) -> Path:
 
 
 def db_path() -> Path:
-    return path("db") / "research.duckdb"
+    return path("data") / "research.duckdb"
 
 
 def ensure_layout() -> Path:
-    root = archive_root()
     for kind in LAYOUT:
         path(kind)
-    return root
+    return root()
 
 
 def rel(p: Path | str) -> str:
-    """Store paths relative to the archive root when possible."""
+    """Store paths relative to the project root when possible."""
     p = Path(p).resolve()
     try:
-        return str(p.relative_to(archive_root()))
+        return str(p.relative_to(root()))
     except ValueError:
         return str(p)
 
 
 def resolve(stored: str) -> Path:
     p = Path(stored)
-    return p if p.is_absolute() else archive_root() / p
+    return p if p.is_absolute() else root() / p

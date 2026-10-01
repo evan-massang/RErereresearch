@@ -3,14 +3,15 @@ __pycache__/
 .pytest_cache/
 *.egg-info/
 
-# Archive: raw media, derived files and the live DB stay out of git (size, licensing).
+# data/: raw media, processed media and the live DB stay out of git (size, licensing).
 # Parquet snapshots ARE committed so the tables survive the ephemeral container;
 # scripts/setup.sh restores them into a fresh DB.
-archive/*
-!archive/README.md
-!archive/parquet/
-archive/parquet/*
-!archive/parquet/*.parquet
+data/raw/
+data/processed/
+data/exports/
+data/*.duckdb
+data/*.duckdb.wal
 
-# yt-dlp cookies must never be committed
+# yt-dlp cookies and API keys must never be committed
 cookies*.txt
+.env

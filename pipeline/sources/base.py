@@ -42,6 +42,9 @@ class VideoRecord:
     chapters: list[dict[str, Any]] | None = None
     manual_caption_langs: list[str] = field(default_factory=list)
     auto_caption_langs: list[str] = field(default_factory=list)
+    was_live: bool | None = None                        # recording of a live stream
+    live_status: str | None = None
+    live_start_at: datetime | None = None               # anchors video time to wall-clock time
     raw: dict[str, Any] = field(default_factory=dict)   # full adapter payload
     local_media_path: Path | None = None                # set when media is already on disk
 

@@ -5,6 +5,8 @@ from __future__ import annotations
 from datetime import datetime
 from typing import Any
 
+import re
+
 import duckdb
 
 from . import db
@@ -12,7 +14,14 @@ from .ids import new_id
 
 DIRECTIONS = {"long", "short", "unknown"}
 TRADE_STATUSES = {"reported", "corroborated", "verified", "disputed", "retracted"}
-OUTCOMES = {"win", "loss", "breakeven", "open", "unknown"}
+OUTCOMES = {"win", "loss", "breakeven", "open", "rug", "unknown"}
+OBSERVED_VIA = {"video", "onchain", "claimed"}
+IDENTITY_PLATFORMS = {"x", "youtube", "kick", "twitch", "telegram", "discord", "website", "wallet",
+                      "tracker_profile", "other"}
+# lead: someone/something says so; probable: several independent leads agree;
+# verified: a primary source links it (e.g. the trader's own profile links the account,
+# or they publicly claim the wallet); rejected: shown to be someone else.
+IDENTITY_STATUSES = {"lead", "probable", "verified", "rejected"}
 
 TARGETS = {
     "source": ("sources", "source_id"),
@@ -22,7 +31,21 @@ TARGETS = {
     "frame": ("frames", "frame_id"),
     "transcript": ("transcripts", "transcript_id"),
     "snapshot": ("web_snapshots", "snapshot_id"),
+    "decision": ("decisions", "decision_id"),
+    "token": ("tokens", "token_id"),
+    "narrative": ("narratives", "narrative_id"),
+    "finding": ("findings", "finding_id"),
+    "hypothesis": ("hypotheses", "hypothesis_id"),
+    "candidate": ("source_candidates", "candidate_id"),
+    "identity": ("trader_identities", "identity_id"),
 }
+
+
+def slugify(name: str) -> str:
+    slug = re.sub(r"[^a-z0-9]+", "-", name.lower()).strip("-")
+    if not slug:
+        raise ValueError(f"cannot derive a slug from {name!r}")
+    return slug
 
 
 def _need(con, table: str, col: str, key: str | None) -> None:
@@ -30,38 +53,81 @@ def _need(con, table: str, col: str, key: str | None) -> None:
         raise ValueError(f"unknown {col} {key!r}")
 
 
-def add_trader(con: duckdb.DuckDBPyConnection, display_name: str, *, aliases: list[str] | None = None,
-               notes: str | None = None, is_synthetic: bool = False, trader_id: str | None = None) -> str:
+def add_trader(con: duckdb.DuckDBPyConnection, display_name: str, *, slug: str | None = None,
+               aliases: list[str] | None = None, notes: str | None = None, is_synthetic: bool = False,
+               trader_id: str | None = None) -> str:
     if not display_name.strip():
         raise ValueError("display_name is required")
+    slug = slug or slugify(display_name)
+    clash = con.execute("SELECT trader_id FROM traders WHERE slug = ?", [slug]).fetchone()
+    if clash and clash[0] != trader_id:
+        raise ValueError(f"slug {slug!r} already used by {clash[0]}")
     trader_id = trader_id or new_id("trd")
     db.upsert(con, "traders", {
-        "trader_id": trader_id, "display_name": display_name.strip(), "aliases": aliases or [],
-        "notes": notes, "created_at": db.now(), "is_synthetic": is_synthetic,
+        "trader_id": trader_id, "slug": slug, "display_name": display_name.strip(),
+        "aliases": aliases or [], "notes": notes, "created_at": db.now(), "is_synthetic": is_synthetic,
     })
     return trader_id
 
 
+def trader_by_slug(con: duckdb.DuckDBPyConnection, slug: str) -> str | None:
+    row = con.execute("SELECT trader_id FROM traders WHERE slug = ?", [slug]).fetchone()
+    return row[0] if row else None
+
+
 def add_trader_identity(con: duckdb.DuckDBPyConnection, trader_id: str, platform: str, *,
                         handle: str | None = None, url: str | None = None,
-                        evidence_source_id: str | None = None, is_synthetic: bool = False) -> str:
+                        evidence_source_id: str | None = None, verification_status: str = "lead",
+                        verification_notes: str | None = None, is_synthetic: bool = False) -> str:
     _need(con, "traders", "trader_id", trader_id)
     _need(con, "sources", "source_id", evidence_source_id)
+    if platform not in IDENTITY_PLATFORMS:
+        raise ValueError(f"platform must be one of {sorted(IDENTITY_PLATFORMS)}")
+    if verification_status not in IDENTITY_STATUSES:
+        raise ValueError(f"verification_status must be one of {sorted(IDENTITY_STATUSES)}")
+    if verification_status == "verified" and not evidence_source_id:
+        raise ValueError("a verified identity needs evidence_source_id")
     if not (handle or url):
         raise ValueError("handle or url is required")
-    identity_id = new_id("tid")
+    existing = con.execute(
+        "SELECT identity_id FROM trader_identities WHERE trader_id = ? AND platform = ? "
+        "AND coalesce(lower(handle), '') = coalesce(lower(?), '') AND coalesce(url, '') = coalesce(?, '')",
+        [trader_id, platform, handle, url]).fetchone()
+    identity_id = existing[0] if existing else new_id("tid")
     db.upsert(con, "trader_identities", {
         "identity_id": identity_id, "trader_id": trader_id, "platform": platform, "handle": handle,
-        "url": url, "evidence_source_id": evidence_source_id, "created_at": db.now(),
-        "is_synthetic": is_synthetic,
+        "url": url, "evidence_source_id": evidence_source_id,
+        "verification_status": verification_status, "verification_notes": verification_notes,
+        "created_at": db.now(), "updated_at": db.now(), "is_synthetic": is_synthetic,
     })
     return identity_id
+
+
+def set_identity_status(con: duckdb.DuckDBPyConnection, identity_id: str, status: str, notes: str,
+                        evidence_source_id: str | None = None) -> None:
+    _need(con, "trader_identities", "identity_id", identity_id)
+    _need(con, "sources", "source_id", evidence_source_id)
+    if status not in IDENTITY_STATUSES:
+        raise ValueError(f"status must be one of {sorted(IDENTITY_STATUSES)}")
+    current = con.execute("SELECT evidence_source_id FROM trader_identities WHERE identity_id = ?",
+                          [identity_id]).fetchone()[0]
+    if status == "verified" and not (evidence_source_id or current):
+        raise ValueError("a verified identity needs evidence_source_id")
+    if not notes.strip():
+        raise ValueError("notes are required: say why the status changed")
+    con.execute(
+        "UPDATE trader_identities SET verification_status = ?, verification_notes = ?, "
+        "evidence_source_id = coalesce(?, evidence_source_id), updated_at = ? WHERE identity_id = ?",
+        [status, notes, evidence_source_id, db.now(), identity_id])
 
 
 def add_trade(
     con: duckdb.DuckDBPyConnection,
     *,
     trader_id: str | None,
+    token_id: str | None = None,
+    source_id: str | None = None,
+    observed_via: str | None = None,
     instrument: str | None = None,
     asset_class: str | None = None,
     direction: str | None = "unknown",
@@ -86,6 +152,10 @@ def add_trade(
     trade_id: str | None = None,
 ) -> str:
     _need(con, "traders", "trader_id", trader_id)
+    _need(con, "tokens", "token_id", token_id)
+    _need(con, "sources", "source_id", source_id)
+    if observed_via is not None and observed_via not in OBSERVED_VIA:
+        raise ValueError(f"observed_via must be one of {sorted(OBSERVED_VIA)}")
     if direction is not None and direction not in DIRECTIONS:
         raise ValueError(f"direction must be one of {sorted(DIRECTIONS)}")
     if status not in TRADE_STATUSES:
@@ -103,7 +173,8 @@ def add_trade(
 
     trade_id = trade_id or new_id("trade")
     db.upsert(con, "trades", {
-        "trade_id": trade_id, "trader_id": trader_id, "instrument": instrument,
+        "trade_id": trade_id, "trader_id": trader_id, "token_id": token_id, "source_id": source_id,
+        "observed_via": observed_via, "instrument": instrument,
         "asset_class": asset_class, "direction": direction, "entry_time": entry_time,
         "entry_price": entry_price, "exit_time": exit_time, "exit_price": exit_price,
         "stop_price": stop_price, "target_price": target_price, "size": size, "size_unit": size_unit,

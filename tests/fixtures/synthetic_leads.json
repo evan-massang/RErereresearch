@@ -1,0 +1,46 @@
+{
+  "_comment": "SYNTHETIC leads file in the shape the search agents write. Every name, URL and claim is invented.",
+  "trader_seed": "SYNTHETIC-SEED",
+  "searched_at": "2001-02-03T04:05:06Z",
+  "searches": [{"query": "synthetic seed trader", "allowed_domains": null, "result_urls": ["https://synthetic-a.invalid/profile", "https://synthetic-b.invalid/wiki"]}],
+  "identity_candidates": [
+    {
+      "platform": "x",
+      "handle_or_address": "@synthetic_seed",
+      "url": "https://synthetic-x.invalid/synthetic_seed",
+      "evidence": [
+        {"source_url": "https://synthetic-a.invalid/profile", "source_title": "SYNTHETIC profile page", "query": "synthetic seed trader", "claim_origin": "search_summary", "text": "synthetic seed posts as @synthetic_seed"},
+        {"source_url": "https://synthetic-b.invalid/wiki", "source_title": "SYNTHETIC wiki", "query": "synthetic seed trader", "claim_origin": "search_summary", "text": "the account @synthetic_seed belongs to the synthetic seed"}
+      ],
+      "same_person_confidence": "high",
+      "reasoning": "two synthetic domains agree",
+      "conflicts_or_doubts": "none (synthetic)"
+    },
+    {
+      "platform": "wallet",
+      "handle_or_address": "SYNTHETICWALLET111111111111111111111111111",
+      "url": null,
+      "evidence": [
+        {"source_url": "https://synthetic-a.invalid/profile", "source_title": "SYNTHETIC profile page", "query": "synthetic seed wallet", "claim_origin": "search_summary", "text": "wallet SYNTHETICWALLET111111111111111111111111111 is tracked as synthetic seed"}
+      ],
+      "same_person_confidence": "medium",
+      "reasoning": "one synthetic tracker",
+      "conflicts_or_doubts": "single source"
+    }
+  ],
+  "ambiguity": [
+    {"description": "SYNTHETIC token ticker with the same name", "evidence": [{"source_url": "https://synthetic-c.invalid/token", "source_title": "SYNTHETIC token page", "query": "synthetic seed token", "claim_origin": "result_title", "text": "SYNTHETIC token page"}]}
+  ],
+  "content_candidates": [
+    {"url": "https://synthetic-video.invalid/watch?v=SYN1", "platform": "youtube", "title": "SYNTHETIC live session", "published": "2001-02-03", "duration": "3:00:00", "content_type": "live_trading_session", "attributed_to_trader_because": "synthetic", "priority": "high", "evidence": [{"source_url": "https://synthetic-video.invalid/watch?v=SYN1", "source_title": "SYNTHETIC live session", "query": "synthetic seed live", "claim_origin": "result_title", "text": "SYNTHETIC live session"}]},
+    {"url": "https://synthetic-video.invalid/watch?v=SYN2", "platform": "youtube", "title": "SYNTHETIC tips video", "published": null, "duration": null, "content_type": "tutorial", "attributed_to_trader_because": "synthetic", "priority": "low", "evidence": []}
+  ],
+  "tools_and_workflow_leads": [
+    {"lead": "SYNTHETIC: uses a terminal", "evidence": [{"source_url": "https://synthetic-b.invalid/wiki", "source_title": "SYNTHETIC wiki", "query": "synthetic seed tools", "claim_origin": "search_summary", "text": "the synthetic seed uses a synthetic terminal"}]}
+  ],
+  "secondary_claims": [
+    {"claim": "SYNTHETIC pnl claim", "evidence": [{"source_url": "https://synthetic-b.invalid/wiki", "source_title": "SYNTHETIC wiki", "query": "synthetic seed pnl", "claim_origin": "search_summary", "text": "made a synthetic amount"}]}
+  ],
+  "other_traders_mentioned": [{"name": "SYNTHETIC-OTHER", "why_interesting": "synthetic", "evidence": []}],
+  "open_questions": ["SYNTHETIC: is the wallet theirs?"]
+}

@@ -21,6 +21,14 @@ from .ids import new_id
 
 STATUSES = {"draft", "reviewed", "rejected"}
 
+# What kind of evidence an observation is (kept separate on purpose):
+#   said      the trader's own words (transcript, post, interview)
+#   screen    what the trader's screen showed (frame of their UI)
+#   action    what the trader actually did (clicked buy, sold, closed a tab)
+#   onchain   a wallet transaction or on-chain state
+#   document  third-party text (articles, wikis, tracker pages, search results)
+MODALITIES = {"said", "screen", "action", "onchain", "document"}
+
 
 def _norm(s: str) -> str:
     return re.sub(r"\s+", " ", s).strip().casefold()
@@ -61,6 +69,7 @@ def add_observation(
     con: duckdb.DuckDBPyConnection,
     *,
     source_id: str,
+    modality: str,
     kind: str,
     content: str,
     extractor: str,
@@ -68,6 +77,8 @@ def add_observation(
     value: Any = None,
     trader_id: str | None = None,
     trade_id: str | None = None,
+    decision_id: str | None = None,
+    token_id: str | None = None,
     transcript_id: str | None = None,
     segment_seq: int | None = None,
     start_s: float | None = None,
@@ -84,6 +95,8 @@ def add_observation(
 ) -> str:
     if not db.exists(con, "sources", "source_id", source_id):
         raise ValueError(f"unknown source_id {source_id!r}")
+    if modality not in MODALITIES:
+        raise ValueError(f"modality must be one of {sorted(MODALITIES)}")
     if not content or not content.strip():
         raise ValueError("content is required")
     if status not in STATUSES:
@@ -94,6 +107,8 @@ def add_observation(
         raise ValueError(f"unknown trader_id {trader_id!r}")
     if trade_id and not db.exists(con, "trades", "trade_id", trade_id):
         raise ValueError(f"unknown trade_id {trade_id!r}")
+    db.require(con, "decisions", "decision_id", decision_id)
+    db.require(con, "tokens", "token_id", token_id)
 
     if transcript_id:
         _check_belongs(con, "transcripts", "transcript_id", transcript_id, source_id)
@@ -122,9 +137,11 @@ def add_observation(
 
     observation_id = observation_id or new_id("obs")
     db.upsert(con, "observations", {
-        "observation_id": observation_id, "source_id": source_id, "kind": kind, "content": content,
+        "observation_id": observation_id, "source_id": source_id, "modality": modality,
+        "kind": kind, "content": content,
         "quote": quote, "quote_verified": quote_verified, "value": value,
-        "trader_id": trader_id, "trade_id": trade_id, "transcript_id": transcript_id,
+        "trader_id": trader_id, "trade_id": trade_id, "decision_id": decision_id,
+        "token_id": token_id, "transcript_id": transcript_id,
         "segment_seq": segment_seq, "start_s": start_s, "end_s": end_s, "frame_id": frame_id,
         "snapshot_id": snapshot_id, "char_start": char_start, "char_end": char_end,
         "extractor": extractor, "extractor_version": extractor_version, "confidence": confidence,
@@ -185,3 +202,31 @@ def list_observations(con: duckdb.DuckDBPyConnection, *, source_id: str | None =
     if where:
         sql += " WHERE " + " AND ".join(where)
     return con.execute(sql + " ORDER BY source_id, start_s NULLS LAST", params).df()
+
+
+def reverify_quotes(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
+    """Recompute quote_verified for every quoted observation (e.g. after a cited page is finally fetched).
+
+    Observations that cite a source without a snapshot are re-pointed at the
+    source's latest snapshot when one now exists.
+    """
+    rows = con.execute(
+        "SELECT observation_id, source_id, quote, transcript_id, segment_seq, snapshot_id "
+        "FROM observations WHERE quote IS NOT NULL").fetchall()
+    changed = {"checked": 0, "now_verified": 0, "now_unverified": 0}
+    for oid, sid, quote, tid, seq, snap in rows:
+        if not tid and not snap:
+            latest = con.execute("SELECT snapshot_id FROM web_snapshots WHERE source_id = ? "
+                                 "ORDER BY fetched_at DESC LIMIT 1", [sid]).fetchone()
+            if latest:
+                snap = latest[0]
+                con.execute("UPDATE observations SET snapshot_id = ? WHERE observation_id = ?", [snap, oid])
+        verified = verify_quote(con, quote, transcript_id=tid, segment_seq=seq, snapshot_id=snap)
+        before = con.execute("SELECT quote_verified FROM observations WHERE observation_id = ?", [oid]).fetchone()[0]
+        con.execute("UPDATE observations SET quote_verified = ? WHERE observation_id = ?", [verified, oid])
+        changed["checked"] += 1
+        if verified is True and before is not True:
+            changed["now_verified"] += 1
+        if verified is False and before is not False:
+            changed["now_unverified"] += 1
+    return changed

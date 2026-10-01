@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Install everything the pipeline needs. Safe to re-run: skips what is present.
 #
-#   scripts/setup.sh                 # system packages + Python packages + empty archive/DB
+#   scripts/setup.sh                 # system packages + Python packages + empty data/ layout + DB
 #   scripts/setup.sh --check         # only report what is missing (exit 1 if anything is)
 #   RR_WHISPER_MODEL=small scripts/setup.sh   # also pre-download a Whisper model (needs huggingface.co)
 #   RR_SKIP_APT=1 scripts/setup.sh   # skip apt (e.g. no root)
@@ -65,15 +65,15 @@ else
 fi
 
 # ---- archive + database -----------------------------------------------------
-ARCHIVE="${RR_ARCHIVE:-$REPO/archive}"
+ROOT="${RR_ROOT:-$REPO}"
 "$PY" -m pipeline init >/dev/null
-log "archive ready at $ARCHIVE"
+log "project root ready at $ROOT"
 
 # Restore committed Parquet snapshot into a fresh container's empty DB.
-if ls "$ARCHIVE"/parquet/*.parquet >/dev/null 2>&1; then
+if ls "$ROOT"/data/parquet/*.parquet >/dev/null 2>&1; then
   rows=$("$PY" -m pipeline query "SELECT count(*) AS n FROM sources" | "$PY" -c 'import json,sys;print(json.load(sys.stdin)[0]["n"])')
   if [[ "$rows" == "0" ]]; then
-    "$PY" -m pipeline import-parquet >/dev/null && log "restored database from $ARCHIVE/parquet"
+    "$PY" -m pipeline import-parquet >/dev/null && log "restored database from $ROOT/data/parquet"
   fi
 fi
 

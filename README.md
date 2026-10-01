@@ -1,107 +1,80 @@
-# RErereresearch — research archive pipeline
+# RErereresearch
 
-Infrastructure for collecting sources (videos, web pages, documents),
-turning them into searchable text and stills, and recording **evidence-linked**
-observations, traders and trade-level annotations in DuckDB + Parquet.
+Research into how skilled Solana memecoin traders make short-duration
+decisions: observe them trading (stream recordings, videos, on-chain
+activity), reconstruct what they saw and did, turn it into measurable
+features, and test those features without lookahead.
 
-This repository currently contains **infrastructure only**: no research
-data and no findings. Anything in the test suite is synthetic and flagged
-`is_synthetic`.
+- **Brief (governing document):** [`docs/RESEARCH_BRIEF.md`](docs/RESEARCH_BRIEF.md)
+- **Status, plan, blocked items:** [`docs/RESEARCH_PLAN.md`](docs/RESEARCH_PLAN.md)
+- **How to do the research with the tools:** [`docs/WORKFLOW.md`](docs/WORKFLOW.md)
+- **Tables and evidence rules:** [`docs/DATA_MODEL.md`](docs/DATA_MODEL.md)
+
+No research findings exist yet. Trader identities are search-derived leads
+(`research/traders/<slug>/identity.md`); test data is synthetic and flagged.
 
 ## Quick start
 
 ```bash
-scripts/setup.sh              # installs apt + pip deps, creates archive/ and the DB (idempotent)
-python -m pytest              # offline test suite (live-network tests skip unless RR_NETWORK_TESTS=1)
-python -m pipeline status     # table counts, fetch outcomes, tool versions, adapters
-python -m pipeline check-network   # which hosts this environment can reach
+scripts/setup.sh                    # deps + data layout + DB (idempotent; runs automatically in cloud sessions)
+python -m pytest                    # offline suite; live-network tests opt in with RR_NETWORK_TESTS=1
+python -m pipeline check-network    # what this environment can reach
+python -m pipeline status
+python -m pipeline candidates --trader decu
 ```
-
-In a Claude Code cloud session, `.claude/settings.json` runs
-`scripts/session_start.sh` automatically, which runs `scripts/setup.sh`.
 
 ## Layout
 
 ```
-pipeline/                  python package (python -m pipeline <command>)
-  sources/                 swappable adapters
-    base.py                VideoAdapter / WebAdapter protocols, records, SourceUnavailable
-    ytdlp_adapter.py       yt-dlp (YouTube + other sites yt-dlp supports)
-    local_adapter.py       local media files / saved HTML (offline fallback)
-    http_adapter.py        httpx for pages and APIs
-    __init__.py            adapter registry
-  config.py                archive paths (RR_ARCHIVE overrides the root)
-  ids.py                   deterministic + random IDs
-  schema.sql               DuckDB schema (tables + views)
-  db.py                    connect/apply schema, upsert, Parquet export/import, purge-synthetic
-  provenance.py            hashing, artifact registry, fetch-event log, blocked/error classification
-  media.py                 ffmpeg/ffprobe wrappers
-  ingest_video.py          video metadata (+ optional media + captions)
-  ingest_transcript.py     VTT/SRT/JSON/TXT parsing; pluggable speech-to-text (faster-whisper)
-  frames.py                frames by timestamp / interval / scene change; clips
-  ingest_web.py            page + document snapshots, main-text extraction, outbound links
-  observations.py          evidence-linked observations with quote verification
-  annotations.py           traders, identities, trades, trade evidence, annotations
-  cli.py                   command-line interface
-scripts/setup.sh           dependency installer (also --check)
-scripts/session_start.sh   SessionStart hook for cloud sessions
-tests/                     offline tests + opt-in live-network tests; fixtures are synthetic
-archive/                   data root (see archive/README.md); only parquet/ is committed
+docs/                     brief, plan, workflow, data model
+pipeline/                 python package: python -m pipeline <command>
+  sources/                swappable adapters: yt-dlp, local files, HTTP, saved HTML
+  ingest_video.py         video metadata (+ media, captions); live-stream start time
+  ingest_transcript.py    VTT/SRT/JSON/TXT parsing; pluggable speech-to-text (faster-whisper)
+  moments.py              transcript triage: candidate entry/exit/skip/rug moments
+  frames.py               frames by time/interval/scene; decision windows densified on screen change
+  ingest_web.py           page/document snapshots, main text, outbound links
+  candidates.py           source queue, search citations, lead import, source ledger
+  observations.py         evidence with modality (said/screen/action/onchain/document), quote checks
+  decisions.py            tokens, narratives, decisions, metric readings with provenance
+  findings.py             stated/observed/inferred/validated findings, hypotheses, features
+  annotations.py          traders, identities (lead→verified), trades, annotations
+  exports.py              research/ + reports/ + sources/ generated from the DB
+  sim/                    point-in-time view, execution model, engine, metrics, splits/holdout
+  schema.sql, db.py, provenance.py, media.py, config.py, cli.py
+data/                     raw/ processed/ (git-ignored) · parquet/ (committed) · research.duckdb (ignored)
+research/                 traders/ videos/ transcripts/ frames/ trades/ rejected_tokens/ narratives/ observations/
+reports/                  trader_profiles/ cross_trader_analysis/ hypotheses/ simulations/ failures/
+sources/                  source_ledger.csv · leads/ (raw search-agent outputs)
+scripts/                  setup.sh, session_start.sh
+tests/                    offline tests with synthetic fixtures; opt-in live-network tests
 ```
 
-## Modularity: swapping a source
+## Modularity
 
-Stages depend on the **adapter protocols**, not on a site:
+Stages depend on adapter protocols, not sites. If a platform is unreachable,
+the same stage runs from another adapter: `--adapter local` for media obtained
+elsewhere (with a yt-dlp `.info.json` beside it if available), `--adapter file`
+for saved pages, `ingest-captions` for an existing transcript. New sources go
+in `pipeline/sources/` and the registry in `pipeline/sources/__init__.py`.
+Every fetch attempt is logged in `fetch_events` as `ok`, `blocked` or `error`.
 
-| stage | interface | adapters today | fallback without network |
-|---|---|---|---|
-| video metadata / media / captions | `VideoAdapter` | `ytdlp`, `local` | `--adapter local` on files obtained another way (a yt-dlp `*.info.json` sidecar is used if present; `*.vtt`/`*.srt` next to the file are imported) |
-| web pages / APIs | `WebAdapter` | `http`, `file` | `ingest-web --adapter file page.html --canonical-url <original URL>` |
-| speech-to-text | `Transcriber` | `faster-whisper` | `ingest-captions` with an existing transcript |
-| documents | — | `ingest-doc` | always local |
+## Simulation guarantees
 
-To add one, implement the protocol in `pipeline/sources/` (or a `Transcriber`
-in `ingest_transcript.py`) and add it to the registry dict. Every adapter
-raises `SourceUnavailable` with status `blocked` (network policy, proxy, bot
-wall, rate limit) or `error`, and every attempt, successful or not, is
-logged in `fetch_events`, so a blocked source is visible and can be retried
-with another adapter.
-
-## Commands
-
-```
-init | status | check-network
-list-entries URI                    expand channel / playlist / 'ytsearchN:query' / directory
-ingest-video URI [--adapter ytdlp|local] [--media video|audio] [--no-captions] [--lang en]
-ingest-captions SOURCE_ID FILE      import VTT/SRT/JSON/TXT
-transcribe SOURCE_ID [--model small] [--language en]
-extract-frames SOURCE_ID (--at 1,2 | --every 10 | --scene 0.3) [--width 640]
-extract-clip SOURCE_ID START END
-ingest-web URI [--adapter http|file] [--canonical-url URL]
-ingest-doc PATH [--title T]
-add-observation --source-id ... --kind ... --content ... --extractor ... [locators]
-import-observations FILE.jsonl      all-or-nothing bulk import
-set-observation-status ID draft|reviewed|rejected
-add-trader NAME | add-identity TRADER PLATFORM | add-trade ... | link-evidence TRADE OBS
-annotate TYPE ID KEY VALUE --annotator WHO
-export-parquet | import-parquet | purge-synthetic [--yes] | query SQL
-```
-
-All commands print JSON. Creation commands accept `--synthetic` for test data.
-
-## Data integrity rules (enforced in code)
-
-* Every observation references a source; locators (transcript segment, frame,
-  snapshot) must belong to that same source.
-* Quotes are checked verbatim (case/whitespace-insensitive) against the linked
-  transcript or snapshot; the result is stored in `quote_verified`.
-* A trade can be `corroborated`/`verified` only with linked evidence observations.
-* Raw bytes are stored and SHA-256 hashed (`artifacts`); page re-fetches create
-  new snapshots only when content changes.
-* Synthetic rows are flagged and removable with `purge-synthetic --yes`.
+- Strategies receive only a `PointInTimeView`; asking for data past the
+  current simulated time raises `LookaheadError`. Data at or after a run's end
+  does not exist for that run.
+- Fills happen at `decision + latencies` against the true pool state on the
+  AMM curve with our size, after an explicit protocol fee; slippage tolerance
+  failures and random failures revert and still cost network fees.
+- Latency sweeps flag delays finer than the data's time resolution.
+- Splits are chronological; the holdout runs once with pre-registered pass
+  criteria and is then burned.
+- Imitation metrics and performance metrics are stored separately.
 
 ## Persistence
 
-Cloud containers are temporary. Raw media and the live DB are git-ignored;
-`python -m pipeline export-parquet` writes `archive/parquet/*.parquet`, which
-is committed and restored into a fresh DB by `scripts/setup.sh`.
+The cloud container is temporary. Run `python -m pipeline export-all` and
+commit `data/parquet`, `research`, `reports` and `sources` before stopping;
+`scripts/setup.sh` restores the DB from `data/parquet` in a new container.
+Raw media is not committed (size, licensing).

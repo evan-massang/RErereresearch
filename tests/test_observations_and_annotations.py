@@ -20,7 +20,7 @@ def video(archive, synthetic_video):
 def test_observation_from_transcript_segment_fills_times_and_verifies_quote(video):
     con, sid, tid = video
     oid = observations.add_observation(
-        con, source_id=sid, kind="quote", content="SYNTHETIC: speaker says the test sentence",
+        con, source_id=sid, modality="said", kind="quote", content="SYNTHETIC: speaker says the test sentence",
         quote="The quick brown   FOX is a test sentence", transcript_id=tid, segment_seq=2,
         extractor="script:test", is_synthetic=True)
     start, end, verified = con.execute(
@@ -31,7 +31,7 @@ def test_observation_from_transcript_segment_fills_times_and_verifies_quote(vide
 def test_unverifiable_quote_is_flagged_false(video):
     con, sid, tid = video
     oid = observations.add_observation(
-        con, source_id=sid, kind="quote", content="SYNTHETIC", quote="words never said",
+        con, source_id=sid, modality="said", kind="quote", content="SYNTHETIC", quote="words never said",
         transcript_id=tid, extractor="script:test", is_synthetic=True)
     assert con.execute("SELECT quote_verified FROM observations WHERE observation_id=?", [oid]).fetchone()[0] is False
 
@@ -39,13 +39,13 @@ def test_unverifiable_quote_is_flagged_false(video):
 def test_frame_locator_and_ownership_checks(video, tmp_path):
     con, sid, tid = video
     fid = frames.extract_frames(con, sid, timestamps=[1.0])[0]
-    oid = observations.add_observation(con, source_id=sid, kind="screenshot", content="SYNTHETIC frame note",
+    oid = observations.add_observation(con, source_id=sid, modality="screen", kind="screenshot", content="SYNTHETIC frame note",
                                        frame_id=fid, extractor="human", is_synthetic=True)
     assert con.execute("SELECT start_s FROM observations WHERE observation_id=?", [oid]).fetchone()[0] == 1.0
 
     other, _ = ingest_document(con, str(FIXTURES / "synthetic_page.html"), is_synthetic=True)
     with pytest.raises(ValueError, match="belongs to"):
-        observations.add_observation(con, source_id=other, kind="x", content="SYNTHETIC", frame_id=fid,
+        observations.add_observation(con, source_id=other, modality="screen", kind="x", content="SYNTHETIC", frame_id=fid,
                                      extractor="human", is_synthetic=True)
 
 
@@ -57,17 +57,18 @@ def test_frame_locator_and_ownership_checks(video, tmp_path):
     ({"segment_seq": 0}, "requires transcript_id"),
     ({"trader_id": "trd_nope"}, "unknown trader_id"),
     ({"start_s": 5.0, "end_s": 1.0}, "end_s < start_s"),
+    ({"modality": "vibes"}, "modality must be"),
 ])
 def test_observation_validation(video, kwargs, match):
     con, sid, _ = video
-    base = dict(source_id=sid, kind="claim", content="SYNTHETIC", extractor="human", is_synthetic=True)
+    base = dict(source_id=sid, modality="said", kind="claim", content="SYNTHETIC", extractor="human", is_synthetic=True)
     with pytest.raises(ValueError, match=match):
         observations.add_observation(con, **{**base, **kwargs})
 
 
 def test_snapshot_quote_verification(archive):
     sid, snap = ingest_document(archive, str(FIXTURES / "synthetic_page.html"), is_synthetic=True)
-    oid = observations.add_observation(archive, source_id=sid, snapshot_id=snap, kind="quote",
+    oid = observations.add_observation(archive, source_id=sid, snapshot_id=snap, modality="document", kind="quote",
                                        content="SYNTHETIC", quote="alpha bravo charlie delta echo",
                                        extractor="human", is_synthetic=True)
     assert archive.execute("SELECT quote_verified FROM observations WHERE observation_id=?", [oid]).fetchone()[0]
@@ -75,8 +76,9 @@ def test_snapshot_quote_verification(archive):
 
 def test_import_jsonl_is_atomic(video, tmp_path):
     con, sid, tid = video
-    good = {"source_id": sid, "kind": "claim", "content": "SYNTHETIC a", "extractor": "script:test"}
-    bad = {"source_id": "src_nope", "kind": "claim", "content": "SYNTHETIC b", "extractor": "script:test"}
+    good = {"source_id": sid, "modality": "said", "kind": "claim", "content": "SYNTHETIC a", "extractor": "script:test"}
+    bad = {"source_id": "src_nope", "modality": "said", "kind": "claim", "content": "SYNTHETIC b",
+           "extractor": "script:test"}
     f = tmp_path / "obs.jsonl"
     f.write_text("\n".join(json.dumps(x) for x in (good, bad)))
     with pytest.raises(ValueError, match="line 2"):
@@ -91,9 +93,9 @@ def test_import_jsonl_is_atomic(video, tmp_path):
 def test_traders_trades_evidence_and_annotations(video):
     con, sid, tid = video
     trader = annotations.add_trader(con, "SYNTHETIC-TRADER-A", aliases=["syn-a"], is_synthetic=True)
-    annotations.add_trader_identity(con, trader, "synthetic-platform", handle="@synthetic",
+    annotations.add_trader_identity(con, trader, "other", handle="@synthetic",
                                     evidence_source_id=sid, is_synthetic=True)
-    obs = observations.add_observation(con, source_id=sid, kind="trade_claim", content="SYNTHETIC entry",
+    obs = observations.add_observation(con, source_id=sid, modality="said", kind="trade_claim", content="SYNTHETIC entry",
                                        trader_id=trader, transcript_id=tid, segment_seq=1,
                                        extractor="human", is_synthetic=True)
 

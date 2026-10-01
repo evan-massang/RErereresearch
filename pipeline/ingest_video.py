@@ -50,6 +50,7 @@ def _store_metadata(con, rec: VideoRecord, adapter_name: str, source_id: str,
         "view_count": rec.view_count, "like_count": rec.like_count, "description": rec.description,
         "tags": rec.tags, "language": rec.language, "chapters": rec.chapters,
         "available_captions": {"manual": rec.manual_caption_langs, "auto": rec.auto_caption_langs},
+        "was_live": rec.was_live, "live_status": rec.live_status, "live_start_at": rec.live_start_at,
     })
 
 

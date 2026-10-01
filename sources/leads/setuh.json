@@ -1,0 +1,815 @@
+{
+  "trader_seed": "Setuh",
+  "searched_at": "2026-10-01T10:51:46Z",
+  "method_note": "All items come from WebSearch result titles, URLs, or the model-written search summaries. No page was fetched. Items with claim_origin=search_summary are secondary and may be wrong or conflated. Where a summary cannot be tied to one result, source_url is null.",
+  "searches": [
+    {"query": "Setuh solana memecoin trader", "allowed_domains": null, "result_urls": [
+      "https://www.scribd.com/document/850486009/Setup-Trading",
+      "https://trade.padre.gg/sign-in?rk=setuh",
+      "https://coinledger.io/learn/solana-memecoin",
+      "https://www.kraken.com/learn/trading-solana-memecoins",
+      "https://phantom.com/learn/crypto-101/solana-memecoins-tokens",
+      "https://learn.backpack.exchange/articles/where-to-track-and-trade-memes",
+      "https://www.slideshare.net/slideshow/introduction-to-trading-solana-memecoins-pdf/279970578",
+      "https://www.fxstreet.com/cryptocurrencies/news/solana-memecoins-fartcoin-wif-and-a16z-traders-gain-962m-as-trump-backs-his-token-202503242118",
+      "https://benzinga.com/z/46549270"]},
+    {"query": "Setuh crypto trader twitter", "allowed_domains": null, "result_urls": [
+      "https://x.com/Setuhx?lang=en",
+      "https://medium.com/cryptocurrencies-ups-and-down/the-top-8-twitter-communities-for-cryptocurrency-trading-a-gateway-to-success-4eed6d91d01d",
+      "https://ninjapromo.io/top-crypto-twitter-influencers",
+      "https://steemit.com/cryptocurrency/@captainvideo/top-crypto-day-traders-to-follow-on-twitter",
+      "https://coinbound.io/best-crypto-influencers-on-twitter/",
+      "https://coingape.com/best-crypto-twitter-accounts/",
+      "https://tradersunion.com/interesting-articles/best-crypto-signals-top-8-free-providers/best-crypto-twitter-accounts/",
+      "https://en.wikipedia.org/wiki/Bybit",
+      "https://en.wikipedia.org/wiki/StockTwits",
+      "https://cryptonews.com/cryptocurrency/best-crypto-twitter-accounts/"]},
+    {"query": "Setuh youtube trading", "allowed_domains": null, "result_urls": [
+      "https://x.com/Setuhx",
+      "https://www.youtube.com/watch?v=psjKCWknoCQ",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://www.youtube.com/watch?v=kOdCGWGO80E",
+      "https://www.youtube.com/watch?v=vYyOchs9P_g",
+      "https://linktr.ee/setuh",
+      "https://www.dupoin.co.id/insights/market-analysis/69203",
+      "https://tpfx.co.id/jurnal/channel-youtube-untuk-para-trader/",
+      "https://settum.gumroad.com",
+      "https://www.telkomsel.com/jelajah/jelajah-lifestyle/7-channel-youtube-untuk-belajar-investasi-saham-dari-nol"]},
+    {"query": "\"setuhh\" youtube", "allowed_domains": null, "result_urls": [
+      "https://www.twitch.tv/setuhh",
+      "https://www.youtube.com/@setuhh/videos",
+      "https://www.youtube.com/c/SetiGT",
+      "https://en.wikipedia.org/wiki/Shirley_Setia",
+      "https://en.wikipedia.org/wiki/H%E1%BA%ADu_Ho%C3%A0ng",
+      "https://en.wikipedia.org/wiki/Seth_Everman",
+      "https://en.wikipedia.org/wiki/Tina_S",
+      "https://www.youtubekids.com/",
+      "https://en.wikipedia.org/wiki/FHProductionHK",
+      "https://en.wikipedia.org/wiki/List_of_YouTube_features"]},
+    {"query": "setuh twitch memecoins", "allowed_domains": null, "result_urls": [
+      "https://www.tiktok.com/discover/memecoin-trading-bots",
+      "https://www.twitch.tv/diostrades",
+      "https://www.twitch.tv/megga",
+      "https://www.twitch.tv/directory/category/crypto",
+      "https://linktr.ee/setuh",
+      "https://www.tiktok.com/discover/top-crypto-meme-coins-streamers",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://www.youtube.com/watch?v=vYyOchs9P_g",
+      "https://en.wikipedia.org/wiki/Meme_coin",
+      "https://www.blocmates.com/blocmates-101/top-crypto-streaming-channels-on-twitch"]},
+    {"query": "\"The Memecoin Blueprint\" setuh", "allowed_domains": null, "result_urls": [
+      "https://www.youtube.com/watch?v=kOdCGWGO80E",
+      "https://www.youtube.com/watch?v=fnIb5k8PBuM",
+      "https://www.youtube.com/watch?v=sj8ohBuJbxs",
+      "https://www.youtube.com/watch?v=sd_X_hsJutM",
+      "https://www.udemy.com/course/the-ultimate-guide-on-how-to-trade-solana-meme-coin/",
+      "https://www.oliverszmul.com/",
+      "https://www.scribd.com/document/820491540/the-ultimate-meme-coin-trading-blueprint-spot-trade-and-profit-in-30-days",
+      "https://en.wikipedia.org/wiki/Blueprint_(disambiguation)",
+      "https://en.wikipedia.org/wiki/Meme_coin",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A"]},
+    {"query": "setuh kick.com stream", "allowed_domains": null, "result_urls": [
+      "https://translate.google.com/translate?u=https%3A%2F%2Fhelp.kick.com%2Fen%2Farticles%2F7066931-how-to-stream-on-kick-com&hl=id&sl=en&tl=id&client=srp",
+      "https://help.kick.com/en/articles/7066931-how-to-stream-on-kick-com",
+      "https://support.streamyard.com/hc/en-us/articles/16599000591508-Create-a-Live-Stream-on-Kick-com",
+      "https://en.wikipedia.org/wiki/Kick_(service)",
+      "https://www.insta360.com/blog/tips/how-to-stream-on-kick.html",
+      "https://play.google.com/store/apps/details?id=com.kick.streaming&hl=en_US",
+      "https://help.kick.com/en/articles/7135289-streaming-on-kick-from-your-mobile-phone",
+      "https://apps.apple.com/us/app/kick-live-streaming/id6446202561",
+      "https://about.kick.com/"]},
+    {"query": "setuh kolscan wallet", "allowed_domains": null, "result_urls": [
+      "https://www.solflare.com/prices/kolscan/6jTQCFZR8JwvvenVGa3RzGM3a5YEagk9kQXDpHHdpump/",
+      "https://keepkey.com/assets/kolscan",
+      "https://www.solflare.com/prices/kolscan/6jTQCFZR8JwvvenVGa3RzGM3a5YEagk9kQXDpHHdpump/how-to-buy/",
+      "https://web3.bitget.com/en/wiki/kolscan-wallet",
+      "https://web3.bitget.com/en/swap/sol/6jTQCFZR8JwvvenVGa3RzGM3a5YEagk9kQXDpHHdpump",
+      "https://www.okx.com/en-us/how-to-buy/kolscan/501/6jTQCFZR8JwvvenVGa3RzGM3a5YEagk9kQXDpHHdpump",
+      "https://www.coincarp.com/currencies/kolscan/wallets/",
+      "https://phemex.com/how-to-buy/kolscan",
+      "https://www.blackhatworld.com/seo/list-of-popular-solana-memecoin-wallets.1682445/"]},
+    {"query": "setuh gmgn wallet solana KOL", "allowed_domains": null, "result_urls": [
+      "https://apify.com/parsebird/gmgn-copytrade-wallet-scraper/examples/find-top-kol-wallets-on-solana-by-trade-volume",
+      "https://medium.com/@gemQueenx/best-solana-meme-coin-wallet-traders-for-copy-trading-insider-wallets-4353930b33b9",
+      "https://apify.com/muhammetakkurtt/gmgn-kol-monitor-scraper",
+      "https://medium.com/@gemQueenx/gmgn-ai-trading-telegram-bot-solana-bnb-base-and-more-327f989cc397",
+      "https://github.com/GMGNAI/gmgn-skills",
+      "https://sa-iy-ou.github.io/soluniv/",
+      "https://play.google.com/store/apps/details?id=com.gmgn.app&hl=en_US",
+      "https://gmgn.ai/blog/how-to-track-copy-solana-smart-money/",
+      "https://solanatradingbots.com/gmgn-ai-how-to-use/"]},
+    {"query": "setuh live trading memecoins", "allowed_domains": ["youtube.com"], "result_urls": [
+      "https://www.youtube.com/watch?v=psjKCWknoCQ",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://www.youtube.com/watch?v=vYyOchs9P_g",
+      "https://www.youtube.com/watch?v=-o5Vw0U7V4w",
+      "https://www.youtube.com/watch?v=v9W9zKxgas0",
+      "https://www.youtube.com/watch?v=W_eiynbpr30",
+      "https://www.youtube.com/watch?v=kMJ5rkN2uT8",
+      "https://www.youtube.com/watch?v=kOdCGWGO80E"]},
+    {"query": "setuh", "allowed_domains": ["kolscan.io", "gmgn.ai", "web3.okx.com", "okx.com", "cielo.finance", "padre.gg"], "result_urls": [
+      "https://www.okx.com/en-us/price/set-set",
+      "https://www.okx.com/en-us/how-to-buy/sesh/1/0x10ea9e5303670331bdddfa66a4cea47dae4fcf3b",
+      "https://www.okx.com/en-us/learn/what-are-sats-coin",
+      "https://www.okx.com/en-us/price/usat-usat",
+      "https://www.okx.com/en-us/convert/mxn-to-zeta",
+      "https://www.okx.com/en-br/how-to-buy/tether-usd-usdt",
+      "https://www.okx.com/en-us/learn/what-is-status",
+      "https://www.okx.com/en-us/convert/eur-to-usdt",
+      "https://www.okx.com/en-us/help/how-do-i-use-simple-earn-fixed",
+      "https://www.okx.com/en-us/help/how-do-i-set-a-scaled-order-for-futures-trading"]},
+    {"query": "setuh telegram memecoin group", "allowed_domains": null, "result_urls": [
+      "https://telegram.me/joinchat/dXzrXZehJ95hZDdh",
+      "https://t.me/memecoin",
+      "https://t.me/joinchat/93geiJEMxqIzYjVh",
+      "https://t.me/MemeCoin_Whale_Pumps",
+      "https://www.tiktok.com/discover/telegrams-channels-for-memecoin",
+      "https://t.me/s/memecoincommunity",
+      "https://gist.ly/youtube-summarizer/pro-telegram-setup-guide-for-launching-your-meme-coin",
+      "https://telegram.im/@memecoin?lang=en",
+      "https://telegramchannels.me/tag/memecoin",
+      "https://t.me/meme_moguls"]},
+    {"query": "\"Watch Me Make $75,000 Trading Memecoins (LIVE)\"", "allowed_domains": null, "result_urls": [
+      "https://www.youtube.com/watch?v=v9W9zKxgas0",
+      "https://www.youtube.com/watch?v=-gnx00r3Awc",
+      "https://www.tiktok.com/discover/live-trading-meme-coins",
+      "https://sozai.app/transcript/made-450000-trading-memecoins-30-days/",
+      "https://www.youtube.com/watch?v=0fG6HMBIskk",
+      "https://en.coin-turk.com/a-level-playing-field-for-memecoins-inside-memetoros-ai-powered-model",
+      "https://openpr.com/news/4649519/top-100x-meme-coins-traders-are-watching-these-10-coins-as-apeing",
+      "https://openpr.com/news/4649485/7-top-meme-coins-to-buy-now-apeing-s-live-presale-nears-new",
+      "https://raidenjones.gumroad.com/l/memecoin",
+      "https://benzinga.com/z/37943279"]},
+    {"query": "\"(LIVE) Trading Memecoins & Answering Questions\"", "allowed_domains": null, "result_urls": [
+      "https://www.twitch.tv/directory/category/crypto",
+      "https://www.kraken.com/convert/meme",
+      "https://www.coingecko.com/en/coins/meme",
+      "https://coinmarketcap.com/currencies/meme/",
+      "https://www.bybit.com/en/price/memecoin-2/",
+      "https://dryflip.com/",
+      "https://www.kraken.com/prices/memecoin",
+      "https://www.livecoinwatch.com/price/Memecoin-____________MEME",
+      "https://www.livecoinwatch.com/price/Memecoin-MEM",
+      "https://jaydenlevitt.substack.com/p/inside-the-mind-of-crypto-trader"]},
+    {"query": "\"I Tried Live Trading Memecoins With Just $10\" 0.1 SOL challenge", "allowed_domains": null, "result_urls": [
+      "https://www.youtube.com/watch?v=kMJ5rkN2uT8",
+      "https://www.youtube.com/watch?v=R4pZrcOGygg",
+      "https://www.youtube.com/watch?v=NeGgdwKOOY0",
+      "https://www.youtube.com/watch?v=j3duYhHxJrQ",
+      "https://www.youtube.com/watch?v=IaZWAm96OV8",
+      "https://www.youtube.com/watch?v=EtExDND_Is4",
+      "https://zerion.io/blog/how-to-trade-solana-meme-coins-a-guide/",
+      "https://benzinga.com/markets/cryptocurrency/23/12/36342464/memecoin-madness-solana-degen-turns-92-into-1-5m-in-16-days-trading-silly-token-can-you-re",
+      "https://www.mexc.com/news/78259",
+      "https://www.mexc.com/news/991903"]},
+    {"query": "setuhh \"Watch Me Make\" trading memecoins LIVE", "allowed_domains": null, "result_urls": [
+      "https://www.youtube.com/watch?v=v9W9zKxgas0",
+      "https://www.youtube.com/watch?v=-CiBS6_yOJM",
+      "https://www.tiktok.com/discover/live-trading-meme-coins",
+      "https://www.youtube.com/watch?v=r-8nbRjzZRI",
+      "https://www.tiktok.com/discover/live-trading-solana-meme-coins",
+      "https://www.kraken.com/convert/meme",
+      "https://openpr.com/news/4649485/7-top-meme-coins-to-buy-now-apeing-s-live-presale-nears-new",
+      "https://www.tradingview.com/symbols/MEMEUSDT/",
+      "https://openpr.com/news/4649519/top-100x-meme-coins-traders-are-watching-these-10-coins-as-apeing",
+      "https://jaydenlevitt.substack.com/p/inside-the-mind-of-crypto-trader"]},
+    {"query": "Setuhx padre axiom memecoin", "allowed_domains": ["x.com", "twitter.com"], "result_urls": [
+      "https://x.com/Setuhx",
+      "https://x.com/dry_flip_",
+      "https://x.com/5MaticMechaDA2O",
+      "https://x.com/AxiomExchange?lang=en",
+      "https://x.com/SOLDABBER12/status/2030707672182337639",
+      "https://x.com/shaundadevens/status/2098041316596748509",
+      "https://x.com/Cointelegraph/status/1920169387400532260",
+      "https://x.com/solana_zzz/status/1921288014841737343",
+      "https://x.com/am1nfn",
+      "https://x.com/Adam_Tehc/status/1915761250807824592"]},
+    {"query": "\"How I Turned $50 into $500,000 Trading Memecoins\" scalping guide", "allowed_domains": null, "result_urls": [
+      "https://medium.com/@fxmbrand/500-to-50-000-success-story-trading-memecoin-30d04c0eefe2",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://m.youtube.com/watch?v=f4xoDvpoC-Q",
+      "https://www.blockchainbob.com/how-i-turned-500-into-2-million-trading-meme-coins-by-19-a-step-by-step-crypto-trading-strategy/",
+      "https://medium.com/@moneytent/how-i-consistently-make-500-every-day-trading-meme-coins-my-strategy-02403401af3a",
+      "https://www.fxempire.com/education/article/how-to-trade-memecoins-strategies-to-ride-hype-without-getting-rekt-1536530",
+      "https://mobee.com/en/mobee-academy/blog/strategi-trading-memecoin",
+      "https://coinunited.io/learn/en/how-to-start-trading-memecoin-meme-with-just-50",
+      "https://smartdigitalacademy.gumroad.com/l/memecoinmasterclass"]},
+    {"query": "\"setuh\" interview OR podcast memecoin trader", "allowed_domains": null, "result_urls": [
+      "https://www.ivoox.com/en/orangie-memecoin-trader-audios-mp3_rf_162557750_1.html",
+      "https://podcasts.apple.com/us/podcast/the-memecoin-podcast/id1763311012",
+      "https://podcasts.apple.com/us/podcast/crypto-market-wizards/id1711287349",
+      "https://podcasts.apple.com/us/podcast/follow-the-money-the-memecoin-economy/id261786876?i=1000777614989",
+      "https://www.youtube.com/watch?v=yvdrCUTVj-A&vl=en",
+      "https://wublock.substack.com/p/interview-with-murad-the-key-is-to",
+      "https://podcasts.apple.com/us/podcast/crypto-trading-secrets/id1659011738",
+      "https://memecoin.wiki/wiki/cupsey",
+      "https://huggingface.co/zirobtc/oracle/blob/main/FullCryptoGuide.md",
+      "https://davidzmorris.substack.com/p/how-to-trade-memecoins-interview"]},
+    {"query": "SETUH token pump.fun dexscreener", "allowed_domains": null, "result_urls": [
+      "https://dexscreener.com/ethereum/0xcb28f9cfc0fe67e5cf172fc1e4f161d99e569e4c",
+      "https://www.theblock.co/post/301748/dexscreener-released-a-pump-fun-competitor-moonshot",
+      "https://dexscreener.com/solana/bcd8vfmmwqqppwtcswgyke6vbe157tlrwmmmpgqxgzdc",
+      "https://dexscreener.com/solana/6ztuhp6adapfr18m1ybphdty6ehkvbkr7awhtxtbf26k",
+      "https://dexscreener.com/solana/8gdcma3jymehyv3162oxpsfkktvdjmwc9dy8p34fafax",
+      "https://dexscreener.com/solana/pumpbvpk8x4f8f3xhu319anbtxiqwc3enr2zqotilrq",
+      "https://dexscreener.com/solana/9k2ykws3vwjro42qidrdqqytvtpmqtfttheufvlhegrm",
+      "https://finance.yahoo.com/news/pump-funs-pump-token-double-114838878.html",
+      "https://pypi.org/project/pump-swap/",
+      "https://www.mexc.com/he-IL/tokens/PUMP"]},
+    {"query": "setuh tiktok memecoins", "allowed_domains": null, "result_urls": [
+      "https://www.tiktok.com/discover/memecoin-copy-trading",
+      "https://www.tiktok.com/discover/copy-trading-meme-coin-wallets",
+      "https://www.coingecko.com/en/categories/tiktok-meme",
+      "https://www.tiktok.com/discover/paper-trading-with-meme-coins",
+      "https://www.tiktok.com/@dw_espanol/video/7472804649599405334",
+      "https://www.tiktok.com/discover/top-meme-coins",
+      "https://www.tiktok.com/discover/meme-coins-to-buy-right-now",
+      "https://en.wikipedia.org/wiki/Vexbolts",
+      "https://en.wikipedia.org/wiki/Meme_coin"]},
+    {"query": "setuh", "allowed_domains": ["kick.com", "twitch.tv"], "result_urls": [
+      "https://www.twitch.tv/setuhh",
+      "https://www.twitch.tv/alinity/clip/BetterFriendlyBottleTBTacoRight-ZRmpMlY4WRt2cCqX",
+      "https://www.twitch.tv/sethus",
+      "https://www.twitch.tv/seth",
+      "https://www.twitch.tv/sethdrums",
+      "https://www.twitch.tv/sethtubby",
+      "https://m.twitch.tv/sethyvt?lang=en",
+      "https://www.twitch.tv/sethsentrytv",
+      "https://kick.com/jessitcuh/videos",
+      "https://www.twitch.tv/setthh/videos"]},
+    {"query": "setuh linktree discord free trading telegram \"From Nothing To Something\"", "allowed_domains": null, "result_urls": [
+      "https://linktr.ee/setuh",
+      "https://en.wikipedia.org/wiki/R/wallstreetbets",
+      "https://linktr.ee/Tradesharpe",
+      "https://en.wikipedia.org/wiki/Nookazon",
+      "https://www.dailyforex.com/forex-articles/forex-trading-discord-groups/229613",
+      "https://fortraders.com/blog/trading-discords-communities",
+      "https://www.dailyforex.com/forex-brokers/best-forex-brokers/top-signals-telegram",
+      "https://linktr.ee/LHS_Trading",
+      "https://desm0.gumroad.com/l/zhbas"]},
+    {"query": "\"setuh\" \"realest gambler\"", "allowed_domains": null, "result_urls": [
+      "https://www.twitch.tv/setuhh",
+      "https://en.wikipedia.org/wiki/The_Legend_of_the_Gambler:_Tetsuya",
+      "https://en.wikipedia.org/wiki/Mr._and_Mrs._Gambler",
+      "https://en.wikipedia.org/wiki/William_Lee_Bergstrom",
+      "https://en.wikipedia.org/wiki/Don_Johnson_(gambler)",
+      "https://en.wikipedia.org/wiki/Zeljko_Ranogajec",
+      "https://en.wikipedia.org/wiki/Riverboat_Gambler",
+      "https://fantasiainicial.substack.com/p/final-fantasy-6-setzer-a-todo-o-nada",
+      "https://thetvdb.com/movies/the-gambler/people"]},
+    {"query": "\"@setuhh\" memecoins channel", "allowed_domains": null, "result_urls": [
+      "https://x.com/Setuhx",
+      "https://www.youtube.com/@setuhh",
+      "https://www.youtube.com/watch?v=kOdCGWGO80E",
+      "https://www.youtube.com/watch?v=-GwaA1K11kA",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://en.wikipedia.org/wiki/Meme_coin",
+      "https://tradersunion.com/interesting-articles/best-crypto-signals-top-8-free-providers/meme-coin-telegram-groups/",
+      "https://telegramchannels.me/tag/memecoin",
+      "https://cryptotelegramgroups.com/"]},
+    {"query": "setthh twitch", "allowed_domains": null, "result_urls": [
+      "https://www.twitch.tv/setthh/videos",
+      "https://www.twitch.tv/setuhh",
+      "https://www.twitch.tv/setttv",
+      "https://www.twitch.tv/setty__",
+      "https://en.wikipedia.org/wiki/Summit1g",
+      "https://en.wikipedia.org/wiki/Twitch",
+      "https://en.wikipedia.org/wiki/Twitch_Rivals",
+      "https://en.wikipedia.org/wiki/Twitch_(service)",
+      "https://en.wikipedia.org/wiki/Taeha_Types"]},
+    {"query": "setuh memecoin scalping bundles narratives strategy", "allowed_domains": null, "result_urls": [
+      "https://mobee.com/en/mobee-academy/blog/strategi-trading-memecoin",
+      "https://arxiv.org/html/2507.01963v2",
+      "https://coconote.app/notes/687b0115-c75b-488f-b915-7b6fdcb8fb3f",
+      "https://www.sharpe.ai/learn/memecoin-narrative-tracker",
+      "https://whales.market/blog/5-memecoin-trading-strategies/",
+      "https://magica.com/youtube-summarizer/mastering-memecoin-trading-a-boring-yet-profitable-strategy-QMYqJldszcc",
+      "https://jordanwillow.gumroad.com/l/gbprv",
+      "https://it.tradingview.com/chart/1000BONKUSDT.P/vMMBAmwu-Memecoins-are-great-for-Catching-Knives-Honest-Report",
+      "https://kr.tradingview.com/script/PdyChdvH-TOP-BOTTOM-SCALPING"]},
+    {"query": "SetuhTrades telegram", "allowed_domains": null, "result_urls": [
+      "https://x.com/Setuhx?lang=ro",
+      "https://en.wikipedia.org/wiki/Telegram_(software)",
+      "https://en.wikipedia.org/wiki/Telegram_in_Iran",
+      "https://en.wikipedia.org/wiki/ZuluTrade",
+      "https://en.wikipedia.org/wiki/Censorship_of_Telegram",
+      "https://en.wikipedia.org/wiki/Ilya_Perekopsky",
+      "https://en.wikipedia.org/wiki/TON_(blockchain)",
+      "https://tradersunion.com/interesting-articles/free-telegram-trading-channels/",
+      "https://gizmologi.com/rekomendasi/10-komunitas-investasi-trading-saham-telegram/"]},
+    {"query": "Setuhx PnL memecoin trade sol", "allowed_domains": ["x.com"], "result_urls": [
+      "https://x.com/i/article/2097612033948856806",
+      "https://x.com/bitecong/status/2105435480619995309",
+      "https://x.com/bitecong/status/2105310503505645773",
+      "https://x.com/jackmelnick_/status/1858152531924333022",
+      "https://x.com/bitecong/status/2105422646695575950",
+      "https://x.com/hate_ofx/status/1961545258334068802",
+      "https://x.com/aut3z/status/1847661173606666294",
+      "https://x.com/bitecong/status/2105420218831143386",
+      "https://x.com/tradewithphoton?lang=en",
+      "https://x.com/matthew_sigel/status/1853456012734591462"]},
+    {"query": "\"I Tried Turning $50 Into $1000 Trading Memecoins\" realistic results", "allowed_domains": null, "result_urls": [
+      "https://medium.com/@fxmbrand/500-to-50-000-success-story-trading-memecoin-30d04c0eefe2",
+      "https://finance.yahoo.com/markets/crypto/articles/meme-coin-trader-turned-120-194758749.html",
+      "https://www.youtube.com/watch?v=W_eiynbpr30",
+      "https://coinledger.io/crypto-profit-calculator/memecoin-meme",
+      "https://fomo.family/answers/is-50-dollars-too-little-to-start",
+      "https://benzinga.com//node/41360269",
+      "https://smartdigitalacademy.gumroad.com/l/memecoinmasterclass",
+      "https://onesnapsol.gumroad.com/l/vnpoe",
+      "https://www.tipranks.com/news/how-one-trader-turned-3000-into-2-million-after-binance-founder-mentioned-a-new-memecoin",
+      "https://in.tradingview.com/news/cointelegraph:a96238207094b:0-crypto-trader-profits-9m-in-3-days-hits-3-000x-return-on-investment"]},
+    {"query": "youtube.com/@setuhh streams live memecoins setuh", "allowed_domains": null, "result_urls": [
+      "https://www.twitch.tv/setuhh",
+      "https://x.com/Setuhx",
+      "https://www.youtube.com/watch?v=psjKCWknoCQ",
+      "https://www.youtube.com/watch?v=kOdCGWGO80E",
+      "https://www.streamcoin.wtf/",
+      "https://en.wikipedia.org/wiki/Streamlabs",
+      "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "https://www.youtube.com/watch?v=vYyOchs9P_g",
+      "https://en.wikipedia.org/wiki/Live_streaming",
+      "https://en.wikipedia.org/wiki/YouNow"]},
+    {"query": "\"setuh\" solana wallet address tracker copy trade", "allowed_domains": null, "result_urls": [
+      "https://zerion.io/solana-wallet",
+      "https://www.solanatracker.io/wallet",
+      "https://nansen.ai/solana-onchain-data",
+      "https://www.cointracker.io/wallet/solana",
+      "https://cointracking.info/import/sol_address/",
+      "https://www.walletmaster.tools/solana-wallet-tracker/",
+      "https://devtools-site-delta.vercel.app/sol-wallet",
+      "https://www.copysolana.com/",
+      "https://gmgn.ai/blog/how-to-track-copy-solana-smart-money/"]}
+  ],
+  "identity_candidates": [
+    {
+      "platform": "x",
+      "handle_or_address": "@Setuhx",
+      "url": "https://x.com/Setuhx",
+      "evidence": [
+        {"source_url": "https://x.com/Setuhx?lang=en", "source_title": "setuh (@Setuhx) on X", "query": "Setuh crypto trader twitter", "claim_origin": "result_title", "text": "setuh (@Setuhx) on X"},
+        {"source_url": "https://x.com/Setuhx?lang=en", "source_title": "setuh (@Setuhx) on X", "query": "Setuh crypto trader twitter", "claim_origin": "search_summary", "text": "Setuh is an active X user with the handle @Setuhx who has 7,447 followers and joined the platform in September 2022. His profile features the tagline \"From Nothing To Something\" and promotes a trading platform."},
+        {"source_url": "https://x.com/Setuhx", "source_title": "setuh (@Setuhx) on X", "query": "Setuh youtube trading", "claim_origin": "search_summary", "text": "His tagline is \"From Nothing To Something\", and he can be followed on Twitter (@Setuhx) and uses a trading platform at trade.padre.gg/rk/setuh."},
+        {"source_url": "https://x.com/Setuhx", "source_title": "setuh (@Setuhx) on X", "query": "Setuhx padre axiom memecoin", "claim_origin": "search_summary", "text": "**Setuhx** - A trader who uses the Padre trading platform and shares trading content on X (Twitter), Telegram, and YouTube."},
+        {"source_url": "https://x.com/Setuhx?lang=ro", "source_title": "setuh (@Setuhx) pe X", "query": "SetuhTrades telegram", "claim_origin": "search_summary", "text": "SetuhTrades has a Telegram channel at t.me/SetuhTrades. The account is associated with a trading platform and has a YouTube channel with 40K subscribers."}
+      ],
+      "same_person_confidence": "high",
+      "reasoning": "Display name 'setuh' with handle @Setuhx. It was the top X result for every Setuh query and came back alongside the @setuhh YouTube videos and linktr.ee/setuh. According to the summaries, the profile uses the same 'From Nothing To Something' tagline the Linktree uses, points to the Padre referral trade.padre.gg/rk/setuh, and is tied to Telegram t.me/SetuhTrades and a YouTube channel.",
+      "conflicts_or_doubts": "The profile page was not fetched. The tagline, follower count, Padre link, Telegram link and YouTube cross-link all come from search summaries, which may blend several pages. The handle has an extra 'x' (Setuhx) while YouTube and Twitch use 'setuhh', so a direct link between them must be confirmed on the profile itself."
+    },
+    {
+      "platform": "youtube",
+      "handle_or_address": "@setuhh",
+      "url": "https://www.youtube.com/@setuhh",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/@setuhh/videos", "source_title": "Youtube", "query": "\"setuhh\" youtube", "claim_origin": "result_url", "text": "https://www.youtube.com/@setuhh/videos"},
+        {"source_url": "https://www.youtube.com/@setuhh", "source_title": "Youtube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "search_summary", "text": "Setuh has a YouTube channel at youtube.com/@setuhh. The account joined in September 2022."},
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "Setuh youtube trading", "claim_origin": "search_summary", "text": "Setuh is a content creator with a YouTube channel (@setuhh), and has been a member of Linktree since August 2025, with social media accounts linked including YouTube and Twitch."},
+        {"source_url": "https://www.youtube.com/watch?v=kOdCGWGO80E", "source_title": "The Memecoin Blueprint Day 1: Start With $0 - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "search_summary", "text": "Based on the search results, **The Memecoin Blueprint** is a video series created by Setuh (username @setuhh)."}
+      ],
+      "same_person_confidence": "high",
+      "reasoning": "The YouTube handle matches the Twitch handle 'setuhh'. Summaries tie the channel to the Linktree, to @Setuhx on X, and to memecoin video series that keep surfacing for Setuh queries.",
+      "conflicts_or_doubts": "The summary's 'joined in September 2022' matches the X join date and may be conflated with it. Subscriber count (40K) is summary-only. Channel names do not appear in YouTube result titles, so which videos are on this channel rests on the summaries."
+    },
+    {
+      "platform": "website",
+      "handle_or_address": "linktr.ee/setuh",
+      "url": "https://linktr.ee/setuh",
+      "evidence": [
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "Setuh youtube trading", "claim_origin": "result_title", "text": "setuh Official: X, Twitch"},
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh linktree discord free trading telegram \"From Nothing To Something\"", "claim_origin": "search_summary", "text": "setuh has been a member of Linktree for 1 year and joined in August 2025. Their tagline is \"From Nothing To Something.\" The profile includes an Official Discord server (free to join) and a Free Trading Telegram Group. The social media accounts linked from their Linktree are YouTube, Twitch, and X (formerly Twitter)."},
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh twitch memecoins", "claim_origin": "search_summary", "text": "Setuh's tagline is \"From Nothing To Something\" and they promote a trading platform and free trading Telegram group."}
+      ],
+      "same_person_confidence": "high",
+      "reasoning": "This appears to be the hub page. Its title names X and Twitch, and the summaries say it links YouTube, Twitch, X, a Discord and a Telegram group, with the same tagline as @Setuhx.",
+      "conflicts_or_doubts": "The exact link targets (which X, Twitch, Telegram and Discord URLs) were not visible. Opening this page is the cheapest way to confirm every other candidate."
+    },
+    {
+      "platform": "twitch",
+      "handle_or_address": "setuhh",
+      "url": "https://www.twitch.tv/setuhh",
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "\"setuhh\" youtube", "claim_origin": "result_title", "text": "setuhh - Twitch"},
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "\"setuhh\" youtube", "claim_origin": "search_summary", "text": "Setuhh is a content creator who streams on Twitch and has a YouTube channel. The creator describes themselves as a \"realest gambler\". You can find their YouTube channel at @setuhh, and they're also active on other platforms including Kick and X (Twitter)."},
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "setuh", "claim_origin": "search_summary", "text": "Setuhh streams live on Twitch, and describes themselves as a \"realest gambler.\" The channel has 6K followers, and they're also active on X (Twitter), Kick, and YouTube."},
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh twitch memecoins", "claim_origin": "result_title", "text": "setuh Official: X, Twitch"}
+      ],
+      "same_person_confidence": "medium",
+      "reasoning": "The handle 'setuhh' is identical to the YouTube handle. According to the summaries, the Twitch profile links to YouTube @setuhh, X and Kick, and the Linktree title lists Twitch.",
+      "conflicts_or_doubts": "No result showed this channel streaming memecoin trading. The bio 'realest gambler' could mean casino or gambling streams rather than trading. The Linktree's Twitch link target was not seen. Twitch has similarly named, unrelated channels (see ambiguity)."
+    },
+    {
+      "platform": "telegram",
+      "handle_or_address": "SetuhTrades",
+      "url": "https://t.me/SetuhTrades",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/@setuhh", "source_title": "Youtube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "search_summary", "text": "Setuh also maintains a Telegram trading channel (t.me/SetuhTrades), and based on the search results, the channel provides trading-related content and community interaction around memecoin trading."},
+        {"source_url": "https://x.com/Setuhx?lang=ro", "source_title": "setuh (@Setuhx) pe X", "query": "SetuhTrades telegram", "claim_origin": "search_summary", "text": "SetuhTrades has a Telegram channel at t.me/SetuhTrades. The account is associated with a trading platform and has a YouTube channel with 40K subscribers."}
+      ],
+      "same_person_confidence": "medium",
+      "reasoning": "Two separate searches gave the same handle in their summaries, each next to Setuh's YouTube or X results. The Linktree summary also mentions a 'Free Trading Telegram Group'.",
+      "conflicts_or_doubts": "The handle appears only in summaries, never as a result URL. t.me/SetuhTrades was not returned as a page, and it may not be the same as the Linktree's 'Free Trading Telegram Group'."
+    },
+    {
+      "platform": "discord",
+      "handle_or_address": "unknown (an 'Official Discord server (free to join)' said to be linked from the Linktree)",
+      "url": null,
+      "evidence": [
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh linktree discord free trading telegram \"From Nothing To Something\"", "claim_origin": "search_summary", "text": "The profile includes an Official Discord server (free to join) and a Free Trading Telegram Group."},
+        {"source_url": "https://www.youtube.com/watch?v=kOdCGWGO80E", "source_title": "The Memecoin Blueprint Day 1: Start With $0 - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "search_summary", "text": "Setuh also provides resources including a Discord community and references to a trading platform."}
+      ],
+      "same_person_confidence": "medium",
+      "reasoning": "The summaries say the Discord is linked from their own Linktree and from video descriptions.",
+      "conflicts_or_doubts": "No invite URL or server name was found."
+    },
+    {
+      "platform": "other",
+      "handle_or_address": "Padre (Terminal) referral code 'setuh'",
+      "url": "https://trade.padre.gg/sign-in?rk=setuh",
+      "evidence": [
+        {"source_url": "https://trade.padre.gg/sign-in?rk=setuh", "source_title": "Terminal", "query": "Setuh solana memecoin trader", "claim_origin": "result_url", "text": "https://trade.padre.gg/sign-in?rk=setuh"},
+        {"source_url": "https://trade.padre.gg/sign-in?rk=setuh", "source_title": "Terminal", "query": "Setuh solana memecoin trader", "claim_origin": "search_summary", "text": "The most relevant result is a memecoin trading terminal that describes itself as \"the fastest and most reliable memecoin trading terminal,\" with \"setuh\" appearing as a referral code."},
+        {"source_url": "https://www.youtube.com/watch?v=vYyOchs9P_g", "source_title": "How To Turn $10 Into $100,000 Trading Memecoins (Full Course) - YouTube", "query": "setuh live trading memecoins", "claim_origin": "search_summary", "text": "Setuh is active on Twitter and promotes a trading platform available at trade.padre.gg/rk/setuh."}
+      ],
+      "same_person_confidence": "medium",
+      "reasoning": "The referral code appears in the result URL itself, and the summaries say Setuh's X profile and videos promote this link. It is an affiliate link, not a wallet or tracker profile.",
+      "conflicts_or_doubts": "The code by itself does not show who owns it, and promoting a platform for referral income does not prove they trade on it. The connection to the X and YouTube accounts is summary-only."
+    },
+    {
+      "platform": "kick",
+      "handle_or_address": "unknown",
+      "url": null,
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "setuh", "claim_origin": "search_summary", "text": "The channel has 6K followers, and they're also active on X (Twitter), Kick, and YouTube."}
+      ],
+      "same_person_confidence": "low",
+      "reasoning": "The only evidence is a summary saying the Twitch profile mentions Kick.",
+      "conflicts_or_doubts": "Neither the Kick-restricted search nor the 'setuh kick.com stream' search returned any Setuh channel on Kick."
+    },
+    {
+      "platform": "other",
+      "handle_or_address": "TikTok topic 'Setuh Meme Coin Trading' (no account found)",
+      "url": null,
+      "evidence": [
+        {"source_url": null, "source_title": "(search summary; no matching result URL)", "query": "setuh tiktok memecoins", "claim_origin": "search_summary", "text": "Based on the search results, \"Setuh\" appears to be a reference to \"Setuh Meme Coin Trading,\" which appears on TikTok as a topic related to memecoin trading strategies."}
+      ],
+      "same_person_confidence": "low",
+      "reasoning": "This suggests clips about Setuh may circulate on TikTok.",
+      "conflicts_or_doubts": "No TikTok account or video URL for Setuh came back. The summary itself said it could not tell what 'Setuh' refers to there."
+    }
+  ],
+  "ambiguity": [
+    {
+      "description": "Search engines treat 'Setuh' as a misspelling of 'Setup'. The first query returned an Indonesian Scribd document whose URL slug is 'Setup-Trading' (title 'Panduan Trading Memecoin Solana'). This is not the trader. Expect 'setup' noise in future searches.",
+      "evidence": [
+        {"source_url": "https://www.scribd.com/document/850486009/Setup-Trading", "source_title": "Panduan Trading Memecoin Solana", "query": "Setuh solana memecoin trader", "claim_origin": "result_url", "text": "https://www.scribd.com/document/850486009/Setup-Trading"}
+      ]
+    },
+    {
+      "description": "'Settum Trading Academy' (settum.gumroad.com) has a similar-looking name and appeared in a Setuh search. Nothing links it to Setuh.",
+      "evidence": [
+        {"source_url": "https://settum.gumroad.com", "source_title": "Profile PictureSettum Trading Academy", "query": "Setuh youtube trading", "claim_origin": "result_title", "text": "Profile PictureSettum Trading Academy"}
+      ]
+    },
+    {
+      "description": "Twitch 'Setthh' is a near-identical spelling. The summary describes it as a League of Legends channel with 28 followers, so it is not the trader. Other name-similar Twitch channels came back for 'setuh': sethus, seth, sethdrums, sethtubby, sethyvt, sethsentrytv, setttv and setty__. Kick returned 'jessitcuh'. Use the exact handle 'setuhh' and check cross-links.",
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/setthh/videos", "source_title": "Setthh's Videos - Twitch", "query": "setthh twitch", "claim_origin": "search_summary", "text": "Based on the search results, \"Setthh\" is a Twitch streamer who creates archives, VODs, and highlights, with their latest League of Legends streams available on their channel. The account currently has 28 followers."},
+        {"source_url": "https://www.twitch.tv/sethus", "source_title": "Sethus - Live on Twitch", "query": "setuh", "claim_origin": "result_title", "text": "Sethus - Live on Twitch"},
+        {"source_url": "https://kick.com/jessitcuh/videos", "source_title": "Jessitcuh Videos - Watch On-Demand on ...", "query": "setuh", "claim_origin": "result_title", "text": "Jessitcuh Videos - Watch On-Demand on ..."}
+      ]
+    },
+    {
+      "description": "The Twitch bio 'realest gambler' does not say whether the streams are memecoin trading or casino or other gambling. Check the stream categories and VODs before treating the channel as a source of trading footage.",
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "\"setuh\" \"realest gambler\"", "claim_origin": "search_summary", "text": "Based on the search results, setuhh is known as the \"realest gambler\". Setuhh is a streamer who broadcasts live on Twitch. The primary result shows this is their Twitch profile where this tagline appears as their description."}
+      ]
+    },
+    {
+      "description": "It is unclear who made the '(LIVE)' and challenge videos. A youtube.com-restricted search for 'setuh live trading memecoins' returned several of them. However, YouTube result titles do not name the channel, and exact-title searches did not tie them to Setuh. Many other creators use near-identical titles, for example 'I Tried Trading Memecoins with Just $10', 'I Tried Trading MEMECOINS with Just 0.1 SOLANA', 'Watch Me LIVE Make $13,000 Trading Crypto Memecoins' and 'How I Made $800,000 Trading Memecoins in 1 Hour (LIVE)'. Some of the 'setuh' results may belong to other channels.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=v9W9zKxgas0", "source_title": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube", "query": "setuhh \"Watch Me Make\" trading memecoins LIVE", "claim_origin": "search_summary", "text": "The search results show several YouTube videos and content related to live trading of memecoins, though I didn't find specific content from \"setuhh\" with that exact title format."},
+        {"source_url": "https://www.youtube.com/watch?v=-CiBS6_yOJM", "source_title": "Watch Me LIVE Make $13,000 Trading Crypto Memecoins - YouTube", "query": "setuhh \"Watch Me Make\" trading memecoins LIVE", "claim_origin": "result_title", "text": "Watch Me LIVE Make $13,000 Trading Crypto Memecoins - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=r-8nbRjzZRI", "source_title": "How I Made $800,000 Trading Memecoins in 1 Hour (LIVE) - YouTube", "query": "setuhh \"Watch Me Make\" trading memecoins LIVE", "claim_origin": "result_title", "text": "How I Made $800,000 Trading Memecoins in 1 Hour (LIVE) - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=R4pZrcOGygg", "source_title": "I Tried Trading Memecoins with Just $10 - YouTube", "query": "\"I Tried Live Trading Memecoins With Just $10\" 0.1 SOL challenge", "claim_origin": "result_title", "text": "I Tried Trading Memecoins with Just $10 - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=NeGgdwKOOY0", "source_title": "I Tried Trading MEMECOINS with Just 0.1 SOLANA - YouTube", "query": "\"I Tried Live Trading Memecoins With Just $10\" 0.1 SOL challenge", "claim_origin": "result_title", "text": "I Tried Trading MEMECOINS with Just 0.1 SOLANA - YouTube"}
+      ]
+    },
+    {
+      "description": "The summaries disagree with result titles and with each other. The Blueprint Day 1 result title says 'Start With $0', but one summary calls it 'Start With Nothing'. The result title 'How To Turn $10 Into $100,000 Trading Memecoins (Full Course)' becomes '(Full Crash Course)' in a summary. The YouTube channel is said to have 'joined in September 2022', the same date given for the X account, so it is probably conflated. The summaries also use he/his for Setuh; gender is not established.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=kOdCGWGO80E", "source_title": "The Memecoin Blueprint Day 1: Start With $0 - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "search_summary", "text": "The series begins with \"Day 1: Start With Nothing\", and subsequent episodes cover different topics:"},
+        {"source_url": "https://www.youtube.com/watch?v=vYyOchs9P_g", "source_title": "How To Turn $10 Into $100,000 Trading Memecoins (Full Course) - YouTube", "query": "Setuh youtube trading", "claim_origin": "search_summary", "text": "Other video content includes \"How To Turn $10 Into $100,000 Trading Memecoins (Full Crash Course)\"."},
+        {"source_url": "https://www.youtube.com/@setuhh", "source_title": "Youtube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "search_summary", "text": "Setuh has a YouTube channel at youtube.com/@setuhh. The account joined in September 2022."},
+        {"source_url": "https://x.com/Setuhx?lang=en", "source_title": "setuh (@Setuhx) on X", "query": "Setuh crypto trader twitter", "claim_origin": "search_summary", "text": "Setuh is an active X user with the handle @Setuhx who has 7,447 followers and joined the platform in September 2022."}
+      ]
+    },
+    {
+      "description": "No token named SETUH turned up. This only means the search found none, not that none exists. No result showed a different person called 'Setuh' in crypto, apart from the name-similar accounts above.",
+      "evidence": [
+        {"source_url": null, "source_title": "(search summary; no matching result URL)", "query": "SETUH token pump.fun dexscreener", "claim_origin": "search_summary", "text": "The search results don't contain any specific information about a token called \"SETUH\" on pump.fun or DexScreener."}
+      ]
+    }
+  ],
+  "content_candidates": [
+    {
+      "url": "https://www.youtube.com/watch?v=psjKCWknoCQ",
+      "platform": "youtube",
+      "title": "(LIVE) Trading Memecoins & Answering Questions",
+      "published": null,
+      "duration": null,
+      "content_type": "live_trading_session",
+      "attributed_to_trader_because": "It came back for three different Setuh queries, and two summaries describe it as Setuh's live stream. An exact-title search did not return it, and no result shows the channel name.",
+      "priority": "high",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=psjKCWknoCQ", "source_title": "(LIVE) Trading Memecoins & Answering Questions - YouTube", "query": "setuh live trading memecoins", "claim_origin": "search_summary", "text": "A live stream where Setuh trades memecoins and answers questions"},
+        {"source_url": "https://www.youtube.com/watch?v=psjKCWknoCQ", "source_title": "(LIVE) Trading Memecoins & Answering Questions - YouTube", "query": "youtube.com/@setuhh streams live memecoins setuh", "claim_origin": "search_summary", "text": "The search results show that setuhh has created content about trading memecoins and answering questions, and has posted several YouTube videos related to memecoin trading guides and scalping strategies."},
+        {"source_url": "https://www.youtube.com/watch?v=psjKCWknoCQ", "source_title": "(LIVE) Trading Memecoins & Answering Questions - YouTube", "query": "Setuh youtube trading", "claim_origin": "result_title", "text": "(LIVE) Trading Memecoins & Answering Questions - YouTube"}
+      ]
+    },
+    {
+      "url": "https://www.twitch.tv/setuhh",
+      "platform": "twitch",
+      "title": "setuhh - Twitch (channel; VOD availability unknown)",
+      "published": null,
+      "duration": null,
+      "content_type": "unknown",
+      "attributed_to_trader_because": "The handle matches YouTube @setuhh. The summaries say the Twitch profile links to YouTube, X and Kick, and the Linktree title lists Twitch.",
+      "priority": "high",
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "setuh", "claim_origin": "search_summary", "text": "Setuhh streams live on Twitch, and describes themselves as a \"realest gambler.\" The channel has 6K followers, and they're also active on X (Twitter), Kick, and YouTube."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-o5Vw0U7V4w",
+      "platform": "youtube",
+      "title": "Watch Me Make $10k Trading Memecoins (LIVE)",
+      "published": null,
+      "duration": null,
+      "content_type": "live_trading_session",
+      "attributed_to_trader_because": "Weak. It came back only in the youtube.com-restricted 'setuh live trading memecoins' search, and the summary did not name it as Setuh's. The channel is unconfirmed.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=-o5Vw0U7V4w", "source_title": "Watch Me Make $10k Trading Memecoins (LIVE) - YouTube", "query": "setuh live trading memecoins", "claim_origin": "result_title", "text": "Watch Me Make $10k Trading Memecoins (LIVE) - YouTube"}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=v9W9zKxgas0",
+      "platform": "youtube",
+      "title": "Watch Me Make $75,000 Trading Memecoins (LIVE)",
+      "published": null,
+      "duration": null,
+      "content_type": "live_trading_session",
+      "attributed_to_trader_because": "Weak. It came back in the youtube.com-restricted Setuh search and in a 'setuhh' query, but a summary said no 'setuhh' content with that title format was found. The channel is unconfirmed. A summary said it was 'posted 13 days ago'; the reference date is unknown, so no publish date is recorded.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=v9W9zKxgas0", "source_title": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube", "query": "setuh live trading memecoins", "claim_origin": "result_title", "text": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=v9W9zKxgas0", "source_title": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube", "query": "\"Watch Me Make $75,000 Trading Memecoins (LIVE)\"", "claim_origin": "search_summary", "text": "Based on the search results, the video \"Watch Me Make $75,000 Trading Memecoins (LIVE)\" is a YouTube video posted 13 days ago. The video appears to be from a trader showcasing live memecoin trading activities with affiliate links for trading platforms."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=W_eiynbpr30",
+      "platform": "youtube",
+      "title": "I Traded Memecoins With $50 LIVE - Here's What Happened",
+      "published": null,
+      "duration": null,
+      "content_type": "live_trading_session",
+      "attributed_to_trader_because": "Weak. It came back in the youtube.com-restricted Setuh search and in a search for the '$50 Into $1000' title. The channel is unconfirmed.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=W_eiynbpr30", "source_title": "I Traded Memecoins With $50 LIVE - Here's What Happened - YouTube", "query": "setuh live trading memecoins", "claim_origin": "result_title", "text": "I Traded Memecoins With $50 LIVE - Here's What Happened - YouTube"}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kMJ5rkN2uT8",
+      "platform": "youtube",
+      "title": "I Tried Live Trading Memecoins With Just $10 (0.1 SOL Challenge)",
+      "published": null,
+      "duration": null,
+      "content_type": "live_trading_session",
+      "attributed_to_trader_because": "Weak. It came back in the youtube.com-restricted Setuh search, and the exact-title search summary did not name the creator. The channel is unconfirmed.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=kMJ5rkN2uT8", "source_title": "I Tried Live Trading Memecoins With Just $10 (0.1 SOL Challenge) - YouTube", "query": "\"I Tried Live Trading Memecoins With Just $10\" 0.1 SOL challenge", "claim_origin": "search_summary", "text": "The most directly matching result is a video titled \"I Tried Live Trading Memecoins With Just $10 (0.1 SOL Challenge)\" where the creator starts with only 0.1 SOL—roughly $10 when recorded—to see if they can grow a memecoin trading account without losing it all."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-GwaA1K11kA",
+      "platform": "youtube",
+      "title": "I Tried Turning $50 Into $1000 Trading Memecoins (Realistic Results)",
+      "published": null,
+      "duration": null,
+      "content_type": "recorded_trading_session",
+      "attributed_to_trader_because": "Moderate. It came back in the '@setuhh memecoins channel' search, whose summary says Setuh made videos about 'turning small amounts into larger sums'. An exact-title search did not return it. The content type is a guess from the challenge format.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=-GwaA1K11kA", "source_title": "I Tried Turning $50 Into $1000 Trading Memecoins (Realistic Results) - YouTube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "result_title", "text": "I Tried Turning $50 Into $1000 Trading Memecoins (Realistic Results) - YouTube"},
+        {"source_url": "https://www.youtube.com/@setuhh", "source_title": "Youtube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "search_summary", "text": "Setuh has created videos about memecoin trading strategies, including content on \"The Memecoin Blueprint,\" turning small amounts into larger sums through memecoin trading, and scalping strategies."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=P1WjCGzIE2A",
+      "platform": "youtube",
+      "title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide)",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "Several summaries name it as Setuh's video, and it came back in most Setuh searches.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=P1WjCGzIE2A", "source_title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube", "query": "Setuh youtube trading", "claim_origin": "search_summary", "text": "Setuh creates content about trading memecoins, including videos like \"How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide)\" and promotes a trading platform."},
+        {"source_url": "https://www.youtube.com/watch?v=P1WjCGzIE2A", "source_title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube", "query": "\"How I Turned $50 into $500,000 Trading Memecoins\" scalping guide", "claim_origin": "search_summary", "text": "A YouTube video titled \"How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide)\" claims to present a scalping strategy that made $500,000 in 5 months."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=vYyOchs9P_g",
+      "platform": "youtube",
+      "title": "How To Turn $10 Into $100,000 Trading Memecoins (Full Course)",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "Summaries name it as Setuh's video, under a slightly different title: '(Full Crash Course)'.",
+      "priority": "low",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=vYyOchs9P_g", "source_title": "How To Turn $10 Into $100,000 Trading Memecoins (Full Course) - YouTube", "query": "setuh twitch memecoins", "claim_origin": "search_summary", "text": "Setuh has published YouTube videos with titles like \"How I Turned $50 into $500,000 Trading Memecoins\" and \"How To Turn $10 Into $100,000 Trading Memecoins,\" featuring affiliate links to a trading platform."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kOdCGWGO80E",
+      "platform": "youtube",
+      "title": "The Memecoin Blueprint Day 1: Start With $0",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "A summary says the series was 'created by Setuh (username @setuhh)'.",
+      "priority": "low",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=kOdCGWGO80E", "source_title": "The Memecoin Blueprint Day 1: Start With $0 - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "search_summary", "text": "Based on the search results, **The Memecoin Blueprint** is a video series created by Setuh (username @setuhh)."}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sd_X_hsJutM",
+      "platform": "youtube",
+      "title": "The Memecoin Blueprint Day 2: Bundles",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "It is part of the Memecoin Blueprint series, which a summary attributes to Setuh (@setuhh). The topic may show how they screen tokens for bundled supply.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=sd_X_hsJutM", "source_title": "The Memecoin Blueprint Day 2: Bundles - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 2: Bundles - YouTube"}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=sj8ohBuJbxs",
+      "platform": "youtube",
+      "title": "The Memecoin Blueprint Day 3: Scanning Narratives",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "It is part of the Memecoin Blueprint series, which a summary attributes to Setuh (@setuhh). The topic is about how they find and select tokens.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=sj8ohBuJbxs", "source_title": "The Memecoin Blueprint Day 3: Scanning Narratives - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 3: Scanning Narratives - YouTube"}
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fnIb5k8PBuM",
+      "platform": "youtube",
+      "title": "The Memecoin Blueprint Day 4: Scalping",
+      "published": null,
+      "duration": null,
+      "content_type": "tutorial",
+      "attributed_to_trader_because": "It is part of the Memecoin Blueprint series, which a summary attributes to Setuh (@setuhh). The topic covers short-duration entries and exits.",
+      "priority": "medium",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=fnIb5k8PBuM", "source_title": "The Memecoin Blueprint Day 4: Scalping - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 4: Scalping - YouTube"}
+      ]
+    }
+  ],
+  "tools_and_workflow_leads": [
+    {
+      "lead": "They promote Padre (branded 'Terminal', trade.padre.gg) with the referral code 'setuh', and one summary says they use it. This is an affiliate link, so promotion does not prove they actually trade on it. Context, not about Setuh: a summary says Padre was acquired by Pump in October 2025 and competes with Axiom.",
+      "evidence": [
+        {"source_url": "https://trade.padre.gg/sign-in?rk=setuh", "source_title": "Terminal", "query": "Setuh solana memecoin trader", "claim_origin": "result_url", "text": "https://trade.padre.gg/sign-in?rk=setuh"},
+        {"source_url": "https://x.com/Setuhx", "source_title": "setuh (@Setuhx) on X", "query": "Setuh youtube trading", "claim_origin": "search_summary", "text": "he can be followed on Twitter (@Setuhx) and uses a trading platform at trade.padre.gg/rk/setuh."},
+        {"source_url": "https://x.com/Setuhx", "source_title": "setuh (@Setuhx) on X", "query": "Setuhx padre axiom memecoin", "claim_origin": "search_summary", "text": "The search results show that Setuhx is a trader who promotes the Padre platform for memecoin trading, which is an alternative to the more dominant Axiom platform in the memecoin trading space."},
+        {"source_url": null, "source_title": "(search summary; source result not identified)", "query": "Setuhx padre axiom memecoin", "claim_origin": "search_summary", "text": "**Padre** - A trading platform that was acquired by Pump in October 2025 and established as Pump's professional trading offering for early-stage coins still on the bonding curve, competing directly with Axiom."}
+      ]
+    },
+    {
+      "lead": "The Memecoin Blueprint episode titles point to how they select tokens: checking for bundles (Day 2), scanning narratives (Day 3), and scalping as the trade style (Day 4), starting from $0 (Day 1). These are topics to check against footage, not confirmed practices.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=sd_X_hsJutM", "source_title": "The Memecoin Blueprint Day 2: Bundles - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 2: Bundles - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=sj8ohBuJbxs", "source_title": "The Memecoin Blueprint Day 3: Scanning Narratives - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 3: Scanning Narratives - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=fnIb5k8PBuM", "source_title": "The Memecoin Blueprint Day 4: Scalping - YouTube", "query": "\"The Memecoin Blueprint\" setuh", "claim_origin": "result_title", "text": "The Memecoin Blueprint Day 4: Scalping - YouTube"}
+      ]
+    },
+    {
+      "lead": "Their main style appears to be scalping, based on the title of their flagship guide.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=P1WjCGzIE2A", "source_title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube", "query": "Setuh youtube trading", "claim_origin": "result_title", "text": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube"}
+      ]
+    },
+    {
+      "lead": "They run community channels: a free Discord, a free trading Telegram group, and possibly t.me/SetuhTrades. Worth checking whether trades or calls are posted there in real time, which could give timestamps to pair with footage.",
+      "evidence": [
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh linktree discord free trading telegram \"From Nothing To Something\"", "claim_origin": "search_summary", "text": "The profile includes an Official Discord server (free to join) and a Free Trading Telegram Group."},
+        {"source_url": "https://www.youtube.com/@setuhh", "source_title": "Youtube", "query": "\"@setuhh\" memecoins channel", "claim_origin": "search_summary", "text": "Setuh also maintains a Telegram trading channel (t.me/SetuhTrades)"}
+      ]
+    },
+    {
+      "lead": "They post about trader psychology on X. The summary paraphrases these posts and gives no direct quote: thinking independently, new traders losing rationality around money, and new traders who learn from crypto streamers.",
+      "evidence": [
+        {"source_url": "https://x.com/Setuhx?lang=en", "source_title": "setuh (@Setuhx) on X", "query": "Setuh crypto trader twitter", "claim_origin": "search_summary", "text": "Setuh shares commentary about trading, including observations that it's difficult for traders to think independently and that many new people lose rationality when money is involved. He also discusses challenges for new traders introduced to crypto streamers and the difficulties of thinking independently in the trading space."}
+      ]
+    }
+  ],
+  "secondary_claims": [
+    {
+      "claim": "Title claim: turned $50 into $500,000 trading memecoins. One summary adds that the scalping strategy made $500,000 in 5 months.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=P1WjCGzIE2A", "source_title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube", "query": "Setuh youtube trading", "claim_origin": "result_title", "text": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=P1WjCGzIE2A", "source_title": "How I Turned $50 into $500,000 Trading Memecoins (Full Scalping Guide) - YouTube", "query": "\"How I Turned $50 into $500,000 Trading Memecoins\" scalping guide", "claim_origin": "search_summary", "text": "claims to present a scalping strategy that made $500,000 in 5 months."}
+      ]
+    },
+    {
+      "claim": "Live-profit claims in titles of videos that may not be theirs: 'Make $10k' and 'Make $75,000' while trading live. The channel is unconfirmed.",
+      "evidence": [
+        {"source_url": "https://www.youtube.com/watch?v=-o5Vw0U7V4w", "source_title": "Watch Me Make $10k Trading Memecoins (LIVE) - YouTube", "query": "setuh live trading memecoins", "claim_origin": "result_title", "text": "Watch Me Make $10k Trading Memecoins (LIVE) - YouTube"},
+        {"source_url": "https://www.youtube.com/watch?v=v9W9zKxgas0", "source_title": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube", "query": "setuh live trading memecoins", "claim_origin": "result_title", "text": "Watch Me Make $75,000 Trading Memecoins (LIVE) - YouTube"}
+      ]
+    },
+    {
+      "claim": "Audience size: 7,447 X followers (joined September 2022), 6K Twitch followers and 40K YouTube subscribers. All three numbers are summary-only.",
+      "evidence": [
+        {"source_url": "https://x.com/Setuhx?lang=en", "source_title": "setuh (@Setuhx) on X", "query": "Setuh crypto trader twitter", "claim_origin": "search_summary", "text": "@Setuhx who has 7,447 followers and joined the platform in September 2022."},
+        {"source_url": "https://www.twitch.tv/setuhh", "source_title": "setuhh - Twitch", "query": "setuh", "claim_origin": "search_summary", "text": "The channel has 6K followers"},
+        {"source_url": "https://x.com/Setuhx?lang=ro", "source_title": "setuh (@Setuhx) pe X", "query": "SetuhTrades telegram", "claim_origin": "search_summary", "text": "has a YouTube channel with 40K subscribers."}
+      ]
+    },
+    {
+      "claim": "Account age: Linktree member since August 2025.",
+      "evidence": [
+        {"source_url": "https://linktr.ee/setuh", "source_title": "setuh Official: X, Twitch", "query": "setuh linktree discord free trading telegram \"From Nothing To Something\"", "claim_origin": "search_summary", "text": "setuh has been a member of Linktree for 1 year and joined in August 2025."}
+      ]
+    }
+  ],
+  "other_traders_mentioned": [
+    {
+      "name": "Cupsey",
+      "why_interesting": "An X post analysing Cupsey's wallet reports a very short average hold (4 minutes) over a large number of trades, which fits short-duration decision research directly. A summary says long-form podcast interviews exist. Cupsey did not appear alongside Setuh; this came up in co-occurring results only.",
+      "evidence": [
+        {"source_url": "https://x.com/hate_ofx/status/1961545258334068802", "source_title": "Hate🎖️ on X: \"Cupsey has made $25.9M trading memecoin for a year. ...\"", "query": "Setuhx PnL memecoin trade sol", "claim_origin": "result_title", "text": "Cupsey has made $25.9M trading memecoin for a year. Here is the analysis on his wallet: Biggest pnl: $128,965 Average Pnl per trade: $1,249 Average hold time: 4 minutes 0-2x trades: 13,246 coins 5x+ trades: 14 coins Total volume: $55.8M vol Interesting stats on Cupsey wallet"},
+        {"source_url": "https://memecoin.wiki/wiki/cupsey", "source_title": "Who is Cupsey? Solana memecoin trader", "query": "\"setuh\" interview OR podcast memecoin trader", "claim_origin": "search_summary", "text": "Long form interviews exist and are treated as canonical by his audience: Threadguy's TG Podcast hosted him alongside FlippingProfits in July 2025 and alongside Jack Duval in December 2025."}
+      ]
+    },
+    {
+      "name": "Orangie",
+      "why_interesting": "A well-known memecoin trader with a long-form Threadguy Live interview. Possibly a source of process detail. Orangie did not appear alongside Setuh.",
+      "evidence": [
+        {"source_url": "https://www.ivoox.com/en/orangie-memecoin-trader-audios-mp3_rf_162557750_1.html", "source_title": "Orangie - Memecoin Trader - Threadguy Live - Podcast on iVoox", "query": "\"setuh\" interview OR podcast memecoin trader", "claim_origin": "search_summary", "text": "Orangie is one of the most well known memecoin traders, and in this interview, he explains his thoughts, future forecast, and advice on memecoins on the Threadguy Live podcast."}
+      ]
+    },
+    {
+      "name": "CookerFlips",
+      "why_interesting": "A summary says CookerFlips was a TG Podcast guest discussing a large single-token profit; a long-form interview could be a lead. CookerFlips did not appear alongside Setuh.",
+      "evidence": [
+        {"source_url": null, "source_title": "(search summary; source result not identified)", "query": "\"setuh\" interview OR podcast memecoin trader", "claim_origin": "search_summary", "text": "**CookerFlips**: Featured on the TG Podcast discussing his $7.5 million profit on the ASTER token."}
+      ]
+    },
+    {
+      "name": "FlippingProfits; Jack Duval",
+      "why_interesting": "Named as co-guests with Cupsey on Threadguy's TG Podcast. These are possible further long-form sources.",
+      "evidence": [
+        {"source_url": "https://memecoin.wiki/wiki/cupsey", "source_title": "Who is Cupsey? Solana memecoin trader", "query": "\"setuh\" interview OR podcast memecoin trader", "claim_origin": "search_summary", "text": "Threadguy's TG Podcast hosted him alongside FlippingProfits in July 2025 and alongside Jack Duval in December 2025."}
+      ]
+    },
+    {
+      "name": "DiosTrades; Megga (Twitch)",
+      "why_interesting": "Live Twitch channels that came back for 'setuh twitch memecoins'. If they stream memecoin trading, they could be sources of real trading footage. The association is only search co-occurrence, and their content is unverified.",
+      "evidence": [
+        {"source_url": "https://www.twitch.tv/diostrades", "source_title": "DiosTrades - Live on Twitch", "query": "setuh twitch memecoins", "claim_origin": "result_title", "text": "DiosTrades - Live on Twitch"},
+        {"source_url": "https://www.twitch.tv/megga", "source_title": "Megga - Live on Twitch", "query": "setuh twitch memecoins", "claim_origin": "result_title", "text": "Megga - Live on Twitch"}
+      ]
+    },
+    {
+      "name": "aut3z",
+      "why_interesting": "An X post describes small position sizing and a self-reported 30-40% win rate on low-mcap coins. This is a minor process lead, and aut3z is not associated with Setuh.",
+      "evidence": [
+        {"source_url": "https://x.com/aut3z/status/1847661173606666294", "source_title": "aut3z ⚔️ on X: \"PnL Glitch ...\"", "query": "Setuhx PnL memecoin trade sol", "claim_origin": "result_title", "text": "PnL Glitch In the last few days, I have caught 3-5 coins with +30x profit, but despite that, I havent made even 50 SOL profit overall. The reason is, I am aware of how risky low MCAP memecoins are, so I only invest small amounts, and my win rate is around 30-40%"}
+      ]
+    }
+  ],
+  "open_questions": [
+    "Open linktr.ee/setuh to confirm the exact targets of its X, YouTube, Twitch, Telegram and Discord links. This would confirm or reject most identity candidates at once.",
+    "Confirm which channel uploaded each '(LIVE)' and challenge video (-o5Vw0U7V4w, v9W9zKxgas0, W_eiynbpr30, kMJ5rkN2uT8, -GwaA1K11kA, psjKCWknoCQ), and record publish dates and durations. The youtube.com/@setuhh/videos and /streams tabs are the primary source.",
+    "Find out whether twitch.tv/setuhh keeps VODs and what categories it streams, given the bio 'realest gambler'.",
+    "No Solana wallet address was found for Setuh on kolscan, GMGN, OKX or the other trackers searched. Look for a wallet in the X bio, PnL screenshots, on-stream wallet displays, or a Padre/Terminal profile.",
+    "Check whether a Kick channel exists. Only a summary mentions one, and no handle was found.",
+    "Verify t.me/SetuhTrades. It appears only in search summaries.",
+    "Tools: apart from the Padre/Terminal affiliate link, no result tied Setuh to Axiom, GMGN, Photon, BullX, J7 Tracker or Telegram bots. Footage is needed to see what they actually use.",
+    "Check every performance and audience figure (the $50 to $500,000 claim, 40K subscribers, 6K Twitch followers, 7,447 X followers) against the primary pages.",
+    "Check whether the YouTube channel's 'September 2022' join date is real or conflated with the X join date."
+  ]
+}

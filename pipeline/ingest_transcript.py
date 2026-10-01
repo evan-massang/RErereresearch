@@ -121,7 +121,7 @@ def ingest_caption_file(con: duckdb.DuckDBPyConnection, source_id: str, path: Pa
     _require_source(con, source_id)
     path = Path(path)
     archived = path
-    root = config.archive_root()
+    root = config.root()
     if root not in path.resolve().parents:
         archived = config.path("raw_subtitles", source_id) / path.name
         archived.write_bytes(path.read_bytes())
@@ -204,7 +204,7 @@ def transcribe(con: duckdb.DuckDBPyConnection, source_id: str, *, transcriber: T
         segments, info = transcriber.transcribe(wav, language)
         lang = language or info.get("language")
         transcript_id = stable_id("tr", source_id, "asr", transcriber.name, transcriber.model_name, lang)
-        out = config.path("transcripts", source_id) / f"{transcript_id}.json"
+        out = config.path("asr", source_id) / f"{transcript_id}.json"
         out.write_text(json.dumps({
             "source_id": source_id, "transcriber": transcriber.name, "model": transcriber.model_name,
             "info": info, "segments": [asdict(s) for s in segments],

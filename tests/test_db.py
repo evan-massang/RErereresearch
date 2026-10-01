@@ -9,7 +9,7 @@ def test_schema_is_idempotent(archive):
     tables = {r[0] for r in archive.execute(
         "SELECT table_name FROM information_schema.tables WHERE table_type = 'BASE TABLE'").fetchall()}
     assert set(db.TABLES) <= tables
-    assert archive.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0] == db.SCHEMA_VERSION
+    assert archive.execute("SELECT value FROM schema_meta WHERE key='schema_version'").fetchone()[0] == str(db.SCHEMA_VERSION)
 
 
 def test_every_table_starts_empty(archive):

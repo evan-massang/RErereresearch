@@ -18,7 +18,7 @@ def pytest_configure(config):
 @pytest.fixture
 def archive(tmp_path, monkeypatch):
     """A fresh, isolated archive root + open DB connection."""
-    monkeypatch.setenv("RR_ARCHIVE", str(tmp_path / "archive"))
+    monkeypatch.setenv("RR_ROOT", str(tmp_path / "root"))
     from pipeline import db
 
     con = db.connect()

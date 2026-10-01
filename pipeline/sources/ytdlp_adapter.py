@@ -30,6 +30,12 @@ def normalize_info(info: dict[str, Any], uri: str) -> VideoRecord:
     """Convert a yt-dlp info dict into a VideoRecord (pure; unit-testable offline)."""
     ts = info.get("timestamp") or info.get("release_timestamp")
     published = datetime.fromtimestamp(ts, tz=timezone.utc) if ts else None
+    live_status = info.get("live_status")
+    was_live = bool(info.get("was_live")) or live_status in ("was_live", "post_live")
+    # For stream recordings, release_timestamp is the stream start. Video time t then
+    # corresponds to wall-clock live_start_at + t (approximate if the VOD was trimmed).
+    rel_ts = info.get("release_timestamp")
+    live_start = datetime.fromtimestamp(rel_ts, tz=timezone.utc) if (was_live and rel_ts) else None
     platform = (info.get("extractor_key") or info.get("extractor") or "unknown").lower()
     return VideoRecord(
         platform=platform,
@@ -51,6 +57,9 @@ def normalize_info(info: dict[str, Any], uri: str) -> VideoRecord:
         chapters=info.get("chapters"),
         manual_caption_langs=sorted((info.get("subtitles") or {}).keys()),
         auto_caption_langs=sorted((info.get("automatic_captions") or {}).keys()),
+        was_live=was_live if (live_status or "was_live" in info) else None,
+        live_status=live_status,
+        live_start_at=live_start,
         raw={k: v for k, v in info.items() if k not in _DROP_KEYS},
     )
 

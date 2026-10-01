@@ -24,7 +24,7 @@ def test_cli_end_to_end_offline(archive, capsys, synthetic_video, tmp_path):
     rc, res = run(capsys, "add-trader", "SYNTHETIC-TRADER-B", "--synthetic")
     trader = res["trader_id"]
 
-    rc, res = run(capsys, "add-observation", "--source-id", web_sid, "--snapshot-id", snap, "--kind", "quote",
+    rc, res = run(capsys, "add-observation", "--source-id", web_sid, "--snapshot-id", snap, "--modality", "document", "--kind", "quote",
                   "--content", "SYNTHETIC", "--quote", "alpha bravo", "--extractor", "human",
                   "--trader-id", trader, "--synthetic")
     assert res["quote_verified"] is True
@@ -52,7 +52,7 @@ def test_cli_end_to_end_offline(archive, capsys, synthetic_video, tmp_path):
 
 
 def test_cli_reports_validation_errors(archive, capsys):
-    rc, res = run(capsys, "add-observation", "--source-id", "src_nope", "--kind", "x", "--content", "y",
+    rc, res = run(capsys, "add-observation", "--source-id", "src_nope", "--modality", "said", "--kind", "x", "--content", "y",
                   "--extractor", "human")
     assert rc == 1 and "unknown source_id" in res["error"]
 

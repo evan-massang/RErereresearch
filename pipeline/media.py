@@ -89,3 +89,25 @@ def extract_scene_frames(src: Path | str, out_dir: Path | str, threshold: float 
     times = [float(m) for m in _PTS_RE.findall(proc.stderr)]
     files = sorted(out_dir.glob("_scene_*.jpg"))
     return list(zip(times, files))
+
+
+_SCORE_RE = re.compile(r"lavfi\.scene_score=([0-9.]+)")
+
+
+def scene_scores(src: Path | str, start_s: float, end_s: float, fps: float = 4.0) -> list[tuple[float, float]]:
+    """Visual change score (0-1) between consecutive sampled frames in [start_s, end_s).
+
+    Trading UIs change constantly in small ways (ticking numbers), so useful
+    thresholds are much lower than for film cuts; calibrate on real footage.
+    """
+    if end_s <= start_s:
+        return []
+    base = max(0.0, start_s)
+    proc = _run(["ffmpeg", "-nostdin", "-v", "info", "-ss", f"{base:.3f}", "-t", f"{end_s - base:.3f}",
+                 "-i", str(src), "-vf", f"fps={fps},select='gte(scene,0)',metadata=print",
+                 "-an", "-f", "null", "-"])
+    times = [float(m) for m in _PTS_RE.findall(proc.stderr)]
+    scores = [float(m) for m in _SCORE_RE.findall(proc.stderr)]
+    if len(times) != len(scores):
+        raise SourceUnavailable("could not align ffmpeg scene scores with timestamps", status="error")
+    return [(round(base + t, 3), sc) for t, sc in zip(times, scores) if base + t < end_s]

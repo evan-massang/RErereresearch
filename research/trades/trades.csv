@@ -1,0 +1,1 @@
+trade_id,trader_id,token_id,source_id,observed_via,instrument,asset_class,direction,entry_time,entry_price,exit_time,exit_price,stop_price,target_price,size,size_unit,currency,timeframe,outcome,pnl,pnl_unit,status,confidence,notes,created_at,is_synthetic,trader,ticker,mint,evidence_count

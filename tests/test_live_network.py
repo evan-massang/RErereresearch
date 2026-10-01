@@ -39,6 +39,12 @@ def test_http_reachable():
     assert page.status_code == 200 and page.content
 
 
+@pytest.mark.skipif(not os.environ.get("RR_TEST_TWITCH_VOD"), reason="set RR_TEST_TWITCH_VOD to a VOD URL")
+def test_twitch_vod_metadata_reachable():
+    rec = get_video_adapter("ytdlp").fetch_metadata(os.environ["RR_TEST_TWITCH_VOD"])
+    assert rec.external_id and rec.duration_s
+
+
 def test_whisper_model_download(tmp_path):
     t = FasterWhisperTranscriber(model="tiny", device="cpu", download_root=str(tmp_path))
     assert t._load() is not None
