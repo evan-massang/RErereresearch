@@ -1,25 +1,34 @@
 # Research plan and status
 
-_Last updated 2026-10-01. Status lines summarise the database; details and
-sources are in `research/traders/<slug>/identity.md` and `sources/source_ledger.csv`._
+_Last updated 2026-10-01 ~16:00 UTC. Status lines summarise the database; details and
+sources are in `research/traders/<slug>/identity.md`, `research/observations/` and
+`sources/source_ledger.csv`. Overnight results: `reports/simulations/`._
 
 ## Where things stand
 
-**No research findings exist yet.** The only outside evidence gathered so far
-comes from web-search results (titles, URLs and model-written summaries)
-because this container's network policy blocks direct access to YouTube,
-Twitch, X, Hugging Face and every Solana data source (see "Blocked" below).
-Everything below is a **lead**, not an established fact.
+The network has been opened, so primary sources are now in use:
+- X profiles and posts through the fxtwitter mirror.
+- A live Solana RPC feed of every pump.fun bonding-curve trade, recorded since 12:17 UTC.
+- kolscan's public KOL stream.
+- Live Twitch and Kick captures.
 
-| trader | strongest identity leads (status) | session-type content found | notes |
-|---|---|---|---|
-| Cupsey | wallets `2fg5QD1e…rx6f`, `suqh5sHt…CHQfK` (probable); X @Cupseyy, Twitch `cupseyy` (lead) | Twitch VOD list + stream archives (titles mention Axiom/Flippr/filters); podcasts/interviews | A $CUPSEY mascot token and its X accounts share the name; win-rate/trade-count claims conflict across sites |
-| Decu | X @notdecu + wallet `4vw54BmA…Ud9` posted by that account (probable); Twitch `decu` (lead) | Twitch VODs (e.g. a 331-minute trading stream, 2026-07-08, per a tracker summary) | `decu0x` influencer profile and two DECU tokens are probably unrelated |
-| Setuh | YouTube @setuhh (probable); X @Setuhx, linktr.ee/setuh, Twitch `setuhh` (lead) | 1 live trading video tied to the channel; 4–5 more "(LIVE)" videos not yet tied to it | Twitch bio "realest gambler" may mean casino streams; name often autocorrected to "setup" |
-| Leck | YouTube @LeckSol (probable); X @LeckSol, wallet `98T65wcM…w3Mp` (lead) | one "scalping" video; no long sessions or VODs found | the "long recorded sessions" premise is unsupported so far; @LeekSol is a different (token) account |
+The database holds 21 findings: 16 observed and 5 inferred. None are stated or validated yet.
 
-Tool mentions (Axiom, Flippr, Padre, pump.fun app, BullX) come from stream
-titles and referral links. A referral link is not evidence of use; frames are.
+| trader | identity (status) | evidence so far |
+|---|---|---|
+| Decu | X @notdecu, Twitch `decu`, wallet `4vw54BmA…Ud9` (all **verified**: the account posted the wallet) | Live stream recorded 13:38 onward, 48 on-chain trades coded against footage, 5 on-screen SKIPs, BUY-vs-SKIP choice set |
+| Cupsey | X @Cupseyy (verified); wallet `2fg5QD1e…rx6f` (probable, kolscan) | Not live on stream so far; wallet tracked in the tape |
+| Setuh | X @Setuhx, YouTube @setuhh, Telegram SetuhTrades (verified); wallet `62N1K57D…tuR` (probable, kolscan "set") | Wallet tracked in the tape |
+| Leck | X @LeckSol, YouTube @LeckSol (verified); wallet `98T65wcM…w3Mp` (probable) | Wallet tracked in the tape |
+| SolanaSwaggy (found while recording) | Kick channel (verified); wallet `AnrXEnft…bDc` (probable: on-screen "YOU" row matches chain) | Wallet bought the creation second of 4/5 launches by one deployer |
+
+Rejected look-alikes: @decurionz and @DecuTV.
+
+Simulation results so far (details in `reports/simulations/`):
+- Copying tracked KOLs is negative at every latency.
+- H1 (hot new token, dev sold, few snipers) and H3 (Decu's post-dev-dump timing) are negative in development and in-sample runs.
+- H4 (copy unknown consistent winners) loses even in-sample.
+- The formal first tests of H1–H4 run after the train period ends at 17:15 UTC.
 
 ## The highest-value data design
 
@@ -55,31 +64,23 @@ once access exists.
 5. **Measurable features + historical market data** (trade-level swap history
    for the relevant tokens), then simulation under the split/holdout rules.
 
-## Blocked by network policy (as of 2026-10-01)
+## Access status (updated 2026-10-01 ~16:00 UTC)
 
-Verified with `python -m pipeline check-network` and live attempts; the
-proxy denied every one (`403` on CONNECT):
+The network is open. What still limits the work:
 
-| need | hosts to allow |
+| need | status |
 |---|---|
-| YouTube metadata, captions, media | `youtube.com`, `*.youtube.com`, `*.googlevideo.com`, `*.ytimg.com`, `youtubei.googleapis.com` |
-| Twitch VODs | `twitch.tv`, `*.twitch.tv`, `*.ttvnw.net`, `*.jtvnw.net`, `*.cloudfront.net` (VOD segments) |
-| Kick VODs (other traders) | `kick.com`, `*.kick.com`, `*.live-video.net` |
-| Whisper models for transcription | `huggingface.co`, `*.huggingface.co`, `*.hf.co` |
-| Profiles and pages to verify identities | `linktr.ee`, `x.com`, `twitter.com`, `kolscan.io`, `gmgn.ai`, `kolexplorer.com`, `orbmarkets.io`, `solscan.io`, plus arbitrary article sites |
-| Solana market/on-chain history | e.g. `api.mainnet-beta.solana.com` (rate-limited), Helius, Birdeye, DexScreener, GeckoTerminal, Dune (several need API keys) |
-
-Because sources are open-ended, broad ("full") network access for this
-environment is simpler than an allowlist. Allowed today: package registries
-(PyPI etc.) and GitHub.
+| YouTube videos and captions | Metadata works. Media and captions get a bot wall (403/429 from cloud IPs) and need browser cookies (`--cookies`). |
+| Twitch/Kick past broadcasts | The seed channels list no VODs, so live capture (`scripts/stream_watcher.py`) is the only footage. |
+| J7 Tracker | The public docs work. The API needs an account JWT, which was not provided. Tokens it deploys are visible on chain by their `metadata.j7tracker.io` metadata. |
+| kolscan account API | Returns 403. Only the public SSE stream is used; the block was not worked around. |
+| Wallet history from public RPC | `getSignaturesForAddress` for famous wallets is flooded with spam transactions. The live tape replaces it. |
+| PumpSwap / Raydium (post-migration) trades | Recorded raw but not decoded. Exits after migration are missing from curve-only PnL. |
 
 ## Decisions needed from the project owner
 
-1. **Network access** for this environment (above).
-2. **On-chain history provider** for wallet histories and per-token swap
-   streams. A public RPC works for small pulls; a provider with parsed swap
-   history (e.g. Helius) needs an API key stored as an environment secret.
-3. **Media storage**: the container is temporary and raw media is not
-   committed. Either re-download as needed (VODs may expire) or provide
-   persistent storage.
-4. **Cookies** (optional) if YouTube or Twitch block downloads from cloud IPs.
+1. **Cookies** for YouTube (Setuh's and Leck's videos), stored as an environment secret.
+2. **J7 Tracker JWT**, if J7's feed/API should be used (optional: its deploys are already visible on chain).
+3. **On-chain history provider** (e.g. Helius) for full wallet histories, including AMM trades. Needs an API key as an environment secret.
+4. **Media storage**: recordings live only in this container, about 3 GB/h while streams are live, and are not committed.
+5. **Creator/launch strategies**: profits on the curve concentrate in token creators who dump on buyers. I am not building or testing launch-and-dump strategies.
