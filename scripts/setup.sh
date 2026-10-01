@@ -30,7 +30,7 @@ missing_py=$("$PY" - <<'EOF'
 import importlib.util
 mods = {"yt_dlp": "yt-dlp", "faster_whisper": "faster-whisper", "trafilatura": "trafilatura",
         "bs4": "beautifulsoup4", "lxml": "lxml", "httpx": "httpx", "pandas": "pandas",
-        "pyarrow": "pyarrow", "duckdb": "duckdb", "pytest": "pytest"}
+        "pyarrow": "pyarrow", "duckdb": "duckdb", "pytest": "pytest", "deno": "deno"}
 print(" ".join(pkg for mod, pkg in mods.items() if importlib.util.find_spec(mod) is None))
 EOF
 )

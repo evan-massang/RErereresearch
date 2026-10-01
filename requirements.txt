@@ -1,4 +1,5 @@
-yt-dlp>=2025.1.1
+yt-dlp[default]>=2025.1.1
+deno>=2.0   # JavaScript runtime yt-dlp needs for YouTube
 faster-whisper>=1.1
 trafilatura>=2.0
 beautifulsoup4>=4.12
