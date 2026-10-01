@@ -57,6 +57,7 @@ def connect() -> duckdb.DuckDBPyConnection:
             src_file VARCHAR, sig VARCHAR, slot BIGINT, recv DOUBLE, ts BIGINT, mint VARCHAR, usr VARCHAR,
             buy BOOLEAN, sol DOUBLE, tok DOUBLE, vsol DOUBLE, vtok DOUBLE, rsol DOUBLE, rtok DOUBLE,
             fee_bps INTEGER, cfee_bps INTEGER);
+        CREATE TABLE IF NOT EXISTS curve_trades_rejected AS SELECT * FROM curve_trades WHERE false;
         CREATE TABLE IF NOT EXISTS curve_creates (
             src_file VARCHAR, mint VARCHAR, sig VARCHAR, slot BIGINT, recv DOUBLE, name VARCHAR, symbol VARCHAR,
             uri VARCHAR, creator VARCHAR);
@@ -92,6 +93,21 @@ def _complete(f: Path) -> bool:
     return hour < now_hour and time.time() - f.stat().st_mtime > 120
 
 
+# Rows that decode as TradeEvents but cannot be trades (seen 2026-10-01: sol=793100, tok=whole virtual supply,
+# garbage timestamps, no fee fields; 22 of ~490k). They are moved to curve_trades_rejected, never analysed.
+PLAUSIBLE_TRADE = ("ts BETWEEN recv - 600 AND recv + 60 AND sol >= 0 AND sol < 100000 AND tok > 0 "
+                   "AND vsol > 0 AND vtok > 0")
+
+
+def _quarantine(con: duckdb.DuckDBPyConnection) -> int:
+    bad = f"NOT ({PLAUSIBLE_TRADE}) OR ts IS NULL OR vsol IS NULL OR vtok IS NULL"
+    n = con.execute(f"SELECT count(*) FROM curve_trades WHERE {bad}").fetchone()[0]
+    if n:
+        con.execute(f"INSERT INTO curve_trades_rejected SELECT * FROM curve_trades WHERE {bad}")
+        con.execute(f"DELETE FROM curve_trades WHERE {bad}")
+    return n
+
+
 def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
     """Incrementally load recorder output: finished files once, growing files re-read each time."""
     import pandas as pd
@@ -109,7 +125,7 @@ def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
             complete = _complete(f)
             added["files"] += 1
             if feed == "pump_curve":
-                for t in ("curve_trades", "curve_creates", "curve_completes"):
+                for t in ("curve_trades", "curve_trades_rejected", "curve_creates", "curve_completes"):
                     con.execute(f"DELETE FROM {t} WHERE src_file = ?", [f.name])
                 tr, cr, co = [], [], []
                 for r in _read_file(f):
@@ -155,6 +171,7 @@ def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
                     con.unregister("_df")
                 added["kolscan_msgs"] += len(rows)
             con.execute("INSERT OR REPLACE INTO loaded_files VALUES (?, ?, ?)", [feed, f.name, complete])
+    added["rejected_implausible"] = _quarantine(con)
     added["total_curve_trades"] = con.execute("SELECT count(*) FROM curve_trades").fetchone()[0]
     return added
 
@@ -197,7 +214,7 @@ def round_trips(con: duckdb.DuckDBPyConnection, wallets: list[str] | None = None
     where = "WHERE usr IN (SELECT wallet FROM kol_wallets)" if wallets is None else \
         f"WHERE usr IN ({', '.join('?' for _ in wallets)})"
     rows = con.execute(f"""SELECT usr, mint, recv, ts, buy, sol, tok, vsol, vtok, rsol, fee_bps, cfee_bps, slot
-                           FROM curve_trades {where} ORDER BY usr, mint, recv""", wallets or []).fetchall()
+                           FROM curve_trades {where} ORDER BY usr, mint, recv, rowid""", wallets or []).fetchall()
     created = dict(con.execute("SELECT mint, recv FROM curve_creates").fetchall())
     create_slot = dict(con.execute("SELECT mint, slot FROM curve_creates").fetchall())
     graduated = {r[0] for r in con.execute("SELECT mint FROM curve_completes").fetchall()}
@@ -287,7 +304,7 @@ def leaderboard(con: duckdb.DuckDBPyConnection, min_trips: int = 5) -> list[dict
 # ------------------------------------------------------------------ selection edge vs random
 
 def _price_path(con, mint: str) -> tuple[list[float], list[float]]:
-    rows = con.execute("SELECT recv, vsol / vtok FROM curve_trades WHERE mint = ? ORDER BY recv", [mint]).fetchall()
+    rows = con.execute("SELECT recv, vsol / vtok FROM curve_trades WHERE mint = ? ORDER BY recv, rowid", [mint]).fetchall()
     return [r[0] for r in rows], [r[1] for r in rows]
 
 
@@ -374,7 +391,7 @@ def event_study(con: duckdb.DuckDBPyConnection, trips: list[Trip], *, windows=((
     n = 0
     for t in trips:
         rows = con.execute("""SELECT recv, usr, buy, sol, vsol / vtok FROM curve_trades
-                              WHERE mint = ? AND recv BETWEEN ? AND ? ORDER BY recv""",
+                              WHERE mint = ? AND recv BETWEEN ? AND ? ORDER BY recv, rowid""",
                            [t.mint, t.first_ts - 60, t.first_ts + max(horizons) + 1]).fetchall()
         if not rows:
             continue

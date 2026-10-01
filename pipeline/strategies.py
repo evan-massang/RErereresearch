@@ -19,18 +19,18 @@ def build_market_store(con: duckdb.DuckDBPyConnection, start: float, end: float,
     """All bonding-curve creates + swaps available before ``end`` (with ``history_s`` before ``start``)."""
     from .copytrade import slot_clock
 
-    a, b = slot_clock(con)
+    clock = slot_clock(con)
     events = []
     for i, (recv, slot, mint, creator) in enumerate(con.execute(
-            "SELECT recv, slot, mint, creator FROM curve_creates WHERE recv >= ? AND recv < ? ORDER BY recv",
+            "SELECT recv, slot, mint, creator FROM curve_creates WHERE recv >= ? AND recv < ? ORDER BY recv, rowid",
             [start - history_s, end]).fetchall()):
-        ts = min(a + b * slot, recv) if slot else recv
+        ts = min(clock(slot), recv) if slot else recv
         events.append(Event(ts=ts, available_at=recv, kind="create", mint=mint, seq=i,
                             data={"creator": creator, "slot": slot}))
     rows = con.execute("""SELECT recv, slot, mint, usr, buy, sol, tok, vsol, vtok FROM curve_trades
-                          WHERE recv >= ? AND recv < ? ORDER BY recv""", [start - history_s, end]).fetchall()
+                          WHERE recv >= ? AND recv < ? ORDER BY recv, rowid""", [start - history_s, end]).fetchall()
     for i, (recv, slot, mint, usr, buy, sol, tok, vsol, vtok) in enumerate(rows):
-        ts = min(a + b * slot, recv) if slot else recv
+        ts = min(clock(slot), recv) if slot else recv
         events.append(Event(ts=ts, available_at=recv, kind="swap", mint=mint, seq=10_000_000 + i,
                             data={"side": "buy" if buy else "sell", "trader": usr, "sol": sol, "tok": tok,
                                   "slot": slot, "v_sol": vsol, "v_tok": vtok, "price_sol": vsol / vtok}))

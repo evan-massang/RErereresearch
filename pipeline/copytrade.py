@@ -22,23 +22,58 @@ from .sim.metrics import performance
 RESOLUTION_S = 0.5
 
 
-def slot_clock(con: duckdb.DuckDBPyConnection) -> tuple[float, float]:
-    """ts ~= a + b * slot, fitted on recorded trades."""
-    rows = con.execute("SELECT slot, ts FROM curve_trades WHERE slot IS NOT NULL USING SAMPLE 20000").fetchall()
-    xs, ys = [r[0] for r in rows], [r[1] for r in rows]
-    mx, my = statistics.mean(xs), statistics.mean(ys)
-    b = sum((x - mx) * (y - my) for x, y in zip(xs, ys)) / sum((x - mx) ** 2 for x in xs)
-    return my - b * mx + 0.5, b          # +0.5: block ts is floored to the second
+class SlotClock:
+    """Event time from slot number, for slots seen in the data.
+
+    Block times are whole seconds and slot length drifts, so a single linear fit over hours is off by up
+    to ~10 s. Each slot's time is a local least-squares fit of block time on slot over its neighbours
+    (+-``half_window`` distinct slots, ~1 min), +0.5 s because block time is floored. Deterministic: it
+    uses every distinct slot, no sampling. Only the world's event times use it (the integer block time
+    is in every transaction; neighbours only refine it within the second).
+    """
+
+    def __init__(self, slots, block_ts, half_window: int = 150):
+        import numpy as np
+
+        x = np.asarray(slots, dtype=float)
+        y = np.asarray(block_ts, dtype=float)
+        if len(x) < 2:
+            raise ValueError("need >= 2 slots")
+        x0, y0 = x[0], y[0]
+        xc, yc = x - x0, y - y0
+        c = lambda v: np.concatenate([[0.0], np.cumsum(v)])
+        sx, sy, sxx, sxy = c(xc), c(yc), c(xc * xc), c(xc * yc)
+        i = np.arange(len(x))
+        lo, hi = np.clip(i - half_window, 0, len(x)), np.clip(i + half_window + 1, 0, len(x))
+        n = hi - lo
+        Sx, Sy, Sxx, Sxy = sx[hi] - sx[lo], sy[hi] - sy[lo], sxx[hi] - sxx[lo], sxy[hi] - sxy[lo]
+        den = n * Sxx - Sx * Sx
+        b = np.where(den > 0, (n * Sxy - Sx * Sy) / np.where(den > 0, den, 1), 0.4)
+        a = (Sy - b * Sx) / n
+        self._x = x
+        self._est = a + b * xc + y0 + 0.5
+
+    def __call__(self, slot: float) -> float:
+        import numpy as np
+
+        return float(np.interp(slot, self._x, self._est))
+
+
+def slot_clock(con: duckdb.DuckDBPyConnection) -> SlotClock:
+    """Clock fitted on every distinct slot of the recorded trades (implausible rows already excluded)."""
+    rows = con.execute("SELECT slot, min(ts) FROM curve_trades WHERE slot IS NOT NULL AND ts BETWEEN recv - 600 "
+                       "AND recv + 60 GROUP BY slot ORDER BY slot").fetchall()
+    return SlotClock([r[0] for r in rows], [r[1] for r in rows])
 
 
 def build_store(con: duckdb.DuckDBPyConnection, mints: list[str], start: float, end: float) -> EventStore:
-    a, b = slot_clock(con)
+    clock = slot_clock(con)
     ph = ", ".join("?" for _ in mints)
     rows = con.execute(f"""SELECT recv, slot, mint, usr, buy, sol, tok, vsol, vtok FROM curve_trades
-                           WHERE mint IN ({ph}) AND recv < ? ORDER BY recv""", [*mints, end]).fetchall()
+                           WHERE mint IN ({ph}) AND recv < ? ORDER BY recv, rowid""", [*mints, end]).fetchall()
     events = []
     for i, (recv, slot, mint, usr, buy, sol, tok, vsol, vtok) in enumerate(rows):
-        ts = a + b * slot if slot else recv
+        ts = min(clock(slot), recv) if slot else recv
         ts = min(ts, recv)
         events.append(Event(ts=ts, available_at=recv, kind="swap", mint=mint, seq=i,
                             data={"side": "buy" if buy else "sell", "trader": usr, "sol": sol, "tok": tok,

@@ -49,3 +49,18 @@ def test_time_stop():
     s = MirrorWallet("SYNTH_TARGET", size_sol=0.2, max_hold_s=10)
     res = run(s, tape(sells=()), start=T0, end=T0 + 100, execution=base_execution(fail_prob=0.0))
     assert len(res.trades) == 1 and res.trades[0].exit_tags == ("time_stop",)
+
+
+def test_slot_clock_is_deterministic_and_follows_drift():
+    """SYNTHETIC slots whose length drifts from 0.40 s to 0.44 s: the local fit tracks it within 1 s."""
+    from pipeline.copytrade import SlotClock
+
+    slots, t, ts = [], 1_700_000_000.0, []
+    for i in range(20000):
+        slots.append(100 + i)
+        ts.append(int(t))
+        t += 0.40 + 0.04 * i / 20000
+    a, b = SlotClock(slots, ts), SlotClock(slots, ts)
+    true_t = 1_700_000_000.0 + sum(0.40 + 0.04 * k / 20000 for k in range(15000))
+    assert a(15100) == b(15100)
+    assert abs(a(15100) - true_t) < 1.0
