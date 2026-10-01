@@ -3,7 +3,8 @@
     python scripts/research/post_migration_finding.py
 
 Price = SOL / tokens of each swap (execution price, swaps >= 0.01 SOL). Reference = the pool's first such
-swap. Only pools of tokens whose curve completion is in the tape and with >= 30 min of data after it.
+swap. Only pools of tokens whose curve completion is in the tape and with >= 30 min of data after it, using
+data before 19:15 UTC only (the holdout of overnight-2026-10-01 is not looked at).
 """
 import json
 import statistics
@@ -18,12 +19,14 @@ from pipeline import config, db, findings, observations  # noqa: E402
 from pipeline.ingest_web import ingest_document  # noqa: E402
 
 EX = "claude:post-migration-2026-10-01"
+# 19:15 UTC: the holdout of split set overnight-2026-10-01 starts here; nothing after it is used
+CUTOFF = 1790882100.0
 
 
 def main() -> dict:
     m = duckdb.connect(str(config.path("data") / "market.duckdb"), read_only=True)
     rows = m.execute("""
-        WITH t AS (SELECT pool, recv, sol / tok AS p FROM amm_trades WHERE tok > 0 AND sol >= 0.01),
+        WITH t AS (SELECT pool, recv, sol / tok AS p FROM amm_trades WHERE tok > 0 AND sol >= 0.01 AND recv < ?),
         f AS (SELECT pool, min(recv) AS t0, arg_min(p, recv) AS p0 FROM t GROUP BY 1)
         SELECT f.pool, f.p0,
           (SELECT arg_max(p, recv) FROM t WHERE t.pool = f.pool AND t.recv <= f.t0 + 60),
@@ -31,7 +34,8 @@ def main() -> dict:
           (SELECT arg_max(p, recv) FROM t WHERE t.pool = f.pool AND t.recv <= f.t0 + 1800),
           (SELECT max(p) FROM t WHERE t.pool = f.pool AND t.recv <= f.t0 + 1800),
           (SELECT max(recv) FROM t) - f.t0
-        FROM f WHERE f.pool IN (SELECT pool FROM amm_pools WHERE mint IN (SELECT mint FROM curve_completes))""").fetchall()
+        FROM f WHERE f.pool IN (SELECT pool FROM amm_pools WHERE mint IN (SELECT mint FROM curve_completes))""",
+        [CUTOFF]).fetchall()
     rows = [r for r in rows if r[6] > 1800]
     out = {"n_pools": len(rows), "reference": "first AMM swap >= 0.01 SOL", "horizons": {}}
     for i, h in ((2, "1m"), (3, "5m"), (4, "30m"), (5, "max_within_30m")):

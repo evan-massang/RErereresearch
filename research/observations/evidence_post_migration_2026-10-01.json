@@ -1,26 +1,26 @@
 {
- "n_pools": 291,
+ "n_pools": 275,
  "reference": "first AMM swap >= 0.01 SOL",
  "horizons": {
   "1m": {
-   "median": 0.308,
-   "share_up": 0.691,
-   "share_ge_2x": 0.392
+   "median": 0.284,
+   "share_up": 0.684,
+   "share_ge_2x": 0.385
   },
   "5m": {
-   "median": 0.372,
-   "share_up": 0.625,
-   "share_ge_2x": 0.361
+   "median": 0.365,
+   "share_up": 0.629,
+   "share_ge_2x": 0.36
   },
   "30m": {
-   "median": -0.924,
-   "share_up": 0.278,
-   "share_ge_2x": 0.22
+   "median": -0.919,
+   "share_up": 0.284,
+   "share_ge_2x": 0.225
   },
   "max_within_30m": {
-   "median": 2.234,
-   "share_up": 0.973,
-   "share_ge_2x": 0.646
+   "median": 2.12,
+   "share_up": 0.971,
+   "share_ge_2x": 0.644
   }
  }
 }

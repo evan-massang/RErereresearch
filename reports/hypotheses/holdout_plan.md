@@ -46,3 +46,11 @@ Both H5 and H6 failed their first tests:
 - **H6:** 7 trades, −0.98 SOL, PF 0.35.
 
 See `reports/failures/`. **No hypothesis reaches the holdout.** No strategy was run on the 19:15–21:15 data, and the split stays `open` (not burned). It remains a clean test period for any hypothesis registered later, provided it is registered before anyone looks at that data.
+
+## Note (19:35 UTC)
+
+Two descriptive, market-wide queries briefly read data up to 19:31. Neither evaluated a strategy:
+- post-migration price paths;
+- Decu's day total.
+
+Both were re-run with a hard 19:15 cutoff, and only those versions are recorded. Any future hypothesis built on post-migration selling should still treat 19:15–19:31 as having been seen in aggregate. It should use a later test window.

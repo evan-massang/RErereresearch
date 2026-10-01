@@ -80,7 +80,7 @@ Screen readings come from the stream frames.
 - Profitability **persists**: 85 wallets were profitable in both halves of the day, against 55 expected by chance.
 - Right after a famous KOL buys, the price jumps ~10–18% within seconds as followers pile in. After unknown consistent winners buy, it does not.
 
-- **After migration** (290 tokens, decoded PumpSwap trades), prices are typically **up in the first minutes**: a median +30% at 1 min and +37% at 5 min, and 64% reach 2× within 30 min. By 30 min the median is **−93%**. Holding through migration pays only if you sell into that short window, which is what Decu did with BTC, QRCAT and Ansemmas.
+- **After migration** (275 tokens, decoded PumpSwap trades before 19:15), prices are typically **up in the first minutes**: a median +28% at 1 min and +37% at 5 min, and 64% reach 2× within 30 min. By 30 min the median is **−92%**. Holding through migration pays only if you sell into that short window, which is what Decu did with BTC, QRCAT and Ansemmas.
 
 ## Hypothesis tests (pre-registered, unchanged parameters)
 
@@ -116,7 +116,7 @@ H5 shows that Decu's exit style does not rescue a mechanical entry: most entries
   - Decu video 16:11:39–16:15:19.
 - **Missed trades:** the tape misses ~4% of curve trades (websocket drops). Pump tokens quoted in another token instead of SOL are excluded by design.
 - **kolscan's per-wallet coverage has gaps.** It relayed none of Decu's 41 curve trades between 18:00 and 19:00. For the 13:38–16:11 session it matched the tape, so the +89 SOL figure stands. Later figures that rely on kolscan would undercount.
-- **PumpSwap (AMM) trades are now decoded** from the raw logs (19:45 UTC): 348 pools and 2.2M swaps. The layout was verified against Decu's QRCAT sale, whose amounts match kolscan exactly. 315 of 334 migrations have their pool decoded; 19 lost the pool-creation event. On curve plus AMM, Decu's day on pump tokens is about **+97 SOL** over 36 tokens, with open positions counted at cost. That includes AMM exits kolscan never relayed, such as Ansemmas, +33.6 SOL net. **Raydium Launchpad** trades (Setuh's main venue) are still not decoded. Exits after migration appear only through kolscan, which covers only tracked wallets. The simulator cannot model AMM exits, so H5 exits on the curve, near migration.
+- **PumpSwap (AMM) trades are now decoded** from the raw logs (19:45 UTC): 348 pools and 2.2M swaps. The layout was verified against Decu's QRCAT sale, whose amounts match kolscan exactly. 315 of 334 migrations have their pool decoded; 19 lost the pool-creation event. On curve plus AMM, Decu's day on pump tokens up to 19:15 is **+86.9 SOL** over 35 tokens (23 winners), with positions still open counted at cost. That includes AMM exits kolscan never relayed, such as Ansemmas, +33.6 SOL net. **Raydium Launchpad** trades (Setuh's main venue) are still not decoded. Exits after migration appear only through kolscan, which covers only tracked wallets. The simulator cannot model AMM exits, so H5 exits on the curve, near migration.
 - **Small samples.** Decu's picks are dozens, not hundreds. Every finding states its n.
 
 ## What I would do next
