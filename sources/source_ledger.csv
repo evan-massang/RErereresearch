@@ -185,6 +185,8 @@ source,src_467688af2719b8a7,stream://pump_curve/2026-10-01/consistent-winners,we
 source,src_a1521940bb4b435b,stream://twitch_decu/2026-10-01/screen-visits,web,Token pages Decu opened on stream (URL-bar OCR),,,decu,,document,True,file,,,
 source,src_546550bf00e61216,/home/user/RErereresearch/data/raw/video/live/twitch_setuhh/20261001T161522Z_seg0000-0240.mp4,local,"Setuh live stream (Twitch) 720p, 16:15:22+240s UTC",Setuh,2026-10-01 16:15:22+00,setuh,,video,True,local,,,"Live capture of twitch.tv/setuhh, first 240 s; video t=0 is 2026-10-01T16:15:22+00:00"
 source,src_00d5f7d66c1a37a4,solana://tx/setuh-hardcat-2026-10-01,web,Setuh's wallet: HARDCAT buy/sell transactions,,,setuh,,document,True,file,,,
+source,src_d4bf58ebf6664db1,stream://kolscan/2026-10-01/decu-session,web,Decu's stream session on every venue (kolscan stream),,,decu,,document,True,file,,,
+source,src_061a17f367d97907,stream://pump_curve/2026-10-01/copy-refresh,web,"Copy tests, full train period (deterministic simulator)",,,,,document,True,file,,,
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,

@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT))
 import duckdb  # noqa: E402
 
 from pipeline import config, db, market  # noqa: E402
-from pipeline.copytrade import MirrorBasket, base_execution  # noqa: E402
+from pipeline.copytrade import MirrorBasket, MirrorWallet, base_execution  # noqa: E402
 from pipeline.sim import run  # noqa: E402
 from pipeline.sim.engine import sweep_latency  # noqa: E402
 from pipeline.sim.metrics import performance  # noqa: E402
@@ -54,6 +54,12 @@ HYPS = {
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
            "first_test": (U(17, 45), U(19, 15)), "in_sample": (U(13, 38), U(17, 15)),
            "sensitivity": {}},
+    "H6": {"prefix": "H6:", "factory": lambda: MirrorWallet("4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+                                                       size_sol=0.5, max_hold_s=900),
+           "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.005, slippage_bps=2000, fail_prob=0.02),
+           "first_test": (U(17, 45), U(19, 15)), "in_sample": (U(12, 15), U(17, 15)),
+           "pass": {"min_trades": 8, "min_expectancy_sol": 0.0, "min_profit_factor": 1.2},
+           "sensitivity": {}},
     "H3": {"prefix": "H3:", "factory": lambda: DevDumpEntry(
                size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, hold_s=20, stop_pct=20),
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
@@ -80,11 +86,11 @@ def tape(start: float, end: float) -> duckdb.DuckDBPyConnection:
     return con
 
 
-def verdict(m: dict) -> dict:
+def verdict(m: dict, crit: dict = PASS) -> dict:
     pf = m["profit_factor"]
-    ok = (m["n_trades"] >= PASS["min_trades"] and (m["expectancy_sol"] or 0) > PASS["min_expectancy_sol"]
-          and pf is not None and pf > PASS["min_profit_factor"])
-    return {"pass": ok, "criteria": PASS}
+    ok = (m["n_trades"] >= crit["min_trades"] and (m["expectancy_sol"] or 0) > crit["min_expectancy_sol"]
+          and pf is not None and pf > crit["min_profit_factor"])
+    return {"pass": ok, "criteria": crit}
 
 
 def slim(m: dict) -> dict:
@@ -131,7 +137,8 @@ def main() -> None:
                         hypothesis_id=hyp_id, notes=f"{label}; pre-registered parameters and execution")
     out = {"hypothesis": a.hyp, "hypothesis_id": hyp_id, "role": role, "window": [s.isoformat(), e.isoformat()],
            "run_id": run_id, "execution": base.to_dict(), "strategy": h["factory"]().spec(),
-           "primary": slim(prim), "verdict": verdict(prim) if role != "in_sample" else "in-sample, not a test",
+           "primary": slim(prim),
+           "verdict": verdict(prim, h.get("pass", PASS)) if role != "in_sample" else "in-sample, not a test",
            "latency_sweep": [{"delay_s": r["delay_s"], **slim(r["metrics"])} for r in
                              sweep_latency(h["factory"], store, start=start, end=end, base=base,
                                            delays_s=(0.1, 0.5, 1, 2, 5, 10))],
@@ -156,7 +163,7 @@ def render(o: dict) -> str:
          f"latency {o['execution']['tx_latency_s']} s, slippage tolerance {o['execution']['slippage_bps']} bps, "
          f"tx failure {o['execution']['fail_prob']:.0%}.", "",
          f"**Verdict:** {o['verdict'] if isinstance(o['verdict'], str) else ('PASS' if o['verdict']['pass'] else 'FAIL')} "
-         f"(pass needs ≥{PASS['min_trades']} trades, expectancy > 0, PF > {PASS['min_profit_factor']}).", "",
+         f"(pre-registered pass criteria: {o['verdict']['criteria'] if isinstance(o['verdict'], dict) else PASS}).", "",
          "| run | trades | PnL SOL | expectancy | median | win rate | PF | max DD | fees+network | slippage | failed tx |",
          "|---|---|---|---|---|---|---|---|---|---|---|"]
 

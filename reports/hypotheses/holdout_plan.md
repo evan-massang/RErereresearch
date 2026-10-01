@@ -11,6 +11,7 @@ _Written 2026-10-01 ~17:35 UTC, before any validation-period result exists and b
 | H3 Decu's post-dev-dump timing, 20-s hold | train 14:45–17:15 | FAIL (−77.07 SOL, PF 0.20) | no |
 | H4 copy unknown consistent winners | train 15:20–17:15 | FAIL (−37.50 SOL, PF 0.39) | no |
 | H5 H3 entry + Decu-like exits | validation 17:45–19:15 (frozen 17:26:23) | pending | only if it passes |
+| H6 copy Decu's verified wallet (1 s) | validation 17:45–19:15 (frozen 17:33) | pending | only if it passes and H5 does not |
 
 ## Rule
 
@@ -29,3 +30,11 @@ Only one hypothesis can reach the holdout: H5, and only if its pre-registered fi
 - a failure is written up in `reports/failures/`, and the holdout is then burned.
 
 **If H5 fails,** nothing reaches the holdout. The 19:15–21:15 data stays unexamined by any strategy, so it remains a clean test period for hypotheses pre-registered later. No hypothesis may be created or changed after looking at it.
+
+## Amendment 17:35 UTC (before any validation or holdout data was examined)
+
+H6 was registered at 17:33 (`reports/hypotheses/h6_preregistration.json`). The holdout supports exactly one evaluation:
+- If H5 passes, H5 takes it, because it was registered first.
+- If H5 fails and H6 passes, H6 takes it.
+
+H6's holdout criteria are the same as H5's except for sample size: at least 8 trades, expectancy > 0, profit factor > 1.2. Decu trades too rarely for 30 trades in 2 hours, so this would be a weak, small-sample confirmation and will be reported as such.
