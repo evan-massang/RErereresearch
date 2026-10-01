@@ -21,6 +21,7 @@ import statistics
 import zlib
 from collections import defaultdict
 from dataclasses import dataclass
+from datetime import datetime, timezone
 from pathlib import Path
 from typing import Iterator
 
@@ -53,61 +54,109 @@ def connect() -> duckdb.DuckDBPyConnection:
     con = duckdb.connect(str(config.path("data") / "market.duckdb"))
     con.execute("""
         CREATE TABLE IF NOT EXISTS curve_trades (
-            sig VARCHAR, slot BIGINT, recv DOUBLE, ts BIGINT, mint VARCHAR, usr VARCHAR, buy BOOLEAN,
-            sol DOUBLE, tok DOUBLE, vsol DOUBLE, vtok DOUBLE, rsol DOUBLE, rtok DOUBLE,
-            fee_bps INTEGER, cfee_bps INTEGER, PRIMARY KEY (sig, mint, usr, buy, tok));
+            src_file VARCHAR, sig VARCHAR, slot BIGINT, recv DOUBLE, ts BIGINT, mint VARCHAR, usr VARCHAR,
+            buy BOOLEAN, sol DOUBLE, tok DOUBLE, vsol DOUBLE, vtok DOUBLE, rsol DOUBLE, rtok DOUBLE,
+            fee_bps INTEGER, cfee_bps INTEGER);
         CREATE TABLE IF NOT EXISTS curve_creates (
-            mint VARCHAR PRIMARY KEY, sig VARCHAR, slot BIGINT, recv DOUBLE, name VARCHAR, symbol VARCHAR,
+            src_file VARCHAR, mint VARCHAR, sig VARCHAR, slot BIGINT, recv DOUBLE, name VARCHAR, symbol VARCHAR,
             uri VARCHAR, creator VARCHAR);
-        CREATE TABLE IF NOT EXISTS curve_completes (mint VARCHAR PRIMARY KEY, sig VARCHAR, recv DOUBLE);
+        CREATE TABLE IF NOT EXISTS curve_completes (src_file VARCHAR, mint VARCHAR, sig VARCHAR, recv DOUBLE);
         CREATE TABLE IF NOT EXISTS kol_wallets (wallet VARCHAR PRIMARY KEY, name VARCHAR, twitter VARCHAR,
             telegram VARCHAR);
-        CREATE TABLE IF NOT EXISTS kolscan_msgs (recv DOUBLE, wallet VARCHAR, signature VARCHAR, dex VARCHAR,
-            direction VARCHAR, in_token VARCHAR, out_token VARCHAR, in_amount DOUBLE, out_amount DOUBLE,
-            sol_change DOUBLE, ts BIGINT);
-        CREATE TABLE IF NOT EXISTS loaded_files (feed VARCHAR, name VARCHAR, PRIMARY KEY (feed, name));
+        CREATE TABLE IF NOT EXISTS kolscan_msgs (src_file VARCHAR, recv DOUBLE, wallet VARCHAR, signature VARCHAR,
+            dex VARCHAR, direction VARCHAR, in_token VARCHAR, out_token VARCHAR, in_amount DOUBLE,
+            out_amount DOUBLE, sol_change DOUBLE, ts BIGINT);
+        CREATE TABLE IF NOT EXISTS loaded_files (feed VARCHAR, name VARCHAR, complete BOOLEAN,
+            PRIMARY KEY (feed, name));
     """)
     return con
 
 
+def _read_file(f: Path) -> Iterator[dict]:
+    try:
+        with gzip.open(f, "rt") as fh:
+            for line in fh:
+                try:
+                    yield json.loads(line)
+                except ValueError:
+                    continue
+    except (EOFError, zlib.error, OSError):
+        return
+
+
+def _complete(f: Path) -> bool:
+    """A file is final once its writer moved on (an hour later) and it has not changed for 2 minutes."""
+    import time
+    hour = f.name.split("_")[0] + f.name.split("_")[1]
+    now_hour = datetime.now(timezone.utc).strftime("%Y%m%d%H")
+    return hour < now_hour and time.time() - f.stat().st_mtime > 120
+
+
 def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
-    """(Re)load all recorder output. Files are reloaded each time (the newest may be growing)."""
+    """Incrementally load recorder output: finished files once, growing files re-read each time."""
+    import pandas as pd
+
     kols = json.loads((config.REPO_ROOT / "sources" / "kolscan_kols.json").read_text())
     con.execute("DELETE FROM kol_wallets")
     con.executemany("INSERT INTO kol_wallets VALUES (?,?,?,?)",
                     [(k["wallet"], k["name"], k["twitter"], k["telegram"]) for k in kols])
-    trades, creates, completes = [], [], []
-    for r in iter_stream("pump_curve"):
-        e = r.get("e")
-        if e == "trade" and r.get("vsol"):
-            trades.append((r["sig"], r.get("slot"), r["recv"], r["ts"], r["mint"], r["user"], r["buy"], r["sol"],
-                           r["tok"], r["vsol"], r["vtok"], r["rsol"], r["rtok"], r.get("fee_bps"), r.get("cfee_bps")))
-        elif e == "create":
-            creates.append((r["mint"], r["sig"], r.get("slot"), r["recv"], r["name"], r["symbol"], r["uri"], r["user"]))
-        elif e == "complete":
-            completes.append((r["mint"], r["sig"], r["recv"]))
-    con.execute("DELETE FROM curve_trades")
-    con.execute("DELETE FROM curve_creates")
-    con.execute("DELETE FROM curve_completes")
-    if trades:
-        con.executemany("INSERT OR IGNORE INTO curve_trades VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)", trades)
-    if creates:
-        con.executemany("INSERT OR IGNORE INTO curve_creates VALUES (?,?,?,?,?,?,?,?)", creates)
-    if completes:
-        con.executemany("INSERT OR IGNORE INTO curve_completes VALUES (?,?,?)", completes)
-    msgs = []
-    for r in iter_stream("kolscan"):
-        m = r.get("msg")
-        if not m:
-            continue
-        msgs.append((r["recv"], m.get("wallet_address"), m.get("signature"), m.get("dex"), m.get("spl_direction"),
-                     m.get("in_token_address"), m.get("out_token_address"), m.get("in_amount"), m.get("out_amount"),
-                     m.get("sol_change"), m.get("timestamp")))
-    con.execute("DELETE FROM kolscan_msgs")
-    if msgs:
-        con.executemany("INSERT INTO kolscan_msgs VALUES (?,?,?,?,?,?,?,?,?,?,?)", msgs)
-    return {"curve_trades": len(trades), "creates": len(creates), "completes": len(completes),
-            "kolscan_msgs": len(msgs)}
+    done = {(r[0], r[1]) for r in con.execute("SELECT feed, name FROM loaded_files WHERE complete").fetchall()}
+    added = {"curve_trades": 0, "creates": 0, "completes": 0, "kolscan_msgs": 0, "files": 0}
+    for feed in ("pump_curve", "kolscan"):
+        for f in sorted(config.path("raw_streams", feed).glob("*.jsonl.gz")):
+            if (feed, f.name) in done:
+                continue
+            complete = _complete(f)
+            added["files"] += 1
+            if feed == "pump_curve":
+                for t in ("curve_trades", "curve_creates", "curve_completes"):
+                    con.execute(f"DELETE FROM {t} WHERE src_file = ?", [f.name])
+                tr, cr, co = [], [], []
+                for r in _read_file(f):
+                    e = r.get("e")
+                    if e == "trade" and r.get("vsol"):
+                        tr.append((f.name, r["sig"], r.get("slot"), r["recv"], r["ts"], r["mint"], r["user"], r["buy"],
+                                   r["sol"], r["tok"], r["vsol"], r["vtok"], r["rsol"], r["rtok"], r.get("fee_bps"),
+                                   r.get("cfee_bps")))
+                    elif e == "create":
+                        cr.append((f.name, r["mint"], r["sig"], r.get("slot"), r["recv"], r["name"], r["symbol"],
+                                   r["uri"], r["user"]))
+                    elif e == "complete":
+                        co.append((f.name, r["mint"], r["sig"], r["recv"]))
+                for table, rows, cols in (
+                        ("curve_trades", tr, ["src_file", "sig", "slot", "recv", "ts", "mint", "usr", "buy", "sol",
+                                              "tok", "vsol", "vtok", "rsol", "rtok", "fee_bps", "cfee_bps"]),
+                        ("curve_creates", cr, ["src_file", "mint", "sig", "slot", "recv", "name", "symbol", "uri",
+                                               "creator"]),
+                        ("curve_completes", co, ["src_file", "mint", "sig", "recv"])):
+                    if rows:
+                        df = pd.DataFrame(rows, columns=cols)
+                        con.register("_df", df)
+                        con.execute(f"INSERT INTO {table} SELECT * FROM _df")
+                        con.unregister("_df")
+                added["curve_trades"] += len(tr)
+                added["creates"] += len(cr)
+                added["completes"] += len(co)
+            else:
+                con.execute("DELETE FROM kolscan_msgs WHERE src_file = ?", [f.name])
+                rows = []
+                for r in _read_file(f):
+                    m = r.get("msg")
+                    if m:
+                        rows.append((f.name, r["recv"], m.get("wallet_address"), m.get("signature"), m.get("dex"),
+                                     m.get("spl_direction"), m.get("in_token_address"), m.get("out_token_address"),
+                                     m.get("in_amount"), m.get("out_amount"), m.get("sol_change"), m.get("timestamp")))
+                if rows:
+                    df = pd.DataFrame(rows, columns=["src_file", "recv", "wallet", "signature", "dex", "direction",
+                                                     "in_token", "out_token", "in_amount", "out_amount", "sol_change",
+                                                     "ts"])
+                    con.register("_df", df)
+                    con.execute("INSERT INTO kolscan_msgs SELECT * FROM _df")
+                    con.unregister("_df")
+                added["kolscan_msgs"] += len(rows)
+            con.execute("INSERT OR REPLACE INTO loaded_files VALUES (?, ?, ?)", [feed, f.name, complete])
+    added["total_curve_trades"] = con.execute("SELECT count(*) FROM curve_trades").fetchone()[0]
+    return added
 
 
 # ------------------------------------------------------------------ round trips
