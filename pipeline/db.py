@@ -49,6 +49,8 @@ TABLES = [
     "sim_runs",
     "holdout_log",
     "annotations",
+    "wallet_signatures",
+    "wallet_swaps",
 ]
 
 JSON_COLUMNS = {

@@ -490,6 +490,38 @@ CREATE TABLE IF NOT EXISTS annotations (
     is_synthetic  BOOLEAN NOT NULL DEFAULT FALSE
 );
 
+
+-- ===================================================================== on-chain wallet activity
+
+-- Every signature seen for a tracked wallet (including failed transactions).
+CREATE TABLE IF NOT EXISTS wallet_signatures (
+    wallet      VARCHAR NOT NULL,
+    signature   VARCHAR NOT NULL,
+    slot        BIGINT,
+    block_time  TIMESTAMPTZ,
+    failed      BOOLEAN NOT NULL,
+    fetched_at  TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (wallet, signature)
+);
+
+-- Swaps decoded from the wallet's own balance changes (venue-agnostic):
+-- token delta of the wallet for a mint vs its SOL (+WSOL) delta, fee excluded.
+CREATE TABLE IF NOT EXISTS wallet_swaps (
+    wallet       VARCHAR NOT NULL,
+    signature    VARCHAR NOT NULL,
+    mint         VARCHAR NOT NULL,
+    slot         BIGINT,
+    block_time   TIMESTAMPTZ,
+    side         VARCHAR NOT NULL,          -- buy | sell
+    token_amount DOUBLE NOT NULL,           -- ui amount (decimals applied)
+    sol_amount   DOUBLE,                    -- SOL paid/received excluding the tx fee
+    fee_sol      DOUBLE,
+    price_sol    DOUBLE,                    -- sol_amount / token_amount
+    programs     VARCHAR[],
+    fetched_at   TIMESTAMPTZ NOT NULL,
+    PRIMARY KEY (signature, mint, wallet)
+);
+
 -- ===================================================================== views
 
 CREATE OR REPLACE VIEW v_observation_provenance AS

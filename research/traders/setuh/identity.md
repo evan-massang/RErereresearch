@@ -2,11 +2,19 @@
 
 _Generated from the database. Statuses: **lead** = a search result or third party says so; **probable** = independent leads agree; **verified** = a primary source links it (e.g. the trader's own profile); **rejected** = shown to be someone else. Nothing below 'verified' is established._
 
+## Accounts — verified
+
+| platform | handle | url | first evidence | notes |
+|---|---|---|---|---|
+| telegram | SetuhTrades | https://t.me/SetuhTrades | https://x.com/Setuhx | Website field of X @Setuhx (fetched 2026-10-01). |
+| x | @Setuhx | https://x.com/Setuhx | https://x.com/Setuhx | Profile @Setuhx fetched 2026-10-01; links below are this account's own profile fields. |
+| youtube | @setuhh | https://www.youtube.com/@setuhh | https://x.com/Setuhx | Linked in the bio of X @Setuhx (fetched 2026-10-01). |
+
 ## Accounts — probable
 
 | platform | handle | url | first evidence | notes |
 |---|---|---|---|---|
-| youtube | @setuhh | https://www.youtube.com/@setuhh | https://www.youtube.com/@setuhh/videos | agent confidence: high / reasoning: The YouTube handle matches the Twitch handle 'setuhh'. Summaries tie the channel to the Linktree, to @Setuhx on X, and to memecoin video series that keep surfacing for Setuh queries. / doubts: The summary's 'joined in September 2022' matches the X join date and may be conflated with it. Subscriber count (40K) is summary-only. Channel names do not appear in YouTube result titles, so which videos are on this channel rests on the summaries. / independent domains: 2 |
+| wallet | 62N1K57D37AUDGp68tnDYKPjGDsaAAtmo357nBtEtuR |  | https://kolscan.io/leaderboard | kolscan lists it as 'set' with X @Setuhx (kolscan, pump.fun-operated tracker, 2026-10-01). Not yet claimed by the trader in a fetched post. |
 
 ## Accounts — lead
 
@@ -14,10 +22,8 @@ _Generated from the database. Statuses: **lead** = a search result or third part
 |---|---|---|---|---|
 | other | Padre (Terminal) referral code 'setuh' | https://trade.padre.gg/sign-in?rk=setuh | https://trade.padre.gg/sign-in?rk=setuh | agent confidence: medium / reasoning: The referral code appears in the result URL itself, and the summaries say Setuh's X profile and videos promote this link. It is an affiliate link, not a wallet or tracker profile. / doubts: The code by itself does not show who owns it, and promoting a platform for referral income does not prove they trade on it. The connection to the X and YouTube accounts is summary-only. / independent domains: 2 |
 | other | TikTok topic 'Setuh Meme Coin Trading' (no account found) |  |  | agent confidence: low / reasoning: This suggests clips about Setuh may circulate on TikTok. / doubts: No TikTok account or video URL for Setuh came back. The summary itself said it could not tell what 'Setuh' refers to there. / independent domains: 0 |
-| telegram | SetuhTrades | https://t.me/SetuhTrades | https://www.youtube.com/@setuhh | agent confidence: medium / reasoning: Two separate searches gave the same handle in their summaries, each next to Setuh's YouTube or X results. The Linktree summary also mentions a 'Free Trading Telegram Group'. / doubts: The handle appears only in summaries, never as a result URL. t.me/SetuhTrades was not returned as a page, and it may not be the same as the Linktree's 'Free Trading Telegram Group'. / independent domains: 2 |
 | twitch | setuhh | https://www.twitch.tv/setuhh | https://www.twitch.tv/setuhh | agent confidence: medium / reasoning: The handle 'setuhh' is identical to the YouTube handle. According to the summaries, the Twitch profile links to YouTube @setuhh, X and Kick, and the Linktree title lists Twitch. / doubts: No result showed this channel streaming memecoin trading. The bio 'realest gambler' could mean casino or gambling streams rather than trading. The Linktree's Twitch link target was not seen. Twitch has similarly named, unrelated channels (see ambiguity). / independent domains: 2 |
 | website | linktr.ee/setuh | https://linktr.ee/setuh | https://linktr.ee/setuh | agent confidence: high / reasoning: This appears to be the hub page. Its title names X and Twitch, and the summaries say it links YouTube, Twitch, X, a Discord and a Telegram group, with the same tagline as @Setuhx. / doubts: The exact link targets (which X, Twitch, Telegram and Discord URLs) were not visible. Opening this page is the cheapest way to confirm every other candidate. / independent domains: 1 |
-| x | @Setuhx | https://x.com/Setuhx | https://x.com/Setuhx?lang=en | agent confidence: high / reasoning: Display name 'setuh' with handle @Setuhx. It was the top X result for every Setuh query and came back alongside the @setuhh YouTube videos and linktr.ee/setuh. According to the summaries, the profile uses the same 'From Nothing To Something' tagline the Linktree uses, points to the Padre referral trade.padre.gg/rk/setuh, and is tied to Telegram t.me/SetuhTrades and a YouTube channel. / doubts: The profile page was not fetched. The tagline, follower count, Padre link, Telegram link and YouTube cross-link all come from search summaries, which may blend several pages. The handle has an extra 'x' (Setuhx) while YouTube and Twitch use 'setuhh', so a direct link between them must be confirmed on the profile itself. / independent domains: 1 |
 
 ## Accounts said to exist but not identified
 

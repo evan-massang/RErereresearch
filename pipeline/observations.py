@@ -31,6 +31,8 @@ MODALITIES = {"said", "screen", "action", "onchain", "document"}
 
 
 def _norm(s: str) -> str:
+    # JSON-sourced text keeps line breaks as literal "\n" escapes; treat them as whitespace.
+    s = s.replace("\\n", " ").replace("\\t", " ").replace('\\"', '"')
     return re.sub(r"\s+", " ", s).strip().casefold()
 
 

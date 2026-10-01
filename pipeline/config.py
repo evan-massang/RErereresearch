@@ -25,6 +25,7 @@ LAYOUT = {
     "raw_subtitles": "data/raw/subtitles",      # <source_id>/ caption files as fetched
     "raw_web": "data/raw/web",                  # <source_id>/ page/document snapshots
     "raw_documents": "data/raw/documents",      # files supplied by hand
+    "raw_streams": "data/raw/streams",          # <feed>/YYYYMMDD_HH.jsonl live recordings
     "audio": "data/processed/audio",            # <source_id>/ 16 kHz mono WAV for ASR
     "asr": "data/processed/transcripts",        # <source_id>/ ASR output JSON
     "frames": "data/processed/frames",          # <source_id>/ extracted stills
