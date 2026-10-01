@@ -126,7 +126,12 @@ def train_stats(d: pd.DataFrame) -> dict:
               "dev_10plus_launches_today": t.dev_prior_launches >= 10, "dev_1plus_prior_migration": t.dev_prior_migrations >= 1,
               "good_dev_rate_ge_20pct": good, "vamp_name_seen_6h": t.vamp, "original_name": ~t.vamp,
               "deployed_via_j7": t.deploy_host == "metadata.j7tracker.io", "deployed_via_pump_ui_ipfs": t.deploy_host == "ipfs.io",
-              **{c: t[c] for c in t.columns if c.startswith("cat_")}}
+              **{c: t[c] for c in t.columns if c.startswith("cat_")},
+              "x_tweet": t.x_kind == "tweet", "x_profile": t.x_kind == "profile", "x_none": t.x_kind == "none",
+              "has_website": t.has_website == True,  # noqa: E712
+              "tweet_by_elonmusk": t.tweet_author == "elonmusk",
+              "tweet_author_linked_5plus_before": t.author_prior_tokens >= 5,
+              "tweet_author_had_migration_before": t.author_prior_migrations >= 1}
     return {"window": "launches 12:17-16:15 UTC", "n": len(t), "base_migration_rate": round(base, 4),
             "groups": {k: {"n": int(m.sum()), "migration_rate": round(float(t[m].migrated.mean()), 4),
                            "lift": round(float(t[m].migrated.mean()) / base, 2),
@@ -159,6 +164,14 @@ def record(st: dict) -> None:
                   f"AI/tech names {f('cat_ai_tech')}; launches deployed via J7's tool {f('deployed_via_j7')}.",
         evidence=[("observation", obs, "supports")], n_supporting=g["good_dev_rate_ge_20pct"]["n"], n_observable=st["n"],
         confidence=0.7, notes=f"{ex}; dev record = same-day tape history since 12:17; migration is not profit")
+    findings.add_finding(
+        con, trader_id=None, funnel_stage="narrative", evidence_type="observed",
+        statement=f"Linking a tweet does not lift a launch's migration rate ({f('x_tweet')}); linking the project's own "
+                  f"X profile does ({f('x_profile')}). Coins linking an Elon Musk tweet: {f('tweet_by_elonmusk')}. "
+                  f"Coins linking an author already linked by 5+ earlier coins: {f('tweet_author_linked_5plus_before')}; "
+                  f"an author whose earlier linked coin migrated: {f('tweet_author_had_migration_before')}.",
+        evidence=[("observation", obs, "supports")], n_supporting=g["x_profile"]["n"], n_observable=st["n"],
+        confidence=0.6, notes=f"{ex}; metadata fetched for ~94% of launches; author record is same-day")
     for k in kept:
         findings.set_finding_status(con, k, "superseded", "Rebuilt; kept because a hypothesis rests on it.", superseded_by=new)
 

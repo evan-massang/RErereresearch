@@ -134,6 +134,27 @@ H5 shows that Decu's exit style does not rescue a mechanical entry: most entries
 - **Buying every migration doesn't pay.** Buying each migrated token on PumpSwap 3 s after its first swap and selling 60 s later has a median of about −2% after fees. The positive average comes from a single 60× token; without it the average is about zero, before the buyer's own price impact.
 - **Data history fix.** Re-running the choice-set study had deleted the finding H6 was registered on. It was restored from git and marked *superseded*. Rebuilt findings that a hypothesis rests on are now superseded instead of deleted, and `check-findings` flags any hypothesis whose basis is missing.
 
+
+## Solo-trader signals (follow-up after your feedback: no copying)
+
+Each signal below was measured on the train period (12:17–16:15 launches, base migration rate 1.95%) using only what is visible at launch. Migration is not profit, so each was then simulated with fees and latency.
+
+| signal | what the data shows |
+|---|---|
+| **Good devs** (an earlier migration that day, ≥20% migration rate) | **18% migrate (9.3×).** Buying their launches at about 1 s: train ≈ breakeven (40 trades). Pre-registered test 17:15–19:15: **+2.36 SOL, PF 3.78, but only 11 trades** (FAIL on sample size; one 6× runner carries it). Most promising lead. |
+| Serial launchers (10+ launches that day) | 0.3×: avoid. |
+| Copycat ("vamp") names | 0.8× vs originals 1.3×. A large published study (arXiv 2609.10246) finds 0.86% vs 9.2%. |
+| Tokens deployed with J7's tool | 0.4×. J7 is mostly used to launch coins off tweets. |
+| Linked tweet vs project's own X profile | 0.9× vs 1.8×. A website helps a little (1.4×). |
+| Big accounts | Elon's tweets: 46 coins, **0 migrated**. Accounts whose tweets many coins link to do worse (0.7×). |
+| First coin for a tweet that later gets copied | 3.8% migrate (2×). Coins for tweets nobody copies: 0%; later copies 0.4–0.7×. But copies arrive ~17 s after the original, and buying the original once copies appear has a median further gain of ~0%. **Not tradable from the chain alone.** |
+| Animal names | No lift (1.0×) in this data. AI/tech names 2.2×. |
+| Viewer / "watching" counts (Axiom) | Not in Axiom's docs and not reachable without an account (see `sources/leads/solo_trader_signals_research.md`). |
+
+**J7 keyword filters** exist only in J7's web app (custom word lists on *tweets*, with auto-buy and auto-deploy). There is no filter on new launches. Tweet-driven coins are what J7's users launch, and those mostly don't migrate. Speed matters for them only if you launch or snipe the coin yourself.
+
+**Honest bottom line:** of everything you suggested, tracking good devs is the only signal that is both strong and tradable. It needs several more recorded days to tell a real edge from one lucky runner.
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.

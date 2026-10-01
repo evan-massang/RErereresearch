@@ -139,7 +139,7 @@ def main() -> None:
     now = datetime.now(timezone.utc).timestamp()
     if end > now:
         raise SystemExit(f"window ends {e:%H:%M} UTC, data not complete yet")
-    run_start = h.get("warmup_from", start)
+    run_start = h["warmup_from"].timestamp() if "warmup_from" in h else start
     if "warmup_from" in h:                          # the strategy builds state from run_start, trades from start
         factory = (lambda f=h["factory"], ts=start: f(trade_from=ts))
     else:
