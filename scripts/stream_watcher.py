@@ -29,7 +29,8 @@ CHANNELS = {
     "kick:alxcooks": "https://kick.com/alxcooks",
     "kick:solanaswaggy": "https://kick.com/solanaswaggy",
     "kick:tradememecoins": "https://kick.com/tradememecoins",
-    "twitch:d4rkuch1ha": "https://www.twitch.tv/d4rkuch1ha",
+    # "twitch:d4rkuch1ha": dropped 2026-10-01 18:40 UTC to save disk for the seed traders (unidentified lead;
+    # 16:37-18:19 footage kept)
     # "twitch:dvces": dropped 2026-10-01 16:40 UTC to save disk: not identified (480p unreadable, trades
     # migrated tokens the tape does not decode); the 12:45-16:40 footage is kept.
 }
