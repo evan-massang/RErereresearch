@@ -63,6 +63,8 @@ def tape(start: float, end: float) -> duckdb.DuckDBPyConnection:
     con.execute(f"ATTACH '{config.path('data') / 'market.duckdb'}' AS src (READ_ONLY)")
     con.execute("CREATE TABLE curve_trades AS SELECT * FROM src.curve_trades WHERE recv >= ? AND recv < ?", [start - 900, end])
     con.execute("CREATE TABLE curve_creates AS SELECT * FROM src.curve_creates WHERE recv >= ? AND recv < ?", [start - 900, end])
+    con.execute("CREATE TABLE curve_completes AS SELECT * FROM src.curve_completes WHERE recv < ?", [end])
+    con.execute("CREATE TABLE kol_wallets AS SELECT * FROM src.kol_wallets")
     con.execute("DETACH src")
     return con
 
