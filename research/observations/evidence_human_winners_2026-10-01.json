@@ -1,0 +1,53 @@
+{
+ "window": "train, recorded data before 2026-10-01 14:00 UTC",
+ "selection": "wallets with >=5 closed bonding-curve trips, median hold >=5 s, <50% creation-block entries; winners pnl > +0.5 SOL (380 wallets, 7962 trips), losers pnl < -0.5 SOL (592 wallets, 6361 trips)",
+ "trip_medians": {
+  "WIN": {
+   "age_at_entry_s": 70.1,
+   "entry_mcap_sol": 73.1,
+   "hold_s": 23.8,
+   "size_sol": 0.795,
+   "share_multi_buy": 0.102,
+   "win_rate": 0.485,
+   "avg_win_frac": 2.251,
+   "avg_loss_frac": -0.165
+  },
+  "LOSE": {
+   "age_at_entry_s": 30.5,
+   "entry_mcap_sol": 75.6,
+   "hold_s": 31.7,
+   "size_sol": 0.717,
+   "share_multi_buy": 0.244,
+   "win_rate": 0.247,
+   "avg_win_frac": 0.322,
+   "avg_loss_frac": -0.297
+  }
+ },
+ "entry_feature_medians (sample ~230 entries each, 1 s before entry)": {
+  "WIN": {
+   "age_s": 57.5,
+   "uniq_buyers_10s": 10,
+   "uniq_buyers_30s": 22,
+   "net_flow_30s": 2.76,
+   "drawdown_60s": 0.11,
+   "largest_buy_30s": 2.05,
+   "dev_sold": 1,
+   "snipers_pct_now": 2.16,
+   "holders": 41,
+   "top10_pct": 25.1
+  },
+  "LOSE": {
+   "age_s": 34.1,
+   "uniq_buyers_10s": 16,
+   "uniq_buyers_30s": 32,
+   "net_flow_30s": 5.68,
+   "drawdown_60s": 0.154,
+   "largest_buy_30s": 2.96,
+   "dev_sold": 1,
+   "snipers_pct_now": 4.83,
+   "holders": 45,
+   "top10_pct": 25.3
+  }
+ },
+ "caveat": "grouping by outcome: differences are associations, partly luck; 'human-paced' still includes bots"
+}

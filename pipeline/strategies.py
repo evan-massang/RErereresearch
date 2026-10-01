@@ -61,14 +61,19 @@ class StructureEntry:
     snipers_max_pct: float = 10.0
     hold_s: float = 60.0
     stop_pct: float = 25.0
+    min_age_s: float = 0.0
+    max_buyers_10s: int | None = None
+    max_inflow_30s: float | None = None
+    require_dev_sold: bool = True
     name: str = "h1_structure_entry"
     _toks: dict = field(default_factory=dict)
     _held: dict = field(default_factory=dict)           # mint -> (t_decided, ref_price)
     _done: set = field(default_factory=set)
 
     def spec(self) -> dict:
-        return {k: getattr(self, k) for k in ("size_sol", "max_age_s", "min_buyers_10s", "min_inflow_30s",
-                                               "snipers_max_pct", "hold_s", "stop_pct")}
+        return {k: getattr(self, k) for k in ("name", "size_sol", "min_age_s", "max_age_s", "min_buyers_10s",
+                                               "max_buyers_10s", "min_inflow_30s", "max_inflow_30s",
+                                               "require_dev_sold", "snipers_max_pct", "hold_s", "stop_pct")}
 
     def on_event(self, view, ev):
         now = view.now
@@ -103,18 +108,24 @@ class StructureEntry:
                 self._held.pop(ev.mint)
                 out.append(Sell(ev.mint, 1.0, tag="stop"))
             return out
-        if ev.mint in self._done or now - st.created > self.max_age_s or not st.dev_sold:
+        age = now - st.created
+        if ev.mint in self._done or age > self.max_age_s or age < self.min_age_s:
+            return out
+        if self.require_dev_sold and not st.dev_sold:
             return out
         buyers_10 = len({w for t, w in st.buys if t >= now - 10})
         inflow_30 = sum(x for _, x in st.flow)
         if buyers_10 < self.min_buyers_10s or inflow_30 < self.min_inflow_30s:
+            return out
+        if (self.max_buyers_10s is not None and buyers_10 > self.max_buyers_10s) or \
+                (self.max_inflow_30s is not None and inflow_30 > self.max_inflow_30s):
             return out
         snip_pct = sum(max(st.pos[w], 0) for w in st.snipers) / SUPPLY * 100
         if snip_pct >= self.snipers_max_pct:
             return out
         self._done.add(ev.mint)
         self._held[ev.mint] = (now, st.price)
-        return [Buy(ev.mint, self.size_sol, tag="h1_entry")]
+        return [Buy(ev.mint, self.size_sol, tag=f"{self.name}_entry")]
 
     def on_tick(self, view):
         out = []
