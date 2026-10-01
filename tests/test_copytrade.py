@@ -64,3 +64,30 @@ def test_slot_clock_is_deterministic_and_follows_drift():
     true_t = 1_700_000_000.0 + sum(0.40 + 0.04 * k / 20000 for k in range(15000))
     assert a(15100) == b(15100)
     assert abs(a(15100) - true_t) < 1.0
+
+
+def test_basket_enters_once_and_follows_the_leader():
+    """SYNTHETIC: two basket wallets; only the first opener's sells drive our exit."""
+    from pipeline.copytrade import MirrorBasket
+
+    v_sol, v_tok, evs = 30.0, 1.0e9, []
+    plan = {5: ("SYNTH_A", "buy"), 7: ("SYNTH_B", "buy"), 20: ("SYNTH_B", "sell"), 30: ("SYNTH_A", "sell")}
+    held = {}
+    for i in range(1, 50):
+        who, side = plan.get(i, ("SYNTH_CROWD", "buy"))
+        if side == "buy":
+            sol = 0.4
+            tok = v_tok - v_sol * v_tok / (v_sol + sol)
+            v_sol, v_tok = v_sol + sol, v_tok - tok
+            held[who] = held.get(who, 0) + tok
+        else:
+            tok = held[who]
+            sol = v_sol - v_sol * v_tok / (v_tok + tok)
+            v_sol, v_tok = v_sol - sol, v_tok + tok
+        evs.append(Event(ts=T0 + i, available_at=T0 + i + 0.3, kind="swap", mint=M, seq=i,
+                         data={"side": side, "trader": who, "tok": tok, "sol": sol, "v_sol": v_sol, "v_tok": v_tok}))
+    s = MirrorBasket(("SYNTH_A", "SYNTH_B"), size_sol=0.2)
+    res = run(s, EventStore(evs, resolution_s=0.5), start=T0, end=T0 + 100,
+              execution=base_execution(tx_latency_s=0.5, fail_prob=0.0))
+    assert len(res.trades) == 1
+    assert res.trades[0].closed_at >= T0 + 30          # exit follows SYNTH_A (the opener), not SYNTH_B

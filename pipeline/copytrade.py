@@ -125,6 +125,57 @@ class MirrorWallet:
         return out
 
 
+@dataclass
+class MirrorBasket:
+    """Copy a fixed set of wallets: buy a token the first time any of them opens a position in it (once per
+    token), then sell the same fraction as that wallet (the leader) sells; time stop."""
+
+    wallets: tuple
+    size_sol: float = 0.5
+    max_hold_s: float = 900.0
+    name: str = "mirror_basket"
+    _their: dict = field(default_factory=dict)      # (wallet, mint) -> their token position
+    _held: dict = field(default_factory=dict)       # mint -> (decided_at, leader)
+    _done: set = field(default_factory=set)
+
+    def __post_init__(self):
+        self._set = frozenset(self.wallets)
+
+    def spec(self) -> dict:
+        return {"wallets": sorted(self._set), "size_sol": self.size_sol, "max_hold_s": self.max_hold_s}
+
+    def on_event(self, view, event):
+        d = event.data
+        w = d.get("trader")
+        if w not in self._set:
+            return []
+        m = event.mint
+        before = self._their.get((w, m), 0.0)
+        if d["side"] == "buy":
+            self._their[(w, m)] = before + d["tok"]
+            if before <= 0 and m not in self._done:
+                self._done.add(m)
+                self._held[m] = (view.now, w)
+                return [Buy(m, self.size_sol, tag="copy_entry")]
+            return []
+        after = max(0.0, before - d["tok"])
+        self._their[(w, m)] = after
+        if m in self._held and self._held[m][1] == w and before > 0:
+            frac = 1.0 if after <= 0.01 * before else min(1.0, d["tok"] / before)
+            if frac >= 0.999:
+                self._held.pop(m, None)
+            return [Sell(m, frac, tag="copy_exit")]
+        return []
+
+    def on_tick(self, view):
+        out = []
+        for m, (t0, _) in list(self._held.items()):
+            if view.now - t0 >= self.max_hold_s:
+                self._held.pop(m)
+                out.append(Sell(m, 1.0, tag="time_stop"))
+        return out
+
+
 def base_execution(**kw) -> ExecutionModel:
     """Fees from on-chain TradeEvents (95 bps protocol + 30 bps creator). Priority fee, slippage
     tolerance and failure rate are assumptions, varied in the sensitivity runs."""

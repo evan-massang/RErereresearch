@@ -21,7 +21,7 @@ sys.path.insert(0, str(ROOT))
 import duckdb  # noqa: E402
 
 from pipeline import config, db, market  # noqa: E402
-from pipeline.copytrade import base_execution  # noqa: E402
+from pipeline.copytrade import MirrorBasket, base_execution  # noqa: E402
 from pipeline.sim import run  # noqa: E402
 from pipeline.sim.engine import sweep_latency  # noqa: E402
 from pipeline.sim.metrics import performance  # noqa: E402
@@ -43,6 +43,11 @@ HYPS = {
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.001),
            "first_test": (U(14, 0), U(17, 15)), "in_sample": (U(12, 15), U(14, 0)),
            "sensitivity": {}},
+    "H4": {"prefix": "H4:", "factory": lambda: MirrorBasket(tuple(json.loads(
+               (ROOT / "reports/hypotheses/h4_basket.json").read_text())["wallets"]), size_sol=0.5, max_hold_s=900),
+           "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.005, slippage_bps=2000, fail_prob=0.02),
+           "first_test": (U(15, 20), U(17, 15)), "in_sample": (U(12, 17), U(15, 12)),
+           "sensitivity": {"tip_0.01_sol": {"execution": dict(priority_fee_sol=0.01)}}},
     "H3": {"prefix": "H3:", "factory": lambda: DevDumpEntry(
                size_sol=1.0, max_age_s=30, min_dev_buy_sol=2.9, max_since_dump_s=20, hold_s=20, stop_pct=20),
            "execution": dict(tx_latency_s=1.0, fee_bps=125, priority_fee_sol=0.01, slippage_bps=2000, fail_prob=0.02),
