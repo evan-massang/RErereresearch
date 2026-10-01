@@ -176,6 +176,7 @@ class Trip:
     age_at_entry_s: float | None
     closed: bool             # position back to ~0 on the curve
     graduated: bool          # token completed the curve during/after the trip
+    entry_slot_delta: int | None = None   # slots between token creation and their first buy (0 = same block)
 
     @property
     def pnl(self) -> float:
@@ -195,13 +196,14 @@ def _fee(bps: int | None, cbps: int | None) -> float:
 def round_trips(con: duckdb.DuckDBPyConnection, wallets: list[str] | None = None) -> list[Trip]:
     where = "WHERE usr IN (SELECT wallet FROM kol_wallets)" if wallets is None else \
         f"WHERE usr IN ({', '.join('?' for _ in wallets)})"
-    rows = con.execute(f"""SELECT usr, mint, recv, ts, buy, sol, tok, vsol, vtok, rsol, fee_bps, cfee_bps
+    rows = con.execute(f"""SELECT usr, mint, recv, ts, buy, sol, tok, vsol, vtok, rsol, fee_bps, cfee_bps, slot
                            FROM curve_trades {where} ORDER BY usr, mint, recv""", wallets or []).fetchall()
     created = dict(con.execute("SELECT mint, recv FROM curve_creates").fetchall())
+    create_slot = dict(con.execute("SELECT mint, slot FROM curve_creates").fetchall())
     graduated = {r[0] for r in con.execute("SELECT mint FROM curve_completes").fetchall()}
     trips: list[Trip] = []
     cur: dict[tuple[str, str], dict] = {}
-    for usr, mint, recv, ts, buy, sol, tok, vsol, vtok, rsol, fbps, cbps in rows:
+    for usr, mint, recv, ts, buy, sol, tok, vsol, vtok, rsol, fbps, cbps, slot in rows:
         key = (usr, mint)
         f = _fee(fbps, cbps)
         st = cur.get(key)
@@ -209,7 +211,8 @@ def round_trips(con: duckdb.DuckDBPyConnection, wallets: list[str] | None = None
             if st is None:
                 st = cur[key] = {"first": recv, "last": recv, "in": 0.0, "out": 0.0, "nb": 0, "ns": 0, "pos": 0.0,
                                  "peak": 0.0, "mcap": (sol / tok) * SUPPLY if tok else None, "rsol": rsol,
-                                 "age": (recv - created[mint]) if mint in created else None}
+                                 "age": (recv - created[mint]) if mint in created else None,
+                                 "dslot": (slot - create_slot[mint]) if (slot and create_slot.get(mint)) else None}
             st["in"] += sol * (1 + f)
             st["pos"] += tok
             st["peak"] = max(st["peak"], st["pos"])
@@ -224,11 +227,11 @@ def round_trips(con: duckdb.DuckDBPyConnection, wallets: list[str] | None = None
             st["last"] = recv
             if st["pos"] <= 0.01 * st["peak"]:
                 trips.append(Trip(usr, mint, st["first"], st["last"], st["in"], st["out"], st["nb"], st["ns"],
-                                  st["mcap"], st["rsol"], st["age"], True, mint in graduated))
+                                  st["mcap"], st["rsol"], st["age"], True, mint in graduated, st["dslot"]))
                 del cur[key]
     for (usr, mint), st in cur.items():
         trips.append(Trip(usr, mint, st["first"], st["last"], st["in"], st["out"], st["nb"], st["ns"],
-                          st["mcap"], st["rsol"], st["age"], False, mint in graduated))
+                          st["mcap"], st["rsol"], st["age"], False, mint in graduated, st["dslot"]))
     return trips
 
 
@@ -255,7 +258,17 @@ def summarize(trips: list[Trip]) -> dict:
         "share_multi_buy": round(sum(1 for t in closed if t.n_buys > 1) / len(closed), 3),
         "share_multi_sell": round(sum(1 for t in closed if t.n_sells > 1) / len(closed), 3),
         "best_trade_share_of_pnl": round(max(pnls) / sum(pnls), 3) if sum(pnls) > 0 else None,
+        # entries in the token's creation block (0 slots) or within ~2 s (<=5 slots): not reproducible by a
+        # discretionary trader or a copier; often the deployer's own bundle
+        "share_entries_creation_block": _share(closed, lambda t: t.entry_slot_delta == 0),
+        "share_entries_within_5_slots": _share(closed, lambda t: t.entry_slot_delta is not None and t.entry_slot_delta <= 5),
+        "pnl_from_creation_block_entries_sol": round(sum(t.pnl for t in closed if t.entry_slot_delta == 0), 4),
+        "share_entries_with_known_creation": _share(closed, lambda t: t.entry_slot_delta is not None),
     }
+
+
+def _share(trips, pred) -> float | None:
+    return round(sum(1 for t in trips if pred(t)) / len(trips), 3) if trips else None
 
 
 def leaderboard(con: duckdb.DuckDBPyConnection, min_trips: int = 5) -> list[dict]:
@@ -343,3 +356,60 @@ def _sign_test_p(k: int, n: int) -> float:
     from math import comb
     tail = sum(comb(n, i) for i in range(0, min(k, n - k) + 1)) / 2 ** n
     return min(1.0, 2 * tail)
+
+
+# ------------------------------------------------------------------ event study: what happens around a tracked entry
+
+def event_study(con: duckdb.DuckDBPyConnection, trips: list[Trip], *, windows=((-30, 0), (0, 5), (5, 15), (15, 60)),
+                horizons=(5, 15, 60, 180), exclude_wallet: bool = True) -> dict:
+    """Buy/sell flow and price around each tracked entry (t=0 = their first buy, receive time).
+
+    Flow is SOL bought minus SOL sold by *other* wallets per second in each window.
+    Price change is measured from the last price *before* their buy, so their own
+    impact is included in the move a copier would face.
+    """
+    import bisect
+    flows: dict[tuple, list[float]] = {w: [] for w in windows}
+    rets: dict[int, list[float]] = {h: [] for h in horizons}
+    n = 0
+    for t in trips:
+        rows = con.execute("""SELECT recv, usr, buy, sol, vsol / vtok FROM curve_trades
+                              WHERE mint = ? AND recv BETWEEN ? AND ? ORDER BY recv""",
+                           [t.mint, t.first_ts - 60, t.first_ts + max(horizons) + 1]).fetchall()
+        if not rows:
+            continue
+        times = [r[0] for r in rows]
+        i0 = bisect.bisect_left(times, t.first_ts - 1e-6)
+        if i0 == 0:
+            continue                                  # no price before their buy (bought at creation?)
+        p0 = rows[i0 - 1][4]
+        n += 1
+        for (a, b) in windows:
+            net = sum((r[3] if r[2] else -r[3]) for r in rows
+                      if t.first_ts + a <= r[0] < t.first_ts + b and not (exclude_wallet and r[1] == t.wallet))
+            flows[(a, b)].append(net / (b - a))
+        for h in horizons:
+            j = bisect.bisect_right(times, t.first_ts + h) - 1
+            if j >= i0:
+                rets[h].append(rows[j][4] / p0 - 1)
+    med = lambda xs: round(statistics.median(xs), 4) if xs else None
+    return {"n": n,
+            "net_flow_sol_per_s": {f"{a}..{b}s": med(v) for (a, b), v in flows.items()},
+            "median_return_from_pre_entry_price": {f"+{h}s": med(v) for h, v in rets.items()},
+            "share_up": {f"+{h}s": (round(sum(1 for x in v if x > 0) / len(v), 3) if v else None)
+                         for h, v in rets.items()}}
+
+
+def random_entries(con: duckdb.DuckDBPyConnection, trips: list[Trip], per_trip: int = 3, seed: int = 1) -> list[Trip]:
+    """Control group: at each tracked entry time, random other tokens with a similar market cap (+/-50%)."""
+    rng = random.Random(seed)
+    out = []
+    for t in trips:
+        cands = con.execute("""SELECT mint, arg_max(vsol / vtok, recv) FROM curve_trades
+                               WHERE recv BETWEEN ? AND ? AND mint <> ? GROUP BY mint""",
+                            [t.first_ts - 30, t.first_ts, t.mint]).fetchall()
+        mc = t.entry_mcap_sol or 0
+        cands = [m for m, p in cands if p and 0.5 * mc <= p * SUPPLY <= 1.5 * mc]
+        for m in rng.sample(cands, min(per_trip, len(cands))):
+            out.append(Trip("RANDOM", m, t.first_ts, t.first_ts, 0, 0, 0, 0, mc, 0, None, True, False))
+    return out

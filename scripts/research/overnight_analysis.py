@@ -30,10 +30,20 @@ def main(split: str) -> dict:
     rdb = db.connect()
     start_dt, end_dt, _ = get_split(rdb, SPLIT_SET, split)
     start, end = start_dt.timestamp(), min(end_dt.timestamp(), datetime.now(timezone.utc).timestamp())
-    con = market.connect()
-    loaded = market.load(con)
-    # the analysis may only see data inside [start, end): drop everything else from this working copy
-    con.execute("DELETE FROM curve_trades WHERE recv < ? OR recv >= ?", [start - 3600, end])
+    src = market.connect()
+    loaded = market.load(src)
+    src.close()
+    # Work on an in-memory copy holding only data available before the period's end (plus 1 h of history
+    # before its start): nothing after `end` exists for this analysis, and the shared DB is never modified.
+    import duckdb
+    con = duckdb.connect()
+    con.execute(f"ATTACH '{config.path('data') / 'market.duckdb'}' AS src (READ_ONLY)")
+    con.execute("CREATE TABLE curve_trades AS SELECT * FROM src.curve_trades WHERE recv >= ? AND recv < ?",
+                [start - 3600, end])
+    con.execute("CREATE TABLE curve_creates AS SELECT * FROM src.curve_creates WHERE recv < ?", [end])
+    con.execute("CREATE TABLE curve_completes AS SELECT * FROM src.curve_completes WHERE recv < ?", [end])
+    con.execute("CREATE TABLE kol_wallets AS SELECT * FROM src.kol_wallets")
+    con.execute("DETACH src")
     in_window = con.execute("SELECT count(*), count(DISTINCT mint), count(DISTINCT usr) FROM curve_trades "
                             "WHERE recv >= ?", [start]).fetchone()
     names = dict(con.execute("SELECT wallet, name FROM kol_wallets").fetchall())

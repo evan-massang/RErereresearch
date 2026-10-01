@@ -1,0 +1,94 @@
+{
+ "window_utc": "2026-10-01 12:15-13:10",
+ "tracked_entries": 161,
+ "event_study_tracked": {
+  "n": 158,
+  "net_flow_sol_per_s": {
+   "-30..0s": 0.1056,
+   "0..5s": 0.4961,
+   "5..15s": -0.0205,
+   "15..60s": -0.0033
+  },
+  "median_return_from_pre_entry_price": {
+   "+5s": 0.1767,
+   "+15s": 0.1549,
+   "+60s": 0.0831,
+   "+180s": -0.0159
+  },
+  "share_up": {
+   "+5s": 0.861,
+   "+15s": 0.753,
+   "+60s": 0.608,
+   "+180s": 0.481
+  }
+ },
+ "event_study_random_control": {
+  "n": 483,
+  "net_flow_sol_per_s": {
+   "-30..0s": -0.0,
+   "0..5s": 0.0,
+   "5..15s": 0.0,
+   "15..60s": 0.0
+  },
+  "median_return_from_pre_entry_price": {
+   "+5s": -0.0,
+   "+15s": -0.0,
+   "+60s": -0.0,
+   "+180s": -0.0045
+  },
+  "share_up": {
+   "+5s": 0.444,
+   "+15s": 0.432,
+   "+60s": 0.424,
+   "+180s": 0.361
+  }
+ },
+ "quick_flip_mid_returns": {
+  "enter+0.5s_hold3s": {
+   "n": 161,
+   "median": -0.0124,
+   "mean": -0.0158
+  },
+  "enter+0.5s_hold5s": {
+   "n": 161,
+   "median": -0.0116,
+   "mean": -0.0085
+  },
+  "enter+0.5s_hold10s": {
+   "n": 161,
+   "median": -0.0181,
+   "mean": -0.0121
+  },
+  "enter+1s_hold3s": {
+   "n": 161,
+   "median": 0.0,
+   "mean": 0.003
+  },
+  "enter+1s_hold5s": {
+   "n": 161,
+   "median": 0.0,
+   "mean": 0.0027
+  },
+  "enter+1s_hold10s": {
+   "n": 161,
+   "median": -0.0135,
+   "mean": -0.0057
+  },
+  "enter+2s_hold3s": {
+   "n": 161,
+   "median": 0.0,
+   "mean": 0.0056
+  },
+  "enter+2s_hold5s": {
+   "n": 161,
+   "median": 0.0,
+   "mean": -0.0022
+  },
+  "enter+2s_hold10s": {
+   "n": 161,
+   "median": -0.0082,
+   "mean": -0.0082
+  }
+ },
+ "note": "mid prices from bonding-curve reserves; fees (1.25% each side) and impact not included"
+}
