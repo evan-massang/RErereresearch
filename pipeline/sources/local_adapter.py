@@ -33,6 +33,8 @@ class LocalVideoAdapter:
         sidecar = p.with_name(p.stem + ".info.json")
         if sidecar.exists():
             rec = normalize_info(json.loads(sidecar.read_text()), uri)
+            if rec.external_id in (None, "", "None"):      # sidecar without an id: identify by content
+                rec.external_id = sha256_file(p)[:16]
         else:
             tags = probe.get("format", {}).get("tags", {}) or {}
             rec = VideoRecord(

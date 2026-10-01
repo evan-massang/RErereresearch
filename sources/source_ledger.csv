@@ -177,9 +177,9 @@ source,src_089024e26085ab1e,stream://pump_curve/2026-10-01/event-study,web,Event
 source,src_d1beb6659603bc1c,stream://pump_curve/2026-10-01/selection-study,web,Selection study: tracked picks vs choice set; structure of hot new tokens,,,,,document,True,file,,,
 source,src_4b2391d67470e0bc,stream://pump_curve/2026-10-01/market-structure,web,Who profits on the bonding curve: wallet types by realized PnL,,,,,document,True,file,,,
 source,src_9d0f1db2ba7cfd58,stream://pump_curve/2026-10-01/human-winners,web,Profitable vs losing human-paced wallets on the bonding curve,,,,,document,True,file,,,
-source,src_93835dce3def766f,/home/user/RErereresearch/data/raw/video/live/twitch_decu/20261001T133837Z_seg0000-2000.mp4,local,"Decu live stream (Twitch) 360p, 13:38:37+2000s UTC",Decu,2026-10-01 13:38:37+00,decu,,video,True,local,,,"Live capture of twitch.tv/decu, first 2000 s; video t=0 is 2026-10-01T13:38:37+00:00"
+source,src_93835dce3def766f,/home/user/RErereresearch/data/raw/video/live/twitch_decu/20261001T133837Z_seg0000-2000.mp4,local,"Decu live stream (Twitch) 360p, 13:38:37+2000s UTC",Decu,2026-10-01 13:38:37+00,,,video,True,local,,,"Live capture of twitch.tv/decu, first 2000 s; video t=0 is 2026-10-01T13:38:37+00:00"
 source,src_4b0b80d9dcb3cabb,/home/user/RErereresearch/data/raw/video/live/twitch_decu/20261001T141139Z_720p_seg0000-1900.mp4,local,"Decu live stream (Twitch) 720p, 14:11:39+1900s UTC",Decu,2026-10-01 14:11:39+00,decu,,video,True,local,,,"Live capture of twitch.tv/decu, first 1900 s; video t=0 is 2026-10-01T14:11:39+00:00"
-source,src_71ba357f91ab320e,stream://pump_curve/2026-10-01/decu-stream,web,Decu's on-stream trades (tape excerpt + one full tx),,,decu,,document,True,file,,,
+source,src_71ba357f91ab320e,stream://pump_curve/2026-10-01/decu-stream,web,Decu's on-stream trades (tape excerpt + one full tx),,,,,document,True,file,,,
 source,src_dc10ce46ef42cf06,stream://pump_curve/2026-10-01/decu-choice-set,web,Decu BUY vs SKIP among creator-dump candidates,,,decu,,document,True,file,,,
 source,src_467688af2719b8a7,stream://pump_curve/2026-10-01/consistent-winners,web,Consistently profitable human-paced wallets (whole tape),,,,,document,True,file,,,
 source,src_a1521940bb4b435b,stream://twitch_decu/2026-10-01/screen-visits,web,Token pages Decu opened on stream (URL-bar OCR),,,decu,,document,True,file,,,
@@ -187,6 +187,8 @@ source,src_546550bf00e61216,/home/user/RErereresearch/data/raw/video/live/twitch
 source,src_00d5f7d66c1a37a4,solana://tx/setuh-hardcat-2026-10-01,web,Setuh's wallet: HARDCAT buy/sell transactions,,,setuh,,document,True,file,,,
 source,src_d4bf58ebf6664db1,stream://kolscan/2026-10-01/decu-session,web,Decu's stream session on every venue (kolscan stream),,,decu,,document,True,file,,,
 source,src_061a17f367d97907,stream://pump_curve/2026-10-01/copy-refresh,web,"Copy tests, full train period (deterministic simulator)",,,,,document,True,file,,,
+source,src_2b35668770b93299,stream://pump_curve/2026-10-01/decu-stream-2,web,"Decu's on-stream trades, second segment (curve + AMM)",,,decu,,document,True,file,,,
+source,src_222a214622ddb018,/home/user/RErereresearch/data/raw/video/live/twitch_decu/20261001T141139Z_720p.mp4,unknown,"Decu live stream (Twitch) 720p, 14:11:39-16:11:39 UTC (full capture)",Decu,2026-10-01 14:11:39+00,decu,,video,True,local,,,Finished live capture of twitch.tv/decu at 720p; video t=0 is 2026-10-01T14:11:39+00:00; the stream continued (next capture starts 16:15:19)
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,
