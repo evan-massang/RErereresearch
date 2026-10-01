@@ -413,3 +413,110 @@ def random_entries(con: duckdb.DuckDBPyConnection, trips: list[Trip], per_trip: 
         for m in rng.sample(cands, min(per_trip, len(cands))):
             out.append(Trip("RANDOM", m, t.first_ts, t.first_ts, 0, 0, 0, 0, mc, 0, None, True, False))
     return out
+
+
+# ------------------------------------------------------------------ BUY vs SKIP: features visible before an entry
+
+FEATURES = ["age_s", "mcap_sol", "rsol", "buys_10s", "sells_10s", "uniq_buyers_10s", "uniq_buyers_30s",
+            "uniq_buyers_prev_10s", "buyer_accel", "net_flow_10s", "net_flow_30s", "vol_60s", "trades_60s",
+            "drawdown_60s", "kols_in_before", "largest_buy_30s"]
+
+
+def snapshot_features(con: duckdb.DuckDBPyConnection, t: float, *, lookback: float = 60.0,
+                      exclude_before: float = 0.0) -> list[dict]:
+    """Features of every bonding-curve token that traded in [t - lookback, t), computed only from trades
+    received strictly before t (minus exclude_before). One dict per mint."""
+    end = t - exclude_before
+    rows = con.execute(f"""
+        WITH w AS (SELECT * FROM curve_trades WHERE recv >= ? AND recv < ?),
+        last AS (SELECT mint, arg_max(vsol / vtok, recv) AS p_now, arg_max(rsol, recv) AS rsol,
+                        max(vsol / vtok) AS p_max FROM w GROUP BY mint)
+        SELECT w.mint,
+               (SELECT ? - c.recv FROM curve_creates c WHERE c.mint = w.mint) AS age_s,
+               any_value(l.p_now) * {SUPPLY} AS mcap_sol, any_value(l.rsol) AS rsol,
+               count(*) FILTER (WHERE buy AND recv >= ? - 10) AS buys_10s,
+               count(*) FILTER (WHERE NOT buy AND recv >= ? - 10) AS sells_10s,
+               count(DISTINCT usr) FILTER (WHERE buy AND recv >= ? - 10) AS uniq_buyers_10s,
+               count(DISTINCT usr) FILTER (WHERE buy AND recv >= ? - 30) AS uniq_buyers_30s,
+               count(DISTINCT usr) FILTER (WHERE buy AND recv >= ? - 20 AND recv < ? - 10) AS uniq_buyers_prev_10s,
+               coalesce(sum(CASE WHEN buy THEN sol ELSE -sol END) FILTER (WHERE recv >= ? - 10), 0) AS net_flow_10s,
+               coalesce(sum(CASE WHEN buy THEN sol ELSE -sol END) FILTER (WHERE recv >= ? - 30), 0) AS net_flow_30s,
+               sum(sol) AS vol_60s, count(*) AS trades_60s,
+               1 - any_value(l.p_now) / any_value(l.p_max) AS drawdown_60s,
+               count(DISTINCT usr) FILTER (WHERE buy AND usr IN (SELECT wallet FROM kol_wallets)) AS kols_in_before,
+               coalesce(max(sol) FILTER (WHERE buy AND recv >= ? - 30), 0) AS largest_buy_30s
+        FROM w JOIN last l USING (mint) GROUP BY w.mint""",
+        [end - lookback, end] + [end] * 10).fetchall()
+    cols = ["mint", "age_s", "mcap_sol", "rsol", "buys_10s", "sells_10s", "uniq_buyers_10s", "uniq_buyers_30s",
+            "uniq_buyers_prev_10s", "net_flow_10s", "net_flow_30s", "vol_60s", "trades_60s", "drawdown_60s",
+            "kols_in_before", "largest_buy_30s"]
+    out = []
+    for r in rows:
+        d = dict(zip(cols, r))
+        d["buyer_accel"] = d["uniq_buyers_10s"] - d["uniq_buyers_prev_10s"]
+        out.append(d)
+    return out
+
+
+def choice_sets(con: duckdb.DuckDBPyConnection, trips: list[Trip], *, lookback: float = 60.0) -> list[dict]:
+    """For each tracked entry: features of the picked token and of every other token active at that moment.
+
+    Excludes the 1 s before the entry so that the picked token's own pre-trade (or same-block) activity
+    does not leak into its features.
+    """
+    rows = []
+    for i, t in enumerate(trips):
+        snap = snapshot_features(con, t.first_ts, lookback=lookback, exclude_before=1.0)
+        if not any(s["mint"] == t.mint for s in snap):
+            continue                                   # picked token had no visible activity: different case
+        for s in snap:
+            rows.append({"entry": i, "wallet": t.wallet, "t": t.first_ts, "picked": s["mint"] == t.mint, **s})
+    return rows
+
+
+# ------------------------------------------------------------------ token structure (the Axiom "safety" panel, rebuilt from the tape)
+
+STRUCTURE = ["dev_buy_sol", "dev_pct_now", "dev_sold", "creation_block_buyers", "creation_block_sol",
+             "snipers_5slots", "snipers_pct_now", "holders", "top10_pct", "creator_prev_launches_1h"]
+
+
+def structure_features(con: duckdb.DuckDBPyConnection, mint: str, t: float) -> dict | None:
+    """Holder/dev/sniper/bundle structure of a token from trades received before t.
+
+    Requires its creation to be in the recording. Positions are net bonding-curve
+    token flows per wallet (transfers between wallets are not seen), so holder
+    counts and concentration are approximations of what Axiom shows.
+    """
+    c = con.execute("SELECT creator, slot, recv FROM curve_creates WHERE mint = ?", [mint]).fetchone()
+    if c is None or c[1] is None:
+        return None
+    creator, cslot, crecv = c
+    rows = con.execute("SELECT usr, buy, sol, tok, slot FROM curve_trades WHERE mint = ? AND recv < ?",
+                       [mint, t]).fetchall()
+    pos: dict[str, float] = defaultdict(float)
+    dev_buy = cb_sol = 0.0
+    cb_buyers, snipers = set(), set()
+    dev_sold = False
+    for usr, buy, sol, tok, slot in rows:
+        pos[usr] += tok if buy else -tok
+        if usr == creator:
+            if buy and slot == cslot:
+                dev_buy += sol
+            if not buy:
+                dev_sold = True
+            continue
+        if buy and slot is not None:
+            if slot == cslot:
+                cb_buyers.add(usr)
+                cb_sol += sol
+            if slot <= cslot + 5:
+                snipers.add(usr)
+    held = sorted((v for v in pos.values() if v > 1), reverse=True)
+    prev = con.execute("SELECT count(*) FROM curve_creates WHERE creator = ? AND recv < ? AND recv >= ?",
+                       [creator, crecv, crecv - 3600]).fetchone()[0]
+    return {"dev_buy_sol": round(dev_buy, 4), "dev_pct_now": round(max(pos.get(creator, 0), 0) / SUPPLY * 100, 3),
+            "dev_sold": dev_sold, "creation_block_buyers": len(cb_buyers), "creation_block_sol": round(cb_sol, 4),
+            "snipers_5slots": len(snipers),
+            "snipers_pct_now": round(sum(max(pos[u], 0) for u in snipers) / SUPPLY * 100, 3),
+            "holders": len(held), "top10_pct": round(sum(held[:10]) / SUPPLY * 100, 3),
+            "creator_prev_launches_1h": prev}

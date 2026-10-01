@@ -1,0 +1,130 @@
+"""Candidate strategies built from research findings. Each reads only what the
+PointInTimeView delivers (incremental state from events already seen)."""
+
+from __future__ import annotations
+
+from collections import defaultdict, deque
+from dataclasses import dataclass, field
+
+import duckdb
+
+from .market import SUPPLY
+from .sim import Buy, Event, EventStore, Sell
+
+RESOLUTION_S = 0.5
+
+
+def build_market_store(con: duckdb.DuckDBPyConnection, start: float, end: float,
+                       history_s: float = 900.0) -> EventStore:
+    """All bonding-curve creates + swaps available before ``end`` (with ``history_s`` before ``start``)."""
+    from .copytrade import slot_clock
+
+    a, b = slot_clock(con)
+    events = []
+    for i, (recv, slot, mint, creator) in enumerate(con.execute(
+            "SELECT recv, slot, mint, creator FROM curve_creates WHERE recv >= ? AND recv < ? ORDER BY recv",
+            [start - history_s, end]).fetchall()):
+        ts = min(a + b * slot, recv) if slot else recv
+        events.append(Event(ts=ts, available_at=recv, kind="create", mint=mint, seq=i,
+                            data={"creator": creator, "slot": slot}))
+    rows = con.execute("""SELECT recv, slot, mint, usr, buy, sol, tok, vsol, vtok FROM curve_trades
+                          WHERE recv >= ? AND recv < ? ORDER BY recv""", [start - history_s, end]).fetchall()
+    for i, (recv, slot, mint, usr, buy, sol, tok, vsol, vtok) in enumerate(rows):
+        ts = min(a + b * slot, recv) if slot else recv
+        events.append(Event(ts=ts, available_at=recv, kind="swap", mint=mint, seq=10_000_000 + i,
+                            data={"side": "buy" if buy else "sell", "trader": usr, "sol": sol, "tok": tok,
+                                  "slot": slot, "v_sol": vsol, "v_tok": vtok, "price_sol": vsol / vtok}))
+    return EventStore(events, resolution_s=RESOLUTION_S)
+
+
+@dataclass
+class _Tok:
+    created: float
+    creator: str
+    cslot: int | None
+    pos: dict = field(default_factory=lambda: defaultdict(float))
+    buys: deque = field(default_factory=deque)        # (t, wallet) buys, last 30 s
+    flow: deque = field(default_factory=deque)        # (t, signed sol), last 30 s
+    snipers: set = field(default_factory=set)
+    dev_sold: bool = False
+    price: float = 0.0
+
+
+@dataclass
+class StructureEntry:
+    """H1: hot new token + developer already sold + snipers hold < snipers_max_pct of supply."""
+
+    size_sol: float = 0.5
+    max_age_s: float = 60.0
+    min_buyers_10s: int = 8
+    min_inflow_30s: float = 1.5
+    snipers_max_pct: float = 10.0
+    hold_s: float = 60.0
+    stop_pct: float = 25.0
+    name: str = "h1_structure_entry"
+    _toks: dict = field(default_factory=dict)
+    _held: dict = field(default_factory=dict)           # mint -> (t_decided, ref_price)
+    _done: set = field(default_factory=set)
+
+    def spec(self) -> dict:
+        return {k: getattr(self, k) for k in ("size_sol", "max_age_s", "min_buyers_10s", "min_inflow_30s",
+                                               "snipers_max_pct", "hold_s", "stop_pct")}
+
+    def on_event(self, view, ev):
+        now = view.now
+        if ev.kind == "create":
+            self._toks[ev.mint] = _Tok(created=ev.ts, creator=ev.data["creator"], cslot=ev.data.get("slot"))
+            return []
+        st = self._toks.get(ev.mint)
+        if st is None:
+            return []                                   # creation not seen: structure unknown, skip
+        d = ev.data
+        u = d["trader"]
+        st.price = d["v_sol"] / d["v_tok"]
+        if d["side"] == "buy":
+            st.pos[u] += d["tok"]
+            if u != st.creator:
+                st.buys.append((now, u))
+                if st.cslot is not None and d.get("slot") is not None and d["slot"] <= st.cslot + 5:
+                    st.snipers.add(u)
+        else:
+            st.pos[u] -= d["tok"]
+            if u == st.creator:
+                st.dev_sold = True
+        st.flow.append((now, d["sol"] if d["side"] == "buy" else -d["sol"]))
+        while st.buys and st.buys[0][0] < now - 30:
+            st.buys.popleft()
+        while st.flow and st.flow[0][0] < now - 30:
+            st.flow.popleft()
+        out = []
+        if ev.mint in self._held:
+            t0, ref = self._held[ev.mint]
+            if st.price <= ref * (1 - self.stop_pct / 100):
+                self._held.pop(ev.mint)
+                out.append(Sell(ev.mint, 1.0, tag="stop"))
+            return out
+        if ev.mint in self._done or now - st.created > self.max_age_s or not st.dev_sold:
+            return out
+        buyers_10 = len({w for t, w in st.buys if t >= now - 10})
+        inflow_30 = sum(x for _, x in st.flow)
+        if buyers_10 < self.min_buyers_10s or inflow_30 < self.min_inflow_30s:
+            return out
+        snip_pct = sum(max(st.pos[w], 0) for w in st.snipers) / SUPPLY * 100
+        if snip_pct >= self.snipers_max_pct:
+            return out
+        self._done.add(ev.mint)
+        self._held[ev.mint] = (now, st.price)
+        return [Buy(ev.mint, self.size_sol, tag="h1_entry")]
+
+    def on_tick(self, view):
+        out = []
+        for m, (t0, _) in list(self._held.items()):
+            if view.now - t0 >= self.hold_s:
+                self._held.pop(m)
+                out.append(Sell(m, 1.0, tag="time_exit"))
+        # drop state of tokens too old to ever qualify (memory)
+        if len(self._toks) > 20000:
+            cutoff = view.now - 2 * self.max_age_s
+            for m in [m for m, s in self._toks.items() if s.created < cutoff and m not in self._held]:
+                del self._toks[m]
+        return out

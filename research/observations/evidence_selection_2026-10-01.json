@@ -1,0 +1,145 @@
+{
+ "window": "train period, recorded 2026-10-01 12:17-13:15 UTC (gap 12:34-12:41)",
+ "profile": "age<60s, >=8 unique buyers in last 10s, net inflow >1.5 SOL in last 30s; 5-s snapshots",
+ "pick_vs_choice_set_percentiles": {
+  "age_s": 0.115,
+  "uniq_buyers_10s": 0.966,
+  "net_flow_30s": 0.948,
+  "drawdown_60s": 0.843,
+  "mcap_sol": 0.784,
+  "n_entries": 159,
+  "avg_choice_set": 191.5
+ },
+ "groups": {
+  "profile_all": {
+   "n": 858,
+   "kol_next30_share": 0.196,
+   "r15": {
+    "median": -0.045,
+    "mean": -0.0803,
+    "share_up": 0.402
+   },
+   "r30": {
+    "median": -0.1288,
+    "mean": -0.1316,
+    "share_up": 0.337
+   },
+   "r60": {
+    "median": -0.2576,
+    "mean": -0.1527,
+    "share_up": 0.291
+   }
+  },
+  "profile_kol_next30": {
+   "n": 168,
+   "kol_next30_share": 1.0,
+   "r15": {
+    "median": -0.0089,
+    "mean": 0.0494,
+    "share_up": 0.488
+   },
+   "r30": {
+    "median": 0.0103,
+    "mean": 0.0607,
+    "share_up": 0.524
+   },
+   "r60": {
+    "median": 0.0416,
+    "mean": 0.1759,
+    "share_up": 0.518
+   }
+  },
+  "profile_no_kol": {
+   "n": 690,
+   "kol_next30_share": 0.0,
+   "r15": {
+    "median": -0.0554,
+    "mean": -0.1119,
+    "share_up": 0.381
+   },
+   "r30": {
+    "median": -0.1759,
+    "mean": -0.1784,
+    "share_up": 0.291
+   },
+   "r60": {
+    "median": -0.3236,
+    "mean": -0.2327,
+    "share_up": 0.236
+   }
+  },
+  "dev_sold_and_snipers_lt10": {
+   "n": 266,
+   "kol_next30_share": 0.35,
+   "r15": {
+    "median": -0.0464,
+    "mean": -0.0241,
+    "share_up": 0.38
+   },
+   "r30": {
+    "median": -0.0934,
+    "mean": -0.0596,
+    "share_up": 0.346
+   },
+   "r60": {
+    "median": -0.1634,
+    "mean": 0.017,
+    "share_up": 0.301
+   }
+  },
+  "dev_not_sold": {
+   "n": 406,
+   "kol_next30_share": 0.099,
+   "r15": {
+    "median": -0.0241,
+    "mean": -0.1113,
+    "share_up": 0.426
+   },
+   "r30": {
+    "median": -0.1526,
+    "mean": -0.1806,
+    "share_up": 0.337
+   },
+   "r60": {
+    "median": -0.3818,
+    "mean": -0.2394,
+    "share_up": 0.298
+   }
+  }
+ },
+ "structure_medians": {
+  "kol_next": {
+   "dev_sold": 1.0,
+   "dev_pct_now": 0.0,
+   "snipers_pct_now": 7.677,
+   "snipers_5slots": 6.0,
+   "holders": 28.5,
+   "top10_pct": 26.0915
+  },
+  "no_kol": {
+   "dev_sold": 0.0,
+   "dev_pct_now": 1.7415,
+   "snipers_pct_now": 14.303,
+   "snipers_5slots": 10.0,
+   "holders": 26.5,
+   "top10_pct": 24.1115
+  },
+  "r60_up": {
+   "dev_sold": 1.0,
+   "dev_pct_now": 1.205,
+   "snipers_pct_now": 12.847,
+   "snipers_5slots": 10.5,
+   "holders": 40.0,
+   "top10_pct": 26.045
+  },
+  "r60_crash": {
+   "dev_sold": 0.0,
+   "dev_pct_now": 1.782,
+   "snipers_pct_now": 20.409,
+   "snipers_5slots": 11.5,
+   "holders": 30.0,
+   "top10_pct": 26.128
+  }
+ },
+ "caveat": "mid prices, no fees; snapshots overlap (79 distinct tokens in the dev-sold group)"
+}
