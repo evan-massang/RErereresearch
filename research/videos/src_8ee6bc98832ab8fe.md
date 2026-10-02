@@ -24,7 +24,7 @@ _Generated from the database by `python -m pipeline export-all`; edits here are 
 
 | time | decision | token | mcap | stated reason | inferred reason (ours) | conf | status |
 |---|---|---|---|---|---|---|---|
-| --:--:-- | PARTIAL_SELL | swordbunny |  |  |  | 0.9 | draft |
 | --:--:-- | BUY | swordbunny |  |  | Bundled buy alongside the deploy; not a discretionary pick from Pulse (inference | 0.9 | draft |
+| --:--:-- | PARTIAL_SELL | swordbunny |  |  |  | 0.9 | draft |
 
 Frames extracted: 2

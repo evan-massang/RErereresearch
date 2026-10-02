@@ -30,7 +30,7 @@ from pipeline.strategies import (DevDumpEntry, DevDumpRunner, GoodDevLaunch, Str
                                  build_market_store)
 
 SPLIT_SET = "overnight-2026-10-01"
-U = lambda h, m: datetime(2026, 10, 1, h, m, tzinfo=timezone.utc)
+U = lambda h, m, d=1: datetime(2026, 10, d, h, m, tzinfo=timezone.utc)
 PASS = {"min_trades": 30, "min_expectancy_sol": 0.0, "min_profit_factor": 1.2}
 
 HYPS = {
@@ -117,11 +117,18 @@ def main() -> None:
     ap.add_argument("hyp", choices=sorted(HYPS))
     ap.add_argument("--split", choices=("train", "validation"), default="train")
     ap.add_argument("--in-sample", action="store_true", help="the window the hypothesis was derived from")
+    ap.add_argument("--retest", nargs=3, metavar=("WARMUP", "START", "END"),
+                    help="ISO UTC times: re-test the frozen rule on a later tape (state built from WARMUP, trades START-END)")
     a = ap.parse_args()
     h = HYPS[a.hyp]
     rdb = db.connect()
     hyp_id = rdb.execute("SELECT hypothesis_id FROM hypotheses WHERE statement LIKE ?", [h["prefix"] + "%"]).fetchone()[0]
-    if a.split == "validation":
+    if a.retest:
+        warm, s, e = (datetime.fromisoformat(x).replace(tzinfo=timezone.utc) for x in a.retest)
+        h = {**h, "warmup_from": warm, "first_test": (s, e)}
+        role = f"retest_{s:%Y%m%d}"
+        a.split = "retest"
+    elif a.split == "validation":
         s, e, _ = get_split(rdb, SPLIT_SET, "validation")
         role = "validation"
     else:
@@ -137,6 +144,8 @@ def main() -> None:
             raise SystemExit("window is not inside the train or validation period")
     start, end = s.timestamp(), e.timestamp()
     now = datetime.now(timezone.utc).timestamp()
+    if a.retest:
+        start, end = s.timestamp(), e.timestamp()
     if end > now:
         raise SystemExit(f"window ends {e:%H:%M} UTC, data not complete yet")
     run_start = h["warmup_from"].timestamp() if "warmup_from" in h else start

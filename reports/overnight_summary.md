@@ -196,6 +196,20 @@ Post-level facts that did hold: posts that are replies, mention a contract addre
 
 Good-dev filter on validation-period launches (16:15–18:15): 1 of 19 migrated (5.3%, 3.4× the base) vs 18% on train. The lift shrank; the sample is tiny. H7 stays frozen for a re-test on the new tape being recorded now (02:00 onward).
 
+
+## The 0.05 SOL question (2026-10-02, 06:15 UTC)
+
+Re-running the H7 rule on train data at different position sizes and per-transaction costs (in-sample, 40 trades, descriptive only):
+
+| size | priority+tip per tx | result over 4 h |
+|---|---|---|
+| 0.5 SOL | 0.01 SOL | +0.04 SOL (breakeven) |
+| **0.05 SOL** | **0.01 SOL** | **−0.70 SOL: fourteen positions lost to fees alone** |
+| 0.05 SOL | 0.001 SOL | +0.06 SOL (+121% of a position) |
+| 0.05 SOL | 0.0002 SOL | +0.13 SOL (+255% of a position) |
+
+The rule did not change between rows; only the fee did. At 0.05 SOL the usual 0.01 SOL tip is 20% of the position per transaction, so **a small account's first problem is fees, not selection**. Any attempt to grow 0.05 SOL must run with near-zero tips (slower, occasionally failed fills) and few, selective trades. Only once the account is near 1 SOL does normal execution stop eating the edge. This is before any claim that the rule has an edge at all; that is what the 08:05 re-test is for.
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.
