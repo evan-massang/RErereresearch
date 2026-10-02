@@ -185,6 +185,17 @@ The realistic path for a solo trader is:
 
 A bot cannot replicate step 2 from chain data.
 
+
+## Narrative judgement test (2026-10-02, 02:30 UTC)
+
+The one lever no test had touched was *judgement*: reading the linked X post the way Decu does. I fetched the posts linked by 3,497 launches and had 600 train-period posts scored 1–5 for narrative quality by ten independent, outcome-blind LLM runs.
+
+**Result: it does not find migrators.** Only 4 of 600 post-linked launches migrated (0.67%, below the 1.95% all-launch rate), and **none** of the 115 posts rated 4–5 ("real narrative") did. High-rated posts reached 2× slightly more often (8% vs 4%), which is a weak lead, not a rule.
+
+Post-level facts that did hold: posts that are replies, mention a contract address, or come from accounts under 30 days old almost never migrate (0.4–0.5×, and 0 of 157 for CA posts). Post freshness and author follower count do not matter. First coin made for a post: 1.3× (down from 2× on partial data).
+
+Good-dev filter on validation-period launches (16:15–18:15): 1 of 19 migrated (5.3%, 3.4× the base) vs 18% on train. The lift shrank; the sample is tiny. H7 stays frozen for a re-test on the new tape being recorded now (02:00 onward).
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.

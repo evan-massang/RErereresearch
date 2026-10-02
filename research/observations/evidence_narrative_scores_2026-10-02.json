@@ -1,0 +1,4876 @@
+{
+ "n": 600,
+ "base_migration": 0.0067,
+ "by_score": {
+  "1": {
+   "n": 188,
+   "migrated": 0,
+   "peak_ge_2x": 0.043
+  },
+  "2": {
+   "n": 146,
+   "migrated": 2,
+   "peak_ge_2x": 0.034
+  },
+  "3": {
+   "n": 151,
+   "migrated": 2,
+   "peak_ge_2x": 0.06
+  },
+  "4": {
+   "n": 100,
+   "migrated": 0,
+   "peak_ge_2x": 0.08
+  },
+  "5": {
+   "n": 15,
+   "migrated": 0,
+   "peak_ge_2x": 0.067
+  }
+ },
+ "by_category": {
+  "ai_tech": {
+   "n": 52,
+   "migrated": 1
+  },
+  "animal": {
+   "n": 57,
+   "migrated": 0
+  },
+  "celebrity": {
+   "n": 24,
+   "migrated": 0
+  },
+  "crypto_insider": {
+   "n": 50,
+   "migrated": 0
+  },
+  "humor": {
+   "n": 75,
+   "migrated": 1
+  },
+  "news_event": {
+   "n": 92,
+   "migrated": 0
+  },
+  "nsfw": {
+   "n": 13,
+   "migrated": 0
+  },
+  "other": {
+   "n": 57,
+   "migrated": 2
+  },
+  "politics": {
+   "n": 34,
+   "migrated": 0
+  },
+  "spam_or_ca": {
+   "n": 146,
+   "migrated": 0
+  }
+ },
+ "method": "600 train launches (before 16:15 UTC) linking an X post, shuffled, scored 1-5 by 10 independent LLM (Haiku) runs blind to outcomes; scorers were not calibrated against each other (one batch rated far more generously).",
+ "scores": [
+  {
+   "mint": "DVb7h2aQ6j1jcsm4KxJ9u5nNJFSQi8RRgCDtV9wjpump",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Celebrity conversion prediction market",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "4SuisKCh8pc3uiiouCwgsT36BwYwDDJwfyD19zC4pump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Inflation criticism from meme account",
+   "migrated": false,
+   "peak_30m_x": 1.111372279478934
+  },
+  {
+   "mint": "AxW98X3M5mA36WX3eZdRhrew3DRVdJ8eyZBMhJ4czGg1",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address and link, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "2bVPpc5Mrj3DGdazmnv76Pw3oeQ6ntCQucRhgWrLtUsY",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Bare contract address with no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "EH9V6Y4ehF4SFs6YQmV5s2izdcnLqekEsDf5ZzphJCrA",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "28X1ChNurSaexu6E2pJq6qDFSDu6dhBDuM9VhgdrhwX1",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9tc1MnCzuSsH2SYUHM58o2VP8BBfL5d4JnPrpwuapump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just emoji reply, no narrative",
+   "migrated": false,
+   "peak_30m_x": 4.980335456573074
+  },
+  {
+   "mint": "F7z3R16js5ZKbdG16k4qkboQY6dfx51KVuBwqgwPvNDw",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "One-word shill, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "4jwby89nqEVzk6WFusy1p4q2RizYmYZ9KG9icU5ZerSv",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Famous quote match: gravity & love",
+   "migrated": false,
+   "peak_30m_x": 2.0609967650114625
+  },
+  {
+   "mint": "ENakQeA2qrT9tN3HWbRPKn8DKoLHoxbxqnRyKtJiauEV",
+   "score": 4,
+   "category": "animal",
+   "reason": "Halloween timing, viral cat meme trend",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "A9EvQij36pBid3TUfVEU38RV4kRPHwqDHDSCw1w3wRfx",
+   "score": 3,
+   "category": "politics",
+   "reason": "Real EU regulatory concern narrative",
+   "migrated": false,
+   "peak_30m_x": 1.09019205489161
+  },
+  {
+   "mint": "7iMGUfsu5EXAvReixrqMeQWBSsQHdpGN9YBQ6Svwpump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Real Bitcoin protocol development news",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5FvP3UxuXkkbU13tygAfU75f3RoLvgf9n9mnJJZWRuo",
+   "score": 3,
+   "category": "animal",
+   "reason": "Cat meme with October hope narrative",
+   "migrated": false,
+   "peak_30m_x": 2.6179711368012124
+  },
+  {
+   "mint": "6a4GCjx1thPator9k79kT2xrgFiaxgcbfVEts91Nd4T1",
+   "score": 1,
+   "category": "other",
+   "reason": "Cryptic reference without clear narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Ag7u8qQCiutQ9iVJ412RC3Ux55n3o5YaLVh26wgG7ikG",
+   "score": 3,
+   "category": "humor",
+   "reason": "Slang culture reference",
+   "migrated": false,
+   "peak_30m_x": 2.2117093773346297
+  },
+  {
+   "mint": "7fd8DrFL1X7xDoBqpEP6AdadyXvhqYaZ66vk4qDhvoXy",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Established voice critiquing social trading trends",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "4knVFNdgwJZPReotdy8Skhb8KwcCso2J7SWVi3ZHpump",
+   "score": 3,
+   "category": "politics",
+   "reason": "Trump signal, massive reach but vague",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GYP61xY4QfaFRF5XV41jUeNXz2gijDLQrfmzY91eCm4a",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Established trader substantive critique",
+   "migrated": false,
+   "peak_30m_x": 1.1857625847933386
+  },
+  {
+   "mint": "CUh5ADQhesKxD7JfyxbVgnNM6674H98qKpyGMKUy1Er7",
+   "score": 2,
+   "category": "humor",
+   "reason": "Meta critique of trader culture without meme",
+   "migrated": false,
+   "peak_30m_x": 1.1754202477625852
+  },
+  {
+   "mint": "HUjUT76d1V6NEkx7cLZvRRgb2ScWGQKTwXZA8VYsoYvm",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Established figure critiquing trend, not promoting",
+   "migrated": false,
+   "peak_30m_x": 1.088170974169949
+  },
+  {
+   "mint": "8fP6L9ENr6Xr5dVirY4o3u9ig2VKeLSYVaLXCVzLYm8Q",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Trend commentary from known voice",
+   "migrated": false,
+   "peak_30m_x": 1.124360299979363
+  },
+  {
+   "mint": "7XFcvHWCAJKL5yGzjxRWkoiBWM7QXpDTbw2LKfwR3x1v",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.000325952314924
+  },
+  {
+   "mint": "D141mHp8heiuNRsTHj2gvrixvb5N7SjsxEyxnM4ddBpr",
+   "score": 2,
+   "category": "nsfw",
+   "reason": "Exploitative charity angle, poor taste",
+   "migrated": false,
+   "peak_30m_x": 1.5077482380852867
+  },
+  {
+   "mint": "ExAGhVr2wnMZhCMvwacSV51jKMJwEptx55VW1iG8WbdW",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Character meme claim",
+   "migrated": false,
+   "peak_30m_x": 1.5116950765903314
+  },
+  {
+   "mint": "EW5qrZ19YkQUgkLo54UA8mNNJVZbf6EyvQMwfGk6pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Weak trader-athlete metaphor, derivative",
+   "migrated": false,
+   "peak_30m_x": 1.1626631651180364
+  },
+  {
+   "mint": "74KhVwk1TgmNsLcNznbrStNiFd4pZcYePu98j9jpfGcj",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 3.201276396611048
+  },
+  {
+   "mint": "2odXZ2FFT5ekXZW1jedctFjcJVrHj6socGUFKcZuacKT",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Meta ticker format comment, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "EiBYWZ2UD3qJcPTh7xZJB5PLoe3UrRsBvpPLdUipJkAW",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Zcash fundraising appeal, niche community",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "63Ct835utjBJnVZnJQQbN51PcCaCQAak2WPfsLaeRmTp",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Link only, no narrative content",
+   "migrated": false,
+   "peak_30m_x": 1.073669046699564
+  },
+  {
+   "mint": "7VoguV1nmWUFCU6WkcCArySmcJfuU2XeQSoVPGtV4Rix",
+   "score": 1,
+   "category": "crypto_insider",
+   "reason": "Minimal ticker format comment",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "H5yt9KAm2gKuwk8K7WqNPAjpLQvHm8yo22toj4Q3UDJe",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "SpaceX Google AI chips space narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FeRchZoNooAC7J7cvq9ihqJypyh8ZfNyaJmDgQm6pump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Cat meme wit",
+   "migrated": false,
+   "peak_30m_x": 1.0000423563611942
+  },
+  {
+   "mint": "FGhkpJrgmgeRam8X3ZyKrwzyFNNdrJcQVDd2dYPyugKf",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Saylor posts unrelated digital credit tutorial",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "ANqi6vmJUEYuvCBMdGC1mAvuC3MmF7J3NyQLpGFpiRhv",
+   "score": 5,
+   "category": "politics",
+   "reason": "Grok viral Jesus post, 4.6M views trending",
+   "migrated": false,
+   "peak_30m_x": 1.0002225826169349
+  },
+  {
+   "mint": "n2hTUuqNEyfSHPzroMnEWup4Hq8wuNkMP2CrCLXpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Throwaway account generic statement",
+   "migrated": false,
+   "peak_30m_x": 1.0020134523025026
+  },
+  {
+   "mint": "EnVC52x2KHHNTTTLpRVWhB1H9p3JiRefRJrP6rSL2t3V",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal/spam",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2FYs9KTbckvYh5Aoeuxd3CzjWNhNrHp259PVVc9Apump",
+   "score": 2,
+   "category": "other",
+   "reason": "Month name reference, minimal narrative",
+   "migrated": false,
+   "peak_30m_x": 1.9541653438704374
+  },
+  {
+   "mint": "GPj2g2R92KyEoT1DRzL29iT6RhMX1PXzjVHTSvgVhZz4",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic question, no memecoin fit",
+   "migrated": false,
+   "peak_30m_x": 1.328976449282632
+  },
+  {
+   "mint": "DaaiQniDJQiefKWUMJud7BuD6Kb1z2jsDNuMhouDmtWw",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic pump invitation with no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.3960599090647747
+  },
+  {
+   "mint": "6fQXW6mcJTx7BXVmNLXw4BXSVdVg2ob5oyA8DkZMpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Blind seal cataract surgery, heartwarming story",
+   "migrated": false,
+   "peak_30m_x": 1.1488738424631018
+  },
+  {
+   "mint": "EUAcmRE6Qx4STo2vPUiXZfx29zpgo6qiQt4s7achtTvT",
+   "score": 3,
+   "category": "other",
+   "reason": "Gaming mashup trend narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0000559959985333
+  },
+  {
+   "mint": "zKGJWusfrk5qtxErRqRL1StkkADT8Vv9a3BxUZopump",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Kai Cenat reference with self-care narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1122095180384843
+  },
+  {
+   "mint": "5i1du6RDngVNitbSRE4i98bpspismtuJz7FGYkcBpump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Pumpcade platform launch, real product narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1228172180185718
+  },
+  {
+   "mint": "DvH6jbgRQ8Kf32Ja2ug2vhEcExbdxm3MBuCzAH5ckqL1",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Breast Cancer Awareness charity coin, repeated",
+   "migrated": false,
+   "peak_30m_x": 1.0010998606801318
+  },
+  {
+   "mint": "CJvakadMfLg2QXatVfbfStBwm36WYM7xEwdDqqVeg38c",
+   "score": 1,
+   "category": "news_event",
+   "reason": "Reuters news unrelated to memecoin",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CnoWnFXinf8AMa1ghd4xdYP9jCX9U73FGvZ8fnZsod59",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Drake FOMO album release, cultural moment",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "F2TANduWYo8A3AdH4qT1CR6hB7ZS8EJFjv6aGpSrEahJ",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Drake album release narrative, real hype",
+   "migrated": false,
+   "peak_30m_x": 1.375488693493171
+  },
+  {
+   "mint": "5AKvJgAe3C9QdrQW222vsuwksyZBnDnCm1yb7d5Qpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Novel: real ",
+   "migrated": false,
+   "peak_30m_x": 1.0303044571267619
+  },
+  {
+   "mint": "CxcHaAwCXdKoYvJJcAe7r98AaThNqSnQMRVSnU1bpump",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Drake FOMO album, celebrity meme narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0032948906362547
+  },
+  {
+   "mint": "DxT2uNpH3VM4L4KnMXGRqpzegtvh4R2yRaJaR35A19Fg",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Drake album reference with relevant links, decent fit",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "CrLonEcbxzNkJYZjh2tzuAjMiYVGPSNkPsXvPxFNpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Drake album FOMO, music reference, weak",
+   "migrated": false,
+   "peak_30m_x": 1.4627690109351448
+  },
+  {
+   "mint": "JANPYiuCE4mruHXupsNtT3Hm79rY6TEfXiCd2BvMz9jM",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Drake FOMO album reference, cultural tie",
+   "migrated": false,
+   "peak_30m_x": 1.6111886589447812
+  },
+  {
+   "mint": "265eseZpVocfzhMMx5ULpEnipFzJzFNUVswxpAmXmEHK",
+   "score": 2,
+   "category": "other",
+   "reason": "Name clarification, low information",
+   "migrated": false,
+   "peak_30m_x": 1.4266072333994366
+  },
+  {
+   "mint": "76M4ZsACFQujmQwfLKwJzSCvmsbWCP7mSwDMGZS8pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just a link, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CgLAFR9QnZnmo7NVHKcwxKCpLDUum8s8FP6UahKppump",
+   "score": 5,
+   "category": "ai_tech",
+   "reason": "Google official AI announcement, frontier",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EnCH1YvsM3wv9zdVaQuwPf7oa2hBq7MMnUgZT1uis8gk",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address and link, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.000043334757808
+  },
+  {
+   "mint": "DMbmoYJVKnLjpYhmq91pDRNPd4heXpstMFEqHVLXzKCY",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate post with contract address only",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "8B44snnpXabFukm6m9GNq4VGbFAjDL8vyqCLfJKLmWqb",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Single vague comment about capitalization",
+   "migrated": false,
+   "peak_30m_x": 1.519087583629283
+  },
+  {
+   "mint": "7QGd1snk3Kt5ZW5FfWgN5Udhx9bZDRTrWkKGj3LsyoYk",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Past performance claim",
+   "migrated": false,
+   "peak_30m_x": 1.0000433347722515
+  },
+  {
+   "mint": "sLUp6NEMyhVEykVZtC9cZ7pYngr4QdEZdPks51JrNGp",
+   "score": 2,
+   "category": "other",
+   "reason": "Past performance claim, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HwFAVcL846xHqL9nFMedwQQsDuo1JnEqt7vVGxFY6Gb4",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Incomplete, unclear intent",
+   "migrated": false,
+   "peak_30m_x": 1.023218776939223
+  },
+  {
+   "mint": "7sNWfgChnrrvqC3vkG8Xnk8ytLkZqR7kYb2bfLYCpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Generic motivational statement",
+   "migrated": false,
+   "peak_30m_x": 1.0367416735282367
+  },
+  {
+   "mint": "Hag3osPxek99cYTqq2TK6xsvrkqTQKd7dELkYLGcpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Motivational quote about belief, derivative",
+   "migrated": false,
+   "peak_30m_x": 1.0121650192565523
+  },
+  {
+   "mint": "9VA6BHidqJ3xDJzLkP5ETTZYqDzsw2s9YdqN3immVxRZ",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Drake album Habibti FOMO direct",
+   "migrated": false,
+   "peak_30m_x": 1.5770535082915487
+  },
+  {
+   "mint": "2dvgGuCeib1KFx8cAUJYiWBMwqLkpG3p4uYBj1ndZnR9",
+   "score": 3,
+   "category": "animal",
+   "reason": "Viral cat meme with established trend narrative",
+   "migrated": false,
+   "peak_30m_x": 1.5291400714805312
+  },
+  {
+   "mint": "26TBgV44cBm5DP9cXKbuNHP3kNLFyUHLBzSzwDL4pump",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Drake album Habibti direct reference",
+   "migrated": false,
+   "peak_30m_x": 1.420969392103482
+  },
+  {
+   "mint": "BJrtQgZzdSpnPEH2e6QS8SQpZUZVZewL3Z5fnyApump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Autonomous agent product functionality launch",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "FTG8UdgrzZB82Be1u4TLXB3Qytm3QpCoQ6EMMV6ppump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Crossdressing pepe trend, cultural meme",
+   "migrated": false,
+   "peak_30m_x": 1.0612980598794002
+  },
+  {
+   "mint": "GHgcUYAJ8Cuer7QYU5sLK2ADRiM6Lgbf5G2EPUgiKj3w",
+   "score": 3,
+   "category": "animal",
+   "reason": "Famous zoo animal, viral fame, comparison",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HoeqM7VCnUL3jesJWhwMdY5sPpY3r8vR8U98sKSUCQ97",
+   "score": 2,
+   "category": "animal",
+   "reason": "Found pet owner TikTok, personal story",
+   "migrated": false,
+   "peak_30m_x": 1.0461019025500728
+  },
+  {
+   "mint": "MGremu8G3ev1YVNbnnSu8GYyrXY18Hv4bYWc2S4UHfb",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic reply, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2AHFPTfyNV9jhTbdesAUenBCMjLK3x61GBH97bzEpump",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Drake album reference, weak coin fit",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "65SsVbvKaKULxAZRZwLbr6E5zvBoivYZUGeeW9fcpump",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6Zmhq31bL7bGmAgMp4i3waXaSb2qSCztptdyeXmoii7e",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viking cat character, strong persona story",
+   "migrated": false,
+   "peak_30m_x": 1.0007054477852289
+  },
+  {
+   "mint": "F3Pdcy1o2RJVWKA4g24rJJ5cpCAm9VjaU7vbwKegpump",
+   "score": 1,
+   "category": "other",
+   "reason": "Generic Zcash handle request, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0000431147580235
+  },
+  {
+   "mint": "FAGtfCFN3BFEaPYhXQYwtqRPvCY4tMZoWSA7okLycFE3",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Official collectible product, not memecoin",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EBKhghNAp4TdFbxKL3A4vbfZKWhNnfEWjSBn1JNSpump",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Drake FOMO album release creates timely narrative",
+   "migrated": false,
+   "peak_30m_x": 1.2242464051287416
+  },
+  {
+   "mint": "E3q7DtEZSDc1eNM59iLxNPATxvGTeyfP6NGRk82Jpump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Technical token unlock economics analysis",
+   "migrated": false,
+   "peak_30m_x": 1.006465183681313
+  },
+  {
+   "mint": "2VXQ7AfNQoeDnU9beTw1rUpMapfaDYajWm23ispEK9J6",
+   "score": 4,
+   "category": "animal",
+   "reason": "Dog pee art meme, absurdist viral video",
+   "migrated": false,
+   "peak_30m_x": 1.1109823176964797
+  },
+  {
+   "mint": "9WhWfHYeM9VpFeU21KPwneEc4TDYLWGd3d9J7iAbnEKT",
+   "score": 2,
+   "category": "humor",
+   "reason": "Unclear vague humor reference",
+   "migrated": false,
+   "peak_30m_x": 1.4774840385071006
+  },
+  {
+   "mint": "CNwT9GExUEo44sbSUtDJsTE71xwEYHgiWsqVDFDHpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Absurdist do",
+   "migrated": false,
+   "peak_30m_x": 1.2312958251934023
+  },
+  {
+   "mint": "FwVYRvKhrKFxbXabKemUouFghrvBwHG79o2MBaYRpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Funny dog post, 2M views, absurdist humor",
+   "migrated": false,
+   "peak_30m_x": 1.0009703281766082
+  },
+  {
+   "mint": "BC3dvmq8FsCbypi55ZGkrFwiSBGcERxHMk9NAUohpump",
+   "score": 1,
+   "category": "animal",
+   "reason": "Minimal content",
+   "migrated": false,
+   "peak_30m_x": 1.0589151295953878
+  },
+  {
+   "mint": "DQ3LPwfwQGf2M1CfckZxxahkouFSeWCmaQVQrYL2Ao9e",
+   "score": 2,
+   "category": "humor",
+   "reason": "Seasonal/hol",
+   "migrated": false,
+   "peak_30m_x": 1.3237828492324
+  },
+  {
+   "mint": "tzZK7hALh85cPy1dtTttxRHJmhNFPwp432UQWqvpump",
+   "score": 4,
+   "category": "humor",
+   "reason": "Absurdist dog art viral narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1357124994772652
+  },
+  {
+   "mint": "BYStuBqw9n6V6m5JM7M1gcbWAMmyrYa9Eus247njpump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Novel gamified trading experience product",
+   "migrated": false,
+   "peak_30m_x": 1.1219631300503432
+  },
+  {
+   "mint": "58TFLG9rjiScJvRFuyYK3gykvL7mRUtRt4Mg8Z1aSTDL",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral female trader meme, authentic cultural moment",
+   "migrated": false,
+   "peak_30m_x": 1.2286786289894926
+  },
+  {
+   "mint": "7b24LTA8cyp9XamtkYwuLRxZMpgTS5PupJc2kH6ypump",
+   "score": 5,
+   "category": "ai_tech",
+   "reason": "Official Elon Musk account, 241M followers massive reach",
+   "migrated": false,
+   "peak_30m_x": 1.150856454935537
+  },
+  {
+   "mint": "J1VKkJFvoRS5kMtNqS1TsPV628tNgsyD8UuL2G9xpump",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Elon on AI with reach",
+   "migrated": false,
+   "peak_30m_x": 1.0003124569718203
+  },
+  {
+   "mint": "FrdAwxwii4SLHGbDxm65oeAyHE5TxCP9WYSmuobT2Xg1",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just link/co",
+   "migrated": false,
+   "peak_30m_x": 3.3979490632283897
+  },
+  {
+   "mint": "F5NawPpLfZwNCdNkhzHCz4tTqjAAfkgTKtjLA9fvTMVs",
+   "score": 1,
+   "category": "other",
+   "reason": "Vague tag train suggestion",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8pS9tJSqdo5WJybTVLvwZwy2ucm3DVsnry4cHJ9qvphf",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "NVIDIA AI infrastructure narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "e2JG9X2frkXoWB7yFHdWaqqsk6Fqz4WzgEzH3jSpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Relatable FOMO/loss feeling, emotional",
+   "migrated": false,
+   "peak_30m_x": 1.0215557108024924
+  },
+  {
+   "mint": "Bkh7CVPRjdrfbMdBaAW98TRCqEqECV6nRr3svSyrpkYn",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "NVIDIA AI infrastructure narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "APurThQKi7q8LtgiENt4fS3NC6qxUbNDqPb93dkva2MZ",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Website purchase, contract posting, elaborate",
+   "migrated": false,
+   "peak_30m_x": 1.0516614147365402
+  },
+  {
+   "mint": "2r1VjFqpZcFTt2Es6pRFXAzGJspsmBqaWPqRNzALDLkh",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Elon Musk website tie-in, shows creative effort",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "D23tkEbKmdFPMNnfgNdCdPxsxGfCrS3nbXEVx2qKxCvQ",
+   "score": 1,
+   "category": "crypto_insider",
+   "reason": "Class action lawsuit notification, warning",
+   "migrated": false,
+   "peak_30m_x": 4.674156327186572
+  },
+  {
+   "mint": "DErDD6QuAUmT9L7buFLPG5PVLr5dwGXX9NDYjNWWsiMP",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Viral protection movement, major news story",
+   "migrated": false,
+   "peak_30m_x": 2.0607509036414102
+  },
+  {
+   "mint": "Hz5ctRfHsmuSCS3ji7qFXnekcrYcG6DeyJpnaKaoHeGJ",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Established ",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DZ56LWaREKLFC2oGeGABZgzhDW6FowJ2CEh8rrFZws9W",
+   "score": 4,
+   "category": "politics",
+   "reason": "Jane Doe support movement, tiktok viral",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "36UQKePC45XCkgDzaFDyqVmnNG27tYtQ571Xk7jQsa27",
+   "score": 4,
+   "category": "politics",
+   "reason": "Jane Doe support movement, serious social",
+   "migrated": false,
+   "peak_30m_x": 1.0032949572900658
+  },
+  {
+   "mint": "FbfpYUCdqaGi4viobhRRzTWGhbvZY8MJNZnx9kqbpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Pure hype with no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.028345666168835
+  },
+  {
+   "mint": "71v3Le9VEK9P1dE8TX7bmGYVBBquWthtEZQ52amnwH6e",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Founder promise callback with airdrop speculation",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3WdnaFXg2m4oMigr1viwrUi5d82hdLWUf8KJvErXpump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "New account anti-AI movement, lacks credibility",
+   "migrated": false,
+   "peak_30m_x": 1.0006585422828032
+  },
+  {
+   "mint": "EnwzNVF6XAqMAib5M6TpC7yrgiyCGVHmkPcQLQtrZNRi",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Established ",
+   "migrated": false,
+   "peak_30m_x": 1.068842864853086
+  },
+  {
+   "mint": "7BNbsPmh9edMSaQsX8TQeTC6RmSJUkhDj8TH8omApump",
+   "score": 4,
+   "category": "other",
+   "reason": "Memecoin cultural meta-commentary, reference",
+   "migrated": false,
+   "peak_30m_x": 1.063419516881762
+  },
+  {
+   "mint": "ThSzaci1gXCrGf7zqP1uFpFbfdBRrptRrdFCDLPDuED",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Court document discovery with meme terminology",
+   "migrated": false,
+   "peak_30m_x": 1.2875690457914393
+  },
+  {
+   "mint": "BYDNYujCYbM6YeRQuqepk2n6ZWuwuB44dqsTcBVc1pPW",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Memecoin scam lawsuit narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "D2xqvmoyyHvcCuLgFeZH173KHwQtJWhno9NwJtofkWcM",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Viral rape case justice narrative",
+   "migrated": false,
+   "peak_30m_x": 1.8492831200113793
+  },
+  {
+   "mint": "B4Nu5ZQegDENJ46HQ8tRWKNVzeSPS8mViGfKyqTypump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal/spam",
+   "migrated": false,
+   "peak_30m_x": 1.818375450145733
+  },
+  {
+   "mint": "shUWdk1c3oCd76a68Ek1LtzNt37tZzfxG2dYuq3brzQ",
+   "score": 4,
+   "category": "animal",
+   "reason": "Emma-chan viral Japanese dog narrative",
+   "migrated": false,
+   "peak_30m_x": 3.076210388049012
+  },
+  {
+   "mint": "AtVZ3WhxQoCMSfGE4Ffhbqkky76fPYCVSLQ2t2sHKPFV",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viral Japanese dog Emma cancer",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3KGiR2a1vrHq5HULFfmwTRzTXgUiY66XLzgZAPFjTiB3",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viral dog, cancer story, 1M views emotional",
+   "migrated": false,
+   "peak_30m_x": 1.000065844595227
+  },
+  {
+   "mint": "5gUgERV5RLUzK2q3j2EbauY54eKxqT75joMaMHJpicBJ",
+   "score": 4,
+   "category": "animal",
+   "reason": "Emma-chan viral dog video with health crisis",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4f6Uynsigi7yVXCSzfp5fmkUSb3atsowix6kqo1hwFwg",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Jane Doe viral movement, real news",
+   "migrated": false,
+   "peak_30m_x": 1.140016177107305
+  },
+  {
+   "mint": "7W6Lsm4LYMYLfmfptTobVLmwSMwG2RUTaMYCPjNcJuxn",
+   "score": 4,
+   "category": "animal",
+   "reason": "Real Sky News story with dark animal humor tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.0640145560407748
+  },
+  {
+   "mint": "BkQ3xikbQxZxHRNaDpLAwi4chvKnG7Q4XXiK1h4tpump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Flight hijack claim, sensational but unverified",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HY6e41otk5NUhKpVKdh92AYqxhjR9L9ZQeBpWEnxpump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Polymarket Trump Space Academy speculation",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "FmrtMw5uJAskN4ndrrGNZqGPCBqFSMhmbivC1DvtBMZe",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Technical issue unrelated",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "H2UqEQZ74fFgjwb1cDnHo79Mf88krYV467BXP3r3iwnU",
+   "score": 2,
+   "category": "animal",
+   "reason": "Cat meme reference weak",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2ndJPrBWAyE7jDW8dFr7pB3ZuuR2Ujh7pqLAc8kccKoM",
+   "score": 2,
+   "category": "animal",
+   "reason": "Black doge variant, derivative dogecoin concept",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3j67DXswJSMVXizVUZoM4qRuDYbLpTUcsq3B3HFSpump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Memecoin platform, efficiency tool, insider",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Do5mbjSufegb81vfdo4KthkcJfkL3SbQZTxBMLVrwkPZ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Meaningless post from celebrity account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3JGigGybTKYchCR7nh6ubqxBQRgz6Fd4tiNWASZPpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Fee collection scam narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0006159149849603
+  },
+  {
+   "mint": "GHxwgRpPKDyCnYiyC224GZg8fgNBmJoW7yrTat7bfxGs",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address and link, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "EnytBGBdM3mgbYu2Ef1Ch9hmShF4zvNJAoGaHiUDB3XY",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Contract address only",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "398ynJTW5puCC38xMAjNxBFYeAZ6Nkc28vhqMNEt2vhC",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Contract address only",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7PD1cg8ZRSimw7Je1subS6qenhTnVXF6JUnnU5EAGX7u",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Bare link without narrative substance",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5PApSFL4RegSbAqrTRBBwAdkoCcwjxtkHDLRB8cSjV6E",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just link/co",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "A4VEVJchzfEvYzzCEuSGJLSwe1wcBjwNxHADhVGtxz6T",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Jane Doe PFP cult movement narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1654556873196458
+  },
+  {
+   "mint": "DjteSBhGKn7Sqaux16cFB5VaP4VJHyCevma48SvZZMLG",
+   "score": 2,
+   "category": "spam_or_ca",
+   "reason": "Charity claim needs verification",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CQdhyfZsnf5cmaAsG1ku27e26YJxiU66uayHYCTerubB",
+   "score": 3,
+   "category": "other",
+   "reason": "Charity update, meta-community discussion",
+   "migrated": false,
+   "peak_30m_x": 1.9018935801351398
+  },
+  {
+   "mint": "7Zbv4Bt8iLCLa24UHLabLDFaYtgkAy7BR12azZBKSp18",
+   "score": 3,
+   "category": "humor",
+   "reason": "TikTok pfp cult trend, good viral potential",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DxGSWzKuaVfVLDVsVQPEsMJ4YDYqcQZRqnkxSmEfpump",
+   "score": 5,
+   "category": "animal",
+   "reason": "1M views in hour, deceased dog, charity",
+   "migrated": false,
+   "peak_30m_x": 2.9047325537571487
+  },
+  {
+   "mint": "F8WxEAmGr7whRBwuv6ZosxZY3KnNmtqynonT55W8WfFn",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4KkWLYxfXGwe3WYzH35xJhVWLAXvYyc9kMXbrwR7pump",
+   "score": 5,
+   "category": "news_event",
+   "reason": "Gamestop squeeze iconic internet event",
+   "migrated": false,
+   "peak_30m_x": 1.108471812156407
+  },
+  {
+   "mint": "BjneGVjjoGuxzhfUAu8TtPrsQCuog5Nh6cTAebESpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Charity redirect scam",
+   "migrated": false,
+   "peak_30m_x": 1.1109397591182129
+  },
+  {
+   "mint": "G1K7M2XLUFgqVWe76uYDQFvGiNarjfHcgs2jdzVopump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic morning greeting, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9akhm4J5ee5TtRcn6z5CGvSxy79dQ1agLRsu8Ygkpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Jane Doe charity push, weak coin fit",
+   "migrated": false,
+   "peak_30m_x": 1.207333137808771
+  },
+  {
+   "mint": "qCz9MUW4TMkLNNqi5wBqKYbvQDphyzR3b9AHYgKpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Viral protection movement, major news story",
+   "migrated": false,
+   "peak_30m_x": 1.0000658446171746
+  },
+  {
+   "mint": "EC4aj2ycKgQBwJy8Ex4w3NvJeiNvm54sue5zskczpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Viral social movement with identity protection angle",
+   "migrated": false,
+   "peak_30m_x": 1.0000658446171746
+  },
+  {
+   "mint": "9CCMV6ZACcd7AJpMs5VGPy1HCxWiwqxRYZ7LwHmRpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity coordination drama, minimal narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0031810297218124
+  },
+  {
+   "mint": "4C7dsHREVxV6LmHoWn3BF1PgcSXLQpaWhAdHRgXHpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Incoherent post with no clear narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "TruzWXNxYduzLTn5Yu65BpJmuGiMeBTGUWxUTWKpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Donation link, not coin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0000658489505792
+  },
+  {
+   "mint": "85q8DvTUNXuShCWHT1EVwh7Aeg1Xma1Q59wNoE37pump",
+   "score": 2,
+   "category": "other",
+   "reason": "Unclear charity announcement",
+   "migrated": false,
+   "peak_30m_x": 1.0000658446171746
+  },
+  {
+   "mint": "14hEb5KLREb1G4GqmfDq9HLpTNwTKftRo6sQBmzLpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Chinese wordplay, silicon number joke, niche",
+   "migrated": false,
+   "peak_30m_x": 1.3207342909875421
+  },
+  {
+   "mint": "2PshJ7Uwg9uvFZP326hgM24H1DZLp1t5e5KUwkzEJzZN",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity tie-in, leveraging trending case",
+   "migrated": false,
+   "peak_30m_x": 1.5071589750305068
+  },
+  {
+   "mint": "FMmLBBYgBPzbGC3Nu6xgBskEG8zXA6gMQ8CsCkPPpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Donation link, not coin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0000658446171746
+  },
+  {
+   "mint": "AtfgPYGc4oJjeT6kMjzURmrZ2oDB3vNvotoE99ZqGAQP",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Official charity verification, real organization",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HhyAaVjwMwMxSLcLnisPvHWffY3VUpwv7h9U9xPYST4D",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Bare charity link",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CtyQTBo3xfPdhybF3hxEiJwh3M4eYm2YdHFaAft6pump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Charity narrative with emotional specificity",
+   "migrated": false,
+   "peak_30m_x": 1.0530063666559581
+  },
+  {
+   "mint": "BkJQhkSiqmSU6DwZLRM1jRk3KyhoyNxt5zkhrBy7pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Dogwifcoin Wiftober post, derivative meme",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "56fwkzWVfPGhG78Q4nETc86Xtv17JgFYLj6m281cpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Wordplay donation scheme, clever acronym",
+   "migrated": false,
+   "peak_30m_x": 1.8798775787591182
+  },
+  {
+   "mint": "AwNsMy4VprS9uvWVNJTf4ec5fWEUxoVFPc4MKrTCqoAw",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Inappropriat",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3kwcSbuKCMG3r99daFpKdbPWfX2BXXtvNYjuHPxsHLMC",
+   "score": 3,
+   "category": "politics",
+   "reason": "Israeli PM official statement",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3ACU3rQpggGAhCpJUtVsXsR2hZt1Y51hk3L8ouJQPcxB",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral TikTok slang trend, 100M+ views",
+   "migrated": false,
+   "peak_30m_x": 1.7305842725740108
+  },
+  {
+   "mint": "21ZbHA3UqPqnbPpBDRmxY1jMHbDEhMJ57mBWuCACpump",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral slang trend, 100M+ TikTok views",
+   "migrated": false,
+   "peak_30m_x": 1.0096845068938691
+  },
+  {
+   "mint": "Cx1H6ACZ4n76vGZmZEVsCSeNvVGRFsYe3WbKvWYu6HnF",
+   "score": 1,
+   "category": "humor",
+   "reason": "Generic challenge meme, no memecoin fit",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "72tYGs8depW5zneUdYb5Ead2DVPSakMdqhN4vdwfpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Absurdist alien narrative with viral imagery",
+   "migrated": false,
+   "peak_30m_x": 3.239603427672524
+  },
+  {
+   "mint": "5zeJAnx9bgm7X4vGZ3W2mPQy7KGq7s5M6YfGhBtspump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Casual community discussion, no real narrative",
+   "migrated": false,
+   "peak_30m_x": 5.308848901208106
+  },
+  {
+   "mint": "7ek8TowPip3uMGPrmoBgZGqEJd1PhqMvLnGxQRNHahHA",
+   "score": 2,
+   "category": "humor",
+   "reason": "Generic motivational statement lacking specificity",
+   "migrated": false,
+   "peak_30m_x": 4.580650693017829
+  },
+  {
+   "mint": "4PevNwRVV3ev5ZGvSEMC4cHFVfytBPRvAbovJ1u4pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Generic time pressure, motivational, weak",
+   "migrated": false,
+   "peak_30m_x": 1.0015591319211254
+  },
+  {
+   "mint": "6YUuAuFVTMufHU6LkB8FyDdFfGitXoyxpRnzTc4hpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Year-end meta-commentary humor",
+   "migrated": false,
+   "peak_30m_x": 1.0685064054707019
+  },
+  {
+   "mint": "BshyU7D2YKh84bVADm324ZSpzZ5cFSK5i2nHH5QZvs5g",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Breast cancer awareness, politician, seasonal",
+   "migrated": false,
+   "peak_30m_x": 1.3622931565762004
+  },
+  {
+   "mint": "8c5W73Pjem9v5vj1v5gV6QJoDJX6h6abHuSZ4q3tpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Black dog adoption issue, real shelter cause",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7GK7DbB74sD5fvNx6Y56TLEV2QsXjYsgE9Jm2qhapump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Character for BC awareness, weak execution",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CH7YiHYuPtJiZzgsfVfZ7MzwBHGfsq8nu6SwHXtXzAzi",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Contract address only",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5jmHNBwuoCCrp7xGumoyuJ8o8rne1sSkU7dzUQwApnaX",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FVU27NT5yzrW6uqhj9zMPnhPXYG4HkV5i8bn6Jxbpump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political meme reference, dated nostalgia",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "88Fgd3F8W6BZC3nE84NFVEQ8ZcyFC6ZZ795FBsVVpump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Political milestone lacking unique narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0510374013235313
+  },
+  {
+   "mint": "EJLUG6SsKQb4xDNHNdu8cAxxhABTJRvtLKpMuSpWMe7P",
+   "score": 4,
+   "category": "animal",
+   "reason": "Established sword cat meme, creator",
+   "migrated": false,
+   "peak_30m_x": 2.35591610793905
+  },
+  {
+   "mint": "H3E565vu52Wy1N1XNqn8sU7f3UTFfeZFF6sP2iKurB67",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political figure but vague \"meme\"",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GzfTxorEUVMdegY5y4aJneT5ERZvMDryNivGnvz99hGR",
+   "score": 2,
+   "category": "politics",
+   "reason": "Vague political meme reference lacking clarity",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8DJAat7XTicV1tWFfKN7Un2YWFXTVUhn2iWj24ttpump",
+   "score": 1,
+   "category": "other",
+   "reason": "Japanese anime announcement unrelated to crypto",
+   "migrated": false,
+   "peak_30m_x": 1.0237325861472255
+  },
+  {
+   "mint": "2p6QiWzU5acYjaVCx6yrzHFn1X6FDaxjokeXjAsypump",
+   "score": 2,
+   "category": "other",
+   "reason": "Stock market narrative, not memecoin",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "J5BH64WoBU9HmtFvY3iAStqF1fFKFAtN15wnU7AYxstr",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity awareness post lacking meme angle",
+   "migrated": false,
+   "peak_30m_x": 1.0651286072644646
+  },
+  {
+   "mint": "3pmYbuRPDUvPZcp3g5AvguHt6vPDyRxiQUBqNhDKtXbd",
+   "score": 3,
+   "category": "politics",
+   "reason": "Trump-Putin mashup, cultural reference",
+   "migrated": false,
+   "peak_30m_x": 1.4550515451611739
+  },
+  {
+   "mint": "8ae7LvdaLngrbEM24vBctBd2DNcBt7LfBayH5vuGzKVZ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague suggestion without substance",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Auc8NgqPb4bpeeD9LNR8Ma8NTciohGFADf1LTEyVpump",
+   "score": 4,
+   "category": "politics",
+   "reason": "Official record claim",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "C3DPeDmPupBUSuNGY8PJqhW221BcvyrDSsMGQp5WwB3c",
+   "score": 2,
+   "category": "politics",
+   "reason": "Vague political meme reference lacking clarity",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "GjYsSGiHBnFTycsBYDUBKpBKjBVTr9tb1YpQZKEcJFK5",
+   "score": 3,
+   "category": "politics",
+   "reason": "Viral political claim with meme potential",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EcopxVwBfcNgYPQP8ExKLAENp7c37YvnSjFPByt9pump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political figure, fringe theory, weak tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.0181706526352765
+  },
+  {
+   "mint": "5goyDXx6hsUWbxkdNVD4ojqKpc6SRegxcqMePbKjpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Recurring meme tradition",
+   "migrated": false,
+   "peak_30m_x": 3.26475048068128
+  },
+  {
+   "mint": "4V5TKg27cNmYt5xGqi3r1j6NWHS9ccicHzr1NeLn1ot2",
+   "score": 3,
+   "category": "news_event",
+   "reason": "SpaceX launch narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "AEGqHmi8Ezx8z9dwxM5htZ85QzPg9jj5TMivs6DEAeYM",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "News unrelated to coin",
+   "migrated": false,
+   "peak_30m_x": 2.0021630045413423
+  },
+  {
+   "mint": "AoQveS7PTniR7vBA5BmSf5p78ZeN4op4Ntxey48Npump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Matt Furie PEPE girlfriend lore deep dive",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8Y1UP9phon77E4TEuKeNmXtB9iMFRkRcQ4YNGJ8Zp1US",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Disturbing content with unclear context",
+   "migrated": false,
+   "peak_30m_x": 1.296481377827086
+  },
+  {
+   "mint": "Cr75PvtLWUjHaxnKDCovtcAw5VDcsj19ss1omNgNbgcG",
+   "score": 3,
+   "category": "politics",
+   "reason": "Viral political claim about gender-changing frogs",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3LuKKKj71LK5XyTq9wwrk63edr6nTK6hts5WnykHpump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Scott Melker social trading memecoin critique",
+   "migrated": false,
+   "peak_30m_x": 1.5787258375343678
+  },
+  {
+   "mint": "9iPC1UftL7AaVAiKVneLJY1frXHCQHF6VpTCivC89bgD",
+   "score": 4,
+   "category": "animal",
+   "reason": "Giant panda Zoo Atlanta, credible joyful narrative",
+   "migrated": false,
+   "peak_30m_x": 1.810711382676604
+  },
+  {
+   "mint": "Bzdy7WC7ELDKG5XSSXsjxNB5hgbfKLwy2JMerqVkpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Star Wars location pun",
+   "migrated": false,
+   "peak_30m_x": 2.0556773751169697
+  },
+  {
+   "mint": "DzWDgEsdRKE4Cb5B9J1h2EKDp3cxjG96wKhEr5ou4qX4",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Cancer awareness narrative",
+   "migrated": false,
+   "peak_30m_x": 1.072181760716827
+  },
+  {
+   "mint": "5zBdm6dpvEmvaGaLU2MGrK7stiFLDvgtwppSyhv3nwuH",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Inappropriate dismissal, harmful",
+   "migrated": false,
+   "peak_30m_x": 1.0181702449423722
+  },
+  {
+   "mint": "GFYz2GQvV99U7tq6UrQYLi98Z86WDeyr3c92twQe9dee",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Personal cancer story, breast cancer month",
+   "migrated": false,
+   "peak_30m_x": 1.7989195038945143
+  },
+  {
+   "mint": "2CnnQwoe3t4Tq16QeszCTFdW9ohJUcG1vq5NF7fNpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Personal breast cancer story, authentic charity",
+   "migrated": false,
+   "peak_30m_x": 1.1142135610925559
+  },
+  {
+   "mint": "8vFY7BAZPw3Fo9CQ8fbWzBrqwAqLhP42QCotNBvJdKti",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Dismissive trolling post, no value",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GvCPJJBQFM6zHd5e5zrRPaGPYAD57CwR4gShRav5gjpT",
+   "score": 3,
+   "category": "humor",
+   "reason": "Breast cancer awareness funny narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "28Xt4z8LNCywguGh7uypdLN2GPtFfafRVeCz5Wns6gTM",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Single word, no narrative content",
+   "migrated": false,
+   "peak_30m_x": 1.0006667777444214
+  },
+  {
+   "mint": "8LD9bJSvBSwRXYHyAvf7EnfHgN5xsVi57RUUSV3Jpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Breast cancer awareness memecoin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.2459584490833313
+  },
+  {
+   "mint": "3TdoNwE14se6vXQEnkd8PbzN128Aq6Chuy5RNv7Kpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just a link with no narrative content",
+   "migrated": false,
+   "peak_30m_x": 1.001222079098073
+  },
+  {
+   "mint": "2DfmgAWb1CMfZQ2WcirWPGHrJhsowq7d2JZGm4V9pump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Breast Cancer Awareness pun coin with charity angle",
+   "migrated": false,
+   "peak_30m_x": 1.0641909480663825
+  },
+  {
+   "mint": "4m9J2jrwCBf8aW19GtJFjV1qwomJBUqd2FDaH94H27ap",
+   "score": 3,
+   "category": "politics",
+   "reason": "Political cartoon, diplomatic meme, niche",
+   "migrated": false,
+   "peak_30m_x": 1.249731089043637
+  },
+  {
+   "mint": "BciVFxWe8WGTzigvfEfJAPdnfhZjTXuccPZkHT69pump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Awareness ca",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "o29fmwP5VW6AKPwnTT1UYxB9bH3esckqgY9snwWpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Bird tit during breast cancer awareness month",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6CrtnXZhSjFpK5snVPYEaPn2Vwbzqar81Fmfvb8h4R3L",
+   "score": 3,
+   "category": "animal",
+   "reason": "Black Dog Day, major account, awareness",
+   "migrated": false,
+   "peak_30m_x": 1.0248123549901373
+  },
+  {
+   "mint": "uvQgLzaxGsSFwQSVzsmZUyoBJ296gqt6DC1fjxEEQLb",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Inappropriate coin name repurposing",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7z8xH9Uv3sUpTaBR1WUkjggKGAMWFQpScKE4mEAwpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Breast cancer awareness personal story",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EfYgSuHYEbBWeHbyqyG8iKw21ESPBLE8deDqeTDtWT1i",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Offensive slur as coin name",
+   "migrated": false,
+   "peak_30m_x": 1.9862206633543245
+  },
+  {
+   "mint": "6EYP7ejZH241AMXpiQN8SS1L1FmWHrBqj7UkGrr7dSAQ",
+   "score": 2,
+   "category": "animal",
+   "reason": "Black dog day, lightweight animal narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3q2w6Trodgp8xVMUrEwL5DrhFokS1RBH1AvhtFZrpump",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Inappropriate coin name repurposing",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9okjGgewNmLUmLLL54qu4yHdv3c7mkoka1xmYYLLuMgU",
+   "score": 4,
+   "category": "animal",
+   "reason": "Real holiday angle, massive follower account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DiSF8cH7vde1djJZUsC8Gpu7pGjoxuJ48ZSSTAmGpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Timely National Black Dog Day reference",
+   "migrated": false,
+   "peak_30m_x": 1.063911122080269
+  },
+  {
+   "mint": "FSQcoLahzEKk36aapfALXqQHLV4iN9AVLa9mJdH7F1jk",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Personal cancer story plus charity, authentic",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9v8xtthCokmK1enrh4vDoTPUy1pXnBKirSkaJqVHpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal content, just name link",
+   "migrated": false,
+   "peak_30m_x": 1.0002570879927415
+  },
+  {
+   "mint": "924cezh4TPeKTWRCnqnSxFKeUTmXX536sxc5FLchpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic October reference, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0065083804225217
+  },
+  {
+   "mint": "ChYyt7inHD4sguf1eYKdpizGuBDihpwxMSL1Z6rKzUK3",
+   "score": 2,
+   "category": "other",
+   "reason": "Vague Elon reference, unclear narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7dcxgQRBgQwNfeSNwucBY3jT6cAE1szxKAJYpTMaCyLD",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Cornell case legal narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9imWLrp4kzfWAJrbadmAX6QUEAWndpfbspCG6Hp4pump",
+   "score": 5,
+   "category": "crypto_insider",
+   "reason": "Official Coinbase engagement, competitive trader narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "FwUAiEBjFMmUXenRWd6ywFSTNBZd3h2bocXVqCSGw7A7",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Charity redirect coordination",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DJGod3FSAm9gZiKRqDxMp5UrEJLPFapbgEjwg7LtKxEG",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Unclear charity narrative lacking sufficient context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "VGFTSxbUaQD7riyLuqs5Ek1cDuHLJmhdLJSt6nXe8M9",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Unclear charity narrative lacking context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "BdbAECRGKjsqSdx5jaJtLsnDiXsn2UNGw9UvERSv9VoB",
+   "score": 3,
+   "category": "humor",
+   "reason": "Viral influencer incident with ethical critique",
+   "migrated": false,
+   "peak_30m_x": 1.0244099707707999
+  },
+  {
+   "mint": "5A5LfTYRevLziATTV1HuD4ETtWj6zGHR3wUtwpm8snXs",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Unclear charity narrative lacking context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4bt1BEye1Vkdx4RnvWmJMiDp1Yg5otNVmdtbH6QjFru6",
+   "score": 3,
+   "category": "other",
+   "reason": "Community meta-discourse on charity selection",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2nMnXbxvyZuN8ieNKBoDy9fX1fUqavkw1mGfV7ZPGFhM",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Elon appearance criticism, weak narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DeZPApGLLaJRzNi4pUn1mCeCybwEa3Z2Ju7BaVw4N9e5",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Elon bodily appearance meme, substantial",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Aosk4imBGizZ19pHjGqsMrAYQm85CWLcCR47yGnZB3qQ",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Internationa",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7ovoVjLUyQqGwGnBrYXUbTZhMwf5foVBR2DpzuU4pump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "AI torture trending, controversial, niche",
+   "migrated": false,
+   "peak_30m_x": 1.1076623610991239
+  },
+  {
+   "mint": "8vRyK75dQjabCVuJzjgbwVxMtpx2m3oV1zxqUTHafac8",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0645637300329858
+  },
+  {
+   "mint": "5h265PGKjiqF1zhbBHpDsXZa8urx3q5CfoxtbQZmqQev",
+   "score": 3,
+   "category": "celebrity",
+   "reason": "Celebrity body image meme from specific image",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9y8rPxHEg6sLbKSnmoNVx4BQaip1WCySdJteew16pump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Internationa",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "WE9w7jZHThRGa9y552mrcnsZ6Biepuqgx8jGEjp6B4d",
+   "score": 2,
+   "category": "nsfw",
+   "reason": "NSFW novelty, interactive mechanic, adult",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "37TFKCN7rQKVstpo8VQdNZX4oBhxFWDdeajM9sE7pump",
+   "score": 2,
+   "category": "nsfw",
+   "reason": "Novelty animal, cancer cause, weak fit",
+   "migrated": false,
+   "peak_30m_x": 1.179023032437343
+  },
+  {
+   "mint": "3PkswA5iyfukPaDHLu7QfMsTRWvKupHoETCm1y7rzUhC",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Elon bodily appearance meme, substantial account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "22prDuqtrQdmZyLfVF2q7sf6af2mY2vEp8LVZpXEpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Seasonal/hol",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7bSQEi2JHRE82u6DyVuovbPewtznUEpsTbuZkbSoUJvj",
+   "score": 2,
+   "category": "spam_or_ca",
+   "reason": "Charity verification attempt",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6BmTjP6cSKdbuAVBFNbgP6potbgdGLYLGY9wk3DqkVr7",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "CA claim with minimal context, spam-like",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "C7ggftvrnBFUijHpvR2WK3MyjG5EqLpSPVSCxAXP7EVE",
+   "score": 1,
+   "category": "crypto_insider",
+   "reason": "Developer accusation, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2nsSTz1PDVLcbBQyFymsjpU5jwPtB2bPZu4EE9qJpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "WSB connection angle, minimal narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0065183939138143
+  },
+  {
+   "mint": "F4wSfedUf6HTgy2mowd2qLcjJpbnkG7hJ9kFce3ea5vB",
+   "score": 3,
+   "category": "humor",
+   "reason": "Breast cancer, peek-a-boob trend, seasonal",
+   "migrated": false,
+   "peak_30m_x": 1.0195104597454054
+  },
+  {
+   "mint": "6Sru4tvEp5Bgat1qteMxLMZ8dNgkegEa2iqiVzvXWRmn",
+   "score": 2,
+   "category": "humor",
+   "reason": "NVIDIA in-joke charity narrative attempt",
+   "migrated": false,
+   "peak_30m_x": 1.0953721896052901
+  },
+  {
+   "mint": "Et4aj8ckoajBWJeVLwJCK7enP5jPHrDX9vDA7M2tpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Robot personality product profile from news outlet",
+   "migrated": false,
+   "peak_30m_x": 1.8100114255819855
+  },
+  {
+   "mint": "HR5GMf7fBAPkJjYhQdgvcuBxoF8USASCJ8nudPLdpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Real robot AI personality product",
+   "migrated": false,
+   "peak_30m_x": 1.6451088802971074
+  },
+  {
+   "mint": "9M8iHecqXTo2712GQQqAMSzCULv4Kb1AfXtvDKj2pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Unclear inside joke, no coherent narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1545630357706598
+  },
+  {
+   "mint": "ACof37TWWKkEDg4sB6YdacqhdE1wbwKfsc5W5hirpump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Robot product news",
+   "migrated": false,
+   "peak_30m_x": 1.6972455405848785
+  },
+  {
+   "mint": "7CUjCzdW1U6Qg691RWUtKKE8WJi2RzPGvQqcf1XoNqxB",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Forced news tie-in to hacker group, no real narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "FoJBGWQHjKntGhekU89JQHUBJtkQXHNTM7bctmLwRSnR",
+   "score": 3,
+   "category": "other",
+   "reason": "Charity verification for Jane Doe case",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "CV2xZJBAKRkcjJHWzSnj5uA4RbpuC3yhRxYkYLX8HweY",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty reply, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "E6ToLPMJ6jVXHt32uNL4wsfTSZ2VJ9JXQkhUvTcE2UM4",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic agreement",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HAg3hL9Cv4WRiszPka2viQcDrqCKKg3yVNtmnT4Rpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic reference with unrelated link",
+   "migrated": false,
+   "peak_30m_x": 1.3479601479454777
+  },
+  {
+   "mint": "icwDKQXB6C2KRsfjzskjTwQRVvnUnGfqhRqK2wxpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just a reply, no narrative or context",
+   "migrated": false,
+   "peak_30m_x": 1.1237526803026485
+  },
+  {
+   "mint": "9o1fypGSSZZiwdGAtZavHN2uVZoGC2SQ7QTknYACgMDK",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA currency speculation narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0704704453788896
+  },
+  {
+   "mint": "37Uw8vNYxyt1dbZsL4YERC3QvgPPTJ5KZQK7tgwJpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA currency reference, weak tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.0109603310769588
+  },
+  {
+   "mint": "CxEPc2NCTRkHdbGS15gpfsTkCzoc94jst9wQxnjdi9A2",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Alternative GTA currency name, weak narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DonMxFajNLM5DCcmp68PmrQXGqKpdz1tBhR2EiRApump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Seasonal meme with established popularity",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "F15uWbupoxcUdDFzAuiD9qxFVsUZzhburj6ksNHEEx9V",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Contract address only",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3Su9Zd1GLLF4JVuNcK5fs1RLEp95iJPv986f3FzFu3ce",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Bare contract address with no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "G9NgmhSgBh3TDJhmeMC37iTxn5sQLPX9PZEofwCverhK",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just contract address, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2qmYd4hd6zzKynEfyto76MbnCmPkd6jw6NrX6jfSpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "AI understanding memes meta narrative",
+   "migrated": false,
+   "peak_30m_x": 1.5342881392185643
+  },
+  {
+   "mint": "DCJDFm35LBcuxDySPBBJuhxCjPGAjct31oeK2JEL5DZw",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Breast cancer awareness, TIT acronym wordplay",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Ff1z2FaKEQFUD7AV7n6yCBQs1p53ZGy5HH5u5MWCmVnu",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Breast cancer month plus charity tie-in, timely",
+   "migrated": false,
+   "peak_30m_x": 1.3151142928814943
+  },
+  {
+   "mint": "mD1KRBJ4SLUhXzux1d1r6XKTvKNVHyfW3v5c8WjmBBc",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Official greeting only",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Gxtvpa7DpSonLSYwp3ka7xtQHVj8YQJJEWMUbAtapump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Official greeting only, no narrative",
+   "migrated": false,
+   "peak_30m_x": 2.519487444108402
+  },
+  {
+   "mint": "G4yNZwB7A2e9RCR6JhSdijPqqNf1jjLnG5qXDPhq9QvF",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Charity scam coordination",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "GoVVuz1jX6hFiger8zGLdeNGty5JAkz3Yqv5cikNrFyN",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Derivative attempt using real stock news",
+   "migrated": false,
+   "peak_30m_x": 1.0192804954725228
+  },
+  {
+   "mint": "7TUV3pqFBdGQYPxXueq6d3ghKYNSTyWwRVoceHhwHhqj",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 feature naming, game community, specific",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "iUXjx14cEiBjJNKS3ax2tFGekHUqgRd5sdjeNoXpump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency narrative, repetitive angle",
+   "migrated": false,
+   "peak_30m_x": 1.0643526727080677
+  },
+  {
+   "mint": "9ohu8otkJj4g2VsrK1jmkvTQsCTMP7oeJtPDLzxJVwsZ",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 potential connection, ticker angle",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3SfvRaZuSzD7tRj48GpA85YXy2JSLqdLFa2Ss3Yapump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Real tech news from credible news account",
+   "migrated": false,
+   "peak_30m_x": 1.0005981350690683
+  },
+  {
+   "mint": "G9RawdVtoeoHjRL1p3yc1vCPV37E9kBKxJp7jZLATmqC",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Unclear bot announcement from unknown source",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "sB4fzKdsdCJJMizu1zEADP7SrjwyMvMkKDi9Pdcpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Weak derivative joke, unclear reference",
+   "migrated": false,
+   "peak_30m_x": 1.3481164370608694
+  },
+  {
+   "mint": "BgFdfXdbmqZGk6L7LBWShB2cqAM5MJiU2tot8jGspump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "One-word narrative, vague AI reference",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3GatxUq8GoVcCSKNR61MoumU2rjiqZgfaxbzdTeopump",
+   "score": 1,
+   "category": "other",
+   "reason": "Vague post, outdated timestamp, no context",
+   "migrated": false,
+   "peak_30m_x": 1.0115771318514086
+  },
+  {
+   "mint": "EDyha18A2TmfWbCGtAWdD4pmQP291jf88NFowaBSxakG",
+   "score": 2,
+   "category": "other",
+   "reason": "YouTube BuckMe reference, repetitive",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "88B1WtU9qUm9pqfCi5yGgU5Z15DEdfgwzALN4QCepump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "$B ticker repetitive spam, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8SEdMmhCYuCdvjG65UR1upuLQjhLLgzje8G9o8uwhRS5",
+   "score": 2,
+   "category": "other",
+   "reason": "YouTube channel BuckMe reference, weak fit",
+   "migrated": false,
+   "peak_30m_x": 1.000000666633444
+  },
+  {
+   "mint": "6ZTKcm1AAAwMbUCeACVm1bFGjcm4T3X4JNtW2Jp1pump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA6 currency reference, recognizable",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3m5QaUgiVY1UXd1oLQbkmnQeqM4Zyhbt8GGaTwg2pump",
+   "score": 2,
+   "category": "other",
+   "reason": "Currency concept without clear narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "As4vXt3ZsiF5CxSZ9K34nZcPHFvcEmA1FYCSR8RSpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA6 currency reference, recognizable",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4TBoeZqToKotA5432kCuG6hUqGx6QHpiSYjNB9repump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 potential connection, ticker angle",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HzVmAncsaWSKckvu5Vne2WXkDvtpkQWxHmeziQs6pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate $B ticker post, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9iRRczn9h2XRK5Z2zzBNHwEkJwvzxcvQJdL1oWJ3pump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency narrative, repetitive",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8j6RaUB6xkbeRe8ipcqq1BvtuYJ1NG4zJpYc8FkUpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Repetitive ticker promotion without substance",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6uv4YxQwMULqSdBKbwMBjixjadXUeXZJz2hLNKZkpump",
+   "score": 4,
+   "category": "politics",
+   "reason": "Official Trump announcement",
+   "migrated": false,
+   "peak_30m_x": 1.3674789974748454
+  },
+  {
+   "mint": "Fg7j12t41zWDSCwgLqXSHtuVFeHQu6RALonz5Xdrpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Etymology fact, weak memecoin connection",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EBL8Xj5hFMD6QFWijhpZM3FPL3BR9xREjqPr35wy4j6v",
+   "score": 4,
+   "category": "news_event",
+   "reason": "GTA6 official in-game currency announcement",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HyDTgY6b1kwwhY3RFNKvVDDScoDDbB7HVQqAJzRaVcM8",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Dead Internet Theory trending post, cultural moment",
+   "migrated": false,
+   "peak_30m_x": 1.9253456571743646
+  },
+  {
+   "mint": "A49nARkxmma6VsmwWFGMmFobNPA7DaQyow8Zn3TtpjvU",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Novel postcard editor product for crypto community",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DPE9GVL7Gg8UX64CT42BUCKH1GdnR9socoByrRfsXX9Z",
+   "score": 5,
+   "category": "news_event",
+   "reason": "Official GTA6 currency name confirmation",
+   "migrated": false,
+   "peak_30m_x": 1.0033361088953323
+  },
+  {
+   "mint": "6wFcqoFrZztBm1W9XFTcmh3CcwJANoLNQENxg2gv7Fbg",
+   "score": 4,
+   "category": "news_event",
+   "reason": "GTA6 currency tie-in from official Reddit, real narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7HuL8uRaNxo3L9FUuuxPiNxcuJ3nTxAp1bv5PZ2q3r5n",
+   "score": 4,
+   "category": "news_event",
+   "reason": "GTA6 in-game currency narrative evidence",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HQQWuvXoJhtSNREx9XvdkPvbfTYAHEVzMP8ExkGTyiqK",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency narrative, repetitive emphasis",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6M34n4hPzGKPCPsVxiehrv4DodWNzkTMhPMRLdc4JF5H",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "2Lgf3y4NCMCWEFbFBYBwvTbQaYxkHgJXZj8EwvK2pk9m",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate $B ticker spam post",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "4hYSDiTUCBiCFhwHtmL2XpZVmj586gQ3mZ4tvrLENoQF",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2yACRxDUzxFhTDEK9eYbURY7QCYx25Gx3xgNoHis2ncW",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency focus, game tie-in, specific",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "BYhffDMxWeDrWGNguaohpuUvw3k5ZHyMRXcCxN2dpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Vague meme community discussion",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9kgKYKhSgrbDSNcMnuedb86ChJpkQ4MXKNWmp9yhpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viral Japanese dog",
+   "migrated": false,
+   "peak_30m_x": 1.602506309127025
+  },
+  {
+   "mint": "GGTB7FbbG588sXkDaZ472Dx2AE5T3x6ooPUhXqQ5tmQf",
+   "score": 2,
+   "category": "other",
+   "reason": "Vague question, no specific narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "YJktuSNVyi3gyGKMBudmygt747SURRzozzeHKSsvou5",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Solana naming service product narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3o2BJhL6NU6KAx74L79VqGYaLZUhWLuhWVZKAANJpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA6 currency reference, recognizable",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CaGUSmJ4iwfhHLk3QkBrxe6t84B3c5xYpHm4EQBppump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Repetitive ticker promotion without value",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CZbKucyQZjPXzMqSDguYSyYwUXRNZYArHpVZntZLpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA6 currency reference, recognizable",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "GbQRd4U3NL1ke8usZHnrKABpbVCrjQbAMjpCkY4apump",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "RMHe1s7CHx8Lj3ZJPQhrtmsbgEBiAbgEKdzHERSpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive all-caps spam-like post",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9dXe6UGpSq8HUC4fkqF8G8yrTYZvEz7fwdvV2VxLpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic ticker promotion with no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7NAqfmXtzYTkCwsPfDc48pyztP5ECuFGwG5NvYfYpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Real weight-loss drug trial news",
+   "migrated": false,
+   "peak_30m_x": 4.193245091482348
+  },
+  {
+   "mint": "ASgfuSuT74d34u9H1VoFebnDKgcMYNhLm25GwWAjpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive all-caps spam-like post",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "ATXqrd2EAgSXQ9HmtVA9eoWq1Yo8RCPmEDTXfk1U2khz",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Real pharma news unrelated to crypto",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4wxoYdj2PdGrVDkjfbfh3TUd3fEvxfXfwFn7gNk4G5oL",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency focus, game tie-in, specific",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "CakxBUGVRq7HtGtsBB36z39jn34aMjhfgPk9jexJp2tu",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive all-caps spam-like post",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "GApLZBYANkRg7CpnB1EnVA5FAEWeSayKUFHUE4X4Xg9C",
+   "score": 2,
+   "category": "spam_or_ca",
+   "reason": "Currency significance claim",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "CmHTWs5XEq1tT4F37E51ptsFpD77SKjwdPw4esdXxXgL",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "$B ticker spam, repetitive messaging",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FPQs9nQ4bqVogaXVx6eUaaAhHv5wNhRrTbi9i6H9ejUU",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive all-caps spam-like post",
+   "migrated": false,
+   "peak_30m_x": 1.0000066666444438
+  },
+  {
+   "mint": "7FJBa72L939FprY9NneVE8QHHRgE9RCYhAqNd8wigXY1",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Real weight-loss drug trial news",
+   "migrated": false,
+   "peak_30m_x": 1.3592628851600768
+  },
+  {
+   "mint": "AUrFLnwdKBr8vYsnKJcACyqKYGjkFzo9v9yzZ1P1pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive all-caps spam-like post",
+   "migrated": false,
+   "peak_30m_x": 1.0032947820545757
+  },
+  {
+   "mint": "HHPeFeZKbqbXumRSZXiX1tKzESGgUYGcrnErDC8Hpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Aggressive shill with minimal substance",
+   "migrated": false,
+   "peak_30m_x": 1.0065289259437127
+  },
+  {
+   "mint": "96ZyrSt6uSvRUmCMjEggwkVXLvettHVTBk32Ly4Bpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "GTA6 currency reference, recognizable hook",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6SLvA7mYwe7xX4JdbjK6EVjyq2L6CRJZy3Wcawwxpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate post",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "EpxkoAArg4GF1dz4HBtkocsk8y6ChHna97ZNmdkZYiB3",
+   "score": 2,
+   "category": "humor",
+   "reason": "Self-aware joke, minimal narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0677089435617697
+  },
+  {
+   "mint": "9MkTxrunEJ7sEanc93iRALh8r5oFv8CYqaiCDQU1pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate post",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "32pB7dgLGCjMuPyjdZmWCxyM7wA6jUAsjdm6eETWtNYV",
+   "score": 3,
+   "category": "humor",
+   "reason": "Duolingo taco reference, cultural humor",
+   "migrated": false,
+   "peak_30m_x": 1.2098885704310025
+  },
+  {
+   "mint": "5ozCZonhYZZyLxAoyAmrvvzPncAghArNAbaSu9tXpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "SpaceX employee, AI bot in Mario, viral",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Dsz6gy8L86kxjgA61UcszbwP7i5GfqPrP1zRgLnVpump",
+   "score": 5,
+   "category": "politics",
+   "reason": "Official Grok endorsement, maximalist God narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "FNkjw8mr1mdHpo9SXySEoxHXwteCdJRBzKL8RzsDpump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency meme, already established narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "KK4jyPRi9fDMaQZAdddEnxUMi1py8wszwukhv1Kpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Duolingo mascot memetic connection",
+   "migrated": false,
+   "peak_30m_x": 1.000485385851187
+  },
+  {
+   "mint": "3qiTEdnytytHct8pVFUZt3U1Jh3dotcoxEVhNPT3pump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency, repetitive narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7VFEZCFUCA3xGsB7uiTGXQLuSqJ4HqiPwJ3EYi7Hpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Repetitive $B ticker claim, no new narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5krUwGBCDuqkCADtQZqukvS6gxdNjYeroVn8UWrRpump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA6 currency focus, game tie-in, specific",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Gx5xNK3AzBEeVrk3MgEtn7fQximtpx2cSgXzK5Fipump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic exit liquidity rug joke from major account",
+   "migrated": false,
+   "peak_30m_x": 1.2888310506328775
+  },
+  {
+   "mint": "BnPAFJbx8DLFdeK7unFVmBuAJ2q1hmPy2ruix6b9GSM1",
+   "score": 2,
+   "category": "animal",
+   "reason": "Unclear inside reference, weak",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "66cCzyWM5tRg49UMqoQkCgap8WRJrNotpbgKZZt2pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Repetitive post",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "2aFBE4xno1NvScvr2VCwLBYCvP82TNcnqkYubhAZGg9H",
+   "score": 2,
+   "category": "humor",
+   "reason": "Seasonal/hol",
+   "migrated": false,
+   "peak_30m_x": 1.0200817470261372
+  },
+  {
+   "mint": "6yHVkm1rDmpTEbSekwFxHvirt4iPfmKVifZjLpHRqhc3",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Weak space news tie-in, forced narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7eVXjRxFFSJNveHdYZKzW7owM9nP9ijtY8A2zJW2pump",
+   "score": 2,
+   "category": "other",
+   "reason": "Unclear ticker discovery narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0002493526972482
+  },
+  {
+   "mint": "XbkCLffUsTdiKMkvZvREN8ZLrPggTo5VHXEZzympump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Halloween/ghost tokenization narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1747508764052388
+  },
+  {
+   "mint": "FEPzu9iAxFhKa3rTiL4W4JDRWbdTmH3cjib4yi91pump",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "gbFSnitSvhaMjYWt9Zh6ZqvuN48RFKRfTUdArrapump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Detailed technical Solana analysis",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3qJLoMQcLWVFUQ9YnGTntP3CWSA3pdZ5FzqGVKitpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Novel AI torture chamber research discussion",
+   "migrated": true,
+   "peak_30m_x": 8.635829948151486
+  },
+  {
+   "mint": "EAdLNzkz7R5qaTyKcWs9qxhqpc3hbeXawzDPKvjVmL7u",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal/spam",
+   "migrated": false,
+   "peak_30m_x": 1.0990095103659514
+  },
+  {
+   "mint": "bGPonvq7Aj4FiCKpidTcp89X51LhWkgZqUYCy3Zpump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Obscure quote reference",
+   "migrated": false,
+   "peak_30m_x": 1.2244862475003249
+  },
+  {
+   "mint": "CmKCRVY6KJgC3EoCGhesijXPQRz7Zyt4MWQydZDPK4Jr",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Technical complaint about token pairing",
+   "migrated": false,
+   "peak_30m_x": 1.8900968910830396
+  },
+  {
+   "mint": "Dds1BAszKApubZ84EuZGLpF1FuhDDjxHoGcvajAbpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Official account engaging with meme trend",
+   "migrated": false,
+   "peak_30m_x": 1.3133660268411613
+  },
+  {
+   "mint": "26THz4B9k2uordacTf32jEqgYGDXGhodS2jJWKFvpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viral animal with massive established reach",
+   "migrated": false,
+   "peak_30m_x": 1.2347031192346267
+  },
+  {
+   "mint": "26TJh7yHcvWRtshMHSCFKcw6zGe2fBNZj27UYf3Tpump",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.3003185636741552
+  },
+  {
+   "mint": "24CTjtt3n46Pcw3CNCHVb9voZYcqJJz69FFy2gbvpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "ChatGPT wall",
+   "migrated": false,
+   "peak_30m_x": 1.1259754778969415
+  },
+  {
+   "mint": "ATym94QeChRrAMMxJvFCvrRnLRArNdEua5adcB6K6vso",
+   "score": 4,
+   "category": "humor",
+   "reason": "Ironic nostalgic narrative about 2018 scam",
+   "migrated": false,
+   "peak_30m_x": 1.140182455296639
+  },
+  {
+   "mint": "H7rwFNkuR5xg7PuKXxxhdpTCjQ3b9kyAHsQh6sK6Lk9c",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Meta-question, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GpwRggAKq1hCb3ZSHK9kn8hcLoFZgDQcUF5p4CZqY7kp",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Conflating existing WLD coin with new narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6yWwxsBPRQbDQnKazX8hQ9xJrmPZLb4FiBKEeXKpxfHW",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "ChatGPT wallet + World Money news, credible",
+   "migrated": false,
+   "peak_30m_x": 1.1407752399075515
+  },
+  {
+   "mint": "J7kNAtHNpSn4i69mKzwRfTBXSXoQKdAEM3Q1s4rW5MvH",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "ChatGPT wallet news story",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "BHtop8FaPZMKu8WFAqUJuxTFAvVx8tJgeH922iHf3ws6",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "ChatGPT wallet announcement, real credible narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "ASmmMChEZpcCDGszf7wPftiLexrGDdv8hXgBJjLHeEPA",
+   "score": 4,
+   "category": "news_event",
+   "reason": "ChatGPT wallet emergence, real product update",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "263xckFksr4oxcGhWCDLRP3K9hGbgFWZ55uFXEbqXCBZ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just link/co",
+   "migrated": false,
+   "peak_30m_x": 1.0196999166211635
+  },
+  {
+   "mint": "GdZd7st2E3e13jMyphR6o9WfQRvR8VfkfaFRW75CxAbG",
+   "score": 3,
+   "category": "politics",
+   "reason": "Polymarket odds, Brazilian politics, credible",
+   "migrated": false,
+   "peak_30m_x": 1.2300642950173966
+  },
+  {
+   "mint": "3NmKZXTPw9pFrVYEbNgdr63CCCFZj8ocSJ2XwquoF2hF",
+   "score": 4,
+   "category": "news_event",
+   "reason": "ChatGPT wallet emergence, real product update",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7oLNK197CAZKd1efSWAYBpHxrVAanD3A7vz7PUtkHw5d",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Specific tech news connecting wallet services",
+   "migrated": false,
+   "peak_30m_x": 1.1637277717914158
+  },
+  {
+   "mint": "8rwmToa5L1YR7WnMj13LASFzCy9Yu9JoG6irR1FYT9wi",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "ChatGPT wallet narrative, substantive analysis",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GzFgrpngpy16gMBVjAyLCVCBL3iP3LRd4YXjBytrpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Commentary without substance",
+   "migrated": false,
+   "peak_30m_x": 1.1092196503889007
+  },
+  {
+   "mint": "F3mWrze9UymGeLZkUUvRak5ra56KGPmPgwd15oFEXChE",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic meme coin launch announcement",
+   "migrated": false,
+   "peak_30m_x": 1.0192807269176065
+  },
+  {
+   "mint": "EfGMUoFEVotjz2agv1Q1W9f5iBy4RU5fhzvjuJLHWamY",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague charity critique, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.2188375677903864
+  },
+  {
+   "mint": "9jZCemJ7dCJcNEPTnFQNXApUf5pM2zJare7LduGVcMuL",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague mention, no narrative context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6aRUqmXtaux1Z91KGSm1Qv1GZ8WPG1aCb88K1SXLpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Elon official post, three rockets, space",
+   "migrated": false,
+   "peak_30m_x": 3.965611027266608
+  },
+  {
+   "mint": "DY3xoLVjePLY98xeQkbhxzQf7ccu4q4cz34SwASbodj4",
+   "score": 3,
+   "category": "humor",
+   "reason": "Character persona reference, limited appeal",
+   "migrated": false,
+   "peak_30m_x": 1.400277777684424
+  },
+  {
+   "mint": "BtRQt3CoJbDGcCKDq4bR5TcRJhQmCZtq31hb5VsHwgrx",
+   "score": 3,
+   "category": "other",
+   "reason": "Charitable advocacy, serious social",
+   "migrated": true,
+   "peak_30m_x": 4.538625511047583
+  },
+  {
+   "mint": "5xPdo3MvbhhDF3pzTiQdHwh5mgcXURRVJ4CgtH39PNmf",
+   "score": 3,
+   "category": "other",
+   "reason": "Charitable advocacy, serious social cause",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EQWKPmMsKp6GzJkJQWchAC5j6FCBnLb3855nUns9pump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "South Park b",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HJY9UucA3ndkTRnD9hNBZwq8Z3ti3LQxku9yh7aBpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Custom character design for breast cancer timing",
+   "migrated": false,
+   "peak_30m_x": 1.287178260647616
+  },
+  {
+   "mint": "CXXoo6cYjcaWa4KgNjSWdVyhhK6SP7TSEx5suXE6pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Cynical exit liquidity humor, weak narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1490937495996691
+  },
+  {
+   "mint": "4CQQ7Bs3Z7KVxRpDmH33steSSP7yL2bZzhodtrNvpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity resource, no memecoin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HnWpdFVt8fSopcQ7pBp1zoAfYtEhT89tfsJ1veAspump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Official charity verification, real organization",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "J2VPu3sKFQdFhExq6b8Y5DmYwSqDxaBsDMFQFnyMe2jk",
+   "score": 5,
+   "category": "crypto_insider",
+   "reason": "Chainlink major protocol launch, massive source",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "AyUwLdhUCDgARJCNMRWjLgbdEnXucv1w4qvNRdBipump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Crypto product launch with technical detail",
+   "migrated": false,
+   "peak_30m_x": 1.085917156849911
+  },
+  {
+   "mint": "8XkVKryFAs1t1cfNJSAPG6WLtALkoxGtrm1Hmih5vPng",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Douyin AI feature, legitimate platform update",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GxGwXdpbpZCQV2NjjKHQY66nUeRMkqYFWKFFo4iHpump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "GTA5 currency tie-in, builds on GTA6 narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5r5Wap6fLAukycwF6C38mAHUkMMQU16GFPxVpLp3YJ6C",
+   "score": 3,
+   "category": "politics",
+   "reason": "Measured commentary on controversies, large account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EcZDWafhTbt3sFbUDzUp2kg89gK1m42YL93Pwy1MrZ9n",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Celebrity ar",
+   "migrated": false,
+   "peak_30m_x": 1.2021099899219048
+  },
+  {
+   "mint": "GDnjVEjvHNPYpueN4NbmEdiXQRS4bUmFchdvxHLs1PWK",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Dark death row news, forced meme tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.352261954876684
+  },
+  {
+   "mint": "CSNzGhwHHVbZxtYxQwCNbvXzwCvMHNDGJ3so5vEEzXMQ",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Grok AI reference, trending but shallow",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2UPNsnUMwDjU3HkaTGiGv8RhoXh5Xo7w2ZDJYxTWkACq",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Suspicious charity redirect, likely scam",
+   "migrated": false,
+   "peak_30m_x": 1.003336111077666
+  },
+  {
+   "mint": "3cYoUWgPsMHp6b3undKwQxnk72uP1kQcaBU9nw3NqLfN",
+   "score": 3,
+   "category": "other",
+   "reason": "Jane Doe RAINN charity support narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5D6iY4pLxPuWq1Kyn5AnuFdpa3fQL2N8C2RCyXmxwey2",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Google AI sp",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DQUnrnXt7sTXoFfaEbj64MosYfXUpohECo585vxj6nc7",
+   "score": 3,
+   "category": "news_event",
+   "reason": "RAINN official campaign verification, correct",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EhhobLVN2t5dv3NYe7itwXuznV2QeaUP4j4nLNrt3sCF",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Major tech announcement",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "61WM3pbfv97rfMJ5jAYKcCErzwS64RhHB4HtmEc91Kfo",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Google-SpaceX reference, minimal context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3bj69n4VJDELj4x9zL35XCNNEbByFYf7jsQmCiL3pump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "SpaceX-Google AI chips orbit story, credible",
+   "migrated": false,
+   "peak_30m_x": 2.5475950259178197
+  },
+  {
+   "mint": "21njhuvJCguTJC4W3Uo6NAEJeDMHYFTB51k2EdTGpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "SpaceX-Google partnership, AI chips, credible",
+   "migrated": false,
+   "peak_30m_x": 1.570487660279881
+  },
+  {
+   "mint": "HiYGr1ADAyrdh9J8Zxyvoah46r455594hXPmhqojTqV9",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Disturbing news unrelated to memecoin",
+   "migrated": false,
+   "peak_30m_x": 1.340537686192013
+  },
+  {
+   "mint": "HaYeXMnJjDkVytdSLrc6Jk3xghM1CinnRbWBUPukur4p",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Real dark news narrative about animal cruelty",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2QeP67386zikMhKd3MgeZq4uq3gDndM6jeuy4tsfw6sU",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "X link only, no narrative content",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4WqU1QhaQNv8tUasSCHkWhXnuFZzRK8muvQTwuXGpump",
+   "score": 1,
+   "category": "animal",
+   "reason": "Random pet observation in Portuguese",
+   "migrated": false,
+   "peak_30m_x": 1.350668778836131
+  },
+  {
+   "mint": "Ewqb5U7CuKX1raBpddEC3sdwLUXj8ntcZo2UUQ7ENk9D",
+   "score": 5,
+   "category": "ai_tech",
+   "reason": "Based Grok viral trending, momentum confirmed",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "59Ha6JNEKgRiaMu9ZXbLCekxzw4aUr5Yky7eXaH5sRaW",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Single word typo, link only",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GZChXMs1WmWJET4vN2NNwtDbQqpmdnUQP4NjWCaypump",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Samsung product news",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Gr9VVoK5v4iuvQJXqENbv2vz1ZQSxVi5T4PCBmK9pump",
+   "score": 3,
+   "category": "animal",
+   "reason": "News story: ",
+   "migrated": false,
+   "peak_30m_x": 1.1307954015004613
+  },
+  {
+   "mint": "4ShFGRkwMfmop3Fccm4DCqKNGitu39mJvdwct8xrfovA",
+   "score": 4,
+   "category": "animal",
+   "reason": "Real Fat Bear championship win, clever wordplay",
+   "migrated": false,
+   "peak_30m_x": 1.2355482652142018
+  },
+  {
+   "mint": "ACbbNzMQij8drAZTELdgNKLe449zdjPxJd3sxFPY52UP",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic personal message unrelated to meme",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "HtZSUZRESQYS8zjNqQbvCQpMz44Kihqe8uKdq1Jpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Mine Inu wordplay narrative, clever pun",
+   "migrated": false,
+   "peak_30m_x": 1.274436897893399
+  },
+  {
+   "mint": "8GyzgPkKDTNYEYisEG1jrKVsEm9iJGfFerVq3PD1sMs2",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "No narrative, single word post",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HyD38k4CNLcKhuZoZYPvMzPYW5pYH72a6FHd6XABWF71",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Word only, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2Xa6UAgjyWWZVS1C8WWDKS32WT1bn9wZ4npRivjxpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Google AI character",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "DXoXWCuB8r4K8NXYGLw9k3Dp2KvyUrp54QFpDBWEpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Dog meme with specific visual concept and history",
+   "migrated": false,
+   "peak_30m_x": 1.3209307207557541
+  },
+  {
+   "mint": "65Pj6uZds2gDhEEpYxRGFVTAw5UvVFahhWnx7zhDpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Novel AI agent narrative with transparency",
+   "migrated": false,
+   "peak_30m_x": 1.0111067614087943
+  },
+  {
+   "mint": "BYKBqaaVVumaYGtcJ5ugSKDjqaviN8HrD7YBbwWxV11M",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Flight hijack claim, sensational without proof",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5UNozZp95nCntNwwyW9EvVQb6S584hnLCQBuL1SWpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Dog meme visual concept, duplicate posting",
+   "migrated": false,
+   "peak_30m_x": 1.1889035638957297
+  },
+  {
+   "mint": "8tnvL98M7TMWB5pnMBRpnJ9aL3KQ9mbRDtwCKSSDpump",
+   "score": 2,
+   "category": "celebrity",
+   "reason": "Elon comment on word, no real coin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0268812834857914
+  },
+  {
+   "mint": "eRXXZR2NwYqs8dDUvBKCnSqMJTqfx7E2hk8ztqjt9E8",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Inappropriat",
+   "migrated": false,
+   "peak_30m_x": 1.0531030898676794
+  },
+  {
+   "mint": "BTuVrLh64m3yAqSiQ3WNAxjCy4DqWDaS7hc4f4TgnYUk",
+   "score": 2,
+   "category": "humor",
+   "reason": "Meme trend commentary",
+   "migrated": false,
+   "peak_30m_x": 1.1455390376827717
+  },
+  {
+   "mint": "6s7WiPpePoeGzGbFT5DBnDvM6T1cestj9mWfUJ2iyv3r",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Established ",
+   "migrated": false,
+   "peak_30m_x": 4.416624750798406
+  },
+  {
+   "mint": "A7R5qN6Rc7uGFb2TeYedCw1aMiRaZMDR6ccw1cZntovL",
+   "score": 2,
+   "category": "other",
+   "reason": "Gender equity movement reference",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Fp2qPcnnUuos9XJVnBLaQibWaVBjyJG72XgyxWQ9murf",
+   "score": 2,
+   "category": "other",
+   "reason": "Cultural meme attempt with offensive framing",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6f53nALiSmDFH3yMDpusvawJ3u7WaCtTV5YmSyCppump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Doge meme genealogy narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Hnsx97NUcZnHcxzXEB4EN47Mbdyt23jpYHzoMFTCpump",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Jane Doe mov",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5c4S15oAS1ZeQzvmH1cBdmDsy1WzTcE4gKksU5zDRPiL",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic greeting from corporation",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GxYCBMwySq2TFpNrrsTccCkmVZbuQW4qWzxA8kBtpaid",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Historical crypto milestone",
+   "migrated": false,
+   "peak_30m_x": 1.2764468894880756
+  },
+  {
+   "mint": "4jf677SyfQCSQukiiNiwqbzHSiEQvqGKV2HL1GPt3gpg",
+   "score": 1,
+   "category": "other",
+   "reason": "Vague minimal content",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GQwcdSjAzvDAuunCjGd6xFGgWEsja9yVdpcayogebjMG",
+   "score": 2,
+   "category": "other",
+   "reason": "Big account ",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9Zhg2LVK14dRDq4iDnTGY8o6y3RmXeegMoGq91eNpump",
+   "score": 3,
+   "category": "other",
+   "reason": "Jane Doe charity fee routing announcement",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "AUeLMSE5KWJWpUN5TpuX873Brn5ahDY1UDCn95vzpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic Telegram post, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.002791556239652
+  },
+  {
+   "mint": "EuNjLnbkhdHg2mJrNaEnhmDFjWTdSTx2a3QDcSh26LUm",
+   "score": 2,
+   "category": "other",
+   "reason": "Trading strategy, not coin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.39557985181237
+  },
+  {
+   "mint": "GXogzmgiuUDDNC28cvV2aLU4EttPqL8fVe2xtvhUSys8",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Official product launch with feature details",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4fRRVVSLbR8AkBK2wHqDaeQnXjvnG3eaqQHEEXERdjft",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Brand campaign narrative",
+   "migrated": false,
+   "peak_30m_x": 3.863757665211397
+  },
+  {
+   "mint": "Ds4AjQfDLRxWhBmb2ErZ747XtMre7SHMBRtqbrvbpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity resource, no memecoin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "AcULDmknuVnUJV8hGq9n2dHqpiUcK26JtVjZRnsxpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate generic exit liquidity rug joke",
+   "migrated": false,
+   "peak_30m_x": 1.96663420020662
+  },
+  {
+   "mint": "J8SirH9k4XWW52ZzdKJMviUYe1SRtmqqyDJC3mDipump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Ferrari F1 Bahrain GP narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0669274668809092
+  },
+  {
+   "mint": "8Kx2bg3NiLYC193Cuhtm3giELigvPT5uLqMZQbmxtMXi",
+   "score": 3,
+   "category": "humor",
+   "reason": "Polaroid anti-AI campaign narrative with meme angle",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "cNLPgT2FUn2mPKP6iv7iWsTmYeYJGD6RgoQ6Svwpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Polaroid campaign narrative",
+   "migrated": false,
+   "peak_30m_x": 1.205982977359591
+  },
+  {
+   "mint": "6jvfiJKotRbPECsfLavVjr1AioLrM7Gkq8JryCEFcFLk",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic chart commentary without narrative",
+   "migrated": false,
+   "peak_30m_x": 1.2060332943684438
+  },
+  {
+   "mint": "3M9G61LmuyvzVjtuQr3XtmbVpSmokuxY5ys1Hp1m7iwA",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral Gen Z ",
+   "migrated": false,
+   "peak_30m_x": 1.0050557314156583
+  },
+  {
+   "mint": "GpzPT9akgNoyxL9Xu7PwojuDzbQ9A9mk6N9HjxCRpump",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral Gen Z slang meme with massive reach",
+   "migrated": false,
+   "peak_30m_x": 1.1118463842662596
+  },
+  {
+   "mint": "HoRXCDLG9HD6BsBKy643BgaBmzDAb7jiznckFrF6pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague drain reference, no clear narrative",
+   "migrated": false,
+   "peak_30m_x": 2.5809516991490122
+  },
+  {
+   "mint": "CFDNfFjCeE674ffUnedwkp5NM1y7Sa7QyuzeesWUpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Virus narrative, self-aware marketing clever",
+   "migrated": false,
+   "peak_30m_x": 1.1180233973678981
+  },
+  {
+   "mint": "73hUeZUo1vavbqeDPKbjzk5EujdJxKXn5XA2x2FCJR2r",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Real AI robot news, decent product tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.3061708881143157
+  },
+  {
+   "mint": "HSUs5CcoWRmDxmxQuEcFXUaB36enkFeFtRLKkKCMpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Meta-complaint about naming trends",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "8363sqZ4Nvz4NRhJg7BwCRF1kp8ErWez8Y4VUMSBpump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Technical discussion lacking narrative novelty",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "7ffybu8nQwaEu7EyuP8UkBJhsA7rdY2DQkHykY99pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic phrase from platform account",
+   "migrated": false,
+   "peak_30m_x": 1.007093218437564
+  },
+  {
+   "mint": "yUhMPvqYfZcVWmWkVvFLv9pv2Nu4KhUYcs4ZDvLuEDC",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Awareness ca",
+   "migrated": false,
+   "peak_30m_x": 1.0986245098650635
+  },
+  {
+   "mint": "6u3NwncVpwrAcnCVo7bfRHLLFHCfH4jmuSMH8Fybujsb",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Real domain trend surge tied to AI renaming",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Cf7Q7v8WuG3XYKRnn8eCdE1dGs6FpuRgmHE2yJDBpump",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "White House AI initiative, official announcement",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "41cJsmgSbsXx4h3sXzAgyfx2QXfBwSbTMNMiTQUZ3f5B",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Pitbull Zcash privacy connection weak",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EEkm6mX58LFt27U7p3yHdiwSwf88P36ejXd9VcZ3dwic",
+   "score": 4,
+   "category": "ai_tech",
+   "reason": "Novel AI gaming concept from known creator",
+   "migrated": false,
+   "peak_30m_x": 1.0778991819250876
+  },
+  {
+   "mint": "FYevmB8X645iWwAvt31ToTjsgBipdj3SWepaQbC7pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Airplane hijack joke without real narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0725685039205932
+  },
+  {
+   "mint": "BisVJVZ3XETk8om7irA6hgqAPjR6BViA3f36NWnEpump",
+   "score": 5,
+   "category": "news_event",
+   "reason": "Real NASA space mission launch, official source",
+   "migrated": false,
+   "peak_30m_x": 1.8545112496083402
+  },
+  {
+   "mint": "Hy7hByQqwj36LBAzAMSfu99YR1mZ6wTALY8nBXFiuswp",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Technical feature update lacking meme angle",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "J6rpUJiQPXMvTPc5RQpKkSThugDQNVEGRooL8GBtpump",
+   "score": 4,
+   "category": "politics",
+   "reason": "Trump administration token, conference announcement",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "EMKVnP5Ln9vm4cj7K8L8jaEijERXgXvhk43yy3CtZ89p",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Accusation/doxxing, negative narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1092706396953613
+  },
+  {
+   "mint": "G18ysHFRLqZafwFLSHQ8pWb5mSrJG2xMndJLSUjDfyNS",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political statement lacking narrative specificity",
+   "migrated": false,
+   "peak_30m_x": 1.0649474743320864
+  },
+  {
+   "mint": "BcJGVExzNRWQGXvf5bJbF1DJWKMASHZc3f8UoWbspump",
+   "score": 2,
+   "category": "nsfw",
+   "reason": "Lethal injection controversy, dark/sensational",
+   "migrated": false,
+   "peak_30m_x": 1.001405027555588
+  },
+  {
+   "mint": "8x2NgZPCgHXVfXwssxLn3Xvbst77Luk9uJcTMN19pump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "XRP pairing and dividend mechanism",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3NdVqRZoUN5cuLgLw3t33DvgVDfBTWHGDvGsAm3ypDrV",
+   "score": 1,
+   "category": "other",
+   "reason": "Links only, no context or narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6APKAy4nJchyhx3qd9W1qrvqbCawWRLq1Sr68ScZpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0252530886789917
+  },
+  {
+   "mint": "9GACJvLZNvXcqYFTPeoJsg6pisUxvZAA18ggLADGPGgs",
+   "score": 2,
+   "category": "politics",
+   "reason": "Kim Jong-un weight joke, tabloid source",
+   "migrated": false,
+   "peak_30m_x": 1.1720137634318755
+  },
+  {
+   "mint": "CsPNrokNxrW2DAkNyBwRc7kKpbYgKQmasVgYMTiepump",
+   "score": 3,
+   "category": "politics",
+   "reason": "Trump health scandal, timely political narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0506731654999932
+  },
+  {
+   "mint": "251mtPULeN4kRaMJJvscAF43WbBB7rUtgP4FWBkZpump",
+   "score": 3,
+   "category": "politics",
+   "reason": "Trump health narrative, satirical source",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DPAY3JtWn8UMaoDmwyMnFRDAeLoef1SUGbWNAB3kqH6L",
+   "score": 2,
+   "category": "politics",
+   "reason": "Argentine political statement, weak tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.7821856958723645
+  },
+  {
+   "mint": "FSqBxwYVvHdZvnkEfNZ4FdYMt2UUqnpUqLx1SZhT1sWn",
+   "score": 3,
+   "category": "politics",
+   "reason": "Trump jelly legs story, repeat narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "iyQAekhvvTAGYhM2nVu2DuKUhyuDkkMorMZAU2Cpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "Technical analysis from celebrity account",
+   "migrated": false,
+   "peak_30m_x": 1.5312906786414318
+  },
+  {
+   "mint": "6VumcGwoCBsqrWi8y3cGxq43voNwQZkBMdw1X55aud7X",
+   "score": 4,
+   "category": "animal",
+   "reason": "Viral cat meme with specific momentum narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0825816628258214
+  },
+  {
+   "mint": "5rwnqh91Tcm9dDhjRnyHSjevS8pZ9tkbuGvstDjWU68j",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Vague pumpfun narrative reference, unclear context",
+   "migrated": false,
+   "peak_30m_x": 1.0843905301093295
+  },
+  {
+   "mint": "3oy73rg3YepEoTYSxSVr2GCr1Fz6JoqVCBrXa56tpump",
+   "score": 3,
+   "category": "ai_tech",
+   "reason": "AI agent mining product, interesting early",
+   "migrated": false,
+   "peak_30m_x": 4.054264348492661
+  },
+  {
+   "mint": "AvMjv5iazKQ7VFzaEoF5bzH5HUZiK7jHByfVSYbYbGd3",
+   "score": 4,
+   "category": "news_event",
+   "reason": "SpaceX/NASA/Elon narrative with rocket patch",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7anM7WFDpqV4GULgDBWoGmh6VFMmxCnh6gk6ajUapump",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Dark real justice narrative, major engagement",
+   "migrated": false,
+   "peak_30m_x": 1.000830731068765
+  },
+  {
+   "mint": "Bm4S2vjKaA7h4smNJtCkAQZWFJv6AMfkSUkqcHeRpump",
+   "score": 2,
+   "category": "other",
+   "reason": "Charity referral link, weak memecoin narrative",
+   "migrated": true,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DARCj7NyKQmoHXSLEEdfixJeyyRt5iAvoW1dSXwKon2L",
+   "score": 3,
+   "category": "politics",
+   "reason": "Viral meme narrative reference",
+   "migrated": false,
+   "peak_30m_x": 1.1033998507151166
+  },
+  {
+   "mint": "HK32cgUEdSSU2NmSWXitYtjxHYynggTMnRyoJ7Utpump",
+   "score": 3,
+   "category": "other",
+   "reason": "Artist-created Pokemon variant",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2CGh6ToVmJvFwDU2UvhYBZaXY233CzubP7i6aTKR3SUH",
+   "score": 3,
+   "category": "humor",
+   "reason": "Clever Pokemon parody with capitalist angle",
+   "migrated": false,
+   "peak_30m_x": 1.0291007362595324
+  },
+  {
+   "mint": "Gx8XbMxph2XV1RyQwrCoA7taoW7wo21bDSTz5Et9WekK",
+   "score": 4,
+   "category": "news_event",
+   "reason": "SpaceX golden dragon patch, Apollo13 reference, Elon connection",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "2VFs4bX2KnHPDVFsoBuP5Sh2KHbGWLF9PPixXgr6Zdwr",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.9592201909612472
+  },
+  {
+   "mint": "JCgDHXErccjZ3hWaHTC1QrYigiLUqSoDkF2Wrcz4K6Nn",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Official space mission announcement",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "AtrgyzTTnWGHExrdqY8FAt7YE1ba4NoJKPeeDadZadZN",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Elon SpaceX ",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EnUC51JbDNXf6NWS4o3XgibPo6RLd95Q8dRDqgEspump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Crypto product launch with real utility",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FqkF1QNSKY2YtBPpvp6dsowxGgkj6vzkZP8SLF2Tpump",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Real event with celebrity business conflict narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Di1axa7np5Ga1zzXzfBHxGwqTbAhsqri24UivX9upump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just link/co",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9RYt3MazRJjqCvsykqJsKzjnaqWQiDebJbodLWedpump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Generic fee mechanism, barely a narrative",
+   "migrated": false,
+   "peak_30m_x": 1.3072522586983342
+  },
+  {
+   "mint": "Gr5vZjfGvcJ6nJY4DbXjGZCnbukzNJ9MF6sCpK2Ac5Ep",
+   "score": 2,
+   "category": "humor",
+   "reason": "Cynical joke about AI domain value",
+   "migrated": false,
+   "peak_30m_x": 1.428594104292626
+  },
+  {
+   "mint": "LuxcqwLY1tZMqEd98KVyi8n4WD5TNU9Qek83X55pump",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Xaht2RcjLqYXYTEnRphFFrJoQ9d1xuVQNStWNX65XWU",
+   "score": 4,
+   "category": "humor",
+   "reason": "Viral domain drama narrative with Elon",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2RHWnPUWvG9FzwyjSpEm4KScddRFLncanzy7oR1K3RpJ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Single word repetition, no context",
+   "migrated": false,
+   "peak_30m_x": 1.2917963971574054
+  },
+  {
+   "mint": "7bNAdLF4xN7Q8srBsSQ78ZggvbbzMvXtcVQ4woH3pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Meme phrase without clear narrative context",
+   "migrated": true,
+   "peak_30m_x": 8.732197648694305
+  },
+  {
+   "mint": "DqVpY6RL9pzMNSJEoc4PuccSye8UzFSJ5BPMm4DyqvVP",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Link only, no context",
+   "migrated": false,
+   "peak_30m_x": 1.0131513931153546
+  },
+  {
+   "mint": "6woun4ZoKtg5n1nRM6E3Szoq5EsLxRVi9h3pfkiTpump",
+   "score": 3,
+   "category": "humor",
+   "reason": "Domain narrative trend",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "kzd7dtgwQy3grrMsw3UkgSpNW5PbNmAyyvzgbLyRDft",
+   "score": 2,
+   "category": "humor",
+   "reason": "Cute problem-solving video narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0110933052427038
+  },
+  {
+   "mint": "Aug6SYbttrkjj3bnMT7C8ZHkQ6r7tQuAZX2Xgok8WJ1Y",
+   "score": 1,
+   "category": "news_event",
+   "reason": "SpaceX announcement not coin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0032894713266625
+  },
+  {
+   "mint": "DBt1gKS5Ycj624Np2ZC5JQRtZx7pV2sYxgo8jNgbM7Jq",
+   "score": 3,
+   "category": "news_event",
+   "reason": "SpaceX Golden Dragon space narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "26TRCEHCkqekUdpamD9Zt8teiiVFwJTj5EgrneKDpump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Real news but forced meme tie-in, weak",
+   "migrated": false,
+   "peak_30m_x": 1.0201752911899076
+  },
+  {
+   "mint": "F7qBZEGGX4sN32HMxrRUknwJFjYHBCCYZVyGMAvEu7Y5",
+   "score": 3,
+   "category": "humor",
+   "reason": "Domain pun narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7C4Tw4C1TfN5GeiVjq5Tk3m9mv4rruSeGSFkcmqVpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Drunk monkey viral video, genuine humor",
+   "migrated": false,
+   "peak_30m_x": 1.0005812801579157
+  },
+  {
+   "mint": "wWnSPkYRv5pbCVQqk7EjEeDfCq8G4Aviir5nd93h6zY",
+   "score": 4,
+   "category": "celebrity",
+   "reason": "Drake streaming milestone narrative with data",
+   "migrated": false,
+   "peak_30m_x": 1.1902549924319745
+  },
+  {
+   "mint": "3S5NGJGeHZNgsGQtNPfm2ZoTTDJXi62EcFAt1uyae2gN",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Bare mention, no hook",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "BwZxdFWe3fPSNicP55QSAwpRMXa9DQmTjmX4z5pQ7Ceo",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EEW2CG6QvPqswkdAW3BvwBGjo8ZyJQ5uGF63uVv8pump",
+   "score": 4,
+   "category": "crypto_insider",
+   "reason": "Novel multi-stock portfolio tokenized product",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4b2GDqU9CU8mGFn1tw1iYaMKJPypeNJpBuGndj5SLe5z",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": 2.4008812479095036
+  },
+  {
+   "mint": "3cGtAgnzE4gdc5TiJi56csFGAjMbtVJqMjqoNpqwY33T",
+   "score": 5,
+   "category": "celebrity",
+   "reason": "Drake album drop announcement, major",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "78Dn6VTTnVkrC1f14UfKB784kqUDqu7EKLmBLtErpump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "AI provider currency narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "GG7AFZyPy6T7ru3QrW6EstfC1m2cQeVFrr8WYjEy1dbE",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic proposal, no clear narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "BRwBAtUmprHCA9muyMXRg4GnR7i97bRitMaMy9trpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Japanese viral cat Maya narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "GegWSyaYfQJ3VzE8zwGMbsK2vgxhrZD7RvGdS6dMvesN",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Compute stoc",
+   "migrated": false,
+   "peak_30m_x": 1.2021922022536644
+  },
+  {
+   "mint": "A5ABNKSHsVu2ZvsMi6zZ2sxucjDyF6P92RcVr2mreakh",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "AI compute reference, underdeveloped",
+   "migrated": false,
+   "peak_30m_x": 1.1092859936326074
+  },
+  {
+   "mint": "6uLG3FYRobthFg6ASWSKqhroJGKCh39M5rrHVxewNvWx",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Trend reference but weak",
+   "migrated": false,
+   "peak_30m_x": 1.0524534355020179
+  },
+  {
+   "mint": "GkS3tATGXWVHNgrjsFQg3kqsKp3aFmoaDWbECftmHP48",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Crude wordplay on compute stocks trend",
+   "migrated": false,
+   "peak_30m_x": 1.0634750209635129
+  },
+  {
+   "mint": "7YrnztE2bq53LKjwwNkDH9BzVBcqsKErPzgwjKiUpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Technical correction without narrative context",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5eyTX2PETk9aTXW35ADQdmv1u4i9sWZpsRM23TbWuYg7",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Compute stock joke, weak narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Bo99oqJBTV4r4KccXkhnVEdtLz3cQMgYVyZoXnNszamK",
+   "score": 3,
+   "category": "humor",
+   "reason": "October seasonal meme",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DQuqTydYYVxBTMYgf7yiaDbNFHMbfjDVGmJb7wH4pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Circular logic, no real narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "9mcUrzkoSKT5WdSDanqPJipNRvf6XHLZmh4kEYXE7WEx",
+   "score": 2,
+   "category": "humor",
+   "reason": "Generic Uptober October reference",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "AiyWJE9YcsMgcU7wbYzm4PSs5rvTR1Pz8Zof4uFikzh7",
+   "score": 2,
+   "category": "animal",
+   "reason": "Generic inu plus compute theme, underdeveloped",
+   "migrated": false,
+   "peak_30m_x": 1.2094215988154084
+  },
+  {
+   "mint": "ApAcfpVi3qhFWmarizJyMuQMMFnrwXAy75mCC74iAJVo",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Scam warning, not promotion",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Fdrhi5r8Aki3VGcD3bG6L57zYBWhArrhLaZ8AwEQEM3i",
+   "score": 2,
+   "category": "humor",
+   "reason": "Self-aware memecoin commentary",
+   "migrated": false,
+   "peak_30m_x": 1.7361854799156817
+  },
+  {
+   "mint": "CpEhf9Ckg8pADzxTy761bL2gvx6psYyW6fVLYmo9q79j",
+   "score": 2,
+   "category": "humor",
+   "reason": "Meta commentary without unique meme angle",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "B6WRJE2wiRoc9GE8UKhdrDfJnBtdKfKib7s8YH2opump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Weak computer stock reference, derivative",
+   "migrated": false,
+   "peak_30m_x": 1.0457945075309103
+  },
+  {
+   "mint": "8yQ4J42U2pU4H6y3U9bfy9g4MjtPkqsygUkg8JEQy6hz",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post, no content",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5tgFHZxx7sGLQQAkSpbiT1MZAaNKFKwRNSdWVVgGckTi",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post t",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6k47LHytmTb3y9fB5FjNZRtTGEkvH2BeYvR4Eos4BaSh",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post t",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2x5BkpDNmQHrgoo431CfTpt9r38ZZDRaFQrnzHQ23TUS",
+   "score": 4,
+   "category": "news_event",
+   "reason": "Real space industry news narrative",
+   "migrated": false,
+   "peak_30m_x": 1.3611111110657403
+  },
+  {
+   "mint": "9PyBLZbnHNPd1JQSZP7v4RyfNC8FSqzXYk6wi6LnYVk",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Unsubstantiated claims about currency importance",
+   "migrated": false,
+   "peak_30m_x": 2.2236702369895704
+  },
+  {
+   "mint": "HvPciBDzANHRoGWUB19Uq9q8YknETn5FWN4TnfpMXWCw",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "APFbCdHVo9c8yi1L3SMgiUkYgkUS1TCV67ysWjDrV4At",
+   "score": 1,
+   "category": "ai_tech",
+   "reason": "False AI currency claim with no factual basis",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7hVSwc4TtYm4qRknSmuMYnz1aDqCcgYegzddZ2ZqW7Lv",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post, no content",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "AdJQBaSJm4dwWaupc5baAbSJdjWzC7g1UfSQ1zQEesoL",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "AI currency claim",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "64hN3maJ3fyi9A9bxMSLQX4qFcFnCBwv1LLQZLskSHcU",
+   "score": 2,
+   "category": "news_event",
+   "reason": "Crime news, weak fit",
+   "migrated": false,
+   "peak_30m_x": 1.1861732376209033
+  },
+  {
+   "mint": "9oEPTGbaakQdDzpThAKvmFSf9asycTxkbzC975PRBw6Q",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post, no content or narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2S6zd7NDjbYHMmwzKA8F5rib5suG3WNAc6dSndQnDqNb",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political topic from crypto investor",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9q6KghLAjedNsTexysxvg5L7fiJysVwC5hfHoNgEpump",
+   "score": 2,
+   "category": "ai_tech",
+   "reason": "Compute stoc",
+   "migrated": false,
+   "peak_30m_x": 1.3667504424748984
+  },
+  {
+   "mint": "E5ZbAMjysXNkeVsuERqHBhNHMbcYoZHJM7ZuqUyvpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post t",
+   "migrated": false,
+   "peak_30m_x": 1.1057921137191975
+  },
+  {
+   "mint": "5bYcpu9axavBapHaPs3ZJnTVmXJh8L989NcymFiCpump",
+   "score": 1,
+   "category": "ai_tech",
+   "reason": "Vague meme suggestion",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CVSyiuSbYqXKRYeHK9Avd7ya6sVrvzv82nZqexKxn2Cr",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Pumpfun insi",
+   "migrated": false,
+   "peak_30m_x": 1.0248951743408823
+  },
+  {
+   "mint": "F5zumWFvc2BqL76x17P2Zv6WaPzLkhXrmt6bSmCRb2HT",
+   "score": 3,
+   "category": "animal",
+   "reason": "SpongeBob character ID",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "2g1enb8okWRQZW3LfSJUgAcobcYMV1Knvt44cFmoGxKx",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Pumpfun ecos",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Ef8SfF9BzzhdDrnoxLzwNzGdg8uCGpUQVigJxLTySHo2",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Pumpfun cockroach metaphor from insider voice",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9p6pUJKWG1R4bHuvDTWNZSc6UJixEUrU1mzHyi4epump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Product launch lacking cultural narrative",
+   "migrated": false,
+   "peak_30m_x": 1.6512414284302932
+  },
+  {
+   "mint": "HhfYv4iyxT5C9ZDRg48x5PUXzaY57uvRDyJ2QyEuZ4Jx",
+   "score": 3,
+   "category": "humor",
+   "reason": "Resilience metaphor",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EtMj8pp3kA2K3hDH2E2QFJiaxRQkiRnUjLA51F7iYw6Q",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Pumpfun insider reference, weak metaphor",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4uvSb4PN8Sm5bMKEJPoydFdDsU5EwyimqZcjyknwpump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Elon macro statement about energy currency",
+   "migrated": false,
+   "peak_30m_x": 1.0171828185887537
+  },
+  {
+   "mint": "4ZKZqfHo1EHy1sj5E4VML6Lf29tMZZRqRurXJvMipump",
+   "score": 4,
+   "category": "humor",
+   "reason": "Trending ant",
+   "migrated": false,
+   "peak_30m_x": 1.8386659801689054
+  },
+  {
+   "mint": "FBx4AHR9epXAa2ztemY94m9iHzGnCSvg8QGYssYqpump",
+   "score": 5,
+   "category": "news_event",
+   "reason": "SpaceX official, 240M followers, credible",
+   "migrated": false,
+   "peak_30m_x": 1.141853908003429
+  },
+  {
+   "mint": "DhxGTpWfSjN4VHWnBbo5UtzXkg3X8FccxANunDD8TT1v",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Accusation of fake chart, weak narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0207651288114974
+  },
+  {
+   "mint": "4MShFrctiCKZvWqBu6tGCmq5JUT2nZysRhrXQ67nTrMH",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Confusing old post reference, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6KhJuUSW7F2UXdmFkjyeTpaJBJbRjNGbsnVFFgkgKBfB",
+   "score": 3,
+   "category": "news_event",
+   "reason": "Real economic data, mortgage rates, major",
+   "migrated": false,
+   "peak_30m_x": 1.4830423461814624
+  },
+  {
+   "mint": "BXEkPaRK2JR9dVBzZynt1rcN24k82XzcL5SCqHk1pump",
+   "score": 2,
+   "category": "humor",
+   "reason": "Weak Monday concept, unclear value proposition",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "6Q7z99Cf1Ho4r2sLr3azGspmZqXDzKVKqt62NyFF43pL",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Product feature announcement lacking narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Hf6focweT6P67VtYFxu485FWENudGQte2JPNvMdWpump",
+   "score": 2,
+   "category": "animal",
+   "reason": "Character name plus inu, weak",
+   "migrated": false,
+   "peak_30m_x": 1.1251262540580784
+  },
+  {
+   "mint": "7bciDyQ5Sib4y7RX5by1ViRuQN92pMVo5BGmtc8F27kY",
+   "score": 2,
+   "category": "animal",
+   "reason": "Dog meme progression, weak standalone narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "LrCMZyFXNkmtKofeyi8xhnFbsuPSn6YVPrBYWjNPMco",
+   "score": 3,
+   "category": "animal",
+   "reason": "Dragon character with following",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FzPYXLYHesSJyM9FmxWT769ky41hxPTp7VvvNJiwNDzf",
+   "score": 3,
+   "category": "animal",
+   "reason": "Golden dragon with specific name story",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "GKNqVMeTM6VPtonMLWPmdNRmzbi8JsVDgtha4UN6pump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate generic exit liquidity rug joke",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5tDuzTrDumnFH9T4xNppfPNhoN8Fp5VJmi7T4rHR78x1",
+   "score": 4,
+   "category": "humor",
+   "reason": "Timely Taco Bell partnership with cultural moment",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "8ARkiFSj8LX5YcQrbSkVASqWqxGnjNpYFRmTaR4Dpump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Arthur cartoon fist meme, timely",
+   "migrated": false,
+   "peak_30m_x": 1.6876246014401426
+  },
+  {
+   "mint": "AnKtH2BLLySXnLvRrDWTuzKPB65nAYZQSJGK86cchX7D",
+   "score": 2,
+   "category": "humor",
+   "reason": "Q4 meme reference, weak memecoin narrative",
+   "migrated": false,
+   "peak_30m_x": 1.17163552093337
+  },
+  {
+   "mint": "BBCA3mbobhpwHCqu8ZHzyqaogQKi6g5QKBEMPDeSsgUf",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Competitor p",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9AsnZ82a9kugheLHeLtvjm6z2wk5n1z2JUG1yUHGpump",
+   "score": 5,
+   "category": "news_event",
+   "reason": "NVIDIA official use validates gold standard",
+   "migrated": false,
+   "peak_30m_x": 1.1596117618635353
+  },
+  {
+   "mint": "GnBKCkvpDbyb9g7w7wR8yCd9u7hxE1d5zywamNqkxSmk",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Generic attempt to copy competitor success",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HWBf6ebxQ3WGNEPEnWJZUFLJPtTuaxzws1zxsEFuJTfE",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Tagged mention with no context or substance",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FEEfMoKGBzuLnU5mX59oFvmAFFs8XvTmBxjAyVcJ7uwH",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just a mention, no context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "CKT4U9wkvs5VmGg4CmUcXbQfcjubmfJkdzudUv77fGQp",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "e/acc philosophy EA movement critique",
+   "migrated": false,
+   "peak_30m_x": 1.238883809686314
+  },
+  {
+   "mint": "Gtxh5Ef8JHZC6oN1Z8gpkQg1PhmrneDzs31CCbT4jkLv",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Duplicate tagged mention without context",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8vLihmorNJdWDVYckEoz6Q5pAp46Xnn7Cu1AhnpAS5Hc",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Just a name mention, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "A7Hvff69NvbDmR8oUS25uJ7qL4q9wP2U1y8dHoX9VWSG",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Image reference with typo, no substance",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "HSLFZMy49VLfPCH3UMZdhxPzHVh2sRqYbpyQHzRipump",
+   "score": 2,
+   "category": "animal",
+   "reason": "Character name plus inu, weak narrative",
+   "migrated": false,
+   "peak_30m_x": 2.277440151452109
+  },
+  {
+   "mint": "BBmdyWKd6pSkbbcn5BMPbGxq7R49scSApdwTu6wXpump",
+   "score": 2,
+   "category": "animal",
+   "reason": "Generic animal memecoin, no detail",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "3xYGferk7m5ggoMfzQmpU57kzaAztQfmBtJg7S7cgXDN",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Libra reference, insider knowledge, weak",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "8cFdosEGwS5pf8TQ2gYzopwAK65e2nDfNsZvEVZ8KRn3",
+   "score": 3,
+   "category": "humor",
+   "reason": "Playful scaling narrative with real event",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "EQd9xt3wmnE6JjfLMCpsFjSRpAK7aasiZ5dUKm8HkHhJ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal response, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "45t4Wc8c86BGoZpjWNjDsiN2ZJER5iNJze1iAstypump",
+   "score": 5,
+   "category": "politics",
+   "reason": "Official Grok account, maximalist religious narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1270776606964836
+  },
+  {
+   "mint": "7DegneAPXrsoJeLRVNvA2xwZng8Qbx34SVqhGASMKhMC",
+   "score": 3,
+   "category": "other",
+   "reason": "Elon Musk greeting, limited narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FPUP2YnMmAgz6d65poZLpBYeNAZmnihWYDSqMGy2M5HW",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic timestamp",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6ZnWpTQ66iZrdCehzv5Dgx6XPddjssNM3DoWN1ttCUVm",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic Q4 statement, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "3Ep8Mv7iWBBXoJFa27tkt6YiFiu6B6uRkhkhXe5BCYoN",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic time marker from platform account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5TXbLP1hgf6PWnhUoGwmoT89JCb5pgx96DhLtMvrmQCQ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic Q4 announcement, no coin narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Er98PE3sP2jZus1tCzuB7XhAJvufYPinzAaXiwnf3EGw",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic timestamp",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "7JSCv3ew3wF24eAW2VDz8rLJ5BX8UBAGxjv5zjKWpump",
+   "score": 2,
+   "category": "animal",
+   "reason": "Generic cat meme, derivative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "E4U1VGDefQgUacwZEnQG9oaNAv3RPZkCkRB3fudRpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic quarterly statement, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5GtqnZSQDSQL2UEYG4odfr8qHSqyn7HAD4vWYtGypump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Real mascot story, funny animal tie-in",
+   "migrated": false,
+   "peak_30m_x": 1.2016401704877908
+  },
+  {
+   "mint": "Hb77QsHM8XvjPUAzjcJG7dcni9t6AmBqLZeyLvv6pump",
+   "score": 4,
+   "category": "animal",
+   "reason": "Animal fact from verified org with narrative",
+   "migrated": false,
+   "peak_30m_x": 1.1124281316254474
+  },
+  {
+   "mint": "VcHTVVAMtfuoTQiLTGp3TSTK37UWCGtK8vjgWVWpump",
+   "score": 1,
+   "category": "humor",
+   "reason": "Random hardware joke from brand account",
+   "migrated": false,
+   "peak_30m_x": 1.8230573727483892
+  },
+  {
+   "mint": "4rThf3RdfQGSNjZbNuuPYBr4oxPorSPkcUFQSw4Kpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Minimal ticker reference",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "26n8DTHzFeBcQbeYoEBA8Mkgyw2wLHbTbjgUZe7Ppump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague ticker announcement, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "56gSexwMvkiVukQbDx5znhqxE3MeDmz2seeFTFJ1LrFE",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Offensive sl",
+   "migrated": false,
+   "peak_30m_x": 1.1809215118668166
+  },
+  {
+   "mint": "BGQkmfZ9yGYEaPUndbHhJwkGWZVEZpzcWQBmzSiUpump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Generic product launch, no compelling narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "26TSKRPoEVgt9VpZ8j4k4evQdiHPNgYdih4QZdyupump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic greeting, no narrative",
+   "migrated": false,
+   "peak_30m_x": 1.0025969857228973
+  },
+  {
+   "mint": "HUzcjoL5qE9R12NTiW4exyMy4FWJjbtXQcKmP7Wwpump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Cat meme wit",
+   "migrated": false,
+   "peak_30m_x": 1.699849162996951
+  },
+  {
+   "mint": "C3h54DfxpRPEb4TqrafpEoHUdA8WyRG6prp8txtQNsL8",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic timestamp",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4yNrpSWwXYVu96PAJP28yAVeV8kj1yh5MdQBNQsS3bPZ",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Generic quarterly statement, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "F6YZshnie1ZrDRdZHcDqmZfdsYqxv6yxKJc3Ygi7a5rB",
+   "score": 1,
+   "category": "crypto_insider",
+   "reason": "Generic pumpfun feature announcement",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "9Pa7bSmT55bJe36bhrBZhxSB6znAMGyQSqTNwcripump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Vague hype, no narrative content",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "5tVfd4CjgcgP9CfaHmvTAwexPhDv5fLkWuZyX2vDpump",
+   "score": 3,
+   "category": "crypto_insider",
+   "reason": "Solana Break",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "84FcdBn6MX3CtNjCVoAWjE6kLCvj1LwcT1H232tyYG1m",
+   "score": 1,
+   "category": "other",
+   "reason": "Insufficient",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "JDgDqR8FMgwSfKbwWMqmWN2ReShnXKWEJzAg4E5wUSUG",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Timestamp only, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "FZqoSMt1UtRfu84gd4DxEguuAtU7L6uisys1a2jEpump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Questions pairing mechanics",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "DAqSrz6G62ndG1wujiMdBFFvszKPn23JeQFHZnY6pump",
+   "score": 2,
+   "category": "crypto_insider",
+   "reason": "Technical feature discussion, no narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "BTbu5utpkqdgLph2cqLS7WLvjkh6HjwtowiaH6wBu5dR",
+   "score": 2,
+   "category": "other",
+   "reason": "Trading strategy comment, not coin narrative",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "4vuUrnCR6G4cX3D3swQ3nuof7qac77Na36mjnRYupump",
+   "score": 3,
+   "category": "animal",
+   "reason": "Cat meme wit",
+   "migrated": false,
+   "peak_30m_x": 1.6023433004036383
+  },
+  {
+   "mint": "5DDo5CsxcLyrKvtAuhskpJ7XSBGcmzXokbG4QVZppump",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Offensive name, empty post, major account",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "Bep88b6nrX5kcZqUCxDZDUyCEBnEpEEJuWwaJwVbpump",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Offensive name, empty post",
+   "migrated": false,
+   "peak_30m_x": 1.0268948076565831
+  },
+  {
+   "mint": "9HLyYTnizhBeEGKXGZSHRvezmp4a8JuALoV5wf1gb1Ax",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Empty post t",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "5yJPZHWPKxiN9ezBV7WFsAYDzqwyHk9dUvkN6UJhpump",
+   "score": 1,
+   "category": "nsfw",
+   "reason": "Offensive name, empty post",
+   "migrated": false,
+   "peak_30m_x": 1.1998024509502798
+  },
+  {
+   "mint": "6ztdNQo2whkGxGuQzimGnCDaLrLA46S19gCqVTxpioeK",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Technical complaint about token pairing",
+   "migrated": false,
+   "peak_30m_x": NaN
+  },
+  {
+   "mint": "6ZuQVarhSy9j4xCRBjnUDYDXWs5p2Qn4t6TkzENTpump",
+   "score": 2,
+   "category": "politics",
+   "reason": "Political statement without unique narrative angle",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "Cdth8AA4MTiprQ7Rcr5wNuDc5u3BCH2Kh2SpyKpqpump",
+   "score": 1,
+   "category": "spam_or_ca",
+   "reason": "Dog breed correction unrelated to coin",
+   "migrated": false,
+   "peak_30m_x": 1.0
+  },
+  {
+   "mint": "CtpdhL45yoGTL4QDTt2WWBQHUG7EhsbJkt9gQ3ijefva",
+   "score": 1,
+   "category": "animal",
+   "reason": "Unclear animal breed comment",
+   "migrated": false,
+   "peak_30m_x": 1.9394575553226734
+  },
+  {
+   "mint": "Dj4TY6trWqfjN22vYLtWHLY2dY8jpJH3WTBM54Qpump",
+   "score": 1,
+   "category": "animal",
+   "reason": "Unclear animal breed comment",
+   "migrated": false,
+   "peak_30m_x": 1.213905223192153
+  }
+ ]
+}
