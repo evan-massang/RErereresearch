@@ -155,6 +155,36 @@ Each signal below was measured on the train period (12:17–16:15 launches, base
 
 **Honest bottom line:** of everything you suggested, tracking good devs is the only signal that is both strong and tradable. It needs several more recorded days to tell a real edge from one lucky runner.
 
+
+## Theory of a solo trader's edge, and the final-stretch test (2026-10-02)
+
+**Where profit can come from**, for someone trading alone without special infrastructure:
+- **Not from activity.** The game is negative-sum: fees, tips and snipers take value from every trade.
+- **Not from speed.** Launch-block snipers and developers own the first seconds.
+- **What is left:**
+  - *selection*: skipping predictable losers and finding the rare good dev or narrative;
+  - *being positioned before flows that others are forced to make*: KOL followers, and the post-migration pop;
+  - *exit discipline*: cut fast, let runners pay.
+
+**Final stretch (H8)** buys a token once it reaches 250 SOL market cap, holds it through migration, and sells into the pop.
+- **Train:** +20.5 SOL over 174 trades.
+- **Pre-registered test:** **−6.8 SOL over 47 trades.**
+
+How often far-along tokens finish swings with the market (33% vs 19%). Whether the strategy pays depends on that, not on the trader.
+
+**Pattern across all eight hypotheses:** every mechanical rule built from the public tape loses out of sample. Every profitable result comes from a small number of runners (H7, Decu's picks). What reliably separated winners from losers was the *trader's judgement*:
+- Decu's picks: +0.28 SOL per trade in both halves of the day, where a tape-only model scores no better than chance (AUC 0.52);
+- good devs: 9× migration rate.
+
+The realistic path for a solo trader is:
+1. trade the *good-dev* and *original-not-copycat* filters;
+2. use Decu-style reading of the narrative and the X post for the final call;
+3. trade small sizes;
+4. cut non-movers within a minute;
+5. log every trade to find out whether *your* judgement has an edge.
+
+A bot cannot replicate step 2 from chain data.
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.
