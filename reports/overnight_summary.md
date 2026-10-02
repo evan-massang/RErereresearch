@@ -4,6 +4,8 @@ _Written 17:45 UTC; final test results added 19:25 UTC._
 
 ## Short answer
 
+**Update 2026-10-02 18:00 UTC: still no profitable strategy.** The last open lead, H7 (buying launches from good devs), failed its clean re-test on new data: 55 trades, −3.13 SOL. See "Resumed run" below.
+
 **I have not found a profitable strategy a bot can run.** All six pre-registered tests failed, each one negative at every latency from 0.1 to 10 s:
 - four rule-based strategies;
 - copying a basket of unknown winners;
@@ -209,6 +211,29 @@ Re-running the H7 rule on train data at different position sizes and per-transac
 | 0.05 SOL | 0.0002 SOL | +0.13 SOL (+255% of a position) |
 
 The rule did not change between rows; only the fee did. At 0.05 SOL the usual 0.01 SOL tip is 20% of the position per transaction, so **a small account's first problem is fees, not selection**. Any attempt to grow 0.05 SOL must run with near-zero tips (slower, occasionally failed fills) and few, selective trades. Only once the account is near 1 SOL does normal execution stop eating the edge. This is before any claim that the rule has an edge at all; that is what the 08:05 re-test is for.
+
+## Resumed run: clean re-tests on new data (2026-10-02, 17:00–18:00 UTC)
+
+Everything here used tape recorded **after** the rules were frozen (Oct 2, 01:44–07:41 UTC). The Oct 1 holdout (19:15–21:15) is still unused.
+
+**1. H7 (buy good devs' launches) fails its clean re-test.** The frozen rule was run with no changes (`reports/failures/h7_retest_20261002.md`):
+- **Result:** 55 trades, **−3.13 SOL**, PF 0.55, win rate 15%. Negative at every latency from 0.1 to 10 s.
+- **Earlier result:** +2.36 SOL on 11 trades, which was one lucky runner.
+
+**2. But the good-dev signal itself is real.** Good devs' launches migrated 16.9% of the time on Oct 2 vs 2.8% for all launches (6×). On Oct 1 it was 9.3× on train and 3.2× on validation. Picking good devs works; *trading* their launches does not:
+- **Costs:** fees and tips (1.9 SOL) plus slippage (2.4 SOL) turned +1.1 SOL gross into −3.1.
+- **Holding through migration is worse** (`scripts/research/good_dev_hold.py`).
+  - On Oct 1 train it made +14.8 SOL, but one trade carried it all.
+  - Validation: −1.6 SOL.
+  - Oct 2: **−17.4 SOL over 82 trades, even though 12 of them migrated**, and −13 SOL even with zero costs.
+  - A good dev's launch migrates more often, but bought at launch it is still worth less than you pay.
+
+**3. Decu's picks can't be turned into a rule.** I tested 160 simple filter rules on buyer count, net inflow, market cap and X-post link. None was profitable even in-sample; the best lost 0.06 SOL per trade. Decu's own picks among the same candidates made **+0.27 SOL per trade before 16:15 and +0.28 after**. Whatever they see, it isn't in these numbers. Their picks link to X posts made seconds before launch, mostly from accounts that announce launches.
+
+**4. Decu stays profitable on a new day.** On Oct 2 their verified wallet closed its bonding-curve trades at a profit again (`research/observations/evidence_decu_oct2_trips.json`; numbers in the findings table). The trader's edge carries over to a new day; every rule we built from the public tape does not.
+
+**Verdict after nine tests (H1–H8 plus the good-dev hold):** no mechanical strategy built from public chain data makes money out of sample. The one thing that consistently made money is a skilled human's selection, and it cannot be reproduced from the features a bot can see. **Turning 0.05 SOL into 100 SOL (2,000×) has no support in any of this data.** At 0.05 SOL, a normal tip is 20% of the position per trade, and even the best signal found (good devs, 6–9× migration odds) loses money when bought at launch.
+
 
 ## What I would do next
 

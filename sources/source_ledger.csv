@@ -170,7 +170,7 @@ source,src_1a212260a7c71d97,https://docs.j7tracker.io/docs/errors,web,Errors & L
 source,src_b62ea28f5df7c1f5,https://docs.j7tracker.io/docs/deploy,web,Deploy API — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
 source,src_5abadd47354ae6da,https://docs.j7tracker.io/docs/quick-start,web,Quick Start — j7tracker API,,,,,webpage,True,http,,,J7 Tracker official API docs (information environment)
 source,src_8993a2d2c485f87e,https://x.com/Cupseyy,web,,,,cupsey,,document,True,http,,,identity verification pass
-source,src_47acc67d18bd8813,https://kolscan.io/leaderboard,web,,,,setuh;cupsey;leck,,document,True,file,,,KOL list extracted from kolscan.io page data on 2026-10-01
+source,src_47acc67d18bd8813,https://kolscan.io/leaderboard,web,,,,cupsey;leck;setuh,,document,True,file,,,KOL list extracted from kolscan.io page data on 2026-10-01
 source,src_8ee6bc98832ab8fe,/home/user/RErereresearch/data/raw/video/live/kick_solanaswaggy/20261001T122548Z.mp4,unknown,SolanaSwaggy live stream (Kick) — recorded segment 12:25:48–12:34 UTC,SolanaSwaggy,2026-10-01 12:25:48+00,solanaswaggy,,video,True,local,,,Live recording of kick.com/solanaswaggy; video t=0 is 2026-10-01T12:25:48+00:00 (stream latency ~7 s measured from the on-screen chart clock)
 source,src_1cdbe07672c58c2f,stream://pump_curve/2026-10-01/swaggy-evidence,web,Tape excerpt: swordbunny + copycat Boy launches,,,solanaswaggy,,document,True,file,,,
 source,src_089024e26085ab1e,stream://pump_curve/2026-10-01/event-study,web,Event study: flow and price around tracked-wallet entries,,,,,document,True,file,,,
@@ -198,6 +198,7 @@ source,src_4eaa8361fb65f7e6,stream://pump_curve/2026-10-02/narrative-scores,web,
 source,src_c53bf9761567e5ed,/home/user/RErereresearch/data/raw/video/live/twitch_decu/20261001T161519Z.mp4,unknown,"Decu live stream (Twitch) 720p, 16:15:19-21:20:33 UTC (capture 3)",Decu,2026-10-01 16:15:19+00,decu,,video,True,local,,,Finished live capture of twitch.tv/decu at 720p; video t=0 is 2026-10-01T16:15:19+00:00; the stream continued (next capture starts 16:15:19)
 source,src_4f124b950bd3c5d4,stream://pump_curve/2026-10-01/decu-filter-replication,web,Threshold rules vs Decu's picks (creator-dump candidates),,,decu,,document,True,file,,,
 source,src_2a6a41239832229b,stream://pump_curve/2026-10-02/good-dev-hold,web,Good-dev launches held through migration,,,,,document,True,file,,,
+source,src_ac31df372dda200d,stream://pump_curve/2026-10-02/decu-trips,web,"Decu bonding-curve round trips, 2026-10-02",,,decu,,document,True,file,,,
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,

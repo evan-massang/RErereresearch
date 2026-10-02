@@ -1,0 +1,128 @@
+{
+ "wallet": "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
+ "tape_span": [
+  1790905467.0975256,
+  1790960362.3017242
+ ],
+ "summary": {
+  "closed_trips": 8,
+  "open_or_incomplete": 3,
+  "pnl_sol": 2.469,
+  "win_rate": 0.625,
+  "avg_win_sol": 0.9358,
+  "avg_loss_sol": -0.7367,
+  "profit_factor": 2.117,
+  "median_hold_s": 50.4,
+  "median_size_sol": 3.514,
+  "median_entry_mcap_sol": 100.3,
+  "median_age_at_entry_s": 39.9,
+  "share_multi_buy": 0.625,
+  "share_multi_sell": 0.0,
+  "best_trade_share_of_pnl": 0.72,
+  "share_entries_creation_block": 0.0,
+  "share_entries_within_5_slots": 0.0,
+  "pnl_from_creation_block_entries_sol": 0,
+  "share_entries_with_known_creation": 1.0
+ },
+ "trips": [
+  {
+   "mint": "2iPpQv7b9oPwxNYsa2ahTzsXVbUwXL5CT9RhZhJBpump",
+   "first_ts": 1790911516.3456788,
+   "sol_in": 2.97,
+   "sol_out": 3.3462,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 99.53149366378784
+  },
+  {
+   "mint": "5KPpwc7KmQeBF3YvY8QdEBuBy1GJFU9Wy9ZM8FPJWWYL",
+   "first_ts": 1790908034.3920975,
+   "sol_in": 4.9747,
+   "sol_out": 4.233,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 42.47535037994385
+  },
+  {
+   "mint": "5X8UMDq9xGgCq6gqSZBCS5q3mAZf1Q5aAX8pcP9dpump",
+   "first_ts": 1790906521.1545546,
+   "sol_in": 3.5392,
+   "sol_out": 4.2678,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 37.246002197265625
+  },
+  {
+   "mint": "7kvKZiDMeUQhYNJ31METuWWc2cWGXx7QiSnkpXjYpump",
+   "first_ts": 1790909657.524868,
+   "sol_in": 3.267,
+   "sol_out": 4.6443,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 4.9847376346588135
+  },
+  {
+   "mint": "C6V1an8n4rekeS8z2oQSwKag1LtiFe7ZTH4XXKafyxAV",
+   "first_ts": 1790907435.537201,
+   "sol_in": 3.4897,
+   "sol_out": 2.7845,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 3.2491533756256104
+  },
+  {
+   "mint": "FJuQGTJPaJGTXxnZfaNQaG9kqvKNjPfLykzyBZVjpump",
+   "first_ts": 1790912800.5482433,
+   "sol_in": 1.98,
+   "sol_out": 3.7573,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 8.407946109771729
+  },
+  {
+   "mint": "GM91Lx9NT6WWVhyUprhx8mxt9Kq6PEQ1VeFkKCa4pump",
+   "first_ts": 1790909826.7311783,
+   "sol_in": 4.95,
+   "sol_out": 5.3696,
+   "closed": true,
+   "graduated": true,
+   "age_at_entry_s": 95.79542303085327
+  },
+  {
+   "mint": "efbKNyGvdrJAYc3i7CgxKQBYsi11FkURid9SZWDpump",
+   "first_ts": 1790913226.9747884,
+   "sol_in": 7.227,
+   "sol_out": 6.464,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 207.36256527900696
+  },
+  {
+   "mint": "HQvv6EZvnq2nq59rVTHoY5gj8cXQrk1cjEyiYGDapump",
+   "first_ts": 1790905473.5819085,
+   "sol_in": 0.2722,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": true,
+   "age_at_entry_s": null
+  },
+  {
+   "mint": "HbzLPwcp64jmC7wtYe2x2xXwmWF9DFgobWewhAvepump",
+   "first_ts": 1790912206.9607801,
+   "sol_in": 3.5145,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": true,
+   "age_at_entry_s": 5.453897476196289
+  },
+  {
+   "mint": "a4zLM23h5i7Ntm6BpD22iiU34mX81LxrVTkwwzdDHTc",
+   "first_ts": 1790960116.8402371,
+   "sol_in": 0.297,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": false,
+   "age_at_entry_s": null
+  }
+ ]
+}

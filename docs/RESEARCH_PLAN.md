@@ -6,6 +6,17 @@ sources are in `research/traders/<slug>/identity.md`, `research/observations/` a
 
 ## Where things stand
 
+**Update 2026-10-02 ~18:00 UTC.** Every strategy tested so far has been rejected out of sample:
+- H1–H8;
+- H7's clean re-test on the Oct 2 tape: 55 trades, −3.13 SOL;
+- the good-dev hold-through-migration variant, which failed validation.
+
+The Oct 1 holdout (19:15–21:15) is unused because nothing passed validation. What holds up:
+- good-dev launches migrate 3–9× more often than average, but are not profitable to buy at launch;
+- Decu's own selection, profitable on Oct 1 and again on Oct 2, which no rule on visible features reproduces.
+
+See `reports/overnight_summary.md` ("Resumed run") and `reports/failures/`. The rest of this section dates from Oct 1.
+
 The network has been opened, so primary sources are now in use:
 - X profiles and posts through the fxtwitter mirror.
 - A live Solana RPC feed of every pump.fun bonding-curve trade, recorded since 12:17 UTC.
