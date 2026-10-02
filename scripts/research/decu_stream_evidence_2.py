@@ -20,11 +20,18 @@ from pipeline.ingest_video import ingest_video  # noqa: E402
 from pipeline.ingest_web import ingest_document  # noqa: E402
 from pipeline.sources import get_video_adapter  # noqa: E402
 
-EX = "claude:decu-stream-2-2026-10-01"
+import os
+SEG = os.environ.get("DECU_SEGMENT", "2")          # "2": 14:43-16:11 (720p capture 1); "3": 16:15-21:20 (capture 2)
+EX = f"claude:decu-stream-{SEG}-2026-10-01"
 WALLET = "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9"
-VIDEO = ROOT / "data/raw/video/live/twitch_decu/20261001T141139Z_720p.mp4"
-T0 = datetime(2026, 10, 1, 14, 11, 39, tzinfo=timezone.utc)
-A, B = T0.timestamp() + 1900, T0.timestamp() + 7200
+if SEG == "3":
+    VIDEO = ROOT / "data/raw/video/live/twitch_decu/20261001T161519Z.mp4"
+    T0 = datetime(2026, 10, 1, 16, 15, 19, tzinfo=timezone.utc)
+    A, B = T0.timestamp(), T0.timestamp() + 18314
+else:
+    VIDEO = ROOT / "data/raw/video/live/twitch_decu/20261001T141139Z_720p.mp4"
+    T0 = datetime(2026, 10, 1, 14, 11, 39, tzinfo=timezone.utc)
+    A, B = T0.timestamp() + 1900, T0.timestamp() + 7200
 LAG_S = 3.0
 utc = lambda x: datetime.fromtimestamp(x, timezone.utc)
 
@@ -41,7 +48,8 @@ res = ingest_video(con, str(VIDEO), get_video_adapter("local"), captions=False,
                          "continued (next capture starts 16:15:19)")
 vid = res.source_id
 con.execute("UPDATE sources SET title = ?, author = ?, published_at = ? WHERE source_id = ?",
-            ["Decu live stream (Twitch) 720p, 14:11:39-16:11:39 UTC (full capture)", "Decu", T0, vid])
+            [f"Decu live stream (Twitch) 720p, {T0:%H:%M:%S}-{datetime.fromtimestamp(B, timezone.utc):%H:%M:%S} UTC "
+             f"(capture {SEG})", "Decu", T0, vid])
 for (fid, lp) in con.execute("SELECT frame_id, local_path FROM frames WHERE source_id = ?", [vid]).fetchall():
     con.execute("DELETE FROM frames WHERE frame_id = ?", [fid])
     (ROOT / lp if not Path(lp).is_absolute() else Path(lp)).unlink(missing_ok=True)
@@ -104,6 +112,9 @@ for a_ in amm:
         observed_context=f"Sold {a_['in_amount'] / 1e6:.2f}M tokens for {a_['sol']:.3f} SOL on Pump AMM after the token "
                          "migrated (kolscan relay)")
 
+if SEG == "3":
+    print("ok", vid, len(curve), "curve trades,", sum(1 for a_ in amm if a_["direction"] == "Sell"), "AMM sells (on-chain only)")
+    raise SystemExit
 first = lambda pre: next(d for t, d in dec[next(k for k in dec if k.startswith(pre))] if t["buy"])
 obs = lambda **kw: observations.add_observation(con, trader_id=tid, extractor=EX, status="reviewed", source_id=vid,
                                                 modality="screen", **kw)
