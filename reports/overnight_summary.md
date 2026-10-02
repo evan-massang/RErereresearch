@@ -232,6 +232,15 @@ Everything here used tape recorded **after** the rules were frozen (Oct 2, 01:44
 
 **4. Decu stays profitable on a new day.** On Oct 2 (01:44–07:41 and 16:55–18:49 UTC recorded) their verified wallet closed **19 bonding-curve trades for +10.7 SOL** (58% won, PF 3.6, median size 3.2 SOL, best trade 43% of the profit), and 5 more went to migration or stayed open (`research/observations/evidence_decu_oct2_trips.json`). The trader's edge carries over to a new day; every rule we built from the public tape does not.
 
+**5. More ideas tried after "don't stop"** (train data only; none was good enough to freeze; `research/observations/evidence_followups_2026-10-02.json`):
+- **Tracking devs by X handle instead of wallet:** 1.2× migration lift, vs 6–9× for wallets. The handles that repeat are mostly big accounts, not devs.
+- **Final stretch with later entries (300–400 SOL instead of 250):** every level loses once its top 3 trades are removed.
+- **Buying when several proven wallets agree** (1–5 of 16–279 winners from earlier data):
+  - 11 of 12 configurations lose, from −2 to −90 SOL.
+  - The only positive one (+2.0 SOL, 28 trades) is −7.2 SOL without its top 3.
+  - Winners' buys are priced in before a follower can act, and followers end up buying from the winners as they sell.
+- **Holding migrated survivors for 1–2 hours:** none of the 33 doubled; the median change was −1%.
+
 **Verdict after nine tests (H1–H8 plus the good-dev hold):** no mechanical strategy built from public chain data makes money out of sample. The one thing that consistently made money is a skilled human's selection, and it cannot be reproduced from the features a bot can see. **Turning 0.05 SOL into 100 SOL (2,000×) has no support in any of this data.** At 0.05 SOL, a normal tip is 20% of the position per trade, and even the best signal found (good devs, 6–9× migration odds) loses money when bought at launch.
 
 
