@@ -2,29 +2,38 @@
  "wallet": "4vw54BmAogeRV3vPKWyFet5yf8DTLcREzdSzx4rw9Ud9",
  "tape_span": [
   1790905467.0975256,
-  1790960362.3017242
+  1790966940.6518703
  ],
  "summary": {
-  "closed_trips": 8,
-  "open_or_incomplete": 3,
-  "pnl_sol": 2.469,
-  "win_rate": 0.625,
-  "avg_win_sol": 0.9358,
-  "avg_loss_sol": -0.7367,
-  "profit_factor": 2.117,
-  "median_hold_s": 50.4,
-  "median_size_sol": 3.514,
-  "median_entry_mcap_sol": 100.3,
-  "median_age_at_entry_s": 39.9,
-  "share_multi_buy": 0.625,
-  "share_multi_sell": 0.0,
-  "best_trade_share_of_pnl": 0.72,
+  "closed_trips": 19,
+  "open_or_incomplete": 5,
+  "pnl_sol": 10.7215,
+  "win_rate": 0.579,
+  "avg_win_sol": 1.3537,
+  "avg_loss_sol": -0.5211,
+  "profit_factor": 3.572,
+  "median_hold_s": 52.0,
+  "median_size_sol": 3.217,
+  "median_entry_mcap_sol": 80.4,
+  "median_age_at_entry_s": 10.0,
+  "share_multi_buy": 0.632,
+  "share_multi_sell": 0.158,
+  "best_trade_share_of_pnl": 0.425,
   "share_entries_creation_block": 0.0,
   "share_entries_within_5_slots": 0.0,
   "pnl_from_creation_block_entries_sol": 0,
-  "share_entries_with_known_creation": 1.0
+  "share_entries_with_known_creation": 0.947
  },
  "trips": [
+  {
+   "mint": "12WYvdwCqR7umHhEXr96mGLFDLE9dAXwntMegh94iDqP",
+   "first_ts": 1790963822.971661,
+   "sol_in": 3.2917,
+   "sol_out": 3.0155,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 27.885882139205933
+  },
   {
    "mint": "2iPpQv7b9oPwxNYsa2ahTzsXVbUwXL5CT9RhZhJBpump",
    "first_ts": 1790911516.3456788,
@@ -33,6 +42,15 @@
    "closed": true,
    "graduated": false,
    "age_at_entry_s": 99.53149366378784
+  },
+  {
+   "mint": "3JfSagUuNEMqqw2ysitXbfGruRB9bcdE8s28DgwQ2cxs",
+   "first_ts": 1790965118.2476218,
+   "sol_in": 2.97,
+   "sol_out": 2.9069,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 22.063978910446167
   },
   {
    "mint": "5KPpwc7KmQeBF3YvY8QdEBuBy1GJFU9Wy9ZM8FPJWWYL",
@@ -44,6 +62,15 @@
    "age_at_entry_s": 42.47535037994385
   },
   {
+   "mint": "5STeHtKsqcSP7xjoTLgqYtjNkuTvrsLq8Q6ie1vN3Fa5",
+   "first_ts": 1790965655.0117795,
+   "sol_in": 3.267,
+   "sol_out": 3.1466,
+   "closed": true,
+   "graduated": true,
+   "age_at_entry_s": 3.5240321159362793
+  },
+  {
    "mint": "5X8UMDq9xGgCq6gqSZBCS5q3mAZf1Q5aAX8pcP9dpump",
    "first_ts": 1790906521.1545546,
    "sol_in": 3.5392,
@@ -51,6 +78,15 @@
    "closed": true,
    "graduated": false,
    "age_at_entry_s": 37.246002197265625
+  },
+  {
+   "mint": "7ibdqwrN4X7zfFc3kAnQSBCXCBcopHCgSxgcbjwupump",
+   "first_ts": 1790960637.2317026,
+   "sol_in": 1.98,
+   "sol_out": 2.2354,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 5.4635772705078125
   },
   {
    "mint": "7kvKZiDMeUQhYNJ31METuWWc2cWGXx7QiSnkpXjYpump",
@@ -62,6 +98,33 @@
    "age_at_entry_s": 4.9847376346588135
   },
   {
+   "mint": "92kR6dcjJS61bGknfXrTWJJW3YwMubwyYQoT4VjYpump",
+   "first_ts": 1790963479.9446387,
+   "sol_in": 3.0442,
+   "sol_out": 3.3922,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 20.27009868621826
+  },
+  {
+   "mint": "9zPK1aZbkocWvzscqTQrTTSnwSrXBwQ6xEBrCbYpump",
+   "first_ts": 1790966095.9116697,
+   "sol_in": 3.2175,
+   "sol_out": 2.7189,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 4.50983738899231
+  },
+  {
+   "mint": "ByrSFsd3FAqqMChmKWXjZXzqzJGrBhNNaickkhcQpump",
+   "first_ts": 1790961751.0263715,
+   "sol_in": 1.98,
+   "sol_out": 2.8697,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 8.266162157058716
+  },
+  {
    "mint": "C6V1an8n4rekeS8z2oQSwKag1LtiFe7ZTH4XXKafyxAV",
    "first_ts": 1790907435.537201,
    "sol_in": 3.4897,
@@ -69,6 +132,15 @@
    "closed": true,
    "graduated": false,
    "age_at_entry_s": 3.2491533756256104
+  },
+  {
+   "mint": "FDf62cXoMU5tiu8BGWhQx9smmW5ZuyRnx72LyUQopump",
+   "first_ts": 1790961468.7817323,
+   "sol_in": 2.97,
+   "sol_out": 6.5192,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 11.529665470123291
   },
   {
    "mint": "FJuQGTJPaJGTXxnZfaNQaG9kqvKNjPfLykzyBZVjpump",
@@ -89,6 +161,33 @@
    "age_at_entry_s": 95.79542303085327
   },
   {
+   "mint": "GPyfxVyyAFSiPePykAMMsSCoW2bpMKAsjhpopCrGpump",
+   "first_ts": 1790966606.5398273,
+   "sol_in": 2.2522,
+   "sol_out": 2.8688,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 3.7410964965820312
+  },
+  {
+   "mint": "GamrxBV19oP8NqyTz6kW2pVcGbiBS9rQUZSD3J5MavvF",
+   "first_ts": 1790966122.950017,
+   "sol_in": 3.663,
+   "sol_out": 2.6624,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": 7.732717514038086
+  },
+  {
+   "mint": "a4zLM23h5i7Ntm6BpD22iiU34mX81LxrVTkwwzdDHTc",
+   "first_ts": 1790960116.8402371,
+   "sol_in": 0.6187,
+   "sol_out": 5.1713,
+   "closed": true,
+   "graduated": false,
+   "age_at_entry_s": null
+  },
+  {
    "mint": "efbKNyGvdrJAYc3i7CgxKQBYsi11FkURid9SZWDpump",
    "first_ts": 1790913226.9747884,
    "sol_in": 7.227,
@@ -96,6 +195,33 @@
    "closed": true,
    "graduated": false,
    "age_at_entry_s": 207.36256527900696
+  },
+  {
+   "mint": "3fbJjDERPU71KwLLGZzGgfVqQtqAgZNFJE8mtVWopump",
+   "first_ts": 1790964582.6594458,
+   "sol_in": 3.267,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": true,
+   "age_at_entry_s": 188.73253226280212
+  },
+  {
+   "mint": "5STeHtKsqcSP7xjoTLgqYtjNkuTvrsLq8Q6ie1vN3Fa5",
+   "first_ts": 1790965741.836908,
+   "sol_in": 5.0737,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": true,
+   "age_at_entry_s": 90.34916067123413
+  },
+  {
+   "mint": "9iuvdHxyvFPNM5NUjXer7W2xMy8a2c3xdCkgmqZKvEG5",
+   "first_ts": 1790961926.7903082,
+   "sol_in": 2.9947,
+   "sol_out": 0.0,
+   "closed": false,
+   "graduated": true,
+   "age_at_entry_s": 11.013105869293213
   },
   {
    "mint": "HQvv6EZvnq2nq59rVTHoY5gj8cXQrk1cjEyiYGDapump",
@@ -114,15 +240,6 @@
    "closed": false,
    "graduated": true,
    "age_at_entry_s": 5.453897476196289
-  },
-  {
-   "mint": "a4zLM23h5i7Ntm6BpD22iiU34mX81LxrVTkwwzdDHTc",
-   "first_ts": 1790960116.8402371,
-   "sol_in": 0.297,
-   "sol_out": 0.0,
-   "closed": false,
-   "graduated": false,
-   "age_at_entry_s": null
   }
  ]
 }
