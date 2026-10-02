@@ -1,0 +1,346 @@
+{
+ "x_handle": {
+  "train_oct1": {
+   "all": {
+    "n": 8959,
+    "migration_rate": 0.0195,
+    "lift": 1.0
+   },
+   "handle_prior_mig>=1": {
+    "n": 3913,
+    "migration_rate": 0.022,
+    "lift": 1.13
+   },
+   "handle_prior_mig>=1 & rate>=20%": {
+    "n": 80,
+    "migration_rate": 0.05,
+    "lift": 2.56
+   },
+   "handle new (no prior)": {
+    "n": 1630,
+    "migration_rate": 0.0307,
+    "lift": 1.57
+   },
+   "handle prior>=3, 0 mig": {
+    "n": 2427,
+    "migration_rate": 0.0095,
+    "lift": 0.49
+   },
+   "wallet good dev": {
+    "n": 44,
+    "migration_rate": 0.1818,
+    "lift": 9.31
+   },
+   "handle good, wallet NOT good": {
+    "n": 3653,
+    "migration_rate": 0.0205,
+    "lift": 1.05
+   }
+  },
+  "validation_oct1": {
+   "all": {
+    "n": 5183,
+    "migration_rate": 0.0156,
+    "lift": 1.0
+   },
+   "handle_prior_mig>=1": {
+    "n": 2384,
+    "migration_rate": 0.018,
+    "lift": 1.15
+   },
+   "handle_prior_mig>=1 & rate>=20%": {
+    "n": 32,
+    "migration_rate": 0.0,
+    "lift": 0.0
+   },
+   "handle new (no prior)": {
+    "n": 817,
+    "migration_rate": 0.0245,
+    "lift": 1.57
+   },
+   "handle prior>=3, 0 mig": {
+    "n": 1438,
+    "migration_rate": 0.0097,
+    "lift": 0.62
+   },
+   "wallet good dev": {
+    "n": 19,
+    "migration_rate": 0.0526,
+    "lift": 3.37
+   },
+   "handle good, wallet NOT good": {
+    "n": 2214,
+    "migration_rate": 0.0185,
+    "lift": 1.18
+   }
+  }
+ },
+ "final_stretch_entry_levels": [
+  {
+   "entry_mcap_sol": 250,
+   "n_trades": 174,
+   "pnl_sol": 20.534,
+   "expectancy_sol": 0.118,
+   "median_sol": -0.3638,
+   "profit_factor": 1.44,
+   "expectancy_without_top3": 0.0024,
+   "exits": {
+    "stop": 82,
+    "migrated": 57,
+    "timeout": 35
+   }
+  },
+  {
+   "entry_mcap_sol": 300,
+   "n_trades": 142,
+   "pnl_sol": 8.271,
+   "expectancy_sol": 0.0582,
+   "median_sol": -0.3619,
+   "profit_factor": 1.224,
+   "expectancy_without_top3": -0.0385,
+   "exits": {
+    "stop": 58,
+    "migrated": 55,
+    "timeout": 29
+   }
+  },
+  {
+   "entry_mcap_sol": 330,
+   "n_trades": 124,
+   "pnl_sol": 5.779,
+   "expectancy_sol": 0.0466,
+   "median_sol": -0.1129,
+   "profit_factor": 1.187,
+   "expectancy_without_top3": -0.0566,
+   "exits": {
+    "stop": 41,
+    "migrated": 56,
+    "timeout": 27
+   }
+  },
+  {
+   "entry_mcap_sol": 360,
+   "n_trades": 110,
+   "pnl_sol": 5.02,
+   "expectancy_sol": 0.0456,
+   "median_sol": -0.0899,
+   "profit_factor": 1.178,
+   "expectancy_without_top3": -0.0636,
+   "exits": {
+    "stop": 31,
+    "migrated": 57,
+    "timeout": 22
+   }
+  },
+  {
+   "entry_mcap_sol": 380,
+   "n_trades": 84,
+   "pnl_sol": 6.549,
+   "expectancy_sol": 0.078,
+   "median_sol": -0.0783,
+   "profit_factor": 1.342,
+   "expectancy_without_top3": -0.0372,
+   "exits": {
+    "stop": 20,
+    "migrated": 46,
+    "timeout": 18
+   }
+  },
+  {
+   "entry_mcap_sol": 400,
+   "n_trades": 71,
+   "pnl_sol": 4.526,
+   "expectancy_sol": 0.0637,
+   "median_sol": -0.0783,
+   "profit_factor": 1.295,
+   "expectancy_without_top3": -0.0669,
+   "exits": {
+    "stop": 14,
+    "migrated": 38,
+    "timeout": 19
+   }
+  }
+ ],
+ "smart_convergence": [
+  {
+   "set": {
+    "min_trips": 5,
+    "min_pnl_sol": 0.5,
+    "min_win": 0.5
+   },
+   "n_wallets": 279,
+   "k": 1,
+   "n_trades": 953,
+   "pnl_sol": -89.646,
+   "expectancy_sol": -0.0941,
+   "median_sol": -0.2168,
+   "profit_factor": 0.532,
+   "pnl_without_top3": -122.168
+  },
+  {
+   "set": {
+    "min_trips": 5,
+    "min_pnl_sol": 0.5,
+    "min_win": 0.5
+   },
+   "n_wallets": 279,
+   "k": 2,
+   "n_trades": 625,
+   "pnl_sol": -64.914,
+   "expectancy_sol": -0.1039,
+   "median_sol": -0.2249,
+   "profit_factor": 0.502,
+   "pnl_without_top3": -94.084
+  },
+  {
+   "set": {
+    "min_trips": 5,
+    "min_pnl_sol": 0.5,
+    "min_win": 0.5
+   },
+   "n_wallets": 279,
+   "k": 3,
+   "n_trades": 403,
+   "pnl_sol": -41.753,
+   "expectancy_sol": -0.1036,
+   "median_sol": -0.239,
+   "profit_factor": 0.512,
+   "pnl_without_top3": -62.857
+  },
+  {
+   "set": {
+    "min_trips": 5,
+    "min_pnl_sol": 0.5,
+    "min_win": 0.5
+   },
+   "n_wallets": 279,
+   "k": 5,
+   "n_trades": 285,
+   "pnl_sol": -29.492,
+   "expectancy_sol": -0.1035,
+   "median_sol": -0.2585,
+   "profit_factor": 0.529,
+   "pnl_without_top3": -43.464
+  },
+  {
+   "set": {
+    "min_trips": 10,
+    "min_pnl_sol": 2,
+    "min_win": 0.6
+   },
+   "n_wallets": 36,
+   "k": 1,
+   "n_trades": 390,
+   "pnl_sol": -38.788,
+   "expectancy_sol": -0.0995,
+   "median_sol": -0.2293,
+   "profit_factor": 0.52,
+   "pnl_without_top3": -58.487
+  },
+  {
+   "set": {
+    "min_trips": 10,
+    "min_pnl_sol": 2,
+    "min_win": 0.6
+   },
+   "n_wallets": 36,
+   "k": 2,
+   "n_trades": 185,
+   "pnl_sol": -27.301,
+   "expectancy_sol": -0.1476,
+   "median_sol": -0.2654,
+   "profit_factor": 0.35,
+   "pnl_without_top3": -35.847
+  },
+  {
+   "set": {
+    "min_trips": 10,
+    "min_pnl_sol": 2,
+    "min_win": 0.6
+   },
+   "n_wallets": 36,
+   "k": 3,
+   "n_trades": 130,
+   "pnl_sol": -18.876,
+   "expectancy_sol": -0.1452,
+   "median_sol": -0.2807,
+   "profit_factor": 0.367,
+   "pnl_without_top3": -25.812
+  },
+  {
+   "set": {
+    "min_trips": 10,
+    "min_pnl_sol": 2,
+    "min_win": 0.6
+   },
+   "n_wallets": 36,
+   "k": 5,
+   "n_trades": 62,
+   "pnl_sol": -2.17,
+   "expectancy_sol": -0.035,
+   "median_sol": -0.2848,
+   "profit_factor": 0.849,
+   "pnl_without_top3": -12.603
+  },
+  {
+   "set": {
+    "min_trips": 8,
+    "min_pnl_sol": 5,
+    "min_win": 0.5
+   },
+   "n_wallets": 16,
+   "k": 1,
+   "n_trades": 234,
+   "pnl_sol": -29.668,
+   "expectancy_sol": -0.1268,
+   "median_sol": -0.2606,
+   "profit_factor": 0.43,
+   "pnl_without_top3": -42.098
+  },
+  {
+   "set": {
+    "min_trips": 8,
+    "min_pnl_sol": 5,
+    "min_win": 0.5
+   },
+   "n_wallets": 16,
+   "k": 2,
+   "n_trades": 116,
+   "pnl_sol": -10.192,
+   "expectancy_sol": -0.0879,
+   "median_sol": -0.2848,
+   "profit_factor": 0.612,
+   "pnl_without_top3": -20.509
+  },
+  {
+   "set": {
+    "min_trips": 8,
+    "min_pnl_sol": 5,
+    "min_win": 0.5
+   },
+   "n_wallets": 16,
+   "k": 3,
+   "n_trades": 80,
+   "pnl_sol": -7.68,
+   "expectancy_sol": -0.096,
+   "median_sol": -0.2849,
+   "profit_factor": 0.596,
+   "pnl_without_top3": -16.373
+  },
+  {
+   "set": {
+    "min_trips": 8,
+    "min_pnl_sol": 5,
+    "min_win": 0.5
+   },
+   "n_wallets": 16,
+   "k": 5,
+   "n_trades": 28,
+   "pnl_sol": 1.986,
+   "expectancy_sol": 0.0709,
+   "median_sol": -0.2868,
+   "profit_factor": 1.276,
+   "pnl_without_top3": -7.206
+  }
+ ]
+}
