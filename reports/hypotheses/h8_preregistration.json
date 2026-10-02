@@ -1,0 +1,24 @@
+{
+ "hypothesis": "H8",
+ "frozen_at_utc": "2026-10-02T01:08:51.368885+00:00",
+ "statement": "H8 (solo trader, final stretch): buying a bonding-curve token once its market cap first reaches 250 SOL, holding through migration and selling into the first 5 minutes on PumpSwap, with a 30% stop, is profitable after realistic costs.",
+ "measurable_definition": "scripts/research/final_stretch.py evaluate() with PARAMS={\"entry_mcap_sol\": 250.0, \"latency_s\": 1.0, \"stop_pct\": 30.0, \"exit_after_s\": 300.0, \"max_hold_s\": 3600.0, \"size_sol\": 1.0, \"entry_cost\": 0.03, \"curve_exit_cost\": 0.03, \"amm_exit_cost\": 0.025, \"fixed_sol_per_tx\": 0.01} (entry = first curve trade >=1 s after the first trade at >=250 SOL mcap, +3%; stop fills at the actual print at/below -30%, -3%; migrated -> last PumpSwap price <=300 s after the pool's first swap, -2.5%; else last curve price within 60 min, -3%; 0.01 SOL per tx; 1 SOL size). First test: entries 17:15-18:15 UTC, outcomes from data before 19:15. Pass: expectancy > 0, PF > 1.2, >=30 trades. If it passes: holdout once, entries 19:31-20:15 (19:15-19:31 post-migration paths were seen in aggregate), outcomes from data before 21:15, same criteria. Reported: expectancy without the top 3 trades.",
+ "rationale": "Theory: a solo trader has no speed edge, so profit must come from selection or from flows others are forced to create; the post-migration pop is one (275 migrated tokens: median +37% at 5 min vs the first AMM swap). Buying tokens far along the curve buys proven demand at the cost of stall risk. Train (entries 12:17-16:15, harsh costs): 174 trades, +20.5 SOL, PF 1.44, win 32%, but ~0 without the top 3 trades; positive at 200/250/300 SOL thresholds and 30-300 s exits in the cruder first pass and in both halves. Parameters are round values, chosen once; no further tuning.",
+ "test_windows_utc": {
+  "first_test": [
+   "17:15",
+   "18:15",
+   "data<19:15"
+  ],
+  "holdout": [
+   "19:31",
+   "20:15",
+   "data<21:15"
+  ]
+ },
+ "pass_criteria": {
+  "min_trades": 30,
+  "expectancy_sol_gt": 0,
+  "profit_factor_gt": 1.2
+ }
+}

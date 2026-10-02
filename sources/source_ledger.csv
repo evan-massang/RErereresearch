@@ -192,6 +192,7 @@ source,src_222a214622ddb018,/home/user/RErereresearch/data/raw/video/live/twitch
 source,src_bf502f06f8deef03,stream://pumpswap/2026-10-01/post-migration,web,Post-migration price paths on PumpSwap,,,,,document,True,file,,,
 source,src_988e59da3dd430eb,stream://pump_curve/2026-10-01/decu-selection-model,web,Decu selection model from tape features (out of time),,,decu,,document,True,file,,,
 source,src_19f41607d9bdadc5,stream://pump_curve/2026-10-01/solo-signals,web,Launch-time signals vs migration (train period),,,,,document,True,file,,,
+source,src_aaac0b3a6a800ced,stream://pump_curve/2026-10-02/final-stretch-train,web,"Final-stretch strategy, train period",,,,,document,True,file,,,
 candidate,cand_4800b94b0382ebcb,https://www.twitch.tv/cupseyy/videos,twitch,Cupseyy's Videos - Twitch,,,cupsey,live_trading_session,candidate,False,,websearch:Cupsey twitch,high,
 candidate,cand_9aca34964a7095bd,https://twitchtracker.com/cupseyy/streams,twitch,TRENCHING DONT COPY TRADE | !AXIOM !FLIPPR !FILTERS,,2025-02-28,cupsey,live_trading_session,candidate,False,,websearch:twitchtracker Cupseyy streams TRENCHING DONT COPY TRADE,high,
 candidate,cand_e546ba89a91ae3b5,https://streamrecorder.io/twitch/cupseyy,other,"Cupseyy Twitch Video, VOD and Clips Download",,,cupsey,live_trading_session,candidate,False,,websearch:Cupseyy twitch memecoin trading stream VOD,high,

@@ -1,0 +1,1251 @@
+{
+ "params": {
+  "entry_mcap_sol": 250.0,
+  "latency_s": 1.0,
+  "stop_pct": 30.0,
+  "exit_after_s": 300.0,
+  "max_hold_s": 3600.0,
+  "size_sol": 1.0,
+  "entry_cost": 0.03,
+  "curve_exit_cost": 0.03,
+  "amm_exit_cost": 0.025,
+  "fixed_sol_per_tx": 0.01
+ },
+ "window": [
+  1790857020.0,
+  1790871300.0
+ ],
+ "n_trades": 174,
+ "excluded_no_pool": 3,
+ "pnl_sol": 20.534,
+ "expectancy_sol": 0.118,
+ "median_sol": -0.3638,
+ "win_rate": 0.322,
+ "profit_factor": 1.44,
+ "expectancy_without_top3": 0.0024,
+ "exits": {
+  "stop": 82,
+  "migrated": 57,
+  "timeout": 35
+ },
+ "trades": [
+  {
+   "mint": "5gok7WzHvMFmFfcvnHuuBqRh9GTcQckHXBBwZywkpump",
+   "t": 1790857047.7344365,
+   "ret": -0.347,
+   "pnl_sol": -0.367,
+   "exit": "stop"
+  },
+  {
+   "mint": "5X7SnexzH7jncW8zJqxURhW5P2zwtRftLcqpwoT2pump",
+   "t": 1790857233.5122395,
+   "ret": -0.3738,
+   "pnl_sol": -0.3938,
+   "exit": "stop"
+  },
+  {
+   "mint": "6tdakNZRvYskxXorh2wmyKhxRe2G9dQ2m9m8xtQNpump",
+   "t": 1790857677.0291512,
+   "ret": 0.3746,
+   "pnl_sol": 0.3546,
+   "exit": "migrated"
+  },
+  {
+   "mint": "rfRN95yrq3vi4y5YiC9ecSqGAWdBVHKCvhwCR74pump",
+   "t": 1790858496.419452,
+   "ret": -0.3424,
+   "pnl_sol": -0.3624,
+   "exit": "stop"
+  },
+  {
+   "mint": "75DjurpbbaF1fcRmo6zdipE8drirJxU8mvDzw7nckKiY",
+   "t": 1790859331.9028132,
+   "ret": 1.4652,
+   "pnl_sol": 1.4452,
+   "exit": "migrated"
+  },
+  {
+   "mint": "BVF8qXM6wu1pGrsLd4SH3DLU62EadaKWPjVsCGRypump",
+   "t": 1790859264.7149844,
+   "ret": 0.8679,
+   "pnl_sol": 0.8479,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GFHdEM7feULmnZdHh7oBxRrMsLdKq1L3bCTuocBHpump",
+   "t": 1790859471.3988075,
+   "ret": -0.4383,
+   "pnl_sol": -0.4583,
+   "exit": "stop"
+  },
+  {
+   "mint": "FfGSQY26D11rfWaGaz3NaFbmW7kr1FwKiBpVC35WuGRW",
+   "t": 1790861731.4558024,
+   "ret": -0.3506,
+   "pnl_sol": -0.3706,
+   "exit": "stop"
+  },
+  {
+   "mint": "5Heq1xjFjuNBuAEAEhbUChgM2Q6AaTTNmVEDVqEpump",
+   "t": 1790862053.1882348,
+   "ret": 2.6462,
+   "pnl_sol": 2.6262,
+   "exit": "migrated"
+  },
+  {
+   "mint": "3gpxyeGkJfpeRsZ8cpeCy2YRLe4WsHxL72xkQi3Xpump",
+   "t": 1790862146.053764,
+   "ret": 1.4264,
+   "pnl_sol": 1.4064,
+   "exit": "migrated"
+  },
+  {
+   "mint": "G3kTgwfTYtagCohEpUtFiXPaESYhp5S4r7yZkA5d9w6d",
+   "t": 1790862658.9970944,
+   "ret": -0.3856,
+   "pnl_sol": -0.4056,
+   "exit": "stop"
+  },
+  {
+   "mint": "5u1NPaxeMQXiJmnYDXbr7i9YJjxYLSETUA4a6Zpopump",
+   "t": 1790862669.9327252,
+   "ret": 0.3278,
+   "pnl_sol": 0.3078,
+   "exit": "migrated"
+  },
+  {
+   "mint": "ERHm5gjtHZ3M6S1w3V5sLYyjjN4zXb34hZrdSGrSpump",
+   "t": 1790862990.5718083,
+   "ret": 1.2392,
+   "pnl_sol": 1.2192,
+   "exit": "migrated"
+  },
+  {
+   "mint": "GxdZqQtSDChqoVDeJ2YNV1uBc6iF4PXhyk21p34Qatip",
+   "t": 1790863070.4450762,
+   "ret": -0.3445,
+   "pnl_sol": -0.3645,
+   "exit": "stop"
+  },
+  {
+   "mint": "5VRy4Xmr4TrwQKtjitG9Sy8ehUKNU1TfcG7G9N9Apump",
+   "t": 1790863741.5917194,
+   "ret": 0.5617,
+   "pnl_sol": 0.5417,
+   "exit": "migrated"
+  },
+  {
+   "mint": "EdBGYHVib6iXkBxUdB5uzUKHwXYruKKEkwt69BU6pump",
+   "t": 1790869150.4475348,
+   "ret": -0.3854,
+   "pnl_sol": -0.4054,
+   "exit": "stop"
+  },
+  {
+   "mint": "575tVUUz3PSzMxCRqCq583wsFhGJi9KGocsNDKtmpump",
+   "t": 1790869479.4888282,
+   "ret": 0.2656,
+   "pnl_sol": 0.2456,
+   "exit": "migrated"
+  },
+  {
+   "mint": "HTGYvot2RRkTxmCTZwZfZDypR7ozCtzwkdLjQ9KDtUY7",
+   "t": 1790870079.6926472,
+   "ret": -0.7949,
+   "pnl_sol": -0.8149,
+   "exit": "stop"
+  },
+  {
+   "mint": "EQaZ5Lny9STFccwRnFFiW1hipd2HhYzXX3uBLAhZpump",
+   "t": 1790862989.0404956,
+   "ret": 0.1015,
+   "pnl_sol": 0.0815,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GabsH555UiKDy6GKdYJAZZJvjRGz3Pi2wt5DioY1pump",
+   "t": 1790863341.1213212,
+   "ret": -0.3594,
+   "pnl_sol": -0.3794,
+   "exit": "stop"
+  },
+  {
+   "mint": "C2YtPKa6X1zRPQhfVPmm1Ghmkb1s15XZV6MaQQdVpump",
+   "t": 1790869931.8463676,
+   "ret": -0.062,
+   "pnl_sol": -0.082,
+   "exit": "timeout"
+  },
+  {
+   "mint": "9vFG8geQ6RSy3L7rbPe6jvfd63Qo29e7rf4y6BiApump",
+   "t": 1790870370.035052,
+   "ret": -0.0577,
+   "pnl_sol": -0.0777,
+   "exit": "timeout"
+  },
+  {
+   "mint": "6fTANB2Jxbm7na8ZSmGMzrNuyenbGubdswn1in3r2kN1",
+   "t": 1790860217.229219,
+   "ret": -0.4349,
+   "pnl_sol": -0.4549,
+   "exit": "stop"
+  },
+  {
+   "mint": "3MzpDV9pEVnqUpHDvytA3AGiDbrynNPRjyKyz2jyBZe3",
+   "t": 1790860343.2766688,
+   "ret": -0.343,
+   "pnl_sol": -0.363,
+   "exit": "stop"
+  },
+  {
+   "mint": "G9U1BFePPWPmcegmbWoRyxVY9A6Zwyjoa51HFCMYW3UP",
+   "t": 1790860451.7171767,
+   "ret": -0.7415,
+   "pnl_sol": -0.7615,
+   "exit": "migrated"
+  },
+  {
+   "mint": "8qDsgGbvW6WqTXYHEj6xXUXKo4HnxCrzsB9UXHjapump",
+   "t": 1790860547.1764984,
+   "ret": 0.8732,
+   "pnl_sol": 0.8532,
+   "exit": "timeout"
+  },
+  {
+   "mint": "8Zq1eX245SdckD8e5W6Eu33pJDppfrH2WgNxr7M7pump",
+   "t": 1790861000.025869,
+   "ret": -0.3427,
+   "pnl_sol": -0.3627,
+   "exit": "stop"
+  },
+  {
+   "mint": "9QZuDkTXzezQRd4o6C1LvTcNKEyY7aFw2yx19rq5pump",
+   "t": 1790861130.7124193,
+   "ret": -0.3801,
+   "pnl_sol": -0.4001,
+   "exit": "stop"
+  },
+  {
+   "mint": "7mRXUrW3G4iMAy1xo4TJ9vxeapSnGjH5KZyfjqpAURLK",
+   "t": 1790861262.5455933,
+   "ret": -0.3695,
+   "pnl_sol": -0.3895,
+   "exit": "stop"
+  },
+  {
+   "mint": "6ooHeWeTpF6rFKJVzoQASW2DVTjsBo3j8C4o9AhMtdhT",
+   "t": 1790861922.0924888,
+   "ret": -0.5617,
+   "pnl_sol": -0.5817,
+   "exit": "migrated"
+  },
+  {
+   "mint": "DfeL4wuAzQ1ByAkM68LQrpmdSfpVLbmA2e9Jn2ogpump",
+   "t": 1790865711.7459226,
+   "ret": -0.3424,
+   "pnl_sol": -0.3624,
+   "exit": "stop"
+  },
+  {
+   "mint": "Dp9MZWVg2Np9iNxmCgowutVvHnLwTX1uxU6djp2jtGFF",
+   "t": 1790867010.6305058,
+   "ret": -0.3436,
+   "pnl_sol": -0.3636,
+   "exit": "stop"
+  },
+  {
+   "mint": "5iFqxk4DbmhkeVqJbCCCMKx2BC47bC6fWFgLxLNupump",
+   "t": 1790867217.975152,
+   "ret": -0.3729,
+   "pnl_sol": -0.3929,
+   "exit": "stop"
+  },
+  {
+   "mint": "HL2xCxoYf7AZnaUyJVr24tva37mANkvGJioFbxxRpump",
+   "t": 1790867292.015169,
+   "ret": -0.3636,
+   "pnl_sol": -0.3836,
+   "exit": "stop"
+  },
+  {
+   "mint": "CPhuwkyWbHENzxHVHeJhs4M5ZSWKyyvVPhGGDNDspump",
+   "t": 1790867520.8166153,
+   "ret": 0.8625,
+   "pnl_sol": 0.8425,
+   "exit": "migrated"
+  },
+  {
+   "mint": "2nkdmG4tqCzFN34tMhtq3FMvhKqF8E3kEstRcWJDpump",
+   "t": 1790868661.3440838,
+   "ret": -0.4736,
+   "pnl_sol": -0.4936,
+   "exit": "stop"
+  },
+  {
+   "mint": "Kpm4y5EmtqCJgjvVRCR9BkFJV5QjwQtQK7MtQTifMWL",
+   "t": 1790868960.9297528,
+   "ret": -0.3449,
+   "pnl_sol": -0.3649,
+   "exit": "stop"
+  },
+  {
+   "mint": "7NAqfmXtzYTkCwsPfDc48pyztP5ECuFGwG5NvYfYpump",
+   "t": 1790864570.8213794,
+   "ret": -0.342,
+   "pnl_sol": -0.362,
+   "exit": "stop"
+  },
+  {
+   "mint": "AiPp4JW5xqj7BA539JWLk2MUMyqzxhQ3yDaMrnRmpump",
+   "t": 1790865133.43921,
+   "ret": -0.3623,
+   "pnl_sol": -0.3823,
+   "exit": "stop"
+  },
+  {
+   "mint": "BtRQt3CoJbDGcCKDq4bR5TcRJhQmCZtq31hb5VsHwgrx",
+   "t": 1790865951.892845,
+   "ret": -0.7503,
+   "pnl_sol": -0.7703,
+   "exit": "migrated"
+  },
+  {
+   "mint": "25sywzFnD8DSJR25Fg6it51MF1Ff7JZNvJoXvpnvpump",
+   "t": 1790865983.776835,
+   "ret": 1.4661,
+   "pnl_sol": 1.4461,
+   "exit": "migrated"
+  },
+  {
+   "mint": "28eCFQNPGY1WrrDNhWjqpgf9DVZqaJc6pZaCbRmjpump",
+   "t": 1790866229.5862143,
+   "ret": 0.071,
+   "pnl_sol": 0.051,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6vWkRRyPY9sGnCvFgLCwn7mJuCheMbTcuj5nZGox28sK",
+   "t": 1790866318.427046,
+   "ret": 2.308,
+   "pnl_sol": 2.288,
+   "exit": "migrated"
+  },
+  {
+   "mint": "kHo5Q4v9vLNJvr2bwyavVbYNyEni8jutmaUD8XYpump",
+   "t": 1790870695.2031822,
+   "ret": -0.4592,
+   "pnl_sol": -0.4792,
+   "exit": "stop"
+  },
+  {
+   "mint": "HXJJiAwtJuwCgqPveEaf8sDG4myXGopSzrZzCnhtpump",
+   "t": 1790870835.211863,
+   "ret": -0.3574,
+   "pnl_sol": -0.3774,
+   "exit": "stop"
+  },
+  {
+   "mint": "FwD37LNNnD5v8egqmW4S9KHXwAMpwTALqjhAe55fpump",
+   "t": 1790871079.3865104,
+   "ret": -0.2699,
+   "pnl_sol": -0.2899,
+   "exit": "timeout"
+  },
+  {
+   "mint": "G5Dted5V6TjSQsK6dusbjNcHD13B4JkBuyLN1Z3a62pP",
+   "t": 1790871163.263525,
+   "ret": -0.3711,
+   "pnl_sol": -0.3911,
+   "exit": "stop"
+  },
+  {
+   "mint": "27jAE33XSamiHpKqo2wmwJ69wGBzPdu1ekBM8EsRpump",
+   "t": 1790871239.4295993,
+   "ret": -0.3484,
+   "pnl_sol": -0.3684,
+   "exit": "stop"
+  },
+  {
+   "mint": "9rZJc3AzakdGpxo37LF7d6XiV3gZ8F165FrsQWgLpump",
+   "t": 1790866060.8072734,
+   "ret": -0.3713,
+   "pnl_sol": -0.3913,
+   "exit": "stop"
+  },
+  {
+   "mint": "7mEhH5gsuwPeBC9n9C2XQJdXinWhKGfNhrt4r8db47Cn",
+   "t": 1790857051.3282309,
+   "ret": 0.7264,
+   "pnl_sol": 0.7064,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6zdAfQJJu9eXdJfChomqh7KLTascVMgaJEaHzQEFpump",
+   "t": 1790857367.70521,
+   "ret": -0.348,
+   "pnl_sol": -0.368,
+   "exit": "stop"
+  },
+  {
+   "mint": "CZdNwvFCdKM5KoVLNFj1uc5anCYteHXCJP5Aq5Kkpump",
+   "t": 1790857382.6508043,
+   "ret": -0.0189,
+   "pnl_sol": -0.0389,
+   "exit": "timeout"
+  },
+  {
+   "mint": "8czeE7w5o1SPKGhud3LYczy52BHy615EX3zd519vpump",
+   "t": 1790857527.142483,
+   "ret": -0.1548,
+   "pnl_sol": -0.1748,
+   "exit": "timeout"
+  },
+  {
+   "mint": "2ELqVpoRBZiXaFfqdmzTUBc2pBn2qe8CLCjws15bpump",
+   "t": 1790858831.6665392,
+   "ret": 1.8426,
+   "pnl_sol": 1.8226,
+   "exit": "migrated"
+  },
+  {
+   "mint": "FrMJQxDbU81tXwwieyikJJeZRyMdSXbT4d42bqhUpump",
+   "t": 1790858893.2672758,
+   "ret": -0.4092,
+   "pnl_sol": -0.4292,
+   "exit": "stop"
+  },
+  {
+   "mint": "956vVpN3e2ybtUvqctnxYPAJgkwueuibRSdLcsNdpump",
+   "t": 1790859003.0638402,
+   "ret": 0.0329,
+   "pnl_sol": 0.0129,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GZFPdVhVTzpFbCDStngnsfQdhj8VBnB9FdhnHMoQpump",
+   "t": 1790859229.531743,
+   "ret": -0.3411,
+   "pnl_sol": -0.3611,
+   "exit": "stop"
+  },
+  {
+   "mint": "4yjU5UrjPgjEKbZmzPgawRYptvCXQWRm3PZL9EXVpump",
+   "t": 1790857465.7133555,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "8kUDePcyinUsk3YJD3cN2cecRPuduDi2yxo4iVvSnGHW",
+   "t": 1790861988.1451259,
+   "ret": -0.344,
+   "pnl_sol": -0.364,
+   "exit": "stop"
+  },
+  {
+   "mint": "B6RBNFaQjHWWBFGZw94p5aycaFCBThwFhUuKEiJTpump",
+   "t": 1790862462.0487058,
+   "ret": -0.3445,
+   "pnl_sol": -0.3645,
+   "exit": "stop"
+  },
+  {
+   "mint": "GtV6g1ey2NERrcbvL5bdzrxRJQDfxpMaLU9oLtRipump",
+   "t": 1790863246.8520288,
+   "ret": 9.4858,
+   "pnl_sol": 9.4658,
+   "exit": "migrated"
+  },
+  {
+   "mint": "Fn9yPE7piEUxFn78HuBrSL2yk5goD4mu6dtwz6k2pump",
+   "t": 1790863446.7174537,
+   "ret": -0.4752,
+   "pnl_sol": -0.4952,
+   "exit": "stop"
+  },
+  {
+   "mint": "GFG2cM94DhGBDzrU2JSutv7zUYTMZozksTp7suA5pump",
+   "t": 1790864240.3524985,
+   "ret": -0.8242,
+   "pnl_sol": -0.8442,
+   "exit": "migrated"
+  },
+  {
+   "mint": "7bNAdLF4xN7Q8srBsSQ78ZggvbbzMvXtcVQ4woH3pump",
+   "t": 1790868873.3581834,
+   "ret": -0.3798,
+   "pnl_sol": -0.3998,
+   "exit": "stop"
+  },
+  {
+   "mint": "DCw9hVBWWRnR7r1MaMfpjVYVR2Xyc9ysMcUo3uhnB1SC",
+   "t": 1790869370.153298,
+   "ret": -0.352,
+   "pnl_sol": -0.372,
+   "exit": "stop"
+  },
+  {
+   "mint": "F95VLgzWq3WgXWKhdtcSUmyHsXNawhwe3r7srpYcpump",
+   "t": 1790869232.4521072,
+   "ret": -0.5616,
+   "pnl_sol": -0.5816,
+   "exit": "stop"
+  },
+  {
+   "mint": "6jdzGhqJqZdBv4ogPSmyn7RbFY5ddBWomkcqbKv8pump",
+   "t": 1790864139.7454007,
+   "ret": -0.3488,
+   "pnl_sol": -0.3688,
+   "exit": "stop"
+  },
+  {
+   "mint": "ET5WtxQW8ZUoAjtkSGc5KadCJQKPv1WtfjnjtB4Ypump",
+   "t": 1790860094.274591,
+   "ret": -0.3476,
+   "pnl_sol": -0.3676,
+   "exit": "stop"
+  },
+  {
+   "mint": "8gQTYYcYzNbXKBQTdWK3x37bvb4iqMBVgnatei8Spump",
+   "t": 1790860423.0670946,
+   "ret": -0.2534,
+   "pnl_sol": -0.2734,
+   "exit": "timeout"
+  },
+  {
+   "mint": "9pJWJdpPebyANys45eetpemLJo8yTz4n5B9zbpYw9ZMr",
+   "t": 1790860712.7925177,
+   "ret": 3.4,
+   "pnl_sol": 3.38,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6n7BA6Xm7C122dgffUXwzicYH2AjeCEEKspbds7bpump",
+   "t": 1790866427.7895472,
+   "ret": -0.3655,
+   "pnl_sol": -0.3855,
+   "exit": "stop"
+  },
+  {
+   "mint": "4vJbwcsTFTh1gNAsccE4fMnoMsAq9zJgfc94iee5pump",
+   "t": 1790866785.7433472,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "z7pFzH2SQTABymumuyDS1BFmrKbAwQ8ZqEnv6h5pump",
+   "t": 1790866963.864581,
+   "ret": -0.3449,
+   "pnl_sol": -0.3649,
+   "exit": "stop"
+  },
+  {
+   "mint": "9qxqswU9ks5kpqnNUu7KabEqzwEWxLq7nCNZErLopump",
+   "t": 1790868303.7291238,
+   "ret": 0.3724,
+   "pnl_sol": 0.3524,
+   "exit": "timeout"
+  },
+  {
+   "mint": "7gahm36acgioZ4kytHV7KbcKHNNLAL6hZm2Rz4pxpump",
+   "t": 1790868697.4614224,
+   "ret": -0.8383,
+   "pnl_sol": -0.8583,
+   "exit": "migrated"
+  },
+  {
+   "mint": "ER6y9jZXSinAHWSW1Qqk6YztKH2N93BtoQjA1YbpTBAC",
+   "t": 1790868934.1492298,
+   "ret": -0.6097,
+   "pnl_sol": -0.6297,
+   "exit": "stop"
+  },
+  {
+   "mint": "GCuNZo7BTZFJeBXqyFjJUdKGLQGdvDhxcyuh1xDkpump",
+   "t": 1790869097.043458,
+   "ret": -0.7617,
+   "pnl_sol": -0.7817,
+   "exit": "migrated"
+  },
+  {
+   "mint": "7xZfrFvj1KFgug7EHnLSrtxPVHaWqtg74Vh7JKX8pump",
+   "t": 1790859870.8489041,
+   "ret": 0.2284,
+   "pnl_sol": 0.2084,
+   "exit": "timeout"
+  },
+  {
+   "mint": "9JVnb12RNHo6Ke1Yy4PwdT6UVFTJ5v9kcn9iQWe6pump",
+   "t": 1790865257.4047387,
+   "ret": -0.0042,
+   "pnl_sol": -0.0242,
+   "exit": "migrated"
+  },
+  {
+   "mint": "HuM8Qo57yDMczuhVRhEvEyPYf8e5M1hDLsQcBHshpump",
+   "t": 1790865591.1316679,
+   "ret": -0.3578,
+   "pnl_sol": -0.3778,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6aRUqmXtaux1Z91KGSm1Qv1GZ8WPG1aCb88K1SXLpump",
+   "t": 1790865589.2995641,
+   "ret": -0.3576,
+   "pnl_sol": -0.3776,
+   "exit": "stop"
+  },
+  {
+   "mint": "HXAdMuyNnVxZuqXkFm2mZEhugTPNr8DPv1vcTfPDpump",
+   "t": 1790865768.9976635,
+   "ret": -0.2324,
+   "pnl_sol": -0.2524,
+   "exit": "timeout"
+  },
+  {
+   "mint": "HSsN16soCYseWAMZKnkHkJyuVVezqDmEukGNq5vPpump",
+   "t": 1790866658.1483428,
+   "ret": 1.0247,
+   "pnl_sol": 1.0047,
+   "exit": "migrated"
+  },
+  {
+   "mint": "CzzujGqZWbEyapM5PchD4fsQBtLWbLWd2PHtGnsbpump",
+   "t": 1790870404.4997268,
+   "ret": -0.3595,
+   "pnl_sol": -0.3795,
+   "exit": "stop"
+  },
+  {
+   "mint": "9matgUN4r3sWb9RcPmBQ2744MS12aD7r9qzWpRS7pump",
+   "t": 1790870778.0056612,
+   "ret": -0.4371,
+   "pnl_sol": -0.4571,
+   "exit": "migrated"
+  },
+  {
+   "mint": "2P1XkWh1hUU2H2CVMBSPWfPbDsyN6LAFJbhxCYzwQBCF",
+   "t": 1790871192.2773037,
+   "ret": -0.8198,
+   "pnl_sol": -0.8398,
+   "exit": "migrated"
+  },
+  {
+   "mint": "HU92VNakbPuYFSAk3Nn4d5WoYGncadkmVXsmg14rpump",
+   "t": 1790871203.676172,
+   "ret": -0.3447,
+   "pnl_sol": -0.3647,
+   "exit": "stop"
+  },
+  {
+   "mint": "EbHLDHnVB8cUTitL6X6eRVZM2E2kYAz6Wy7qRHu4pump",
+   "t": 1790857042.489458,
+   "ret": 0.0883,
+   "pnl_sol": 0.0683,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GkDxVeeXvcX6CHz7AYrduhaL4tuschcA19JNWRCjpump",
+   "t": 1790857097.8507364,
+   "ret": 0.0853,
+   "pnl_sol": 0.0653,
+   "exit": "timeout"
+  },
+  {
+   "mint": "5cvUXei9SCWo5vjKnTarVWbQMAFhKMSZcRje54izpump",
+   "t": 1790857276.1664793,
+   "ret": 0.728,
+   "pnl_sol": 0.708,
+   "exit": "migrated"
+  },
+  {
+   "mint": "HdKspZFn94xXWn36YZSfW6sV9rkBoboWJ7dUzpeUpump",
+   "t": 1790857379.706169,
+   "ret": 0.0638,
+   "pnl_sol": 0.0438,
+   "exit": "timeout"
+  },
+  {
+   "mint": "5M9a7uQ4urDdwdFNitssdfjMBLeAqdCVUc2Wd9Bpump",
+   "t": 1790857613.046801,
+   "ret": 1.2656,
+   "pnl_sol": 1.2456,
+   "exit": "migrated"
+  },
+  {
+   "mint": "5U2xu35J4LmURGsxCPZi1ZWSBRkKExcNKkmv5Zr8pump",
+   "t": 1790857839.097815,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "4SXYdwPS7kfuy1akFUhazFhgvBsFJBmeMpHh5mG7pump",
+   "t": 1790858797.057435,
+   "ret": -0.3416,
+   "pnl_sol": -0.3616,
+   "exit": "stop"
+  },
+  {
+   "mint": "4JLk86mayMaBZ9Dt9rFzcgUnZibdEiF2jJYvqn4hoKLq",
+   "t": 1790858935.1611197,
+   "ret": -0.3848,
+   "pnl_sol": -0.4048,
+   "exit": "stop"
+  },
+  {
+   "mint": "8hgQVx73TFgdHNLdB6F1qhHGJMFo4NDgXxkjRfPRpump",
+   "t": 1790859060.3957303,
+   "ret": -0.3975,
+   "pnl_sol": -0.4175,
+   "exit": "stop"
+  },
+  {
+   "mint": "5C7JRjLwW3GvEe1EP6ppok5o8BbcgWFBqLBF3KpjngKH",
+   "t": 1790859183.9872034,
+   "ret": -0.3693,
+   "pnl_sol": -0.3893,
+   "exit": "stop"
+  },
+  {
+   "mint": "7UQ4Bhh1GZdCpuguJwnKyNJVA1Ev8uiEgHctDcjQpump",
+   "t": 1790861917.8122826,
+   "ret": 1.2735,
+   "pnl_sol": 1.2535,
+   "exit": "migrated"
+  },
+  {
+   "mint": "CYYyLMiHeHdxY9dzByKSaAHtapYYCKfXXQ9tWcNFpump",
+   "t": 1790862082.6667876,
+   "ret": -0.3416,
+   "pnl_sol": -0.3616,
+   "exit": "stop"
+  },
+  {
+   "mint": "CQ6y5X6tKUyuH2WUSV75TnqSp8FEoZjDh9gsCwfspump",
+   "t": 1790863269.1700282,
+   "ret": -0.5511,
+   "pnl_sol": -0.5711,
+   "exit": "stop"
+  },
+  {
+   "mint": "8oyMa7iKXG2AMLG2m6vaahUrx8GAxsMxwdLqULCYfL8n",
+   "t": 1790863972.218385,
+   "ret": 0.3551,
+   "pnl_sol": 0.3351,
+   "exit": "timeout"
+  },
+  {
+   "mint": "DUgwyvLGNg15h1TxXsMRU53bQgQNDJE1iBZGkXR4pump",
+   "t": 1790869298.4651036,
+   "ret": -0.4419,
+   "pnl_sol": -0.4619,
+   "exit": "migrated"
+  },
+  {
+   "mint": "CnNhf1Jm21QRKWq74RiK3AGF3huMrQxLVra4BaXhpump",
+   "t": 1790869356.330212,
+   "ret": -0.0575,
+   "pnl_sol": -0.0775,
+   "exit": "timeout"
+  },
+  {
+   "mint": "Au2HA4nU15yEBGHeaLY8v4igBtbivMipvr1WeB9j7c3U",
+   "t": 1790870316.2086,
+   "ret": 1.163,
+   "pnl_sol": 1.143,
+   "exit": "migrated"
+  },
+  {
+   "mint": "GoHB16QAA4h9vYu5Pf9AtjqE5EjpoJa2oAc57VQYpump",
+   "t": 1790863412.47683,
+   "ret": 0.0877,
+   "pnl_sol": 0.0677,
+   "exit": "migrated"
+  },
+  {
+   "mint": "Ahh38gerRCDrNaNKuUBeiqSnNLDeNGZ1UnUQFwcmpump",
+   "t": 1790870242.233009,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "AQzXX96tWaXJD6eamyxv3F8raTfjPhr6aF6hA646pump",
+   "t": 1790859887.7599869,
+   "ret": -0.7037,
+   "pnl_sol": -0.7237,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6VyyQ73u9i8QvdPKXQfgCrX9YuAZB95Gud89haFUpump",
+   "t": 1790860082.805142,
+   "ret": 3.1656,
+   "pnl_sol": 3.1456,
+   "exit": "migrated"
+  },
+  {
+   "mint": "2bKMsf9qmdr969KsxFJn8FUwCoK3onBUZ1HgPxisnjcF",
+   "t": 1790860092.71229,
+   "ret": -0.3752,
+   "pnl_sol": -0.3952,
+   "exit": "stop"
+  },
+  {
+   "mint": "25ASQhDeqN6fbTZBStiLbpBZgRMDBpE71LLhsWDKpump",
+   "t": 1790860152.2065606,
+   "ret": 0.7997,
+   "pnl_sol": 0.7797,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GkgcCZ5zw61noBYRZdTHv2HwHuepi8jqwQsJj9DBEMMA",
+   "t": 1790860219.4744372,
+   "ret": -0.3546,
+   "pnl_sol": -0.3746,
+   "exit": "stop"
+  },
+  {
+   "mint": "HDb7bu85KXwVnZcYyUSH3An8CtuNm2iFcD3yQhseaPo6",
+   "t": 1790860783.968122,
+   "ret": -0.7934,
+   "pnl_sol": -0.8134,
+   "exit": "migrated"
+  },
+  {
+   "mint": "9JadGacsZMsp2LqmUmwpL22yGiacheL2eqh5Lmphpump",
+   "t": 1790860819.4917145,
+   "ret": -0.0584,
+   "pnl_sol": -0.0784,
+   "exit": "timeout"
+  },
+  {
+   "mint": "FEVYjz1uqrGxF5gUfbAb7hHUTGFv7hycLWywsanJtLhm",
+   "t": 1790860930.569131,
+   "ret": 2.268,
+   "pnl_sol": 2.248,
+   "exit": "migrated"
+  },
+  {
+   "mint": "5zeJAnx9bgm7X4vGZ3W2mPQy7KGq7s5M6YfGhBtspump",
+   "t": 1790861676.6428416,
+   "ret": -0.3485,
+   "pnl_sol": -0.3685,
+   "exit": "stop"
+  },
+  {
+   "mint": "BZYq5we5pdPANNE1taMEPdUHJ2QeJPbeFKfbJY49pump",
+   "t": 1790866682.009576,
+   "ret": -0.4565,
+   "pnl_sol": -0.4765,
+   "exit": "stop"
+  },
+  {
+   "mint": "4xuFyji3GZWqyMXexo87fWGtKvnWREEP7cPkMywrpump",
+   "t": 1790865878.5296648,
+   "ret": 0.878,
+   "pnl_sol": 0.858,
+   "exit": "migrated"
+  },
+  {
+   "mint": "DhXssaQBCKmURa2JU4biBtNUBdH1VuPTKzydfFPxpump",
+   "t": 1790867090.7695048,
+   "ret": -0.3517,
+   "pnl_sol": -0.3717,
+   "exit": "stop"
+  },
+  {
+   "mint": "CLgzZVj9GjRHKj7EnsLUP1J6bTiPyhZweNYNU7pzpump",
+   "t": 1790867063.089159,
+   "ret": -0.3448,
+   "pnl_sol": -0.3648,
+   "exit": "stop"
+  },
+  {
+   "mint": "8yn9q9NYzMBgxQhn3UKxm9aj8hzZAkzvZwNDkzBupump",
+   "t": 1790867180.6391327,
+   "ret": -0.4018,
+   "pnl_sol": -0.4218,
+   "exit": "stop"
+  },
+  {
+   "mint": "hWqhm6YuBEGP5zc37vNzCWAi3mmqR8ztuERt1mcpump",
+   "t": 1790864926.8291392,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "D1K3bBkwbgPzqzM6Zb7pt7U63eCKgdvZgt3bJW6Zpump",
+   "t": 1790867664.2980435,
+   "ret": -0.5805,
+   "pnl_sol": -0.6005,
+   "exit": "migrated"
+  },
+  {
+   "mint": "8LzYWenQNmKdDW8CZHwzCoBWrJ7mdr5AUwwd1898pump",
+   "t": 1790867778.2040837,
+   "ret": 0.1347,
+   "pnl_sol": 0.1147,
+   "exit": "timeout"
+  },
+  {
+   "mint": "AduQ16VBBjry4ZNLTnoMWPtF8jNZuRWvBjCR5nFDpump",
+   "t": 1790867866.99202,
+   "ret": -0.3539,
+   "pnl_sol": -0.3739,
+   "exit": "stop"
+  },
+  {
+   "mint": "6ks3V6ZFCCkdeLeCVh8CLNndGLUjrP7dAQCSBHaJpump",
+   "t": 1790867506.5448725,
+   "ret": -0.3786,
+   "pnl_sol": -0.3986,
+   "exit": "stop"
+  },
+  {
+   "mint": "GvVPPcyMeK2sMd5fAyFfE7GNwEGVRnZGSJwth3RTpump",
+   "t": 1790864775.8706598,
+   "ret": 0.7612,
+   "pnl_sol": 0.7412,
+   "exit": "timeout"
+  },
+  {
+   "mint": "5RU1zYPMDbg511c8f7MvBqywwRbQ5LLzWebqFuqkpump",
+   "t": 1790865691.7994583,
+   "ret": -0.3557,
+   "pnl_sol": -0.3757,
+   "exit": "stop"
+  },
+  {
+   "mint": "7DLkQ5Ja7Vtjx2cyVX3YmLAbgm7f6ss3MLhgY5qtpump",
+   "t": 1790865702.297724,
+   "ret": -0.3505,
+   "pnl_sol": -0.3705,
+   "exit": "stop"
+  },
+  {
+   "mint": "H3NJL31MZyELu2NyxtoJA4ej8ESEHtQfxZGDVwdjpump",
+   "t": 1790865708.2288792,
+   "ret": 1.1642,
+   "pnl_sol": 1.1442,
+   "exit": "migrated"
+  },
+  {
+   "mint": "78WDc2MH4btxgnpvwBn1jVzeJSNEPQFFMAmFPpMXpump",
+   "t": 1790870506.830095,
+   "ret": 0.3032,
+   "pnl_sol": 0.2832,
+   "exit": "timeout"
+  },
+  {
+   "mint": "AyYvAEiUX74ZAkwd91FofZtGqJRwNERdUVMHkrT5pump",
+   "t": 1790870607.6447308,
+   "ret": -0.3662,
+   "pnl_sol": -0.3862,
+   "exit": "stop"
+  },
+  {
+   "mint": "9QZmwhc51VVTkMZF2izbs7LbyQtuKgfBLMnV6VMspump",
+   "t": 1790870706.1142154,
+   "ret": -0.0591,
+   "pnl_sol": -0.0791,
+   "exit": "timeout"
+  },
+  {
+   "mint": "ADigMedGRGbpjEBipSAWaYgmM8gdM6jnzXCMpYwMpump",
+   "t": 1790870876.9625072,
+   "ret": -0.3961,
+   "pnl_sol": -0.4161,
+   "exit": "stop"
+  },
+  {
+   "mint": "FFrRBPP9yWtSqnKjXXM9C77MBdLztfdgSnRE858zpump",
+   "t": 1790871179.7198508,
+   "ret": 7.2931,
+   "pnl_sol": 7.2731,
+   "exit": "migrated"
+  },
+  {
+   "mint": "4pU5XFmUGfeTsZ9tAfWxRU7hbkCYuaMPYg3ii4CPbMng",
+   "t": 1790871242.8965309,
+   "ret": -0.3432,
+   "pnl_sol": -0.3632,
+   "exit": "stop"
+  },
+  {
+   "mint": "RUBRqKvsQKSKSJdhGwC8bHPvuYQ4g9Uj21MEub3pump",
+   "t": 1790857179.9016414,
+   "ret": 0.3322,
+   "pnl_sol": 0.3122,
+   "exit": "migrated"
+  },
+  {
+   "mint": "6VjXNN6YZrBGPhoV9Ufp3xhkuuFE4p4aH4xFT6spump",
+   "t": 1790857137.0826092,
+   "ret": -0.0914,
+   "pnl_sol": -0.1114,
+   "exit": "timeout"
+  },
+  {
+   "mint": "5xkgWmUh7bEKGKNS2EydXNQ6pZwQDmcn4WqL5xzpump",
+   "t": 1790857203.113966,
+   "ret": -0.3582,
+   "pnl_sol": -0.3782,
+   "exit": "stop"
+  },
+  {
+   "mint": "CfbWW9GHGWKjqtK1CjZbmv8sBZZjzbbBc6KEueWcT73F",
+   "t": 1790858498.9536715,
+   "ret": -0.7908,
+   "pnl_sol": -0.8108,
+   "exit": "stop"
+  },
+  {
+   "mint": "5aJmrWcYBt8qCpqrv4m91Q62bwxfrtdX18H3ZD7Qv4SM",
+   "t": 1790859725.4968064,
+   "ret": -0.3468,
+   "pnl_sol": -0.3668,
+   "exit": "stop"
+  },
+  {
+   "mint": "CSAokHkj2EG1mr7YTAmRS87Nfe22aDf3yuJaELaFpump",
+   "t": 1790857930.8293233,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "DAhT81aqn5M6u2FwobQMZ9NuMVKEtrGmp12to8w3CGbP",
+   "t": 1790858029.4632037,
+   "ret": -0.4648,
+   "pnl_sol": -0.4848,
+   "exit": "stop"
+  },
+  {
+   "mint": "BHv9uc3mb4Ts5q1iibnR6mQENxXT7VMyfzg1zLwqHFT",
+   "t": 1790862149.5583405,
+   "ret": 0.3414,
+   "pnl_sol": 0.3214,
+   "exit": "timeout"
+  },
+  {
+   "mint": "GfAy9sSz1H8sjgDpYPdKyZLmmcgyTt6TVWJoGNbfpump",
+   "t": 1790862230.73784,
+   "ret": 1.1613,
+   "pnl_sol": 1.1413,
+   "exit": "migrated"
+  },
+  {
+   "mint": "Gd28K8mXV6AsDyjpHnREdC6zetL3XVrLY2yk1urZpump",
+   "t": 1790862484.2624047,
+   "ret": -0.3502,
+   "pnl_sol": -0.3702,
+   "exit": "stop"
+  },
+  {
+   "mint": "8ypYfW5cjafrfAZij8TZj5SFHAbPNpiRio96LMzypDkn",
+   "t": 1790862662.9046042,
+   "ret": 1.2183,
+   "pnl_sol": 1.1983,
+   "exit": "migrated"
+  },
+  {
+   "mint": "DiM7FEysi1FNUFspHZEZViTt3f8AsoLYVAfPcLGtpump",
+   "t": 1790863176.844266,
+   "ret": -0.0271,
+   "pnl_sol": -0.0471,
+   "exit": "timeout"
+  },
+  {
+   "mint": "ACLjA8MJypDUutwSnjPoWy8bG4hj73gDCAebuoqDpump",
+   "t": 1790863899.831047,
+   "ret": -0.3568,
+   "pnl_sol": -0.3768,
+   "exit": "stop"
+  },
+  {
+   "mint": "cdki8uTd6tkksVUvJMZVqYhGhrigV3952zWcUJApump",
+   "t": 1790868603.1614716,
+   "ret": -0.3455,
+   "pnl_sol": -0.3655,
+   "exit": "stop"
+  },
+  {
+   "mint": "B1j4j3SqcwzK5fspMYscNSmKuDht1rZ4DzfoG4qspump",
+   "t": 1790869405.8627336,
+   "ret": 0.741,
+   "pnl_sol": 0.721,
+   "exit": "migrated"
+  },
+  {
+   "mint": "DQf4LLauMW4ikisvpCB3C3Yb74W7c15RJ25VTSTSpump",
+   "t": 1790869529.938846,
+   "ret": -0.9799,
+   "pnl_sol": -0.9999,
+   "exit": "migrated"
+  },
+  {
+   "mint": "2dZCcPWh6rNK4266hi8mEuVsrUwx4GVXwVwT69d2pump",
+   "t": 1790866154.3827872,
+   "ret": -0.3457,
+   "pnl_sol": -0.3657,
+   "exit": "stop"
+  },
+  {
+   "mint": "DVpQnszhNWE9d3Rxb2GvAsUUEeXygwirDqtadL7epump",
+   "t": 1790865312.4112177,
+   "ret": -0.0565,
+   "pnl_sol": -0.0765,
+   "exit": "timeout"
+  },
+  {
+   "mint": "DREK92JePaka8feQsNKUMyYzc6orXud2w5yyp31Upump",
+   "t": 1790869826.1982787,
+   "ret": -0.6153,
+   "pnl_sol": -0.6353,
+   "exit": "stop"
+  },
+  {
+   "mint": "3qVWoSm5pRURPfdEpCnVCLZFqM8K1JevkXHu2j1Kpump",
+   "t": 1790869965.223435,
+   "ret": -0.0583,
+   "pnl_sol": -0.0783,
+   "exit": "timeout"
+  },
+  {
+   "mint": "5bkCkkrSDYoyHTAQbRjj9rDVBHn7eXsSCjqwEttS28x4",
+   "t": 1790869966.1739333,
+   "ret": -0.3581,
+   "pnl_sol": -0.3781,
+   "exit": "stop"
+  },
+  {
+   "mint": "EuoP9kbyHJewCz12vSE12KpoCJMTJhdjKowFLadqpump",
+   "t": 1790863578.2687898,
+   "ret": -0.3831,
+   "pnl_sol": -0.4031,
+   "exit": "stop"
+  },
+  {
+   "mint": "759ZJqY317B391xLqaciLevMB98shVRASxC8zYuppump",
+   "t": 1790859799.9255066,
+   "ret": 0.1529,
+   "pnl_sol": 0.1329,
+   "exit": "migrated"
+  },
+  {
+   "mint": "FoapcJpkbSMQ6RacH8p6RxCGrBt7oQv9fCdckXEpump",
+   "t": 1790860146.9114795,
+   "ret": 1.3337,
+   "pnl_sol": 1.3137,
+   "exit": "migrated"
+  },
+  {
+   "mint": "9wc2gqjJXp3wEi2gQQu22i5BYy3fetgvaLCEN2CJWB3h",
+   "t": 1790860638.1734254,
+   "ret": 0.7137,
+   "pnl_sol": 0.6937,
+   "exit": "migrated"
+  },
+  {
+   "mint": "fjVWpyBN46mnSieidn9YZE3amJCaT4WNMn8HPXPgvaz",
+   "t": 1790861169.2457051,
+   "ret": -0.3586,
+   "pnl_sol": -0.3786,
+   "exit": "stop"
+  },
+  {
+   "mint": "wtfuykPojQmSVubPW8YQ5ewChCiXPz2EvEhse4Bpump",
+   "t": 1790866539.9903533,
+   "ret": 1.1214,
+   "pnl_sol": 1.1014,
+   "exit": "migrated"
+  },
+  {
+   "mint": "2Tugj2TrDtXPCL4NdVoSAuh9Uw6B3SAcS2V7x3NQpump",
+   "t": 1790866913.6821582,
+   "ret": 1.9292,
+   "pnl_sol": 1.9092,
+   "exit": "migrated"
+  },
+  {
+   "mint": "AYRTq6bfnNzWMY5ACWTRUtMCwV8PAhux3wm84q5mpump",
+   "t": 1790867025.5106087,
+   "ret": 1.344,
+   "pnl_sol": 1.324,
+   "exit": "migrated"
+  },
+  {
+   "mint": "4fRRVVSLbR8AkBK2wHqDaeQnXjvnG3eaqQHEEXERdjft",
+   "t": 1790867286.8104727,
+   "ret": -0.348,
+   "pnl_sol": -0.368,
+   "exit": "stop"
+  },
+  {
+   "mint": "5CqcThHdDTMvpA3VPxPYAwVGSPkSMaMpD8DiivASpump",
+   "t": 1790867386.1043143,
+   "ret": 0.6016,
+   "pnl_sol": 0.5816,
+   "exit": "migrated"
+  },
+  {
+   "mint": "A1zuHvVrqy2vFuqRJY4R5uQrNRpNmNHKScPPVEM3pump",
+   "t": 1790867391.4859421,
+   "ret": 1.3458,
+   "pnl_sol": 1.3258,
+   "exit": "migrated"
+  },
+  {
+   "mint": "4qJMBMWXUDkpX1ST8zaSEJbZGE7irr2JR7YYaq2Fpump",
+   "t": 1790868010.4583795,
+   "ret": -0.7742,
+   "pnl_sol": -0.7942,
+   "exit": "migrated"
+  },
+  {
+   "mint": "7H5SV4kDJZFbUWmsgcoYdZDKU9Li7WmDZhzFxPF5pump",
+   "t": 1790868537.6524677,
+   "ret": 0.6836,
+   "pnl_sol": 0.6636,
+   "exit": "migrated"
+  },
+  {
+   "mint": "5cLTx9NcCrhrvr2TWKsZuqjbdjEXZ22fLmxdsHPcbxiY",
+   "t": 1790869083.7926393,
+   "ret": -0.3441,
+   "pnl_sol": -0.3641,
+   "exit": "stop"
+  },
+  {
+   "mint": "Gu3758EJfbTTMxmaQ9SuVJZBqXVcCJKHu8rDxRnepump",
+   "t": 1790868376.606057,
+   "ret": -0.4207,
+   "pnl_sol": -0.4407,
+   "exit": "stop"
+  },
+  {
+   "mint": "5dmQ6YxFuaVLUvZNVjV9qHLu9BSHMm4qRPRNqhxipump",
+   "t": 1790864751.087621,
+   "ret": -0.3439,
+   "pnl_sol": -0.3639,
+   "exit": "stop"
+  },
+  {
+   "mint": "3qJLoMQcLWVFUQ9YnGTntP3CWSA3pdZ5FzqGVKitpump",
+   "t": 1790865703.5152586,
+   "ret": -0.5076,
+   "pnl_sol": -0.5276,
+   "exit": "stop"
+  },
+  {
+   "mint": "FDTxkppekGcS5fnbiHAkUCtGkYgnv7JRP6sdveEipump",
+   "t": 1790870683.968586,
+   "ret": 1.403,
+   "pnl_sol": 1.383,
+   "exit": "migrated"
+  }
+ ]
+}
