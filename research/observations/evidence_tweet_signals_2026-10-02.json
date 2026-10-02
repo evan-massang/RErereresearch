@@ -1,0 +1,114 @@
+{
+ "n": 3005,
+ "base_migration_rate": 0.0126,
+ "groups": {
+  "post age < 5 min": {
+   "n": 2217,
+   "migration_rate": 0.0126,
+   "lift": 1.0,
+   "share_peak_30m_ge_3x": 0.027
+  },
+  "post age 5-60 min": {
+   "n": 402,
+   "migration_rate": 0.01,
+   "lift": 0.79,
+   "share_peak_30m_ge_3x": 0.017
+  },
+  "post age 1-24 h": {
+   "n": 238,
+   "migration_rate": 0.0168,
+   "lift": 1.33,
+   "share_peak_30m_ge_3x": 0.05
+  },
+  "post age > 1 day": {
+   "n": 148,
+   "migration_rate": 0.0135,
+   "lift": 1.07,
+   "share_peak_30m_ge_3x": 0.014
+  },
+  "followers < 1k": {
+   "n": 1293,
+   "migration_rate": 0.0116,
+   "lift": 0.92,
+   "share_peak_30m_ge_3x": 0.023
+  },
+  "followers 1k-10k": {
+   "n": 559,
+   "migration_rate": 0.0143,
+   "lift": 1.13,
+   "share_peak_30m_ge_3x": 0.034
+  },
+  "followers 10k-100k": {
+   "n": 359,
+   "migration_rate": 0.0111,
+   "lift": 0.88,
+   "share_peak_30m_ge_3x": 0.028
+  },
+  "followers 100k-1M": {
+   "n": 335,
+   "migration_rate": 0.0149,
+   "lift": 1.18,
+   "share_peak_30m_ge_3x": 0.012
+  },
+  "followers > 1M": {
+   "n": 459,
+   "migration_rate": 0.0131,
+   "lift": 1.03,
+   "share_peak_30m_ge_3x": 0.037
+  },
+  "account < 30 d old": {
+   "n": 157,
+   "migration_rate": 0.0064,
+   "lift": 0.5,
+   "share_peak_30m_ge_3x": 0.025
+  },
+  "reply": {
+   "n": 187,
+   "migration_rate": 0.0053,
+   "lift": 0.42,
+   "share_peak_30m_ge_3x": 0.027
+  },
+  "quote": {
+   "n": 1177,
+   "migration_rate": 0.011,
+   "lift": 0.87,
+   "share_peak_30m_ge_3x": 0.026
+  },
+  "has media": {
+   "n": 1774,
+   "migration_rate": 0.0158,
+   "lift": 1.25,
+   "share_peak_30m_ge_3x": 0.034
+  },
+  "text mentions a CA": {
+   "n": 157,
+   "migration_rate": 0.0,
+   "lift": 0.0,
+   "share_peak_30m_ge_3x": 0.013
+  },
+  "first coin for this post": {
+   "n": 1059,
+   "migration_rate": 0.0161,
+   "lift": 1.27,
+   "share_peak_30m_ge_3x": 0.041
+  },
+  "2nd+ coin for this post": {
+   "n": 1946,
+   "migration_rate": 0.0108,
+   "lift": 0.85,
+   "share_peak_30m_ge_3x": 0.019
+  },
+  "author linked by 3+ earlier coins": {
+   "n": 1838,
+   "migration_rate": 0.0103,
+   "lift": 0.82,
+   "share_peak_30m_ge_3x": 0.02
+  },
+  "post missing (deleted) at fetch": {
+   "n": 753,
+   "migration_rate": 0.0106,
+   "lift": 0.84,
+   "share_peak_30m_ge_3x": 0.023
+  }
+ }
+}

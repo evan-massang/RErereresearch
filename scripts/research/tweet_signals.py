@@ -125,7 +125,7 @@ if __name__ == "__main__":
         kept = findings.clear_previous(con, ex, ex)
         sid, snap = ingest_document(con, str(p), title="Linked X post features vs migration (train)",
                                     canonical_url="stream://pump_curve/2026-10-02/tweet-signals")
-        obs = observations.add_observation(con, source_id=sid, snapshot_id=snap, modality="document", kind="signal_study",
+        obs = observations.add_observation(con, source_id=sid, snapshot_id=snap, modality="onchain", kind="signal_study",
                                            extractor=ex, status="reviewed", value=s,
                                            content="Point-in-time features of linked X posts (fxtwitter) vs migration.")
         g = s["groups"]
