@@ -186,7 +186,7 @@ The realistic path for a solo trader is:
 A bot cannot replicate step 2 from chain data.
 
 
-## Narrative judgement test (2026-10-02, 02:30 UTC)
+## Narrative judgement test (2026-10-02, 01:55 UTC)
 
 The one lever no test had touched was *judgement*: reading the linked X post the way Decu does. I fetched the posts linked by 3,497 launches and had 600 train-period posts scored 1–5 for narrative quality by ten independent, outcome-blind LLM runs.
 
