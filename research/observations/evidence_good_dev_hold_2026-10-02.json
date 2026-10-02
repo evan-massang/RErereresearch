@@ -1,0 +1,379 @@
+{
+ "params": {
+  "min_prior_migrations": 1,
+  "min_migration_rate": 0.2,
+  "latency_s": 1.0,
+  "stop_pct": null,
+  "exit_after_s": 60.0,
+  "max_hold_s": 3600.0,
+  "size_sol": 0.5,
+  "entry_cost": 0.08,
+  "curve_exit_cost": 0.03,
+  "amm_exit_cost": 0.025,
+  "fixed_sol_per_tx": 0.01
+ },
+ "train_grid": [
+  {
+   "n_trades": 39,
+   "pnl_sol": 14.78,
+   "expectancy_sol": 0.379,
+   "profit_factor": 2.272,
+   "pnl_without_top1": -5.316,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 60,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": 14.72,
+   "expectancy_sol": 0.3774,
+   "profit_factor": 2.261,
+   "pnl_without_top1": -5.376,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 60,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": 12.185,
+   "expectancy_sol": 0.3124,
+   "profit_factor": 2.049,
+   "pnl_without_top1": -7.911,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 300,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": 12.125,
+   "expectancy_sol": 0.3109,
+   "profit_factor": 2.038,
+   "pnl_without_top1": -7.972,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 300,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": 9.577,
+   "expectancy_sol": 0.2456,
+   "profit_factor": 1.783,
+   "pnl_without_top1": -10.519,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 900,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": 9.516,
+   "expectancy_sol": 0.244,
+   "profit_factor": 1.774,
+   "pnl_without_top1": -10.58,
+   "exits": {
+    "stop": 0,
+    "migrated": 4,
+    "timeout": 35
+   },
+   "stop_pct": null,
+   "exit_after_s": 900,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -3.176,
+   "expectancy_sol": -0.0814,
+   "profit_factor": 0.665,
+   "pnl_without_top1": -6.93,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 60,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -3.176,
+   "expectancy_sol": -0.0814,
+   "profit_factor": 0.665,
+   "pnl_without_top1": -6.931,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 60,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -5.769,
+   "expectancy_sol": -0.1479,
+   "profit_factor": 0.391,
+   "pnl_without_top1": -8.96,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 300,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -5.769,
+   "expectancy_sol": -0.1479,
+   "profit_factor": 0.391,
+   "pnl_without_top1": -8.961,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 300,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -8.377,
+   "expectancy_sol": -0.2148,
+   "profit_factor": 0.17,
+   "pnl_without_top1": -10.086,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 900,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -8.377,
+   "expectancy_sol": -0.2148,
+   "profit_factor": 0.169,
+   "pnl_without_top1": -10.087,
+   "exits": {
+    "stop": 20,
+    "migrated": 3,
+    "timeout": 16
+   },
+   "stop_pct": 50,
+   "exit_after_s": 900,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -4.33,
+   "expectancy_sol": -0.111,
+   "profit_factor": 0.593,
+   "pnl_without_top1": -8.085,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 60,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -4.391,
+   "expectancy_sol": -0.1126,
+   "profit_factor": 0.589,
+   "pnl_without_top1": -8.146,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 60,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -6.923,
+   "expectancy_sol": -0.1775,
+   "profit_factor": 0.349,
+   "pnl_without_top1": -10.115,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 300,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -6.984,
+   "expectancy_sol": -0.1791,
+   "profit_factor": 0.347,
+   "pnl_without_top1": -10.176,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 300,
+   "max_hold_s": 3600
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -9.531,
+   "expectancy_sol": -0.2444,
+   "profit_factor": 0.152,
+   "pnl_without_top1": -11.241,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 900,
+   "max_hold_s": 1800
+  },
+  {
+   "n_trades": 39,
+   "pnl_sol": -9.592,
+   "expectancy_sol": -0.2459,
+   "profit_factor": 0.151,
+   "pnl_without_top1": -11.302,
+   "exits": {
+    "stop": 15,
+    "migrated": 3,
+    "timeout": 21
+   },
+   "stop_pct": 70,
+   "exit_after_s": 900,
+   "max_hold_s": 3600
+  }
+ ],
+ "windows": {
+  "train_oct1": {
+   "costs": {
+    "n_trades": 39,
+    "pnl_sol": 14.72,
+    "expectancy_sol": 0.3774,
+    "median_sol": -0.2856,
+    "win_rate": 0.103,
+    "profit_factor": 2.261,
+    "pnl_without_top1": -5.376,
+    "exits": {
+     "stop": 0,
+     "migrated": 4,
+     "timeout": 35
+    }
+   },
+   "zero_costs": {
+    "n_trades": 39,
+    "pnl_sol": 19.424,
+    "expectancy_sol": 0.498,
+    "median_sol": -0.239,
+    "win_rate": 0.103,
+    "profit_factor": 2.897,
+    "pnl_without_top1": -3.03,
+    "exits": {
+     "stop": 0,
+     "migrated": 4,
+     "timeout": 35
+    }
+   }
+  },
+  "validation_oct1": {
+   "costs": {
+    "n_trades": 14,
+    "pnl_sol": -1.596,
+    "expectancy_sol": -0.114,
+    "median_sol": -0.2495,
+    "win_rate": 0.143,
+    "profit_factor": 0.504,
+    "pnl_without_top1": -2.416,
+    "exits": {
+     "stop": 0,
+     "migrated": 1,
+     "timeout": 13
+    }
+   },
+   "zero_costs": {
+    "n_trades": 14,
+    "pnl_sol": -0.679,
+    "expectancy_sol": -0.0485,
+    "median_sol": -0.1988,
+    "win_rate": 0.143,
+    "profit_factor": 0.742,
+    "pnl_without_top1": -1.664,
+    "exits": {
+     "stop": 0,
+     "migrated": 1,
+     "timeout": 13
+    }
+   }
+  },
+  "oct2_descriptive": {
+   "costs": {
+    "n_trades": 82,
+    "pnl_sol": -17.442,
+    "expectancy_sol": -0.2127,
+    "median_sol": -0.2955,
+    "win_rate": 0.073,
+    "profit_factor": 0.283,
+    "pnl_without_top1": -20.018,
+    "exits": {
+     "stop": 0,
+     "migrated": 12,
+     "timeout": 70
+    }
+   },
+   "zero_costs": {
+    "n_trades": 82,
+    "pnl_sol": -12.98,
+    "expectancy_sol": -0.1583,
+    "median_sol": -0.25,
+    "win_rate": 0.073,
+    "profit_factor": 0.384,
+    "pnl_without_top1": -15.909,
+    "exits": {
+     "stop": 0,
+     "migrated": 12,
+     "timeout": 70
+    }
+   }
+  }
+ }
+}
