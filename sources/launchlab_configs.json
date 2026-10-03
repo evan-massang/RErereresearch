@@ -1,0 +1,513 @@
+{
+ "6s1xP3hpbAfFoNtUNF8mfHsjr2Bd97JxFJRWLbL6aHuX": {
+  "quote_mint": "So11111111111111111111111111111111111111112",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 24000000000
+ },
+ "34TVbScog38SKZav9BZB66QYECzbuk7LCsVp6QgR2GKc": {
+  "quote_mint": "Dz9mQ9NzkBcCsuGPFJ3r1bS4wgqKMHBPiVuniW8Mbonk",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7yXLcuU4HNEjjEYbz7rAYJUK11SXfdR6df84LyfEQWuM": {
+  "quote_mint": "NKEda5nHhNGgjrE9nDdMvaEmkmJ96qqxzBVZEcKmjSg",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "4Rb2joMnuDt9zRPuTYxUjQRGQ8oNBbKdXnCJSCojvBsW": {
+  "quote_mint": "6GmAFSYs4gk3FDao5FzzySQpPZaWsa4rUJHacpMpUNgx",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "2NuVPU5ViAyQsZamVfJ1vU6Cp77WSzret4LtNTMiWFQ4": {
+  "quote_mint": "Xsc9qvGR1efVDFGLrVsmkzv3qi45LTBjeUKSPmx9qEh",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "C4RwEFzNqD29zEUApaZtDNYasEFd12Dqwrk39nPs2nUA": {
+  "quote_mint": "3ZLekZYq2qkZiSpnSvabjit34tUkjSwD1JFuW9as9wBG",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "9mfQRzhyaACD49VhrSwCWKjrHVLcNfhxSdhg2hDSwCd8": {
+  "quote_mint": "Xs3oZwbHvqis4NYcf4YKWmEia2eC84wSiVrcYcTqpH8",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "6LPSTaaEZozfUwbibN5Bbbbw9BtG5WZgenrELFbPV2Bf": {
+  "quote_mint": "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "udvdyPqL8FYYiPBvk92ARTJ1CHTG51uAWREMjkJUTiz": {
+  "quote_mint": "9cRCn9rGT8V2imeM2BaKs13yhMEais3ruM3rPvTGpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "E2fd24QycuwszEK8WyU8CgtCfp5bUkTMenUthzgShJxA": {
+  "quote_mint": "A7bdiYdS5GjqGFtxf17ppRHtDKPkkRqbKtR27dxvQXaS",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "DrQRhq4L7LvqncmP9FXfevc3cJrbjh1cPydxA6PWRXfu": {
+  "quote_mint": "oPAiAikWTaFj9RYoRFD35ccfwhnMcB3ThgBZRHSkjTZ",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "Cb72Fufg621M95k4a4sdM8wAvdmuLWn8xDejSbRa225Z": {
+  "quote_mint": "AavE1kKKnesPw4MuRJmJ9jZs9QzEE8CPxQ3ViczUDfc1",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7em1KfyK7cGENxXhLXn17sRbUHB3WJY3rUqwcsxQFmy1": {
+  "quote_mint": "CARDSccUMFKoPRZxt5vt3ksUbxEFEcnZ3H2pd3dKxYjp",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "8gj14w8vkNZjJTPak6e96Uf1sY438WKheH4s5dHyxiRw": {
+  "quote_mint": "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "FATRfLS8REmE8iSBDQG6yF77HV5qQiedPY146CZ4Ydk6": {
+  "quote_mint": "4k3Dyjzvzp8eMZWUXbBCjEvwSkkk59S5iCNLY3QrkX6R",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "2TygvvGwVLxpJaGfQkFtGFzgvRMQmcFi6fM6iceLTTpu": {
+  "quote_mint": "Xsf9mBktVB9BSU5kf4nHxPq5hCBJ2j2ui3ecFGxPRGc",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "89Jix6Gj2s3UgMZLzDfbqVGB6h2tLhdhPxv8KzVFZzCE": {
+  "quote_mint": "4sWNB8zGWHkh6UnmwiEtzNxL4XrN7uK9tosbESbJFfVs",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7TuRwTMUvDF7hVUy9DCHZMc77X8nJqXZqV77n28HHkCr": {
+  "quote_mint": "6UpQcMAb5xMzxc7ZfPaVMgx3KqsvKZdT5U718BzD5We2",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "4SctAqd49Ym7BFMSFJt5rgDyGT4MdrmhvWjgc4iriCLd": {
+  "quote_mint": "BLKKYfF41c6xRPrtX1rdYbxLE1xxEdZUnxQsB5hcZ8Nf",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GC1ZWMKnnPBGmTkoNNKnR17SbqZwMN9coSWgW3UH5JSr": {
+  "quote_mint": "WXMRyRZhsa19ety5erZhHg4N3xj3EVN92u94422teJp",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "D6rhMEJEyL2weM26iXXcfvj9J6V7SFDbRgZJRMjA3xM1": {
+  "quote_mint": "9BB6NFEcjBCtnNLFko2FqVQBq8HHM13kCyYcdQbgpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "B7ctMMdGvy46Am56myTtzfkNzt9kWZVTNGM2BWrJ9adg": {
+  "quote_mint": "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GhS5tPXTKjZMcXe2ri3NVzs79bHpvs1rJ8BM88vSV99f": {
+  "quote_mint": "pSo1f9nQXWgXibFtKf7NWYxb5enAM4qfP6UJSiXRQfL",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "31MEtWqA2JRrBnhDzgsaRbQFPaxwBHhYAh8YpSsCCLfb": {
+  "quote_mint": "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "8csjxupsXZT6mg1nHSRTfypa8oHLmxGSqz6Vk3oC4wDu": {
+  "quote_mint": "3NZ9JMVBmGAqocybic2c7LQCJScmgsAZ6vQqTDzcqmJh",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "36BSuKa5idDZXjSG5tHcyhYCYxtFpBEpQvD64CCJG2rx": {
+  "quote_mint": "he1iusmfkpAdwvxLNGV8Y1iSbj4rUy6yMhEA3fotn9A",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "83KjqrTThSwY5dL1nDAf3Mi8eM9nZi33yM8Ntx2aJYuE": {
+  "quote_mint": "Xs8S1uUs1zvS2p7iwtsG3b6fkhpvmwz4GYU3gWAmWHZ",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3kP4fvZE5tXKituTu3TT12r2LXuKNAP1Wfq5LvtYZJJu": {
+  "quote_mint": "PEPEqnuuCDbBC89p1u9vpnP1KQ2oj1xTcQBsjt9X55m",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "XBmHAG1qHfVZS6zJLXKBTW7zvQZAEmhsX8H2fUzco4V": {
+  "quote_mint": "TTWofwAge91oFhZs7kpQdyrVRkmevgM88xijGvQFbKo",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "CW9f7d56a4idicgJ1CgTegjTMifgD3cKUnW5pkRRjA9V": {
+  "quote_mint": "XsueG8BtpquVJX9LVLLEGuViXUungE6WmK5YZ3p3bd1",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "ERbSzTkkhMtEUnurf3jxyBWUYRW49oFy5dDnhZbBCtB9": {
+  "quote_mint": "HiMSSzzwkZkrXJ4PGVJRdtfLaANeAztjjcgk5Dxe7Lwx",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "993qEdGYzDAr8Cdjo8uUfAp1YR2m6Gp2sg9vywwfNzyg": {
+  "quote_mint": "7vfCXTUXx5WJV5JADk17DUJ4ksgau7utNKj4b963voxs",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3yFuYHJBZ6Fw4KSVNFp7F6kJLk7BEPkTrnPcSmVWyPBV": {
+  "quote_mint": "98sMhvDwXj1RQi5c5Mndm3vPe9cBqPrbLaufMXFNMh5g",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "BnNFqodfHAQ5ACTQQFrdPkCPqSM2x3jZz5Kb1bXfywET": {
+  "quote_mint": "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "85QbdfDvqBdj2t8Ctj1MYucA1y6jS1Sdcxfp4Uf1GpTq": {
+  "quote_mint": "Grass7B4RdKfBCjTKgSqnXkqjwiGvQyFbuSCUJr3XXjs",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "Ey2D9FsUpq9BNCSQVnbXzQS8hxVNHjPH8DezN58nyn3u": {
+  "quote_mint": "GRNDYDpqwpCm6jVxpbh4xT5AM4r3p391qYsKTHqgaET2",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "DmJhbwoEnETqaBczYLBY3hmW61mo78273r97MCpyDCF3": {
+  "quote_mint": "SKHYhSjuRWHgikq8eRKbtBbpABgJSkd7ytQV14i9EQ3",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "G7uZNBnZL7wJJyVgxnZzmUczkJCniRL8YbwYXM9E6wZo": {
+  "quote_mint": "LULUmT9VMttkfAJE236LXJcYJ2tTP7nunrSWR5G1BdS",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "Ew4mwPTBrE7qazshbWo9qaKVEqVzZsv2tz8go9vHk6pi": {
+  "quote_mint": "MRNAzXzhNcaEXJPibHEn8cd4vyekCDiivTyEwswLUCT",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "6pqKFaQDFFN3Y5pUrUCdvwH2Frp72gNuSHZAAvnFKbmG": {
+  "quote_mint": "8J69rbLTzWWgUJziFY8jeu5tDwEPBwUz4pKBMr5rpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3exefyTZ6ves3Z6cvQ9nf1NtSPAnHX95ZtvKWedf7JX6": {
+  "quote_mint": "XsCPL9dNWBMvFtTmwcCA5v3xWPSMEBCszbQdiLLq6aN",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "G9NjYUD96DfCBUnduDHoZ7TCRrvdG41GLUkuoRch6qFC": {
+  "quote_mint": "Xsa62P5mvPszXL1krVUnU5ar38bBSVcWAB6fmPCo5Zu",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "EuXxVmsJ6Go46J8AQrBQKBAEki1zsFNYDvyimTxrepdg": {
+  "quote_mint": "Xs3eBt7uRfJX8QUs4suhyU8p2M6DoUDrJyWBa8LLZsg",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GB2ns4JgooMFukcp2tyGNDY19MfRNTwQBUee1x9pTawR": {
+  "quote_mint": "CrAr4RRJMBVwRsZtT62pEhfA9H5utymC2mVx8e7FreP2",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "DZMdN6d6cr6X5Es5CAU6UV9S8brCN1hu6sVtxpZW8c9v": {
+  "quote_mint": "HcRLc9VDgjLeK154xDawfb1dmVJ98DoSqcwTHGqiDeJR",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7G6Gg6rCnaegAhPBdZnRKCkzDWB6K6j4vmhtivSJhVtA": {
+  "quote_mint": "DezXAZ8z7PnrnRJjz3wXBoRgixCa6xjnB7YaB1pPB263",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "6ujdmNc54rkvbRZLUUmnnevXuWe4kiXzvUgcyVcG5522": {
+  "quote_mint": "HuAXPyDWDaMYFKuwQHpqL1oPnj93zdzWmtvFGzCeCUa7",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "AWcHgXyD3DjCharpL9kUxGSM1eWtoaa5y2PowQoxYQfK": {
+  "quote_mint": "avaxGHCq3T7hoxd73oY2KY9hJSTaeMibXvHy5KNzh5D",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "6BYhrqg6ybkJgUQ9Yn6wXUp4P3BBnwrzcEe6Su51rYZg": null,
+ "4g9jnd7kSr9ehTarotv2wk9RJeeoh1yKAoZeYMLtPWNM": {
+  "quote_mint": "PUSAG1stksTcAoK9MjinEHUwAYRJsbovywYCk37m6hy",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "9RkoV181ksAPNnZmGMyici4MgswhewW2hqvhkVd4DoHi": {
+  "quote_mint": "XsbEhLAtcf6HdfpFZ5xEMdqW8nfAvcsP5bdudRLJzJp",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GeY6G33ihzaccxYqRuVrbGtHZ8NPFAojY5MTybqR6Rsh": {
+  "quote_mint": "AMnRhMEt4QzoKACHuN8nTykxYthscAFyX9fhDNVpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "G9uCP4DwMDzMxQCQ38TnNGbVaoiAY2pP1BWd7rev1LmS": {
+  "quote_mint": "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "91q5iN7G8JreoSvErfeJKDCjV1SPwYXQAwMqog1FNoLo": {
+  "quote_mint": "LLYuwZ33keFihgwoxXsBawy31AiRFLFSva32TYq5TvD",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "6N92aeiaiShotXufESDeHKz4EAj8EDgFeExHgHHJmvS2": {
+  "quote_mint": "JUPyiwrYJFskUPiHa7hkeR8VUtAeFoSYbKedZNsDvCN",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7QV2swQrGvArbdrLFmg2861hdCZLEKBNiM77j4hvvE1g": {
+  "quote_mint": "oreoU2P8bN6jkk3jbaiVxYnG1dCXcYxwhwyK9jSybcp",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "BnrznzfGvdjXQJGPFHPnBqFpDCS9ZZAJU4PGdPcbjzwi": {
+  "quote_mint": "LMT3i1BHgixFqPUgcyteJhnEz2dpy9i3cYy4pi9BoeV",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "5snupdT3DNVySFyeYYxo6GE1brXVf5mQYJX4UxzxgNhT": {
+  "quote_mint": "4MMQY9bwkxxTtsK3W227Q5ABT6yFY8Pmn9Ze7wmAXKY8",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "8xwcRH7EeVqRTYfgMZS8QUukyj8KT7nigtMkvYgrEefq": {
+  "quote_mint": "8wXtPeU6557ETkp9WHFY1n1EcU6NxDvbAggHGsMYiHsB",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GYDrNGVw2zoqcMuejmBUkFwDzfcn3xPvBDeTprs3BNfF": {
+  "quote_mint": "C1MHyoTJpRTeS9AQCyspNVu2EWAYCZwmJ1jNkEArFP1f",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "43ieKzjkSEHboBGCim6u87UHjX2pQ4SMinzqF2F1dg8y": {
+  "quote_mint": "ARMbSB1MBRQrY6PNMao1HdQ431VafC6JRJCsGZ2Yv3iJ",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "13Ltdz7kXWQ8Xp6izD5DAg34SYGCfCnmBj9NrbHvfLxV": {
+  "quote_mint": "cbADAmv9issuPfhFwyQG3xac4DGPd1LDSt1oz7vwJsg",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "48bT2fMdhXScMFDFuUCzDZyF92ifEsBQMKgjXrGvFzN3": {
+  "quote_mint": "XsqE9cRRpzxcGKDXj1BJ7Xmg4GRhZoyY1KpmGSxAWT2",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "BjXTyyU2Nmak9gcTgCD57SBMW6YPKSGhbJarwYdLQfmM": {
+  "quote_mint": "DKNGQFNGQmoBdXSRGKJ8tTu7uPDasw5JDcfMmWniNfow",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "4AupynAMfPWJpR9PHQXrLYiaMgJX5T4Hdubj1JrB8VdV": {
+  "quote_mint": "ukHH6c7mMyiWCf1b9pnWe25TSpkDDt3H5pQZgZ74J82",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "BpLmov1G1yknBKxxDPG3PVg6xP5FhvxVHowE4eJ2LfEo": {
+  "quote_mint": "ondohH8Vssxiqcy5u6Efi4AYN17KZrzQtv2a91dnrgW",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7aojgjFgzz9k3fpQp1JXmU9rR6HVbhzJjVucTPyFGC9Q": {
+  "quote_mint": "pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "Eq6YTMgxAhzK9UUn5ypLLYCWvfcQxqsoMNUGANAnF2VX": {
+  "quote_mint": "GTBxUiw6wJdmmkCGZgRHLyYxqu1vG4KtRpeox6yDpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "GfQaYtUGMCGuVuWPYtc2YZK2ojLAYow1Ts385otssUpe": {
+  "quote_mint": "XsaBXg8dU5cPM6ehmVctMkVqoiRG2ZjMo1cyBJ3AykQ",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "fLSNwzqRkjm3uJ9urJSw2hTvRMsptRWePnZCyBvbxfq": {
+  "quote_mint": "H74CYmXgMkYHYuSRsZt6RJb4NYp2u72Vw8BS5huApump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "FrfW4vMff4UTuKFRMnQNeYD5KfiTNygnAd7D4gWLg5gf": {
+  "quote_mint": "cbLTC4T5NpzSUtQ7ekgEMZGaUPVJY1ko6BUikqa4gGf",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "5rYgshiWG6PvYi9jLwopE3muTd22FjB49WBZqnSazEr3": {
+  "quote_mint": "RKLBnAXGqv31iZomqsuAWkQm1aqC7JwwvbCfzGdqAhz",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3CXmnPmc9wtRRn3gRTnbwX1GgoaqqouXgNmjAoxc4vAk": {
+  "quote_mint": "XshPgPdXFRWB8tP1j82rebb2Q9rPgGX37RuqzohmArM",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "DZykfspqy8U88GFZnbWPVzJDJV7ZGeEbuLHWXf3rncky": {
+  "quote_mint": "EWY4owSJYMpwN33qGDu5gGxpkQkpMJu8ZUsQJaNZG5dv",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "FYzz1EYVxibJvhCb2VJ7Pt5R5bVXwdsP4iqrs93Un1GK": {
+  "quote_mint": "6yjNqPzTSanBWSa6dxVEgTjePXBrZ2FoHLDQwYwEsyM6",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "9NCDTE9kf4oQ9VAT9WUuXHSwAhue3ie8QqLPqNRPkd3W": {
+  "quote_mint": "BEBVfXZ8uCxRBuunEbW9wcq9r7W9ySNo14oJBJkDgpZx",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "A9NpW59NYEK3FuutZ7VDwAx1uY5gDxQuWDEcJU18Yw3T": {
+  "quote_mint": "NFLX7qV57zuVxCoHy3s1jiGZyALraLNwttbxdvmYJLJ",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3C5bWuc9Fy3WAjbprdRyJ3VXGsdqreFHsdg1vrtGyaxQ": {
+  "quote_mint": "RBLXDGRD64AtRamHMFVcjqne3Ar7NLWtFtYNtsrf1cE",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "7st2A9xaZ9QsLngjzy1DGSzszBcz1Rg1zGrP1bNSWr4C": {
+  "quote_mint": "B5WTLaRwaUQpKk7ir1wniNB6m5o8GgMrimhKMYan2R6B",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "D8YaFm64QApZb1Dfmu5EnKQrrWYaRtEvmBMV658vcb8c": {
+  "quote_mint": "Df6yfrKC8kZE3KNkrHERKzAetSxbrWeniQfyJY4Jpump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "FFBsgfzwzyYN4swbeWmTqFrr7f1VBbEHUDUrybjqBdKM": {
+  "quote_mint": "H2c31USxu35MDkBrGph8pUDUnmzo2e4Rf4hnvL2Upump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "BGHzTFVQNX5QsqkFYQbL4FQE68vJ15d3oQHDdqSQyiQ2": {
+  "quote_mint": "RDDTGbhHwVXfyCvQMXzzowKjf5qrYBZAnehoXW83ooh",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "G3764PGzqPGeNn1fhJFNdXCjkqMskYWtbETbpAxtkQYp": {
+  "quote_mint": "UPSqUeMHcWbkdg784XuBUEF9DtySSnW9ur5LAVdcuB9",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "Fny7wPYnkeR5AU285YLSJv9giQUbxDA2DpXQAinTe2nR": {
+  "quote_mint": "XsDoVfqeBukxuZHWhdvWHBhgEHjGNst4MLodqsJHzoB",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "944Uoa6qhFsQfxHMXuQ9tCFSinF9mdQiaE9G1TtffY58": {
+  "quote_mint": "Ce2gx9KGXJ6C9Mp5b5x1sn9Mg87JwEbrQby4Zqo3pump",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ },
+ "3g1uKFPSC4NPeYZAUxcyGd5jBAfmPNQR41sRTqXwtYML": {
+  "quote_mint": "GoLDppdjB1vDTPSGxyMJFqdnj134yH6Prg9eqsGDiw6A",
+  "trade_fee_rate": 2500,
+  "curve_type": 0,
+  "min_quote_fund_raising": 1
+ }
+}

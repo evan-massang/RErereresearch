@@ -98,3 +98,14 @@ Decu's train picks are launches promoted by small dev accounts whose post points
   - over 24 h: medians of −61% to −99%.
 - **Deep dips and high volume:** worse still.
 - Tokens that keep running after migration are usually dumped within the day.
+
+## Iteration 9: Raydium LaunchLab as a less crowded venue (shelved, not tested)
+
+**Method.** The recorder logs LaunchLab events (`pipeline/launchlab.py`, using Raydium's published IDL), and each pool config's quote mint was read on-chain (`sources/launchlab_configs.json`).
+
+**Finding.** Over 5 hours (10:24–15:25 UTC) only one config is priced in SOL: 84 of 505 new pools, about 17 an hour. Of those:
+- 77 traded at all, with a median of 4 trades per pool;
+- none reached migration;
+- 13% doubled at some point and 5% reached 5×.
+
+The rest are paired with other tokens (BONK, tokenized stocks and others). The venue is too thin to give the 50 trades the bar needs, or the liquidity to trade in it. Recording continues at negligible cost.

@@ -59,9 +59,9 @@ def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
     con.execute("""CREATE TABLE IF NOT EXISTS lab_pools (src_file VARCHAR, sig VARCHAR, recv DOUBLE, slot BIGINT, pool VARCHAR,
                    creator VARCHAR, config VARCHAR, decimals INTEGER, name VARCHAR, symbol VARCHAR, uri VARCHAR);
                    CREATE TABLE IF NOT EXISTS lab_trades (src_file VARCHAR, sig VARCHAR, recv DOUBLE, slot BIGINT, pool VARCHAR,
-                   buy BOOLEAN, status INTEGER, amount_in UBIGINT, amount_out UBIGINT, virtual_base UBIGINT,
-                   virtual_quote UBIGINT, real_base_after UBIGINT, real_quote_after UBIGINT, total_base_sell UBIGINT,
-                   fees UBIGINT);
+                   buy BOOLEAN, status INTEGER, amount_in DOUBLE, amount_out DOUBLE, virtual_base DOUBLE,
+                   virtual_quote DOUBLE, real_base_after DOUBLE, real_quote_after DOUBLE, total_base_sell DOUBLE,
+                   fees DOUBLE);
                    CREATE TABLE IF NOT EXISTS loaded_lab_files (name VARCHAR PRIMARY KEY, complete BOOLEAN);""")
     done = {r[0] for r in con.execute("SELECT name FROM loaded_lab_files WHERE complete").fetchall()}
     added = {"pools": 0, "trades": 0}
@@ -82,10 +82,10 @@ def load(con: duckdb.DuckDBPyConnection) -> dict[str, int]:
             if ev is None:
                 continue
             if ev["e"] == "trade":
-                tr.append((f.name, r["sig"], r["recv"], r.get("slot"), ev["pool"], ev["buy"], ev["status"], ev["amount_in"],
-                           ev["amount_out"], ev["virtual_base"], ev["virtual_quote"], ev["real_base_after"],
-                           ev["real_quote_after"], ev["total_base_sell"],
-                           ev["protocol_fee"] + ev["platform_fee"] + ev["creator_fee"] + ev["share_fee"]))
+                tr.append((f.name, r["sig"], r["recv"], r.get("slot"), ev["pool"], ev["buy"], ev["status"],
+                           *(float(ev[k]) for k in ("amount_in", "amount_out", "virtual_base", "virtual_quote",
+                                                    "real_base_after", "real_quote_after", "total_base_sell")),
+                           float(ev["protocol_fee"] + ev["platform_fee"] + ev["creator_fee"] + ev["share_fee"])))
             else:
                 pr.append((f.name, r["sig"], r["recv"], r.get("slot"), ev["pool"], ev["creator"], ev["config"],
                            ev["decimals"], ev["name"], ev["symbol"], ev["uri"]))
