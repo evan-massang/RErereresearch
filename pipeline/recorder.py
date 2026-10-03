@@ -299,6 +299,24 @@ class Recorder:
                                "quotes": t.get("quotes"), "bookmarks": t.get("bookmarks"),
                                "followers": a.get("followers"), "text": (t.get("text") or "")[:280] if k == 0 else None})
                 self.status["tweet_snaps"] += 1
+                if k in (0, 1):
+                    # the post this one quotes or links (Decu's picks point at a trending post): same counters
+                    refs = []
+                    q = t.get("quote") or {}
+                    if q.get("id"):
+                        refs.append(((q.get("author") or {}).get("screen_name") or "i", str(q["id"])))
+                    for h2, s2 in rx.findall(t.get("text") or ""):
+                        if s2 != sid:
+                            refs.append((h2, s2))
+                    for h2, s2 in refs[:2]:
+                        r2 = await client.get(f"https://api.fxtwitter.com/{h2}/status/{s2}", timeout=10)
+                        t2 = (r2.json().get("tweet") or {}) if r2.status_code == 200 else {}
+                        self.tw.write({"recv": time.time(), "mint": tok["mint"], "launch_recv": tok["recv"],
+                                       "snap": f"ref{k}", "status": s2, "handle": h2, "parent": sid, "http": r2.status_code,
+                                       "created_timestamp": t2.get("created_timestamp"), "views": t2.get("views"),
+                                       "likes": t2.get("likes"), "retweets": t2.get("retweets"),
+                                       "replies": t2.get("replies"), "quotes": t2.get("quotes"),
+                                       "followers": (t2.get("author") or {}).get("followers")})
             except Exception as e:  # noqa: BLE001
                 self.status["tweet_snap_errors"] += 1
                 self.tw.write({"recv": time.time(), "mint": tok["mint"], "snap": k, "error": f"{type(e).__name__}: {e}"[:200]})
