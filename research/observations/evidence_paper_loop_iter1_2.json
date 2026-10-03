@@ -1,0 +1,93 @@
+{
+ "llm_choice_train": {
+  "split": "train",
+  "scored": 706,
+  "all": {
+   "n": 706,
+   "expectancy_sol": -0.1514,
+   "pnl_sol": -106.871,
+   "decu_picks": 8
+  },
+  "decu_picked": {
+   "n": 8,
+   "expectancy_sol": 0.2682,
+   "pnl_sol": 2.145,
+   "decu_picks": 8
+  },
+  "by_score": {
+   "1": {
+    "n": 295,
+    "expectancy_sol": -0.1481,
+    "pnl_sol": -43.695,
+    "decu_picks": 0
+   },
+   "2": {
+    "n": 332,
+    "expectancy_sol": -0.1616,
+    "pnl_sol": -53.662,
+    "decu_picks": 5
+   },
+   "3": {
+    "n": 57,
+    "expectancy_sol": -0.1285,
+    "pnl_sol": -7.322,
+    "decu_picks": 1
+   },
+   "4": {
+    "n": 22,
+    "expectancy_sol": -0.0996,
+    "pnl_sol": -2.191,
+    "decu_picks": 2
+   }
+  },
+  "score>=4": {
+   "n": 22,
+   "expectancy_sol": -0.0996,
+   "pnl_sol": -2.191,
+   "decu_picks": 2
+  },
+  "score==5": {
+   "n": 0,
+   "expectancy_sol": null,
+   "pnl_sol": 0.0,
+   "decu_picks": 0
+  }
+ },
+ "kol_frontrun": {
+  "train": {
+   "n": 401,
+   "kols": 99,
+   "median": {
+    "gap_pre_to_entry": 0.1618,
+    "r5": 0.0,
+    "r10": -0.013,
+    "r20": -0.0381,
+    "r30": -0.065,
+    "r60": -0.1417
+   }
+  },
+  "validation": {
+   "n": 554,
+   "kols": 110,
+   "median": {
+    "gap_pre_to_entry": 0.1328,
+    "r5": 0.0,
+    "r10": -0.0051,
+    "r20": -0.062,
+    "r30": -0.0982,
+    "r60": -0.1873
+   }
+  },
+  "train_selected_kols": [
+   "Esee06257",
+   "Gasp",
+   "slingoor",
+   "trunoest"
+  ],
+  "selected_on_validation": {
+   "n": 61,
+   "r10_mean": -0.0365,
+   "r20_mean": -0.1537
+  }
+ }
+}
