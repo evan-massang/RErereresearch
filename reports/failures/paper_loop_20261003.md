@@ -80,3 +80,7 @@ Decu's train picks are launches promoted by small dev accounts whose post points
 **Result: FAIL** (`research/observations/evidence_ml_exits_20261003.json`).
 - All 24 setups (8 exits × 3 cutoffs) lose on train out-of-fold, at −0.02 to −0.06 SOL per trade.
 - The few setups slightly positive on validation (n = 20–191) lost on train, so they are noise and were not frozen.
+
+## Iteration 7: the same models with a 0.25 s delay instead of 1 s (paid RPC + Jito speed)
+
+**Result: FAIL** (`research/observations/evidence_ml_exits_lat025_20261003.json`). Average net PnL by age barely moves. All 24 setups lose on train out-of-fold, at −0.02 to −0.06 SOL per trade. Faster infrastructure does not by itself open an edge in these features. Note that our own receive time already lags the chain, so "0.25 s" is measured from when *we* saw the trade.
