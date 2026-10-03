@@ -50,6 +50,7 @@ PUMPPORTAL_WS = "wss://pumpportal.fun/api/data"
 WSOL = "So11111111111111111111111111111111111111112"
 PUMP_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
 PUMPSWAP_PROGRAM = "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
+LAUNCHLAB_PROGRAM = "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"   # Raydium LaunchLab (bonk.fun etc.)
 
 
 def _disc(name: str) -> bytes:
@@ -154,6 +155,7 @@ class Recorder:
         self.new_tokens: asyncio.Queue[dict] = asyncio.Queue(maxsize=2000)
         self.pump = Sink("pump_curve")
         self.amm = Sink("pumpswap_raw")
+        self.lab = Sink("launchlab_raw")
         self.token_watch_s = token_watch_s
         self.max_tokens = max_tokens
         self.watched: dict[str, float] = {}         # mint -> watch until (monotonic)
@@ -352,7 +354,7 @@ class Recorder:
         while time.monotonic() < self.stop_at:
             path.write_text(json.dumps({**self.status, "watched_tokens": len(self.watched),
                                         "at": datetime.now(timezone.utc).isoformat()}))
-            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw):
+            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab):
                 sink._fh and sink._fh.flush()
             await asyncio.sleep(30)
 
@@ -360,9 +362,10 @@ class Recorder:
         self.stop_at = time.monotonic() + hours * 3600
         await asyncio.gather(self.kolscan(), self.pumpportal(), self.heartbeat(), self.tweet_snaps(),
                              self.chain_logs(PUMP_PROGRAM, self.pump, decode=True),
-                             self.chain_logs(PUMPSWAP_PROGRAM, self.amm, decode=False))
+                             self.chain_logs(PUMPSWAP_PROGRAM, self.amm, decode=False),
+                             self.chain_logs(LAUNCHLAB_PROGRAM, self.lab, decode=False))
         await asyncio.sleep(0)
-        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw):
+        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab):
             sink.close()
 
 
