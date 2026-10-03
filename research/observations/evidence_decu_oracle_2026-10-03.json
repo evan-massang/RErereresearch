@@ -1,0 +1,276 @@
+{
+ "oracle_latency_1s": {
+  "latency_s": 1.0,
+  "n_trips": 124,
+  "tp20_sl10@0.001": {
+   "n": 124,
+   "pnl": -0.783,
+   "exp": -0.0063,
+   "pf": 0.848,
+   "wo3": -1.456
+  },
+  "tp20_sl10@0.01": {
+   "n": 124,
+   "pnl": -3.015,
+   "exp": -0.0243,
+   "pf": 0.537,
+   "wo3": -3.634
+  },
+  "tp30_sl15@0.001": {
+   "n": 124,
+   "pnl": -3.288,
+   "exp": -0.0265,
+   "pf": 0.599,
+   "wo3": -4.055
+  },
+  "tp30_sl15@0.01": {
+   "n": 124,
+   "pnl": -5.52,
+   "exp": -0.0445,
+   "pf": 0.435,
+   "wo3": -6.233
+  },
+  "tp50_sl20@0.001": {
+   "n": 124,
+   "pnl": -5.634,
+   "exp": -0.0454,
+   "pf": 0.525,
+   "wo3": -6.567
+  },
+  "tp50_sl20@0.01": {
+   "n": 124,
+   "pnl": -7.866,
+   "exp": -0.0634,
+   "pf": 0.419,
+   "wo3": -8.745
+  },
+  "tp100_sl30@0.001": {
+   "n": 124,
+   "pnl": -2.998,
+   "exp": -0.0242,
+   "pf": 0.826,
+   "wo3": -4.835
+  },
+  "tp100_sl30@0.01": {
+   "n": 124,
+   "pnl": -5.23,
+   "exp": -0.0422,
+   "pf": 0.723,
+   "wo3": -7.013
+  },
+  "tp200_sl40@0.001": {
+   "n": 124,
+   "pnl": -3.208,
+   "exp": -0.0259,
+   "pf": 0.852,
+   "wo3": -6.142
+  },
+  "tp200_sl40@0.01": {
+   "n": 124,
+   "pnl": -5.44,
+   "exp": -0.0439,
+   "pf": 0.768,
+   "wo3": -8.32
+  },
+  "mirror_exit@0.001": {
+   "n": 101,
+   "pnl": -16.921,
+   "exp": -0.1675,
+   "pf": 0.069,
+   "wo3": -18.153
+  },
+  "mirror_exit@0.01": {
+   "n": 101,
+   "pnl": -18.739,
+   "exp": -0.1855,
+   "pf": 0.059,
+   "wo3": -19.917
+  }
+ },
+ "oracle_latency_3s": {
+  "latency_s": 3.0,
+  "n_trips": 124,
+  "tp20_sl10@0.001": {
+   "n": 124,
+   "pnl": -2.389,
+   "exp": -0.0193,
+   "pf": 0.628,
+   "wo3": -3.255
+  },
+  "tp20_sl10@0.01": {
+   "n": 124,
+   "pnl": -4.621,
+   "exp": -0.0373,
+   "pf": 0.415,
+   "wo3": -5.433
+  },
+  "tp30_sl15@0.001": {
+   "n": 124,
+   "pnl": -5.231,
+   "exp": -0.0422,
+   "pf": 0.48,
+   "wo3": -6.303
+  },
+  "tp30_sl15@0.01": {
+   "n": 124,
+   "pnl": -7.463,
+   "exp": -0.0602,
+   "pf": 0.362,
+   "wo3": -8.481
+  },
+  "tp50_sl20@0.001": {
+   "n": 124,
+   "pnl": -6.464,
+   "exp": -0.0521,
+   "pf": 0.509,
+   "wo3": -7.638
+  },
+  "tp50_sl20@0.01": {
+   "n": 124,
+   "pnl": -8.696,
+   "exp": -0.0701,
+   "pf": 0.416,
+   "wo3": -9.816
+  },
+  "tp100_sl30@0.001": {
+   "n": 124,
+   "pnl": -5.126,
+   "exp": -0.0413,
+   "pf": 0.704,
+   "wo3": -6.851
+  },
+  "tp100_sl30@0.01": {
+   "n": 124,
+   "pnl": -7.358,
+   "exp": -0.0593,
+   "pf": 0.613,
+   "wo3": -9.029
+  },
+  "tp200_sl40@0.001": {
+   "n": 124,
+   "pnl": -4.914,
+   "exp": -0.0396,
+   "pf": 0.781,
+   "wo3": -7.904
+  },
+  "tp200_sl40@0.01": {
+   "n": 124,
+   "pnl": -7.146,
+   "exp": -0.0576,
+   "pf": 0.705,
+   "wo3": -10.082
+  },
+  "mirror_exit@0.001": {
+   "n": 101,
+   "pnl": -20.268,
+   "exp": -0.2007,
+   "pf": 0.05,
+   "wo3": -21.346
+  },
+  "mirror_exit@0.01": {
+   "n": 101,
+   "pnl": -22.086,
+   "exp": -0.2187,
+   "pf": 0.045,
+   "wo3": -23.11
+  }
+ },
+ "entry_order": {
+  "picks": 15,
+  "bot_entered_before_decu": 12,
+  "pnl_when_bot_before_decu": 5.152,
+  "pnl_when_decu_first": -1.022,
+  "rows": [
+   {
+    "mint": "E891itQZ8bN6axHmEjQhZBdsm9GBdCDyNpt2JK3FC8Av",
+    "symbol": "TODD",
+    "decu_after_trigger": 3.611,
+    "sim_pnl_sol": 0.203
+   },
+   {
+    "mint": "DCquzHXBPXTTyvs6M2v7axPJmpS7YYsysWZiy6mZWufd",
+    "symbol": "\u304b\u306e\u304f\u3093",
+    "decu_after_trigger": 6.079,
+    "sim_pnl_sol": 0.408
+   },
+   {
+    "mint": "HyDTgY6b1kwwhY3RFNKvVDDScoDDbB7HVQqAJzRaVcM8",
+    "symbol": "DIT",
+    "decu_after_trigger": 18.447,
+    "sim_pnl_sol": 0.614
+   },
+   {
+    "mint": "3mBG1Dt5TxujDN2XbFVrQPrYVSSMgwkQiYpLPoqKpump",
+    "symbol": "Sow ",
+    "decu_after_trigger": 6.174,
+    "sim_pnl_sol": -0.39
+   },
+   {
+    "mint": "5dmQ6YxFuaVLUvZNVjV9qHLu9BSHMm4qRPRNqhxipump",
+    "symbol": "\u3164\u3164\u3164",
+    "decu_after_trigger": 51.995,
+    "sim_pnl_sol": 1.049
+   },
+   {
+    "mint": "AMP4vkgjsxxHiSvw7FanZLKqZSM6SV33K59aDas1g6n5",
+    "symbol": "TITCOIN",
+    "decu_after_trigger": 3.991,
+    "sim_pnl_sol": -0.281
+   },
+   {
+    "mint": "5bkCkkrSDYoyHTAQbRjj9rDVBHn7eXsSCjqwEttS28x4",
+    "symbol": "lockedinu",
+    "decu_after_trigger": -1.571,
+    "sim_pnl_sol": -0.212
+   },
+   {
+    "mint": "E8HWeiHh9o5Zmdes1SqBrvEWpZweC3AkYrG5BxxgtwUE",
+    "symbol": "PvP",
+    "decu_after_trigger": 11.95,
+    "sim_pnl_sol": 0.755
+   },
+   {
+    "mint": "Z5tYCzCPaVhq7xHQb5zw3WnuEx9yP1n39iGsJvcEtFB",
+    "symbol": "a/autism",
+    "decu_after_trigger": 1.784,
+    "sim_pnl_sol": -0.223
+   },
+   {
+    "mint": "FXxm3vX4ticPWTh55M3VdHgpdnJj23KLPJNiDKzvfqZN",
+    "symbol": "NEWSOM",
+    "decu_after_trigger": 0.44,
+    "sim_pnl_sol": -0.47
+   },
+   {
+    "mint": "FCtfj61W3UEhtK4KVhxwvjvjt7pRmiJB6obAJmpNLE63",
+    "symbol": "curiosity",
+    "decu_after_trigger": 15.592,
+    "sim_pnl_sol": 0.281
+   },
+   {
+    "mint": "GPsTxEyneSE2U8uErGE6HyYdxsbMXfRku7X2pGMwQJEQ",
+    "symbol": "Link",
+    "decu_after_trigger": -0.002,
+    "sim_pnl_sol": -0.34
+   },
+   {
+    "mint": "5aR9zuVBT4TfFMMGNrNd5pTVzukhyVrwWYDp32ivBPfv",
+    "symbol": "DOG",
+    "decu_after_trigger": 11.805,
+    "sim_pnl_sol": 2.106
+   },
+   {
+    "mint": "62iaaUYP3ZPfam8Qs2XMFn5ZYajYfzguAgiyMzRNbKzC",
+    "symbol": "PAIRS",
+    "decu_after_trigger": 7.44,
+    "sim_pnl_sol": 0.449
+   },
+   {
+    "mint": "BWPcBGQ9HV2J8Go3Qu91pPv8r77P33wSHv69FcEwU1w9",
+    "symbol": "Comrades",
+    "decu_after_trigger": 37.314,
+    "sim_pnl_sol": 0.181
+   }
+  ]
+ }
+}

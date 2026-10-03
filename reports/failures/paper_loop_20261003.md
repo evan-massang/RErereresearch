@@ -125,3 +125,16 @@ No idea has yet earned a forward paper test. Across 23 tests (H1–H8, the good-
 - rules that look positive depend on a few runners and collapse out of sample.
 
 The one persistent edge is a skilled human's selection: Decu, +10.7 SOL on Oct 2, and +0.27 SOL per simulated trade on their candidate picks. With 15 recorded picks it cannot be modelled. The recorder keeps collecting their trades so an imitation model can be tested once a few hundred picks exist.
+
+## Iteration 11: can imitating Decu work at all? (oracle test)
+
+**Method.** `scripts/research/decu_oracle.py`. Take all 124 of Decu's curve buys over Oct 1–3. A bot that knew every pick enters 1 s or 3 s after Decu's first buy, with exact curve fills, 0.5 SOL size and 1.25% fee per side. It exits with take-profit/stop-loss pairs from 20/10% to 200/40% (maximum 10 min), or 1 s after Decu's own last sell.
+
+**Result: FAIL even as an oracle** (`research/observations/evidence_decu_oracle_2026-10-03.json`).
+- At 1 s and a 0.001 SOL tip, every exit loses; the best is −0.006 SOL per trade (PF 0.85).
+- Following Decu out (selling 1 s after they sell) loses −0.17 SOL per trade.
+- At 3 s everything is worse.
+
+**Correction to an earlier finding.** In the choice-set study the simulated bot entered at the trigger, *before* Decu, in 12 of 15 picks, and so profited from Decu's own 3–5 SOL buys. On the 3 picks where Decu bought first, the bot lost all 3 (−1.02 SOL). The "+0.27 SOL per trade on Decu's picks" finding is marked **weakened**.
+
+Decu's edge is being first: selecting before the crowd and selling into it. A copier, or a model that imitates their choices, arrives after that flow. An imitation model therefore cannot pass the bar, and this thread is closed.
