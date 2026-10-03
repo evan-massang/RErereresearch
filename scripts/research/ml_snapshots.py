@@ -21,6 +21,7 @@ from pipeline import config  # noqa: E402
 
 AGES = (5, 10, 20, 30, 60, 120, 300)
 HORIZONS = (30, 120, 600)
+EXITS = ((0.2, 0.1), (0.3, 0.15), (0.5, 0.2), (1.0, 0.3))
 SIZE, FEE, FIXED, LATENCY = 0.5, 0.0125, 0.01, 1.0
 
 
@@ -108,6 +109,24 @@ def main() -> pd.DataFrame:
                         e = np.searchsorted(T, te, side="right")
                     e = max(e, k, 1)
                     f[f"pnl_{H}"] = round_trip(vs0, vt0, vs[e - 1], vt[e - 1])
+                # take-profit / stop-loss exits within MAXHOLD (decision on a print, fill at the curve state
+                # LATENCY later); stored WITHOUT the fixed per-tx fee so it can be priced separately: pnl = g - 2*tip
+                p0 = vs0 / vt0
+                for maxhold in (120, 300):
+                    te = t + LATENCY + maxhold
+                    lim = np.searchsorted(T, min(te, tc) if tc is not None else te, side="left" if tc is not None and tc <= te else "right")
+                    lim = max(lim, k)
+                    px = vs[k:lim] / vt[k:lim]
+                    for tp, sl in EXITS:
+                        hit = np.nonzero((px >= p0 * (1 + tp)) | (px <= p0 * (1 - sl)))[0]
+                        if len(hit):
+                            e = np.searchsorted(T, T[k + hit[0]] + LATENCY, side="right")
+                            if tc is not None:
+                                e = min(e, np.searchsorted(T, tc, side="left"))
+                        else:
+                            e = lim
+                        e = max(e, k, 1)
+                        f[f"g_tp{int(tp * 100)}_sl{int(sl * 100)}_{maxhold}"] = round_trip(vs0, vt0, vs[e - 1], vt[e - 1]) + 2 * FIXED
                 f["migrated"] = tc is not None
                 rows.append(f)
         print("day", day, "rows", len(rows), flush=True)

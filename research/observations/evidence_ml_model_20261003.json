@@ -1,0 +1,212 @@
+[
+ {
+  "target": "pnl_30",
+  "train_n": 166032,
+  "val_n": 55825,
+  "train_base": {
+   "n": 166032,
+   "pnl_sol": -10372.761,
+   "expectancy_sol": -0.0625,
+   "profit_factor": 0.279,
+   "pnl_without_top3": -10440.395
+  },
+  "val_base": {
+   "n": 55825,
+   "pnl_sol": -3600.718,
+   "expectancy_sol": -0.0645,
+   "profit_factor": 0.303,
+   "pnl_without_top3": -3635.507
+  },
+  "q0.99": {
+   "threshold": -0.0093,
+   "train_oof": {
+    "n": 1274,
+    "pnl_sol": -114.013,
+    "expectancy_sol": -0.0895,
+    "profit_factor": 0.557,
+    "pnl_without_top3": -127.651
+   },
+   "validation": {
+    "n": 642,
+    "pnl_sol": -31.702,
+    "expectancy_sol": -0.0494,
+    "profit_factor": 0.736,
+    "pnl_without_top3": -47.463
+   }
+  },
+  "q0.995": {
+   "threshold": 0.0102,
+   "train_oof": {
+    "n": 669,
+    "pnl_sol": -79.392,
+    "expectancy_sol": -0.1187,
+    "profit_factor": 0.465,
+    "pnl_without_top3": -90.0
+   },
+   "validation": {
+    "n": 382,
+    "pnl_sol": -23.504,
+    "expectancy_sol": -0.0615,
+    "profit_factor": 0.68,
+    "pnl_without_top3": -37.101
+   }
+  },
+  "q0.999": {
+   "threshold": 0.0519,
+   "train_oof": {
+    "n": 154,
+    "pnl_sol": -20.433,
+    "expectancy_sol": -0.1327,
+    "profit_factor": 0.481,
+    "pnl_without_top3": -27.965
+   },
+   "validation": {
+    "n": 126,
+    "pnl_sol": -10.477,
+    "expectancy_sol": -0.0832,
+    "profit_factor": 0.619,
+    "pnl_without_top3": -20.612
+   }
+  }
+ },
+ {
+  "target": "pnl_120",
+  "train_n": 166032,
+  "val_n": 55825,
+  "train_base": {
+   "n": 166032,
+   "pnl_sol": -11631.943,
+   "expectancy_sol": -0.0701,
+   "profit_factor": 0.326,
+   "pnl_without_top3": -11731.791
+  },
+  "val_base": {
+   "n": 55825,
+   "pnl_sol": -4132.212,
+   "expectancy_sol": -0.074,
+   "profit_factor": 0.327,
+   "pnl_without_top3": -4274.708
+  },
+  "q0.99": {
+   "threshold": 0.0177,
+   "train_oof": {
+    "n": 1287,
+    "pnl_sol": -93.186,
+    "expectancy_sol": -0.0724,
+    "profit_factor": 0.658,
+    "pnl_without_top3": -159.217
+   },
+   "validation": {
+    "n": 435,
+    "pnl_sol": -47.685,
+    "expectancy_sol": -0.1096,
+    "profit_factor": 0.495,
+    "pnl_without_top3": -62.617
+   }
+  },
+  "q0.995": {
+   "threshold": 0.0483,
+   "train_oof": {
+    "n": 693,
+    "pnl_sol": -88.981,
+    "expectancy_sol": -0.1284,
+    "profit_factor": 0.477,
+    "pnl_without_top3": -106.811
+   },
+   "validation": {
+    "n": 267,
+    "pnl_sol": -40.884,
+    "expectancy_sol": -0.1531,
+    "profit_factor": 0.339,
+    "pnl_without_top3": -49.222
+   }
+  },
+  "q0.999": {
+   "threshold": 0.1392,
+   "train_oof": {
+    "n": 152,
+    "pnl_sol": -13.041,
+    "expectancy_sol": -0.0858,
+    "profit_factor": 0.667,
+    "pnl_without_top3": -29.414
+   },
+   "validation": {
+    "n": 82,
+    "pnl_sol": -15.045,
+    "expectancy_sol": -0.1835,
+    "profit_factor": 0.32,
+    "pnl_without_top3": -19.524
+   }
+  }
+ },
+ {
+  "target": "pnl_600",
+  "train_n": 166032,
+  "val_n": 55825,
+  "train_base": {
+   "n": 166032,
+   "pnl_sol": -12485.339,
+   "expectancy_sol": -0.0752,
+   "profit_factor": 0.356,
+   "pnl_without_top3": -12626.233
+  },
+  "val_base": {
+   "n": 55825,
+   "pnl_sol": -4943.858,
+   "expectancy_sol": -0.0886,
+   "profit_factor": 0.283,
+   "pnl_without_top3": -4994.5
+  },
+  "q0.99": {
+   "threshold": 0.0474,
+   "train_oof": {
+    "n": 1129,
+    "pnl_sol": -123.147,
+    "expectancy_sol": -0.1091,
+    "profit_factor": 0.567,
+    "pnl_without_top3": -173.953
+   },
+   "validation": {
+    "n": 810,
+    "pnl_sol": -103.05,
+    "expectancy_sol": -0.1272,
+    "profit_factor": 0.472,
+    "pnl_without_top3": -132.091
+   }
+  },
+  "q0.995": {
+   "threshold": 0.1017,
+   "train_oof": {
+    "n": 603,
+    "pnl_sol": -69.339,
+    "expectancy_sol": -0.115,
+    "profit_factor": 0.581,
+    "pnl_without_top3": -113.403
+   },
+   "validation": {
+    "n": 433,
+    "pnl_sol": -78.605,
+    "expectancy_sol": -0.1815,
+    "profit_factor": 0.306,
+    "pnl_without_top3": -89.452
+   }
+  },
+  "q0.999": {
+   "threshold": 0.2522,
+   "train_oof": {
+    "n": 134,
+    "pnl_sol": -33.801,
+    "expectancy_sol": -0.2522,
+    "profit_factor": 0.164,
+    "pnl_without_top3": -37.416
+   },
+   "validation": {
+    "n": 89,
+    "pnl_sol": -21.444,
+    "expectancy_sol": -0.2409,
+    "profit_factor": 0.238,
+    "pnl_without_top3": -26.507
+   }
+  }
+ }
+]
