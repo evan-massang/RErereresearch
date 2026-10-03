@@ -84,3 +84,17 @@ Decu's train picks are launches promoted by small dev accounts whose post points
 ## Iteration 7: the same models with a 0.25 s delay instead of 1 s (paid RPC + Jito speed)
 
 **Result: FAIL** (`research/observations/evidence_ml_exits_lat025_20261003.json`). Average net PnL by age barely moves. All 24 setups lose on train out-of-fold, at −0.02 to −0.06 SOL per trade. Faster infrastructure does not by itself open an edge in these features. Note that our own receive time already lags the chain, so "0.25 s" is measured from when *we* saw the trade.
+
+## Iteration 8: hour-scale trading of migrated tokens (no speed race)
+
+**Method.** `scripts/research/fetch_pool_ohlcv.py` fetched 15-minute USD OHLCV from GeckoTerminal for every recorded migration (1,124 pools, so no survivorship bias). `scripts/research/post_migration_hours.py` then makes decisions 1–24 h after migration using only completed bars, enters at the next bar's open, holds 4 h or 24 h, and charges 2% per side.
+
+**Train:** 172 tokens that migrated on Oct 1 before the holdout.
+
+**Result: FAIL on train** (`research/observations/evidence_post_migration_hours_train_20261003.txt`).
+- Every decision time and hold length has a negative mean, with only 14–23% of trades up.
+- **Momentum** (4 h return above +50%), **near the all-time high**, and **market cap above $1M**:
+  - over 4 h: medians of −2% to +2% and 42–55% up, but means of −13% to −16% because of collapses;
+  - over 24 h: medians of −61% to −99%.
+- **Deep dips and high volume:** worse still.
+- Tokens that keep running after migration are usually dumped within the day.
