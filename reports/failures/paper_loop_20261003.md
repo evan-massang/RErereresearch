@@ -109,3 +109,19 @@ Decu's train picks are launches promoted by small dev accounts whose post points
 - 13% doubled at some point and 5% reached 5×.
 
 The rest are paired with other tokens (BONK, tokenized stocks and others). The venue is too thin to give the 50 trades the bar needs, or the liquidity to trade in it. Recording continues at negligible cost.
+
+## Iteration 10: snapshot models plus market-regime features
+
+**Method.** `scripts/research/ml_regime.py` adds launches in the last 10 and 60 min, completions in the last 60 min, completion rate and market-wide trades per minute to the iteration-6 models.
+
+**Result: FAIL** (`research/observations/evidence_ml_regime_20261003.json`).
+- All 24 setups lose on train out-of-fold, at −0.025 to −0.06 SOL per trade.
+- Isolated positive validation results (for example 49 trades at +0.07) come from setups that lost on train, so they were not frozen.
+
+## Where the loop stands after 10 iterations
+
+No idea has yet earned a forward paper test. Across 23 tests (H1–H8, the good-dev hold, 4 follow-ups and these 10 iterations), the pattern is consistent:
+- signals on public on-chain or X data are priced in before a 0.25–1 s trader can act;
+- rules that look positive depend on a few runners and collapse out of sample.
+
+The one persistent edge is a skilled human's selection: Decu, +10.7 SOL on Oct 2, and +0.27 SOL per simulated trade on their candidate picks. With 15 recorded picks it cannot be modelled. The recorder keeps collecting their trades so an imitation model can be tested once a few hundred picks exist.
