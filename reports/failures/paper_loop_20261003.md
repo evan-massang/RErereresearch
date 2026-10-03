@@ -60,3 +60,23 @@ Decu's train picks are launches promoted by small dev accounts whose post points
 - None of the 127 migrated.
 - Neither the referenced post's views, views per minute, 60 s gain, age nor author follower count changes 2×-peak rates.
 - The market was cold over this window: 0.79% of all launches migrated.
+
+## Iteration 5: gradient-boosted model of net PnL from point-in-time snapshots
+
+**Method.** `scripts/research/ml_snapshots.py` takes 275k snapshots: every token at ages 5, 10, 20, 30, 60, 120 and 300 s, with 24 tape features.
+- **Label:** an exact constant-product round trip of 0.5 SOL. It includes 1.25% protocol fee per side, 1 s latency and 0.01 SOL per transaction.
+- **Split:** train on Oct 1 (before the holdout) plus Oct 2; validate on Oct 3 00:00–06:00 (`ml_model.py`).
+
+**Result: FAIL** (`research/observations/evidence_ml_model_20261003.json`).
+- **Regression on net PnL:** the top predicted 0.1–1% lose more than the base, on train out-of-fold and on validation alike.
+- **Win-probability classifier:** it ranks well (AUC 0.84–0.86 on validation), mostly by spotting tokens that will never move. Its top 1% at 120 s is +0.018 SOL per trade before fixed costs and −0.015 after.
+
+## Iteration 6: win-probability model with take-profit / stop-loss exits, priced at a 0.001 SOL tip
+
+**Exits:** take-profit/stop-loss of 20/10, 30/15, 50/20 and 100/30%, each with a 120 s or 300 s maximum hold (`ml_exits.py`).
+
+**Tip level:** an on-chain sample of pump.fun trades (only 7 transactions returned by the public RPC) paid a median of about 0.0001 SOL in fee plus Jito tip. That makes 0.001 SOL per transaction a conservative main case (`research/observations/evidence_trade_fees_sample_20261003.json`).
+
+**Result: FAIL** (`research/observations/evidence_ml_exits_20261003.json`).
+- All 24 setups (8 exits × 3 cutoffs) lose on train out-of-fold, at −0.02 to −0.06 SOL per trade.
+- The few setups slightly positive on validation (n = 20–191) lost on train, so they are noise and were not frozen.

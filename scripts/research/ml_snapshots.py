@@ -22,7 +22,9 @@ from pipeline import config  # noqa: E402
 AGES = (5, 10, 20, 30, 60, 120, 300)
 HORIZONS = (30, 120, 600)
 EXITS = ((0.2, 0.1), (0.3, 0.15), (0.5, 0.2), (1.0, 0.3))
-SIZE, FEE, FIXED, LATENCY = 0.5, 0.0125, 0.01, 1.0
+import os
+SIZE, FEE, FIXED = 0.5, 0.0125, 0.01
+LATENCY = float(os.environ.get("RR_LATENCY", "1.0"))
 
 
 def round_trip(vs0, vt0, vs1, vt1) -> float:
@@ -135,6 +137,7 @@ def main() -> pd.DataFrame:
 
 if __name__ == "__main__":
     d = main()
-    d.to_parquet(config.path("data") / "processed" / "ml_snapshots.parquet")
+    suffix = "" if LATENCY == 1.0 else f"_lat{LATENCY:g}"
+    d.to_parquet(config.path("data") / "processed" / f"ml_snapshots{suffix}.parquet")
     print(d.shape)
     print(d.groupby("age")[[f"pnl_{h}" for h in HORIZONS]].mean().round(4))
