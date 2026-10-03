@@ -1,0 +1,73 @@
+n=1646 base migration 0.0079 share peak>=2x 0.034
+ref_views0
+  q0 n=  25 [3, 455] migr=0.000 peak2x=0.080 med_last30=1.0
+  q1 n=  25 [457, 7244] migr=0.000 peak2x=0.000 med_last30=0.949
+  q2 n=  25 [7244, 1.023e+04] migr=0.000 peak2x=0.000 med_last30=0.832
+  q3 n=  25 [1.023e+04, 3.872e+05] migr=0.000 peak2x=0.000 med_last30=0.856
+  q4 n=  25 [4.216e+05, 1.481e+07] migr=0.000 peak2x=0.040 med_last30=0.996
+ref_views_per_min0
+  q0 n=  25 [0.0004317, 12.04] migr=0.000 peak2x=0.040 med_last30=0.957
+  q1 n=  25 [13.23, 82.81] migr=0.000 peak2x=0.040 med_last30=0.997
+  q2 n=  25 [120.8, 283.5] migr=0.000 peak2x=0.000 med_last30=0.943
+  q3 n=  25 [283.8, 338.5] migr=0.000 peak2x=0.040 med_last30=0.847
+  q4 n=  25 [338.9, 2.219e+04] migr=0.000 peak2x=0.000 med_last30=0.993
+ref_views_gain_per_min
+  q0 n=  25 [0, 17.1] migr=0.000 peak2x=0.000 med_last30=0.958
+  q1 n=  24 [17.15, 73.88] migr=0.000 peak2x=0.083 med_last30=0.911
+  q2 n=  24 [73.92, 136.6] migr=0.000 peak2x=0.042 med_last30=1.0
+  q3 n=  24 [139.1, 247.2] migr=0.000 peak2x=0.000 med_last30=0.998
+  q4 n=  25 [247.2, 9281] migr=0.000 peak2x=0.000 med_last30=0.989
+ref_age_min
+  q0 n=  27 [0.6605, 13.12] migr=0.000 peak2x=0.074 med_last30=1.0
+  q1 n=  27 [13.19, 24.37] migr=0.000 peak2x=0.000 med_last30=0.915
+  q2 n=  26 [24.37, 329] migr=0.000 peak2x=0.000 med_last30=0.969
+  q3 n=  27 [389.9, 3793] migr=0.000 peak2x=0.037 med_last30=0.92
+  q4 n=  27 [3961, 2.513e+06] migr=0.000 peak2x=0.000 med_last30=0.998
+ref_followers
+  q0 n=  27 [0, 3167] migr=0.000 peak2x=0.074 med_last30=0.998
+  q1 n=  27 [4241, 1.827e+04] migr=0.000 peak2x=0.037 med_last30=0.903
+  q2 n=  26 [2.033e+04, 1.701e+05] migr=0.000 peak2x=0.000 med_last30=0.933
+  q3 n=  27 [1.701e+05, 4.193e+06] migr=0.000 peak2x=0.000 med_last30=0.942
+  q4 n=  27 [4.193e+06, 2.417e+08] migr=0.000 peak2x=0.000 med_last30=1.0
+views0
+  q0 n= 267 [1, 4] migr=0.004 peak2x=0.022 med_last30=0.948
+  q1 n= 266 [4, 16] migr=0.007 peak2x=0.023 med_last30=0.947
+  q2 n= 267 [16, 131] migr=0.011 peak2x=0.037 med_last30=0.997
+  q3 n= 266 [135, 1865] migr=0.004 peak2x=0.015 med_last30=0.993
+  q4 n= 267 [1874, 1.834e+07] migr=0.004 peak2x=0.052 med_last30=0.999
+views_per_min0
+  q0 n= 267 [0.003113, 2.29] migr=0.007 peak2x=0.030 med_last30=0.983
+  q1 n= 266 [2.306, 6.454] migr=0.004 peak2x=0.030 med_last30=0.962
+  q2 n= 267 [6.456, 17.84] migr=0.011 peak2x=0.037 med_last30=0.992
+  q3 n= 266 [17.95, 62.12] migr=0.004 peak2x=0.023 med_last30=0.987
+  q4 n= 267 [62.27, 1.922e+05] migr=0.004 peak2x=0.030 med_last30=0.999
+views_gain_60s
+  q0 n= 260 [0, 2.01] migr=0.000 peak2x=0.035 med_last30=0.998
+  q1 n= 259 [2.01, 6.053] migr=0.004 peak2x=0.019 med_last30=0.956
+  q2 n= 259 [6.055, 16.09] migr=0.008 peak2x=0.023 med_last30=0.955
+  q3 n= 259 [16.1, 65.32] migr=0.015 peak2x=0.046 med_last30=0.992
+  q4 n= 259 [65.55, 1.058e+05] migr=0.004 peak2x=0.031 med_last30=0.997
+likes_gain_60s
+  q0 n= 320 [-1, 0] migr=0.009 peak2x=0.044 med_last30=0.914
+  q1 n= 320 [0, 0] migr=0.016 peak2x=0.025 med_last30=0.962
+  q2 n= 320 [0, 0] migr=0.009 peak2x=0.044 med_last30=0.998
+  q3 n= 320 [0, 1] migr=0.000 peak2x=0.034 med_last30=0.992
+  q4 n= 320 [1, 218] migr=0.006 peak2x=0.028 med_last30=0.974
+followers
+  q0 n= 330 [0, 73] migr=0.000 peak2x=0.027 med_last30=0.968
+  q1 n= 329 [73, 286] migr=0.009 peak2x=0.021 med_last30=0.957
+  q2 n= 329 [298, 1568] migr=0.009 peak2x=0.049 med_last30=0.926
+  q3 n= 329 [1568, 7585] migr=0.018 peak2x=0.030 med_last30=0.922
+  q4 n= 329 [8041, 2.417e+08] migr=0.003 peak2x=0.043 med_last30=0.999
+post_age_min
+  q0 n= 330 [0.01365, 0.3474] migr=0.015 peak2x=0.052 med_last30=0.872
+  q1 n= 329 [0.348, 0.9665] migr=0.006 peak2x=0.030 med_last30=0.977
+  q2 n= 329 [0.9739, 3.197] migr=0.006 peak2x=0.015 med_last30=0.999
+  q3 n= 329 [3.212, 32.17] migr=0.006 peak2x=0.021 med_last30=0.962
+  q4 n= 329 [32.24, 7.869e+06] migr=0.006 peak2x=0.052 med_last30=0.999
+n_trades_before_s1
+  q0 n= 326 [0, 0] migr=0.000 peak2x=0.003 med_last30=0.997
+  q1 n= 325 [1, 2] migr=0.000 peak2x=0.006 med_last30=1.0
+  q2 n= 326 [2, 8] migr=0.000 peak2x=0.012 med_last30=1.0
+  q3 n= 325 [8, 38] migr=0.000 peak2x=0.028 med_last30=0.989
+  q4 n= 326 [38, 515] migr=0.040 peak2x=0.123 med_last30=0.771

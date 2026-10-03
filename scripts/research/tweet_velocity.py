@@ -45,8 +45,11 @@ def snaps() -> pd.DataFrame:
 
 def build() -> pd.DataFrame:
     s = snaps()
-    s0 = s[s.snap == 0].set_index("mint")
-    s1 = s[s.snap == 1].set_index("mint")
+    s["snap"] = s.snap.astype(str)
+    refs = s[s.snap.isin(["ref0", "ref1"])].sort_values("recv").drop_duplicates(["mint", "snap", "status"])
+    s = s[s.snap.isin(["0", "1"])].drop_duplicates(["mint", "snap"])
+    s0 = s[s.snap == "0"].set_index("mint")
+    s1 = s[s.snap == "1"].set_index("mint")
     d = s0[["launch_recv", "recv", "status", "handle", "http", "created_timestamp", "views", "likes", "retweets",
             "replies", "quotes", "bookmarks", "followers", "text"]].copy()
     d.columns = ["launch_recv", "snap0_t", "status", "handle", "http", "post_ts", "views0", "likes0", "rts0", "replies0",
@@ -58,6 +61,21 @@ def build() -> pd.DataFrame:
     d["views_per_min0"] = d.views0 / d.post_age_min.clip(lower=0.25)
     d["views_gain_60s"] = (d.views1 - d.views0) / ((d.snap1_t - d.snap0_t) / 60).clip(lower=0.25)
     d["likes_gain_60s"] = d.likes1 - d.likes0
+    # the referenced (quoted / linked) post with the most views at ref0; its views velocity and 60 s gain
+    r0 = refs[(refs.snap == "ref0") & (refs.http == 200)].copy()
+    if len(r0):
+        r0["ref_age_min"] = (r0.recv - r0.created_timestamp) / 60
+        r0 = r0.sort_values("views", ascending=False).drop_duplicates("mint").set_index("mint")
+        r1 = refs[refs.snap == "ref1"].set_index(["mint", "status"])
+        d["ref_views0"] = r0.views.reindex(d.index)
+        d["ref_age_min"] = r0.ref_age_min.reindex(d.index)
+        d["ref_followers"] = r0.followers.reindex(d.index)
+        d["ref_views_per_min0"] = d.ref_views0 / d.ref_age_min.clip(lower=0.5)
+        v1 = {m: r1.views.get((m, st)) for m, st in r0.status.items()}
+        t1 = {m: r1.recv.get((m, st)) for m, st in r0.status.items()}
+        d["ref_views1"] = pd.Series(v1).reindex(d.index)
+        d["ref_t1"] = pd.Series(t1).reindex(d.index)
+        d["ref_views_gain_per_min"] = (d.ref_views1 - d.ref_views0) / ((d.ref_t1 - d.snap0_t) / 60).clip(lower=0.25)
     d = d.sort_values("launch_recv")
     d["rank_for_post"] = d.groupby("status").cumcount() + 1
     con = duckdb.connect(str(config.path("data") / "market.duckdb"), read_only=True)
@@ -89,7 +107,8 @@ def describe(d: pd.DataFrame, a: float, b: float) -> dict:
     base = float(g.migrated.mean())
     res = {"n": len(g), "base_migration": round(base, 4), "share_peak2x_s1": round(float((g.peak30_s1 >= 2).mean()), 4)}
     qs = {}
-    for col in ("views0", "views_per_min0", "views_gain_60s", "likes_gain_60s", "followers", "post_age_min",
+    for col in ("ref_views0", "ref_views_per_min0", "ref_views_gain_per_min", "ref_age_min", "ref_followers",
+                "views0", "views_per_min0", "views_gain_60s", "likes_gain_60s", "followers", "post_age_min",
                 "n_trades_before_s1"):
         x = g.dropna(subset=[col])
         if len(x) < 50:

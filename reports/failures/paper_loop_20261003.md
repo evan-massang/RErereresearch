@@ -1,4 +1,4 @@
-# Research loop, iterations 1–2 (2026-10-03): both failed before reaching paper trading
+# Research loop (2026-10-03): iterations that failed before reaching paper trading
 
 The bar (agreed 2026-10-03, enforced by `pipeline/paper.py`): at least 50 forward paper trades, net profit after costs, profit factor above 1.2, and still profitable without the 3 best trades.
 
@@ -42,3 +42,21 @@ Good-dev launches inside Decu's candidate set: only 7, at −0.13 SOL per trade.
 ## What the misses point to
 
 Decu's train picks are launches promoted by small dev accounts whose post points to something trending at that moment: OpenAI's "Todd" toad, a "Dead Internet Theory" post going viral, Phantom's Halloween post, a protest starting that day. Whether the referenced post is *actually spreading right now* is not in any historical data. So iteration 3 collects it live: `pipeline/recorder.py` now snapshots the linked post's views, likes and reposts at launch and again about 60 s later (`tweet_snaps` feed).
+
+## Iteration 3: live engagement of the launch's own X post (2026-10-03)
+
+**Method.** The recorder's `tweet_snaps` feed records each linked post's counters about 1 s after launch and again about 60 s later (`scripts/research/tweet_velocity.py`). Train: 1,169 launches between 00:40 and 03:30 UTC, of which only 16 migrated.
+
+**Result: FAIL on train** (`research/observations/evidence_tweet_velocity_train_20261003.txt`).
+- Views at launch, views per minute and the 60 s views gain do not order migration or 2× peaks.
+- The top fifth by likes gained in the first 60 s migrated 3.1% of the time vs 1.4% overall: too weak and too few to trade.
+- Only on-chain activity in the first minute separates outcomes, and that was already tested in H1 and H2.
+
+## Iteration 4: live engagement of the post the launch's post quotes or links
+
+**Method.** The recorder now also snapshots the referenced post. Train: launches between 04:33 and 07:25 UTC; 127 had a referenced post.
+
+**Result: FAIL on train** (`research/observations/evidence_ref_post_train_20261003.txt`).
+- None of the 127 migrated.
+- Neither the referenced post's views, views per minute, 60 s gain, age nor author follower count changes 2×-peak rates.
+- The market was cold over this window: 0.79% of all launches migrated.
