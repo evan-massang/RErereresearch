@@ -1,0 +1,518 @@
+{
+ "note": "train only; post-hoc robustness slices of the 32-config grid, not selections",
+ "slices": {
+  "sym_mc>=27 (standard curve state)|mc150|largest|g_tp30_sl15_300": {
+   "n": 616,
+   "total": -24.072,
+   "exp": -0.0391,
+   "pf": 0.217,
+   "wo3": -25.006,
+   "win": 0.083
+  },
+  "sym_mc>=27 (standard curve state)|mc150|largest|g_tp50_sl20_300": {
+   "n": 616,
+   "total": -25.434,
+   "exp": -0.0413,
+   "pf": 0.26,
+   "wo3": -27.335,
+   "win": 0.07
+  },
+  "sym_mc>=27 (standard curve state)|mc150|largest|g_tp100_sl30_1800": {
+   "n": 616,
+   "total": -32.523,
+   "exp": -0.0528,
+   "pf": 0.234,
+   "wo3": -34.441,
+   "win": 0.042
+  },
+  "sym_mc>=27 (standard curve state)|mc150|largest|g_tp200_sl50_1800": {
+   "n": 616,
+   "total": -34.7,
+   "exp": -0.0563,
+   "pf": 0.296,
+   "wo3": -38.576,
+   "win": 0.036
+  },
+  "sym_mc>=27 (standard curve state)|mc150|recent|g_tp30_sl15_300": {
+   "n": 568,
+   "total": -21.529,
+   "exp": -0.0379,
+   "pf": 0.257,
+   "wo3": -22.765,
+   "win": 0.081
+  },
+  "sym_mc>=27 (standard curve state)|mc150|recent|g_tp50_sl20_300": {
+   "n": 568,
+   "total": -21.58,
+   "exp": -0.038,
+   "pf": 0.316,
+   "wo3": -23.345,
+   "win": 0.076
+  },
+  "sym_mc>=27 (standard curve state)|mc150|recent|g_tp100_sl30_1800": {
+   "n": 568,
+   "total": -27.341,
+   "exp": -0.0481,
+   "pf": 0.288,
+   "wo3": -29.494,
+   "win": 0.046
+  },
+  "sym_mc>=27 (standard curve state)|mc150|recent|g_tp200_sl50_1800": {
+   "n": 568,
+   "total": -32.082,
+   "exp": -0.0565,
+   "pf": 0.283,
+   "wo3": -35.568,
+   "win": 0.033
+  },
+  "sym_mc>=27 (standard curve state)|mc250|largest|g_tp30_sl15_300": {
+   "n": 355,
+   "total": -8.795,
+   "exp": -0.0248,
+   "pf": 0.45,
+   "wo3": -10.318,
+   "win": 0.132
+  },
+  "sym_mc>=27 (standard curve state)|mc250|largest|g_tp50_sl20_300": {
+   "n": 355,
+   "total": -10.804,
+   "exp": -0.0304,
+   "pf": 0.435,
+   "wo3": -12.43,
+   "win": 0.115
+  },
+  "sym_mc>=27 (standard curve state)|mc250|largest|g_tp100_sl30_1800": {
+   "n": 355,
+   "total": -13.008,
+   "exp": -0.0366,
+   "pf": 0.472,
+   "wo3": -15.058,
+   "win": 0.082
+  },
+  "sym_mc>=27 (standard curve state)|mc250|largest|g_tp200_sl50_1800": {
+   "n": 355,
+   "total": -15.161,
+   "exp": -0.0427,
+   "pf": 0.486,
+   "wo3": -18.755,
+   "win": 0.07
+  },
+  "sym_mc>=27 (standard curve state)|mc250|recent|g_tp30_sl15_300": {
+   "n": 323,
+   "total": -8.161,
+   "exp": -0.0253,
+   "pf": 0.481,
+   "wo3": -9.702,
+   "win": 0.149
+  },
+  "sym_mc>=27 (standard curve state)|mc250|recent|g_tp50_sl20_300": {
+   "n": 323,
+   "total": -8.889,
+   "exp": -0.0275,
+   "pf": 0.507,
+   "wo3": -10.533,
+   "win": 0.136
+  },
+  "sym_mc>=27 (standard curve state)|mc250|recent|g_tp100_sl30_1800": {
+   "n": 323,
+   "total": -8.966,
+   "exp": -0.0278,
+   "pf": 0.607,
+   "wo3": -11.072,
+   "win": 0.099
+  },
+  "sym_mc>=27 (standard curve state)|mc250|recent|g_tp200_sl50_1800": {
+   "n": 323,
+   "total": -12.605,
+   "exp": -0.039,
+   "pf": 0.558,
+   "wo3": -16.002,
+   "win": 0.074
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|largest|g_tp30_sl15_300": {
+   "n": 1363,
+   "total": -49.703,
+   "exp": -0.0365,
+   "pf": 0.181,
+   "wo3": -51.358,
+   "win": 0.054
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|largest|g_tp50_sl20_300": {
+   "n": 1363,
+   "total": -51.468,
+   "exp": -0.0378,
+   "pf": 0.202,
+   "wo3": -53.265,
+   "win": 0.045
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|largest|g_tp100_sl30_1800": {
+   "n": 1363,
+   "total": -58.202,
+   "exp": -0.0427,
+   "pf": 0.236,
+   "wo3": -60.431,
+   "win": 0.035
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|largest|g_tp200_sl50_1800": {
+   "n": 1363,
+   "total": -59.937,
+   "exp": -0.044,
+   "pf": 0.29,
+   "wo3": -64.43,
+   "win": 0.029
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|recent|g_tp30_sl15_300": {
+   "n": 1116,
+   "total": -40.483,
+   "exp": -0.0363,
+   "pf": 0.245,
+   "wo3": -42.026,
+   "win": 0.078
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|recent|g_tp50_sl20_300": {
+   "n": 1116,
+   "total": -41.983,
+   "exp": -0.0376,
+   "pf": 0.27,
+   "wo3": -43.56,
+   "win": 0.065
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|recent|g_tp100_sl30_1800": {
+   "n": 1116,
+   "total": -46.418,
+   "exp": -0.0416,
+   "pf": 0.326,
+   "wo3": -48.988,
+   "win": 0.047
+  },
+  "sym_mc>=27 (standard curve state)|x3_5m|recent|g_tp200_sl50_1800": {
+   "n": 1116,
+   "total": -48.925,
+   "exp": -0.0438,
+   "pf": 0.365,
+   "wo3": -52.935,
+   "win": 0.038
+  },
+  "sym_mc>=27 (standard curve state)|migr|largest|g_tp30_sl15_300": {
+   "n": 189,
+   "total": -6.724,
+   "exp": -0.0356,
+   "pf": 0.302,
+   "wo3": -7.347,
+   "win": 0.132
+  },
+  "sym_mc>=27 (standard curve state)|migr|largest|g_tp50_sl20_300": {
+   "n": 189,
+   "total": -6.417,
+   "exp": -0.034,
+   "pf": 0.396,
+   "wo3": -7.649,
+   "win": 0.122
+  },
+  "sym_mc>=27 (standard curve state)|migr|largest|g_tp100_sl30_1800": {
+   "n": 189,
+   "total": -9.426,
+   "exp": -0.0499,
+   "pf": 0.331,
+   "wo3": -11.218,
+   "win": 0.079
+  },
+  "sym_mc>=27 (standard curve state)|migr|largest|g_tp200_sl50_1800": {
+   "n": 189,
+   "total": -11.41,
+   "exp": -0.0604,
+   "pf": 0.322,
+   "wo3": -14.304,
+   "win": 0.074
+  },
+  "sym_mc>=27 (standard curve state)|migr|recent|g_tp30_sl15_300": {
+   "n": 182,
+   "total": -5.378,
+   "exp": -0.0296,
+   "pf": 0.395,
+   "wo3": -6.24,
+   "win": 0.143
+  },
+  "sym_mc>=27 (standard curve state)|migr|recent|g_tp50_sl20_300": {
+   "n": 182,
+   "total": -6.348,
+   "exp": -0.0349,
+   "pf": 0.361,
+   "wo3": -7.292,
+   "win": 0.121
+  },
+  "sym_mc>=27 (standard curve state)|migr|recent|g_tp100_sl30_1800": {
+   "n": 182,
+   "total": -8.349,
+   "exp": -0.0459,
+   "pf": 0.363,
+   "wo3": -9.888,
+   "win": 0.071
+  },
+  "sym_mc>=27 (standard curve state)|migr|recent|g_tp200_sl50_1800": {
+   "n": 182,
+   "total": -10.89,
+   "exp": -0.0598,
+   "pf": 0.327,
+   "wo3": -13.784,
+   "win": 0.055
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|largest|g_tp30_sl15_300": {
+   "n": 227,
+   "total": -13.151,
+   "exp": -0.0579,
+   "pf": 0.31,
+   "wo3": -14.085,
+   "win": 0.181
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|largest|g_tp50_sl20_300": {
+   "n": 227,
+   "total": -14.372,
+   "exp": -0.0633,
+   "pf": 0.36,
+   "wo3": -16.273,
+   "win": 0.154
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|largest|g_tp100_sl30_1800": {
+   "n": 227,
+   "total": -19.88,
+   "exp": -0.0876,
+   "pf": 0.309,
+   "wo3": -21.798,
+   "win": 0.079
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|largest|g_tp200_sl50_1800": {
+   "n": 227,
+   "total": -23.053,
+   "exp": -0.1016,
+   "pf": 0.351,
+   "wo3": -26.929,
+   "win": 0.062
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|recent|g_tp30_sl15_300": {
+   "n": 299,
+   "total": -13.908,
+   "exp": -0.0465,
+   "pf": 0.324,
+   "wo3": -15.144,
+   "win": 0.124
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|recent|g_tp50_sl20_300": {
+   "n": 299,
+   "total": -14.149,
+   "exp": -0.0473,
+   "pf": 0.385,
+   "wo3": -15.914,
+   "win": 0.117
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|recent|g_tp100_sl30_1800": {
+   "n": 299,
+   "total": -19.022,
+   "exp": -0.0636,
+   "pf": 0.341,
+   "wo3": -21.045,
+   "win": 0.07
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc150|recent|g_tp200_sl50_1800": {
+   "n": 299,
+   "total": -24.498,
+   "exp": -0.0819,
+   "pf": 0.3,
+   "wo3": -27.984,
+   "win": 0.047
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|largest|g_tp30_sl15_300": {
+   "n": 132,
+   "total": -2.962,
+   "exp": -0.0224,
+   "pf": 0.681,
+   "wo3": -4.485,
+   "win": 0.303
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|largest|g_tp50_sl20_300": {
+   "n": 132,
+   "total": -4.522,
+   "exp": -0.0343,
+   "pf": 0.63,
+   "wo3": -6.148,
+   "win": 0.273
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|largest|g_tp100_sl30_1800": {
+   "n": 132,
+   "total": -6.076,
+   "exp": -0.046,
+   "pf": 0.637,
+   "wo3": -8.126,
+   "win": 0.174
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|largest|g_tp200_sl50_1800": {
+   "n": 132,
+   "total": -9.468,
+   "exp": -0.0717,
+   "pf": 0.56,
+   "wo3": -12.957,
+   "win": 0.144
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|recent|g_tp30_sl15_300": {
+   "n": 174,
+   "total": -4.269,
+   "exp": -0.0245,
+   "pf": 0.612,
+   "wo3": -5.81,
+   "win": 0.236
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|recent|g_tp50_sl20_300": {
+   "n": 174,
+   "total": -4.879,
+   "exp": -0.028,
+   "pf": 0.63,
+   "wo3": -6.523,
+   "win": 0.218
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|recent|g_tp100_sl30_1800": {
+   "n": 174,
+   "total": -5.115,
+   "exp": -0.0294,
+   "pf": 0.705,
+   "wo3": -7.164,
+   "win": 0.161
+  },
+  "sym_mc>=27 and sym traded within 30 s|mc250|recent|g_tp200_sl50_1800": {
+   "n": 174,
+   "total": -10.158,
+   "exp": -0.0584,
+   "pf": 0.557,
+   "wo3": -13.459,
+   "win": 0.115
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|largest|g_tp30_sl15_300": {
+   "n": 372,
+   "total": -21.541,
+   "exp": -0.0579,
+   "pf": 0.303,
+   "wo3": -23.196,
+   "win": 0.153
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|largest|g_tp50_sl20_300": {
+   "n": 372,
+   "total": -23.425,
+   "exp": -0.063,
+   "pf": 0.319,
+   "wo3": -25.222,
+   "win": 0.126
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|largest|g_tp100_sl30_1800": {
+   "n": 372,
+   "total": -28.162,
+   "exp": -0.0757,
+   "pf": 0.35,
+   "wo3": -30.391,
+   "win": 0.089
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|largest|g_tp200_sl50_1800": {
+   "n": 372,
+   "total": -31.343,
+   "exp": -0.0843,
+   "pf": 0.396,
+   "wo3": -35.836,
+   "win": 0.067
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|recent|g_tp30_sl15_300": {
+   "n": 544,
+   "total": -23.082,
+   "exp": -0.0424,
+   "pf": 0.352,
+   "wo3": -24.626,
+   "win": 0.14
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|recent|g_tp50_sl20_300": {
+   "n": 544,
+   "total": -24.665,
+   "exp": -0.0453,
+   "pf": 0.372,
+   "wo3": -26.242,
+   "win": 0.114
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|recent|g_tp100_sl30_1800": {
+   "n": 544,
+   "total": -27.708,
+   "exp": -0.0509,
+   "pf": 0.435,
+   "wo3": -30.278,
+   "win": 0.083
+  },
+  "sym_mc>=27 and sym traded within 30 s|x3_5m|recent|g_tp200_sl50_1800": {
+   "n": 544,
+   "total": -31.813,
+   "exp": -0.0585,
+   "pf": 0.448,
+   "wo3": -35.823,
+   "win": 0.061
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|largest|g_tp30_sl15_300": {
+   "n": 71,
+   "total": -3.176,
+   "exp": -0.0447,
+   "pf": 0.465,
+   "wo3": -3.798,
+   "win": 0.338
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|largest|g_tp50_sl20_300": {
+   "n": 71,
+   "total": -2.762,
+   "exp": -0.0389,
+   "pf": 0.601,
+   "wo3": -3.993,
+   "win": 0.31
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|largest|g_tp100_sl30_1800": {
+   "n": 71,
+   "total": -5.661,
+   "exp": -0.0797,
+   "pf": 0.447,
+   "wo3": -7.454,
+   "win": 0.169
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|largest|g_tp200_sl50_1800": {
+   "n": 71,
+   "total": -7.646,
+   "exp": -0.1077,
+   "pf": 0.411,
+   "wo3": -10.54,
+   "win": 0.155
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|recent|g_tp30_sl15_300": {
+   "n": 95,
+   "total": -2.583,
+   "exp": -0.0272,
+   "pf": 0.566,
+   "wo3": -3.444,
+   "win": 0.263
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|recent|g_tp50_sl20_300": {
+   "n": 95,
+   "total": -3.446,
+   "exp": -0.0363,
+   "pf": 0.507,
+   "wo3": -4.39,
+   "win": 0.221
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|recent|g_tp100_sl30_1800": {
+   "n": 95,
+   "total": -5.222,
+   "exp": -0.055,
+   "pf": 0.476,
+   "wo3": -6.761,
+   "win": 0.137
+  },
+  "sym_mc>=27 and sym traded within 30 s|migr|recent|g_tp200_sl50_1800": {
+   "n": 95,
+   "total": -7.718,
+   "exp": -0.0812,
+   "pf": 0.407,
+   "wo3": -10.612,
+   "win": 0.105
+  }
+ },
+ "best_slice_exp": -0.0224
+}
