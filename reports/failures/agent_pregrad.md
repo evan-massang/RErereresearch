@@ -79,3 +79,38 @@ The Telegram lift (B3) may be real for graduation, but on our data it does not t
 - `scripts/research/pregrad_build.py`
 - `scripts/research/pregrad_eval.py`
 - `research/observations/evidence_pregrad_train_20261004.json`
+
+---
+
+## Re-run after the metadata cache was refilled (2026-10-04): still FAIL on train
+
+The cache now holds 63,999 files, up from about 19k. I re-ran the **identical 34 configs**: same code, rules, thresholds, fills and exclusions.
+
+**Coverage (non-Mayhem creates):**
+
+| split | creates | metadata cached | Telegram | ≥2 socials |
+|---|---|---|---|---|
+| train | 18,112 | 17,198 (95.0%) | 641 | 7,791 |
+| validation | 30,864 | 28,177 (91.3%) | 894 | 14,091 |
+
+The 18 A configs do not use metadata. Their results are byte-identical to the first run.
+
+**Train results.** Per-day net is at the 0.001 tip.
+
+| config | n | net @0.001 | PF | without best 3 | net @0.01 | Oct 1 / Oct 2 |
+|---|---|---|---|---|---|---|
+| C, tg, real SOL ≥ 10, stop 30% (previous best) | 60 | −0.03 | 0.997 | −7.93 | −1.11 | +1.17 / −1.20 |
+| C, tg, real SOL ≥ 10, stop 50% | 60 | −0.58 | 0.95 | −8.48 | −1.66 | −0.02 / −0.57 |
+| B, tg, E30, 3600 s | 21 | +0.15 | 1.05 | −2.53 | −0.22 | −0.57 / +0.72 |
+| B, tg, E50, 900 s | 15 | +0.07 | 1.06 | −0.82 | −0.20 | −0.05 / +0.12 |
+| B, tg, E50, 3600 s | 11 | −0.06 | 0.94 | −0.94 | −0.25 | −0.21 / +0.16 |
+| B, tg, E30, 900 s | 28 | −1.47 | 0.62 | −3.64 | −1.98 | −1.79 / +0.32 |
+| C, tg, launch + 2 s (stop 30% / 50%) | 427 | −14.56 / −14.42 | 0.48 / 0.50 | −24.1 / −23.9 | −22.2 / −22.1 | both days negative |
+| B, soc2 (4 configs) | 176–506 | −6.5 to −33.5 | 0.61–0.71 | all negative | all negative | both days negative |
+| C, soc2 (4 configs) | 1,580–4,482 | −157 to −312 | 0.37–0.45 | all negative | all negative | both days negative |
+
+With more coverage, the previous best (+2.62 SOL on 46 trades) falls to breakeven (−0.03 SOL on 60 trades, PF 0.997). Its earlier gain came from a small sample plus 3 outliers.
+
+**No config passes on train at either tip, so validation was again not scored.**
+
+Evidence: `research/observations/evidence_pregrad_rerun_20261004.json`.
