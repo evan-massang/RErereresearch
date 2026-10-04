@@ -244,6 +244,42 @@ Everything here used tape recorded **after** the rules were frozen (Oct 2, 01:44
 **Verdict after nine tests (H1–H8 plus the good-dev hold):** no mechanical strategy built from public chain data makes money out of sample. The one thing that consistently made money is a skilled human's selection, and it cannot be reproduced from the features a bot can see. **Turning 0.05 SOL into 100 SOL (2,000×) has no support in any of this data.** At 0.05 SOL, a normal tip is 20% of the position per trade, and even the best signal found (good devs, 6–9× migration odds) loses money when bought at launch.
 
 
+## Research loop to the paper-trading bar (2026-10-03 → 10-04)
+
+**The bar**, agreed with the project owner and enforced in `pipeline/paper.py`: at least 50 forward paper trades on data recorded after the strategy is frozen, net profit after all costs, profit factor above 1.2, and still profitable without the 3 best trades. Each idea had to pass train (Oct 1 before 19:15, plus Oct 2) and then validation (Oct 3), checked once, before it could be frozen.
+
+**Result: nothing has passed.** About 45 strategy families and more than 550 configurations were tested, partly by parallel research agents. Details are in `reports/failures/paper_loop_20261003.md` and `reports/failures/agent_*.md`.
+
+| family | best result | verdict |
+|---|---|---|
+| Blind AI judgement of launch cards (vs Decu) | −0.10 SOL per trade | fail, train |
+| KOL front-running | price already +16% at 1 s | fail, train and validation |
+| X-post engagement (launch post, referenced post) | no lift | fail, train |
+| ML on 24–37 snapshot features (1 s and 0.25 s, regime, late ages, wallet quality, no Mayhem) | PF 0.82–0.91 | fail, train |
+| Hour-scale post-migration holds | all means negative | fail, train |
+| LaunchLab | too thin | shelved |
+| Decu oracle (perfect knowledge, 1 s late) | −0.006 SOL per trade | fail |
+| Holder-reward fee carry | yield ≪ costs | fail |
+| Sniper exit, King of the Hill, whale, absorption, accumulation, buyer burst, crash bounce, sympathy, committed dev | PF 0.32–0.80 | fail, train |
+| Early-detector wallets (precision persists: 42% vs 23%) | PF 0.90 | fail, train |
+| Aged-wallet demand | PF 0.93 | fail, train |
+| PumpSwap order flow | PF 0.77 | fail, train |
+| Livestream viewers | viewers lag buying (−19% after the first 5 viewers) | dropped |
+| Mayhem Mode agent (coin-flip trades, drains real SOL) | negative | fail, train |
+| Exit before graduation, Telegram-link tokens | PF 1.00 on 60 trades, full coverage | fail, train |
+| **BOOST** (pump.fun buys 17.58 SOL of every new pool over ~340 s) | train +6.16 SOL / 291 trades, PF 1.15; pool filters passed train (PF up to 1.74) | **fail, validation**: every filter lost on Oct 3; base rule −12.1 SOL |
+
+**What the evidence says.**
+- Anything visible in public on-chain, X or pump.fun data is priced in within about a second.
+- Rules that look positive depend on a few outliers or fail on the next day.
+- The one consistent edge is a skilled human acting before the crowd. Decu made +25.8, +10.7 and +20.1 SOL on three recorded days, and even a perfect-knowledge copy entering 1 s later loses.
+- The literature agrees: arXiv 2607.28424 finds pump.fun-focused bots roughly break even, and arXiv 2602.14860 finds buy-and-hold to graduation stays below breakeven even when following top wallets (`sources/leads/documented_edges_research.md`).
+
+**Remaining routes**, none of which public data can test today:
+- **Human-in-the-loop paper trading:** a scanner plus the owner's own decisions, scored against the same bar.
+- **Infrastructure strategies:** cross-venue arbitrage of migrated tokens needs Jito, a fast RPC and capital, and averages about $1.58 per arbitrage.
+- **More recorded days:** re-test near-misses on fresh data only after freezing them.
+
 ## What I would do next
 
 1. **Use the decoded PumpSwap data in the simulator**, so exits after migration can be simulated, and **decode Raydium Launchpad**. Most of Decu's profit comes from migration exits and Launchpad tokens, and most of Setuh's trading is on Launchpad.
