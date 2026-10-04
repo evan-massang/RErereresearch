@@ -1,0 +1,130 @@
+{
+ "agent": "boost_select",
+ "date": "2026-10-04",
+ "split": "valid",
+ "modality": "onchain",
+ "is_synthetic": false,
+ "n_configs": 28,
+ "coverage": {
+  "pools": 470,
+  "pools_before_guards": 522,
+  "metadata_found": 146,
+  "social_yes": 139,
+  "mayhem_known": 330,
+  "mayhem_true": 0,
+  "snipe_nan": 9
+ },
+ "grid_doc": "Pool-selection filters on top of the BOOST base rule (L1.0, THIN <= 150 SOL, single exit +300 s, 0.5 SOL).\nAgent boost_select, 2026-10-04. Features: boost_select_lib.py. Train selection only; validation once, only for configs\nthat pass the full bar on train AND are net positive on Oct 1 and Oct 2 train separately.\n\nPre-stated grid (28 configs). Thresholds are the train medians / terciles of each feature over the 256 eligible\ntrain pools, computed from features only (no outcomes), and frozen here:\n  medians : fill_s 195.5 s, top5_share 0.143, snipe_share 0.047, n_buyers 319\n  terciles: fill_s 89.0 / 408.9 s, top5_share 0.113 (low third), snipe_share 0.019 (low third), n_buyers 517 (top third)\nHypothesised \"safe\" side (stated before results): slow fill, low top-5 concentration, creator sold out on the curve,\nlow sniper share, many buyers.\n  BASE                        reference (all eligible pools)\n  12 single median/flag filters: FAST/SLOW, TOP5_LO/TOP5_HI, CRE_OUT/CRE_HOLD, SNIPE_LO/SNIPE_HI, BUY_HI/BUY_LO,\n                                 SOCIAL (metadata has twitter/telegram/website; pools without fetched metadata excluded),\n                                 NOMAYHEM (is_mayhem known False)\n  5 tercile filters: NOT_FASTEST (fill_s >= 89), SLOWEST (fill_s > 408.9), TOP5_LOWEST, SNIPE_LOWEST, BUY_TOP\n  10 two-feature pairs of the safe sides at the median: SLOW, TOP5_LO, CRE_OUT, SNIPE_LO, BUY_HI (all 10 pairs)\nUsage: python boost_select_grid.py train   |   python boost_select_grid.py valid CFG [CFG ...]\n",
+ "results": {
+  "BASE": {
+   "0.001": {
+    "n": 470,
+    "net": -12.0873,
+    "mean": -0.02572,
+    "win": 0.404,
+    "pf": 0.835,
+    "net_ex3": -19.7948,
+    "median": -0.09946,
+    "pass": false
+   },
+   "0.01": {
+    "n": 470,
+    "net": -20.5473,
+    "mean": -0.04372,
+    "win": 0.383,
+    "pf": 0.738,
+    "net_ex3": -28.2008,
+    "median": -0.11746,
+    "pass": false
+   }
+  },
+  "TOP5_HI": {
+   "0.001": {
+    "n": 221,
+    "net": -1.4087,
+    "mean": -0.00637,
+    "win": 0.416,
+    "pf": 0.962,
+    "net_ex3": -9.0537,
+    "median": -0.11737,
+    "pass": false
+   },
+   "0.01": {
+    "n": 221,
+    "net": -5.3867,
+    "mean": -0.02437,
+    "win": 0.398,
+    "pf": 0.863,
+    "net_ex3": -12.9777,
+    "median": -0.13537,
+    "pass": false
+   }
+  },
+  "CRE_HOLD": {
+   "0.001": {
+    "n": 271,
+    "net": -9.2361,
+    "mean": -0.03408,
+    "win": 0.395,
+    "pf": 0.781,
+    "net_ex3": -14.5831,
+    "median": -0.12057,
+    "pass": false
+   },
+   "0.01": {
+    "n": 271,
+    "net": -14.1141,
+    "mean": -0.05208,
+    "win": 0.376,
+    "pf": 0.688,
+    "net_ex3": -19.4071,
+    "median": -0.13857,
+    "pass": false
+   }
+  },
+  "SNIPE_HI": {
+   "0.001": {
+    "n": 244,
+    "net": -6.7828,
+    "mean": -0.0278,
+    "win": 0.373,
+    "pf": 0.822,
+    "net_ex3": -14.4279,
+    "median": -0.11811,
+    "pass": false
+   },
+   "0.01": {
+    "n": 244,
+    "net": -11.1748,
+    "mean": -0.0458,
+    "win": 0.344,
+    "pf": 0.727,
+    "net_ex3": -18.7659,
+    "median": -0.13611,
+    "pass": false
+   }
+  },
+  "BUY_LO": {
+   "0.001": {
+    "n": 241,
+    "net": -3.8701,
+    "mean": -0.01606,
+    "win": 0.411,
+    "pf": 0.907,
+    "net_ex3": -11.5152,
+    "median": -0.12057,
+    "pass": false
+   },
+   "0.01": {
+    "n": 241,
+    "net": -8.2081,
+    "mean": -0.03406,
+    "win": 0.394,
+    "pf": 0.815,
+    "net_ex3": -15.7992,
+    "median": -0.13857,
+    "pass": false
+   }
+  }
+ }
+}
