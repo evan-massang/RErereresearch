@@ -196,3 +196,9 @@ On standard SOL-quoted pump.fun curves the decoded virtual SOL reserve equals re
 | fails on every trade | 523 | 4k | 0.2k |
 
 The exceptions are mostly dust trades and tiny tokens, likely non-SOL-quoted or special-mode curves. The strategies tested so far enter active tokens, which are overwhelmingly clean, so their verdicts stand. Future simulations should keep only trades where |vsol − rsol − 30| < 0.01.
+
+## Iteration 20 (agent): crash bounce
+
+Buy into a 40–60% crash within 10–30 s on an active token, with variants for mechanical sellers and continued demand. 40 configs, all negative on train; best −0.040 SOL per trade, PF 0.44. Crashes continue rather than bounce: the median price is 0.90× the crash print after 60 s and 0.82× after 300 s (`reports/failures/agent_crash_bounce.md`).
+
+**Robustness check.** The agent found that about 19% of tokens have curve states where vsol·vtok is not constant. Re-scoring the sniper-exit and King-of-the-Hill events on clean tokens only (|vsol − rsol − 30| < 0.01 and k drift below 1%) changes nothing: sniper exit −0.038 vs −0.041 SOL per trade, King of the Hill −0.025 vs −0.025. Verdicts stand.
