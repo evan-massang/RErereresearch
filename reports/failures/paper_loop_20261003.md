@@ -180,3 +180,19 @@ Validation events are tokens created on Oct 3; a few trade into early Oct 4.
   - AMM `fee_bps` already includes the 0.25% LP and protocol fee.
 
   Earlier results used execution prices, so they are unaffected.
+
+## Iteration 21 (agent): sympathy plays
+
+When a "leader" pumps (market cap 150 or 250 SOL, 3× within 5 min, or migration), buy an older, cheaper token on the same narrative. 32 configs, all negative on train at both tips; best −0.031 SOL per trade, PF 0.39 (`reports/failures/agent_sympathy.md`). Same-narrative tokens drift down after the leader pumps.
+
+## Data-quality note: curve reserves (raised by the sympathy agent, checked 2026-10-04)
+
+On standard SOL-quoted pump.fun curves the decoded virtual SOL reserve equals real SOL + 30. Over Oct 3 00:00–04:00 UTC:
+
+| group | mints | trades | SOL volume |
+|---|---|---|---|
+| holds on every trade | 7,049 | 419k | 162k (91% of volume) |
+| mixed | 1,911 | 173k | 14k |
+| fails on every trade | 523 | 4k | 0.2k |
+
+The exceptions are mostly dust trades and tiny tokens, likely non-SOL-quoted or special-mode curves. The strategies tested so far enter active tokens, which are overwhelmingly clean, so their verdicts stand. Future simulations should keep only trades where |vsol − rsol − 30| < 0.01.
