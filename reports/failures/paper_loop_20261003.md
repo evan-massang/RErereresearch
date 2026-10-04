@@ -158,3 +158,25 @@ From 2026-10-04 08:54 UTC the recorder polls pump.fun's public currently-live li
 - **Every migrated pool in our PumpSwap tape, generously assumed to pay holder rewards:** creator fees over a 4 h hold average 0.1–0.55% of market cap (90th percentile about 1.2%). The highest-yield fifth falls by a median of −12% to −32% over the same 4 h.
 
 **Result: FAIL before any rule.** The yield is an order of magnitude smaller than both the round-trip costs and the price decay of the tokens that generate it.
+
+## Iterations 15–16: sniper-exit and King-of-the-Hill triggers
+
+**Method.** `scripts/research/event_studies.py`, using exact curve fills, 1 s latency and take-profit/stop-loss exits from 20/10% to 200/50% with 300 s or 1,800 s holds.
+- **Sniper exit:** launch-block buyers have sold at least 90% of their tokens, the creator has sold at least 90%, and 10 or more other buyers remain.
+- **King of the Hill:** a token becomes the highest-market-cap bonding-curve token among those traded in the last 10 min.
+
+**Result: FAIL on train and on validation** (`research/observations/evidence_event_studies_20261004.json`, tip 0.001 SOL):
+- **Sniper exit:** 3,831 train trades at −0.039 to −0.064 SOL per trade (PF 0.32–0.41); validation similar.
+- **King of the Hill:** 900 train trades at −0.022 to −0.039 SOL per trade (PF 0.59–0.73); validation worse.
+
+Validation events are tokens created on Oct 3; a few trade into early Oct 4.
+
+## Iterations 17–19 (parallel agents)
+
+- **17:** bonding-curve order-flow events (whale buys, absorbed sells, accumulation, buyer bursts). 32 configs, all negative on train; best −0.020 SOL per trade, PF 0.80 (`reports/failures/agent_curve_flow.md`).
+- **18:** early-detector wallets chosen by early-entry precision. Precision does persist (42% of their tokens run, vs a 23% base), but entries dip first. 52 configs including no-stop exits, all negative on train; best PF 0.90 (`reports/failures/agent_early_detectors.md`).
+- **19:** PumpSwap post-migration order flow. 30 configs, all negative on train; best PF 0.77 (`reports/failures/agent_amm_flow.md`). This agent also found two decoding facts:
+  - the true pool SOL reserve is the logged value **+17.585** SOL, verified exactly on 94,624 sells;
+  - AMM `fee_bps` already includes the 0.25% LP and protocol fee.
+
+  Earlier results used execution prices, so they are unaffected.
