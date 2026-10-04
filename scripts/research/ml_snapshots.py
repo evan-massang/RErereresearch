@@ -13,13 +13,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
+import os  # noqa: E402
+
 import duckdb  # noqa: E402
 import numpy as np  # noqa: E402
 import pandas as pd  # noqa: E402
 
 from pipeline import config  # noqa: E402
 
-AGES = (5, 10, 20, 30, 60, 120, 300)
+AGES = tuple(int(a) for a in os.environ.get("RR_AGES", "5,10,20,30,60,120,300").split(","))
 HORIZONS = (30, 120, 600)
 EXITS = ((0.2, 0.1), (0.3, 0.15), (0.5, 0.2), (1.0, 0.3))
 import os
@@ -137,7 +139,7 @@ def main() -> pd.DataFrame:
 
 if __name__ == "__main__":
     d = main()
-    suffix = "" if LATENCY == 1.0 else f"_lat{LATENCY:g}"
+    suffix = ("" if LATENCY == 1.0 else f"_lat{LATENCY:g}") + ("" if "RR_AGES" not in os.environ else "_late")
     d.to_parquet(config.path("data") / "processed" / f"ml_snapshots{suffix}.parquet")
     print(d.shape)
     print(d.groupby("age")[[f"pnl_{h}" for h in HORIZONS]].mean().round(4))
