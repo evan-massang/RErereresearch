@@ -1,0 +1,83 @@
+{
+ "agent": "boost",
+ "date": "2026-10-04",
+ "modality": "onchain",
+ "is_synthetic": false,
+ "split": "train only (holdout and forward never loaded); pools created >=900 s before a window end",
+ "train_pools_with_trades": 688,
+ "train_pools_total": 689,
+ "boost_pools_found": 342,
+ "boost_wallet_reused_across_pools": 0,
+ "crosstab_offset17585_vs_boost": {
+  "offset=False": {
+   "boost=False": 161,
+   "boost=True": 40
+  },
+  "offset=True": {
+   "boost=False": 185,
+   "boost=True": 302
+  }
+ },
+ "slices_per_pool": {
+  "0.05": 27.0,
+  "0.25": 29.0,
+  "0.5": 29.0,
+  "0.75": 30.0,
+  "0.95": 30.0
+ },
+ "total_sol_per_pool": {
+  "0.05": 17.5845,
+  "0.25": 17.5845,
+  "0.5": 17.5845,
+  "0.75": 17.5845,
+  "0.95": 17.5845
+ },
+ "first_slice_s_after_pool_create": {
+  "0.05": 1.2076,
+  "0.25": 1.5171,
+  "0.5": 1.8708,
+  "0.75": 4.2147,
+  "0.95": 15.4447
+ },
+ "last_slice_s_after_pool_create": {
+  "0.05": 328.5179,
+  "0.25": 333.7922,
+  "0.5": 341.1081,
+  "0.75": 346.9753,
+  "0.95": 358.1617
+ },
+ "slice_sol": {
+  "0.05": 0.3745,
+  "0.25": 0.4748,
+  "0.5": 0.5971,
+  "0.75": 0.72,
+  "0.95": 0.8398
+ },
+ "gap_between_slices_s": {
+  "0.05": 10.5949,
+  "0.25": 11.5499,
+  "0.5": 11.7467,
+  "0.75": 11.9969,
+  "0.95": 14.1276
+ },
+ "pools_quote_in_84.99": 546,
+ "q85_pools_with_full_boost": 342,
+ "q85_pools_with_partial_boost_only": 199,
+ "non_q85_pools_with_any_boost": 0,
+ "partial_boost_total_sol": {
+  "0.05": 14.2257,
+  "0.25": 15.8337,
+  "0.5": 16.6811,
+  "0.75": 17.0368,
+  "0.95": 17.1887
+ },
+ "partial_boost_slices": {
+  "0.05": 23.0,
+  "0.25": 26.0,
+  "0.5": 27.0,
+  "0.75": 28.0,
+  "0.95": 29.0
+ },
+ "partial_note": "partial = buy-only per-pool wallet, >=10 buys over >200 s ending <420 s, 5-17.58 SOL; most likely slices the recorder did not capture (not verified).",
+ "note": "BOOST buyer is a distinct wallet per pool (PDA-like), buys only, total 17.5845 SOL = the reserve offset amm_flow found. Pools whose first logged quote reserve is quote_in-17.585 are the BOOST pools; this is knowable at pool creation (amm_pools.quote_in vs first trade)."
+}
