@@ -74,3 +74,28 @@ But costs and other flow swamp it:
 - The 10th percentile of gross returns is −70% to −84%: rugs and dev dumps during the window.
 
 There is no robust out-of-sample-ready edge, so this family is closed at these latencies.
+
+## Follow-up: protective stop on the best setting (train only, 4 configs, FAIL)
+
+The coordinator pre-stated this follow-up before any results were seen. It keeps the best setting (thin pools,
+reserve ≤ 150 SOL at entry; single exit at +300 s) and adds a stop:
+
+- **Trigger:** the first trade after entry whose post-trade mid is at least X% below the entry fill price. The entry
+  fill price is size divided by the tokens received.
+- **Stop fill:** the trigger time plus the entry latency, on the conservative sell state.
+- **Configs:** X = 20% or 30%, at entry latencies of 0.25 s and 1 s.
+- **Files:** script `scripts/research/boost_stop.py`; evidence `research/observations/evidence_boost_stop_20261004.json`.
+
+| config | stopped | n | net (0.001 tip) | PF | net without best 3 | Oct 1 net | Oct 2 net | net (0.01 tip) |
+|---|---|---|---|---|---|---|---|---|
+| L0.25 STOP20 | 72% | 213 | −4.33 | 0.81 | −11.37 | −2.64 | −1.69 | −8.16 |
+| L0.25 STOP30 | 60% | 213 | −3.99 | 0.85 | −11.04 | −1.71 | −2.28 | −7.83 |
+| L1.0 STOP20 | 75% | 291 | −3.45 | 0.88 | −13.46 | −3.27 | −0.17 | −8.68 |
+| L1.0 STOP30 | 63% | 291 | −3.47 | 0.91 | −13.47 | −2.58 | −0.89 | −8.70 |
+
+- **The stops make things worse.** Without a stop the same setting made +6.16 SOL net.
+- **Why:** thin pools swing 20–30% within the BOOST window in 60–75% of cases. The stop cuts those trades at the
+  low, and they are the trades that would have recovered.
+- **Both halves fail:** all 4 configs lose on Oct 1 and on Oct 2, at both tips.
+
+No config passed on train, so validation was not examined, and the verdict stays FAIL.

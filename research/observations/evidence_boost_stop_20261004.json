@@ -1,0 +1,246 @@
+{
+ "agent": "boost",
+ "split": "train",
+ "modality": "onchain",
+ "is_synthetic": false,
+ "n_configs": 4,
+ "doc": "Follow-up (pre-stated by coordinator): THIN pools (reserve <= 150 SOL at entry), single exit +300 s, plus a\nprotective stop. Stop triggers at the first trade after entry whose post-trade mid is >= X% below the entry fill\nprice (size / tokens received); exit fills at trigger time + latency on the actual state (conservative sell state\nfrom amm_flow_lib). X in {20, 30}, latency in {0.25, 1.0}: 4 configs, tips 0.001 / 0.01 per tx (2 tx).\nUsage: python boost_stop.py train   |   python boost_stop.py valid <config> ...   Agent boost, 2026-10-04.",
+ "results": {
+  "L0.25_X300_THIN_STOP20": {
+   "stopped_frac": 0.718,
+   "0.001": {
+    "n": 213,
+    "net": -4.33,
+    "mean": -0.02033,
+    "win": 0.249,
+    "pf": 0.81,
+    "net_ex3": -11.3729,
+    "median": -0.1127,
+    "pass": false,
+    "oct1": {
+     "n": 109,
+     "net": -2.644,
+     "mean": -0.02426,
+     "win": 0.257,
+     "pf": 0.774,
+     "net_ex3": -6.8341,
+     "median": -0.1127
+    },
+    "oct2": {
+     "n": 104,
+     "net": -1.6859,
+     "mean": -0.01621,
+     "win": 0.24,
+     "pf": 0.848,
+     "net_ex3": -6.5594,
+     "median": -0.11264
+    }
+   },
+   "0.01": {
+    "n": 213,
+    "net": -8.164,
+    "mean": -0.03833,
+    "win": 0.239,
+    "pf": 0.682,
+    "net_ex3": -15.1529,
+    "median": -0.1307,
+    "pass": false,
+    "oct1": {
+     "n": 109,
+     "net": -4.606,
+     "mean": -0.04226,
+     "win": 0.248,
+     "pf": 0.65,
+     "net_ex3": -8.7421,
+     "median": -0.1307
+    },
+    "oct2": {
+     "n": 104,
+     "net": -3.5579,
+     "mean": -0.03421,
+     "win": 0.231,
+     "pf": 0.716,
+     "net_ex3": -8.3774,
+     "median": -0.13064
+    }
+   }
+  },
+  "L0.25_X300_THIN_STOP30": {
+   "stopped_frac": 0.601,
+   "0.001": {
+    "n": 213,
+    "net": -3.9935,
+    "mean": -0.01875,
+    "win": 0.319,
+    "pf": 0.854,
+    "net_ex3": -11.0364,
+    "median": -0.15912,
+    "pass": false,
+    "oct1": {
+     "n": 109,
+     "net": -1.709,
+     "mean": -0.01568,
+     "win": 0.339,
+     "pf": 0.875,
+     "net_ex3": -6.2967,
+     "median": -0.15619
+    },
+    "oct2": {
+     "n": 104,
+     "net": -2.2844,
+     "mean": -0.02197,
+     "win": 0.298,
+     "pf": 0.832,
+     "net_ex3": -7.1579,
+     "median": -0.16114
+    }
+   },
+   "0.01": {
+    "n": 213,
+    "net": -7.8275,
+    "mean": -0.03675,
+    "win": 0.305,
+    "pf": 0.739,
+    "net_ex3": -14.8164,
+    "median": -0.17712,
+    "pass": false,
+    "oct1": {
+     "n": 109,
+     "net": -3.671,
+     "mean": -0.03368,
+     "win": 0.321,
+     "pf": 0.756,
+     "net_ex3": -8.2047,
+     "median": -0.17419
+    },
+    "oct2": {
+     "n": 104,
+     "net": -4.1564,
+     "mean": -0.03997,
+     "win": 0.288,
+     "pf": 0.721,
+     "net_ex3": -8.9759,
+     "median": -0.17914
+    }
+   }
+  },
+  "L1.0_X300_THIN_STOP20": {
+   "stopped_frac": 0.746,
+   "0.001": {
+    "n": 291,
+    "net": -3.4461,
+    "mean": -0.01184,
+    "win": 0.247,
+    "pf": 0.883,
+    "net_ex3": -13.4554,
+    "median": -0.10721,
+    "pass": false,
+    "oct1": {
+     "n": 144,
+     "net": -3.2739,
+     "mean": -0.02274,
+     "win": 0.278,
+     "pf": 0.779,
+     "net_ex3": -7.4581,
+     "median": -0.10611
+    },
+    "oct2": {
+     "n": 147,
+     "net": -0.1722,
+     "mean": -0.00117,
+     "win": 0.218,
+     "pf": 0.988,
+     "net_ex3": -8.3346,
+     "median": -0.10836
+    }
+   },
+   "0.01": {
+    "n": 291,
+    "net": -8.6841,
+    "mean": -0.02984,
+    "win": 0.227,
+    "pf": 0.74,
+    "net_ex3": -18.6394,
+    "median": -0.12521,
+    "pass": false,
+    "oct1": {
+     "n": 144,
+     "net": -5.8659,
+     "mean": -0.04074,
+     "win": 0.25,
+     "pf": 0.65,
+     "net_ex3": -9.9961,
+     "median": -0.12411
+    },
+    "oct2": {
+     "n": 147,
+     "net": -2.8182,
+     "mean": -0.01917,
+     "win": 0.204,
+     "pf": 0.831,
+     "net_ex3": -10.9266,
+     "median": -0.12636
+    }
+   }
+  },
+  "L1.0_X300_THIN_STOP30": {
+   "stopped_frac": 0.629,
+   "0.001": {
+    "n": 291,
+    "net": -3.4652,
+    "mean": -0.01191,
+    "win": 0.313,
+    "pf": 0.905,
+    "net_ex3": -13.4745,
+    "median": -0.14868,
+    "pass": false,
+    "oct1": {
+     "n": 144,
+     "net": -2.5786,
+     "mean": -0.01791,
+     "win": 0.354,
+     "pf": 0.855,
+     "net_ex3": -6.791,
+     "median": -0.1469
+    },
+    "oct2": {
+     "n": 147,
+     "net": -0.8866,
+     "mean": -0.00603,
+     "win": 0.272,
+     "pf": 0.953,
+     "net_ex3": -9.1648,
+     "median": -0.15069
+    }
+   },
+   "0.01": {
+    "n": 291,
+    "net": -8.7032,
+    "mean": -0.02991,
+    "win": 0.299,
+    "pf": 0.784,
+    "net_ex3": -18.6585,
+    "median": -0.16668,
+    "pass": false,
+    "oct1": {
+     "n": 144,
+     "net": -5.1706,
+     "mean": -0.03591,
+     "win": 0.333,
+     "pf": 0.734,
+     "net_ex3": -9.329,
+     "median": -0.1649
+    },
+    "oct2": {
+     "n": 147,
+     "net": -3.5326,
+     "mean": -0.02403,
+     "win": 0.265,
+     "pf": 0.83,
+     "net_ex3": -11.7568,
+     "median": -0.16869
+    }
+   }
+  }
+ }
+}
