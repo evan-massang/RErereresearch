@@ -148,3 +148,13 @@ Decu's edge is being first: selecting before the crowd and selling into it. A co
 ## Iteration 12 (collecting): pump.fun livestream viewer counts
 
 From 2026-10-04 08:54 UTC the recorder polls pump.fun's public currently-live list every 15 s. That gives each coin's viewer count (`num_participants`), stamped with the time it was seen. The hypothesis is that rising viewers lead buy flow by minutes. It is studied once there are enough hours of data.
+
+## Iteration 14: holder-reward carry (collect a share of trading fees while holding)
+
+**Background.** Since 2026-09-12, pump.fun "Holder Rewards" tokens pay their trading fees pro rata to holders above $20, several times an hour ([The Defiant](https://thedefiant.io/news/defi/pump-fun-drops-cashback-for-new-launches-adds-holder-rewards), [Crypto Briefing](https://cryptobriefing.com/pumpfun-holder-rewards-cashback-deprecated/)). The creator-fee tier runs from 0.30% on the curve, to 0.95% from 420 SOL market cap, down to 0.05% above 98,240 SOL ([Blockworks](https://blockworks.com/news/pumpdotfun-fee-model)).
+
+**Check.** Two parts:
+- **Large holder-reward tokens** (7 in the top 100 by market cap, $2.4M–7.3M): daily volume is 0–10% of market cap (DexScreener), which pays holders about 0.02% a day or less.
+- **Every migrated pool in our PumpSwap tape, generously assumed to pay holder rewards:** creator fees over a 4 h hold average 0.1–0.55% of market cap (90th percentile about 1.2%). The highest-yield fifth falls by a median of −12% to −32% over the same 4 h.
+
+**Result: FAIL before any rule.** The yield is an order of magnitude smaller than both the round-trip costs and the price decay of the tokens that generate it.
