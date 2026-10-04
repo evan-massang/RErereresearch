@@ -67,3 +67,37 @@ Every other config's train net was between −7.1 and −343 SOL at a 0.001 tip.
 ## Verdict
 
 **FAIL.** Early-entry precision is a persistent trait of wallets, but it does not make a tradable copy signal. Their low-cap entries come in clusters at the launch price. Those tokens usually dip before any run, and the runs are too rare and too gappy for take-profit / stop-loss exits after costs. No config advanced to validation.
+
+## Follow-up: exits with no stop-loss (train only, 12 configs)
+
+**Why.** Runners dip first, so the coordinator asked whether removing the stop-loss rescues the idea.
+
+**What was tested.** Script: `scripts/research/early_detectors_nostop.py`. Evidence: `research/observations/evidence_early_detectors_nostop_20261004.json`.
+- The detector lists and triggers are the same cross-fitted ones as above: P ≥ 0.3 or ≥ 0.5, quiet tape on or off.
+- **Exits:**
+  - take-profit 100% with no stop, 1800 s maximum hold;
+  - take-profit 200% with no stop, 1800 s maximum hold;
+  - hold with no take-profit and no stop, to 1800 s or to the last curve state before completion.
+- Fills follow the same conventions as before: 1 s latency, exact curve round trip, 0.5 SOL, 1.25% fee per side.
+- Trades whose window crosses a data gap are dropped.
+
+**Results.** Net and net without the 3 best trades are in SOL.
+
+| config | n | net @0.001 | PF @0.001 | without top 3 @0.001 | net @0.01 | PF @0.01 | without top 3 @0.01 |
+|---|---|---|---|---|---|---|---|
+| P0.3, any tape, TP 100% | 5372 | −301.5 | 0.71 | −306.6 | −398.2 | 0.64 | −403.2 |
+| P0.3, any tape, TP 200% | 5372 | −360.2 | 0.70 | −366.7 | −456.9 | 0.64 | −463.3 |
+| P0.3, any tape, hold | 5372 | −538.5 | 0.59 | −631.0 | −635.2 | 0.55 | −727.7 |
+| P0.3, quiet, TP 100% | 3461 | −162.8 | 0.77 | −167.9 | −225.1 | 0.69 | −230.1 |
+| P0.3, quiet, TP 200% | 3461 | −195.9 | 0.75 | −202.4 | −258.2 | 0.69 | −264.7 |
+| P0.3, quiet, hold | 3461 | −282.7 | 0.68 | −353.8 | −345.0 | 0.63 | −416.0 |
+| P0.5, any tape, TP 100% | 931 | −174.2 | 0.33 | −177.9 | −191.0 | 0.30 | −194.6 |
+| P0.5, any tape, TP 200% | 931 | −165.2 | 0.41 | −171.4 | −182.0 | 0.38 | −188.1 |
+| P0.5, any tape, hold | 931 | −240.6 | 0.24 | −256.2 | −257.3 | 0.22 | −272.9 |
+| P0.5, quiet, TP 100% | 161 | −11.9 | 0.64 | −14.3 | −14.8 | 0.58 | −17.1 |
+| P0.5, quiet, TP 200% | 161 | −7.9 | 0.79 | −13.8 | −10.8 | 0.73 | −16.6 |
+| P0.5, quiet, hold | 161 | −13.5 | 0.69 | −27.3 | −16.4 | 0.65 | −30.1 |
+
+**Verdict.** All 12 configs fail on train at both tip levels, so validation was not read. Removing the stop makes results worse, not better. Most trigger tokens never recover: with the hold exit, only 9–26% of trades are winners.
+
+**Grid count.** The family's total is now 52 configs: 40 in the original grid plus these 12.
