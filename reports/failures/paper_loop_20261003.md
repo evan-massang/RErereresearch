@@ -138,3 +138,13 @@ The one persistent edge is a skilled human's selection: Decu, +10.7 SOL on Oct 2
 **Correction to an earlier finding.** In the choice-set study the simulated bot entered at the trigger, *before* Decu, in 12 of 15 picks, and so profited from Decu's own 3–5 SOL buys. On the 3 picks where Decu bought first, the bot lost all 3 (−1.02 SOL). The "+0.27 SOL per trade on Decu's picks" finding is marked **weakened**.
 
 Decu's edge is being first: selecting before the crowd and selling into it. A copier, or a model that imitates their choices, arrives after that flow. An imitation model therefore cannot pass the bar, and this thread is closed.
+
+## Iteration 13: late-life tokens (10–60 min old), where launch bots are gone
+
+**Method.** The `ml_snapshots.py` features at ages of 600, 1,200, 1,800 and 3,600 s (266k snapshots), with the iteration-6 exits and model.
+
+**Result: FAIL** (`research/observations/evidence_ml_late_20261004.json`). All 24 setups lose on train out-of-fold (−0.007 to −0.04 SOL per trade) and on validation.
+
+## Iteration 12 (collecting): pump.fun livestream viewer counts
+
+From 2026-10-04 08:54 UTC the recorder polls pump.fun's public currently-live list every 15 s. That gives each coin's viewer count (`num_participants`), stamped with the time it was seen. The hypothesis is that rising viewers lead buy flow by minutes. It is studied once there are enough hours of data.
