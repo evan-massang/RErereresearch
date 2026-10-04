@@ -1,0 +1,332 @@
+{
+ "note": "EXPLORATORY; data after 2026-10-04 00:00 UTC (forward-test period). No strategy frozen on it.",
+ "load_stats": {
+  "files": 12,
+  "lines": 1778,
+  "error_lines": 0,
+  "bad_lines": 0,
+  "dup_polls": 0
+ },
+ "n_polls": 1778,
+ "first_recv_utc": "2026-10-04 08:53:59.737985373",
+ "last_recv_utc": "2026-10-04 16:19:02.402387381",
+ "poll_gap_s": {
+  "0.5": 15.001527070999146,
+  "0.75": 15.046728134155273,
+  "0.9": 15.116033554077148,
+  "0.95": 15.195495748519898,
+  "0.99": 15.41488606452942,
+  "1.0": 31.895076751708984
+ },
+ "empty_polls": 5,
+ "live_per_poll": {
+  "curve": {
+   "0": 0.0,
+   "0.5": 39.0,
+   "1.0": 52.0
+  },
+  "migrated": {
+   "0": 0.0,
+   "0.5": 15.0,
+   "1.0": 20.0
+  },
+  "hourly_mean": {
+   "2026-10-04 08:00:00": {
+    "curve": 34.2,
+    "migrated": 11.0
+   },
+   "2026-10-04 09:00:00": {
+    "curve": 33.6,
+    "migrated": 11.0
+   },
+   "2026-10-04 10:00:00": {
+    "curve": 35.2,
+    "migrated": 11.2
+   },
+   "2026-10-04 11:00:00": {
+    "curve": 35.5,
+    "migrated": 11.9
+   },
+   "2026-10-04 12:00:00": {
+    "curve": 37.4,
+    "migrated": 14.9
+   },
+   "2026-10-04 13:00:00": {
+    "curve": 43.2,
+    "migrated": 15.3
+   },
+   "2026-10-04 14:00:00": {
+    "curve": 43.4,
+    "migrated": 16.8
+   },
+   "2026-10-04 15:00:00": {
+    "curve": 43.3,
+    "migrated": 16.8
+   },
+   "2026-10-04 16:00:00": {
+    "curve": 43.0,
+    "migrated": 17.8
+   }
+  }
+ },
+ "viewers_all_rows": {
+  "0.5": 1.0,
+  "0.75": 2.0,
+  "0.9": 12.0,
+  "0.95": 34.0,
+  "0.99": 53.0,
+  "1.0": 117.0
+ },
+ "viewers_curve_rows": {
+  "0.5": 0.0,
+  "0.75": 2.0,
+  "0.9": 21.0,
+  "0.95": 38.0,
+  "0.99": 54.0,
+  "1.0": 86.0
+ },
+ "viewers_migrated_rows": {
+  "0.5": 1.0,
+  "0.75": 3.0,
+  "0.9": 6.0,
+  "0.95": 22.0,
+  "0.99": 26.0,
+  "1.0": 117.0
+ },
+ "viewers_curve_rows_share_zero": 0.505492440667187,
+ "distinct_mints": {
+  "all": 305,
+  "curve_ever": 281,
+  "migrated_ever": 27,
+  "curve_then_migrated_while_live": 3
+ },
+ "curve_mints_reaching_viewers": {
+  "1": 189,
+  "3": 49,
+  "5": 23,
+  "10": 14,
+  "20": 9,
+  "50": 4,
+  "100": 0
+ },
+ "family_5_dollar_coins": {
+  "rows": 8857,
+  "viewers": {
+   "0.5": 34.0,
+   "0.9": 53.0,
+   "1.0": 66.0
+  },
+  "share_of_curve_rows_with_ge10_viewers": 0.9750509775698692,
+  "market_cap_sol_range": [
+   28.152788103830535,
+   29.578992221225782
+  ]
+ },
+ "viewers_curve_rows_ex_family": {
+  "0.5": 0.0,
+  "0.75": 1.0,
+  "0.9": 2.0,
+  "0.95": 3.0,
+  "0.99": 6.0,
+  "1.0": 86.0
+ },
+ "curve_mints_reaching_viewers_ex_family": {
+  "1": 184,
+  "3": 44,
+  "5": 18,
+  "10": 9,
+  "20": 4,
+  "50": 2,
+  "100": 0
+ },
+ "poll_span_hours": 7.42,
+ "new_curve_mints_reaching_per_hour_ex_family": {
+  "5": 2.43,
+  "10": 1.21,
+  "20": 0.54
+ },
+ "curve_mint_minutes_on_list": {
+  "0.5": 5.746607728799185,
+  "0.75": 43.75411884387334,
+  "0.9": 336.78045884370806,
+  "0.95": 445.0444067001343,
+  "0.99": 445.0444067001343,
+  "1.0": 445.0444067001343
+ },
+ "curve_age_min_at_first_seen": {
+  "0.1": 0.8497051318486532,
+  "0.25": 2.0606703996658324,
+  "0.5": 18.407832582791645,
+  "0.75": 5330.076630489031,
+  "0.9": 62706.92896642288
+ },
+ "curve_mcap_sol_at_first_seen": {
+  "0.1": 27.95899348974837,
+  "0.25": 28.005318478073395,
+  "0.5": 28.2563391924974,
+  "0.75": 30.629777651123174,
+  "0.9": 52.86817340545531
+ },
+ "creators": {
+  "distinct": 269,
+  "creators_with_ge2_mints": 20,
+  "mints_by_multi_creators": 56,
+  "top": {
+   "77YUPkmT..": 6,
+   "6jsHhJk2..": 4,
+   "J6Q9CXXC..": 4,
+   "AvHyuHvz..": 4,
+   "FFrFtMEd..": 4,
+   "F55zGFdy..": 3,
+   "7FiS8Wxf..": 3,
+   "E2tbDuvu..": 3,
+   "H93M1JUM..": 3,
+   "A79axQCi..": 2
+  }
+ },
+ "titles_repeated_across_mints": {
+  "": 12,
+  "hello": 3,
+  "cat": 3,
+  "welive": 3,
+  "test": 2,
+  "sistreamersislivesisters": 2,
+  "agentotc": 2,
+  "ppplabspromo": 2,
+  "live": 2,
+  "help": 2,
+  "arenammo": 2,
+  "spacexsi": 2,
+  "bot": 2,
+  "lfg": 2,
+  "strobotonsolana": 2
+ },
+ "symbols_repeated_across_mints": {
+  "si": 4,
+  "solana": 4,
+  "": 4,
+  "test": 2,
+  "sisters": 2,
+  "agent": 2,
+  "ppplabs": 2,
+  "hamster": 2,
+  "brain": 2,
+  "pnl": 2,
+  "arena": 2,
+  "bot": 2,
+  "monkey": 2,
+  "dot": 2,
+  "macc": 2
+ },
+ "title_prefix_families_ge3": {
+  "": 6,
+  "hello": 3,
+  "cat": 3,
+  "we live": 3
+ },
+ "hi_viewer_curve_coins": [
+  {
+   "symbol": "$O",
+   "title": "nan",
+   "creator": "6DZBhCuF",
+   "max_viewers": 37.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "$mAjor",
+   "title": "nan",
+   "creator": "EWa9rEDV",
+   "max_viewers": 58.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "$M",
+   "title": "nan",
+   "creator": "Aq7jiTAe",
+   "max_viewers": 66.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "$R",
+   "title": "nan",
+   "creator": "4vhdTDXz",
+   "max_viewers": 28.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "$J",
+   "title": "nan",
+   "creator": "5rKHEHPa",
+   "max_viewers": 47.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "PHILJEAN",
+   "title": "Phil Jean 24/7 Stream",
+   "creator": "EhawvYTH",
+   "max_viewers": 10.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "BRAIN",
+   "title": "BRAIN",
+   "creator": "HB2gPjmk",
+   "max_viewers": 10.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "Atelier",
+   "title": "Atelier",
+   "creator": "8sNwNKDX",
+   "max_viewers": 12.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "YUI",
+   "title": "Trading Companion - $YUI",
+   "creator": "AEp5RxwH",
+   "max_viewers": 58.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "Xtubers",
+   "title": "Xtuber AMA",
+   "creator": "AiGyNAF5",
+   "max_viewers": 10.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "CRAFT",
+   "title": "CRYPTOCRAFT",
+   "creator": "AFzqFnTq",
+   "max_viewers": 10.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "DOSR",
+   "title": "WE LIVE",
+   "creator": "7UkG5rU8",
+   "max_viewers": 31.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "KEY",
+   "title": "WE LIVE",
+   "creator": "6ffG35kt",
+   "max_viewers": 35.0,
+   "creator_mints_on_list": 1
+  },
+  {
+   "symbol": "battle",
+   "title": "$battle",
+   "creator": "7hmGyLvV",
+   "max_viewers": 86.0,
+   "creator_mints_on_list": 1
+  }
+ ],
+ "tape": {
+  "curve_trades_max_recv_utc": "2026-10-04 14:49:51.724933624",
+  "curve_live_mints_with_tape_trades": 121,
+  "curve_live_mints": 281
+ }
+}
