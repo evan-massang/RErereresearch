@@ -45,11 +45,15 @@ OUT = ROOT / "research/observations/evidence_live_viewers_events_20261004.json"
 
 def events_for(rows: pd.DataFrame) -> pd.DataFrame:
     ev = []
+    t_first_poll = rows.recv.min()
     cur = rows[~rows.complete & ~rows.mint.str[:6].isin(FAMILY)].sort_values(["mint", "recv"])
     for m, g in cur.groupby("mint", sort=False):
         T, V = g.recv.to_numpy(), g.viewers.to_numpy()
         crossed = {v: False for v in CROSS_V}
-        below = {v: False for v in CROSS_V}  # a cross needs an earlier observed poll below V (not left-censored)
+        # a cross needs an earlier observed poll below V, or the coin first appearing on the list after the
+        # recorder's first minute (a coin live at recorder start with >= V viewers is left-censored, not a cross)
+        fresh = T[0] > t_first_poll + 60
+        below = {v: fresh for v in CROSS_V}
         last_rise = {r: -1e18 for r in RISE}
         last_flat, last_samp = -1e18, -1e18
         for i in range(len(T)):
@@ -150,6 +154,9 @@ def stats(d: pd.DataFrame) -> dict:
             v = d[col].dropna().to_numpy() - 2 * tip
             sim[f"{col}|tip{tip}"] = es.summary(v)
     s["sim"] = sim
+    g = d["g_tp50_sl20_1800"].dropna()
+    s["sd_g_tp50_sl20_1800"] = round(float(g.std()), 4) if len(g) > 1 else None
+    s["sd_ret_900"] = round(float(d.ret_900.std()), 4) if len(d) > 1 else None
     # per-mint mean (each mint weighted once) for the 15-min return
     s["ret_900_mean_of_mint_means"] = round(float(d.groupby("mint").ret_900.mean().mean()), 4)
     return s
@@ -185,6 +192,27 @@ def main():
     groups["sample_other_mints_active"] = so[so.age_last_trade_s <= 900]
     for k, g in groups.items():
         res["stats"][k] = stats(g)
+    # mint-cluster bootstrap: event mean minus flat_same_mints mean, 15-min return and tp50/sl20/1800 round trip
+    rng = np.random.default_rng(0)
+    boot = {}
+    for k in ("cross_3", "cross_5", "rise_5_50", "rise_3_50"):
+        a, b = groups[k], groups["flat_same_mints"]
+        if len(a) < 3:
+            continue
+        for col in ("ret_900", "g_tp50_sl20_1800"):
+            sa_ = a.groupby("mint")[col].agg(["sum", "count"]).to_numpy()
+            sb_ = b.groupby("mint")[col].agg(["sum", "count"]).to_numpy()
+            ia = rng.integers(0, len(sa_), (2000, len(sa_)))
+            ib = rng.integers(0, len(sb_), (2000, len(sb_)))
+            diffs = sa_[ia, 0].sum(1) / sa_[ia, 1].sum(1) - sb_[ib, 0].sum(1) / sb_[ib, 1].sum(1)
+            boot[f"{k}-flat|{col}"] = {"point": round(float(a[col].mean() - b[col].mean()), 4),
+                                       "ci90": [round(float(np.quantile(diffs, 0.05)), 4), round(float(np.quantile(diffs, 0.95)), 4)]}
+    res["mint_bootstrap_vs_flat"] = boot
+    # rates over the tape-covered window (for sizing a train/validation split)
+    cov_h = (min(data_end - max(HORIZONS) - es.LATENCY, polls.recv.max()) - polls.recv.min()) / 3600
+    res["covered_hours"] = round(cov_h, 2)
+    res["usable_rate_per_hour"] = {k: round(len(g) / cov_h, 2) for k, g in groups.items() if k.startswith(("cross", "rise"))}
+    res["usable_new_mints_per_hour"] = {k: round(g.mint.nunique() / cov_h, 2) for k, g in groups.items() if k.startswith(("cross", "rise"))}
     # poll-level lead/lag: viewer change vs forward and past net buy flow (curve coins with tape, sampled every 5 min)
     sa = usable[usable.kind == "sample_any"].copy()
     sa = sa[sa.ref.notna()]
