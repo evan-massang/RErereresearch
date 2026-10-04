@@ -63,17 +63,12 @@ def pool_arrays(g: pd.DataFrame, offset: float = OFFSET) -> dict:
     sol = g.sol.to_numpy()
     rs_pre = np.maximum(g.rs_log.to_numpy() + offset, 1e-3)
     rt_pre = g.rt.to_numpy()
-    # post state = pre state of next trade; last trade: apply the trade itself
-    rs_post = np.empty_like(rs_pre)
-    rt_post = np.empty_like(rt_pre)
-    rs_post[:-1] = rs_pre[1:]
-    rt_post[:-1] = rt_pre[1:]
-    if buy[-1]:
-        rt_post[-1] = rt_pre[-1] - tok[-1]
-        rs_post[-1] = rs_pre[-1] * rt_pre[-1] / max(rt_post[-1], 1.0)
-    else:
-        rt_post[-1] = rt_pre[-1] + tok[-1]
-        rs_post[-1] = rs_pre[-1] * rt_pre[-1] / rt_post[-1]
+    # post state computed from the trade itself (exact for sells: sol = R_s*tok/(R_t+tok); buys: constant product
+    # on the token side). Not taken from the next trade's pre-state, because liquidity can be withdrawn/added
+    # between trades and that would leak a later event back to this trade's time.
+    rt_post = np.where(buy, rt_pre - tok, rt_pre + tok)
+    rt_post = np.maximum(rt_post, 1.0)
+    rs_post = np.where(buy, rs_pre * rt_pre / rt_post, rs_pre - sol)
     rs_post = np.maximum(rs_post, 1e-6)
     return {"recv": recv, "buy": buy, "tok": tok, "sol": sol, "u": g.u.to_numpy(), "fee": g.fee_bps.to_numpy() / 1e4,
             "rs_pre": rs_pre, "rt_pre": rt_pre, "rs_post": rs_post, "rt_post": rt_post,
