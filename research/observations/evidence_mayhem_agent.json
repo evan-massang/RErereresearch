@@ -1,0 +1,391 @@
+{
+ "split": "train",
+ "agent": "BwWK17cbHxwWBKZkUYvzxLcNQ1YVyaFezduWbtm2de6s",
+ "top_wallets_by_mayhem_mints": [
+  {
+   "usr": "BwWK17cbHxwWBKZkUYvzxLcNQ1YVyaFezduWbtm2de6s",
+   "mayhem_mints": 6409,
+   "other_mints": 0,
+   "trades": 341881,
+   "fee_min": 0,
+   "fee_max": 0
+  },
+  {
+   "usr": "32uqVCA2GDm8UJ3ih93BMjpGV8LBZyAA8PEWG9J1HoPg",
+   "mayhem_mints": 944,
+   "other_mints": 0,
+   "trades": 5885,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "BaAyxedGtC5qKRpKbhnP5d2Eh4ymCAXN5FNTq56713VG",
+   "mayhem_mints": 906,
+   "other_mints": 0,
+   "trades": 6572,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "GzajUHM6YrqcJL4atH3L3NBmxbUDrs8fggp1uQpxJh5k",
+   "mayhem_mints": 814,
+   "other_mints": 0,
+   "trades": 8502,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "5F2Hha9WpMaQi3uH78ZWbrEh1KYBqyCutwQ7zzsJg56F",
+   "mayhem_mints": 783,
+   "other_mints": 0,
+   "trades": 4130,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "EpvvuMJn4vAWxMey9aF47d3N2CJ2o4Q93RcJ48ZgA8Yw",
+   "mayhem_mints": 735,
+   "other_mints": 0,
+   "trades": 4752,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "Hx44ecKZzK2UqZfVSxBp6B46jLBc2KGUwp4x9bLoR9GJ",
+   "mayhem_mints": 720,
+   "other_mints": 0,
+   "trades": 3704,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "97eUbaxqNrJUGPg2fCoCXGKjW4U94A8LV5g1NPd2WDCM",
+   "mayhem_mints": 637,
+   "other_mints": 0,
+   "trades": 4426,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "EW2oEQZNPHexZdRM61p78U9YnnBUXNAZ2jeByeJbTnQq",
+   "mayhem_mints": 633,
+   "other_mints": 0,
+   "trades": 8067,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "DeFG8i8zoJ3hN155nmvLq266ZVxWmNgRaTz5KQVHfe2S",
+   "mayhem_mints": 623,
+   "other_mints": 30,
+   "trades": 3288,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "5HSD4wz1QBbcukFmcZ7LR5j8G6wBfmQ5g6DEpUNNxPZN",
+   "mayhem_mints": 516,
+   "other_mints": 0,
+   "trades": 2256,
+   "fee_min": 95,
+   "fee_max": 95
+  },
+  {
+   "usr": "GdTf8WxuDisy3J2u1tnTSzMXZjScJRibRq5QFupL95Ws",
+   "mayhem_mints": 464,
+   "other_mints": 0,
+   "trades": 974,
+   "fee_min": 95,
+   "fee_max": 95
+  }
+ ],
+ "mayhem_mints_traded_train": 6505,
+ "curve": {
+  "k_ratio_nonagent_q001_01_50_99_999": [
+   0.998492,
+   1.0,
+   1.0,
+   1.0,
+   1.0
+  ],
+  "k_ratio_agent_q01_50_99": [
+   0.551084,
+   1.0,
+   1.433071
+  ],
+  "abs_dvsol_over_sol_agent_q10_50_90": [
+   2.867062,
+   45.537864,
+   350.281472
+  ],
+  "nonagent_sells_draining_99pct_of_real_sol": 0.0871,
+  "max_vtok": 2072999999.936989
+ },
+ "agent_activity": {
+  "tokens": 6271,
+  "trades": 336490,
+  "trades_per_token_q10_50_90": [
+   5.0,
+   28.0,
+   138.0
+  ],
+  "first_trade_age_s_q10_50_90": [
+   0.590034,
+   0.975786,
+   8.003009
+  ],
+  "last_trade_age_s_q10_50_90": [
+   6.982442,
+   43.904535,
+   250.991179
+  ],
+  "slot_gap_q10_50_90_99": [
+   2.0,
+   3.0,
+   11.0,
+   69.0
+  ],
+  "sol_size_q10_50_90_99": [
+   0.004286,
+   0.024545,
+   0.198404,
+   1.067807
+  ],
+  "sol_size_max": 20.0,
+  "sol_bought": 15426.86,
+  "sol_sold": 15470.82,
+  "real_sol_before_agent_trade_q10_50_90": [
+   0.030887,
+   0.141635,
+   1.031172
+  ],
+  "real_sol_after_last_agent_trade_q10_50_90": [
+   0.010733,
+   0.084433,
+   1.10502
+  ]
+ },
+ "direction": {
+  "p_buy_all": 0.499,
+  "by_price_level_vs_launch_log": {
+   "(-20.0, -3.0]": {
+    "n": 57781,
+    "p": 0.4975
+   },
+   "(-3.0, -1.0]": {
+    "n": 99087,
+    "p": 0.4994
+   },
+   "(-1.0, -0.2]": {
+    "n": 73253,
+    "p": 0.5
+   },
+   "(-0.2, 0.0]": {
+    "n": 20572,
+    "p": 0.4962
+   },
+   "(0.0, 0.2]": {
+    "n": 24805,
+    "p": 0.4941
+   },
+   "(0.2, 1.0]": {
+    "n": 41416,
+    "p": 0.5018
+   },
+   "(1.0, 3.0]": {
+    "n": 17876,
+    "p": 0.5018
+   }
+  },
+  "by_previous_agent_action": {
+   "False": {
+    "n": 164894,
+    "p": 0.4985
+   },
+   "True": {
+    "n": 165325,
+    "p": 0.4994
+   }
+  },
+  "by_previous_tape_trade": {
+   "agent_buy": {
+    "n": 122889,
+    "p": 0.5001
+   },
+   "agent_sell": {
+    "n": 117281,
+    "p": 0.4982
+   },
+   "other_buy": {
+    "n": 60692,
+    "p": 0.4979
+   },
+   "other_sell": {
+    "n": 35628,
+    "p": 0.4999
+   }
+  },
+  "by_slot_mod2": {
+   "0": {
+    "n": 168020,
+    "p": 0.4978
+   },
+   "1": {
+    "n": 168470,
+    "p": 0.5002
+   }
+  },
+  "by_agent_trade_index": {
+   "(-1, 0]": {
+    "n": 6271,
+    "p": 0.5018
+   },
+   "(0, 2]": {
+    "n": 12262,
+    "p": 0.4968
+   },
+   "(2, 10]": {
+    "n": 41943,
+    "p": 0.4946
+   },
+   "(10, 50]": {
+    "n": 122426,
+    "p": 0.4984
+   },
+   "(50, 600]": {
+    "n": 153588,
+    "p": 0.5007
+   }
+  },
+  "by_age_s": {
+   "(0.0, 10.0]": {
+    "n": 47058,
+    "p": 0.495
+   },
+   "(10.0, 60.0]": {
+    "n": 140647,
+    "p": 0.499
+   },
+   "(60.0, 300.0]": {
+    "n": 116479,
+    "p": 0.4998
+   },
+   "(300.0, 3600.0]": {
+    "n": 30269,
+    "p": 0.5024
+   },
+   "(3600.0, 1000000.0]": {
+    "n": 2037,
+    "p": 0.4924
+   }
+  },
+  "by_real_sol_octile": {
+   "(-0.0009999990000000001, 0.0352]": {
+    "n": 42062,
+    "p": 0.4986
+   },
+   "(0.0352, 0.0594]": {
+    "n": 42061,
+    "p": 0.5016
+   },
+   "(0.0594, 0.0916]": {
+    "n": 42061,
+    "p": 0.4972
+   },
+   "(0.0916, 0.142]": {
+    "n": 42061,
+    "p": 0.497
+   },
+   "(0.142, 0.226]": {
+    "n": 42061,
+    "p": 0.4954
+   },
+   "(0.226, 0.388]": {
+    "n": 42061,
+    "p": 0.5013
+   },
+   "(0.388, 0.839]": {
+    "n": 42061,
+    "p": 0.5
+   },
+   "(0.839, 83.128]": {
+    "n": 42062,
+    "p": 0.501
+   }
+  }
+ },
+ "jump": {
+  "log_jump_buy_q05_50_95": [
+   0.037753,
+   0.168312,
+   0.349878
+  ],
+  "log_jump_sell_q05_50_95": [
+   -0.527798,
+   -0.200452,
+   -0.036675
+  ],
+  "mean_arith_return_per_agent_trade": 0.00122,
+  "se": 0.0004,
+  "median_log_jump_by_sol_sextile_buy": {
+   "(-0.001, 0.00638]": 0.0937,
+   "(0.00638, 0.0132]": 0.147,
+   "(0.0132, 0.0245]": 0.1699,
+   "(0.0245, 0.0482]": 0.1825,
+   "(0.0482, 0.117]": 0.198,
+   "(0.117, 20.0]": 0.221
+  }
+ },
+ "others_anticipation": {
+  "32uqVCA2GDm8UJ3ih93BMjpGV8LBZyAA8PEWG9J1HoPg": {
+   "n": 5788,
+   "p_next_agent_buy_after_their_buy": 0.479,
+   "p_next_agent_buy_after_their_sell": 0.513
+  },
+  "BaAyxedGtC5qKRpKbhnP5d2Eh4ymCAXN5FNTq56713VG": {
+   "n": 6446,
+   "p_next_agent_buy_after_their_buy": 0.495,
+   "p_next_agent_buy_after_their_sell": 0.494
+  },
+  "GzajUHM6YrqcJL4atH3L3NBmxbUDrs8fggp1uQpxJh5k": {
+   "n": 8273,
+   "p_next_agent_buy_after_their_buy": 0.497,
+   "p_next_agent_buy_after_their_sell": 0.495
+  },
+  "5F2Hha9WpMaQi3uH78ZWbrEh1KYBqyCutwQ7zzsJg56F": {
+   "n": 4053,
+   "p_next_agent_buy_after_their_buy": 0.485,
+   "p_next_agent_buy_after_their_sell": 0.469
+  },
+  "EpvvuMJn4vAWxMey9aF47d3N2CJ2o4Q93RcJ48ZgA8Yw": {
+   "n": 4716,
+   "p_next_agent_buy_after_their_buy": 0.498,
+   "p_next_agent_buy_after_their_sell": 0.504
+  },
+  "Hx44ecKZzK2UqZfVSxBp6B46jLBc2KGUwp4x9bLoR9GJ": {
+   "n": 3659,
+   "p_next_agent_buy_after_their_buy": 0.49,
+   "p_next_agent_buy_after_their_sell": 0.481
+  },
+  "97eUbaxqNrJUGPg2fCoCXGKjW4U94A8LV5g1NPd2WDCM": {
+   "n": 4335,
+   "p_next_agent_buy_after_their_buy": 0.503,
+   "p_next_agent_buy_after_their_sell": 0.496
+  },
+  "EW2oEQZNPHexZdRM61p78U9YnnBUXNAZ2jeByeJbTnQq": {
+   "n": 7894,
+   "p_next_agent_buy_after_their_buy": 0.508,
+   "p_next_agent_buy_after_their_sell": 0.508
+  },
+  "DeFG8i8zoJ3hN155nmvLq266ZVxWmNgRaTz5KQVHfe2S": {
+   "n": 3142,
+   "p_next_agent_buy_after_their_buy": 0.476,
+   "p_next_agent_buy_after_their_sell": 0.509
+  },
+  "5HSD4wz1QBbcukFmcZ7LR5j8G6wBfmQ5g6DEpUNNxPZN": {
+   "n": 2202,
+   "p_next_agent_buy_after_their_buy": 0.494,
+   "p_next_agent_buy_after_their_sell": 0.499
+  }
+ }
+}
