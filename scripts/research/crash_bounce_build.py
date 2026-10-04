@@ -16,6 +16,9 @@ Variants (5, fixed before any outcome was computed):
 Exits (8): TP/SL 20/30, 30/15, 50/30, 100/50 % x max hold 60 s, 300 s. 5 x 8 = 40 configs.
 Fills: event_studies.outcomes() (exact constant product, 0.5 SOL, 1.25 % fee per side, 1 s latency, completion).
 Tips 0.001 and 0.01 SOL per tx (two tx per trade).
+Data validity (point in time): a token is eligible only while vsol*vtok has stayed within 1 % of its first print;
+about 19 % of tokens have curve states that break constant product (k drifts), on which exact fills are not computable.
+k_ok_window flags whether k also stays valid through the outcome window (reported as a robustness cut, not a rule).
 Gaps: token creation, decision and the full 300 s window (+ latency) must lie in one gap-free (<= 60 s) segment.
 Splits: train = tokens created Oct 1 before 19:15 UTC (trades capped at 19:15) + created Oct 2 (trades capped at
 Oct 3 00:00); validation = tokens created Oct 3 (trades capped at Oct 4 00:00). Holdout never read.
@@ -47,6 +50,7 @@ MIN_BUYERS, MIN_AGE, DEM_WIN, DEM_N = 15, 30.0, 5.0, 2
 VARIANTS = ("d40_w30", "d60_w30", "d40_w10", "d40_w30_mech", "d40_w30_dem")
 HOLD0, HOLD1, OCT2, OCT3, OCT4 = 1790882100.0, 1790899200.0, 1790899200.0, 1790985600.0, 1791072000.0
 GAP = 60.0
+K_TOL = 0.01  # data validity: vsol*vtok must stay within 1 % of its first print (about 19 % of tokens violate it)
 ALLOWED = f"recv < {OCT4} AND NOT (recv >= {HOLD0} AND recv < {HOLD1})"
 CHUNKS = [(1790812800.0, HOLD0, HOLD0), (OCT2, OCT2 + 43200, OCT3), (OCT2 + 43200, OCT3, OCT3),
           (OCT3, OCT3 + 43200, OCT4), (OCT3 + 43200, OCT4, OCT4)]
@@ -75,8 +79,11 @@ def detect(g, creator, cslot, ct, tc):
     found = {}
     snipers, buyers = set(), set()
     dq = {10: deque(), 30: deque()}  # monotonic (index) deques for the rolling max
+    kk = g["vsol"] * g["vtok"]
     for i in range(n):
         if tc is not None and T[i] >= tc:
+            break
+        if abs(kk[i] / kk[0] - 1) > K_TOL:  # curve state breaks constant product: fills not computable, stop
             break
         u = usr[i]
         if buy[i]:
@@ -159,7 +166,10 @@ def build():
                 if not o:
                     continue
                 k = np.searchsorted(g["recv"], t, side="right") - 1
+                kw = g["vsol"][: np.searchsorted(g["recv"], t + es.LATENCY + MAXH + 1, side="right")]
+                kw = kw * g["vtok"][: len(kw)]
                 rows.append({"variant": name, "mint": m, "t": t, "age": t - ci.ct,
+                             "k_ok_window": bool(np.all(np.abs(kw / kw[0] - 1) <= K_TOL)),
                              "mcap": g["vsol"][k] / g["vtok"][k] * 1e9, **info, **o})
                 ne += 1
         print(f"chunk {a:.0f}-{b:.0f}: tokens {len(cr)} events {ne} (dropped for gaps so far {dropped})", flush=True)
@@ -211,8 +221,9 @@ if __name__ == "__main__":
         out = table(d, "train")
         gross = {v: {c: round(float(split(d, "train")[lambda z: z.variant == v][c].mean()), 4)
                      for c in d.columns if c.startswith("g_")} for v in VARIANTS}
+        outk = table(d[d.k_ok_window], "train")
         res = {"n_configs": len(out), "note": "train only; validation not looked at unless a config passes",
-               "configs": out, "gross_mean_before_tips": gross,
+               "configs": out, "configs_k_ok_window_only": outk, "gross_mean_before_tips": gross,
                "event_meta": split(d, "train").groupby("variant")[["dd", "dt_crash", "age", "mcap"]].median().round(3)
                .to_dict(orient="index"),
                "mech_top_seller": split(d, "train")[lambda z: z.variant == "d40_w30_mech"].top_seller.value_counts()
@@ -222,6 +233,9 @@ if __name__ == "__main__":
             print(f"{k:34} {v['0.001']}  tip.01 mean {v['0.01']['mean']}  oct1 {v['by_day_0.001']['oct1']['mean']}"
                   f" oct2 {v['by_day_0.001']['oct2']['mean']}")
         print("passing:", [k for k, v in out.items() if v["0.001"]["pass"]])
+        print("passing (k ok through window):", [k for k, v in outk.items() if v["0.001"]["pass"]])
+        best = max(outk, key=lambda k: outk[k]["0.001"]["mean"])
+        print("best k-ok-window:", best, outk[best]["0.001"])
     elif cmd == "validate":
         d = pd.read_parquet(EVENTS)
         out = table(d, "validation")
