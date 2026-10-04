@@ -93,6 +93,13 @@ def state_for(a: dict, T: np.ndarray, side: str, max_wait: float = 5.0):
     p1, p2 = rs / rt, rs2 / rt2
     use2 = has_next & ((p2 > p1) if side == "buy" else (p2 < p1))
     rs[use2], rt[use2], fee[use2] = rs2[use2], rt2[use2], a["fee"][inx][use2]
+    if side == "sell":
+        # liquidity can leave between trades (unobserved); if the next trade's PRE-state is >2% below the state we
+        # would sell into, assume conservatively that the change happened before T.
+        has_n = i_next < len(recv)
+        rs3, rt3 = a["rs_pre"][inx], a["rt_pre"][inx]
+        use3 = has_n & (rs3 / rt3 < 0.98 * rs / rt)
+        rs[use3], rt[use3] = rs3[use3], rt3[use3]
     return rs, rt, fee, ok
 
 
