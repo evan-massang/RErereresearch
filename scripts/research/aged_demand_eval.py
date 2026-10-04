@@ -6,13 +6,14 @@ state 1 s later (must be a clean state, |vsol - rsol - 30| < 0.01), exits on lat
 model as event_studies.outcomes (take-profit / stop-loss trigger -> fill 1 s later; max hold; completion cut).
 0.5 SOL, 1.25% fee per side, tip per transaction 0.001 (main) and 0.01 SOL.
 
-Grid (fixed before any outcome was computed; 36 configs):
+Grid (fixed before any outcome was computed; 36 configs). K was first drafted as 3/5, then set from the train
+  per-token max-count distribution (no outcomes): ~75th and ~90th percentile of max aged buyers per token.
   W  in (30, 60) s window
-  K  in (3, 5) distinct aged (>= 3 h), non-round-trip buyers in the window
+  K  in (10, 25) distinct aged (>= 3 h), non-round-trip buyers in the window
   filter in: none | share (aged share of window buyers >= 0.5 AND wash share <= 0.2)
              | human (count only aged buyers with <= 100 prior mints, same share/wash filter)
   exit in: tp30_sl15 300 s | tp50_sl20 300 s | tp100_sl30 1800 s
-Baseline (not selectable, hypothesis check): K raw distinct buyers in W, no age requirement, same exits.
+Baseline (not selectable, hypothesis check): 2K raw distinct buyers in W (similar selectivity), no age requirement, same exits.
 
 Selection on train only; validation only for configs passing the bar on train.
 
@@ -60,12 +61,12 @@ def sim(T, vs, vt, clean, t, tc, a, b, mh):
 def configs(f):
     out = {}
     for W in (30, 60):
-        for K in (3, 5):
+        for K in (10, 25):
             sh = (f[f"share{W}"] >= 0.5) & (f[f"wash{W}"] <= 0.2)
             out[f"W{W}_K{K}_none"] = f[f"nA{W}"] >= K
             out[f"W{W}_K{K}_share"] = (f[f"nA{W}"] >= K) & sh
             out[f"W{W}_K{K}_human"] = (f[f"nAh{W}"] >= K) & sh
-            out[f"BASE_W{W}_K{K}_raw"] = f[f"nB{W}"] >= K
+            out[f"BASE_W{W}_K{2 * K}_raw"] = f[f"nB{W}"] >= 2 * K
     return out
 
 
