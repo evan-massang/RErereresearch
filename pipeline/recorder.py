@@ -156,6 +156,7 @@ class Recorder:
         self.pump = Sink("pump_curve")
         self.amm = Sink("pumpswap_raw")
         self.lab = Sink("launchlab_raw")
+        self.live = Sink("pump_live")
         self.token_watch_s = token_watch_s
         self.max_tokens = max_tokens
         self.watched: dict[str, float] = {}         # mint -> watch until (monotonic)
@@ -349,23 +350,56 @@ class Recorder:
         async with httpx.AsyncClient(headers={"User-Agent": "Mozilla/5.0"}) as client:
             await asyncio.gather(*(worker(client) for _ in range(workers)))
 
+    async def pump_live(self, every_s: float = 15.0) -> None:
+        """pump.fun's public list of coins currently livestreaming, with viewer counts (num_participants).
+
+        One unauthenticated GET every ``every_s`` seconds (backs off on 429). Each poll is written whole, stamped
+        with its own receive time, so viewer counts are point in time."""
+        import httpx
+        url = "https://frontend-api-v3.pump.fun/coins/currently-live"
+        keep = ("mint", "symbol", "num_participants", "market_cap", "usd_market_cap", "complete", "created_timestamp",
+                "last_trade_timestamp", "reply_count", "ath_market_cap", "is_currently_live", "livestream_title",
+                "virtual_sol_reserves", "virtual_token_reserves", "creator")
+        delay = every_s
+        async with httpx.AsyncClient(headers={"Origin": "https://pump.fun", "User-Agent": "Mozilla/5.0"}) as client:
+            while time.monotonic() < self.stop_at:
+                t0 = time.time()
+                try:
+                    rows = []
+                    for off in (0, 100):
+                        r = await client.get(url, params={"limit": 100, "offset": off, "includeNsfw": "true"}, timeout=15)
+                        if r.status_code == 429:
+                            raise RuntimeError("429")
+                        page = r.json() if r.status_code == 200 else []
+                        rows += [{k: c.get(k) for k in keep} for c in page]
+                        if len(page) < 100:
+                            break
+                    self.live.write({"recv": time.time(), "fetch_start": t0, "n": len(rows), "coins": rows})
+                    self.status["pump_live_polls"] = self.status.get("pump_live_polls", 0) + 1
+                    delay = every_s
+                except Exception as e:  # noqa: BLE001
+                    self.status["pump_live_errors"] = self.status.get("pump_live_errors", 0) + 1
+                    self.live.write({"recv": time.time(), "error": f"{type(e).__name__}: {e}"[:200]})
+                    delay = min(delay * 2, 120)
+                await asyncio.sleep(max(delay - (time.time() - t0), 1))
+
     async def heartbeat(self) -> None:
         path = config.path("data") / "recorder_status.json"
         while time.monotonic() < self.stop_at:
             path.write_text(json.dumps({**self.status, "watched_tokens": len(self.watched),
                                         "at": datetime.now(timezone.utc).isoformat()}))
-            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab):
+            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live):
                 sink._fh and sink._fh.flush()
             await asyncio.sleep(30)
 
     async def run(self, hours: float) -> None:
         self.stop_at = time.monotonic() + hours * 3600
-        await asyncio.gather(self.kolscan(), self.pumpportal(), self.heartbeat(), self.tweet_snaps(),
+        await asyncio.gather(self.kolscan(), self.pumpportal(), self.heartbeat(), self.tweet_snaps(), self.pump_live(),
                              self.chain_logs(PUMP_PROGRAM, self.pump, decode=True),
                              self.chain_logs(PUMPSWAP_PROGRAM, self.amm, decode=False),
                              self.chain_logs(LAUNCHLAB_PROGRAM, self.lab, decode=False))
         await asyncio.sleep(0)
-        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab):
+        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live):
             sink.close()
 
 
