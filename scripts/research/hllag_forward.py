@@ -40,8 +40,10 @@ LIB = ROOT / "scripts/research/hlanchor_lib.py"
 COINS = {"WIF": "WIFUSDT", "kBONK": "1000BONKUSDT", "FARTCOIN": "FARTCOINUSDT", "PUMP": "PUMPUSDT"}
 # Second frozen record (reports/candidates/hllag_newcoins.md): same rule, coins it was not developed on.
 NEW_COINS = {"TRUMP": "TRUMPUSDT", "SPX": "SPXUSDT"}
-RECORDS = {"hllag_theta40": COINS, "hllag_theta40_newcoins": NEW_COINS}
-ALL_COINS = {**COINS, **NEW_COINS}
+# Third record: the pre-registered addendum pair (reports/hypotheses/hllag_newcoins_addendum.json), pooled.
+ADD_COINS = {"PENGU": "PENGUUSDT", "kSHIB": "1000SHIBUSDT"}
+RECORDS = {"hllag_theta40": COINS, "hllag_theta40_newcoins": NEW_COINS, "hllag_theta40_addendum": ADD_COINS}
+ALL_COINS = {**COINS, **NEW_COINS, **ADD_COINS}
 PARAMS = dict(theta_bp=40.0, L_ms=300, H_s=30.0, cooldown_s=10.0, close_bp=None, info_lat_ms=300)
 BAR = dict(min_trades=50, net_gt=0.0, pf_gt=1.2, net_ex_top3_gt=0.0)
 
@@ -160,7 +162,9 @@ def freeze(name: str = "hllag_theta40"):
            "frozen_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "bar": BAR,
            "unit": "round trip of $1,000 notional; pnl in USD after 4.5 bp taker fees each side",
            "source": "reports/candidates/hllag_newcoins.md (TRUMP+SPX: train PF 1.74 n=329, validation PF 1.39 n=243; only 2 coins)"
-           if name.endswith("newcoins") else "reports/candidates/hlanchor.md (passed train PF 1.204 n=721, validation PF 1.358 n=721; fragile)",
+           if name.endswith("newcoins") else
+           "reports/candidates/hllag_newcoins.md addendum (PENGU+kSHIB pooled: train PF 1.30 n=218, validation PF 1.40 n=90; PENGU carries it, kSHIB thin)"
+           if name.endswith("addendum") else "reports/candidates/hlanchor.md (passed train PF 1.204 n=721, validation PF 1.358 n=721; fragile)",
            "caveats": ["config added after the pre-registered grid failed", "validation profit concentrated on 2025-08-01",
                        "fails at +0.5 bp cost or 800 ms latency", "forward HL quotes are event-driven bbo, not 0.5 s snapshots"]}
     FREEZE.write_text(json.dumps(rec, indent=1))

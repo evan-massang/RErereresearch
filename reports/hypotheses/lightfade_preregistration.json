@@ -1,0 +1,88 @@
+{
+ "hypothesis": "H-LIGHTFADE",
+ "written_at_utc": "2026-10-05 ~07:23Z (container clock; the commit time that first contains this file is authoritative). About 4 minutes after T0 = 07:19:14Z.",
+ "written_before_data": "Written before any recorded multivenue data was opened. The author read only the 'start' and 'stats' lines of data/raw/web/multivenue/recorder.log (to confirm coins, market ids and streams); no parquet/part file under data/raw/web/multivenue/ was read, listed for contents, or analysed. No Lighter, Binance, Aster or HL tick recorded by this project after the 2026-10-05 06:18 UTC 10-min OWN-PRECHECK has been looked at by the author of this file.",
+ "statement": "When Lighter's mid deviates from the Binance-implied fair value (Binance mid x a trailing point-in-time Lighter/Binance basis) by >= d bp for >= 200 ms while the Binance mid has been flat over the prior w seconds, a Lighter Standard-account taker order on the reverting side (toward fair value), arriving after our latency plus Lighter's 300 ms taker speed bump, and exited when the deviation has closed to <= d/4 (or at max hold T, or on a 2d stop), is profitable after crossing the recorded spread (0 fee).",
+ "source": "sources/leads/documented_edges_round7.md idea 4 (H-LIGHTFADE). Mechanism: Lighter-local flow (retail market orders, liquidation sweeps on a thin book) dislocates the Lighter mid while the leader (Binance) is quiet; short-horizon liquidity provision earns a reversal premium (Nagel RFS 2012, DATA) and cross-venue deviations revert (Makarov-Schoar JFE 2020, DATA). Parent failure that motivates the taker form: H-HLANCHOR (resting quotes adversely selected, markout -2.5 to -4.4 bp at 30 s).",
+ "changes_vs_leads_file": [
+  "Universe dimension (A/B) replaced by the fixed 7-coin crypto universe the recorder covers on Lighter (universes A/B are only partly recorded); a lookback-window dimension w for the Binance-flat filter takes its place in the grid.",
+  "The leads file's 'skip if at arrival the book has already closed half the gap' is not knowable when the order is sent (the order is inside the 300 ms speed bump). It is implemented as an IOC limit price fixed at decision time (see rule.entry), which is point-in-time and implementable.",
+  "Latency fixed at L_total = 600 ms (no latency dimension), as in the task brief; 900 ms is reported as a robustness line only, not selectable."
+ ],
+ "universe": {"coins": ["SOL", "XRP", "HYPE", "ENA", "PUMP", "DOGE", "SUI"],
+              "binance_symbols": {"SOL": "SOLUSDT", "XRP": "XRPUSDT", "HYPE": "HYPEUSDT", "ENA": "ENAUSDT", "PUMP": "PUMPUSDT", "DOGE": "DOGEUSDT", "SUI": "SUIUSDT"},
+              "lighter_market_ids_at_2026-10-05": {"SOL": 2, "XRP": 7, "HYPE": 24, "ENA": 29, "PUMP": 45, "DOGE": 3, "SUI": 16}},
+ "data": {
+  "recorder": "scripts/research/multivenue_recorder.py -> data/raw/web/multivenue/<venue>_<kind>_<YYYY-MM-DD-HH>.parquet (run started 2026-10-05T07:19:14Z, start_ts_us 1791184754884879, PID 9984, 48 h)",
+  "fair_value_source": "binance bbo (fstream <sym>@bookTicker), clock = local receive time ts_us",
+  "execution_venue": "lighter bbo (ticker/<market_id>, readonly WS), clock = local receive time ts_us; lighter trades used for diagnostics only (e.g. share of triggers preceded by a liquidation trade)",
+  "clock_rule": "All decisions and fills use our local receive timestamps (microseconds). A venue state 'at time t' is the last recorded row with ts_us <= t. Recorded prices can be up to ~60 ms stale and top sizes up to ~0.5 s stale (recorder compaction); this is accepted, not corrected.",
+  "split": {
+   "T0": "launch time of the 48-h recorder run, as written in data/raw/web/multivenue/recorder.log ('start' line) and reports/hypotheses/multivenue_plan.md. Rows before T0 (test runs) are never scored.",
+   "day1_train": "[T0, T0+24h): exploratory; kill tests, trigger counts, all 12 configs; ONE config selected by the selection rule",
+   "day2_validation": "[T0+24h, T0+48h): the selected config only, run ONCE. The basis window may use day-1 prices from the 10 min before T0+24h (prices only, point-in-time; no day-1 outcome enters day 2).",
+   "forward": "after day 2, freeze the selected config (scoring-module sha256 + params + frozen_at) and score only data received after the freeze time"
+  },
+  "gaps": "If either venue has no bbo row for a coin for > 10 s, no trigger may be taken for that coin until 10 min of clean data have rebuilt the basis window; a position whose exit falls in a gap is closed at the first state after the gap and flagged."
+ },
+ "rule": {
+  "mids": "mid = (bid+ask)/2 on each venue.",
+  "basis": "b(t) = median over the 1-s grid points s in [t-600 s, t) of mid_L(s)/mid_B(s) - 1 (states as of each whole second). Requires >= 300 valid grid points, else no trigger. Strictly prior data only (the current second is excluded).",
+  "fair_value": "F(t) = mid_B(t) * (1 + b(t)).",
+  "deviation": "D(t) = mid_L(t)/F(t) - 1, evaluated at every recorded bbo row of either venue for the coin.",
+  "trigger": "Let t0 be the first row time at which |D| >= d with a given sign, and D has kept that sign and |D| >= d at every recorded row of either venue in [t0, t0+200 ms]. Decision time t = t0 + 200 ms (persistence filter; a single stale print does not count). Binance-flat filter at t: |mid_B(t)/mid_B(t-w) - 1| < d/4. Side s = -sign(D(t)) (buy Lighter if it is below fair value, sell if above).",
+  "entry": "IOC taker on Lighter sent at t, fill time t_in = t + L_total (600 ms). Limit price fixed at t: for a buy, limit = F(t) * (1 - |D(t)|/2); for a sell, limit = F(t) * (1 + |D(t)|/2). It fills at the last recorded Lighter best ask (buy) / best bid (sell) at t_in if that price is within the limit; otherwise it is a SKIP (counted, reported: 'arrived after half the gap closed'). F(t) and b(t) are frozen for the life of the trade.",
+  "exit": "Monitoring starts at t_in. Exit decision at the first recorded row tau > t_in where (a) |mid_L(tau)/(mid_B(tau)*(1+b(t))) - 1| <= d/4 (target), or (b) s*(mid_L(tau)/(mid_B(tau)*(1+b(t))) - 1) <= -2d (stop: deviation widened to 2d against), or (c) tau = t_in + T (time stop). Exit is a Lighter market taker, fill time tau + L_total, at the last recorded Lighter opposite best at that time (no limit).",
+  "position_rules": "one position per coin; cooldown 10 s per coin after an exit fill; a trigger during an open position or cooldown is ignored (counted).",
+  "size": "target $1,000 notional. Entry size = min($1,000, displayed opposite top-of-book notional at t_in). If the displayed top notional is < $100 the trigger is SKIPPED and counted. Exit: size up to the displayed opposite top at the exit fill fills at that price; any excess fills one full spread (ask-bid at that time) worse.",
+  "fees": "Lighter Standard account: 0 maker / 0 taker, 300 ms taker speed bump (DOC, reports/hypotheses/multivenue_plan.md section 4); the fee follows the hourly Lighter orderBooks metadata snapshot. Spread is paid by the fill model; no zero-impact fills.",
+  "funding": "ignored (holds <= T + 0.6 s <= 30.6 s; Lighter funding is hourly)",
+  "pnl_unit": "USD per round trip; bp = USD / notional * 1e4",
+  "point_in_time": "Every quantity at decision time uses only rows with ts_us <= that time. No outcome, label or future state enters a decision."
+ },
+ "grid": {
+  "d_bp": [6, 10, 15],
+  "w_s": [2, 5],
+  "T_s": [5, 30],
+  "L_total_ms": 600,
+  "n_configs": 12,
+  "latency_note": "L_total = our order path (~300 ms assumed, unmeasured) + Lighter Standard taker speed bump 300 ms (DOC). The selected config is also reported at 900 ms as a robustness line; it does not change selection."
+ },
+ "kill_tests_day1": {
+  "order": "Run and report BEFORE any grid P&L.",
+  "K1_trigger_count": "Count triggers (no position rules, before the IOC skip) for d=6, w=2 pooled over the 7 coins on day 1. If < 15, H-LIGHTFADE is KILLED for insufficient opportunity (leads-file threshold >= 15/day).",
+  "K2_reversion_vs_half_spread": "For all d=10, w=2 triggers on day 1 (no position rules, no IOC skip): R_h = s * (mid_L(t+0.6 s+h)/mid_L(t+0.6 s) - 1) in bp for h in {5 s, 30 s}; HS = mean Lighter half-spread (ask-bid)/(2*mid) in bp at t+0.6 s over the same triggers. If mean R_h <= mean HS at BOTH h = 5 s and h = 30 s, H-LIGHTFADE is KILLED regardless of the grid (the reversion left after our arrival does not pay even one half-spread; a round trip pays two). If fewer than 30 such triggers exist, K2 is run on d=6, w=2 instead and that substitution is reported.",
+  "K2_diagnostics_reported_not_scored": "mean R at +0.6 s measured from t (how much reverted before we arrive), the same for 900 ms, markout at 30 s split by whether a Lighter liquidation trade occurred in [t0-1 s, t], and by coin."
+ },
+ "selection_rule_day1": "Same as H-LIGHTLAG: among configs with n >= 30 round trips on day 1, select the one with the highest profit factor (ties: larger n). If no config has net USD > 0 and PF > 1.0 on day 1, H-LIGHTFADE is KILLED and day 2 is not run for it. The selected config must also show net USD > 0 with +0.5 bp extra cost per round trip; if it does not, the next-best config by the same rule that does is taken.",
+ "validation_day2": "Run the selected config once on day 2. Bar: n >= 50 round trips, net USD > 0, PF > 1.2, net without the top-3 trades > 0. If n < 50 the result is INCONCLUSIVE (not a pass); the config is frozen anyway and the forward record continues until n >= 50; no re-selection. A failure is written to reports/failures/.",
+ "reporting": "Report the kill tests first, then all 12 day-1 configs (n, net, mean bp, PF, skips by reason: IOC-limit, size, cooldown/open position, gap; exits by reason: target/stop/time), by coin, then the day-2 result, including losses.",
+ "no_changes": "No change to grid, trigger, basis, fill model, fees, universe, split, kill tests or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run).",
+
+ "equity_arm": {
+  "hypothesis": "H-LIGHTFADE-EQ",
+  "status": "Pre-registered as a separate hypothesis with its own grid, kill tests and bar; it does not share selection or n with H-LIGHTFADE.",
+  "why_sensible_and_caveats": [
+   "All 8 equity/metal names are recorded on Binance, Lighter and xyz (recorder.log start line), so the fade can be defined the same way.",
+   "Unlike crypto, Binance is not known to lead these names (the round-7 OWN-PRECHECK covered crypto only; H-EQLAG's day-1 leader map decides it). A deviation from a venue that is itself following is not a 'local' dislocation, so the fair-value source is taken from the frozen H-EQLAG day-1 leader map (reports/hypotheses/eqlag_leader_map.json), which is computed by a method fixed before any data and does not use any LIGHTFADE outcome.",
+   "Outside US cash hours none of the three venues has an underlying market; dislocations there may be noise around a drifting synthetic price. Results are reported by session; the grid is not split by session (as in H-EQLAG).",
+   "xyz costs 0.9 bp per side in growth mode (1.8 bp round trip before spread) and 9 bp per side for xyz:GOLD and xyz:MSTR, which is more than any plausible reversion at these thresholds; GOLD and MSTR are therefore excluded as xyz followers (they stay in the Lighter-follower arm)."
+  ],
+  "names": {"lighter_follower": ["TSLA", "NVDA", "MU", "INTC", "COIN", "MSTR", "XAU", "XAG"],
+            "xyz_follower": ["TSLA", "NVDA", "MU", "INTC", "COIN", "XAG"],
+            "symbols": "as in reports/hypotheses/eqlag_preregistration.json 'names'"},
+  "fair_value_source": "For each name x session (cash_open = Mon-Fri 13:30-20:00 UTC; cash_closed otherwise), the leader from the frozen H-EQLAG day-1 leader map (fallback Binance, per that file). If the leader is the follower venue being traded, that name x session x follower is excluded (counted). The same map is used unchanged on day 2 and forward.",
+  "rule": "Identical to H-LIGHTFADE.rule with: Binance replaced by the leader venue in basis, fair value and the flat filter; an additional quiet filter that the third venue (neither leader nor follower) also has |2-s mid return| < d/4 at t; w fixed at 2 s; gap threshold 30 s (as H-EQLAG); fill latency L = 600 ms for Lighter, 300 ms for xyz.",
+  "fees_per_side": "Lighter 0 bp (DOC). xyz 0.9 bp taker in growth mode (tier 0 base rate, DOC), multiplied by deployerFeeScale, from the latest hourly meta snapshot at or before entry; if a name's snapshot shows growthMode not enabled at entry, the trigger is skipped (counted) rather than traded at 9 bp.",
+  "grid": {"d_bp": [6, 10, 15], "T_s": [5, 30], "follower_and_latency": [{"follower": "lighter", "L_ms": 600}, {"follower": "xyz", "L_ms": 300}], "w_s": 2, "n_configs": 12},
+  "kill_tests_day1": {
+   "K1_trigger_count": "d=6 triggers (no position rules) pooled over names, per follower. A follower with < 15 on day 1 is KILLED (its configs are not selectable).",
+   "K2_reversion_vs_half_spread": "Per follower, for d=10 triggers (d=6 if < 30): mean s * (mid_f(t+L+h)/mid_f(t+L) - 1) for h in {5 s, 30 s} versus mean follower half-spread at t+L, plus for xyz the per-side fee. If it does not exceed that at either h, that follower is KILLED.",
+   "if_both_killed": "H-LIGHTFADE-EQ is KILLED and day 2 is not run."
+  },
+  "selection_rule_day1": "As H-LIGHTFADE (n >= 30, highest PF, net > 0 and PF > 1.0 required, +0.5 bp robustness), among configs of followers that passed K1 and K2.",
+  "validation_day2": "As H-LIGHTFADE: selected config once on day 2; bar n >= 50, net > 0, PF > 1.2, net without top-3 > 0; n < 50 = INCONCLUSIVE, freeze and continue forward, no re-selection.",
+  "dependency": "If the H-EQLAG leader map cannot be produced (e.g. a venue missing for a name for most of day 1), Binance is the fair-value source for that name x session (the H-EQLAG fallback).",
+  "no_changes": "Same as H-LIGHTFADE."
+ }
+}

@@ -412,6 +412,21 @@ def freeze():
                                           trades_per_day=round(per_day, 2),
                                           days_to_50_trades=round(50 / per_day, 1) if per_day else None,
                                           note="plus ~1-2 days archive lag before the trades can be scored")
+        rec["posthoc_historical_informational"] = {
+            k: {view: {m: v[view].get(m) for m in ("n", "gross_mean_bp", "cost_mean_bp", "funding_mean_bp",
+                                                   "mean_bp", "pf", "sum_ex_top3", "passes_bar")}
+                for view in ("name_match_all_dates", "after_lighter_market_created")}
+            for k, v in est["splits"].items()}
+        rec["caveats"] = [
+            "config and venue selected post-hoc (see post_hoc_caveat)",
+            "post-hoc recompute on the Lighter-listed subset does NOT pass the bar: validation gross is only "
+            "~+2 bp/trade on those coins (the parent's +10.5 bp validation gross came mostly from 75 trades on "
+            "coins not on Lighter, e.g. VINE, RESOLV, MOODENG, HYPER)",
+            "spread costs frozen from a 12-minute sample on a Monday morning (2026-10-05 ~07:10-07:22 UTC)",
+            "prices are Binance klines, executions would be on Lighter (basis and Lighter price path not modelled)",
+            "the Lighter listing filter removed none of the 30 forward-universe coins",
+            "the universe is fixed at freeze (ranked on 2026-09 volume); the parent re-ranked daily",
+        ]
     FREEZE.parent.mkdir(parents=True, exist_ok=True)
     FREEZE.write_text(json.dumps(rec, indent=1, default=str))
     print(json.dumps({k: rec[k] for k in ("frozen_at_utc", "universe", "module_sha256")}, indent=1))

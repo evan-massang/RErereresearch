@@ -1,0 +1,936 @@
+{
+ "hypotheses": [
+  "H-HLLAG-NEWCOINS"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "date": "2026-10-05",
+ "preregistration": "reports/hypotheses/hllag_newcoins_addendum.json",
+ "parent_preregistration": "reports/hypotheses/hllag_newcoins_preregistration.json",
+ "preregistration_timing": "addendum file saved 2026-10-05T06:02:23Z (mtime); first addendum result file 06:04:11Z; no addendum-coin result was computed before it was written. TRUMP/SPX results were known when it was written.",
+ "data": "Tardis.dev free first-of-month samples: hyperliquid quotes+trades, binance-futures book_ticker; one coin-day at a time, raw csv.gz read in 2M-row chunks (same columns and Binance change-dedup as hllag_newcoins.extract; equality checked on a synthetic test file), raw and parquet deleted after simulation. Per-trade results under data/raw/web/tardis/results/newcoins_addendum/ (gitignored)",
+ "rule": "hlanchor_lib.sim_lag frozen params theta_bp=40 L_ms=300 H_s=30 cooldown_s=10 close_bp=None info_lat_ms=300; lib sha256 98166e5f...c3ad asserted, unchanged; 4.5 bp taker each side; $1k units",
+ "bar": "per split: n>=50, net>0, PF>1.2, net ex top-3 >0",
+ "scripts": [
+  "scripts/research/hllag_newcoins_addendum.py",
+  "scripts/research/hllag_newcoins.py (imported)",
+  "scripts/research/hlanchor_lib.py (frozen, imported)"
+ ],
+ "notes": [
+  "mean is USD per $1,000 round trip (x10 = bp).",
+  "+0.5 bp, L=800 ms, ex-top-coin-day and all-new-coins pooled rows are informational only.",
+  "Deviations from parent (declared in the addendum before results): 1.45 GB budget lifted for PENGU/kSHIB; 60 MB size gate lifted for DOGE/kPEPE. Free disk stayed >= 3.27 GB (limit 2.5 GB).",
+  "PENGU had no Tardis HL quotes before 2025-01-01 (HTTP 400): 2 train days missing."
+ ],
+ "tested": [
+  "PENGU",
+  "kSHIB",
+  "DOGE",
+  "kPEPE"
+ ],
+ "cut": {},
+ "missing": {
+  "PENGU:2024-11-01": "hyperliquid quotes PENGU: HTTP 400",
+  "PENGU:2024-12-01": "hyperliquid quotes PENGU: HTTP 400"
+ },
+ "coin_days_processed": 66,
+ "bytes_downloaded": 4661240271,
+ "min_free_disk_gb": 3.27,
+ "per_coin": {
+  "PENGU": {
+   "train": {
+    "base": {
+     "n": 155,
+     "net": 62.83,
+     "mean": 0.405,
+     "pf": 1.303,
+     "net_ex_top3": 28.31,
+     "win": 0.535,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 155,
+     "net": 55.08,
+     "mean": 0.355,
+     "pf": 1.261,
+     "net_ex_top3": 20.71,
+     "win": 0.535,
+     "passes": true
+    },
+    "L800": {
+     "n": 155,
+     "net": -132.36,
+     "mean": -0.854,
+     "pf": 0.533,
+     "net_ex_top3": -163.94,
+     "win": 0.342,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 12.06,
+     "mk5": 14.61,
+     "mk30": 16.06
+    },
+    "top_coin_day": {
+     "key": "PENGU 2025-03-01",
+     "net": 31.06
+    },
+    "ex_top_coin_day": {
+     "n": 146,
+     "net": 31.77,
+     "mean": 0.218,
+     "pf": 1.155,
+     "net_ex_top3": 0.31,
+     "win": 0.521,
+     "passes": false
+    },
+    "per_day_net": {
+     "PENGU 2025-01-01": 28.68,
+     "PENGU 2025-02-01": -15.94,
+     "PENGU 2025-03-01": 31.06,
+     "PENGU 2025-04-01": 2.63,
+     "PENGU 2025-05-01": 14.67,
+     "PENGU 2025-06-01": 1.74
+    },
+    "coin_days_with_trades": 6
+   },
+   "validation": {
+    "base": {
+     "n": 83,
+     "net": 34.66,
+     "mean": 0.418,
+     "pf": 1.387,
+     "net_ex_top3": 14.93,
+     "win": 0.566,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 83,
+     "net": 30.51,
+     "mean": 0.368,
+     "pf": 1.333,
+     "net_ex_top3": 10.93,
+     "win": 0.554,
+     "passes": true
+    },
+    "L800": {
+     "n": 83,
+     "net": -131.31,
+     "mean": -1.582,
+     "pf": 0.273,
+     "net_ex_top3": -150.68,
+     "win": 0.241,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 16.39,
+     "mk5": 16.37,
+     "mk30": 16.34
+    },
+    "top_coin_day": {
+     "key": "PENGU 2025-09-01",
+     "net": 15.29
+    },
+    "ex_top_coin_day": {
+     "n": 78,
+     "net": 19.37,
+     "mean": 0.248,
+     "pf": 1.216,
+     "net_ex_top3": -0.37,
+     "win": 0.538,
+     "passes": false
+    },
+    "per_day_net": {
+     "PENGU 2025-07-01": 14.69,
+     "PENGU 2025-08-01": 0.32,
+     "PENGU 2025-09-01": 15.29,
+     "PENGU 2025-10-01": 7.84,
+     "PENGU 2025-12-01": -14.6,
+     "PENGU 2026-01-01": -1.26,
+     "PENGU 2026-03-01": 12.39
+    },
+    "coin_days_with_trades": 7
+   },
+   "passes_both": true
+  },
+  "kSHIB": {
+   "train": {
+    "base": {
+     "n": 63,
+     "net": 23.51,
+     "mean": 0.373,
+     "pf": 1.305,
+     "net_ex_top3": -7.74,
+     "win": 0.476,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 63,
+     "net": 20.36,
+     "mean": 0.323,
+     "pf": 1.259,
+     "net_ex_top3": -10.74,
+     "win": 0.476,
+     "passes": false
+    },
+    "L800": {
+     "n": 63,
+     "net": -6.88,
+     "mean": -0.109,
+     "pf": 0.924,
+     "net_ex_top3": -37.79,
+     "win": 0.381,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 6.02,
+     "mk5": 9.26,
+     "mk30": 14.26
+    },
+    "top_coin_day": {
+     "key": "kSHIB 2024-12-01",
+     "net": 22.36
+    },
+    "ex_top_coin_day": {
+     "n": 3,
+     "net": 1.15,
+     "mean": 0.383,
+     "pf": 1.769,
+     "net_ex_top3": 0.0,
+     "win": 0.667,
+     "passes": false
+    },
+    "per_day_net": {
+     "kSHIB 2024-11-01": 0.2,
+     "kSHIB 2024-12-01": 22.36,
+     "kSHIB 2025-04-01": 2.45,
+     "kSHIB 2025-05-01": -1.5
+    },
+    "coin_days_with_trades": 4
+   },
+   "validation": {
+    "base": {
+     "n": 7,
+     "net": 3.25,
+     "mean": 0.465,
+     "pf": 1.767,
+     "net_ex_top3": -4.03,
+     "win": 0.571,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 7,
+     "net": 2.9,
+     "mean": 0.415,
+     "pf": 1.661,
+     "net_ex_top3": -4.23,
+     "win": 0.571,
+     "passes": false
+    },
+    "L800": {
+     "n": 7,
+     "net": -5.51,
+     "mean": -0.787,
+     "pf": 0.46,
+     "net_ex_top3": -9.93,
+     "win": 0.286,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 9.43,
+     "mk5": 13.81,
+     "mk30": 14.93
+    },
+    "top_coin_day": {
+     "key": "kSHIB 2025-09-01",
+     "net": 3.19
+    },
+    "ex_top_coin_day": {
+     "n": 6,
+     "net": 0.06,
+     "mean": 0.01,
+     "pf": 1.014,
+     "net_ex_top3": -4.24,
+     "win": 0.5,
+     "passes": false
+    },
+    "per_day_net": {
+     "kSHIB 2025-07-01": -0.81,
+     "kSHIB 2025-08-01": -0.45,
+     "kSHIB 2025-09-01": 3.19,
+     "kSHIB 2025-10-01": 0.21,
+     "kSHIB 2026-03-01": 1.11
+    },
+    "coin_days_with_trades": 5
+   },
+   "passes_both": false
+  },
+  "DOGE": {
+   "train": {
+    "base": {
+     "n": 7,
+     "net": -15.17,
+     "mean": -2.168,
+     "pf": 0.0,
+     "net_ex_top3": -13.65,
+     "win": 0.0,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 7,
+     "net": -15.52,
+     "mean": -2.218,
+     "pf": 0.0,
+     "net_ex_top3": -13.85,
+     "win": 0.0,
+     "passes": false
+    },
+    "L800": {
+     "n": 7,
+     "net": -15.68,
+     "mean": -2.24,
+     "pf": 0.008,
+     "net_ex_top3": -14.12,
+     "win": 0.143,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": -0.64,
+     "mk5": -0.36,
+     "mk30": -11.62
+    },
+    "top_coin_day": {
+     "key": "DOGE 2025-02-01",
+     "net": -0.57
+    },
+    "ex_top_coin_day": {
+     "n": 6,
+     "net": -14.6,
+     "mean": -2.433,
+     "pf": 0.0,
+     "net_ex_top3": -11.47,
+     "win": 0.0,
+     "passes": false
+    },
+    "per_day_net": {
+     "DOGE 2024-11-01": -4.92,
+     "DOGE 2024-12-01": -6.09,
+     "DOGE 2025-02-01": -0.57,
+     "DOGE 2025-05-01": -2.64,
+     "DOGE 2025-06-01": -0.94
+    },
+    "coin_days_with_trades": 5
+   },
+   "validation": {
+    "base": {
+     "n": 15,
+     "net": 9.02,
+     "mean": 0.601,
+     "pf": 1.395,
+     "net_ex_top3": -13.16,
+     "win": 0.533,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 15,
+     "net": 8.27,
+     "mean": 0.551,
+     "pf": 1.357,
+     "net_ex_top3": -13.76,
+     "win": 0.533,
+     "passes": false
+    },
+    "L800": {
+     "n": 15,
+     "net": -8.84,
+     "mean": -0.589,
+     "pf": 0.683,
+     "net_ex_top3": -24.51,
+     "win": 0.467,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 9.51,
+     "mk5": 17.59,
+     "mk30": 20.46
+    },
+    "top_coin_day": {
+     "key": "DOGE 2026-01-01",
+     "net": 21.81
+    },
+    "ex_top_coin_day": {
+     "n": 8,
+     "net": -12.79,
+     "mean": -1.599,
+     "pf": 0.141,
+     "net_ex_top3": -14.88,
+     "win": 0.375,
+     "passes": false
+    },
+    "per_day_net": {
+     "DOGE 2025-08-01": 0.4,
+     "DOGE 2026-01-01": 21.81,
+     "DOGE 2026-02-01": -4.73,
+     "DOGE 2026-03-01": -8.46
+    },
+    "coin_days_with_trades": 4
+   },
+   "passes_both": false
+  },
+  "kPEPE": {
+   "train": {
+    "base": {
+     "n": 36,
+     "net": 56.72,
+     "mean": 1.576,
+     "pf": 4.402,
+     "net_ex_top3": 36.44,
+     "win": 0.694,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 36,
+     "net": 54.92,
+     "mean": 1.526,
+     "pf": 4.189,
+     "net_ex_top3": 34.79,
+     "win": 0.694,
+     "passes": false
+    },
+    "L800": {
+     "n": 36,
+     "net": 6.75,
+     "mean": 0.188,
+     "pf": 1.198,
+     "net_ex_top3": -12.54,
+     "win": 0.417,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 20.19,
+     "mk5": 24.87,
+     "mk30": 25.25
+    },
+    "top_coin_day": {
+     "key": "kPEPE 2024-12-01",
+     "net": 35.57
+    },
+    "ex_top_coin_day": {
+     "n": 21,
+     "net": 21.16,
+     "mean": 1.007,
+     "pf": 2.726,
+     "net_ex_top3": 6.17,
+     "win": 0.619,
+     "passes": false
+    },
+    "per_day_net": {
+     "kPEPE 2024-12-01": 35.57,
+     "kPEPE 2025-01-01": 18.35,
+     "kPEPE 2025-03-01": 0.47,
+     "kPEPE 2025-04-01": -1.39,
+     "kPEPE 2025-05-01": 5.06,
+     "kPEPE 2025-06-01": -1.32
+    },
+    "coin_days_with_trades": 6
+   },
+   "validation": {
+    "base": {
+     "n": 25,
+     "net": -13.5,
+     "mean": -0.54,
+     "pf": 0.681,
+     "net_ex_top3": -28.9,
+     "win": 0.44,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 25,
+     "net": -14.75,
+     "mean": -0.59,
+     "pf": 0.657,
+     "net_ex_top3": -30.0,
+     "win": 0.44,
+     "passes": false
+    },
+    "L800": {
+     "n": 25,
+     "net": -31.65,
+     "mean": -1.266,
+     "pf": 0.412,
+     "net_ex_top3": -49.24,
+     "win": 0.32,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 5.86,
+     "mk5": 10.21,
+     "mk30": 6.09
+    },
+    "top_coin_day": {
+     "key": "kPEPE 2025-08-01",
+     "net": 4.4
+    },
+    "ex_top_coin_day": {
+     "n": 24,
+     "net": -17.9,
+     "mean": -0.746,
+     "pf": 0.576,
+     "net_ex_top3": -33.3,
+     "win": 0.417,
+     "passes": false
+    },
+    "per_day_net": {
+     "kPEPE 2025-07-01": -1.0,
+     "kPEPE 2025-08-01": 4.4,
+     "kPEPE 2025-09-01": -2.08,
+     "kPEPE 2025-10-01": 2.08,
+     "kPEPE 2026-01-01": -14.15,
+     "kPEPE 2026-02-01": -1.98,
+     "kPEPE 2026-03-01": -0.77
+    },
+    "coin_days_with_trades": 7
+   },
+   "passes_both": false
+  }
+ },
+ "groups": {
+  "A_PENGU_kSHIB": {
+   "train": {
+    "base": {
+     "n": 218,
+     "net": 86.34,
+     "mean": 0.396,
+     "pf": 1.304,
+     "net_ex_top3": 50.57,
+     "win": 0.518,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 218,
+     "net": 75.44,
+     "mean": 0.346,
+     "pf": 1.261,
+     "net_ex_top3": 39.82,
+     "win": 0.518,
+     "passes": true
+    },
+    "L800": {
+     "n": 218,
+     "net": -139.24,
+     "mean": -0.639,
+     "pf": 0.628,
+     "net_ex_top3": -175.54,
+     "win": 0.353,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 10.31,
+     "mk5": 13.07,
+     "mk30": 15.54
+    },
+    "top_coin_day": {
+     "key": "PENGU 2025-03-01",
+     "net": 31.06
+    },
+    "ex_top_coin_day": {
+     "n": 209,
+     "net": 55.28,
+     "mean": 0.265,
+     "pf": 1.196,
+     "net_ex_top3": 22.41,
+     "win": 0.507,
+     "passes": false
+    },
+    "per_day_net": {
+     "PENGU 2025-01-01": 28.68,
+     "PENGU 2025-02-01": -15.94,
+     "PENGU 2025-03-01": 31.06,
+     "PENGU 2025-04-01": 2.63,
+     "PENGU 2025-05-01": 14.67,
+     "PENGU 2025-06-01": 1.74,
+     "kSHIB 2024-11-01": 0.2,
+     "kSHIB 2024-12-01": 22.36,
+     "kSHIB 2025-04-01": 2.45,
+     "kSHIB 2025-05-01": -1.5
+    },
+    "coin_days_with_trades": 10
+   },
+   "validation": {
+    "base": {
+     "n": 90,
+     "net": 37.92,
+     "mean": 0.421,
+     "pf": 1.404,
+     "net_ex_top3": 18.18,
+     "win": 0.567,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 90,
+     "net": 33.42,
+     "mean": 0.371,
+     "pf": 1.348,
+     "net_ex_top3": 13.83,
+     "win": 0.556,
+     "passes": true
+    },
+    "L800": {
+     "n": 90,
+     "net": -136.81,
+     "mean": -1.52,
+     "pf": 0.283,
+     "net_ex_top3": -156.18,
+     "win": 0.244,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 15.85,
+     "mk5": 16.17,
+     "mk30": 16.23
+    },
+    "top_coin_day": {
+     "key": "PENGU 2025-09-01",
+     "net": 15.29
+    },
+    "ex_top_coin_day": {
+     "n": 85,
+     "net": 22.62,
+     "mean": 0.266,
+     "pf": 1.241,
+     "net_ex_top3": 2.89,
+     "win": 0.541,
+     "passes": true
+    },
+    "per_day_net": {
+     "PENGU 2025-07-01": 14.69,
+     "PENGU 2025-08-01": 0.32,
+     "PENGU 2025-09-01": 15.29,
+     "PENGU 2025-10-01": 7.84,
+     "PENGU 2025-12-01": -14.6,
+     "PENGU 2026-01-01": -1.26,
+     "PENGU 2026-03-01": 12.39,
+     "kSHIB 2025-07-01": -0.81,
+     "kSHIB 2025-08-01": -0.45,
+     "kSHIB 2025-09-01": 3.19,
+     "kSHIB 2025-10-01": 0.21,
+     "kSHIB 2026-03-01": 1.11
+    },
+    "coin_days_with_trades": 12
+   },
+   "coins": [
+    "PENGU",
+    "kSHIB"
+   ],
+   "passes_both": true
+  },
+  "B_DOGE_kPEPE": {
+   "train": {
+    "base": {
+     "n": 43,
+     "net": 41.55,
+     "mean": 0.966,
+     "pf": 2.305,
+     "net_ex_top3": 21.26,
+     "win": 0.581,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 43,
+     "net": 39.4,
+     "mean": 0.916,
+     "pf": 2.203,
+     "net_ex_top3": 19.26,
+     "win": 0.581,
+     "passes": false
+    },
+    "L800": {
+     "n": 43,
+     "net": -8.93,
+     "mean": -0.208,
+     "pf": 0.821,
+     "net_ex_top3": -28.22,
+     "win": 0.372,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 16.8,
+     "mk5": 20.77,
+     "mk30": 19.25
+    },
+    "top_coin_day": {
+     "key": "kPEPE 2024-12-01",
+     "net": 35.57
+    },
+    "ex_top_coin_day": {
+     "n": 28,
+     "net": 5.98,
+     "mean": 0.214,
+     "pf": 1.218,
+     "net_ex_top3": -9.01,
+     "win": 0.464,
+     "passes": false
+    },
+    "per_day_net": {
+     "DOGE 2024-11-01": -4.92,
+     "DOGE 2024-12-01": -6.09,
+     "DOGE 2025-02-01": -0.57,
+     "DOGE 2025-05-01": -2.64,
+     "DOGE 2025-06-01": -0.94,
+     "kPEPE 2024-12-01": 35.57,
+     "kPEPE 2025-01-01": 18.35,
+     "kPEPE 2025-03-01": 0.47,
+     "kPEPE 2025-04-01": -1.39,
+     "kPEPE 2025-05-01": 5.06,
+     "kPEPE 2025-06-01": -1.32
+    },
+    "coin_days_with_trades": 11
+   },
+   "validation": {
+    "base": {
+     "n": 40,
+     "net": -4.48,
+     "mean": -0.112,
+     "pf": 0.931,
+     "net_ex_top3": -27.32,
+     "win": 0.475,
+     "passes": false
+    },
+    "plus05bp": {
+     "n": 40,
+     "net": -6.48,
+     "mean": -0.162,
+     "pf": 0.902,
+     "net_ex_top3": -29.17,
+     "win": 0.475,
+     "passes": false
+    },
+    "L800": {
+     "n": 40,
+     "net": -40.49,
+     "mean": -1.012,
+     "pf": 0.505,
+     "net_ex_top3": -63.68,
+     "win": 0.375,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 7.23,
+     "mk5": 12.98,
+     "mk30": 11.48
+    },
+    "top_coin_day": {
+     "key": "DOGE 2026-01-01",
+     "net": 21.81
+    },
+    "ex_top_coin_day": {
+     "n": 33,
+     "net": -26.29,
+     "mean": -0.797,
+     "pf": 0.54,
+     "net_ex_top3": -41.69,
+     "win": 0.424,
+     "passes": false
+    },
+    "per_day_net": {
+     "DOGE 2025-08-01": 0.4,
+     "DOGE 2026-01-01": 21.81,
+     "DOGE 2026-02-01": -4.73,
+     "DOGE 2026-03-01": -8.46,
+     "kPEPE 2025-07-01": -1.0,
+     "kPEPE 2025-08-01": 4.4,
+     "kPEPE 2025-09-01": -2.08,
+     "kPEPE 2025-10-01": 2.08,
+     "kPEPE 2026-01-01": -14.15,
+     "kPEPE 2026-02-01": -1.98,
+     "kPEPE 2026-03-01": -0.77
+    },
+    "coin_days_with_trades": 11
+   },
+   "coins": [
+    "DOGE",
+    "kPEPE"
+   ],
+   "passes_both": false
+  },
+  "all_new_coins_informational": {
+   "train": {
+    "base": {
+     "n": 590,
+     "net": 414.32,
+     "mean": 0.702,
+     "pf": 1.589,
+     "net_ex_top3": 359.47,
+     "win": 0.532,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 590,
+     "net": 384.82,
+     "mean": 0.652,
+     "pf": 1.537,
+     "net_ex_top3": 330.12,
+     "win": 0.531,
+     "passes": true
+    },
+    "L800": {
+     "n": 590,
+     "net": -337.14,
+     "mean": -0.571,
+     "pf": 0.673,
+     "net_ex_top3": -391.54,
+     "win": 0.341,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 12.49,
+     "mk5": 16.31,
+     "mk30": 18.42
+    },
+    "top_coin_day": {
+     "key": "TRUMP 2025-02-01",
+     "net": 168.13
+    },
+    "ex_top_coin_day": {
+     "n": 501,
+     "net": 246.19,
+     "mean": 0.491,
+     "pf": 1.418,
+     "net_ex_top3": 204.16,
+     "win": 0.531,
+     "passes": true
+    },
+    "per_day_net": {
+     "DOGE 2024-11-01": -4.92,
+     "DOGE 2024-12-01": -6.09,
+     "DOGE 2025-02-01": -0.57,
+     "DOGE 2025-05-01": -2.64,
+     "DOGE 2025-06-01": -0.94,
+     "PENGU 2025-01-01": 28.68,
+     "PENGU 2025-02-01": -15.94,
+     "PENGU 2025-03-01": 31.06,
+     "PENGU 2025-04-01": 2.63,
+     "PENGU 2025-05-01": 14.67,
+     "PENGU 2025-06-01": 1.74,
+     "SPX 2025-02-01": 4.71,
+     "SPX 2025-03-01": -3.59,
+     "SPX 2025-04-01": 19.34,
+     "SPX 2025-05-01": -7.14,
+     "SPX 2025-06-01": 34.35,
+     "TRUMP 2025-02-01": 168.13,
+     "TRUMP 2025-03-01": 47.75,
+     "TRUMP 2025-05-01": 22.89,
+     "kPEPE 2024-12-01": 35.57,
+     "kPEPE 2025-01-01": 18.35,
+     "kPEPE 2025-03-01": 0.47,
+     "kPEPE 2025-04-01": -1.39,
+     "kPEPE 2025-05-01": 5.06,
+     "kPEPE 2025-06-01": -1.32,
+     "kSHIB 2024-11-01": 0.2,
+     "kSHIB 2024-12-01": 22.36,
+     "kSHIB 2025-04-01": 2.45,
+     "kSHIB 2025-05-01": -1.5
+    },
+    "coin_days_with_trades": 29
+   },
+   "validation": {
+    "base": {
+     "n": 373,
+     "net": 169.86,
+     "mean": 0.455,
+     "pf": 1.332,
+     "net_ex_top3": 97.36,
+     "win": 0.52,
+     "passes": true
+    },
+    "plus05bp": {
+     "n": 373,
+     "net": 151.21,
+     "mean": 0.405,
+     "pf": 1.291,
+     "net_ex_top3": 78.86,
+     "win": 0.517,
+     "passes": true
+    },
+    "L800": {
+     "n": 373,
+     "net": -395.41,
+     "mean": -1.06,
+     "pf": 0.494,
+     "net_ex_top3": -462.38,
+     "win": 0.298,
+     "passes": false
+    },
+    "markout_bp_mean": {
+     "mk1": 12.57,
+     "mk5": 16.82,
+     "mk30": 17.6
+    },
+    "top_coin_day": {
+     "key": "SPX 2025-10-01",
+     "net": 48.61
+    },
+    "ex_top_coin_day": {
+     "n": 341,
+     "net": 121.25,
+     "mean": 0.356,
+     "pf": 1.254,
+     "net_ex_top3": 48.74,
+     "win": 0.519,
+     "passes": true
+    },
+    "per_day_net": {
+     "DOGE 2025-08-01": 0.4,
+     "DOGE 2026-01-01": 21.81,
+     "DOGE 2026-02-01": -4.73,
+     "DOGE 2026-03-01": -8.46,
+     "PENGU 2025-07-01": 14.69,
+     "PENGU 2025-08-01": 0.32,
+     "PENGU 2025-09-01": 15.29,
+     "PENGU 2025-10-01": 7.84,
+     "PENGU 2025-12-01": -14.6,
+     "PENGU 2026-01-01": -1.26,
+     "PENGU 2026-03-01": 12.39,
+     "SPX 2025-07-01": 27.62,
+     "SPX 2025-08-01": 46.88,
+     "SPX 2025-09-01": -8.6,
+     "SPX 2025-10-01": 48.61,
+     "SPX 2025-11-01": 12.76,
+     "SPX 2025-12-01": -1.56,
+     "SPX 2026-01-01": 3.25,
+     "SPX 2026-02-01": -33.27,
+     "SPX 2026-03-01": -24.91,
+     "TRUMP 2025-07-01": 16.73,
+     "TRUMP 2025-09-01": 13.9,
+     "TRUMP 2025-11-01": 36.81,
+     "TRUMP 2025-12-01": -6.51,
+     "TRUMP 2026-01-01": 9.36,
+     "TRUMP 2026-03-01": -4.65,
+     "kPEPE 2025-07-01": -1.0,
+     "kPEPE 2025-08-01": 4.4,
+     "kPEPE 2025-09-01": -2.08,
+     "kPEPE 2025-10-01": 2.08,
+     "kPEPE 2026-01-01": -14.15,
+     "kPEPE 2026-02-01": -1.98,
+     "kPEPE 2026-03-01": -0.77,
+     "kSHIB 2025-07-01": -0.81,
+     "kSHIB 2025-08-01": -0.45,
+     "kSHIB 2025-09-01": 3.19,
+     "kSHIB 2025-10-01": 0.21,
+     "kSHIB 2026-03-01": 1.11
+    },
+    "coin_days_with_trades": 38
+   },
+   "coins": [
+    "TRUMP",
+    "SPX",
+    "PENGU",
+    "kSHIB",
+    "DOGE",
+    "kPEPE"
+   ],
+   "passes_both": null
+  }
+ },
+ "verdict": "Stage A (PENGU+kSHIB pooled, primary addendum test) PASSES train and validation. Stage B (DOGE+kPEPE pooled) FAILS both (n<50 each split; validation net negative). On their own only PENGU passes both splits (narrowly). kSHIB, DOGE, kPEPE fail on their own (n<50 in at least one split). All L=800 ms rows lose money."
+}
