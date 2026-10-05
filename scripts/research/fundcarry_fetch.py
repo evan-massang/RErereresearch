@@ -149,7 +149,8 @@ def spot_mexc(cl, sym, t0):
             return None
         b = r.json()
         out += [[x[0], float(x[1]), float(x[2]), float(x[3]), float(x[4]), float(x[7])] for x in b]
-        t = end + 1
+        # MEXC returns at most 500 rows per call: continue from the last row returned, not from `end`
+        t = (b[-1][0] + 3600_000) if b and b[-1][0] + 3600_000 <= end else end + 1
         time.sleep(0.3)
     return sorted({x[0]: x for x in out if x[0] < CUTOFF_MS}.values())
 

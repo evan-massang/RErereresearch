@@ -1,0 +1,123 @@
+{
+ "per_coin": {
+  "WIF": {
+   "venue": "mexc",
+   "funding_hours": 22111,
+   "first": 1703260800182,
+   "spot_hours": 11186,
+   "n4h": 1625,
+   "basis_obs_mad": 0.0008649450142097503,
+   "proxy_err_mad": 0.0006701138878849326,
+   "proxy_err_p95": 0.002201760015719297,
+   "mean_funding_ann": 0.36031432714560707
+  },
+  "kBONK": {
+   "venue": "mexc",
+   "funding_hours": 22895,
+   "first": 1700438400148,
+   "spot_hours": 11563,
+   "n4h": 1657,
+   "basis_obs_mad": 0.0006904069767441623,
+   "proxy_err_mad": 0.0004870784162047961,
+   "proxy_err_p95": 0.0015980300334455446,
+   "mean_funding_ann": 0.2887408296201822
+  },
+  "POPCAT": {
+   "venue": "mexc",
+   "funding_hours": 19047,
+   "first": 1714291200161,
+   "spot_hours": 9715,
+   "n4h": 1625,
+   "basis_obs_mad": 0.0010163499779054508,
+   "proxy_err_mad": 0.0007363568180328221,
+   "proxy_err_p95": 0.002453224659048321,
+   "mean_funding_ann": 0.3028230183693124
+  },
+  "MEW": {
+   "venue": "okx",
+   "funding_hours": 16975,
+   "first": 1721750400045,
+   "spot_hours": 17144,
+   "n4h": 3158,
+   "basis_obs_mad": 0.0009716208512880464,
+   "proxy_err_mad": 0.000684320098391564,
+   "proxy_err_p95": 0.0023727963049070136,
+   "mean_funding_ann": 0.018976219165228417
+  },
+  "BOME": {
+   "venue": "binance",
+   "funding_hours": 20093,
+   "first": 1710525600168,
+   "spot_hours": 20076,
+   "n4h": 3336,
+   "basis_obs_mad": 0.0008826125330979595,
+   "proxy_err_mad": 0.0006895301191873352,
+   "proxy_err_p95": 0.0027404696207272653,
+   "mean_funding_ann": 0.1169720651855991
+  },
+  "MYRO": {
+   "venue": "mexc",
+   "funding_hours": 20334,
+   "first": 1709658000053,
+   "spot_hours": 10500,
+   "n4h": 1208,
+   "basis_obs_mad": 0.001204439543826874,
+   "proxy_err_mad": 0.001003203905665858,
+   "proxy_err_p95": 0.0033449510126208185,
+   "mean_funding_ann": 0.16941839715121954
+  },
+  "GOAT": {
+   "venue": "mexc",
+   "funding_hours": 14771,
+   "first": 1729688400095,
+   "spot_hours": 7500,
+   "n4h": 1333,
+   "basis_obs_mad": 0.001302991374564022,
+   "proxy_err_mad": 0.001053884993863481,
+   "proxy_err_p95": 0.006302334682899905,
+   "mean_funding_ann": 0.19376894207576484
+  },
+  "MOODENG": {
+   "venue": "mexc",
+   "funding_hours": 14726,
+   "first": 1729850400122,
+   "spot_hours": 7500,
+   "n4h": 1333,
+   "basis_obs_mad": 0.0009803235067572524,
+   "proxy_err_mad": 0.0007165783981461313,
+   "proxy_err_p95": 0.002558319671803742,
+   "mean_funding_ann": -0.054838136889616584
+  },
+  "PNUT": {
+   "venue": "binance",
+   "funding_hours": 14252,
+   "first": 1731556800090,
+   "spot_hours": 14318,
+   "n4h": 2477,
+   "basis_obs_mad": 0.0007669616519174749,
+   "proxy_err_mad": 0.000523549284121103,
+   "proxy_err_p95": 0.0020582009894741684,
+   "mean_funding_ann": 0.07072359697012516
+  },
+  "CHILLGUY": "missing",
+  "FARTCOIN": "missing",
+  "AI16Z": "missing",
+  "ZEREBRO": "missing",
+  "GRIFFAIN": "missing",
+  "TRUMP": "missing",
+  "MELANIA": "missing",
+  "VINE": "missing",
+  "JELLY": "missing",
+  "LAUNCHCOIN": "missing",
+  "PUMP": "missing",
+  "USELESS": "missing",
+  "PENGU": "missing",
+  "YZY": "missing"
+ },
+ "pooled": {
+  "n": 17752,
+  "mad": 0.0006737382164930523,
+  "p95": 0.002695465256835361,
+  "mean": -0.00012668994099310934
+ }
+}
