@@ -1,0 +1,251 @@
+{
+ "is_synthetic": false,
+ "modality": "onchain",
+ "kind": "descriptive_counts_only",
+ "idl_source": [
+  "https://raw.githubusercontent.com/pump-fun/pump-public-docs/main/idl/pump_amm.json",
+  "https://raw.githubusercontent.com/pump-fun/pump-public-docs/main/idl/pump.json"
+ ],
+ "collect_coin_creator_fee_discriminator": [
+  232,
+  245,
+  194,
+  238,
+  234,
+  218,
+  58,
+  89
+ ],
+ "collect_coin_creator_fee_discriminator_hex": "e8f5c2eeeada3a59",
+ "curve_collect_creator_fee_discriminator": [
+  122,
+  2,
+  127,
+  1,
+  14,
+  191,
+  12,
+  175
+ ],
+ "files": {
+  "20261005_01_420.jsonl.gz": {
+   "records": 108907,
+   "recv_min": 1791162000.000027,
+   "recv_max": 1791162228.0423505
+  },
+  "20261005_01_833.jsonl.gz": {
+   "records": 1193796,
+   "recv_min": 1791162680.4861994,
+   "recv_max": 1791165599.9278142
+  },
+  "20261005_02_833.jsonl.gz": {
+   "records": 1529450,
+   "recv_min": 1791165600.1419415,
+   "recv_max": 1791168793.1105082
+  }
+ },
+ "split_note": "All files are recv >= 1791162000 (2026-10-05 UTC), inside the forward window (>= 1791072000). No price outcomes were computed.",
+ "claims_total": 687,
+ "claims_in_train_or_validation": 0,
+ "claims_by_utc_hour": {
+  "1791162000": 347,
+  "1791165600": 340
+ },
+ "distinct_claiming_creators": 370,
+ "claims_per_creator_max": 21,
+ "creators_with_2plus_claims": 85,
+ "claim_sol_quantiles": {
+  "0.1": 4.7522e-05,
+  "0.25": 0.000593523,
+  "0.5": 0.016644157,
+  "0.75": 1.245022465,
+  "0.9": 5.930710781,
+  "0.99": 106.400904484
+ },
+ "claim_sol_total": 3143.8640581650006,
+ "zero_amount_claims": 0,
+ "claims_creator_traded_in_exactly_one_pool_in_files": 486,
+ "claims_attributable_to_pool_created_while_recording": 124,
+ "pool_age_at_claim_minutes_bins": {
+  "<10m": 8,
+  "10-60m": 5,
+  "1-6h": 22,
+  "6-24h": 7,
+  ">24h": 82
+ },
+ "pool_age_at_claim_minutes_quantiles": {
+  "0.1": 49.53414393266042,
+  "0.25": 229.19111125071842,
+  "0.5": 1696.3441806077958,
+  "0.75": 4144.55956209898,
+  "0.9": 4286.879500333468
+ },
+ "claims_with_creator_sell_in_same_tx": 0,
+ "named_event_counts": {
+  "CollectCoinCreatorFeeEvent": 687,
+  "BuyEvent": 647113,
+  "SellEvent": 787101,
+  "MigratePoolCoinCreatorEvent": 0,
+  "SetBondingCurveCoinCreatorEvent": 0,
+  "SetMetaplexCoinCreatorEvent": 0,
+  "UpdateCreatorFeeConfigEvent": 0,
+  "CollectCreatorFeeEvent": 456,
+  "DistributeCreatorFeesEvent": 2215,
+  "CreatePoolEvent": 288,
+  "DepositEvent": 21,
+  "WithdrawEvent": 216,
+  "BoostBuyAndBurnEvent": 2163,
+  "TransferCreatorFeesToPumpEvent": 0,
+  "ClaimTokenIncentivesEvent": 0,
+  "SyncUserVolumeAccumulatorEvent": 0,
+  "InitUserVolumeAccumulatorEvent": 584,
+  "ClaimCashbackEvent": 675,
+  "ReservedFeeRecipientsEvent": 0,
+  "UpdateFeeConfigEvent": 0
+ },
+ "claims_vault_is_wsol_ata": 460,
+ "event_discriminator_counts_top": {
+  "SellEvent": 787101,
+  "BuyEvent": 647113,
+  "5632504802010000": 138255,
+  "5632504802020000": 138255,
+  "5632504802030000": 138255,
+  "5632504802040000": 138255,
+  "5632504802070000": 138018,
+  "5052534d04000000": 74232,
+  "5632504802060000": 64023,
+  "5351533102180100": 61017
+ },
+ "sample_claims": [
+  {
+   "recv": 1791162007.5686727,
+   "slot": 453424637,
+   "sig": "4m7VXQDN44VqjTEDCjTtTFS8rGR96JLByx1yoobN9x78LPn2BV55ZYU3beyVmPMct6iZtvt95XxX6y6YGxVSy9kM",
+   "ts": 1791162007,
+   "creator": "3VznumM4LZgTFCCUqZTHyUz8zTexXDvhKw4tfd7gbNXZ",
+   "fee_lamports": 6979712893,
+   "vault_ata": "BMnmzLNJtPbSpZhcRhUxdehsZgN46Rk7d3RN3sKJMzap",
+   "dest": "2bDDw8tXB17gM4XkgpnNRNkKJ9v1bkhZC8SoDLBatfwR",
+   "wsol_vault": true
+  },
+  {
+   "recv": 1791162013.3007367,
+   "slot": 453424658,
+   "sig": "3LgRQHwfPRpL21TX1iUuU8WgoBiYb5njYfnNSY8t4azg91ZpFCFSEoSqAzZnBDF5Ux2ewcmxxWnW89enbdseBYRc",
+   "ts": 1791162013,
+   "creator": "6h7x9WV9cr6eVz2eFFh6z5eqVPxbgD1E6zEr7sE65p8D",
+   "fee_lamports": 2318380341,
+   "vault_ata": "7orAHCgFxWv3xY5J6gC17BaEu5dSoHH9kjn29JxnHVkh",
+   "dest": "5a2pQgbuCHdEAnCRF5yMefkh2MN4uJVc2xwM2JCwocxG",
+   "wsol_vault": false
+  },
+  {
+   "recv": 1791162025.552455,
+   "slot": 453424702,
+   "sig": "9ar5B9QUuNhUczBNkmYmS6PTQ3q3hkoTKWPNJ5EAnXdSkvTHk6Qmvtf6FPyzEue1XQdEoqc8TuS2ckVqTLVR8mr",
+   "ts": 1791162025,
+   "creator": "HjRdZZrr57ePUjTyTvTT5DjyUEeKjKhBvdEEqrKjFMP7",
+   "fee_lamports": 2963098,
+   "vault_ata": "CF1QMwbxs3xZRMsJ31Vh16gEe6y3CSVnHuP5kNgMgyjL",
+   "dest": "7NNTYwqKfJXAPzzF2XxQPHpAteazjHQrDnRKcoHPhfWw",
+   "wsol_vault": true
+  },
+  {
+   "recv": 1791162025.552455,
+   "slot": 453424702,
+   "sig": "9ar5B9QUuNhUczBNkmYmS6PTQ3q3hkoTKWPNJ5EAnXdSkvTHk6Qmvtf6FPyzEue1XQdEoqc8TuS2ckVqTLVR8mr",
+   "ts": 1791162025,
+   "creator": "3out3Ywed5C3kNx2VCQj2UzkoUMTYJsLWUX9hV54iJ4H",
+   "fee_lamports": 3730655,
+   "vault_ata": "CepWffgZw76C8N2Sx6kwBPvwfedDdugpfeSBiHnwgKYa",
+   "dest": "EyoAvTCJ5C87ZfNYCZSkW8dunGXmaJPvugDKTdAhW6kf",
+   "wsol_vault": true
+  },
+  {
+   "recv": 1791162026.876532,
+   "slot": 453424706,
+   "sig": "5LNngPq37rEQ9VtKDHZjX4LvijkbJXjz7DPq1XkxJMXnsJq3McSfyXf2W5tq1XfFgDKtGvpMPiMr65jnwqkNCFrH",
+   "ts": 1791162026,
+   "creator": "5tLJs1sakbkEeDE4zH4XRHEwjFk8J7B2q1gWfHmd9Ynt",
+   "fee_lamports": 1365893391,
+   "vault_ata": "4RAVMZzJJDxcXhWjqPFxotgK8tQw5PEfPAiKTvf72AsP",
+   "dest": "manxXnPntsekrT4zFv8zrAkSekaYVjKhyTtLWBuDgZF",
+   "wsol_vault": true
+  }
+ ],
+ "curve_collect_creator_fee_events_in_amm_logs": {
+  "n": 456,
+  "quote_mints": {
+   "11111111": 432,
+   "EPjFWdd5": 8,
+   "pumpCmXq": 6,
+   "GJAFwWjJ": 2,
+   "Xsc9qvGR": 1,
+   "Cm6fNnMk": 1,
+   "he1iusmf": 1,
+   "NKEda5nH": 1,
+   "CARDSccU": 1,
+   "DoGEV7LA": 1,
+   "SPCXxcqX": 1,
+   "WXMRyRZh": 1
+  },
+  "distinct_creators": 272,
+  "sol_quantiles": {
+   "0.1": 0.00087412,
+   "0.25": 0.005232641,
+   "0.5": 0.059143021,
+   "0.75": 0.255016078,
+   "0.9": 0.590388464
+  }
+ },
+ "curve_claims_sharing_tx_with_amm_claim": 140,
+ "distribute_creator_fees_events_in_amm_logs": {
+  "n": 2215,
+  "distinct_mints": 689,
+  "max_per_mint": 209,
+  "mints_with_2plus": 102,
+  "mints_migrated_while_recording": 61,
+  "first_seen_minutes_after_pool_create_quantiles": {
+   "0.1": 66.49590243498484,
+   "0.25": 565.8802765846252,
+   "0.5": 1531.8260696848233,
+   "0.75": 1951.6475890914598,
+   "0.9": 2309.428138156732
+  },
+  "minutes_between_repeat_distributions_quantiles": {
+   "0.1": 0.48770864804585773,
+   "0.25": 0.5030083139737447,
+   "0.5": 1.5016485850016277,
+   "0.75": 4.026532828807831,
+   "0.9": 11.615573370456696
+  },
+  "n_shareholders_counts": {
+   "1": 1399,
+   "2": 243,
+   "3": 566,
+   "4": 7
+  },
+  "quote_mints": {
+   "11111111": 2179,
+   "EPjFWdd5": 6,
+   "SPCXxcqX": 10,
+   "CbcyNo7m": 5,
+   "Xsc9qvGR": 2,
+   "SKRbvo6G": 1,
+   "7vfCXTUX": 4,
+   "XsvNBAYk": 1,
+   "GJAFwWjJ": 1,
+   "ondohH8V": 1,
+   "pumpCmXq": 4,
+   "CbyTNf7U": 1
+  },
+  "zero_distributed": 691,
+  "sol_quantiles": {
+   "0.1": 0.0,
+   "0.25": 0.0,
+   "0.5": 0.004561071,
+   "0.75": 0.026907075,
+   "0.9": 0.113433973
+  }
+ }
+}
