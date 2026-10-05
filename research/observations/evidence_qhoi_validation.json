@@ -1,0 +1,125 @@
+{
+ "hypothesis": "H-QHOI",
+ "split": "validation",
+ "run_once": true,
+ "config": "all_control_k1_H12",
+ "selection_mode": "info_only_no_train_pass",
+ "days": 18,
+ "n": 184,
+ "mean_gross_bp": 35.47,
+ "mean_funding_bp": 0.11,
+ "mean_cost_bp": 8.89,
+ "mean_net_bp": 26.572,
+ "sum_net_bp": 4889.2,
+ "pf": 1.255,
+ "net_sum_ex_top3_bp": 1095.5,
+ "win_rate": 0.516,
+ "days_pos": 6,
+ "day_cluster_t": 0.52,
+ "longs": 86,
+ "passes_bar": true,
+ "net_1x_spread": {
+  "n": 184,
+  "mean_gross_bp": 35.47,
+  "mean_funding_bp": 0.11,
+  "mean_cost_bp": 5.97,
+  "mean_net_bp": 29.5,
+  "sum_net_bp": 5427.9,
+  "pf": 1.287,
+  "net_sum_ex_top3_bp": 1623.8,
+  "win_rate": 0.522,
+  "days": 18,
+  "days_pos": 6,
+  "day_cluster_t": 0.58,
+  "longs": 86
+ },
+ "binance10_variant": {
+  "n": 184,
+  "mean_gross_bp": 35.47,
+  "mean_funding_bp": 0.11,
+  "mean_cost_bp": 10.11,
+  "mean_net_bp": 25.356,
+  "sum_net_bp": 4665.5,
+  "pf": 1.242,
+  "net_sum_ex_top3_bp": 870.5,
+  "win_rate": 0.511,
+  "days": 18,
+  "days_pos": 6,
+  "day_cluster_t": 0.5,
+  "longs": 86
+ },
+ "ic_selected_arm_H": {
+  "n": 780,
+  "spearman_ic": 0.0239
+ },
+ "by_coin_mean_net": [
+  {
+   "sym": "1000BONKUSDT",
+   "size": 21,
+   "mean": 154.58
+  },
+  {
+   "sym": "1000PEPEUSDT",
+   "size": 19,
+   "mean": 68.14
+  },
+  {
+   "sym": "1000SHIBUSDT",
+   "size": 21,
+   "mean": -15.39
+  },
+  {
+   "sym": "DOGEUSDT",
+   "size": 20,
+   "mean": 135.89
+  },
+  {
+   "sym": "FARTCOINUSDT",
+   "size": 18,
+   "mean": 53.44
+  },
+  {
+   "sym": "PENGUUSDT",
+   "size": 25,
+   "mean": -1.93
+  },
+  {
+   "sym": "PUMPUSDT",
+   "size": 20,
+   "mean": -31.58
+  },
+  {
+   "sym": "TRUMPUSDT",
+   "size": 21,
+   "mean": -80.54
+  },
+  {
+   "sym": "WIFUSDT",
+   "size": 19,
+   "mean": -33.52
+  }
+ ],
+ "computed_at_utc": "2026-10-05T10:46:19.845316Z",
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "prereg": "reports/hypotheses/qhoi_preregistration.json",
+ "prereg_sha256": "fa42bdfc99b137772279d11f033c821f487add1ae3c8afb6323d15595da1945b",
+ "script_sha256": "7a6096e0d39ee1323cedc432e45c94e5cf9baf82b89406a632250774501fd727",
+ "costs_lighter_rt1000": {
+  "1000BONK": 10.027904843484315,
+  "1000FLOKI": 29.14119987861993,
+  "1000PEPE": 4.431151045848468,
+  "1000SHIB": 7.739837739223971,
+  "DOGE": 3.2292397235358656,
+  "FARTCOIN": 3.540660278188604,
+  "PENGU": 6.257245430299152,
+  "POPCAT": 38.59939474217934,
+  "PUMP": 3.2860062445699256,
+  "SPX": 21.35608530722989,
+  "TRUMP": 6.219880854031821,
+  "USELESS": 12.04049545597903,
+  "WIF": 7.323465951091781
+ },
+ "data_manifest": "data/raw/web/qhoi/manifest.jsonl"
+}

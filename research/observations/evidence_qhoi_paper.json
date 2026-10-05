@@ -1,0 +1,80 @@
+{
+ "hypothesis": "H-QHOI",
+ "kind": "paper_verification",
+ "status": "lead (preprint, not peer-reviewed; verified to exist and quoted, not replicated by us except as tested in evidence_qhoi_train/validation)",
+ "modality": "document",
+ "finding_type": "stated",
+ "is_synthetic": false,
+ "paper": {
+  "authors": [
+   "Chan Kim",
+   "Peter Reinhard Hansen"
+  ],
+  "title": "The Quarter-Hour Effect: Periodic Algorithmic Trading and Return Predictability in Cryptocurrency Futures",
+  "arxiv": "2607.09426v2 [q-fin.TR], 16 Jul 2026 (title page dated July 20, 2026)",
+  "url": "https://arxiv.org/abs/2607.09426",
+  "pdf": "https://arxiv.org/pdf/2607.09426",
+  "pipeline_source_id": "src_f890c7862a8da268",
+  "snapshot_id": "snap_4e13241c2c3fdb4a",
+  "sample": "six Binance USD-M perps (BTC, ETH, XRP, SOL, DOGE, ADA), 2021-01-01..2024-10-31"
+ },
+ "quotes_verbatim": [
+  {
+   "page": 1,
+   "obs": "obs_da432698e2c04262",
+   "quote": "opening order imbalance predicts returns over four to twelve hours, with much weaker effects at finer clock-time frequencies"
+  },
+  {
+   "page": 36,
+   "obs": "obs_f29aa45ecfbd4f1e",
+   "quote": "the coefficient is small or negative at short horizons but becomes positive at medium horizons in every market"
+  },
+  {
+   "page": 36,
+   "obs": "obs_8b0d093da3694e41",
+   "quote": "Between four and twelve hours the estimates are significant at the 95% confidence level for four of the six contracts at every horizon"
+  },
+  {
+   "page": 36,
+   "obs": "obs_e52ebf2de2c0434b",
+   "quote": "this pattern should not be interpreted as the causal price impact of trades executed during the opening 10 seconds"
+  },
+  {
+   "page": 7,
+   "obs": "obs_c643819d1e644faf",
+   "quote": "A trade is classified as buyer-initiated if the buyer is the taker (isBuyerMaker is False)"
+  },
+  {
+   "page": 10,
+   "obs": "obs_6cac39a8d6264ae3",
+   "quote": "We therefore define this interval as the peak window"
+  },
+  {
+   "page": 62,
+   "obs": "obs_8544f45ecd2942d6",
+   "quote": "in basis points per unit of order imbalance",
+   "table": "A.4 (15-min-only spec)",
+   "DOGE": {
+    "4h": "5.02*** [3.63]",
+    "8h": "8.49*** [4.11]",
+    "12h": "11.33*** [3.82]"
+   }
+  },
+  {
+   "page": 66,
+   "obs": "obs_f087836eccb44c0c",
+   "quote": "measured over the first ten seconds of each quarter hour",
+   "table": "A.8",
+   "DOGE_OI": {
+    "mean": 0.007,
+    "sd": 0.56
+   }
+  },
+  {
+   "page": 52,
+   "obs": "obs_b0d46e2c93314cbc",
+   "quote": "The average gross per trade of about 0.5 bps is roughly one-tenth of a single taker fee"
+  }
+ ],
+ "our_reading_inferred": "Magnitude implied by Table A.4 for DOGE: 1 SD of single-boundary OI (0.56) x 5.02-11.33 bp/unit = about 2.8-6.3 bp over 4-12 h, per boundary, in a regression with controls. This is an inference, not a number the paper states as a trading result; the lead file's statement that no basis-point size is reported refers to trading P&L. The paper is a regression/forecasting study; it reports no strategy P&L for the 4-12 h result."
+}

@@ -1,0 +1,109 @@
+{
+ "hypothesis": "H-QHOI",
+ "written_at_utc": "2026-10-05 10:41Z (container clock; the git commit that first contains this file is authoritative)",
+ "written_before_data": "Written BEFORE any aggTrades, kline or funding archive for this test was downloaded and before any price, imbalance or outcome was computed. Seen so far: (a) the Kim & Hansen paper (arXiv 2607.09426v2) text; (b) HTTP HEAD content-lengths of candidate aggTrades archives (sizes only, to fit the 1.2 GB budget); (c) the memelead Lighter spread file (costs only) and the memelead failure report. The memelead s1 tables were inspected for schema only: they hold total quote volume per second, no buy/sell split, so they cannot be used.",
+ "source_lead": "sources/leads/documented_edges_round11.md idea 3 (H-QHOI); paper = lead (preprint), see research/observations/evidence_qhoi_paper.json",
+ "statement": "On Binance USD-M meme perps, the mean volume-normalised taker imbalance in the first 10 s after each quarter-hour boundary over the last 4 h (16 boundaries), z-scored point-in-time, predicts the sign of the next H-hour return (continuation). Trading sign(z) when |z|>=k on Lighter, held H hours, one position per coin, earns more than 1.5x the measured Lighter $1,000 round-trip spread plus funding.",
+ "universe": {
+  "coins": [
+   "DOGEUSDT",
+   "PUMPUSDT",
+   "FARTCOINUSDT",
+   "1000PEPEUSDT",
+   "PENGUUSDT",
+   "TRUMPUSDT",
+   "WIFUSDT",
+   "1000SHIBUSDT",
+   "1000BONKUSDT"
+  ],
+  "notes": "PUMPUSDT used only from 2025-07-11 (earlier PUMPUSDT is a different token, per memelead). TRUMPUSDT has no archive on 2025-01-05 (not yet listed). Coin-days with no archive are skipped, not imputed."
+ },
+ "data": {
+  "sample_days": [
+   "2025-01-05",
+   "2025-01-26",
+   "2025-02-05",
+   "2025-02-20",
+   "2025-03-05",
+   "2025-03-20",
+   "2025-04-05",
+   "2025-04-20",
+   "2025-05-05",
+   "2025-05-20",
+   "2025-06-05",
+   "2025-06-20",
+   "2025-07-05",
+   "2025-07-20",
+   "2025-08-05",
+   "2025-08-20",
+   "2025-09-05",
+   "2025-09-20",
+   "2025-10-05",
+   "2025-10-20",
+   "2025-11-05",
+   "2025-11-20",
+   "2025-12-05",
+   "2025-12-20",
+   "2026-01-05",
+   "2026-01-20",
+   "2026-02-05",
+   "2026-02-20",
+   "2026-03-05",
+   "2026-03-20"
+  ],
+  "sample_rule": "2 days per month, the 5th and the 20th, 2025-01..2026-03, fixed before download. Exception decided from HEAD sizes only (no prices): 2025-01-20 alone is 414 MB for 8 coins (TRUMP launch week), so the second January day is 2025-01-26 (74 MB). A 2024-12-20 warm-up day was dropped for budget (148 MB). Estimated total ~1.19 GB.",
+  "aggTrades": "https://data.binance.vision/data/futures/um/daily/aggTrades/<SYM>/<SYM>-aggTrades-<day>.zip ; streamed to scratch, reduced, zip deleted; url/bytes/sha256 logged to data/raw/web/qhoi/manifest.jsonl",
+  "klines_1h": "data.binance.vision futures/um monthly klines 1h, 2025-01..2026-03 only (prices for entry/exit, including exits on the day after a sampled day)",
+  "funding": "data.binance.vision futures/um monthly fundingRate, 2025-01..2026-03 (archive proxy for Lighter funding)",
+  "limits": "aggTrades downloads stop at 1.2e9 bytes cumulative; stop if disk free < 2.5 GB; reduced data < 200 MB under data/raw/web/qhoi/. Holdout (>= 2026-04-01) never downloaded."
+ },
+ "signal": {
+  "OI_10s(b)": "(sum taker-buy qty - sum taker-sell qty) / sum qty over aggTrades with transact_time in [b, b+10 s), b = each :00/:15/:30/:45 boundary; taker-buy = is_buyer_maker False (paper p.7 definition). NaN if no trades.",
+  "OI_all(b) (control arm)": "same ratio over the whole quarter hour [b, b+15 min).",
+  "S_w(T)": "nan-mean of OI_w(b) over the 16 boundaries b = T-4h, ..., T-15min (all inside the sampled day); requires >= 12 non-NaN.",
+  "z": "z = (S_w(T) - mean(P)) / sd(P), P = all S_w(T') of the same coin and arm, T' on the 15-min grid with T' < T, T' >= T - 30 days, T' in 04:00..24:00 of sampled days (point in time). Requires |P| >= 100, else no decision.",
+  "decision_times": "T in {04,08,12,16,20,24} UTC of each sampled day (24 = 00:00 next day, uses only that sampled day's data).",
+  "rule": "if |z| >= k: position sign(z) (continuation), entry at the Binance 1h kline open at T, exit at the 1h kline open at T+H. One position per coin per config: a signal while that coin's position is open is skipped."
+ },
+ "grid": {
+  "arm": [
+   "open10s",
+   "all_control"
+  ],
+  "k": [
+   1.0,
+   2.0
+  ],
+  "H_hours": [
+   4,
+   8,
+   12
+  ],
+  "n_configs": 12
+ },
+ "costs": {
+  "primary": "1.5 x median Lighter $1,000 round-trip spread (rt1000_bp) per coin from data/raw/web/memelead/lighter_spreads_20261005T1021Z.jsonl, 0 fee, + funding: sum over Binance funding settlements t with T < t <= T+H of dir*rate*1e4 bp (long pays positive rate).",
+  "binance_variant_informational": "10 bp round trip (5 bp taker x 2, the paper's p.52 standard tier) + the same funding; no spread.",
+  "note": "Spreads measured 2026-10-05 applied to 2025-26; Binance prices proxy Lighter fills; Binance funding proxies Lighter funding."
+ },
+ "splits": {
+  "train": "decision day <= 2025-06-30",
+  "validation": "2025-07-01..2026-03-31 (run once)",
+  "holdout": "2026-04-01+ never downloaded, never touched"
+ },
+ "bar_per_split": {
+  "n_min": 50,
+  "mean_net_bp_gt": 0,
+  "profit_factor_gt": 1.2,
+  "net_sum_ex_top3_gt": 0
+ },
+ "selection": "On train: among configs meeting the bar, pick the highest PF (tie: larger n). Validation runs once on that config; PASS = it meets the bar on validation too. If no config meets the train bar: FAIL; the highest-train-PF config with n>=50 is run once on validation for information only.",
+ "kill_test_from_lead_reported": "On train: Spearman IC(z, forward H-h return over all decision points) of open10s must exceed all_control's, and open10s k=1,H=4 gross must be >= 2 x mean cost. Reported; if a selected config passes but the kill test fails, the verdict says the effect is not quarter-hour specific.",
+ "diagnostics_not_used_for_selection": [
+  "IC per arm and H",
+  "per-coin net",
+  "day-clustered t",
+  "cost at 1.0x spread"
+ ],
+ "is_synthetic": false
+}

@@ -1,0 +1,335 @@
+{
+ "hypothesis": "H-NIGHT",
+ "split": "validation",
+ "dates": [
+  "2025-07-01",
+  "2026-03-31"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "source": "data.binance.vision USDT-M 1h klines + fundingRate (2022-01..2026-03); Lighter public orderBookOrders REST sampler 2026-10-05; own computation",
+ "preregistration": "reports/hypotheses/night_preregistration.json",
+ "lighter_cost_table": {
+  "1000BONK": {
+   "n": 30,
+   "quoted_med": 10.046,
+   "rt1000_med": 10.069,
+   "rt1000_p90": 12.819,
+   "rt1000_null": 0,
+   "cost_bp": 10.069
+  },
+  "1000PEPE": {
+   "n": 30,
+   "quoted_med": 4.439,
+   "rt1000_med": 4.44,
+   "rt1000_p90": 6.796,
+   "rt1000_null": 0,
+   "cost_bp": 4.44
+  },
+  "1000SHIB": {
+   "n": 30,
+   "quoted_med": 5.034,
+   "rt1000_med": 7.899,
+   "rt1000_p90": 9.814,
+   "rt1000_null": 0,
+   "cost_bp": 7.899
+  },
+  "BTC": {
+   "n": 30,
+   "quoted_med": 0.384,
+   "rt1000_med": 0.496,
+   "rt1000_p90": 0.676,
+   "rt1000_null": 0,
+   "cost_bp": 0.496
+  },
+  "DOGE": {
+   "n": 30,
+   "quoted_med": 3.328,
+   "rt1000_med": 3.476,
+   "rt1000_p90": 4.309,
+   "rt1000_null": 0,
+   "cost_bp": 3.476
+  },
+  "FARTCOIN": {
+   "n": 30,
+   "quoted_med": 4.82,
+   "rt1000_med": 4.891,
+   "rt1000_p90": 6.535,
+   "rt1000_null": 0,
+   "cost_bp": 4.891
+  },
+  "PENGU": {
+   "n": 30,
+   "quoted_med": 7.196,
+   "rt1000_med": 7.282,
+   "rt1000_p90": 9.083,
+   "rt1000_null": 0,
+   "cost_bp": 7.282
+  },
+  "PUMP": {
+   "n": 30,
+   "quoted_med": 3.115,
+   "rt1000_med": 3.765,
+   "rt1000_p90": 4.705,
+   "rt1000_null": 0,
+   "cost_bp": 3.765
+  },
+  "TRUMP": {
+   "n": 30,
+   "quoted_med": 4.831,
+   "rt1000_med": 6.52,
+   "rt1000_p90": 7.382,
+   "rt1000_null": 0,
+   "cost_bp": 6.52
+  },
+  "WIF": {
+   "n": 30,
+   "quoted_med": 6.754,
+   "rt1000_med": 7.007,
+   "rt1000_p90": 12.047,
+   "rt1000_null": 0,
+   "cost_bp": 7.007
+  }
+ },
+ "always_long_mean_gross_bp_per_hour_per_coin": -0.909,
+ "results": {
+  "W2224_PC": {
+   "n": 2450,
+   "days": 274,
+   "gross_bp": -2.722,
+   "cost_bp": 6.165,
+   "fund_bp": -0.005,
+   "net_bp": -8.883,
+   "net_stress_bp": -11.965,
+   "net_binance_bp": -12.717,
+   "pf": 0.834,
+   "net_sum_pct": -217.63,
+   "net_ex_top3_pct": -254.75,
+   "win_rate": 0.464,
+   "daily_t": -1.32,
+   "pos_days": 0.485,
+   "gross_median_bp": -1.547,
+   "by_half_year": {
+    "2025H2": {
+     "n": 1640,
+     "gross_bp": 4.65,
+     "net_bp": -1.59
+    },
+    "2026H1": {
+     "n": 810,
+     "gross_bp": -17.65,
+     "net_bp": -23.66
+    }
+   },
+   "pass": false,
+   "stress_net_positive": false,
+   "placebo": {
+    "by_entry_hour": {
+     "0": {
+      "gross_bp": 0.004,
+      "net_bp": -6.157,
+      "n": 2449,
+      "daily_t_gross": 0.0
+     },
+     "1": {
+      "gross_bp": 17.179,
+      "net_bp": 11.017,
+      "n": 2449,
+      "daily_t_gross": 2.28
+     },
+     "2": {
+      "gross_bp": 11.288,
+      "net_bp": 5.126,
+      "n": 2449,
+      "daily_t_gross": 1.46
+     },
+     "3": {
+      "gross_bp": 3.261,
+      "net_bp": -2.901,
+      "n": 2449,
+      "daily_t_gross": 0.48
+     },
+     "4": {
+      "gross_bp": -5.006,
+      "net_bp": -11.167,
+      "n": 2449,
+      "daily_t_gross": -0.71
+     },
+     "5": {
+      "gross_bp": -17.012,
+      "net_bp": -23.173,
+      "n": 2449,
+      "daily_t_gross": -2.37
+     },
+     "6": {
+      "gross_bp": -11.067,
+      "net_bp": -17.229,
+      "n": 2449,
+      "daily_t_gross": -1.51
+     },
+     "7": {
+      "gross_bp": -2.155,
+      "net_bp": -8.316,
+      "n": 2450,
+      "daily_t_gross": -0.29
+     },
+     "8": {
+      "gross_bp": -1.033,
+      "net_bp": -7.194,
+      "n": 2450,
+      "daily_t_gross": -0.16
+     },
+     "9": {
+      "gross_bp": -8.167,
+      "net_bp": -14.328,
+      "n": 2450,
+      "daily_t_gross": -1.34
+     },
+     "10": {
+      "gross_bp": -6.978,
+      "net_bp": -13.139,
+      "n": 2450,
+      "daily_t_gross": -1.17
+     },
+     "11": {
+      "gross_bp": -1.234,
+      "net_bp": -7.394,
+      "n": 2450,
+      "daily_t_gross": -0.18
+     },
+     "12": {
+      "gross_bp": -4.879,
+      "net_bp": -11.039,
+      "n": 2450,
+      "daily_t_gross": -0.67
+     },
+     "13": {
+      "gross_bp": -4.792,
+      "net_bp": -10.953,
+      "n": 2450,
+      "daily_t_gross": -0.5
+     },
+     "14": {
+      "gross_bp": -6.671,
+      "net_bp": -12.832,
+      "n": 2450,
+      "daily_t_gross": -0.53
+     },
+     "15": {
+      "gross_bp": 1.57,
+      "net_bp": -4.59,
+      "n": 2450,
+      "daily_t_gross": 0.13
+     },
+     "16": {
+      "gross_bp": 3.739,
+      "net_bp": -2.422,
+      "n": 2450,
+      "daily_t_gross": 0.36
+     },
+     "17": {
+      "gross_bp": -0.749,
+      "net_bp": -6.91,
+      "n": 2450,
+      "daily_t_gross": -0.09
+     },
+     "18": {
+      "gross_bp": -0.225,
+      "net_bp": -6.386,
+      "n": 2450,
+      "daily_t_gross": -0.03
+     },
+     "19": {
+      "gross_bp": -5.516,
+      "net_bp": -11.676,
+      "n": 2450,
+      "daily_t_gross": -0.58
+     },
+     "20": {
+      "gross_bp": 1.961,
+      "net_bp": -4.2,
+      "n": 2450,
+      "daily_t_gross": 0.17
+     },
+     "21": {
+      "gross_bp": 16.309,
+      "net_bp": 10.149,
+      "n": 2450,
+      "daily_t_gross": 1.62
+     },
+     "22": {
+      "gross_bp": -2.722,
+      "net_bp": -8.883,
+      "n": 2450,
+      "daily_t_gross": -0.4
+     },
+     "23": {
+      "gross_bp": -20.752,
+      "net_bp": -26.914,
+      "n": 2441,
+      "daily_t_gross": -2.58
+     }
+    },
+    "arm_rank_gross_of24": 14,
+    "arm_rank_net_of24": 14,
+    "other_hours_mean_gross_bp": -1.779,
+    "other_hours_sd_gross_bp": 8.942,
+    "arm_minus_other_mean_bp": -0.943,
+    "arm_z_vs_other_hours": -0.11,
+    "label": "beta/noise"
+   },
+   "by_coin": {
+    "1000BONKUSDT": {
+     "n": 274,
+     "gross_bp": -3.72,
+     "net_bp": -13.74
+    },
+    "1000PEPEUSDT": {
+     "n": 274,
+     "gross_bp": -7.25,
+     "net_bp": -11.7
+    },
+    "1000SHIBUSDT": {
+     "n": 274,
+     "gross_bp": -2.17,
+     "net_bp": -10.05
+    },
+    "DOGEUSDT": {
+     "n": 274,
+     "gross_bp": -2.96,
+     "net_bp": -6.51
+    },
+    "FARTCOINUSDT": {
+     "n": 274,
+     "gross_bp": -6.14,
+     "net_bp": -11.33
+    },
+    "PENGUUSDT": {
+     "n": 274,
+     "gross_bp": 11.39,
+     "net_bp": 4.17
+    },
+    "PUMPUSDT": {
+     "n": 258,
+     "gross_bp": -15.77,
+     "net_bp": -19.79
+    },
+    "TRUMPUSDT": {
+     "n": 274,
+     "gross_bp": -3.07,
+     "net_bp": -9.17
+    },
+    "WIFUSDT": {
+     "n": 274,
+     "gross_bp": 4.45,
+     "net_bp": -2.46
+    }
+   },
+   "weekend_info": {
+    "false": -2.93,
+    "true": -2.21
+   }
+  }
+ },
+ "generated_utc": "2026-10-05T10:47:29.018842Z"
+}

@@ -1,0 +1,865 @@
+{
+ "hypothesis": "H-QHOI",
+ "split": "train",
+ "days": [
+  "2025-01-05",
+  "2025-01-26",
+  "2025-02-05",
+  "2025-02-20",
+  "2025-03-05",
+  "2025-03-20",
+  "2025-04-05",
+  "2025-04-20",
+  "2025-05-05",
+  "2025-05-20",
+  "2025-06-05",
+  "2025-06-20"
+ ],
+ "n_decisions": 570,
+ "decisions_with_z": {
+  "open10s": 428,
+  "all_control": 428
+ },
+ "configs": [
+  {
+   "config": "open10s_k1_H4",
+   "arm": "open10s",
+   "k": 1.0,
+   "H": 4,
+   "n": 151,
+   "mean_gross_bp": -24.12,
+   "mean_funding_bp": 0.07,
+   "mean_cost_bp": 9.25,
+   "mean_net_bp": -33.366,
+   "sum_net_bp": -5038.3,
+   "pf": 0.705,
+   "net_sum_ex_top3_bp": -7229.6,
+   "win_rate": 0.464,
+   "days": 11,
+   "days_pos": 3,
+   "day_cluster_t": -1.11,
+   "longs": 75,
+   "passes_bar": false,
+   "net_1x_spread": -30.309,
+   "net_binance10": -34.193,
+   "pf_binance10": 0.699,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 20,
+     "mean": 27.09
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 13,
+     "mean": 19.6
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 19,
+     "mean": -3.1
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 20,
+     "mean": -33.77
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 21,
+     "mean": -171.5
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 22,
+     "mean": -47.54
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 20,
+     "mean": -17.91
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 16,
+     "mean": -5.94
+    }
+   ]
+  },
+  {
+   "config": "open10s_k1_H8",
+   "arm": "open10s",
+   "k": 1.0,
+   "H": 8,
+   "n": 116,
+   "mean_gross_bp": 1.84,
+   "mean_funding_bp": 0.14,
+   "mean_cost_bp": 9.5,
+   "mean_net_bp": -7.662,
+   "sum_net_bp": -888.8,
+   "pf": 0.944,
+   "net_sum_ex_top3_bp": -4055.6,
+   "win_rate": 0.457,
+   "days": 11,
+   "days_pos": 7,
+   "day_cluster_t": -0.17,
+   "longs": 56,
+   "passes_bar": false,
+   "net_1x_spread": -4.541,
+   "net_binance10": -8.298,
+   "pf_binance10": 0.939,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 18,
+     "mean": -0.48
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 12,
+     "mean": -44.25
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 14,
+     "mean": 1.21
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 13,
+     "mean": 32.53
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 16,
+     "mean": 16.19
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 15,
+     "mean": -157.83
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 14,
+     "mean": 153.33
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 14,
+     "mean": -59.08
+    }
+   ]
+  },
+  {
+   "config": "open10s_k1_H12",
+   "arm": "open10s",
+   "k": 1.0,
+   "H": 12,
+   "n": 100,
+   "mean_gross_bp": 4.79,
+   "mean_funding_bp": 0.21,
+   "mean_cost_bp": 9.44,
+   "mean_net_bp": -4.65,
+   "sum_net_bp": -465.0,
+   "pf": 0.973,
+   "net_sum_ex_top3_bp": -4643.6,
+   "win_rate": 0.44,
+   "days": 11,
+   "days_pos": 5,
+   "day_cluster_t": -0.08,
+   "longs": 52,
+   "passes_bar": false,
+   "net_1x_spread": -1.573,
+   "net_binance10": -5.42,
+   "pf_binance10": 0.969,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 14,
+     "mean": 70.33
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 10,
+     "mean": -27.89
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 13,
+     "mean": -77.41
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 12,
+     "mean": -77.85
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 14,
+     "mean": -15.33
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 14,
+     "mean": -39.88
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 13,
+     "mean": 127.38
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 10,
+     "mean": -11.33
+    }
+   ]
+  },
+  {
+   "config": "open10s_k2_H4",
+   "arm": "open10s",
+   "k": 2.0,
+   "H": 4,
+   "n": 34,
+   "mean_gross_bp": -80.86,
+   "mean_funding_bp": -0.02,
+   "mean_cost_bp": 9.66,
+   "mean_net_bp": -90.519,
+   "sum_net_bp": -3077.6,
+   "pf": 0.28,
+   "net_sum_ex_top3_bp": -3683.1,
+   "win_rate": 0.382,
+   "days": 10,
+   "days_pos": 3,
+   "day_cluster_t": -1.93,
+   "longs": 18,
+   "passes_bar": false,
+   "net_1x_spread": -87.291,
+   "net_binance10": -90.836,
+   "pf_binance10": 0.276,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 6,
+     "mean": -113.92
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 2,
+     "mean": 105.05
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 5,
+     "mean": -58.3
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 3,
+     "mean": 140.2
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 5,
+     "mean": -388.63
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 5,
+     "mean": -91.59
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 5,
+     "mean": 19.42
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 3,
+     "mean": -143.1
+    }
+   ]
+  },
+  {
+   "config": "open10s_k2_H8",
+   "arm": "open10s",
+   "k": 2.0,
+   "H": 8,
+   "n": 30,
+   "mean_gross_bp": -102.8,
+   "mean_funding_bp": 0.09,
+   "mean_cost_bp": 9.97,
+   "mean_net_bp": -112.771,
+   "sum_net_bp": -3383.1,
+   "pf": 0.476,
+   "net_sum_ex_top3_bp": -4924.0,
+   "win_rate": 0.467,
+   "days": 10,
+   "days_pos": 2,
+   "day_cluster_t": -1.76,
+   "longs": 16,
+   "passes_bar": false,
+   "net_1x_spread": -109.48,
+   "net_binance10": -112.896,
+   "pf_binance10": 0.475,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 6,
+     "mean": -42.53
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 1,
+     "mean": 216.95
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 4,
+     "mean": 141.18
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 3,
+     "mean": 310.41
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 4,
+     "mean": -694.93
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 4,
+     "mean": -395.0
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 5,
+     "mean": 56.72
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 3,
+     "mean": -254.91
+    }
+   ]
+  },
+  {
+   "config": "open10s_k2_H12",
+   "arm": "open10s",
+   "k": 2.0,
+   "H": 12,
+   "n": 29,
+   "mean_gross_bp": -1.75,
+   "mean_funding_bp": 0.17,
+   "mean_cost_bp": 10.01,
+   "mean_net_bp": -11.754,
+   "sum_net_bp": -340.9,
+   "pf": 0.935,
+   "net_sum_ex_top3_bp": -2754.9,
+   "win_rate": 0.483,
+   "days": 10,
+   "days_pos": 4,
+   "day_cluster_t": -0.11,
+   "longs": 16,
+   "passes_bar": false,
+   "net_1x_spread": -8.475,
+   "net_binance10": -11.917,
+   "pf_binance10": 0.934,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 6,
+     "mean": -56.64
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 1,
+     "mean": 214.21
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 4,
+     "mean": 200.73
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 3,
+     "mean": 329.44
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 4,
+     "mean": -488.85
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 4,
+     "mean": -191.2
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 5,
+     "mean": 168.18
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 2,
+     "mean": -63.59
+    }
+   ]
+  },
+  {
+   "config": "all_control_k1_H4",
+   "arm": "all_control",
+   "k": 1.0,
+   "H": 4,
+   "n": 158,
+   "mean_gross_bp": 1.28,
+   "mean_funding_bp": 0.01,
+   "mean_cost_bp": 9.32,
+   "mean_net_bp": -8.039,
+   "sum_net_bp": -1270.2,
+   "pf": 0.924,
+   "net_sum_ex_top3_bp": -4437.0,
+   "win_rate": 0.5,
+   "days": 11,
+   "days_pos": 5,
+   "day_cluster_t": -0.24,
+   "longs": 80,
+   "passes_bar": false,
+   "net_1x_spread": -4.936,
+   "net_binance10": -8.729,
+   "pf_binance10": 0.918,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 25,
+     "mean": 11.47
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 15,
+     "mean": 46.14
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 20,
+     "mean": 1.47
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 20,
+     "mean": -51.93
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 23,
+     "mean": -67.96
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 20,
+     "mean": -22.69
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 17,
+     "mean": 31.39
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 18,
+     "mean": 13.51
+    }
+   ]
+  },
+  {
+   "config": "all_control_k1_H8",
+   "arm": "all_control",
+   "k": 1.0,
+   "H": 8,
+   "n": 125,
+   "mean_gross_bp": -16.32,
+   "mean_funding_bp": 0.07,
+   "mean_cost_bp": 9.35,
+   "mean_net_bp": -25.672,
+   "sum_net_bp": -3209.1,
+   "pf": 0.841,
+   "net_sum_ex_top3_bp": -6593.6,
+   "win_rate": 0.456,
+   "days": 11,
+   "days_pos": 4,
+   "day_cluster_t": -0.39,
+   "longs": 61,
+   "passes_bar": false,
+   "net_1x_spread": -22.579,
+   "net_binance10": -26.392,
+   "pf_binance10": 0.837,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 19,
+     "mean": 3.76
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 12,
+     "mean": 60.15
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 17,
+     "mean": 16.84
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 15,
+     "mean": -1.6
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 19,
+     "mean": -234.89
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 15,
+     "mean": -11.33
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 15,
+     "mean": 23.26
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 13,
+     "mean": 1.5
+    }
+   ]
+  },
+  {
+   "config": "all_control_k1_H12",
+   "arm": "all_control",
+   "k": 1.0,
+   "H": 12,
+   "n": 109,
+   "mean_gross_bp": 6.02,
+   "mean_funding_bp": -0.04,
+   "mean_cost_bp": 9.29,
+   "mean_net_bp": -3.267,
+   "sum_net_bp": -356.2,
+   "pf": 0.982,
+   "net_sum_ex_top3_bp": -4828.5,
+   "win_rate": 0.459,
+   "days": 11,
+   "days_pos": 6,
+   "day_cluster_t": -0.04,
+   "longs": 59,
+   "passes_bar": false,
+   "net_1x_spread": -0.158,
+   "net_binance10": -3.939,
+   "pf_binance10": 0.978,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 17,
+     "mean": 24.05
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 11,
+     "mean": 165.35
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 14,
+     "mean": -30.71
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 13,
+     "mean": -2.02
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 15,
+     "mean": -214.5
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 14,
+     "mean": 26.82
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 14,
+     "mean": 109.11
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 11,
+     "mean": -73.92
+    }
+   ]
+  },
+  {
+   "config": "all_control_k2_H4",
+   "arm": "all_control",
+   "k": 2.0,
+   "H": 4,
+   "n": 33,
+   "mean_gross_bp": 7.61,
+   "mean_funding_bp": 0.35,
+   "mean_cost_bp": 9.68,
+   "mean_net_bp": -2.075,
+   "sum_net_bp": -68.5,
+   "pf": 0.979,
+   "net_sum_ex_top3_bp": -1713.0,
+   "win_rate": 0.455,
+   "days": 10,
+   "days_pos": 5,
+   "day_cluster_t": -0.05,
+   "longs": 23,
+   "passes_bar": false,
+   "net_1x_spread": 1.037,
+   "net_binance10": -2.74,
+   "pf_binance10": 0.972,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 4,
+     "mean": 171.78
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 1,
+     "mean": -78.65
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 4,
+     "mean": -114.88
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 5,
+     "mean": -55.23
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 3,
+     "mean": 195.64
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 7,
+     "mean": 35.63
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 6,
+     "mean": -3.84
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 3,
+     "mean": -251.54
+    }
+   ]
+  },
+  {
+   "config": "all_control_k2_H8",
+   "arm": "all_control",
+   "k": 2.0,
+   "H": 8,
+   "n": 32,
+   "mean_gross_bp": 32.63,
+   "mean_funding_bp": 0.45,
+   "mean_cost_bp": 9.78,
+   "mean_net_bp": 22.853,
+   "sum_net_bp": 731.3,
+   "pf": 1.175,
+   "net_sum_ex_top3_bp": -1464.2,
+   "win_rate": 0.469,
+   "days": 10,
+   "days_pos": 4,
+   "day_cluster_t": 0.27,
+   "longs": 22,
+   "passes_bar": false,
+   "net_1x_spread": 25.964,
+   "net_binance10": 22.186,
+   "pf_binance10": 1.169,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 4,
+     "mean": 188.45
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 1,
+     "mean": -99.54
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 4,
+     "mean": -8.71
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 5,
+     "mean": -24.77
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 3,
+     "mean": 283.19
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 6,
+     "mean": 123.46
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 6,
+     "mean": -91.51
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 3,
+     "mean": -268.5
+    }
+   ]
+  },
+  {
+   "config": "all_control_k2_H12",
+   "arm": "all_control",
+   "k": 2.0,
+   "H": 12,
+   "n": 32,
+   "mean_gross_bp": 59.89,
+   "mean_funding_bp": 0.73,
+   "mean_cost_bp": 10.06,
+   "mean_net_bp": 49.835,
+   "sum_net_bp": 1594.7,
+   "pf": 1.352,
+   "net_sum_ex_top3_bp": -798.0,
+   "win_rate": 0.406,
+   "days": 10,
+   "days_pos": 4,
+   "day_cluster_t": 0.53,
+   "longs": 22,
+   "passes_bar": false,
+   "net_1x_spread": 52.946,
+   "net_binance10": 49.168,
+   "pf_binance10": 1.346,
+   "by_coin_mean_net": [
+    {
+     "sym": "1000BONKUSDT",
+     "size": 4,
+     "mean": 308.29
+    },
+    {
+     "sym": "1000PEPEUSDT",
+     "size": 1,
+     "mean": -69.35
+    },
+    {
+     "sym": "1000SHIBUSDT",
+     "size": 4,
+     "mean": 36.02
+    },
+    {
+     "sym": "DOGEUSDT",
+     "size": 5,
+     "mean": 67.67
+    },
+    {
+     "sym": "FARTCOINUSDT",
+     "size": 3,
+     "mean": 469.8
+    },
+    {
+     "sym": "PENGUUSDT",
+     "size": 6,
+     "mean": 31.84
+    },
+    {
+     "sym": "TRUMPUSDT",
+     "size": 6,
+     "mean": -84.6
+    },
+    {
+     "sym": "WIFUSDT",
+     "size": 3,
+     "mean": -381.44
+    }
+   ]
+  }
+ ],
+ "selection": {
+  "mode": "info_only_no_train_pass",
+  "config": "all_control_k1_H12"
+ },
+ "ic": {
+  "open10s_H4": {
+   "n": 428,
+   "spearman_ic": -0.0677
+  },
+  "open10s_H8": {
+   "n": 428,
+   "spearman_ic": -0.0173
+  },
+  "open10s_H12": {
+   "n": 428,
+   "spearman_ic": -0.0114
+  },
+  "all_control_H4": {
+   "n": 428,
+   "spearman_ic": 0.0373
+  },
+  "all_control_H8": {
+   "n": 428,
+   "spearman_ic": 0.0023
+  },
+  "all_control_H12": {
+   "n": 428,
+   "spearman_ic": 0.0353
+  }
+ },
+ "kill_test": {
+  "ic_open_gt_control_all_H": false,
+  "open10s_k1_H4_gross_bp": -24.12,
+  "open10s_k1_H4_cost_bp": 9.25,
+  "gross_ge_2x_cost": false,
+  "passes": false
+ },
+ "computed_at_utc": "2026-10-05T10:46:01.313066Z",
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "prereg": "reports/hypotheses/qhoi_preregistration.json",
+ "prereg_sha256": "fa42bdfc99b137772279d11f033c821f487add1ae3c8afb6323d15595da1945b",
+ "script_sha256": "7a6096e0d39ee1323cedc432e45c94e5cf9baf82b89406a632250774501fd727",
+ "costs_lighter_rt1000": {
+  "1000BONK": 10.027904843484315,
+  "1000FLOKI": 29.14119987861993,
+  "1000PEPE": 4.431151045848468,
+  "1000SHIB": 7.739837739223971,
+  "DOGE": 3.2292397235358656,
+  "FARTCOIN": 3.540660278188604,
+  "PENGU": 6.257245430299152,
+  "POPCAT": 38.59939474217934,
+  "PUMP": 3.2860062445699256,
+  "SPX": 21.35608530722989,
+  "TRUMP": 6.219880854031821,
+  "USELESS": 12.04049545597903,
+  "WIF": 7.323465951091781
+ },
+ "data_manifest": "data/raw/web/qhoi/manifest.jsonl"
+}
