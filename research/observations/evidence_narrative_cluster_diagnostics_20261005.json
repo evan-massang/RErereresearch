@@ -1,0 +1,8 @@
+{
+ "note": "After-the-fact diagnostics on TRAIN only (not used for selection). Source: scripts/research/narrative_cluster_build.py output (scratchpad parquet) + curve_completes.",
+ "migration_rate_base_nonmayhem_train_launches": {"rate": 0.0245, "n": 23212},
+ "migration_rate_cluster_leaders_train": {"K3|first": 0.0113, "K3|buyers": 0.0137, "K3|inflow": 0.0115, "K4|first": 0.013, "K4|buyers": 0.0148, "K4|inflow": 0.0148},
+ "tp30_sl15_300_hit_rate_train": {"first": 0.081, "buyers": 0.104, "inflow": 0.118},
+ "trades_per_day_K3_first": {"oct1": 533, "oct2": 352, "oct3_validation_not_evaluated": 1953},
+ "cluster_size_train": {"median": 3, "p75": 4, "max": 41}
+}
