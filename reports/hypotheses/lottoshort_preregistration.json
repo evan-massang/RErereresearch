@@ -212,5 +212,12 @@
   "Excluding identity-doubtful coins; slippage x2; funding excluded; P&L by half-year and the round-13 kill test (net > 0 in >= 3 of the train half-years from 2022H1, max drawdown < 0.35)."
  ],
  "multiple_testing": "12 configs on train; one validation run. A pass is a weak lead, to be judged by forward paper trading from 2026-10 (holdout period already contaminated for meme direction).",
- "script": "scripts/research/lottoshort_sim.py"
+ "script": "scripts/research/lottoshort_sim.py",
+ "script_sha256_before_train": "427ac838255ed1c5eba339351299da4b27886d85894922c18e27d6902e140f99",
+ "amendments_before_any_output": [
+  {
+   "what": "Archive gaps: SOLUSDT has no 1d bars on 2022-02-26..28 and 2022-04-01..02 in the cache. The first train run crashed (NaN hedge return) before printing or saving any statistic. Fix: entry/exit prices forward-filled up to 5 days; a leg is a delisting exit only if the symbol has no bar on or after the exit day. No return, P&L or statistic had been displayed.",
+   "script_sha256_after": "d9c2eb6ae94c2e117bc30520f9def839a5dc9cd6596852d21aa143e284b673d4"
+  }
+ ]
 }

@@ -1,0 +1,93 @@
+{
+ "split": "validation",
+ "config": "G1_BTCSOL_EW_b30",
+ "diagnostic_only": true,
+ "result": {
+  "split": "validation",
+  "weeks": {
+   "n": 18,
+   "net": 0.0597,
+   "pf": 1.413,
+   "net_ex_top3": -0.0454,
+   "top3": [
+    0.045,
+    0.0311,
+    0.029
+   ],
+   "mean_bp": 33.1
+  },
+  "legs": {
+   "n": 916,
+   "net": 0.0597,
+   "pf": 1.18,
+   "net_ex_top3": 0.0436,
+   "top3": [
+    0.0062,
+    0.0052,
+    0.0047
+   ],
+   "mean_bp": 0.7
+  },
+  "weeks_possible": 38,
+  "weeks_traded": 18,
+  "weeks_gated_off": 20,
+  "weeks_too_few_memes": 0,
+  "mean_basket_size": 50.9,
+  "mean_beta": 1.641,
+  "mean_short_notional": 0.383,
+  "weekly_sharpe": 0.889,
+  "maxdd_additive": -0.1234,
+  "meme_short_px": 0.1924,
+  "hedge_long_px": -0.1242,
+  "funding_paid": -0.0032,
+  "costs": 0.0117,
+  "meme_funding_paid": -0.0095,
+  "hedge_funding_paid": 0.0064,
+  "per_half": {
+   "2025H2": 0.1232,
+   "2026H1": -0.0636
+  },
+  "per_year": {
+   "2025": 0.1232,
+   "2026": -0.0636
+  },
+  "top3_coins": {
+   "NEIROETHUSDT": 0.0099,
+   "FARTCOINUSDT": 0.0078,
+   "GRIFFAINUSDT": 0.0072
+  },
+  "worst3_coins": {
+   "USELESSUSDT": -0.0086,
+   "VINEUSDT": -0.0093,
+   "PIPPINUSDT": -0.0185
+  },
+  "delist_exits": 0,
+  "first_week": "2025-07-07",
+  "last_week": "2026-02-09",
+  "beta_check_btc": {
+   "alpha_bp": 49.8,
+   "alpha_t": 0.76,
+   "beta": 0.121,
+   "beta_t": 1.04,
+   "r2": 0.064,
+   "n": 18
+  },
+  "beta_check_hedge": {
+   "alpha_bp": 46.9,
+   "alpha_t": 0.74,
+   "beta": 0.112,
+   "beta_t": 1.23,
+   "r2": 0.087,
+   "n": 18
+  },
+  "pass_weeks_unit": false,
+  "pass_legs_unit": false,
+  "n_unit_for_bar": "legs",
+  "pass": false,
+  "kill_test": {
+   "halves_positive": 1,
+   "halves": 2,
+   "maxdd_ok": true
+  }
+ }
+}

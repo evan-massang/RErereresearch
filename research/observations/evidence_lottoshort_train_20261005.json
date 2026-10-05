@@ -1,0 +1,1149 @@
+{
+ "split": "train",
+ "preregistration": "reports/hypotheses/lottoshort_preregistration.json",
+ "passing": [],
+ "selected": "G1_BTCSOL_EW_b30",
+ "selected_is_diagnostic_only": true,
+ "results": {
+  "G1_BTC_EW_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": 0.0354,
+    "pf": 1.015,
+    "net_ex_top3": -0.2735,
+    "top3": [
+     0.1145,
+     0.1013,
+     0.0931
+    ],
+    "mean_bp": 2.4
+   },
+   "legs": {
+    "n": 1716,
+    "net": 0.0354,
+    "pf": 1.011,
+    "net_ex_top3": -0.1212,
+    "top3": [
+     0.0603,
+     0.0523,
+     0.0439
+    ],
+    "mean_bp": 0.2
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.418,
+   "mean_short_notional": 0.423,
+   "weekly_sharpe": 0.026,
+   "maxdd_additive": -0.8059,
+   "meme_short_px": -0.7233,
+   "hedge_long_px": 0.7976,
+   "funding_paid": -0.0019,
+   "costs": 0.0409,
+   "meme_funding_paid": -0.1385,
+   "hedge_funding_paid": 0.1366,
+   "per_half": {
+    "2022H1": 0.0673,
+    "2022H2": -0.1962,
+    "2023H1": 0.4381,
+    "2023H2": 0.0069,
+    "2024H1": -0.7269,
+    "2024H2": 0.1977,
+    "2025H1": 0.2484
+   },
+   "per_year": {
+    "2022": -0.1289,
+    "2023": 0.445,
+    "2024": -0.5292,
+    "2025": 0.2484
+   },
+   "top3_coins": {
+    "1000SHIBUSDT": 0.1244,
+    "PEOPLEUSDT": 0.1184,
+    "MEMEUSDT": 0.061
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.1583,
+    "WIFUSDT": -0.1942,
+    "1000PEPEUSDT": -0.2114
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 22.1,
+    "alpha_t": 0.41,
+    "beta": -0.228,
+    "beta_t": -2.96,
+    "r2": 0.056,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 22.1,
+    "alpha_t": 0.41,
+    "beta": -0.228,
+    "beta_t": -2.96,
+    "r2": 0.056,
+    "n": 149
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 5,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G1_BTC_IV_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": -0.0266,
+    "pf": 0.988,
+    "net_ex_top3": -0.3256,
+    "top3": [
+     0.1041,
+     0.1026,
+     0.0923
+    ],
+    "mean_bp": -1.8
+   },
+   "legs": {
+    "n": 1716,
+    "net": -0.0266,
+    "pf": 0.991,
+    "net_ex_top3": -0.1541,
+    "top3": [
+     0.0442,
+     0.0422,
+     0.0411
+    ],
+    "mean_bp": -0.2
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.346,
+   "mean_short_notional": 0.436,
+   "weekly_sharpe": -0.02,
+   "maxdd_additive": -0.7642,
+   "meme_short_px": -0.7549,
+   "hedge_long_px": 0.7674,
+   "funding_paid": -0.006,
+   "costs": 0.0451,
+   "meme_funding_paid": -0.1388,
+   "hedge_funding_paid": 0.1328,
+   "per_half": {
+    "2022H1": 0.0829,
+    "2022H2": -0.2356,
+    "2023H1": 0.4431,
+    "2023H2": 0.0046,
+    "2024H1": -0.6991,
+    "2024H2": 0.1549,
+    "2025H1": 0.2227
+   },
+   "per_year": {
+    "2022": -0.1527,
+    "2023": 0.4476,
+    "2024": -0.5442,
+    "2025": 0.2227
+   },
+   "top3_coins": {
+    "1000SHIBUSDT": 0.0665,
+    "ORDIUSDT": 0.0554,
+    "MEMEUSDT": 0.0548
+   },
+   "worst3_coins": {
+    "WIFUSDT": -0.0652,
+    "1000PEPEUSDT": -0.1678,
+    "1000FLOKIUSDT": -0.2013
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 17.4,
+    "alpha_t": 0.33,
+    "beta": -0.222,
+    "beta_t": -2.96,
+    "r2": 0.056,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 17.4,
+    "alpha_t": 0.33,
+    "beta": -0.222,
+    "beta_t": -2.96,
+    "r2": 0.056,
+    "n": 149
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 5,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G1_BTC_EW_b30": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": 0.2571,
+    "pf": 1.119,
+    "net_ex_top3": -0.0422,
+    "top3": [
+     0.1059,
+     0.0976,
+     0.0957
+    ],
+    "mean_bp": 17.3
+   },
+   "legs": {
+    "n": 1716,
+    "net": 0.2571,
+    "pf": 1.086,
+    "net_ex_top3": 0.1146,
+    "top3": [
+     0.0524,
+     0.0477,
+     0.0424
+    ],
+    "mean_bp": 1.5
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.463,
+   "mean_short_notional": 0.421,
+   "weekly_sharpe": 0.235,
+   "maxdd_additive": -0.5658,
+   "meme_short_px": -0.4972,
+   "hedge_long_px": 0.8024,
+   "funding_paid": 0.0036,
+   "costs": 0.0445,
+   "meme_funding_paid": -0.1345,
+   "hedge_funding_paid": 0.138,
+   "per_half": {
+    "2022H1": 0.0227,
+    "2022H2": -0.2075,
+    "2023H1": 0.4369,
+    "2023H2": -0.0091,
+    "2024H1": -0.4649,
+    "2024H2": 0.2515,
+    "2025H1": 0.2275
+   },
+   "per_year": {
+    "2022": -0.1848,
+    "2023": 0.4278,
+    "2024": -0.2134,
+    "2025": 0.2275
+   },
+   "top3_coins": {
+    "PEOPLEUSDT": 0.1219,
+    "1000SHIBUSDT": 0.1218,
+    "MEMEUSDT": 0.0778
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.1138,
+    "WIFUSDT": -0.1371,
+    "1000PEPEUSDT": -0.1599
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 29.3,
+    "alpha_t": 0.68,
+    "beta": -0.14,
+    "beta_t": -2.25,
+    "r2": 0.033,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 29.3,
+    "alpha_t": 0.68,
+    "beta": -0.14,
+    "beta_t": -2.25,
+    "r2": 0.033,
+    "n": 149
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 4,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G1_BTCSOL_EW_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": 0.3134,
+    "pf": 1.116,
+    "net_ex_top3": -0.1399,
+    "top3": [
+     0.1698,
+     0.1429,
+     0.1407
+    ],
+    "mean_bp": 21.0
+   },
+   "legs": {
+    "n": 1716,
+    "net": 0.3134,
+    "pf": 1.087,
+    "net_ex_top3": 0.1688,
+    "top3": [
+     0.051,
+     0.0503,
+     0.0434
+    ],
+    "mean_bp": 1.8
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.111,
+   "mean_short_notional": 0.489,
+   "weekly_sharpe": 0.198,
+   "maxdd_additive": -0.9472,
+   "meme_short_px": -0.8338,
+   "hedge_long_px": 1.0558,
+   "funding_paid": -0.1355,
+   "costs": 0.0441,
+   "meme_funding_paid": -0.1617,
+   "hedge_funding_paid": 0.0262,
+   "per_half": {
+    "2022H1": 0.1042,
+    "2022H2": -0.2066,
+    "2023H1": 0.354,
+    "2023H2": 0.4604,
+    "2024H1": -0.8382,
+    "2024H2": 0.1967,
+    "2025H1": 0.2429
+   },
+   "per_year": {
+    "2022": -0.1024,
+    "2023": 0.8145,
+    "2024": -0.6416,
+    "2025": 0.2429
+   },
+   "top3_coins": {
+    "1000SHIBUSDT": 0.1724,
+    "PEOPLEUSDT": 0.1444,
+    "MEMEUSDT": 0.0908
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.0887,
+    "1000PEPEUSDT": -0.1453,
+    "WIFUSDT": -0.2109
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 45.3,
+    "alpha_t": 0.74,
+    "beta": -0.281,
+    "beta_t": -3.18,
+    "r2": 0.064,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 28.4,
+    "alpha_t": 0.45,
+    "beta": -0.054,
+    "beta_t": -0.9,
+    "r2": 0.005,
+    "n": 149
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 5,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G1_BTCSOL_IV_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": 0.2007,
+    "pf": 1.075,
+    "net_ex_top3": -0.2494,
+    "top3": [
+     0.1656,
+     0.1477,
+     0.1368
+    ],
+    "mean_bp": 13.5
+   },
+   "legs": {
+    "n": 1716,
+    "net": 0.2007,
+    "pf": 1.057,
+    "net_ex_top3": 0.0919,
+    "top3": [
+     0.0395,
+     0.0348,
+     0.0346
+    ],
+    "mean_bp": 1.2
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.051,
+   "mean_short_notional": 0.503,
+   "weekly_sharpe": 0.13,
+   "maxdd_additive": -0.9117,
+   "meme_short_px": -0.873,
+   "hedge_long_px": 0.984,
+   "funding_paid": -0.1388,
+   "costs": 0.0491,
+   "meme_funding_paid": -0.1616,
+   "hedge_funding_paid": 0.0228,
+   "per_half": {
+    "2022H1": 0.1189,
+    "2022H2": -0.2462,
+    "2023H1": 0.3562,
+    "2023H2": 0.4197,
+    "2024H1": -0.8203,
+    "2024H2": 0.1525,
+    "2025H1": 0.22
+   },
+   "per_year": {
+    "2022": -0.1273,
+    "2023": 0.7758,
+    "2024": -0.6678,
+    "2025": 0.22
+   },
+   "top3_coins": {
+    "1000SHIBUSDT": 0.1158,
+    "MEMEUSDT": 0.0722,
+    "ORDIUSDT": 0.0708
+   },
+   "worst3_coins": {
+    "WIFUSDT": -0.068,
+    "1000PEPEUSDT": -0.1377,
+    "1000FLOKIUSDT": -0.1624
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 37.4,
+    "alpha_t": 0.63,
+    "beta": -0.277,
+    "beta_t": -3.23,
+    "r2": 0.066,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 20.8,
+    "alpha_t": 0.34,
+    "beta": -0.053,
+    "beta_t": -0.92,
+    "r2": 0.006,
+    "n": 149
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 5,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G1_BTCSOL_EW_b30": {
+   "split": "train",
+   "weeks": {
+    "n": 149,
+    "net": 0.5714,
+    "pf": 1.222,
+    "net_ex_top3": 0.0787,
+    "top3": [
+     0.1776,
+     0.1703,
+     0.1448
+    ],
+    "mean_bp": 38.3
+   },
+   "legs": {
+    "n": 1716,
+    "net": 0.5714,
+    "pf": 1.166,
+    "net_ex_top3": 0.4484,
+    "top3": [
+     0.0433,
+     0.0405,
+     0.0392
+    ],
+    "mean_bp": 3.3
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 149,
+   "weeks_gated_off": 28,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 11.5,
+   "mean_beta": 1.136,
+   "mean_short_notional": 0.489,
+   "weekly_sharpe": 0.421,
+   "maxdd_additive": -0.6942,
+   "meme_short_px": -0.6379,
+   "hedge_long_px": 1.1258,
+   "funding_paid": -0.1326,
+   "costs": 0.0491,
+   "meme_funding_paid": -0.1569,
+   "hedge_funding_paid": 0.0243,
+   "per_half": {
+    "2022H1": 0.0592,
+    "2022H2": -0.2466,
+    "2023H1": 0.3498,
+    "2023H2": 0.4543,
+    "2024H1": -0.5585,
+    "2024H2": 0.2496,
+    "2025H1": 0.2635
+   },
+   "per_year": {
+    "2022": -0.1874,
+    "2023": 0.8041,
+    "2024": -0.3089,
+    "2025": 0.2635
+   },
+   "top3_coins": {
+    "PEOPLEUSDT": 0.1609,
+    "1000SHIBUSDT": 0.1601,
+    "MEMEUSDT": 0.1127
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.0466,
+    "1000PEPEUSDT": -0.0928,
+    "WIFUSDT": -0.1518
+   },
+   "delist_exits": 0,
+   "first_week": "2022-02-14",
+   "last_week": "2025-06-23",
+   "beta_check_btc": {
+    "alpha_bp": 57.2,
+    "alpha_t": 1.08,
+    "beta": -0.218,
+    "beta_t": -2.85,
+    "r2": 0.052,
+    "n": 149
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 40.4,
+    "alpha_t": 0.74,
+    "beta": -0.015,
+    "beta_t": -0.28,
+    "r2": 0.001,
+    "n": 149
+   },
+   "pass_weeks_unit": true,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 5,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTC_EW_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": -0.2293,
+    "pf": 0.802,
+    "net_ex_top3": -0.4803,
+    "top3": [
+     0.0893,
+     0.0874,
+     0.0743
+    ],
+    "mean_bp": -45.9
+   },
+   "legs": {
+    "n": 753,
+    "net": -0.2293,
+    "pf": 0.855,
+    "net_ex_top3": -0.2927,
+    "top3": [
+     0.0328,
+     0.0169,
+     0.0137
+    ],
+    "mean_bp": -3.0
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.522,
+   "mean_short_notional": 0.403,
+   "weekly_sharpe": -0.33,
+   "maxdd_additive": -0.7971,
+   "meme_short_px": -0.7087,
+   "hedge_long_px": 0.5068,
+   "funding_paid": -0.0095,
+   "costs": 0.0369,
+   "meme_funding_paid": -0.0919,
+   "hedge_funding_paid": 0.0824,
+   "per_half": {
+    "2022H1": -0.0015,
+    "2022H2": -0.0536,
+    "2023H1": 0.054,
+    "2023H2": -0.0108,
+    "2024H1": -0.7166,
+    "2024H2": 0.2239,
+    "2025H1": 0.2753
+   },
+   "per_year": {
+    "2022": -0.0551,
+    "2023": 0.0432,
+    "2024": -0.4927,
+    "2025": 0.2753
+   },
+   "top3_coins": {
+    "MYROUSDT": 0.0364,
+    "NEIROETHUSDT": 0.0333,
+    "BOMEUSDT": 0.0289
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.1452,
+    "1000PEPEUSDT": -0.1666,
+    "WIFUSDT": -0.1801
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 70.7,
+    "alpha_t": 0.53,
+    "beta": -0.691,
+    "beta_t": -3.42,
+    "r2": 0.196,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 70.7,
+    "alpha_t": 0.53,
+    "beta": -0.691,
+    "beta_t": -3.42,
+    "r2": 0.196,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTC_IV_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": -0.2924,
+    "pf": 0.754,
+    "net_ex_top3": -0.5391,
+    "top3": [
+     0.0923,
+     0.0857,
+     0.0687
+    ],
+    "mean_bp": -58.5
+   },
+   "legs": {
+    "n": 753,
+    "net": -0.2924,
+    "pf": 0.815,
+    "net_ex_top3": -0.3535,
+    "top3": [
+     0.0232,
+     0.0198,
+     0.0182
+    ],
+    "mean_bp": -3.9
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.439,
+   "mean_short_notional": 0.417,
+   "weekly_sharpe": -0.434,
+   "maxdd_additive": -0.7921,
+   "meme_short_px": -0.7522,
+   "hedge_long_px": 0.4871,
+   "funding_paid": -0.0106,
+   "costs": 0.0378,
+   "meme_funding_paid": -0.0904,
+   "hedge_funding_paid": 0.0798,
+   "per_half": {
+    "2022H1": -0.0115,
+    "2022H2": -0.071,
+    "2023H1": 0.0555,
+    "2023H2": -0.0146,
+    "2024H1": -0.6931,
+    "2024H2": 0.1789,
+    "2025H1": 0.2634
+   },
+   "per_year": {
+    "2022": -0.0825,
+    "2023": 0.0409,
+    "2024": -0.5142,
+    "2025": 0.2634
+   },
+   "top3_coins": {
+    "ORDIUSDT": 0.04,
+    "MYROUSDT": 0.0344,
+    "BOMEUSDT": 0.0309
+   },
+   "worst3_coins": {
+    "1000PEPEUSDT": -0.1227,
+    "1000FLOKIUSDT": -0.1867,
+    "1000SHIBUSDT": -0.1869
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 57.7,
+    "alpha_t": 0.45,
+    "beta": -0.689,
+    "beta_t": -3.53,
+    "r2": 0.206,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 57.7,
+    "alpha_t": 0.45,
+    "beta": -0.689,
+    "beta_t": -3.53,
+    "r2": 0.206,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTC_EW_b30": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": 0.0243,
+    "pf": 1.026,
+    "net_ex_top3": -0.241,
+    "top3": [
+     0.1059,
+     0.0888,
+     0.0706
+    ],
+    "mean_bp": 4.9
+   },
+   "legs": {
+    "n": 753,
+    "net": 0.0243,
+    "pf": 1.018,
+    "net_ex_top3": -0.0371,
+    "top3": [
+     0.0322,
+     0.0152,
+     0.0139
+    ],
+    "mean_bp": 0.3
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.55,
+   "mean_short_notional": 0.405,
+   "weekly_sharpe": 0.048,
+   "maxdd_additive": -0.557,
+   "meme_short_px": -0.4824,
+   "hedge_long_px": 0.5395,
+   "funding_paid": -0.005,
+   "costs": 0.0379,
+   "meme_funding_paid": -0.0887,
+   "hedge_funding_paid": 0.0836,
+   "per_half": {
+    "2022H1": -0.0072,
+    "2022H2": -0.0502,
+    "2023H1": 0.0511,
+    "2023H2": -0.0139,
+    "2024H1": -0.4579,
+    "2024H2": 0.2622,
+    "2025H1": 0.2403
+   },
+   "per_year": {
+    "2022": -0.0574,
+    "2023": 0.0372,
+    "2024": -0.1957,
+    "2025": 0.2403
+   },
+   "top3_coins": {
+    "MEMEUSDT": 0.0436,
+    "MYROUSDT": 0.0388,
+    "NEIROETHUSDT": 0.034
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.0985,
+    "1000PEPEUSDT": -0.1172,
+    "WIFUSDT": -0.1271
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 83.2,
+    "alpha_t": 0.84,
+    "beta": -0.464,
+    "beta_t": -3.09,
+    "r2": 0.166,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 83.2,
+    "alpha_t": 0.84,
+    "beta": -0.464,
+    "beta_t": -3.09,
+    "r2": 0.166,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTCSOL_EW_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": -0.1772,
+    "pf": 0.879,
+    "net_ex_top3": -0.6306,
+    "top3": [
+     0.1698,
+     0.1429,
+     0.1407
+    ],
+    "mean_bp": -35.4
+   },
+   "legs": {
+    "n": 753,
+    "net": -0.1772,
+    "pf": 0.906,
+    "net_ex_top3": -0.262,
+    "top3": [
+     0.0374,
+     0.0245,
+     0.0229
+    ],
+    "mean_bp": -2.4
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.194,
+   "mean_short_notional": 0.474,
+   "weekly_sharpe": -0.215,
+   "maxdd_additive": -0.9775,
+   "meme_short_px": -0.8494,
+   "hedge_long_px": 0.6787,
+   "funding_paid": -0.0331,
+   "costs": 0.0396,
+   "meme_funding_paid": -0.1076,
+   "hedge_funding_paid": 0.0745,
+   "per_half": {
+    "2022H1": -0.0213,
+    "2022H2": -0.0408,
+    "2023H1": -0.0091,
+    "2023H2": 0.1812,
+    "2024H1": -0.8337,
+    "2024H2": 0.232,
+    "2025H1": 0.3145
+   },
+   "per_year": {
+    "2022": -0.0621,
+    "2023": 0.1721,
+    "2024": -0.6018,
+    "2025": 0.3145
+   },
+   "top3_coins": {
+    "MEMEUSDT": 0.0547,
+    "MYROUSDT": 0.0387,
+    "NEIROETHUSDT": 0.0357
+   },
+   "worst3_coins": {
+    "1000FLOKIUSDT": -0.1287,
+    "1000PEPEUSDT": -0.1528,
+    "WIFUSDT": -0.1976
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 87.6,
+    "alpha_t": 0.54,
+    "beta": -0.73,
+    "beta_t": -2.97,
+    "r2": 0.155,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": -9.3,
+    "alpha_t": -0.05,
+    "beta": -0.104,
+    "beta_t": -0.63,
+    "r2": 0.008,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTCSOL_IV_b60": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": -0.2619,
+    "pf": 0.821,
+    "net_ex_top3": -0.7121,
+    "top3": [
+     0.1656,
+     0.1477,
+     0.1368
+    ],
+    "mean_bp": -52.4
+   },
+   "legs": {
+    "n": 753,
+    "net": -0.2619,
+    "pf": 0.86,
+    "net_ex_top3": -0.3571,
+    "top3": [
+     0.0348,
+     0.0337,
+     0.0266
+    ],
+    "mean_bp": -3.5
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.129,
+   "mean_short_notional": 0.488,
+   "weekly_sharpe": -0.327,
+   "maxdd_additive": -0.9526,
+   "meme_short_px": -0.897,
+   "hedge_long_px": 0.642,
+   "funding_paid": -0.0338,
+   "costs": 0.0406,
+   "meme_funding_paid": -0.1054,
+   "hedge_funding_paid": 0.0717,
+   "per_half": {
+    "2022H1": -0.0308,
+    "2022H2": -0.0603,
+    "2023H1": -0.0071,
+    "2023H2": 0.1623,
+    "2024H1": -0.8156,
+    "2024H2": 0.1857,
+    "2025H1": 0.3038
+   },
+   "per_year": {
+    "2022": -0.0911,
+    "2023": 0.1553,
+    "2024": -0.6299,
+    "2025": 0.3038
+   },
+   "top3_coins": {
+    "ORDIUSDT": 0.056,
+    "MYROUSDT": 0.0371,
+    "MEMEUSDT": 0.0349
+   },
+   "worst3_coins": {
+    "1000PEPEUSDT": -0.1146,
+    "1000FLOKIUSDT": -0.1821,
+    "1000SHIBUSDT": -0.2038
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 70.5,
+    "alpha_t": 0.45,
+    "beta": -0.729,
+    "beta_t": -3.06,
+    "r2": 0.163,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": -26.1,
+    "alpha_t": -0.15,
+    "beta": -0.105,
+    "beta_t": -0.65,
+    "r2": 0.009,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  },
+  "G2_BTCSOL_EW_b30": {
+   "split": "train",
+   "weeks": {
+    "n": 50,
+    "net": 0.1255,
+    "pf": 1.097,
+    "net_ex_top3": -0.3672,
+    "top3": [
+     0.1776,
+     0.1703,
+     0.1448
+    ],
+    "mean_bp": 25.1
+   },
+   "legs": {
+    "n": 753,
+    "net": 0.1255,
+    "pf": 1.075,
+    "net_ex_top3": 0.0311,
+    "top3": [
+     0.0384,
+     0.0286,
+     0.0273
+    ],
+    "mean_bp": 1.7
+   },
+   "weeks_possible": 182,
+   "weeks_traded": 50,
+   "weeks_gated_off": 127,
+   "weeks_too_few_memes": 5,
+   "mean_basket_size": 15.1,
+   "mean_beta": 1.212,
+   "mean_short_notional": 0.478,
+   "weekly_sharpe": 0.188,
+   "maxdd_additive": -0.7381,
+   "meme_short_px": -0.6124,
+   "hedge_long_px": 0.7525,
+   "funding_paid": -0.0266,
+   "costs": 0.0413,
+   "meme_funding_paid": -0.1033,
+   "hedge_funding_paid": 0.0767,
+   "per_half": {
+    "2022H1": -0.0216,
+    "2022H2": -0.0505,
+    "2023H1": -0.008,
+    "2023H2": 0.1968,
+    "2024H1": -0.5659,
+    "2024H2": 0.2821,
+    "2025H1": 0.2925
+   },
+   "per_year": {
+    "2022": -0.0721,
+    "2023": 0.1888,
+    "2024": -0.2838,
+    "2025": 0.2925
+   },
+   "top3_coins": {
+    "MEMEUSDT": 0.0746,
+    "ORDIUSDT": 0.0442,
+    "MYROUSDT": 0.0429
+   },
+   "worst3_coins": {
+    "1000SHIBUSDT": -0.1018,
+    "1000PEPEUSDT": -0.102,
+    "WIFUSDT": -0.1422
+   },
+   "delist_exits": 0,
+   "first_week": "2022-04-04",
+   "last_week": "2025-05-26",
+   "beta_check_btc": {
+    "alpha_bp": 114.7,
+    "alpha_t": 0.86,
+    "beta": -0.532,
+    "beta_t": -2.62,
+    "r2": 0.125,
+    "n": 50
+   },
+   "beta_check_hedge": {
+    "alpha_bp": 27.1,
+    "alpha_t": 0.19,
+    "beta": -0.008,
+    "beta_t": -0.06,
+    "r2": 0.0,
+    "n": 50
+   },
+   "pass_weeks_unit": false,
+   "pass_legs_unit": false,
+   "n_unit_for_bar": "weeks",
+   "pass": false,
+   "kill_test": {
+    "halves_positive": 3,
+    "halves": 7,
+    "maxdd_ok": false
+   }
+  }
+ }
+}
