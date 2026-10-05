@@ -1,0 +1,104 @@
+{
+ "hypothesis": "H-QIMAKER",
+ "frozen_at_utc": "2026-10-05T05:54:00Z",
+ "source": "sources/leads/documented_edges_round6.md, Idea 5 (Gould and Bonart 2016; Cartea, Donnelly and Jaimungal 2018)",
+ "statement": "On Hyperliquid perps whose spread is usually one tick, resting a passive quote at the touch only on the side favoured by top-of-book queue imbalance, and exiting passively at the opposite touch (taker after a max hold or stop), earns more than maker/taker fees under a conservative queue-aware fill model.",
+ "parent_context": "H-HLANCHOR (reports/candidates/hlanchor.md) quoted both sides around a Binance-implied fair value and was picked off (fill markout -2.5 to -4.4 bp at 30 s). This tests whether own-book imbalance gating avoids that adverse selection. Not an iteration of HLANCHOR parameters; a separate pre-registered hypothesis.",
+ "is_synthetic": false,
+ "data": {
+  "source": "Tardis.dev free first-of-month samples already cached for H-HLANCHOR: hyperliquid quotes (top-of-book price and size snapshots, ~0.5-0.7 s cadence) and trades (exchange + local timestamps, aggressor side, price, size). Parquet under data/raw/web/tardis/parquet/. No new downloads planned.",
+  "train_days": [
+   "2024-11-01",
+   "2024-12-01",
+   "2025-01-01",
+   "2025-02-01",
+   "2025-03-01",
+   "2025-04-01",
+   "2025-05-01",
+   "2025-06-01"
+  ],
+  "validation_days": [
+   "2025-07-01",
+   "2025-08-01",
+   "2025-09-01",
+   "2025-10-01",
+   "2025-11-01",
+   "2025-12-01",
+   "2026-01-01",
+   "2026-02-01",
+   "2026-03-01"
+  ],
+  "holdout": "2026-04-01 onward: never downloaded or examined",
+  "snapshot_limitation": "Quotes are top-of-book snapshots every ~0.5-0.7 s, not an order-level feed. The queue ahead of us is only known as the displayed size at our level in the last snapshot; cancellations ahead of us, intra-snapshot queue changes, and depth below the touch are unknown. We therefore assume nobody ahead of us cancels (conservative) and that every print at our price consumes queue ahead of us first. HL L2 is aggregated by level anyway, so even incremental_book_L2 would not give our exact queue position."
+ },
+ "coin_selection_rule": {
+  "candidate_set": "The HL coins already cached under data/raw/web/tardis/parquet: WIF, kBONK, FARTCOIN, PUMP.",
+  "large_tick_rule": "On the coin's FIRST cached day (outcome-free: spreads only), sample the latest snapshot at each whole second; tick = max(10^(floor(log10(mid)) - 4), smallest positive difference between distinct quoted prices that day) (HL 5-significant-figure rule with decimals cap). Keep the coin if spread == 1 tick (within 1e-6 relative) on >= 70% of 1-s samples.",
+  "liquidity_rule": "Keep the coin only if it has >= 5,000 HL trade prints on that same first cached day.",
+  "coin_set_is_fixed": "The qualifying set is used on every train and validation day where the coin has data. PUMP's first cached day is 2025-08-01 (validation); it is judged on spreads/prints only, so it may enter validation without leaking outcomes. If fewer than 1 coin qualifies, the hypothesis is untestable on cached data and is reported as such (no rule relaxation)."
+ },
+ "signal": {
+  "imbalance": "I = (bid_sz - ask_sz) / (bid_sz + ask_sz) from the latest top-of-book snapshot RECEIVED (local timestamp).",
+  "decision_clock": "every snapshot arrival (local ts)",
+  "spread_gate": "only quote when the current snapshot spread is exactly 1 tick"
+ },
+ "rules": {
+  "entry": "Flat and no live entry order: if I >= theta post a buy at the snapshot best bid; if I <= -theta post a sell at the best ask. $1,000 notional, one unit per coin.",
+  "entry_cancel": "Cancel a live entry order when |I| < theta/2, when I has the opposite sign, or when the order's price is no longer the best price on its side in the latest snapshot. Cancel takes 300 ms; the order can still fill until then.",
+  "exit": "After an entry fill (known at the local ts of the filling print), post a passive exit at the opposite touch from the latest received snapshot. If the touch on that side moves, cancel (300 ms) and repost at the new touch (new queue position).",
+  "max_hold_exit": "If not exited within T seconds of the entry fill, exit taker (reduce-only: if the resting maker exit fills before the taker arrives, the maker fill stands).",
+  "stop": "In stop configs: if the latest received mid moves against the entry by >= 2 ticks, exit taker (reduce-only).",
+  "eod": "Flatten taker at the day's last snapshot; open orders cancelled."
+ },
+ "fill_model": {
+  "latency": "Every place/cancel takes effect 300 ms after the decision (local clock), and is compared with HL EXCHANGE timestamps of prints (exchange clock runs ~175 ms behind local, adding latency; conservative).",
+  "post_only": "On arrival, if the latest snapshot (exchange ts <= arrival) shows the opposite touch at or through our price, the order is rejected (no fill).",
+  "queue_ahead": "Q0 = displayed size at our price in the latest snapshot at arrival if our price is still the touch there; otherwise the size displayed at our price in the decision snapshot.",
+  "maker_fill": "A resting order fills (fully, at our price) when (a) a print with exchange ts in its live window trades STRICTLY through our price, or (b) cumulative size of prints AT our price during the live window exceeds Q0 + our size. Nothing else fills it. Adverse selection enters naturally: through-prints mean the level was swept.",
+  "taker_fill": "hlanchor_lib.taker_fill (unchanged, imported read-only): first HL snapshot with exchange ts >= decision + 300 ms; buy at ask, sell at bid; size above displayed top fills one spread worse.",
+  "fees_bp": {
+   "maker": 1.5,
+   "taker": 4.5,
+   "rebates": "none",
+   "source": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees (tier 0)"
+  },
+  "funding": "ignored (holds of seconds)"
+ },
+ "grid": {
+  "theta": [
+   0.5,
+   0.7,
+   0.85
+  ],
+  "T_s": [
+   5,
+   30
+  ],
+  "stop": [
+   "none",
+   "2 ticks adverse mid -> taker"
+  ],
+  "n_configs": 12
+ },
+ "bar_per_split": "n >= 50 round trips, net USD > 0, PF > 1.2, net without the 3 best trades > 0",
+ "selection": "Pick ONE config on train: among configs meeting the bar on train, highest train net USD (ties: higher PF). If none meet the bar, the highest-net train config is still run once on validation for documentation, and the verdict is FAIL.",
+ "verdict": "PASS only if the selected config meets the bar on train AND on validation (run once). Holdout untouched either way.",
+ "diagnostics_reported": [
+  "fill markouts (mid at +1/+5/+30 s vs fill price, signed)",
+  "signal markouts (mid change after all signals, filled or not) to show whether I predicts at all",
+  "exit mix",
+  "per-coin, per-day net",
+  "fill-model sensitivity: through-print-only fills (informational, not used for the verdict)"
+ ],
+ "no_changes": "No parameter, fee, fill-model, coin-rule or split changes after this file is written.",
+ "amendment_1": {
+  "frozen_at_utc": "2026-10-05T06:00:00Z",
+  "computed_before_amendment": "Only the outcome-free coin-selection statistics (data/raw/web/tardis/results/qimaker_coin_selection.json). No signal, fill or P&L was computed.",
+  "reason": "Of the 4 cached coins only PUMP passes the large-tick + liquidity rule (71.5% one-tick, 135k prints on 2025-08-01); WIF 37.7%, kBONK 26.9%, FARTCOIN 6.2% one-tick. PUMP has no train days (listed mid-2025), so train would be empty and the pre-registered train->validation selection impossible. The original rule did not anticipate this.",
+  "added_candidates": "The top-15 HL perps by 24h notional volume in the snapshot data/raw/web/tardis/results/newcoins/hl_metaAndAssetCtxs_20261005T0537Z.json, in rank order: BTC, ETH, HYPE, ZEC, NEAR, PUMP, SOL, XRP, SAND, SUI, ENA, WLD, DOGE, LIT, PONS (PUMP already evaluated). Caveat: today's volume rank is a survivorship-tinged liquidity proxy; it carries no information about this strategy's outcome.",
+  "added_rule": "Each new candidate is judged with the SAME large-tick (>=70% of 1-s samples at exactly 1 tick) and liquidity (>=5,000 prints) rule on its FIRST AVAILABLE TRAIN day (2024-11-01 onward; Tardis HL quotes+trades fetched only for that day first). Candidates with no train day are excluded. Qualifiers then have all 17 train+validation days fetched (quotes + trades only), raw csv.gz deleted after extracting to parquet.",
+  "final_coin_set": "PUMP (validation days only, from the original rule) + new qualifiers (train and validation days).",
+  "budget": "Cumulative new raw downloads capped at 0.9 GB; coins are downloaded in rank order and a coin is dropped whole (listed as not tested) if it would breach the cap. Stop if free disk < 2.5 GB. Raw files deleted after parquet extraction. Holdout never fetched.",
+  "unchanged": "Grid, fill model, fees, bar, splits and the selection rule are unchanged."
+ }
+}

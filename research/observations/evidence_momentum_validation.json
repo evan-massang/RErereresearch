@@ -1,0 +1,48 @@
+{
+ "split": "validation",
+ "slipx": 1.0,
+ "preregistration": "reports/hypotheses/momentum_preregistration.json",
+ "results": {
+  "XS_L7_LO": {
+   "n": 560,
+   "net": 2.0422,
+   "pf": 1.378,
+   "net_minus_top3": 0.3288,
+   "top3": [
+    0.7387,
+    0.5743,
+    0.4003
+   ],
+   "sharpe": 0.962,
+   "maxdd": -0.9368,
+   "weeks": 92,
+   "mean_weekly_turnover": 1.511,
+   "gross_price": 1.1513,
+   "funding_paid": -1.0529,
+   "costs": 0.162,
+   "long_leg": 2.2042,
+   "short_leg": 0.0,
+   "per_year": {
+    "2024": 1.0476,
+    "2025": 0.299,
+    "2026": 0.6955
+   },
+   "top3_coin_share": 0.791,
+   "top3_coins": {
+    "ALPACAUSDT": 0.7387,
+    "MYXUSDT": 0.4653,
+    "PIPPINUSDT": 0.4104
+   },
+   "worst3_coins": {
+    "POPCATUSDT": -0.1146,
+    "HIFIUSDT": -0.129,
+    "WIFUSDT": -0.2109
+   },
+   "delist_exits": 0,
+   "median_episode_weeks": 1.0,
+   "first_week": "2024-07-01",
+   "last_week": "2026-03-30",
+   "pass": true
+  }
+ }
+}

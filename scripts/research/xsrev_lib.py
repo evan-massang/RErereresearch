@@ -12,7 +12,8 @@ import pandas as pd
 
 ROOT = Path(__file__).resolve().parents[2]
 DAILY = ROOT / "data/raw/web/momentum/klines"
-PAIRS = ROOT / "data/raw/web/ffdiff_wide/universe_raw.json"
+PAIRS = ROOT / "data/raw/web/xsrev/hl_bn_pairs.json"  # private: HL meta x Binance archive symbols
+QV_COPY = ROOT / "data/raw/web/xsrev/daily_qv.parquet"  # private copy of the daily quote-volume panel
 EXCL = {"BTCDOMUSDT", "DEFIUSDT", "FOOTBALLUSDT", "BLUEBIRDUSDT", "USDCUSDT"}
 STABLE_BASES = {"USDC", "TUSD", "BUSD", "FDUSD", "USDP", "USDE", "USD1", "DAI", "PYUSD", "USDT"}
 START_DAY = pd.Timestamp("2023-02-01")
@@ -31,6 +32,8 @@ def excluded(sym):
 @lru_cache(None)
 def daily_panel():
     """Wide frame of daily quote volume (index day, columns symbol), NaN where no bar."""
+    if QV_COPY.exists():
+        return pd.read_parquet(QV_COPY)
     cols = {}
     for f in sorted(DAILY.glob("*.parquet")):
         s = f.stem
@@ -42,7 +45,9 @@ def daily_panel():
         cols[s] = d.drop_duplicates("day").set_index("day").quote_volume
     qv = pd.DataFrame(cols).sort_index()
     full = pd.date_range(qv.index.min(), qv.index.max(), freq="D")
-    return qv.reindex(full)
+    qv = qv.reindex(full)
+    qv.to_parquet(QV_COPY, compression="zstd")
+    return qv
 
 
 @lru_cache(None)

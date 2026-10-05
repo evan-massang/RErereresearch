@@ -1,0 +1,95 @@
+{
+ "prereg": "reports/hypotheses/xsrev_preregistration.json",
+ "split": "validation",
+ "config": "ew_resid_L4_H4_B",
+ "selected_passes_train": false,
+ "result": {
+  "all": {
+   "net": {
+    "n": 13823,
+    "mean_bp": -10.04,
+    "sum": -13.8843,
+    "pf": 0.913,
+    "sum_ex_top3": -15.1711,
+    "win": 0.513,
+    "median_bp": 4.87
+   },
+   "gross": {
+    "n": 13823,
+    "mean_bp": 3.4,
+    "sum": 4.701,
+    "pf": 1.031,
+    "sum_ex_top3": 3.431,
+    "win": 0.539,
+    "median_bp": 17.69
+   },
+   "net_binance": {
+    "n": 13823,
+    "mean_bp": -11.04,
+    "sum": -15.2666,
+    "pf": 0.905,
+    "sum_ex_top3": -16.5531,
+    "win": 0.51,
+    "median_bp": 3.87
+   },
+   "funding_mean_bp": -0.445,
+   "fund_missing_share": 0.0,
+   "stops": 285,
+   "delisted": 0,
+   "mean_hold_h": 4.71,
+   "long": {
+    "n": 6918,
+    "mean_bp": -16.71,
+    "sum": -11.5609,
+    "pf": 0.843,
+    "sum_ex_top3": -12.8177,
+    "win": 0.468,
+    "median_bp": -13.0
+   },
+   "short": {
+    "n": 6905,
+    "mean_bp": -3.36,
+    "sum": -2.3234,
+    "pf": 0.973,
+    "sum_ex_top3": -3.1582,
+    "win": 0.558,
+    "median_bp": 29.29
+   },
+   "pass": false
+  },
+  "by_year": {
+   "2025": {
+    "net": {
+     "n": 9340,
+     "mean_bp": -8.61,
+     "sum": -8.0445,
+     "pf": 0.927,
+     "sum_ex_top3": -9.3313,
+     "win": 0.515,
+     "median_bp": 6.0
+    },
+    "gross_mean_bp": 4.66,
+    "net_binance_mean_bp": -9.61
+   },
+   "2026": {
+    "net": {
+     "n": 4483,
+     "mean_bp": -13.03,
+     "sum": -5.8398,
+     "pf": 0.88,
+     "sum_ex_top3": -6.4832,
+     "win": 0.508,
+     "median_bp": 3.05
+    },
+    "gross_mean_bp": 0.78,
+    "net_binance_mean_bp": -14.03
+   }
+  },
+  "entry_cohort_basket": {
+   "n_periods": 1644,
+   "mean_bp": -8.445,
+   "t_stat": -3.4
+  },
+  "trades_per_day": 50.6
+ }
+}

@@ -2,7 +2,8 @@
 HL-listed symbol that ever ranks 11-150 by trailing 30d quote volume (pre-registration:
 reports/hypotheses/xsrev_preregistration.json).
 
-Reuses read-only: data/raw/web/momentum/klines (1d, for ranking), data/raw/web/ffdiff_wide/universe_raw.json.
+Reuses read-only: data/raw/web/momentum/klines (1d, for ranking; private copy data/raw/web/xsrev/daily_qv.parquet).
+HL listing: data/raw/web/xsrev/hl_bn_pairs.json (HL info meta incl. delisted, fetched 2026-10-05).
 Writes compact parquet to data/raw/web/xsrev/k1h/<SYM>.parquet; zips are never written to disk.
 HOLDOUT GUARD: only months 2023-01..2026-03 are requested; rows >= 2026-04-01 are dropped before writing.
 Stops if free disk < 2.5 GB or downloaded bytes > 600 MB.

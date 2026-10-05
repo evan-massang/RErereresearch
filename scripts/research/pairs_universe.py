@@ -45,11 +45,15 @@ def main():
         d["day"] = pd.to_datetime(d.open_time, unit="ms", utc=True).dt.normalize()
         vols[sym] = d.set_index("day").quote_volume
     V = pd.DataFrame(vols).sort_index()
+    FD = json.load(open(OUT / "hl_first_day.json"))
+    hlmap0 = {c: to_hl(c, hl) for c in V.columns}
     uni, hlmap = {}, {}
     for t in pd.date_range(START, END, freq="W-MON", tz="UTC"):
         w = V.loc[(V.index >= t - pd.Timedelta(days=30)) & (V.index < t)]
         ok = w.notna().sum() >= 30          # full 30-day history before t
-        s = w.sum()[ok].sort_values(ascending=False).head(N)
+        day = (t - pd.Timedelta(days=1)).value // 10**6
+        listed = pd.Series({c: (FD[hlmap0[c]]["first_t"] is not None and FD[hlmap0[c]]["first_t"] <= day <= FD[hlmap0[c]]["last_t"]) for c in w.columns})
+        s = w.sum()[ok & listed].sort_values(ascending=False).head(N)
         uni[t.strftime("%Y-%m-%d")] = list(s.index)
     syms = sorted({s for v in uni.values() for s in v})
     hlmap = {s: to_hl(s, hl) for s in syms}

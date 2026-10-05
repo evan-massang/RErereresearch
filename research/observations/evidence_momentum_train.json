@@ -1,0 +1,523 @@
+{
+ "split": "train",
+ "slipx": 1.0,
+ "preregistration": "reports/hypotheses/momentum_preregistration.json",
+ "results": {
+  "TS_L7_LS": {
+   "n": 4079,
+   "net": 0.6669,
+   "pf": 1.209,
+   "net_minus_top3": 0.5773,
+   "top3": [
+    0.0389,
+    0.0256,
+    0.0251
+   ],
+   "sharpe": 0.683,
+   "maxdd": -0.2825,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.536,
+   "gross_price": 0.8585,
+   "funding_paid": 0.0614,
+   "costs": 0.1302,
+   "long_leg": 0.871,
+   "short_leg": -0.0739,
+   "per_year": {
+    "2020": -0.0623,
+    "2021": 0.3771,
+    "2022": 0.1399,
+    "2023": 0.1388,
+    "2024": 0.0733
+   },
+   "top3_coin_share": 0.322,
+   "top3_coins": {
+    "DOGEUSDT": 0.0979,
+    "AVAXUSDT": 0.0627,
+    "FILUSDT": 0.0542
+   },
+   "worst3_coins": {
+    "BCHUSDT": -0.0187,
+    "DOTUSDT": -0.0216,
+    "EOSUSDT": -0.0277
+   },
+   "delist_exits": 15,
+   "median_episode_weeks": 1.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "TS_L14_LS": {
+   "n": 3017,
+   "net": 0.3449,
+   "pf": 1.116,
+   "net_minus_top3": 0.2523,
+   "top3": [
+    0.0373,
+    0.0288,
+    0.0264
+   ],
+   "sharpe": 0.352,
+   "maxdd": -0.5397,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.409,
+   "gross_price": 0.52,
+   "funding_paid": 0.0742,
+   "costs": 0.1009,
+   "long_leg": 0.6845,
+   "short_leg": -0.2387,
+   "per_year": {
+    "2020": 0.2008,
+    "2021": 0.1462,
+    "2022": -0.0136,
+    "2023": -0.0657,
+    "2024": 0.0772
+   },
+   "top3_coin_share": 0.486,
+   "top3_coins": {
+    "FILUSDT": 0.0642,
+    "SOLUSDT": 0.0526,
+    "MKRUSDT": 0.0507
+   },
+   "worst3_coins": {
+    "LTCUSDT": -0.0346,
+    "BCHUSDT": -0.0437,
+    "LINKUSDT": -0.0453
+   },
+   "delist_exits": 15,
+   "median_episode_weeks": 2.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": false
+  },
+  "TS_L28_LS": {
+   "n": 2094,
+   "net": 0.8711,
+   "pf": 1.396,
+   "net_minus_top3": 0.7683,
+   "top3": [
+    0.04,
+    0.0326,
+    0.0303
+   ],
+   "sharpe": 0.994,
+   "maxdd": -0.1894,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.301,
+   "gross_price": 1.0494,
+   "funding_paid": 0.1023,
+   "costs": 0.076,
+   "long_leg": 0.9369,
+   "short_leg": 0.0102,
+   "per_year": {
+    "2020": 0.0837,
+    "2021": 0.3654,
+    "2022": 0.1389,
+    "2023": 0.2132,
+    "2024": 0.07
+   },
+   "top3_coin_share": 0.254,
+   "top3_coins": {
+    "FILUSDT": 0.0837,
+    "BTCUSDT": 0.0715,
+    "SOLUSDT": 0.066
+   },
+   "worst3_coins": {
+    "DOTUSDT": -0.0187,
+    "ZECUSDT": -0.0246,
+    "CRVUSDT": -0.0256
+   },
+   "delist_exits": 15,
+   "median_episode_weeks": 3.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "TS_L28_skip1_LS": {
+   "n": 2132,
+   "net": 0.986,
+   "pf": 1.459,
+   "net_minus_top3": 0.879,
+   "top3": [
+    0.04,
+    0.0351,
+    0.0319
+   ],
+   "sharpe": 1.048,
+   "maxdd": -0.3178,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.307,
+   "gross_price": 1.1645,
+   "funding_paid": 0.1011,
+   "costs": 0.0774,
+   "long_leg": 1.0189,
+   "short_leg": 0.0445,
+   "per_year": {
+    "2020": 0.0997,
+    "2021": 0.4783,
+    "2022": 0.0859,
+    "2023": 0.2235,
+    "2024": 0.0986
+   },
+   "top3_coin_share": 0.19,
+   "top3_coins": {
+    "FILUSDT": 0.0688,
+    "SOLUSDT": 0.0607,
+    "BNBUSDT": 0.0576
+   },
+   "worst3_coins": {
+    "STORJUSDT": -0.0121,
+    "YFIUSDT": -0.0173,
+    "CRVUSDT": -0.0194
+   },
+   "delist_exits": 15,
+   "median_episode_weeks": 3.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "TS_L14_LO": {
+   "n": 1525,
+   "net": 0.634,
+   "pf": 1.418,
+   "net_minus_top3": 0.5415,
+   "top3": [
+    0.0373,
+    0.0288,
+    0.0264
+   ],
+   "sharpe": 0.669,
+   "maxdd": -0.4391,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.206,
+   "gross_price": 0.8108,
+   "funding_paid": 0.1263,
+   "costs": 0.0505,
+   "long_leg": 0.6845,
+   "short_leg": 0.0,
+   "per_year": {
+    "2020": 0.2233,
+    "2021": 0.4544,
+    "2022": -0.3211,
+    "2023": 0.2253,
+    "2024": 0.0521
+   },
+   "top3_coin_share": 0.256,
+   "top3_coins": {
+    "SOLUSDT": 0.0631,
+    "BNBUSDT": 0.0511,
+    "XRPUSDT": 0.0483
+   },
+   "worst3_coins": {
+    "EOSUSDT": -0.0169,
+    "GALAUSDT": -0.0216,
+    "GMTUSDT": -0.0221
+   },
+   "delist_exits": 1,
+   "median_episode_weeks": 2.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "TS_L28_LO": {
+   "n": 1065,
+   "net": 0.8998,
+   "pf": 1.872,
+   "net_minus_top3": 0.7969,
+   "top3": [
+    0.04,
+    0.0326,
+    0.0303
+   ],
+   "sharpe": 1.024,
+   "maxdd": -0.2857,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.15,
+   "gross_price": 1.0771,
+   "funding_paid": 0.1402,
+   "costs": 0.0371,
+   "long_leg": 0.9369,
+   "short_leg": 0.0,
+   "per_year": {
+    "2020": 0.1651,
+    "2021": 0.564,
+    "2022": -0.245,
+    "2023": 0.3672,
+    "2024": 0.0484
+   },
+   "top3_coin_share": 0.226,
+   "top3_coins": {
+    "DOGEUSDT": 0.0707,
+    "SOLUSDT": 0.0686,
+    "BNBUSDT": 0.0638
+   },
+   "worst3_coins": {
+    "ZECUSDT": -0.0096,
+    "SANDUSDT": -0.0129,
+    "GMTUSDT": -0.0131
+   },
+   "delist_exits": 5,
+   "median_episode_weeks": 3.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "XS_L7_LS": {
+   "n": 2428,
+   "net": 0.9877,
+   "pf": 1.098,
+   "net_minus_top3": 0.5503,
+   "top3": [
+    0.1928,
+    0.154,
+    0.0906
+   ],
+   "sharpe": 0.701,
+   "maxdd": -0.4697,
+   "weeks": 193,
+   "mean_weekly_turnover": 1.565,
+   "gross_price": 1.1361,
+   "funding_paid": -0.2234,
+   "costs": 0.3718,
+   "long_leg": 1.6419,
+   "short_leg": -0.2824,
+   "per_year": {
+    "2020": 0.4191,
+    "2021": 0.5768,
+    "2022": -0.0401,
+    "2023": -0.0386,
+    "2024": 0.0705
+   },
+   "top3_coin_share": 0.772,
+   "top3_coins": {
+    "TRBUSDT": 0.2982,
+    "DOGEUSDT": 0.261,
+    "AXSUSDT": 0.2038
+   },
+   "worst3_coins": {
+    "BNTUSDT": -0.1016,
+    "DOTUSDT": -0.1375,
+    "WAVESUSDT": -0.1392
+   },
+   "delist_exits": 7,
+   "median_episode_weeks": 1.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": false
+  },
+  "XS_L14_LS": {
+   "n": 1847,
+   "net": 0.1297,
+   "pf": 1.014,
+   "net_minus_top3": -0.3528,
+   "top3": [
+    0.2115,
+    0.1617,
+    0.1093
+   ],
+   "sharpe": 0.089,
+   "maxdd": -0.5616,
+   "weeks": 193,
+   "mean_weekly_turnover": 1.189,
+   "gross_price": 0.1799,
+   "funding_paid": -0.2357,
+   "costs": 0.2859,
+   "long_leg": 1.1754,
+   "short_leg": -0.7598,
+   "per_year": {
+    "2020": 0.516,
+    "2021": -0.0221,
+    "2022": -0.1814,
+    "2023": 0.0277,
+    "2024": -0.2106
+   },
+   "top3_coin_share": 4.341,
+   "top3_coins": {
+    "TRBUSDT": 0.2607,
+    "SUSHIUSDT": 0.1717,
+    "AXSUSDT": 0.1304
+   },
+   "worst3_coins": {
+    "XLMUSDT": -0.1146,
+    "IOSTUSDT": -0.1156,
+    "DOGEUSDT": -0.2351
+   },
+   "delist_exits": 7,
+   "median_episode_weeks": 1.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": false
+  },
+  "XS_L28_LS": {
+   "n": 1363,
+   "net": 0.7756,
+   "pf": 1.103,
+   "net_minus_top3": 0.2268,
+   "top3": [
+    0.2115,
+    0.2074,
+    0.1298
+   ],
+   "sharpe": 0.527,
+   "maxdd": -0.3271,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.875,
+   "gross_price": 0.7242,
+   "funding_paid": -0.266,
+   "costs": 0.2146,
+   "long_leg": 1.5354,
+   "short_leg": -0.5452,
+   "per_year": {
+    "2020": 0.3359,
+    "2021": 0.4441,
+    "2022": -0.1202,
+    "2023": 0.0971,
+    "2024": 0.0187
+   },
+   "top3_coin_share": 0.881,
+   "top3_coins": {
+    "AXSUSDT": 0.2458,
+    "FTMUSDT": 0.2206,
+    "TRBUSDT": 0.2165
+   },
+   "worst3_coins": {
+    "XLMUSDT": -0.0855,
+    "BAKEUSDT": -0.0909,
+    "BNTUSDT": -0.1024
+   },
+   "delist_exits": 8,
+   "median_episode_weeks": 2.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": false
+  },
+  "XS_L28_skip1_LS": {
+   "n": 1367,
+   "net": 0.4634,
+   "pf": 1.059,
+   "net_minus_top3": -0.0914,
+   "top3": [
+    0.2115,
+    0.2074,
+    0.1359
+   ],
+   "sharpe": 0.319,
+   "maxdd": -0.4311,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.878,
+   "gross_price": 0.4461,
+   "funding_paid": -0.2337,
+   "costs": 0.2164,
+   "long_leg": 1.4328,
+   "short_leg": -0.753,
+   "per_year": {
+    "2020": 0.217,
+    "2021": 0.2214,
+    "2022": -0.1047,
+    "2023": 0.1526,
+    "2024": -0.0228
+   },
+   "top3_coin_share": 1.355,
+   "top3_coins": {
+    "AXSUSDT": 0.2297,
+    "TRBUSDT": 0.2001,
+    "FTMUSDT": 0.1982
+   },
+   "worst3_coins": {
+    "CRVUSDT": -0.1074,
+    "STORJUSDT": -0.1217,
+    "DOGEUSDT": -0.3105
+   },
+   "delist_exits": 7,
+   "median_episode_weeks": 2.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": false
+  },
+  "XS_L7_LO": {
+   "n": 1189,
+   "net": 2.9272,
+   "pf": 1.292,
+   "net_minus_top3": 2.0522,
+   "top3": [
+    0.3856,
+    0.3081,
+    0.1813
+   ],
+   "sharpe": 0.792,
+   "maxdd": -1.8963,
+   "weeks": 193,
+   "mean_weekly_turnover": 1.532,
+   "gross_price": 3.2904,
+   "funding_paid": 0.0065,
+   "costs": 0.3567,
+   "long_leg": 3.2839,
+   "short_leg": 0.0,
+   "per_year": {
+    "2020": 1.036,
+    "2021": 2.6405,
+    "2022": -1.5024,
+    "2023": 0.9676,
+    "2024": -0.2145
+   },
+   "top3_coin_share": 0.498,
+   "top3_coins": {
+    "DOGEUSDT": 0.54,
+    "TRBUSDT": 0.4953,
+    "AXSUSDT": 0.421
+   },
+   "worst3_coins": {
+    "WAVESUSDT": -0.1408,
+    "ALGOUSDT": -0.1528,
+    "DYDXUSDT": -0.1804
+   },
+   "delist_exits": 4,
+   "median_episode_weeks": 1.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  },
+  "XS_L28_LO": {
+   "n": 635,
+   "net": 2.8761,
+   "pf": 1.402,
+   "net_minus_top3": 1.7786,
+   "top3": [
+    0.4231,
+    0.4148,
+    0.2597
+   ],
+   "sharpe": 0.824,
+   "maxdd": -1.3748,
+   "weeks": 193,
+   "mean_weekly_turnover": 0.815,
+   "gross_price": 3.0341,
+   "funding_paid": -0.0367,
+   "costs": 0.1947,
+   "long_leg": 3.0708,
+   "short_leg": 0.0,
+   "per_year": {
+    "2020": 0.8002,
+    "2021": 2.6018,
+    "2022": -1.3188,
+    "2023": 1.0369,
+    "2024": -0.2439
+   },
+   "top3_coin_share": 0.377,
+   "top3_coins": {
+    "AXSUSDT": 0.3986,
+    "TRBUSDT": 0.3877,
+    "SANDUSDT": 0.2994
+   },
+   "worst3_coins": {
+    "ALGOUSDT": -0.1116,
+    "BAKEUSDT": -0.1526,
+    "NEARUSDT": -0.1543
+   },
+   "delist_exits": 3,
+   "median_episode_weeks": 2.0,
+   "first_week": "2020-10-19",
+   "last_week": "2024-06-24",
+   "pass": true
+  }
+ }
+}

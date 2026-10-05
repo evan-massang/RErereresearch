@@ -1,0 +1,84 @@
+{
+ "hypothesis": "H-PAIRS",
+ "frozen_at_utc": "2026-10-05T05:53:27Z",
+ "frozen_before": "any 5-min kline was downloaded and before any spread, z-score or P&L was computed. Only daily klines (already cached by H-MOMENTUM, used for the universe rank) and the Hyperliquid meta / daily-candle listing dates were read.",
+ "source_lead": "sources/leads/documented_edges_round6.md idea 3 (Fil & Kristoufek 2020; Tadi & Kortchemski 2021). Rule follows the lead's pre-registerable rule with stated deviations below.",
+ "rationale": "Parent: none in this repo (new mechanism family). Evidence-based reason: published 5-min/1-min crypto pairs results (DATA, though one relied on maker rebates); market-neutral, so it avoids the direction-prediction failures of XLEAD/FLUSH. Kill risk named in the lead: spread amplitude vs ~22 bp round-trip cost.",
+ "statement": "Cointegrated pairs among top HL-listed perps, re-formed weekly on a trailing 30-day window of 5-min log prices, traded on z-score reversion of the frozen-hedge spread as two taker legs, are profitable after Hyperliquid-equivalent costs.",
+ "frequency": "5m only. 1m was NOT run: 1m monthly zips are ~4-5x the 5m size (ETHUSDT 5m ~0.35 MB/month), which would exceed the 1 GB download budget for this universe. Stated before any result.",
+ "data": {
+  "signal_and_fill_prices": "data.binance.vision futures/um/monthly/klines/<SYM>/5m, months 2024-06 .. 2026-03 only (nothing from 2026-04 onward is downloaded). Stored as open/close float parquet under data/raw/web/pairs/k5m/; zips deleted.",
+  "universe_rank": "data/raw/web/momentum/klines/<SYM>.parquet (Binance USDT-M daily klines, months <= 2026-03)",
+  "hl_listing": "data/raw/web/pairs/hl_meta_20261005.json (HL info 'meta', includes delisted coins) and hl_first_day.json (first/last HL daily candle per coin via info candleSnapshot 1d)",
+  "budget": "download < 1 GB total; stop if free disk < 2.5 GB; any symbol not downloaded is listed as missing and that symbol is treated as absent from the universe (no substitution)."
+ },
+ "universe": {
+  "when": "each Monday 00:00 UTC t, 2024-07-01 .. 2026-03-30",
+  "rule": "Binance USDT-M perps (symbol ^[0-9A-Z]+USDT$; stablecoin, gold and index bases excluded: USDC TUSD BUSD FDUSD USDP USDE PAXG XAUT BTCDOM DEFI FOOTBALL BLUEBIRD) that map to a Hyperliquid perp (same base, or 1000X->kX, or X->kX) AND whose first HL daily candle is <= t-1 day and last HL daily candle >= t-1 day; with 30 full daily bars in [t-30d, t). Rank by sum of daily quote volume over [t-30d, t); keep top N=30.",
+  "code": "scripts/research/pairs_universe.py",
+  "limitation": "HL listing dates are proxied by the first HL daily candle (exact listing time unknown). Binance volume ranks, not HL volume, are used (HL historical volume not fetched)."
+ },
+ "pair_formation": {
+  "window": "the 8640 5-min bars (30 days) ending at t (bars with open_time in [t-30d, t)); log close prices; a coin needs >= 95% non-missing bars in the window, gaps forward-filled.",
+  "test": "for each unordered pair (i,j) both orderings: OLS log p_y = a + b log p_x; Engle-Granger ADF on the residual with 1 lagged difference and constant (manual numpy regression), p-value from statsmodels mackinnonp(tstat, regression='c', N=2). Keep the ordering with the smaller p.",
+  "filters": "p < 0.05; b > 0; OU half-life HL = -ln2 / lambda from Delta s_t = c + lambda s_{t-1} with 10 <= HL <= 288 bars (50 min .. 1 day).",
+  "selection": "sort by p ascending; accept greedily with at most 3 pairs per coin; keep at most 30 pairs.",
+  "frozen_for_week": "a, b, HL are frozen for the trading week [t, t+7d)."
+ },
+ "signal": {
+  "spread": "s = log close_y - b log close_x",
+  "z": "z_t = (s_t - mean(s over last W bars incl. t)) / sd(same), W = clip(round(2*HL), 20, 576) bars; rolling window may reach back into the formation window (past data only).",
+  "decision_time": "at the close of bar t (known at open_time(t)+5 min)."
+ },
+ "execution": {
+  "fill": "taker on both legs at the OPEN of bar t+1 (the first price after the decision). Latency allowance (~300 ms) is not resolvable at 5-min resolution and is covered by the 1 bp per-leg-side slippage.",
+  "sizing": "gross notional $2,000 per pair trade; leg weights w_y = 1/(1+b), w_x = b/(1+b) of gross (dollar weights proportional to the hedge ratio). Long spread = long y, short x; short spread = opposite.",
+  "pnl": "per leg: notional * (exit_open/entry_open - 1) * side; sum of the two legs minus costs.",
+  "costs_primary_HL": "4.5 bp taker + 1.0 bp slippage per leg per side, on each leg's notional -> 11 bp of gross per round trip ($2.20).",
+  "costs_report_binance": "5.0 bp taker + 1.0 bp slippage per leg per side -> 12 bp of gross per round trip ($2.40). Reported, not selected on.",
+  "funding": "not modelled (two opposite legs, holds <= ~1 day; stated limitation).",
+  "sensitivity_informational": "fill at the open of bar t+2 (one extra 5-min bar of delay); 2 bp slippage. Reported only, never selected on."
+ },
+ "entry_exit": {
+  "entry": "flat and |z_t| >= z_in and |z_{t-1}| < z_in (fresh crossing): short the spread if z>0, long if z<0.",
+  "exit": "|z_t| <= z_out (mean reversion); or stop |z_t| >= z_in + 2.0 (after a stop the pair is disabled for the rest of the week); or time stop after max_hold bars; or week end (positions closed at the open of the first bar >= t+7d, i.e. re-formation); or split boundary (force close at the last bar open before the boundary).",
+  "one_position_per_pair": true,
+  "trade_unit": "one pair round trip = 1 trade, both legs costed"
+ },
+ "grid": {
+  "z_in": [
+   2.0,
+   2.5,
+   3.0
+  ],
+  "z_out": [
+   0.0,
+   0.5
+  ],
+  "max_hold": [
+   "2*HL",
+   "4*HL"
+  ],
+  "n_configs": 12
+ },
+ "splits": {
+  "train": "2024-07-01 00:00 .. 2025-06-30 23:59 UTC (restricted from all history to save disk); formation data from 2024-06-01",
+  "validation": "2025-07-01 00:00 .. 2026-03-31 23:59 UTC",
+  "holdout": "2026-04-01 onward: NEVER downloaded or touched",
+  "assignment": "trades assigned by entry time; positions force-closed at split boundaries"
+ },
+ "selection_and_bar": {
+  "bar_per_split": "n >= 50 round trips, net USD > 0, profit factor > 1.2, net without the top-3 trades > 0 (HL costs)",
+  "choose_one_on_train": "among the 12 configs, the one with the highest train net USD under HL costs that meets the bar on train; if none meets the bar, the highest-net config is still named and validation is run once for information, and the verdict is FAIL.",
+  "validation": "run once on the chosen config only. PASS requires both train and validation to meet the bar.",
+  "reported_by_year": "calendar-year breakdown (2024, 2025, 2026-Q1) reported for information."
+ },
+ "no_changes": "No parameter, universe, cost or fill changes after this file is written. Any bug fix is logged with its effect in the report.",
+ "amendments": [
+  {
+   "at_utc": "2026-10-05T05:55:11Z",
+   "before_any_computation": true,
+   "change": "statsmodels is not installed, so mackinnonp is unavailable. Equivalent rule: Engle-Granger ADF t-stat < -3.3368 (MacKinnon 2010 5% critical value for N=2 with constant at T=8640: -3.33613 - 6.1101/T - 6.823/T^2), and pairs are ranked by t-stat ascending (monotone in the p-value, so the selection is identical). Ordering choice uses the more negative t-stat."
+  }
+ ]
+}
