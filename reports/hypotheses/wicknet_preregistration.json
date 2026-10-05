@@ -1,0 +1,64 @@
+{
+ "hypothesis": "H-WICKNET",
+ "frozen_at_utc": "2026-10-05T07:35:00Z",
+ "agent": "agent_wicknet",
+ "source": "sources/leads/documented_edges_round8.md, Idea 6 (H-WICKNET); Brogaard et al. 2018 JFE 128(2) for the market-wide filter",
+ "statement": "On Hyperliquid meme perps, deep resting post-only limit orders placed d bp away from a Binance-implied fair value fill mainly on local liquidation/fat-finger wicks, and the wick reverts enough within seconds to a minute to cover fees under a conservative fill model.",
+ "parent_context": "Not an iteration of H-HLANCHOR (quotes at the touch, k = 10-20 bp, killed by -2.5 to -4.4 bp 30-s markouts) nor of H-FLUSH (minute-bar entries 15-120 min after flushes kept falling). Lessons carried in: (1) the reference is the OTHER venue's price (Binance), which a local wick does not move, not the coin's own lagging median (falling-knife lesson from FLUSH); (2) a market-wide filter removes fills during broad moves (Brogaard et al.); (3) fills only on trade-through or after the displayed queue at placement has traded (QIMAKER/HLANCHOR fill-model lessons).",
+ "is_synthetic": false,
+ "data": {
+  "hl_and_binance": "Cached Tardis.dev free first-of-month samples under data/raw/web/tardis/parquet/: HL quotes (top-of-book snapshots ~0.5 s), HL trades, Binance-futures book_ticker for WIF, kBONK, FARTCOIN, PUMP (where listed).",
+  "btc_for_filter": "Binance SPOT BTCUSDT 1-s klines from data.binance.vision (data/spot/daily/klines/BTCUSDT/1s), ~2.6 MB/day zip, 17 days ~45 MB total, for train and validation days only. Stored as compact parquet under data/raw/web/binance_spot/klines1s/. Spot BTC is used as the market proxy because Binance-futures BTC book_ticker is not cached and is too large to fetch. The close of second s is treated as known only at s + 1 s.",
+  "train_days": ["2024-11-01", "2024-12-01", "2025-01-01", "2025-02-01", "2025-03-01", "2025-04-01", "2025-05-01", "2025-06-01"],
+  "validation_days": ["2025-07-01", "2025-08-01", "2025-09-01", "2025-10-01", "2025-11-01", "2025-12-01", "2026-01-01", "2026-02-01", "2026-03-01"],
+  "holdout": "2026-04-01 onward: never downloaded or examined",
+  "split_note": "Same split and coin-days as H-HLANCHOR (scripts/research/hlanchor_fetch.py TRAIN/VALID)."
+ },
+ "reference": {
+  "definition": "F(t) = Binance-futures mid (latest book_ticker with local_timestamp <= t) x (1 + trailing 10-min median of HL-mid/Binance-mid - 1 on a 1-s grid, previous 600 s, excluding current second). This is hlanchor_lib.load_day/basis_at, imported read-only (sha256 98166e5f...c3ad).",
+  "why_not_own_median": "The coin's own trailing median lags genuine moves; quoting against it buys falling knives (FLUSH lesson). The lead names the Binance mid as the reference for cross-listed coins; all four coins are Binance-listed."
+ },
+ "rule": {
+  "quotes": "When flat, keep a post-only bid at F x (1 - d) and a post-only ask at F x (1 + d), $1,000 notional each, prices rounded to HL 5 significant figures AWAY from F (bid floored, ask ceiled).",
+  "refresh": "Every R seconds (local clock): if flat, filter clear, and (no live entry orders or |F / F_at_last_placement - 1| > d/5), cancel both and place a new pair.",
+  "latency": "Every place and cancel takes 300 ms: decision at local time t, order live / cancel effective from exchange time t + 300 ms (HL exchange clock runs ~175 ms behind local, adding conservative latency). An order stays fillable until its cancel is effective.",
+  "post_only": "At arrival, checked against the latest HL snapshot with exchange ts <= arrival: a bid >= best ask (ask <= best bid) is rejected and not placed.",
+  "inventory": "One $1k unit per coin. When an entry fills, the other entry is cancelled (learned at the fill print's local timestamp, effective +300 ms). If the opposite entry fills in that window it closes the position at its price (maker fee) and is counted as a round trip.",
+  "market_wide_filter": "filter=on only. Evaluated on a 250-ms local clock. Blocked while |BTCUSDT spot 60-s return| >= 30 bp (1-s closes, known at s+1) OR |coin's own Binance mid 10-s return| >= d/2. While blocked, live entry orders are cancelled (300 ms) and no new ones are placed; quoting resumes at the next refresh tick after it clears.",
+  "exits": {
+   "MK": "Post-only take-profit at the reference: for a long, sell at x = F(t_learn) if F > best bid else at the best ask (mirror for shorts), placed at t_learn + 300 ms (re-priced to the far touch if it would cross at arrival). Not re-priced afterwards. Time stop 60 s after t_learn -> taker. Hard stop -> taker.",
+   "TK": "Taker exit 30 s after t_learn. Hard stop -> taker.",
+   "hard_stop": "HL mid (snapshots, local clock, after t_learn) moves against the position by >= d from the entry price (i.e. 2d from the reference at placement) -> taker exit decided at that snapshot.",
+   "taker_fill": "hlanchor_lib.taker_fill (first HL snapshot with exchange ts >= decision + 300 ms; size above displayed top fills one full spread worse).",
+   "eod": "Open positions are flattened by taker at the last snapshot of the day."
+  }
+ },
+ "fill_model": {
+  "maker": "A resting order fills (at its own limit price) only if (a) an HL trade prints STRICTLY through its price while live, or (b) cumulative HL print size AT its price since arrival exceeds the displayed queue ahead at placement plus our own size. Queue ahead: displayed top size if our price equals the touch in the arrival snapshot; 0 if our price is strictly inside the spread; if our price is behind the touch (the usual case for d >= 50 bp) the queue is unknown and only (a) can fill it. No one ahead of us is assumed to cancel.",
+  "no_zero_impact": "No fill at a price better than our limit; taker exits pay the displayed touch plus a full-spread penalty for size beyond the top.",
+  "fees": "HL tier 0: maker 1.5 bp, taker 4.5 bp (https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees). Entry always maker 1.5 bp; MK exit 1.5 bp if the TP fills, else 4.5 bp; TK exit 4.5 bp. Funding ignored (holds <= 60 s).",
+  "size": "$1,000 per round trip."
+ },
+ "grid": {
+  "count": 12,
+  "dimensions": "d in {50, 100} bp x exit in {MK, TK} x filter in {off, on} at refresh R = 2 s (8 configs), plus R = 5 s for the 4 filter=on configs (4 configs).",
+  "configs": [
+   "d50_R2_MK_off", "d50_R2_MK_on", "d50_R2_TK_off", "d50_R2_TK_on",
+   "d100_R2_MK_off", "d100_R2_MK_on", "d100_R2_TK_off", "d100_R2_TK_on",
+   "d50_R5_MK_on", "d50_R5_TK_on", "d100_R5_MK_on", "d100_R5_TK_on"
+  ]
+ },
+ "kill_test": {
+  "definition": "Day-1 style: for each config, the mean +30 s markout of ENTRY fills on train, side x (HL mid at first snapshot with exchange ts >= fill ts + 30 s / fill price - 1), in bp, before fees, must be > 0. A config failing it cannot be selected. If all 12 fail, H-WICKNET is killed on train regardless of P&L. Also reported: +1 s, +5 s, +60 s markouts.",
+  "order": "Fill counts and markouts are reported first; P&L is evaluated only for the kill-test decision record and selection."
+ },
+ "bar": "Per split: n (round trips) >= 50, net > 0, PF > 1.2, net with the 3 best trades removed > 0 (hlanchor_lib.bar_stats).",
+ "selection": "Among train configs passing the kill test AND the full bar, select the one with the highest train PF (tie: larger n). Run validation ONCE on that config only. If no config passes on train, validation is not run and the verdict is FAIL.",
+ "verdict_rule": "Candidate only if the selected config passes the bar on both train and validation. Otherwise failure report in reports/failures/agent_wicknet.md. The holdout is not touched in this run.",
+ "known_risks": [
+  "Fill-model optimism: deep levels have unknown queue; trade-through-only is used there (conservative), but post-only rejection and snapshot cadence (~0.5 s) are approximations.",
+  "HL backstop liquidation absorbs forced flow off-book (Garcia Seuma), so wicks may be rarer than the precheck touch counts suggest.",
+  "Bursty fills: a few volatile days may dominate (hence the ex-top-3 test and per-day reporting).",
+  "Falling knives: the hard stop and the Binance reference are the defences."
+ ]
+}
