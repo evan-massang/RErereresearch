@@ -1,0 +1,610 @@
+{
+ "meta": {
+  "preregistration": "reports/hypotheses/propcarry_preregistration.json",
+  "generated_utc": "2026-10-05T10:02:30.477498+00:00",
+  "jupiter_5sol_rt_bp": {
+   "PENGU": 4.07,
+   "PUMP": 0.93,
+   "TRUMP": 3.5,
+   "BONK": 8.42,
+   "FARTCOIN": 12.56,
+   "USELESS": 9.33
+  },
+  "perp_rt_bp": {
+   "hl": 12.4,
+   "binance": 12.0
+  },
+  "hop_bp": 2.0,
+  "tips_bp": 1.0,
+  "unit": "net/pf/net_ex_top3/worst are sums of per-episode return on capital (capital = 2 x notional); *_unit fields are per unit notional"
+ },
+ "config": "L24_F12_Z7",
+ "hl": {
+  "x1": {
+   "stats": {
+    "n": 41,
+    "net": 0.04322,
+    "pf": 5.88524,
+    "net_ex_top3": 0.02781,
+    "mean_bp": 10.5411,
+    "win": 0.78049,
+    "funding_unit": 0.16857,
+    "basis_unit": 0.01205,
+    "cost_unit": 0.09419,
+    "worst": -0.00436,
+    "mean_funding_bp_per_ep": 41.11539,
+    "mean_cost_bp_per_ep": 22.97244,
+    "passes": false
+   }
+  },
+  "x2": {
+   "stats": {
+    "n": 41,
+    "net": 0.02769,
+    "pf": 3.01453,
+    "net_ex_top3": 0.01353,
+    "mean_bp": 6.75488,
+    "win": 0.65854,
+    "funding_unit": 0.16857,
+    "basis_unit": 0.01205,
+    "cost_unit": 0.12523,
+    "worst": -0.00453,
+    "mean_funding_bp_per_ep": 41.11539,
+    "mean_cost_bp_per_ep": 30.54488,
+    "passes": false
+   },
+   "by_year": {
+    "2025": {
+     "n": 38,
+     "net": 0.02724,
+     "funding_unit": 0.15885,
+     "basis_unit": 0.01103
+    },
+    "2026": {
+     "n": 3,
+     "net": 0.00046,
+     "funding_unit": 0.00972,
+     "basis_unit": 0.00102
+    }
+   },
+   "by_quarter": {
+    "2025Q3": {
+     "n": 29,
+     "net": 0.03679,
+     "funding_unit": 0.1532,
+     "basis_unit": 0.00748
+    },
+    "2025Q4": {
+     "n": 9,
+     "net": -0.00955,
+     "funding_unit": 0.00566,
+     "basis_unit": 0.00354
+    },
+    "2026Q1": {
+     "n": 3,
+     "net": 0.00046,
+     "funding_unit": 0.00972,
+     "basis_unit": 0.00102
+    }
+   },
+   "by_coin": {
+    "BONK": {
+     "n": 6,
+     "net": 0.00905,
+     "funding_unit": 0.03627,
+     "basis_unit": 0.00116
+    },
+    "FARTCOIN": {
+     "n": 17,
+     "net": 0.00754,
+     "funding_unit": 0.08041,
+     "basis_unit": 0.00356
+    },
+    "PENGU": {
+     "n": 7,
+     "net": 0.00719,
+     "funding_unit": 0.02687,
+     "basis_unit": 0.004
+    },
+    "PUMP": {
+     "n": 8,
+     "net": 0.00701,
+     "funding_unit": 0.02633,
+     "basis_unit": 0.0015
+    },
+    "TRUMP": {
+     "n": 3,
+     "net": -0.0031,
+     "funding_unit": -0.00131,
+     "basis_unit": 0.00183
+    }
+   },
+   "by_exit": {
+    "collat_stop": {
+     "n": 1,
+     "net": 0.0014,
+     "funding_unit": 0.00452,
+     "basis_unit": 0.0
+    },
+    "time": {
+     "n": 40,
+     "net": 0.0263,
+     "funding_unit": 0.16405,
+     "basis_unit": 0.01205
+    }
+   },
+   "worst5": [
+    {
+     "coin": "TRUMP",
+     "venue": "hl",
+     "entry": "2025-10-06T00:00Z",
+     "exit": "2025-10-13T00:00Z",
+     "signal_ann": 0.1255,
+     "reason": "time",
+     "spot_ret": -0.20308,
+     "perp_ret": -0.20385,
+     "basis_pnl": 0.00077,
+     "funding": -0.0076,
+     "cost": 0.00224,
+     "pnl_unit": -0.00907,
+     "roc": -0.00453,
+     "entry_basis": 9e-05
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "hl",
+     "entry": "2025-10-06T00:00Z",
+     "exit": "2025-10-13T00:00Z",
+     "signal_ann": 0.3993,
+     "reason": "time",
+     "spot_ret": -0.32853,
+     "perp_ret": -0.32896,
+     "basis_pnl": 0.00043,
+     "funding": -0.00138,
+     "cost": 0.00405,
+     "pnl_unit": -0.00499,
+     "roc": -0.0025,
+     "entry_basis": 0.00054
+    },
+    {
+     "coin": "PUMP",
+     "venue": "hl",
+     "entry": "2025-10-06T00:00Z",
+     "exit": "2025-10-13T00:00Z",
+     "signal_ann": 0.1427,
+     "reason": "time",
+     "spot_ret": -0.32684,
+     "perp_ret": -0.32674,
+     "basis_pnl": -0.0001,
+     "funding": -8e-05,
+     "cost": 0.00173,
+     "pnl_unit": -0.0019,
+     "roc": -0.00095,
+     "entry_basis": 5e-05
+    },
+    {
+     "coin": "PENGU",
+     "venue": "hl",
+     "entry": "2025-08-25T00:00Z",
+     "exit": "2025-09-01T00:00Z",
+     "signal_ann": 0.4689,
+     "reason": "time",
+     "spot_ret": -0.1511,
+     "perp_ret": -0.15132,
+     "basis_pnl": 0.00022,
+     "funding": 0.00033,
+     "cost": 0.00235,
+     "pnl_unit": -0.00181,
+     "roc": -0.0009,
+     "entry_basis": 0.00018
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "hl",
+     "entry": "2025-11-10T00:00Z",
+     "exit": "2025-11-17T00:00Z",
+     "signal_ann": 0.148,
+     "reason": "time",
+     "spot_ret": -0.24368,
+     "perp_ret": -0.24406,
+     "basis_pnl": 0.00037,
+     "funding": 0.00193,
+     "cost": 0.00405,
+     "pnl_unit": -0.00175,
+     "roc": -0.00087,
+     "entry_basis": 0.00058
+    }
+   ],
+   "best5": [
+    {
+     "coin": "BONK",
+     "venue": "hl",
+     "entry": "2025-07-14T00:00Z",
+     "exit": "2025-07-21T00:00Z",
+     "signal_ann": 0.4563,
+     "reason": "time",
+     "spot_ret": 0.24478,
+     "perp_ret": 0.24419,
+     "basis_pnl": 0.00059,
+     "funding": 0.01328,
+     "cost": 0.00322,
+     "pnl_unit": 0.01065,
+     "roc": 0.00532,
+     "entry_basis": 0.00092
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "hl",
+     "entry": "2025-07-14T00:00Z",
+     "exit": "2025-07-21T00:00Z",
+     "signal_ann": 0.3945,
+     "reason": "time",
+     "spot_ret": 0.10777,
+     "perp_ret": 0.10777,
+     "basis_pnl": -0.0,
+     "funding": 0.0131,
+     "cost": 0.00405,
+     "pnl_unit": 0.00905,
+     "roc": 0.00452,
+     "entry_basis": 0.00075
+    },
+    {
+     "coin": "PENGU",
+     "venue": "hl",
+     "entry": "2025-07-14T00:00Z",
+     "exit": "2025-07-21T00:00Z",
+     "signal_ann": 0.2059,
+     "reason": "time",
+     "spot_ret": 0.03202,
+     "perp_ret": 0.03185,
+     "basis_pnl": 0.00017,
+     "funding": 0.01081,
+     "cost": 0.00235,
+     "pnl_unit": 0.00863,
+     "roc": 0.00431,
+     "entry_basis": 0.00103
+    },
+    {
+     "coin": "BONK",
+     "venue": "hl",
+     "entry": "2025-07-21T00:00Z",
+     "exit": "2025-07-28T00:00Z",
+     "signal_ann": 0.7452,
+     "reason": "time",
+     "spot_ret": 0.02957,
+     "perp_ret": 0.02985,
+     "basis_pnl": -0.00028,
+     "funding": 0.01052,
+     "cost": 0.00322,
+     "pnl_unit": 0.00702,
+     "roc": 0.00351,
+     "entry_basis": 0.00045
+    },
+    {
+     "coin": "PENGU",
+     "venue": "hl",
+     "entry": "2025-07-21T00:00Z",
+     "exit": "2025-07-28T00:00Z",
+     "signal_ann": 0.349,
+     "reason": "time",
+     "spot_ret": 0.3925,
+     "perp_ret": 0.39273,
+     "basis_pnl": -0.00023,
+     "funding": 0.00912,
+     "cost": 0.00235,
+     "pnl_unit": 0.00654,
+     "roc": 0.00327,
+     "entry_basis": 0.00086
+    }
+   ]
+  },
+  "x4": {
+   "stats": {
+    "n": 41,
+    "net": -0.00335,
+    "pf": 0.89765,
+    "net_ex_top3": -0.01501,
+    "mean_bp": -0.81756,
+    "win": 0.41463,
+    "funding_unit": 0.16857,
+    "basis_unit": 0.01205,
+    "cost_unit": 0.18733,
+    "worst": -0.00488,
+    "mean_funding_bp_per_ep": 41.11539,
+    "mean_cost_bp_per_ep": 45.68976,
+    "passes": false
+   }
+  }
+ },
+ "binance": {
+  "x1": {
+   "stats": {
+    "n": 34,
+    "net": 0.02518,
+    "pf": 8.34928,
+    "net_ex_top3": 0.01565,
+    "mean_bp": 7.40499,
+    "win": 0.76471,
+    "funding_unit": 0.12417,
+    "basis_unit": 0.00716,
+    "cost_unit": 0.08098,
+    "worst": -0.00131,
+    "mean_funding_bp_per_ep": 36.52171,
+    "mean_cost_bp_per_ep": 23.81618,
+    "passes": false
+   }
+  },
+  "x2": {
+   "stats": {
+    "n": 34,
+    "net": 0.01019,
+    "pf": 2.26447,
+    "net_ex_top3": 0.00122,
+    "mean_bp": 2.9969,
+    "win": 0.55882,
+    "funding_unit": 0.12417,
+    "basis_unit": 0.00716,
+    "cost_unit": 0.11095,
+    "worst": -0.00136,
+    "mean_funding_bp_per_ep": 36.52171,
+    "mean_cost_bp_per_ep": 32.63235,
+    "passes": false
+   },
+   "by_year": {
+    "2025": {
+     "n": 29,
+     "net": 0.00879,
+     "funding_unit": 0.11033,
+     "basis_unit": 8e-05
+    },
+    "2026": {
+     "n": 5,
+     "net": 0.0014,
+     "funding_unit": 0.01384,
+     "basis_unit": 0.00708
+    }
+   },
+   "by_quarter": {
+    "2025Q3": {
+     "n": 18,
+     "net": 0.00651,
+     "funding_unit": 0.06799,
+     "basis_unit": -0.00045
+    },
+    "2025Q4": {
+     "n": 11,
+     "net": 0.00228,
+     "funding_unit": 0.04234,
+     "basis_unit": 0.00053
+    },
+    "2026Q1": {
+     "n": 5,
+     "net": 0.0014,
+     "funding_unit": 0.01384,
+     "basis_unit": 0.00708
+    }
+   },
+   "by_coin": {
+    "FARTCOIN": {
+     "n": 12,
+     "net": -0.00177,
+     "funding_unit": 0.03818,
+     "basis_unit": 0.00642
+    },
+    "PUMP": {
+     "n": 6,
+     "net": 0.00746,
+     "funding_unit": 0.02652,
+     "basis_unit": -0.00147
+    },
+    "TRUMP": {
+     "n": 1,
+     "net": 0.00055,
+     "funding_unit": 0.00203,
+     "basis_unit": 0.00127
+    },
+    "USELESS": {
+     "n": 15,
+     "net": 0.00395,
+     "funding_unit": 0.05745,
+     "basis_unit": 0.00094
+    }
+   },
+   "by_exit": {
+    "collat_stop": {
+     "n": 2,
+     "net": -0.00154,
+     "funding_unit": 0.00366,
+     "basis_unit": -0.0
+    },
+    "time": {
+     "n": 32,
+     "net": 0.01173,
+     "funding_unit": 0.12052,
+     "basis_unit": 0.00716
+    }
+   },
+   "worst5": [
+    {
+     "coin": "PUMP",
+     "venue": "binance",
+     "entry": "2025-08-25T00:00Z",
+     "exit": "2025-09-01T00:00Z",
+     "signal_ann": 0.1843,
+     "reason": "time",
+     "spot_ret": 0.14956,
+     "perp_ret": 0.1529,
+     "basis_pnl": -0.00334,
+     "funding": 0.00231,
+     "cost": 0.00169,
+     "pnl_unit": -0.00272,
+     "roc": -0.00136,
+     "entry_basis": -0.00171
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-10-06T00:00Z",
+     "exit": "2025-10-13T00:00Z",
+     "signal_ann": 0.3061,
+     "reason": "time",
+     "spot_ret": -0.32853,
+     "perp_ret": -0.32811,
+     "basis_pnl": -0.00042,
+     "funding": 0.00215,
+     "cost": 0.00401,
+     "pnl_unit": -0.00228,
+     "roc": -0.00114,
+     "entry_basis": 0.00101
+    },
+    {
+     "coin": "USELESS",
+     "venue": "binance",
+     "entry": "2025-12-08T00:00Z",
+     "exit": "2025-12-15T00:00Z",
+     "signal_ann": 0.309,
+     "reason": "time",
+     "spot_ret": -0.0955,
+     "perp_ret": -0.09395,
+     "basis_pnl": -0.00156,
+     "funding": 0.00289,
+     "cost": 0.00337,
+     "pnl_unit": -0.00204,
+     "roc": -0.00102,
+     "entry_basis": -0.00051
+    },
+    {
+     "coin": "USELESS",
+     "venue": "binance",
+     "entry": "2025-10-06T00:00Z",
+     "exit": "2025-10-08T06:00Z",
+     "signal_ann": 0.1533,
+     "reason": "collat_stop",
+     "spot_ret": 0.6,
+     "perp_ret": 0.6,
+     "basis_pnl": -0.0,
+     "funding": 0.00156,
+     "cost": 0.00337,
+     "pnl_unit": -0.0018,
+     "roc": -0.0009,
+     "entry_basis": -0.00024
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-09-22T00:00Z",
+     "exit": "2025-09-29T00:00Z",
+     "signal_ann": 0.2251,
+     "reason": "time",
+     "spot_ret": -0.1048,
+     "perp_ret": -0.10357,
+     "basis_pnl": -0.00123,
+     "funding": 0.00358,
+     "cost": 0.00401,
+     "pnl_unit": -0.00166,
+     "roc": -0.00083,
+     "entry_basis": -1e-05
+    }
+   ],
+   "best5": [
+    {
+     "coin": "PUMP",
+     "venue": "binance",
+     "entry": "2025-07-21T00:00Z",
+     "exit": "2025-07-28T00:00Z",
+     "signal_ann": 0.7442,
+     "reason": "time",
+     "spot_ret": -0.37781,
+     "perp_ret": -0.37828,
+     "basis_pnl": 0.00047,
+     "funding": 0.00888,
+     "cost": 0.00169,
+     "pnl_unit": 0.00766,
+     "roc": 0.00383,
+     "entry_basis": 0.00189
+    },
+    {
+     "coin": "PUMP",
+     "venue": "binance",
+     "entry": "2025-07-28T00:00Z",
+     "exit": "2025-08-04T00:00Z",
+     "signal_ann": 0.2076,
+     "reason": "time",
+     "spot_ret": 0.11027,
+     "perp_ret": 0.10938,
+     "basis_pnl": 0.00089,
+     "funding": 0.00676,
+     "cost": 0.00169,
+     "pnl_unit": 0.00596,
+     "roc": 0.00298,
+     "entry_basis": 0.00114
+    },
+    {
+     "coin": "USELESS",
+     "venue": "binance",
+     "entry": "2025-11-03T00:00Z",
+     "exit": "2025-11-10T00:00Z",
+     "signal_ann": 0.2896,
+     "reason": "time",
+     "spot_ret": -0.03033,
+     "perp_ret": -0.0277,
+     "basis_pnl": -0.00263,
+     "funding": 0.01031,
+     "cost": 0.00337,
+     "pnl_unit": 0.00432,
+     "roc": 0.00216,
+     "entry_basis": 0.00076
+    },
+    {
+     "coin": "USELESS",
+     "venue": "binance",
+     "entry": "2025-11-17T00:00Z",
+     "exit": "2025-11-24T00:00Z",
+     "signal_ann": 0.2488,
+     "reason": "time",
+     "spot_ret": -0.20346,
+     "perp_ret": -0.20358,
+     "basis_pnl": 0.00012,
+     "funding": 0.006,
+     "cost": 0.00337,
+     "pnl_unit": 0.00275,
+     "roc": 0.00138,
+     "entry_basis": 0.00064
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-09-08T00:00Z",
+     "exit": "2025-09-15T00:00Z",
+     "signal_ann": 0.1541,
+     "reason": "time",
+     "spot_ret": 0.1488,
+     "perp_ret": 0.14774,
+     "basis_pnl": 0.00106,
+     "funding": 0.00547,
+     "cost": 0.00401,
+     "pnl_unit": 0.00252,
+     "roc": 0.00126,
+     "entry_basis": 0.00082
+    }
+   ]
+  },
+  "x4": {
+   "stats": {
+    "n": 34,
+    "net": -0.01979,
+    "pf": 0.34345,
+    "net_ex_top3": -0.02763,
+    "mean_bp": -5.81928,
+    "win": 0.29412,
+    "funding_unit": 0.12417,
+    "basis_unit": 0.00716,
+    "cost_unit": 0.1709,
+    "worst": -0.0024,
+    "mean_funding_bp_per_ep": 36.52171,
+    "mean_cost_bp_per_ep": 50.26471,
+    "passes": false
+   }
+  }
+ }
+}

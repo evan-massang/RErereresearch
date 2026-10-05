@@ -1,0 +1,119 @@
+{
+ "units": "Lighter rate = percent per hour (docs.lighter.xyz/trading/funding: floor InterestRate 0.01%/8h); direction 'long' = longs pay (+), 'short' = shorts pay (-) [inferred from doc sign convention]",
+ "window": "overlap of all three venues, < 2026-04-01",
+ "coins": {
+  "PENGU": {
+   "lighter_first": "2025-07-23T11:00Z",
+   "train": {
+    "lighter_n_h": 0,
+    "lighter_mean_ann": null,
+    "lighter_share_at_floor": null,
+    "binance_mean_ann": 0.0145
+   },
+   "validation": {
+    "lighter_n_h": 6027,
+    "lighter_mean_ann": 0.0607,
+    "lighter_share_at_floor": 0.702,
+    "overlap_h": 6027,
+    "hl_mean_ann_overlap": 0.0123,
+    "lighter_mean_ann_overlap": 0.0607,
+    "binance_mean_ann": -0.0276
+   }
+  },
+  "PUMP": {
+   "lighter_first": "2025-07-14T18:00Z",
+   "train": {
+    "lighter_n_h": 0,
+    "lighter_mean_ann": null,
+    "lighter_share_at_floor": null,
+    "binance_mean_ann": 0.1507
+   },
+   "validation": {
+    "lighter_n_h": 6235,
+    "lighter_mean_ann": 0.1977,
+    "lighter_share_at_floor": 0.662,
+    "overlap_h": 6235,
+    "hl_mean_ann_overlap": 0.1509,
+    "lighter_mean_ann_overlap": 0.1977,
+    "binance_mean_ann": 0.1198
+   }
+  },
+  "TRUMP": {
+   "lighter_first": "2025-01-30T18:00Z",
+   "train": {
+    "lighter_n_h": 3622,
+    "lighter_mean_ann": -0.0811,
+    "lighter_share_at_floor": 0.246,
+    "overlap_h": 3622,
+    "hl_mean_ann_overlap": -0.0382,
+    "lighter_mean_ann_overlap": -0.0811,
+    "binance_mean_ann": -0.033
+   },
+   "validation": {
+    "lighter_n_h": 6565,
+    "lighter_mean_ann": -0.2023,
+    "lighter_share_at_floor": 0.368,
+    "overlap_h": 6565,
+    "hl_mean_ann_overlap": -0.1746,
+    "lighter_mean_ann_overlap": -0.2023,
+    "binance_mean_ann": -0.1848
+   }
+  },
+  "BONK": {
+   "lighter_first": "2025-01-31T22:00Z",
+   "train": {
+    "lighter_n_h": 3594,
+    "lighter_mean_ann": 0.1137,
+    "lighter_share_at_floor": 0.481,
+    "overlap_h": 3594,
+    "hl_mean_ann_overlap": 0.0517,
+    "lighter_mean_ann_overlap": 0.1137,
+    "binance_mean_ann": 0.1601
+   },
+   "validation": {
+    "lighter_n_h": 6565,
+    "lighter_mean_ann": 0.0797,
+    "lighter_share_at_floor": 0.761,
+    "overlap_h": 6565,
+    "hl_mean_ann_overlap": 0.0522,
+    "lighter_mean_ann_overlap": 0.0797,
+    "binance_mean_ann": -0.0225
+   }
+  },
+  "FARTCOIN": {
+   "lighter_first": "2025-02-15T18:00Z",
+   "train": {
+    "lighter_n_h": 3239,
+    "lighter_mean_ann": 0.4114,
+    "lighter_share_at_floor": 0.358,
+    "overlap_h": 3239,
+    "hl_mean_ann_overlap": 0.2849,
+    "lighter_mean_ann_overlap": 0.4114,
+    "binance_mean_ann": 0.1869
+   },
+   "validation": {
+    "lighter_n_h": 6565,
+    "lighter_mean_ann": 0.1861,
+    "lighter_share_at_floor": 0.734,
+    "overlap_h": 6565,
+    "hl_mean_ann_overlap": 0.1761,
+    "lighter_mean_ann_overlap": 0.1861,
+    "binance_mean_ann": 0.1313
+   }
+  },
+  "USELESS": {
+   "lighter_first": "2025-08-20T18:00Z",
+   "train": {
+    "lighter_n_h": 0,
+    "lighter_mean_ann": null,
+    "lighter_share_at_floor": null
+   },
+   "validation": {
+    "lighter_n_h": 5349,
+    "lighter_mean_ann": 0.3491,
+    "lighter_share_at_floor": 0.546,
+    "binance_mean_ann": 0.1853
+   }
+  }
+ }
+}

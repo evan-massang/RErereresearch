@@ -1,0 +1,80 @@
+{
+ "hypothesis": "H-PROPCARRY (propcarry)",
+ "frozen_at_utc": "2026-10-05T09:55:22.263421+00:00",
+ "frozen_before": "any H-PROPCARRY episode P&L, funding sum per episode, basis or exit outcome was computed; before Binance perp/funding archive files, Lighter funding history, USELESS spot or new Jupiter quotes were downloaded. Disclosure: HL hourly funding/premium and 1h CEX spot caches for kBONK, PENGU, FARTCOIN, TRUMP, PUMP already exist from H-FUNDCARRY (data/raw/web/hyperliquid, data/raw/web/spot_ohlcv); fundcarry computed episode P&L on these coins at thresholds 30/50/100%/yr and 2024-2025 train / 2026H1 validation, i.e. prior exposure to these series exists and is stated here. Those caches extend to 2026-06-30; rows >= 2026-04-01 are dropped at load and never read into any computation.",
+ "source": "sources/leads/documented_edges_round10.md idea 1 (H-PROPCARRY). Parents: H-FUNDCARRY 1x (reports/failures/agent_fundcarry.md; failing run research/observations/evidence_fundcarry_validation_lev1.json: validation n 6-13, DEX leg 0.5%/side) and H-SPOTCARRY-WIDE (reports/failures/agent_spotcarry.md; evidence_spotcarry_validation.json: incidence collapse, decay, delisting squeezes).",
+ "rationale": "Evidence-based iteration: (1) the parent's spot-leg cost (~1.2% round trip) is replaced by quote-implied prop-AMM round trips of 1-17 bp for six memes (round 10 OWN-PRECHECK) with x2/x4 stress; (2) n is made a function of calendar time via fixed weekly coin-episodes with a low threshold just above the HL interest floor (~10.95%/yr) instead of rare high-funding onsets; (3) 1x fully collateralised short (2x died on liquidations).",
+ "universe": {
+  "coins": [
+   "PENGU",
+   "PUMP",
+   "TRUMP",
+   "BONK",
+   "FARTCOIN",
+   "USELESS"
+  ],
+  "frozen_by": "round-10 list of memes with live Jupiter quote round trip <= 20 bp at 5 SOL (2026-10-05). Note: this universe is selected on TODAY's routing (survivorship/look-ahead in universe choice), stated as a caveat; historical prop-AMM routing for these coins is unknown.",
+  "hl_symbols": {
+   "PENGU": "PENGU",
+   "PUMP": "PUMP",
+   "TRUMP": "TRUMP",
+   "BONK": "kBONK",
+   "FARTCOIN": "FARTCOIN",
+   "USELESS": "USELESS (no HL history before 2026-09; excluded from HL venue by data)"
+  },
+  "binance_perp_symbols": {
+   "PENGU": "PENGUUSDT",
+   "PUMP": "PUMPUSDT",
+   "TRUMP": "TRUMPUSDT",
+   "BONK": "1000BONKUSDT",
+   "FARTCOIN": "FARTCOINUSDT",
+   "USELESS": "USELESSUSDT"
+  },
+  "eligibility": "coin-week eligible at decision time T only if the venue has >= 30 days of funding history before T and both spot and perp price exist for the bar closing at T and >= 90% of the trailing L hours have funding coverage."
+ },
+ "venues": {
+  "primary": "Hyperliquid (fundingHistory hourly fundingRate + premium; perp price proxy = spot close x (1 + HL premium at the print), validated in evidence_fundcarry_proxycheck.json, median abs err 0.07%). Selection and the bar use HL.",
+  "secondary": "Binance USDS-M (data.binance.vision monthly fundingRate + 1h perp klines; perp price = Binance perp 1h close). The single selected config is re-run unchanged on Binance as a cross-venue replicate (reported, not selected on).",
+  "lighter": "Only if a public paged funding history exists: units verified from Lighter docs; used descriptively (funding level comparison over overlapping dates), not for selection. Lighter fee 0 bp would be a sensitivity only."
+ },
+ "spot_leg_price": "Hourly CEX spot close as proxy for Solana DEX spot: Binance spot (PENGU, TRUMP), MEXC (BONK, FARTCOIN, PUMP, USELESS) per existing caches; GeckoTerminal is limited to 180 days (holdout only) and is not used. Basis risk: Solana DEX vs CEX spot basis is not observed historically and is NOT modelled; the HL/Binance perp-vs-CEX basis is modelled.",
+ "signal": "S_L(T) = mean of venue funding rates with time in (T-L, T], expressed per hour (Binance: sum of prints in window / L hours), annualised x 8760. Point in time: only prints with timestamp <= T.",
+ "decision": "Every Monday 00:00 UTC (T). For each coin with no open episode on that venue: enter if S_L(T) >= F.",
+ "entry_fill": "Spot at the close of the 1h bar ending at T; perp at spot_close x (1+premium_T) (HL) or Binance perp 1h close ending at T. Equal units Q = 1/spot_entry (unit spot notional N=1). 1x isolated short, margin = perp notional. Capital = spot notional + perp margin (~2N).",
+ "exit": "First of: (a) T + Z days (fill at the 1h close ending then); (b) collateral stop: perp hourly high (HL: spot high x (1+premium); Binance: perp kline high) >= 1.6 x perp entry (short's loss = 60% of collateral), perp fills at max(1.6 x entry, bar open proxy), spot at min(bar close, 1.6 x spot_entry) [conservative, spotcarry convention]; (c) basis-blowout stop: hourly close basis (perp/spot - 1) >= entry basis + 3.0 percentage points, fill both legs at that close; (d) split end: force close at the last 1h bar of the split (train 2025-06-30 23:00 close; validation 2026-03-31 23:00 close); (e) data gap > 6 h on either leg: close at last common bar.",
+ "funding_income": "Short receives rate x Q x perp price at print (HL: spot close x (1+premium); Binance: perp 1h close) for each print strictly after entry and at or before exit. Negative funding is paid.",
+ "grid": {
+  "L_h": [
+   24,
+   168
+  ],
+  "F_ann": [
+   0.12,
+   0.2,
+   0.35
+  ],
+  "Z_days": [
+   7,
+   14
+  ],
+  "n_configs": 12,
+  "fixed": "collateral stop 60%, basis stop +3.0 pp, 1x"
+ },
+ "costs": {
+  "spot_round_trip": "Per coin, quote-implied round trip USDC->token->USDC (or SOL->token->SOL plus SOL<->USDC hop) from public Jupiter quote API lite-api.jup.ag/swap/v1/quote at 0.5, 2 and 5 SOL measured on 2026-10-05 (quotes only, no swap ever sent). Cost case uses the 5 SOL figure (plus SOL/USDC hop). If Jupiter is unreachable, use round-10 OWN-PRECHECK 5 SOL figures (PENGU 3.9, PUMP 3.3, TRUMP 8.6, USELESS 8.8, BONK 11.3, FARTCOIN 16.7 bp) + 2 bp hops, and say so.",
+  "spot_stress": "PRIMARY cost case for selection and the bar: spot round trip x2. Sensitivities reported: x1, x4 (historical prop-AMM routing for these memes is unknown and costs were likely higher).",
+  "solana_fees_tips": "0.5 bp per swap (2 swaps per episode) as a flat allowance at small size; stated, not sourced to the bp.",
+  "perp_HL": "taker 4.5 bp/side (HL fee docs tier 0) + half spread 1.7 bp/side (round-4 OWN median spread 2.0-3.4 bp on main memes, upper used) = 12.4 bp round trip",
+  "perp_Binance": "taker 5.0 bp/side (Binance FAQ 360033544231) + half spread 1.0 bp/side (assumed; Binance fapi REST is 451 so spread not measured) = 12 bp round trip"
+ },
+ "pnl": "Per-episode return on capital = (spot_ret - perp_ret_on_units + funding - costs) / 2, with perp margin = perp entry notional (~N). Also reported per unit notional and decomposed into funding, basis/price, costs.",
+ "splits": {
+  "train": "decisions T <= 2025-06-30 (force-closed at 2025-06-30 23:00 close)",
+  "validation": "2025-07-01 .. 2026-03-31 (force-closed 2026-03-31 23:00), run ONCE for the single selected config",
+  "holdout": ">= 2026-04-01: NEVER touched; cached rows >= 2026-04-01 are dropped at load; no holdout-month archive files are downloaded."
+ },
+ "bar": "Per split, at the primary cost case: n >= 50 coin-episodes, net (sum of per-episode return on capital) > 0, PF > 1.2, net > 0 with the 3 best episodes removed. Reported by year and coin.",
+ "selection": "On train only: among configs passing the bar at primary cost, pick the one with the highest train net ex top-3; tie -> higher n. If none passes, FAIL on train and validation is not run.",
+ "kill_test": "Round-10 pre-registered kill: if train mean funding collected per held episode (per unit notional) minus mean primary-case cost per episode <= 5 bp for the selected config, stop before validation.",
+ "no_tuning": "No parameter, universe or cost change after train P&L is seen except a separately pre-registered iteration with an evidence-based rationale. Holdout never evaluated in this task."
+}

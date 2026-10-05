@@ -1,0 +1,325 @@
+{
+ "meta": {
+  "preregistration": "reports/hypotheses/propcarry_preregistration.json",
+  "generated_utc": "2026-10-05T10:02:31.495037+00:00",
+  "jupiter_5sol_rt_bp": {
+   "PENGU": 4.07,
+   "PUMP": 0.93,
+   "TRUMP": 3.5,
+   "BONK": 8.42,
+   "FARTCOIN": 12.56,
+   "USELESS": 9.33
+  },
+  "perp_rt_bp": {
+   "hl": 12.4,
+   "binance": 12.0
+  },
+  "hop_bp": 2.0,
+  "tips_bp": 1.0,
+  "unit": "net/pf/net_ex_top3/worst are sums of per-episode return on capital (capital = 2 x notional); *_unit fields are per unit notional"
+ },
+ "config": "L24_F12_Z7",
+ "binance_train": {
+  "x1": {
+   "stats": {
+    "n": 26,
+    "net": -0.03203,
+    "pf": 0.60773,
+    "net_ex_top3": -0.04864,
+    "mean_bp": -12.3193,
+    "win": 0.73077,
+    "funding_unit": 0.14988,
+    "basis_unit": -0.14932,
+    "cost_unit": 0.06462,
+    "worst": -0.04625,
+    "mean_funding_bp_per_ep": 57.6462,
+    "mean_cost_bp_per_ep": 24.85308,
+    "passes": false
+   }
+  },
+  "x2": {
+   "stats": {
+    "n": 26,
+    "net": -0.04484,
+    "pf": 0.48027,
+    "net_ex_top3": -0.06019,
+    "mean_bp": -17.24584,
+    "win": 0.61538,
+    "funding_unit": 0.14988,
+    "basis_unit": -0.14932,
+    "cost_unit": 0.09024,
+    "worst": -0.04667,
+    "mean_funding_bp_per_ep": 57.6462,
+    "mean_cost_bp_per_ep": 34.70615,
+    "passes": false
+   },
+   "by_year": {
+    "2023": {
+     "n": 1,
+     "net": 0.00501,
+     "funding_unit": 0.01288,
+     "basis_unit": 0.00033
+    },
+    "2024": {
+     "n": 16,
+     "net": -0.01775,
+     "funding_unit": 0.10736,
+     "basis_unit": -0.09191
+    },
+    "2025": {
+     "n": 9,
+     "net": -0.03211,
+     "funding_unit": 0.02964,
+     "basis_unit": -0.05775
+    }
+   },
+   "by_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net": 0.00501,
+     "funding_unit": 0.01288,
+     "basis_unit": 0.00033
+    },
+    "2024Q1": {
+     "n": 9,
+     "net": 0.0234,
+     "funding_unit": 0.07576,
+     "basis_unit": -0.0003
+    },
+    "2024Q2": {
+     "n": 2,
+     "net": -0.00029,
+     "funding_unit": 0.00631,
+     "basis_unit": -0.00052
+    },
+    "2024Q4": {
+     "n": 5,
+     "net": -0.04086,
+     "funding_unit": 0.02529,
+     "basis_unit": -0.09109
+    },
+    "2025Q1": {
+     "n": 5,
+     "net": -0.03337,
+     "funding_unit": 0.01105,
+     "basis_unit": -0.05774
+    },
+    "2025Q2": {
+     "n": 4,
+     "net": 0.00127,
+     "funding_unit": 0.01859,
+     "basis_unit": -1e-05
+    }
+   },
+   "by_coin": {
+    "BONK": {
+     "n": 17,
+     "net": -0.01273,
+     "funding_unit": 0.12024,
+     "basis_unit": -0.09158
+    },
+    "FARTCOIN": {
+     "n": 9,
+     "net": -0.03211,
+     "funding_unit": 0.02964,
+     "basis_unit": -0.05775
+    }
+   },
+   "by_exit": {
+    "collat_stop": {
+     "n": 4,
+     "net": -0.07427,
+     "funding_unit": 0.02254,
+     "basis_unit": -0.1575
+    },
+    "time": {
+     "n": 22,
+     "net": 0.02943,
+     "funding_unit": 0.12734,
+     "basis_unit": 0.00818
+    }
+   },
+   "worst5": [
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-11-11T00:00Z",
+     "exit": "2024-11-13T15:00Z",
+     "signal_ann": 0.3891,
+     "reason": "collat_stop",
+     "spot_ret": 0.50669,
+     "perp_ret": 0.6,
+     "basis_pnl": -0.09331,
+     "funding": 0.00316,
+     "cost": 0.00318,
+     "pnl_unit": -0.09333,
+     "roc": -0.04667,
+     "entry_basis": 0.00087
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-03-17T00:00Z",
+     "exit": "2025-03-22T10:00Z",
+     "signal_ann": 0.128,
+     "reason": "collat_stop",
+     "spot_ret": 0.53581,
+     "perp_ret": 0.6,
+     "basis_pnl": -0.06419,
+     "funding": 0.00375,
+     "cost": 0.00401,
+     "pnl_unit": -0.06446,
+     "roc": -0.03223,
+     "entry_basis": -0.00047
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-06-23T00:00Z",
+     "exit": "2025-06-30T00:00Z",
+     "signal_ann": 0.2081,
+     "reason": "time",
+     "spot_ret": 0.24005,
+     "perp_ret": 0.24217,
+     "basis_pnl": -0.00211,
+     "funding": 0.00118,
+     "cost": 0.00401,
+     "pnl_unit": -0.00495,
+     "roc": -0.00247,
+     "entry_basis": -0.0014
+    },
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-01-22T00:00Z",
+     "exit": "2024-01-29T00:00Z",
+     "signal_ann": 0.1262,
+     "reason": "time",
+     "spot_ret": 0.01493,
+     "perp_ret": 0.01634,
+     "basis_pnl": -0.00142,
+     "funding": 0.00224,
+     "cost": 0.00318,
+     "pnl_unit": -0.00236,
+     "roc": -0.00118,
+     "entry_basis": -0.0007
+    },
+    {
+     "coin": "FARTCOIN",
+     "venue": "binance",
+     "entry": "2025-02-03T00:00Z",
+     "exit": "2025-02-10T00:00Z",
+     "signal_ann": 0.7935,
+     "reason": "time",
+     "spot_ret": -0.32439,
+     "perp_ret": -0.3261,
+     "basis_pnl": 0.00171,
+     "funding": 0.00022,
+     "cost": 0.00401,
+     "pnl_unit": -0.00208,
+     "roc": -0.00104,
+     "entry_basis": 0.00276
+    }
+   ],
+   "best5": [
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-03-11T00:00Z",
+     "exit": "2024-03-18T00:00Z",
+     "signal_ann": 1.1791,
+     "reason": "time",
+     "spot_ret": -0.0929,
+     "perp_ret": -0.09312,
+     "basis_pnl": 0.00022,
+     "funding": 0.01379,
+     "cost": 0.00318,
+     "pnl_unit": 0.01082,
+     "roc": 0.00541,
+     "entry_basis": 0.00081
+    },
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2023-12-25T00:00Z",
+     "exit": "2024-01-01T00:00Z",
+     "signal_ann": 0.792,
+     "reason": "time",
+     "spot_ret": -0.26519,
+     "perp_ret": -0.26553,
+     "basis_pnl": 0.00033,
+     "funding": 0.01288,
+     "cost": 0.00318,
+     "pnl_unit": 0.01003,
+     "roc": 0.00501,
+     "entry_basis": 0.00165
+    },
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-03-25T00:00Z",
+     "exit": "2024-04-01T00:00Z",
+     "signal_ann": 0.2871,
+     "reason": "time",
+     "spot_ret": 0.16598,
+     "perp_ret": 0.16574,
+     "basis_pnl": 0.00023,
+     "funding": 0.01281,
+     "cost": 0.00318,
+     "pnl_unit": 0.00986,
+     "roc": 0.00493,
+     "entry_basis": 0.00091
+    },
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-02-19T00:00Z",
+     "exit": "2024-02-26T00:00Z",
+     "signal_ann": 0.5731,
+     "reason": "time",
+     "spot_ret": -0.08359,
+     "perp_ret": -0.08532,
+     "basis_pnl": 0.00174,
+     "funding": 0.00992,
+     "cost": 0.00318,
+     "pnl_unit": 0.00848,
+     "roc": 0.00424,
+     "entry_basis": 0.00123
+    },
+    {
+     "coin": "BONK",
+     "venue": "binance",
+     "entry": "2024-02-26T00:00Z",
+     "exit": "2024-02-29T00:00Z",
+     "signal_ann": 0.7498,
+     "reason": "collat_stop",
+     "spot_ret": 0.6,
+     "perp_ret": 0.6,
+     "basis_pnl": 0.0,
+     "funding": 0.01055,
+     "cost": 0.00318,
+     "pnl_unit": 0.00736,
+     "roc": 0.00368,
+     "entry_basis": -0.00067
+    }
+   ]
+  },
+  "x4": {
+   "stats": {
+    "n": 26,
+    "net": -0.07046,
+    "pf": 0.28779,
+    "net_ex_top3": -0.08328,
+    "mean_bp": -27.09892,
+    "win": 0.5,
+    "funding_unit": 0.14988,
+    "basis_unit": -0.14932,
+    "cost_unit": 0.14147,
+    "worst": -0.04751,
+    "mean_funding_bp_per_ep": 57.6462,
+    "mean_cost_bp_per_ep": 54.41231,
+    "passes": false
+   }
+  }
+ }
+}

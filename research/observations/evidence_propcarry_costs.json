@@ -1,0 +1,266 @@
+{
+ "kind": "OWN measurement: quote-implied round trips SOL->token->SOL, Jupiter lite-api swap/v1/quote, slippageBps=50; QUOTES ONLY, no swap built or sent; not fills",
+ "fetched_at_utc": "2026-10-05T09:56:04.811772+00:00",
+ "raw": "data/raw/web/propcarry/jupiter_quotes_20261005.json",
+ "round_trip_bp": {
+  "PENGU": {
+   "0.5SOL": {
+    "rt_bp": 1.9,
+    "route_leg1": [
+     "GoonFi V2",
+     "GoonFi V2"
+    ],
+    "route_leg2": [
+     "GoonFi V2",
+     "Flux"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 1.33,
+    "route_leg1": [
+     "Kipseli",
+     "HumidiFi"
+    ],
+    "route_leg2": [
+     "GoonFi V2",
+     "Flux"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 4.07,
+    "route_leg1": [
+     "Kipseli",
+     "GoonFi V2"
+    ],
+    "route_leg2": [
+     "GoonFi V2",
+     "HumidiFi"
+    ]
+   }
+  },
+  "PUMP": {
+   "0.5SOL": {
+    "rt_bp": 2.92,
+    "route_leg1": [
+     "Kipseli",
+     "Manifest"
+    ],
+    "route_leg2": [
+     "GoonFi V2",
+     "Kipseli"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 1.31,
+    "route_leg1": [
+     "HumidiFi",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "Deriverse",
+     "Flux"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 0.93,
+    "route_leg1": [
+     "Kipseli",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "SolFi V2",
+     "Kipseli"
+    ]
+   }
+  },
+  "TRUMP": {
+   "0.5SOL": {
+    "rt_bp": 5.52,
+    "route_leg1": [
+     "Whirlpool"
+    ],
+    "route_leg2": [
+     "HumidiFi",
+     "Flux"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 3.17,
+    "route_leg1": [
+     "Kipseli",
+     "GoonFi V2"
+    ],
+    "route_leg2": [
+     "GoonFi V2",
+     "Flux"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 3.5,
+    "route_leg1": [
+     "TesseraV",
+     "HumidiFi"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "SolFi V2",
+     "Kipseli"
+    ]
+   }
+  },
+  "BONK": {
+   "0.5SOL": {
+    "rt_bp": 5.19,
+    "route_leg1": [
+     "Kipseli",
+     "TesseraV"
+    ],
+    "route_leg2": [
+     "Raydium CLMM",
+     "GoonFi V2",
+     "Whirlpool"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 1.37,
+    "route_leg1": [
+     "TesseraV",
+     "TesseraV"
+    ],
+    "route_leg2": [
+     "Raydium CLMM",
+     "Kipseli"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 8.42,
+    "route_leg1": [
+     "TesseraV",
+     "TesseraV"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "Deriverse",
+     "Kipseli"
+    ]
+   }
+  },
+  "FARTCOIN": {
+   "0.5SOL": {
+    "rt_bp": 8.6,
+    "route_leg1": [
+     "Kipseli",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Whirlpool"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 10.63,
+    "route_leg1": [
+     "Kipseli",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Whirlpool"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 12.56,
+    "route_leg1": [
+     "TesseraV",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Whirlpool"
+    ]
+   }
+  },
+  "USELESS": {
+   "0.5SOL": {
+    "rt_bp": 10.63,
+    "route_leg1": [
+     "Kipseli",
+     "HumidiFi"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "Deriverse",
+     "Kipseli"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": 7.44,
+    "route_leg1": [
+     "Kipseli",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "SolFi V2",
+     "Flux"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": 9.33,
+    "route_leg1": [
+     "BisonFi",
+     "Scorch"
+    ],
+    "route_leg2": [
+     "Scorch",
+     "SolFi V2",
+     "BinaryFi"
+    ]
+   }
+  },
+  "USDC_hop": {
+   "0.5SOL": {
+    "rt_bp": 0.03,
+    "route_leg1": [
+     "TesseraV"
+    ],
+    "route_leg2": [
+     "Kipseli"
+    ]
+   },
+   "2SOL": {
+    "rt_bp": -0.03,
+    "route_leg1": [
+     "Kipseli"
+    ],
+    "route_leg2": [
+     "Flux"
+    ]
+   },
+   "5SOL": {
+    "rt_bp": -0.12,
+    "route_leg1": [
+     "Flux"
+    ],
+    "route_leg2": [
+     "Kipseli"
+    ]
+   }
+  }
+ },
+ "round10_5sol_bp_for_comparison": {
+  "PENGU": 3.9,
+  "PUMP": 3.3,
+  "TRUMP": 8.6,
+  "USELESS": 8.8,
+  "BONK": 11.3,
+  "FARTCOIN": 16.7
+ },
+ "cost_model_per_episode_bp": {
+  "spot": "5 SOL rt x stress (1/2/4); primary x2",
+  "hop": 2.0,
+  "tips": 1.0,
+  "perp_hl": 12.4,
+  "perp_binance": 12.0
+ },
+ "caveat": "Historical prop-AMM routing for these coins is unknown; 2024-early 2025 Solana costs for BONK/FARTCOIN were likely far above today's quotes (fundcarry charged 50 bp/side)."
+}
