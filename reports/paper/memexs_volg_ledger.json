@@ -1,0 +1,25 @@
+{
+ "name": "memexs_volg",
+ "frozen_at_utc": "2026-10-05T12:13:45Z",
+ "scored_at_utc": "2026-10-05T12:14:00Z",
+ "first_rebalance": "2026-10-12",
+ "last_kline_day": "2026-10-04",
+ "funding_final_until": "2026-10-01 00:00:00",
+ "rebalances_scored": 0,
+ "bar_rule": {
+  "min_legs": 50,
+  "net_gt": 0.0,
+  "pf_gt": 1.2,
+  "net_ex_top3_gt": 0.0
+ },
+ "holdout_passed": false,
+ "status": "no complete post-freeze week yet",
+ "official_bar": {
+  "n": 0,
+  "net": 0.0,
+  "pf": null,
+  "net_ex_top3": 0.0,
+  "passes": false
+ },
+ "legs": []
+}
