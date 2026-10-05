@@ -32,12 +32,12 @@ selection, no validation run. The holdout (listings from 2026-04-01) was recorde
   - Binance: first 1d kline in `data.binance.vision` `futures/um/monthly`.
   - Lighter: `orderBooks.created_at`. This matches the first funding stamps PROPCARRY fetched (PUMP 07-14,
     PENGU 07-23, TRUMP 01-30).
-- **Completeness check:** a census of the first dates of all 234 HL and all Binance USDT perps
+- **Completeness check:** a census of the first dates of all 234 HL and 900 Binance USDT perps
   (`census_first_dates.json`) was reviewed by hand for Solana memes the category might miss. Besides PUMP and YZY
-  (added), none of the 190 validation-window listings is a Solana memecoin. Most are BSC memes (4, GIGGLE,
+  (added), none of the other 195 validation-window HL/Binance listings is a Solana memecoin. Most are BSC memes (4, GIGGLE,
   币安人生, 我踏马来了, 龙虾, BULLA), Base tokens (TOSHI, ZORA, CLANKER), or non-meme launches.
-- **Event:** one venue-coin first trading day. **Clean** means the coin is not in round 3's seen set (the 23 HL
-  listings plus PUMP, USELESS and YZY, the same rule as LISTSHORT), and spot is available.
+- **Event:** one venue-coin first trading day. **Clean** means the coin is not in round 3's 23 seen coins (LISTSHORT's
+  `SEEN23` set, which already holds PUMP, USELESS and YZY, plus LAUNCHCOIN), and spot is available.
 - **Spot available:** at least 90% of 4h bars over [listing, listing + 21 d], starting no later than listing + 1 d,
   from the Binance spot archive, MEXC or Gate. GeckoTerminal only covers the last 180 days, which is all holdout.
 
