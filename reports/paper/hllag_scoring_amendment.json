@@ -1,10 +1,24 @@
 {
  "amendment": 1,
- "applies_to": ["hllag_theta40", "hllag_theta40_newcoins", "hllag_theta40_addendum"],
+ "applies_to": [
+  "hllag_theta40",
+  "hllag_theta40_newcoins",
+  "hllag_theta40_addendum"
+ ],
  "declared_at_utc": "2026-10-05T07:45Z",
  "reason": "Audit (reports/paper/hllag_forward_audit.md): the container clock runs ~2.8 s behind real time and drifts ~-0.33 s/h. sim_lag compares our local Binance receive time with HL exchange timestamps, so forward entries were filled at HL quotes received 1.4-2.0 s BEFORE the signal (look-ahead in our favour). In the Tardis backtest HL quotes were received +130..340 ms after their exchange time.",
  "change": "At scoring time only, HL quotes/trades get timestamp := local_timestamp - 175 ms (the backtest relation). hlanchor_lib.py (frozen sha256) and the frozen params are unchanged; the raw chunks are unchanged.",
  "scope": "Applies retroactively to ALL forward trades since each freeze, including the 5 already scored under the old stamping (which were profitable under the flawed stamping and lose under this one). The old ledgers are kept as *_ledger_unamended.json for the record.",
- "known_remaining_risks": ["fill at next HL quote change after latency, not verified against displayed size (no depth recorded)", "collector stalls ~0.5-1.2 s once per hour while writing chunks", "35 s gap at 05:47 and ~1 min at 07:22 from restarts", "our real order latency to HL is ~0.3-0.45 s after signal, close to the profit/loss flip"],
- "decided_before_seeing": "Decided after the audit showed that the 5 trades lose under re-alignment; the amendment makes the score stricter, never looser, and applies to all trades."
+ "known_remaining_risks": [
+  "fill at next HL quote change after latency, not verified against displayed size (no depth recorded)",
+  "collector stalls ~0.5-1.2 s once per hour while writing chunks",
+  "35 s gap at 05:47 and ~1 min at 07:22 from restarts",
+  "our real order latency to HL is ~0.3-0.45 s after signal, close to the profit/loss flip"
+ ],
+ "decided_before_seeing": "Decided after the audit showed that the 5 trades lose under re-alignment; the amendment makes the score stricter, never looser, and applies to all trades.",
+ "amendment_2": {
+  "declared_at_utc": "2026-10-05T07:58Z",
+  "change": "Drop all rows with local_timestamp in [2026-10-05 07:25:40, 07:26:45) local clock from every stream at scoring (treated as a gap). Cause: a 72 s test run of the collector (to check a flush fix) appended a duplicate stream into the live hour-07 chunk files. Scores were identical with and without the exclusion (dev 3 / -20.58, newcoins 2 / -3.23, addendum 0), so no trade was affected.",
+  "collector_changes_2026-10-05": "chunk writes moved off the event loop (worker thread + lock) to remove ~0.5-1.2 s hourly stalls; Binance event_time_ms recorded as an extra column (unused by sim_lag). Takes effect at the next collector restart."
+ }
 }

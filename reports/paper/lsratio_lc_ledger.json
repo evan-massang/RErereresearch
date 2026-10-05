@@ -1,0 +1,142 @@
+{
+ "name": "lsratio_lc",
+ "frozen_at_utc": "2026-10-05T07:22:27Z",
+ "scored_at_utc": "2026-10-05T07:25:24Z",
+ "decisions_from": "2026-10-05 08:00:00",
+ "post_hoc_caveat": "SELECTED POST-HOC. This config and venue were chosen after seeing H-LSRATIO's train (+13.3 bp/trade gross, n = 5,463) and validation (+10.5 bp gross, n = 1,625) results, where it failed at 13 bp taker cost. The historical splits cannot validate it; any historical recompute (evidence_lsratio_lc_posthoc_20261005.json) is informational. Only this forward test, on decisions after frozen_at, can.",
+ "bar": {
+  "min_trades": 50,
+  "net_sum_gt": 0.0,
+  "profit_factor_gt": 1.2,
+  "net_sum_ex_top3_gt": 0.0
+ },
+ "verdict": "PENDING (n < 50)",
+ "stats": {
+  "n": 0,
+  "passes_bar": false
+ },
+ "coverage": {
+  "BTCUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ETHUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ZECUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "SOLUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "XRPUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "HYPEUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "NEARUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "DOGEUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "UNIUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "BNBUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "SUIUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ENAUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "1000PEPEUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ARBUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "WLDUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "PUMPUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "LINKUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ADAUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "TAOUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "AVAXUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "USELESSUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "BCHUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "ONDOUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "FILUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "TRUMPUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "LTCUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "DASHUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "AAVEUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "PONSUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  },
+  "LITUSDT": {
+   "last_kline": "2026-10-03 23:00:00",
+   "decisions_scored_until": "2026-10-03 16:00:00"
+  }
+ },
+ "is_synthetic": false,
+ "trades": []
+}

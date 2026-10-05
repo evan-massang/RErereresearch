@@ -46,6 +46,9 @@ RECORDS = {"hllag_theta40": COINS, "hllag_theta40_newcoins": NEW_COINS, "hllag_t
 ALL_COINS = {**COINS, **NEW_COINS, **ADD_COINS}
 PARAMS = dict(theta_bp=40.0, L_ms=300, H_s=30.0, cooldown_s=10.0, close_bp=None, info_lat_ms=300)
 HL_RESTAMP_US = 175_000
+# Known-bad local-clock windows dropped from every stream at scoring (gaps, never fills). See the amendment file.
+#   2026-10-05 07:25:40-07:26:45 local: a 72 s test run of the collector appended a second copy of all streams.
+EXCLUDE_WINDOWS_US = [(1791185140_000000, 1791185205_000000)]
 BAR = dict(min_trades=50, net_gt=0.0, pf_gt=1.2, net_ex_top3_gt=0.0)
 
 
@@ -55,6 +58,11 @@ def _ssl():
 
 def _now_us() -> int:
     return int(time.time() * 1_000_000)
+
+
+import threading  # noqa: E402
+
+_WRITE_LOCK = threading.Lock()
 
 
 class Buffer:
@@ -70,16 +78,30 @@ class Buffer:
         self.rows[(kind, coin)].append(row)
 
     def flush(self):
+        rows_by_key, hour = self.take()
+        self.write(rows_by_key, hour)
+
+    def take(self):
+        """Detach the buffered rows (cheap, in the event loop) so writing can run in a worker thread."""
+        out, self.rows = self.rows, defaultdict(list)
+        return out, self.hour
+
+    @staticmethod
+    def write(rows_by_key, hour):
+        with _WRITE_LOCK:                                   # hour-change flush and the worker never interleave
+            Buffer._write(rows_by_key, hour)
+
+    @staticmethod
+    def _write(rows_by_key, hour):
         CHUNKS.mkdir(parents=True, exist_ok=True)
-        for (kind, coin), rows in self.rows.items():
+        for (kind, coin), rows in rows_by_key.items():
             if not rows:
                 continue
-            p = CHUNKS / f"{kind}_{self.hour}_{coin}.parquet"
+            p = CHUNKS / f"{kind}_{hour}_{coin}.parquet"
             df = pd.DataFrame(rows)
             if p.exists():                                  # restart within the same hour: append
                 df = pd.concat([pd.read_parquet(p), df], ignore_index=True)
             df.to_parquet(p)
-        self.rows = defaultdict(list)
 
 
 async def binance(buf: Buffer, stop: float):
@@ -97,7 +119,8 @@ async def binance(buf: Buffer, stop: float):
                     if coin:
                         buf.add("book_ticker", coin, dict(local_timestamp=_now_us(), bid_price=float(d["b"]),
                                                           ask_price=float(d["a"]), bid_amount=float(d["B"]),
-                                                          ask_amount=float(d["A"])))
+                                                          ask_amount=float(d["A"]),
+                                                          event_time_ms=int(d.get("E") or 0)))
         except Exception as e:  # noqa: BLE001
             print("binance reconnect", type(e).__name__, str(e)[:120], flush=True)
             await asyncio.sleep(3)
@@ -136,7 +159,8 @@ async def hyperliquid(buf: Buffer, stop: float):
 async def flusher(buf: Buffer, stop: float):
     while time.monotonic() < stop:
         await asyncio.sleep(60)
-        buf.flush()
+        rows, hour = buf.take()
+        await asyncio.to_thread(Buffer.write, rows, hour)   # off the event loop: no once-a-minute recording stall
 
 
 async def collect(hours: float):
@@ -190,6 +214,8 @@ def score(name: str = "hllag_theta40") -> dict:
                     continue
                 df = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
                 df = df[df.local_timestamp >= t0]
+                for a, b in EXCLUDE_WINDOWS_US:
+                    df = df[(df.local_timestamp < a) | (df.local_timestamp >= b)]
                 if kind in ("quotes", "trades") and len(df):
                     # Scoring amendment 1 (reports/paper/hllag_scoring_amendment.json): this container's clock is
                     # ~2.8 s behind real time, so HL exchange times cannot be compared with our local times. Re-stamp
