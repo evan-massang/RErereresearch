@@ -65,8 +65,8 @@ def resolve_collisions(cands, meme_by_sym, by_sym):
     need = sorted({i for s in cands if s in meme_by_sym and len(by_sym.get(s, [])) > 1
                    for i in by_sym[s] if i not in cache})
     with httpx.Client(timeout=60) as cl:
-        for k in range(0, len(need), 200):
-            chunk = need[k:k + 200]
+        for k in range(0, len(need), 50):
+            chunk = need[k:k + 50]
             for a in range(8):
                 r = cl.get("https://api.coingecko.com/api/v3/coins/markets",
                            params={"vs_currency": "usd", "ids": ",".join(chunk), "per_page": 250})
