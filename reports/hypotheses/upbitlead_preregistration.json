@@ -41,9 +41,19 @@
   }
  },
  "grid": {
-  "Z": [3.0, 4.5],
-  "R": [0.01, 0.02, 0.04],
-  "H_minutes": [5, 30],
+  "Z": [
+   3.0,
+   4.5
+  ],
+  "R": [
+   0.01,
+   0.02,
+   0.04
+  ],
+  "H_minutes": [
+   5,
+   30
+  ],
   "count": 12,
   "naming": "Z{Z}_R{R}_H{H}"
  },
@@ -56,5 +66,377 @@
   "Gap filter (Binance same-minute signed return < R/2) applied to the chosen config on train.",
   "HL fee variant, slippage x2, +1 minute delay."
  ],
- "no_changes": "No change to grid, costs, splits, exits or selection after this file is written. Any later deviation is listed as such in the report."
+ "no_changes": "No change to grid, costs, splits, exits or selection after this file is written. Any later deviation is listed as such in the report.",
+ "addendum_coin_list": {
+  "written_utc": "2026-10-05, after the 2025-03 daily selection run and BEFORE any minute data download",
+  "counts": {
+   "krw_markets": 291,
+   "candidates_non_stable": 280,
+   "with_binance_perp_2025_03": 150,
+   "eligible": 89
+  },
+  "coin_list": [
+   {
+    "coin": "AKT",
+    "binance": "AKTUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.9571,
+    "bn_mean_daily_musd": 11.49,
+    "upbit_mean_daily_musd": 10.99,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "SONIC",
+    "binance": "SONICUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.7724,
+    "bn_mean_daily_musd": 13.03,
+    "upbit_mean_daily_musd": 10.07,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "MOCA",
+    "binance": "MOCAUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.549,
+    "bn_mean_daily_musd": 9.67,
+    "upbit_mean_daily_musd": 5.31,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "SAFE",
+    "binance": "SAFEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.5112,
+    "bn_mean_daily_musd": 33.52,
+    "upbit_mean_daily_musd": 17.14,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "BIGTIME",
+    "binance": "BIGTIMEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4639,
+    "bn_mean_daily_musd": 13.88,
+    "upbit_mean_daily_musd": 6.44,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ZETA",
+    "binance": "ZETAUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4594,
+    "bn_mean_daily_musd": 69.85,
+    "upbit_mean_daily_musd": 32.09,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "HIVE",
+    "binance": "HIVEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4543,
+    "bn_mean_daily_musd": 14.94,
+    "upbit_mean_daily_musd": 6.79,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "ARK",
+    "binance": "ARKUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4475,
+    "bn_mean_daily_musd": 7.54,
+    "upbit_mean_daily_musd": 3.37,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "POLYX",
+    "binance": "POLYXUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4316,
+    "bn_mean_daily_musd": 5.62,
+    "upbit_mean_daily_musd": 2.43,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "VANA",
+    "binance": "VANAUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4202,
+    "bn_mean_daily_musd": 84.79,
+    "upbit_mean_daily_musd": 35.63,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "WAXP",
+    "binance": "WAXPUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4102,
+    "bn_mean_daily_musd": 3.0,
+    "upbit_mean_daily_musd": 1.23,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "IOST",
+    "binance": "IOSTUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.4081,
+    "bn_mean_daily_musd": 35.18,
+    "upbit_mean_daily_musd": 14.35,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "ENS",
+    "binance": "ENSUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3938,
+    "bn_mean_daily_musd": 34.43,
+    "upbit_mean_daily_musd": 13.56,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "G",
+    "binance": "GUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3916,
+    "bn_mean_daily_musd": 4.98,
+    "upbit_mean_daily_musd": 1.95,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "VTHO",
+    "binance": "VTHOUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.385,
+    "bn_mean_daily_musd": 7.58,
+    "upbit_mean_daily_musd": 2.92,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "CKB",
+    "binance": "CKBUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3819,
+    "bn_mean_daily_musd": 15.88,
+    "upbit_mean_daily_musd": 6.06,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "BSV",
+    "binance": "BSVUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3761,
+    "bn_mean_daily_musd": 4.57,
+    "upbit_mean_daily_musd": 1.72,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ME",
+    "binance": "MEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3704,
+    "bn_mean_daily_musd": 16.81,
+    "upbit_mean_daily_musd": 6.23,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "MEW",
+    "binance": "MEWUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3586,
+    "bn_mean_daily_musd": 40.22,
+    "upbit_mean_daily_musd": 14.42,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "LAYER",
+    "binance": "LAYERUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3572,
+    "bn_mean_daily_musd": 216.74,
+    "upbit_mean_daily_musd": 77.41,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "LSK",
+    "binance": "LSKUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3568,
+    "bn_mean_daily_musd": 2.67,
+    "upbit_mean_daily_musd": 0.95,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "STEEM",
+    "binance": "STEEMUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.353,
+    "bn_mean_daily_musd": 4.14,
+    "upbit_mean_daily_musd": 1.46,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "XEC",
+    "binance": "1000XECUSDT",
+    "mult": 1000,
+    "ratio_mar25": 0.3514,
+    "bn_mean_daily_musd": 4.01,
+    "upbit_mean_daily_musd": 1.41,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "GLM",
+    "binance": "GLMUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3369,
+    "bn_mean_daily_musd": 16.42,
+    "upbit_mean_daily_musd": 5.53,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "AGLD",
+    "binance": "AGLDUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.319,
+    "bn_mean_daily_musd": 15.25,
+    "upbit_mean_daily_musd": 4.87,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "VIRTUAL",
+    "binance": "VIRTUALUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3151,
+    "bn_mean_daily_musd": 55.77,
+    "upbit_mean_daily_musd": 17.57,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "GAS",
+    "binance": "GASUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.3089,
+    "bn_mean_daily_musd": 4.51,
+    "upbit_mean_daily_musd": 1.39,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "STX",
+    "binance": "STXUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2964,
+    "bn_mean_daily_musd": 23.17,
+    "upbit_mean_daily_musd": 6.87,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ANKR",
+    "binance": "ANKRUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2938,
+    "bn_mean_daily_musd": 13.17,
+    "upbit_mean_daily_musd": 3.87,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "ID",
+    "binance": "IDUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2867,
+    "bn_mean_daily_musd": 18.2,
+    "upbit_mean_daily_musd": 5.22,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "MOVE",
+    "binance": "MOVEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2808,
+    "bn_mean_daily_musd": 134.54,
+    "upbit_mean_daily_musd": 37.78,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ANIME",
+    "binance": "ANIMEUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.276,
+    "bn_mean_daily_musd": 27.29,
+    "upbit_mean_daily_musd": 7.53,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ONDO",
+    "binance": "ONDOUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2747,
+    "bn_mean_daily_musd": 163.38,
+    "upbit_mean_daily_musd": 44.88,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "QTUM",
+    "binance": "QTUMUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2743,
+    "bn_mean_daily_musd": 9.19,
+    "upbit_mean_daily_musd": 2.52,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "ONG",
+    "binance": "ONGUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2614,
+    "bn_mean_daily_musd": 2.5,
+    "upbit_mean_daily_musd": 0.65,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "IOTA",
+    "binance": "IOTAUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2507,
+    "bn_mean_daily_musd": 19.5,
+    "upbit_mean_daily_musd": 4.89,
+    "hl_listed_20261005": true
+   },
+   {
+    "coin": "ZRX",
+    "binance": "ZRXUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2486,
+    "bn_mean_daily_musd": 9.28,
+    "upbit_mean_daily_musd": 2.31,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "POWR",
+    "binance": "POWRUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2484,
+    "bn_mean_daily_musd": 4.24,
+    "upbit_mean_daily_musd": 1.05,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "T",
+    "binance": "TUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.247,
+    "bn_mean_daily_musd": 5.77,
+    "upbit_mean_daily_musd": 1.42,
+    "hl_listed_20261005": false
+   },
+   {
+    "coin": "MTL",
+    "binance": "MTLUSDT",
+    "mult": 1,
+    "ratio_mar25": 0.2388,
+    "bn_mean_daily_musd": 3.13,
+    "upbit_mean_daily_musd": 0.75,
+    "hl_listed_20261005": false
+   }
+  ],
+  "source_file": "data/raw/web/upbitlead/selection_202503.json"
+ }
 }

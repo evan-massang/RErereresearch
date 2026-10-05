@@ -1,0 +1,142 @@
+{
+ "hypothesis": "H-UNLOCK: large scheduled vesting cliff unlocks (team/investor/sale/airdrop allocations >= 2% of schedule-implied circulating supply) are preceded/followed by negative drift; short the Binance USDT-M perp from the open of day T-k to the open of day T+m.",
+ "frozen_at_utc": "2026-10-05T07:06:32.454113+00:00",
+ "frozen_before": "any price return, P&L or funding sum was computed. Before freezing, the agent (a) downloaded DefiLlama emissions schedules, (b) mapped protocols to Binance symbols by comparing price LEVELS on 3 dates (no returns), (c) counted events per split/year for thresholds 1/2/3/5% using only bar existence (listing date) from the Binance daily archive.",
+ "leads": [
+  {
+   "source": "Keyrock, 'From Locked to Liquidity: What 16,000+ Token Unlocks Teach Us' (2024)",
+   "url": "https://keyrock.com/from-locked-to-liquidity-what-16000-token-unlocks-teach-us/",
+   "modality": "document",
+   "claims_as_reported_by_search": "~90% of unlocks create negative price pressure; impact often starts ~30 days before; team unlocks worst (~-25%); ecosystem unlocks slightly positive; larger unlocks bigger drops"
+  },
+  {
+   "source": "BeInCrypto summary of Keyrock research",
+   "url": "https://beincrypto.com/keyrock-research-token-unlocks/",
+   "modality": "document"
+  },
+  {
+   "source": "Tokenomist glossary/learn pages (cliff unlock, unlock calendar)",
+   "url": "https://www.tokenomist.ai/learn/glossary-term/cliff-unlock",
+   "modality": "document",
+   "claims_as_reported_by_search": "unlocks <~1% of circ show little effect; team/early-investor cliffs hit hardest, decline often starting >30 days before"
+  },
+  {
+   "source": "Crypto Briefing on Tokenomist monthly unlock totals",
+   "url": "https://cryptobriefing.com/2b-token-unlocks-august-tokenomist/",
+   "modality": "document"
+  }
+ ],
+ "rationale": "Practitioner leads (above, unverified, document modality) claim large hundreds-of-bp drifts around large cliff unlocks, far above the 13-14 bp round-trip that killed XSREV/ITSM. No parent hypothesis in this repo.",
+ "data": {
+  "unlock_schedule": "DefiLlama emissions datasets bucket (public, unauthenticated): https://defillama-datasets.llama.fi/emissionsIndex, /emissionsProtocolsList, /emissions/<protocol>. Snapshot fetched 2026-10-05, cached in data/raw/web/unlock/. api.llama.fi/emissions is paywalled (HTTP 402).",
+  "mapping": "gecko_id -> ticker via coins.llama.fi; candidate <SYM>USDT/1000<SYM>USDT/...; accepted only if Binance daily close / (DefiLlama historical price x multiplier) median ratio in [0.85,1.15] over 3 dates (data/raw/web/unlock/protocol_binance_map.json). 182 protocols mapped; 19 manual ticker fallbacks for gecko ids with no current price (listed in llama_symbols.json).",
+  "prices": "Binance USDT-M daily klines from the data.binance.vision archive, read-only reuse of data/raw/web/momentum/klines (ends 2026-03-31; nothing >= 2026-04-01 is read). momentum/holdout and momentum/forward are never read.",
+  "funding": "Binance fundingRate archive, read-only reuse of data/raw/web/momentum/funding"
+ },
+ "point_in_time_handling": {
+  "schedule_vintage": "Only today's (2026-10-05) schedule snapshot is available. DefiLlama adapter git history (first-appearance dates) is not reachable from this environment (GitHub access refused; Wayback blocked). So the 'enter when the unlock first appears on public calendars' variant is NOT testable; fixed T-k entry is used.",
+  "revised_schedules": "A past event in today's snapshot reflects the schedule as it actually played out; if a project postponed/changed an unlock, the snapshot may show the realised date, which a trader at T-k may not have known. This is a look-ahead risk in favour of the strategy; stated, not corrected.",
+  "observed_vs_scheduled": "Many DefiLlama 'cliff' rows are on-chain observed flows (incentives, treasury outflows, rewards) that are not knowable in advance. Only cliff allocations with category in {insiders, privateSale, publicSale, airdrop} (vesting allocations) are events.",
+  "survivorship": "DefiLlama covers 370 protocols chosen as of today; dead projects may be missing. Mitigation: the Binance universe includes delisted perps (archive), and delisted legs exit at last close with a 2% charge. Residual bias stated.",
+  "denominator": "circulating supply is NOT available point-in-time from a public source; size uses schedule-implied unlocked supply at the end of day T-1 (sum of DefiLlama documentedData sections, excluding sections whose category is noncirculating/burned). It is derived from the same pre-known schedule, so it is knowable at entry, but can deviate from true circulating supply."
+ },
+ "event_rule": "Event = (protocol, UTC day T) with sum of vesting-category cliff allocations on day T >= 2.0% of schedule-implied circulating supply at end of T-1. Linear unlocks are never events. Multiple allocations on the same day are one event.",
+ "universe": "Mapped Binance USDT-M perp with first daily bar <= T-60 (known at entry) and a bar at the entry day. Primary: all such Binance perps. Secondary (reported, never selected on): symbols currently listed on Hyperliquid (HL info meta fetched 2026-10-05; not point-in-time).",
+ "overlap": "Per symbol, process events in date order; skip an event if its entry day is earlier than the exit day of the previous taken trade in that symbol (counted as skipped_overlap).",
+ "trade": "Short at the daily open of day T-k; exit at the daily open of day T+m (m=0 means exit at 00:00 UTC of the unlock day). P&L (fraction of notional) = -(P_exit/P_entry - 1) + funding_received - 2*(taker + slippage).",
+ "stop": "35% adverse stop: if a daily high >= 1.35*entry, exit at 1.35*entry (or at the open if it gaps above), plus an extra 1% slippage on the stop fill.",
+ "delisting": "if no bar exists at the exit day, exit at the last available close and charge 2%.",
+ "costs": {
+  "taker_bp_per_side": 5,
+  "slippage_bp_per_side_by_trailing_30d_mean_daily_quote_volume": {
+   ">=200M": 3,
+   "50M-200M": 8,
+   "10M-50M": 15,
+   "<10M": 30
+  },
+  "funding": "short receives last_funding_rate for each Binance funding print with calc_time in (entry, exit]; missing funding counted 0 and flagged",
+  "gross": "reported"
+ },
+ "configs": [
+  {
+   "key": "k30_m0",
+   "entry_days_before_unlock": 30,
+   "exit_days_after_unlock": 0
+  },
+  {
+   "key": "k30_m3",
+   "entry_days_before_unlock": 30,
+   "exit_days_after_unlock": 3
+  },
+  {
+   "key": "k30_m10",
+   "entry_days_before_unlock": 30,
+   "exit_days_after_unlock": 10
+  },
+  {
+   "key": "k14_m0",
+   "entry_days_before_unlock": 14,
+   "exit_days_after_unlock": 0
+  },
+  {
+   "key": "k14_m3",
+   "entry_days_before_unlock": 14,
+   "exit_days_after_unlock": 3
+  },
+  {
+   "key": "k14_m10",
+   "entry_days_before_unlock": 14,
+   "exit_days_after_unlock": 10
+  },
+  {
+   "key": "k7_m0",
+   "entry_days_before_unlock": 7,
+   "exit_days_after_unlock": 0
+  },
+  {
+   "key": "k7_m3",
+   "entry_days_before_unlock": 7,
+   "exit_days_after_unlock": 3
+  },
+  {
+   "key": "k7_m10",
+   "entry_days_before_unlock": 7,
+   "exit_days_after_unlock": 10
+  },
+  {
+   "key": "k3_m0",
+   "entry_days_before_unlock": 3,
+   "exit_days_after_unlock": 0
+  },
+  {
+   "key": "k3_m3",
+   "entry_days_before_unlock": 3,
+   "exit_days_after_unlock": 3
+  },
+  {
+   "key": "k3_m10",
+   "entry_days_before_unlock": 3,
+   "exit_days_after_unlock": 10
+  }
+ ],
+ "size_threshold_pct": 2.0,
+ "sensitivity_reported_not_selected": [
+  "size >= 5%",
+  "team(insiders)-only events",
+  "HL-listed subset",
+  "BTC short over the same window (market control), market-adjusted gross"
+ ],
+ "splits": {
+  "train": "unlock day T <= 2025-06-30 (T-k entries may start earlier)",
+  "validation": "2025-07-01 <= T <= 2026-03-31 (exits after 2026-03-31 are not possible with the cached archive: events whose exit day > 2026-03-31 are dropped)",
+  "holdout": "T >= 2026-04-01, NEVER touched (no price data read)"
+ },
+ "bar_per_split": {
+  "n_min": 50,
+  "net_mean_gt": 0,
+  "profit_factor_gt": 1.2,
+  "net_sum_without_top3_gt": 0
+ },
+ "selection": "Pick ONE config on train: highest net mean among configs passing the full bar on train; if none passes, the highest-net-mean config is run on validation for information only and the verdict is FAIL. Validation is run once.",
+ "forward_speed": "Report qualifying events per week in validation and in today's schedule for 2026-10-05..2027-03-31 (counts only, no prices)."
+}

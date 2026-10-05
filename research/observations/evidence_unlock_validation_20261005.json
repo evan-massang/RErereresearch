@@ -1,0 +1,109 @@
+{
+ "hypothesis": "H-UNLOCK",
+ "split": "validation",
+ "config": "k30_m3",
+ "generated_utc": "2026-10-05T07:07:52.096560+00:00",
+ "n_events_eligible": 171,
+ "result": {
+  "n": 114,
+  "mean_bp": 515.2,
+  "median_bp": 1149.2,
+  "pf": 1.491,
+  "sum": 5.8728,
+  "sum_ex_top3": 3.976,
+  "win": 0.623,
+  "gross_mean_bp": 702.0,
+  "funding_mean_bp": -117.5,
+  "cost_mean_bp": 69.4,
+  "btc_short_mean_bp": 515.1,
+  "mkt_adj_gross_mean_bp": 186.9,
+  "t_net": 1.86,
+  "passes_bar": "True",
+  "skipped": {
+   "overlap": 56,
+   "exit_beyond_data": 1
+  },
+  "by_year": {
+   "2025": {
+    "n": 75,
+    "mean_bp": 241.1,
+    "median_bp": 875.3,
+    "pf": 1.199,
+    "sum": 1.8085,
+    "sum_ex_top3": -0.0882,
+    "win": 0.573,
+    "gross_mean_bp": 403.0,
+    "funding_mean_bp": -93.6,
+    "cost_mean_bp": 68.2,
+    "btc_short_mean_bp": 267.5,
+    "mkt_adj_gross_mean_bp": 135.5,
+    "t_net": 0.68
+   },
+   "2026": {
+    "n": 39,
+    "mean_bp": 1042.1,
+    "median_bp": 1723.6,
+    "pf": 2.427,
+    "sum": 4.0643,
+    "sum_ex_top3": 2.6735,
+    "win": 0.718,
+    "gross_mean_bp": 1277.1,
+    "funding_mean_bp": -163.4,
+    "cost_mean_bp": 71.5,
+    "btc_short_mean_bp": 991.2,
+    "mkt_adj_gross_mean_bp": 285.9,
+    "t_net": 2.4
+   }
+  },
+  "exit_reasons": {
+   "time": 86,
+   "stop": 28
+  },
+  "hl_subset": {
+   "n": 87,
+   "mean_bp": 266.9,
+   "median_bp": 875.3,
+   "pf": 1.235,
+   "sum": 2.3222,
+   "sum_ex_top3": 0.7345,
+   "win": 0.586,
+   "gross_mean_bp": 476.4,
+   "funding_mean_bp": -141.3,
+   "cost_mean_bp": 68.2,
+   "btc_short_mean_bp": 506.2,
+   "mkt_adj_gross_mean_bp": -29.8,
+   "t_net": 0.86
+  },
+  "size_ge5": {
+   "n": 52,
+   "mean_bp": -44.4,
+   "median_bp": 677.1,
+   "pf": 0.968,
+   "sum": -0.2311,
+   "sum_ex_top3": -1.6785,
+   "win": 0.577,
+   "gross_mean_bp": 168.7,
+   "funding_mean_bp": -137.2,
+   "cost_mean_bp": 76.0,
+   "btc_short_mean_bp": 401.8,
+   "mkt_adj_gross_mean_bp": -233.0,
+   "t_net": -0.1
+  },
+  "team_majority": {
+   "n": 52,
+   "mean_bp": -3.5,
+   "median_bp": 677.1,
+   "pf": 0.997,
+   "sum": -0.018,
+   "sum_ex_top3": -1.1587,
+   "win": 0.558,
+   "gross_mean_bp": 128.4,
+   "funding_mean_bp": -62.3,
+   "cost_mean_bp": 69.5,
+   "btc_short_mean_bp": 228.8,
+   "mkt_adj_gross_mean_bp": -100.4,
+   "t_net": -0.01
+  }
+ },
+ "finding_type": "observed (backtest on validation, run once)"
+}
