@@ -61,7 +61,7 @@ import pyarrow as pa  # noqa: E402
 import pyarrow.parquet as pq  # noqa: E402
 import websockets  # noqa: E402
 
-from pipeline.market import _EV as AMM_EV, decode_amm  # noqa: E402
+from pipeline.market import _EV as AMM_EV, WSOL, decode_amm  # noqa: E402
 from pipeline.recorder import (PUMP_PROGRAM, PUMPSWAP_PROGRAM, _COMPLETE, _CREATE, _TRADE, _ssl,  # noqa: E402
                                decode_pump_event)
 
@@ -76,9 +76,9 @@ I64, U64, U16, U8, S, B = pa.int64(), pa.uint64(), pa.uint16(), pa.uint8(), pa.s
 HEAD = [("recv_us", I64), ("slot", I64), ("tx_seq", I64)]
 SCHEMAS = {
     "curve_trades": pa.schema(HEAD + [("ts", I64), ("mint", S), ("user", S), ("creator", S), ("is_buy", B),
-                                      ("sol", U64), ("tok", U64), ("vsol", U64), ("vtok", U64), ("rsol", U64),
-                                      ("rtok", U64), ("fee_bps", U16), ("fee", U64), ("cfee_bps", U16),
-                                      ("cfee", U64)]),
+                                      ("sol", U64), ("tok", U64), ("vsol", U64), ("vtok", U64), ("vsol_less_rsol", I64),
+                                      ("vtok_less_rtok", I64), ("fee_bps", U16), ("fee_resid", I64),
+                                      ("cfee_bps", U16), ("cfee_resid", I64)]),
     "curve_creates": pa.schema(HEAD + [("ts", I64), ("mint", S), ("curve", S), ("user", S), ("creator", S),
                                        ("name", S), ("symbol", S), ("uri", S), ("vtok", U64), ("vsol", U64),
                                        ("rtok", U64), ("supply", U64), ("is_mayhem", B)]),
@@ -87,10 +87,9 @@ SCHEMAS = {
                                    ("coin_creator", S), ("base_dec", U8), ("quote_dec", U8), ("base_in", U64),
                                    ("quote_in", U64)]),
     "amm_swaps": pa.schema(HEAD + [("ts", I64), ("pool", S), ("user", S), ("is_buy", B), ("base", U64),
-                                   ("quote", U64), ("user_quote", U64), ("pool_base", U64), ("pool_quote", U64),
-                                   ("lp_bps", U16), ("lp_fee", U64), ("proto_bps", U16), ("proto_fee", U64),
-                                   ("cc_bps", U16), ("cc_fee", U64)]),
-    "amm_bars": pa.schema([("recv_us", I64), ("pool", S), ("n", pa.uint32()), ("n_buy", pa.uint32()),
+                                   ("quote", U64), ("uq_less_q", I64), ("pool_base", U64), ("pool_quote", U64),
+                                   ("lp_bps", U16), ("proto_bps", U16), ("cc_bps", U16), ("ev_len", U16)]),
+    "amm_bars": pa.schema([("recv_us", I64), ("pool", S), ("kind", S), ("n", pa.uint32()), ("n_buy", pa.uint32()),
                            ("n_users", pa.uint32()), ("base_buy", U64), ("base_sell", U64), ("quote_buy", U64),
                            ("quote_sell", U64), ("first_slot", I64), ("last_slot", I64),
                            ("open_pool_base", U64), ("open_pool_quote", U64), ("last_pool_base", U64),
@@ -98,6 +97,7 @@ SCHEMAS = {
     "pool_map": pa.schema([("pool", S), ("mint", S), ("quote_mint", S), ("coin_creator", S), ("resolved_us", I64),
                            ("src", S), ("created_us", I64)]),
 }
+BAR_S = {"other_5m": 300, "young_dust_1m": 60}     # amm_bars bucket length per kind
 SORT = {"curve_trades": "mint", "curve_creates": "mint", "curve_completes": "mint", "amm_pools": "pool",
         "amm_swaps": "pool", "amm_bars": "pool", "pool_map": "pool"}
 
@@ -123,6 +123,10 @@ def _pkb(b: bytes, o: int) -> str:
 
 
 # ------------------------------------------------------------------------------------------------ decoding
+def _ceil_bps(x: int, bps: int | None) -> int:
+    return -(-x * (bps or 0) // 10_000)
+
+
 def curve_rows(data: str, head: tuple) -> tuple[str, tuple] | None:
     """One curve 'Program data:' line -> (table, row) or None. Core fields from decode_pump_event."""
     ev = decode_pump_event(data)
@@ -137,13 +141,16 @@ def curve_rows(data: str, head: tuple) -> tuple[str, tuple] | None:
         # creator @177, creator_fee_bps @209, creator_fee @217
         sol, tok = struct.unpack_from("<QQ", b, 40)
         vs, vt, rs, rt = struct.unpack_from("<QQQQ", b, 97)
-        fee = cfee = creator = None
+        # lossless but compact: rsol/rtok as offsets from the virtual reserves (constant on a standard curve:
+        # 30 SOL / 279.9M tokens), fee amounts as residuals from ceil(sol * bps / 10000) (almost always 0)
+        fee_r = cfee_r = creator = None
         if len(b) >= 225:
-            fee = struct.unpack_from("<Q", b, 169)[0]
+            fee, cfee = struct.unpack_from("<Q", b, 169)[0], struct.unpack_from("<Q", b, 217)[0]
             creator = _pkb(b, 177)
-            cfee = struct.unpack_from("<Q", b, 217)[0]
-        return "curve_trades", head + (ev["ts"], ev["mint"], ev["user"], creator, ev["buy"], sol, tok, vs, vt, rs, rt,
-                                       ev["fee_bps"], fee, ev["cfee_bps"], cfee)
+            fee_r = fee - _ceil_bps(sol, ev["fee_bps"])
+            cfee_r = cfee - _ceil_bps(sol, ev["cfee_bps"])
+        return "curve_trades", head + (ev["ts"], ev["mint"], ev["user"], creator, ev["buy"], sol, tok, vs, vt,
+                                       vs - rs, vt - rt, ev["fee_bps"], fee_r, ev["cfee_bps"], cfee_r)
     if ev["e"] == "create":
         # after name/symbol/uri/mint/curve/user: creator pk, timestamp i64, virtual token/sol, real token, supply
         # u64, token_program pk, is_mayhem_mode bool (IDL order). Offsets found by walking the strings again.
@@ -180,10 +187,12 @@ def amm_rows(data: str, head: tuple) -> tuple[str, tuple] | None:
         coin_creator = _pkb(b, 301) if len(b) >= 333 else None   # after pool@173, lp_mint, user base/quote atas
         return "amm_pools", head + (ev["ts"], ev["pool"], ev["mint"], ev["quote_mint"], ev["creator"], coin_creator,
                                     ev["base_dec"], ev["quote_dec"], ev["base_in"], ev["quote_in"])
-    u = struct.unpack_from("<14Q", b, 8)
+    # fee AMOUNTS are not stored: |quote - user_quote| = lp + protocol + coin-creator fee (checked on the
+    # 2026-10-05 04h raw tape), split by the three bps. ev_len tells the event versions apart: 504-byte BuyEvents
+    # log quote = gross SOL paid and user_quote = net into the pool; 489-byte ones the reverse.
     return "amm_swaps", head + (ev["ts"], ev["pool"], ev["user"], ev["buy"], ev["base"], ev["quote"],
-                                ev["user_quote"], ev["pool_base"], ev["pool_quote"], ev["lp_bps"], u[9],
-                                ev["protocol_bps"], u[11], ev["creator_bps"], struct.unpack_from("<Q", b, 352)[0])
+                                ev["user_quote"] - ev["quote"], ev["pool_base"], ev["pool_quote"], ev["lp_bps"],
+                                ev["protocol_bps"], ev["creator_bps"], len(b))
 
 
 # ------------------------------------------------------------------------------------------------ storage
@@ -280,8 +289,8 @@ class Events:
 
 # ------------------------------------------------------------------------------------------------ streams
 class Recorder:
-    def __init__(self, out: Path, min_free_gb: float, young_days: float):
-        self.out, self.min_free_gb, self.young_days = out, min_free_gb, young_days
+    def __init__(self, out: Path, min_free_gb: float, young_days: float, dust_lamports: int):
+        self.out, self.min_free_gb, self.young_days, self.dust = out, min_free_gb, young_days, dust_lamports
         self.store = Store(out)
         self.ev = Events(out / "events.jsonl")
         self.stop = asyncio.Event()
@@ -292,8 +301,8 @@ class Recorder:
         self.known_pools: set[str] = set()
         self.unresolved: dict[str, None] = {}        # insertion-ordered set
         self.young: set[str] = set()                 # pools created < young_days ago: every swap kept
-        self.bar_minute = 0
-        self.bars: dict[str, list] = {}              # other pools: 1-minute aggregates
+        self.bar_bucket = {k: 0 for k in BAR_S}
+        self.bars: dict[str, dict] = {k: {} for k in BAR_S}   # kind -> pool -> running aggregate
 
     def seed_young(self) -> dict:
         """Pools whose CreatePoolEvent is already on file (old recorder's market.duckdb amm_pools, earlier pumplean
@@ -326,24 +335,26 @@ class Recorder:
         n["young_pools"] = len(self.young)
         return n
 
-    def flush_bars(self) -> None:
-        m = self.bar_minute * 60_000_000
-        for pool, b in self.bars.items():
-            self.store.add("amm_bars", (m, pool, b[0], b[1], len(b[2]), b[3], b[4], b[5], b[6], b[7], b[8], b[9],
-                                        b[10], b[11], b[12], b[13], b[14], b[15]))
-        self.minute["amm"]["bar_rows"] += len(self.bars)
-        self.bars = {}
+    def flush_bars(self, kind: str) -> None:
+        start = self.bar_bucket[kind] * BAR_S[kind] * 1_000_000
+        bars = self.bars[kind]
+        for pool, b in bars.items():
+            self.store.add("amm_bars", (start, pool, kind, b[0], b[1], len(b[2]), b[3], b[4], b[5], b[6], b[7], b[8],
+                                        b[9], b[10], b[11], b[12], b[13], b[14], b[15]))
+        self.minute["amm"]["bar_rows"] += len(bars)
+        self.bars[kind] = {}
 
-    def bar(self, row: tuple) -> None:
-        # row = amm_swaps layout: recv_us slot tx_seq ts pool user is_buy base quote user_quote pool_base pool_quote ..
-        minute = row[0] // 60_000_000
-        if minute != self.bar_minute:
-            if self.bars:
-                self.flush_bars()
-            self.bar_minute = minute
-        b = self.bars.get(row[4])
+    def bar(self, row: tuple, kind: str) -> None:
+        """Aggregate one swap (amm_swaps row layout) into its pool's bar. Sums are of the logged quote field."""
+        bucket = row[0] // (BAR_S[kind] * 1_000_000)
+        if bucket != self.bar_bucket[kind]:
+            if self.bars[kind]:
+                self.flush_bars(kind)
+            self.bar_bucket[kind] = bucket
+        bars = self.bars[kind]
+        b = bars.get(row[4])
         if b is None:
-            b = self.bars[row[4]] = [0, 0, set(), 0, 0, 0, 0, row[1], row[1], row[10], row[11], 0, 0, False, 0, 0]
+            b = bars[row[4]] = [0, 0, set(), 0, 0, 0, 0, row[1], row[1], row[10], row[11], 0, 0, False, 0, 0]
         b[0] += 1
         b[2].add(row[5])
         if row[6]:
@@ -382,14 +393,19 @@ class Recorder:
             if table == "amm_swaps":
                 p = row[4]
                 if p not in self.young:
-                    self.bar(row)
+                    self.bar(row, "other_5m")
                     c["swaps_to_bars"] += 1
                     if p not in self.known_pools:
                         self.known_pools.add(p)
                         self.unresolved[p] = None
                     continue
+                if max(row[8], row[8] + row[9]) < self.dust:  # gross SOL side below the dust cut
+                    self.bar(row, "young_dust_1m")
+                    c["dust_to_bars"] += 1
+                    continue
             elif table == "amm_pools":
-                self.young.add(row[4])
+                if row[6] == WSOL:                            # only SOL-quoted pools get full swap rows
+                    self.young.add(row[4])
                 self.known_pools.add(row[4])
                 self.store.add("pool_map", (row[4], row[5], row[6], row[8], head[0], "create_event", head[0]))
             self.store.add(table, row)
@@ -515,7 +531,8 @@ class Recorder:
         t_start = time.monotonic()
         seed = self.seed_young()
         meta = {"pid": os.getpid(), "hours": hours, "out": str(self.out), "ws": WS_URL, "http": HTTP_URL,
-                "min_free_gb": self.min_free_gb, "young_days": self.young_days, "seed": seed,
+                "min_free_gb": self.min_free_gb, "young_days": self.young_days, "dust_lamports": self.dust,
+                "seed": seed,
                 "start_ts_us": now_us(), "end_utc": utc(time.time() + hours * 3600)}
         self.ev("start", **meta)
         log("start", json.dumps(meta))
@@ -534,8 +551,9 @@ class Recorder:
         for t in tasks:
             t.cancel()
         await asyncio.gather(*tasks, return_exceptions=True)
-        if self.bars:
-            self.flush_bars()
+        for k in BAR_S:
+            if self.bars[k]:
+                self.flush_bars(k)
         self.store.flush()
         for d in self.store.merge(final=True):
             self.ev("chunk", **d)
@@ -550,9 +568,11 @@ def main() -> None:
     ap.add_argument("--out", type=Path, default=OUT)
     ap.add_argument("--min-free-gb", type=float, default=1.5)
     ap.add_argument("--young-days", type=float, default=7.0, help="keep every swap of pools created < this ago")
+    ap.add_argument("--dust-lamports", type=int, default=1_000_000,
+                    help="young-pool swaps below this many lamports (0.001 SOL) go to amm_bars kind=young_dust")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
-    asyncio.run(Recorder(a.out, a.min_free_gb, a.young_days).run(a.hours))
+    asyncio.run(Recorder(a.out, a.min_free_gb, a.young_days, a.dust_lamports).run(a.hours))
 
 
 if __name__ == "__main__":
