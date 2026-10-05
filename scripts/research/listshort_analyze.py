@@ -47,6 +47,12 @@ CONTAMINATED = {"AI16Z", "ZEREBRO", "GRIFFAIN", "TRUMP", "MELANIA", "VINE", "JEL
 FEE = {"HL": 0.00045, "BN": 0.0005}
 SLIP = 0.0010
 HEDGE_COST = 0.0005 + 0.0002
+# Solana meme perps the round-3 OWN-PRECHECK looked at (all 23; the 2025+ subset above is CONTAMINATED).
+SEEN23 = {"WIF", "BONK", "POPCAT", "MEW", "BOME", "MYRO", "GOAT", "MOODENG", "PNUT", "CHILLGUY", "FARTCOIN",
+          "PENGU"} | CONTAMINATED
+# Binance PUMPUSDT monthly files start 2025-04, three months before pump.fun's PUMP token existed
+# (Jul 2025): the early contract is a different asset. Dropped; HL PUMP (2025-07-10) is used instead.
+SKIP = {("BN", "PUMPUSDT")}
 GRID = [(n, h, s) for n in (4, 24, 72) for h in (7, 14, 30) for s in (None, 0.40)]
 
 
@@ -115,6 +121,9 @@ def build_events():
     by_base = {}
     status = []
     for r in rows:
+        if (r["venue"], r["symbol"]) in SKIP:
+            status.append((r["venue"], r["symbol"], "skipped_identity"))
+            continue
         ev = event_hl(r["symbol"]) if r["venue"] == "HL" else event_bn(r["symbol"])
         if ev is None:
             status.append((r["venue"], r["symbol"], "not_fetched"))
@@ -138,6 +147,7 @@ def build_events():
         else:
             first["split"] = "holdout"  # never simulated
         first["contaminated"] = base in CONTAMINATED
+        first["seen23"] = base in SEEN23
         events.append(first)
     return events, status
 
@@ -198,7 +208,7 @@ def simulate(ev, n_h, hold_d, stop, lev=1.0):
     e0, e1 = px_at("ETHUSDT", te), px_at("ETHUSDT", tx)
     s0, s1 = px_at("SOLUSDT", te), px_at("SOLUSDT", tx)
     return {"base": ev["base"], "venue": ev["venue"], "symbol": ev["symbol"], "split": ev["split"],
-            "contaminated": ev["contaminated"], "res": ev["res"], "t_list": ev["t0"], "t_entry": te,
+            "contaminated": ev["contaminated"], "seen23": ev["seen23"], "res": ev["res"], "t_list": ev["t0"], "t_entry": te,
             "t_exit": tx, "entry": pe, "exit": px, "exit_reason": exit_reason,
             "price_ret": price_ret, "funding": fund, "fees": 2 * FEE[ev["venue"]] + 2 * SLIP,
             "short_ret": short_ret, "eq_ret": eq_ret, "mae": mae, "lev": lev,
@@ -277,6 +287,7 @@ def run(split):
         out["configs"].append({
             "N_h": n_h, "hold_d": hold_d, "stop": stop, "raw": raw, "hedged_btc": hb, "hedged_solEth": hm,
             "passes_bar_hedged_btc": passes(hb), "passes_bar_raw": passes(raw),
+            "clean_not_seen23_hedged_btc": stats([hedged(t, beta_btc) for t in clean if not t["seen23"]]),
             "contaminated_raw": stats([t["eq_ret"] for t in cont]),
             "contaminated_hedged_btc": stats([hedged(t, beta_btc) for t in cont]),
             "mae_median": float(np.median([t["mae"] for t in clean])) if clean else None,
