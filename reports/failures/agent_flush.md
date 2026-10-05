@@ -188,3 +188,53 @@ Evidence:
 Data:
 - trade lists: `data/raw/web/binance_fut/flush_trades/train_*_slip3.csv`;
 - cache: `data/raw/web/binance_fut/{metrics,klines1m,funding}/*.parquet`.
+
+---
+
+## Follow-up: market-wide flush rule (H-FLUSH-MW). FAIL on train; validation not examined
+
+This follow-up turns the untested lead above into a NEW rule. The rule was pre-registered **before** anything was computed for it, in
+`reports/hypotheses/flush_marketwide_preregistration.json`.
+- **The rule:** a coin's q = 2.5 flush at snapshot s is eligible only if at least K distinct universe coins flushed at snapshots in (s − 30 min, s]. The count includes the coin itself.
+  - This is point in time: every counted snapshot is visible at the decision time, s + 1 min.
+  - A coin whose flush came before the count reached K is not entered after the fact.
+- **Execution, costs and the one-position-per-coin rule are unchanged.** `flush_sim.simulate` is reused as is.
+- **Configs (8):** K ∈ {3, 5} × entry {limit 0.3% below, market} × hold H ∈ {60, 120} min, with the −3% stop.
+- **Bias caveat:** the lead came from exploring train, so these train numbers are optimistic.
+
+**Eligible flush bars in train:**
+- K = 3: 1,410 bars on 146 distinct days;
+- K = 5: 717 bars on 69 distinct days.
+
+Train results (`research/observations/evidence_flush_marketwide_train.json`):
+
+| config | n | days | net sum % | mean bp | gross mean bp | PF | net ex-top3 % | day-t | pass |
+|---|---|---|---|---|---|---|---|---|---|
+| K3_lim0.3%_H60 | 927 | 132 | -62.22 | -6.7 | 4.4 | 0.951 | -152.02 | -0.37 | no |
+| K3_lim0.3%_H120 | 909 | 132 | -24.81 | -2.7 | 8.5 | 0.982 | -131.52 | -0.13 | no |
+| K3_mkt_H60 | 1275 | 146 | -101.15 | -7.9 | 6.2 | 0.938 | -189.45 | -0.52 | no |
+| K3_mkt_H120 | 1246 | 146 | -166.77 | -13.4 | 0.8 | 0.913 | -249.01 | -0.78 | no |
+| K5_lim0.3%_H60 | 489 | 65 | -84.24 | -17.2 | -6.1 | 0.879 | -174.04 | -0.72 | no |
+| K5_lim0.3%_H120 | 479 | 65 | -15.33 | -3.2 | 8.0 | 0.980 | -122.11 | -0.10 | no |
+| K5_mkt_H60 | 646 | 69 | -92.94 | -14.4 | -0.3 | 0.893 | -176.33 | -0.68 | no |
+| K5_mkt_H120 | 634 | 69 | -87.15 | -13.7 | 0.5 | 0.913 | -169.08 | -0.55 | no |
+
+**What the table shows:**
+- Requiring breadth does help gross returns: the best configs reach +8 bp gross, against −1 to −12 bp for all flushes.
+- That gain is smaller than the roughly 11–20 bp of costs. No config reaches PF 1.0, let alone 1.2.
+
+**Best config: K3_lim0.3%_H120.** PF 0.98, net −25%; with the 3 best trades removed, −132%.
+- The 3 best trades are +45%, +36% and +25%.
+- The 3 best days are 2025-04-23 (+71%), 2025-05-09 (+58%) and 2024-05-23 (+42%). These are exactly the days that prompted the lead, so the earlier observation was driven by a few days.
+- **Per quarter:** 4 of 6 positive: 2024Q1 −13%, 2024Q2 +85%, 2024Q3 +26%, 2024Q4 +26%, 2025Q1 −209%, 2025Q2 +60%.
+- **Per coin:** 8 of 21 positive. The best are TRUMP +59%, 1000BONK +43% and WIF +39%; the worst are PNUT −51%, MOODENG −46% and BOME −41%.
+
+**Validation:** not examined, because no config passed the full bar on train. The holdout was never touched.
+
+**Verdict: FAIL.** This adds 8 configs to the 21 above, for **29 configs in the family**.
+
+Files for this follow-up:
+- `scripts/research/flush_marketwide.py`;
+- `reports/hypotheses/flush_marketwide_preregistration.json`;
+- `research/observations/evidence_flush_marketwide_train.json`;
+- trade lists in `data/raw/web/binance_fut/flush_trades/mw_train_*.csv`.

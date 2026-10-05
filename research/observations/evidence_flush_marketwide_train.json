@@ -1,0 +1,1153 @@
+{
+ "split": "train",
+ "preregistration": "reports/hypotheses/flush_marketwide_preregistration.json",
+ "n_configs_total": 8,
+ "configs_run": [
+  "K3_lim0.3%_H60",
+  "K3_lim0.3%_H120",
+  "K3_mkt_H60",
+  "K3_mkt_H120",
+  "K5_lim0.3%_H60",
+  "K5_lim0.3%_H120",
+  "K5_mkt_H60",
+  "K5_mkt_H120"
+ ],
+ "event_counts": {
+  "K3": {
+   "eligible_flush_bars": 1410,
+   "distinct_days": 146,
+   "per_coin": {
+    "1000PEPEUSDT": 156,
+    "BOMEUSDT": 130,
+    "DOGEUSDT": 125,
+    "WIFUSDT": 108,
+    "1000BONKUSDT": 102,
+    "MYROUSDT": 80,
+    "MOODENGUSDT": 79,
+    "GOATUSDT": 71,
+    "PNUTUSDT": 62,
+    "TRUMPUSDT": 62,
+    "CHILLGUYUSDT": 60,
+    "MEWUSDT": 54,
+    "POPCATUSDT": 54,
+    "AI16ZUSDT": 46,
+    "PENGUUSDT": 43,
+    "GRIFFAINUSDT": 38,
+    "MELANIAUSDT": 37,
+    "ZEREBROUSDT": 31,
+    "FARTCOINUSDT": 29,
+    "VINEUSDT": 26,
+    "JELLYJELLYUSDT": 17
+   }
+  },
+  "K5": {
+   "eligible_flush_bars": 717,
+   "distinct_days": 69,
+   "per_coin": {
+    "1000PEPEUSDT": 67,
+    "BOMEUSDT": 60,
+    "DOGEUSDT": 59,
+    "WIFUSDT": 49,
+    "MOODENGUSDT": 48,
+    "1000BONKUSDT": 45,
+    "GOATUSDT": 44,
+    "TRUMPUSDT": 37,
+    "CHILLGUYUSDT": 35,
+    "MYROUSDT": 34,
+    "MEWUSDT": 32,
+    "PNUTUSDT": 31,
+    "POPCATUSDT": 30,
+    "AI16ZUSDT": 24,
+    "MELANIAUSDT": 24,
+    "GRIFFAINUSDT": 22,
+    "FARTCOINUSDT": 18,
+    "PENGUUSDT": 18,
+    "VINEUSDT": 16,
+    "ZEREBROUSDT": 13,
+    "JELLYJELLYUSDT": 11
+   }
+  }
+ },
+ "results": {
+  "K3_lim0.3%_H60": {
+   "n": 927,
+   "days": 132,
+   "net_sum_pct": -62.22,
+   "mean_bp": -6.7,
+   "median_bp": -64.4,
+   "win": 0.429,
+   "pf": 0.951,
+   "net_ex_top3_pct": -152.02,
+   "day_t": -0.37,
+   "stops": 355,
+   "fill_rate": 0.713,
+   "pass": false,
+   "gross_mean_bp": 4.4,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 69,
+     "net_pct": 31.98
+    },
+    "1000PEPEUSDT": {
+     "n": 95,
+     "net_pct": 17.83
+    },
+    "AI16ZUSDT": {
+     "n": 29,
+     "net_pct": -12.12
+    },
+    "BOMEUSDT": {
+     "n": 77,
+     "net_pct": -28.26
+    },
+    "CHILLGUYUSDT": {
+     "n": 44,
+     "net_pct": 5.35
+    },
+    "DOGEUSDT": {
+     "n": 67,
+     "net_pct": -7.0
+    },
+    "FARTCOINUSDT": {
+     "n": 22,
+     "net_pct": 4.36
+    },
+    "GOATUSDT": {
+     "n": 53,
+     "net_pct": -8.94
+    },
+    "GRIFFAINUSDT": {
+     "n": 30,
+     "net_pct": -26.47
+    },
+    "JELLYJELLYUSDT": {
+     "n": 10,
+     "net_pct": 20.75
+    },
+    "MELANIAUSDT": {
+     "n": 25,
+     "net_pct": -11.29
+    },
+    "MEWUSDT": {
+     "n": 30,
+     "net_pct": 4.3
+    },
+    "MOODENGUSDT": {
+     "n": 57,
+     "net_pct": -46.64
+    },
+    "MYROUSDT": {
+     "n": 54,
+     "net_pct": -21.41
+    },
+    "PENGUUSDT": {
+     "n": 28,
+     "net_pct": -28.6
+    },
+    "PNUTUSDT": {
+     "n": 44,
+     "net_pct": -36.87
+    },
+    "POPCATUSDT": {
+     "n": 36,
+     "net_pct": -15.45
+    },
+    "TRUMPUSDT": {
+     "n": 32,
+     "net_pct": 49.12
+    },
+    "VINEUSDT": {
+     "n": 24,
+     "net_pct": 24.09
+    },
+    "WIFUSDT": {
+     "n": 74,
+     "net_pct": 47.03
+    },
+    "ZEREBROUSDT": {
+     "n": 27,
+     "net_pct": -24.0
+    }
+   },
+   "per_quarter": {
+    "2024Q1": {
+     "n": 26,
+     "net_pct": -3.02
+    },
+    "2024Q2": {
+     "n": 50,
+     "net_pct": 83.52
+    },
+    "2024Q3": {
+     "n": 66,
+     "net_pct": 12.45
+    },
+    "2024Q4": {
+     "n": 127,
+     "net_pct": 17.04
+    },
+    "2025Q1": {
+     "n": 265,
+     "net_pct": -111.17
+    },
+    "2025Q2": {
+     "n": 393,
+     "net_pct": -61.05
+    }
+   },
+   "top3_bp": [
+    4118.7,
+    2752.4,
+    2108.8
+   ],
+   "top3_days": {
+    "2025-04-23": 66.65,
+    "2024-01-03": 45.76,
+    "2024-04-12": 43.83
+   }
+  },
+  "K3_lim0.3%_H120": {
+   "n": 909,
+   "days": 132,
+   "net_sum_pct": -24.81,
+   "mean_bp": -2.7,
+   "median_bp": -121.5,
+   "win": 0.397,
+   "pf": 0.982,
+   "net_ex_top3_pct": -131.52,
+   "day_t": -0.13,
+   "stops": 407,
+   "fill_rate": 0.712,
+   "pass": false,
+   "gross_mean_bp": 8.5,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 68,
+     "net_pct": 42.58
+    },
+    "1000PEPEUSDT": {
+     "n": 93,
+     "net_pct": 28.63
+    },
+    "AI16ZUSDT": {
+     "n": 28,
+     "net_pct": -6.5
+    },
+    "BOMEUSDT": {
+     "n": 73,
+     "net_pct": -40.87
+    },
+    "CHILLGUYUSDT": {
+     "n": 44,
+     "net_pct": 29.21
+    },
+    "DOGEUSDT": {
+     "n": 66,
+     "net_pct": -6.01
+    },
+    "FARTCOINUSDT": {
+     "n": 21,
+     "net_pct": 10.01
+    },
+    "GOATUSDT": {
+     "n": 53,
+     "net_pct": -8.4
+    },
+    "GRIFFAINUSDT": {
+     "n": 29,
+     "net_pct": -28.84
+    },
+    "JELLYJELLYUSDT": {
+     "n": 10,
+     "net_pct": 22.47
+    },
+    "MELANIAUSDT": {
+     "n": 25,
+     "net_pct": -9.72
+    },
+    "MEWUSDT": {
+     "n": 30,
+     "net_pct": -3.1
+    },
+    "MOODENGUSDT": {
+     "n": 55,
+     "net_pct": -45.68
+    },
+    "MYROUSDT": {
+     "n": 54,
+     "net_pct": -6.06
+    },
+    "PENGUUSDT": {
+     "n": 28,
+     "net_pct": -33.91
+    },
+    "PNUTUSDT": {
+     "n": 44,
+     "net_pct": -50.75
+    },
+    "POPCATUSDT": {
+     "n": 33,
+     "net_pct": -16.44
+    },
+    "TRUMPUSDT": {
+     "n": 31,
+     "net_pct": 59.14
+    },
+    "VINEUSDT": {
+     "n": 24,
+     "net_pct": 34.04
+    },
+    "WIFUSDT": {
+     "n": 73,
+     "net_pct": 38.71
+    },
+    "ZEREBROUSDT": {
+     "n": 27,
+     "net_pct": -33.32
+    }
+   },
+   "per_quarter": {
+    "2024Q1": {
+     "n": 26,
+     "net_pct": -12.82
+    },
+    "2024Q2": {
+     "n": 50,
+     "net_pct": 85.2
+    },
+    "2024Q3": {
+     "n": 66,
+     "net_pct": 25.5
+    },
+    "2024Q4": {
+     "n": 121,
+     "net_pct": 26.13
+    },
+    "2025Q1": {
+     "n": 260,
+     "net_pct": -208.76
+    },
+    "2025Q2": {
+     "n": 386,
+     "net_pct": 59.94
+    }
+   },
+   "top3_bp": [
+    4520.5,
+    3619.8,
+    2530.0
+   ],
+   "top3_days": {
+    "2025-04-23": 70.97,
+    "2025-05-09": 58.46,
+    "2024-05-23": 42.04
+   }
+  },
+  "K3_mkt_H60": {
+   "n": 1275,
+   "days": 146,
+   "net_sum_pct": -101.15,
+   "mean_bp": -7.9,
+   "median_bp": -40.8,
+   "win": 0.443,
+   "pf": 0.938,
+   "net_ex_top3_pct": -189.45,
+   "day_t": -0.52,
+   "stops": 424,
+   "fill_rate": 1.0,
+   "pass": false,
+   "gross_mean_bp": 6.2,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 89,
+     "net_pct": 14.87
+    },
+    "1000PEPEUSDT": {
+     "n": 143,
+     "net_pct": -8.49
+    },
+    "AI16ZUSDT": {
+     "n": 42,
+     "net_pct": 3.92
+    },
+    "BOMEUSDT": {
+     "n": 112,
+     "net_pct": -27.88
+    },
+    "CHILLGUYUSDT": {
+     "n": 58,
+     "net_pct": 1.8
+    },
+    "DOGEUSDT": {
+     "n": 109,
+     "net_pct": 2.91
+    },
+    "FARTCOINUSDT": {
+     "n": 27,
+     "net_pct": 2.32
+    },
+    "GOATUSDT": {
+     "n": 64,
+     "net_pct": -16.73
+    },
+    "GRIFFAINUSDT": {
+     "n": 35,
+     "net_pct": -36.78
+    },
+    "JELLYJELLYUSDT": {
+     "n": 16,
+     "net_pct": 30.58
+    },
+    "MELANIAUSDT": {
+     "n": 33,
+     "net_pct": -21.9
+    },
+    "MEWUSDT": {
+     "n": 51,
+     "net_pct": 3.44
+    },
+    "MOODENGUSDT": {
+     "n": 71,
+     "net_pct": -58.51
+    },
+    "MYROUSDT": {
+     "n": 76,
+     "net_pct": -19.19
+    },
+    "PENGUUSDT": {
+     "n": 40,
+     "net_pct": -33.29
+    },
+    "PNUTUSDT": {
+     "n": 58,
+     "net_pct": -43.55
+    },
+    "POPCATUSDT": {
+     "n": 48,
+     "net_pct": -10.81
+    },
+    "TRUMPUSDT": {
+     "n": 52,
+     "net_pct": 39.56
+    },
+    "VINEUSDT": {
+     "n": 25,
+     "net_pct": 32.93
+    },
+    "WIFUSDT": {
+     "n": 95,
+     "net_pct": 59.92
+    },
+    "ZEREBROUSDT": {
+     "n": 31,
+     "net_pct": -16.25
+    }
+   },
+   "per_quarter": {
+    "2024Q1": {
+     "n": 31,
+     "net_pct": -7.86
+    },
+    "2024Q2": {
+     "n": 68,
+     "net_pct": 108.26
+    },
+    "2024Q3": {
+     "n": 98,
+     "net_pct": 31.07
+    },
+    "2024Q4": {
+     "n": 173,
+     "net_pct": -7.6
+    },
+    "2025Q1": {
+     "n": 335,
+     "net_pct": -156.37
+    },
+    "2025Q2": {
+     "n": 570,
+     "net_pct": -68.66
+    }
+   },
+   "top3_bp": [
+    4069.1,
+    2707.4,
+    2053.0
+   ],
+   "top3_days": {
+    "2025-04-23": 65.2,
+    "2024-01-03": 44.53,
+    "2024-08-05": 40.57
+   }
+  },
+  "K3_mkt_H120": {
+   "n": 1246,
+   "days": 146,
+   "net_sum_pct": -166.77,
+   "mean_bp": -13.4,
+   "median_bp": -113.0,
+   "win": 0.398,
+   "pf": 0.913,
+   "net_ex_top3_pct": -249.01,
+   "day_t": -0.78,
+   "stops": 535,
+   "fill_rate": 1.0,
+   "pass": false,
+   "gross_mean_bp": 0.8,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 88,
+     "net_pct": 10.7
+    },
+    "1000PEPEUSDT": {
+     "n": 140,
+     "net_pct": 10.71
+    },
+    "AI16ZUSDT": {
+     "n": 41,
+     "net_pct": 6.12
+    },
+    "BOMEUSDT": {
+     "n": 108,
+     "net_pct": -58.61
+    },
+    "CHILLGUYUSDT": {
+     "n": 58,
+     "net_pct": 34.11
+    },
+    "DOGEUSDT": {
+     "n": 107,
+     "net_pct": -0.61
+    },
+    "FARTCOINUSDT": {
+     "n": 26,
+     "net_pct": 18.46
+    },
+    "GOATUSDT": {
+     "n": 64,
+     "net_pct": -17.71
+    },
+    "GRIFFAINUSDT": {
+     "n": 35,
+     "net_pct": -46.12
+    },
+    "JELLYJELLYUSDT": {
+     "n": 15,
+     "net_pct": 47.6
+    },
+    "MELANIAUSDT": {
+     "n": 33,
+     "net_pct": -19.33
+    },
+    "MEWUSDT": {
+     "n": 51,
+     "net_pct": -11.01
+    },
+    "MOODENGUSDT": {
+     "n": 68,
+     "net_pct": -71.75
+    },
+    "MYROUSDT": {
+     "n": 76,
+     "net_pct": -9.82
+    },
+    "PENGUUSDT": {
+     "n": 37,
+     "net_pct": -46.89
+    },
+    "PNUTUSDT": {
+     "n": 57,
+     "net_pct": -58.84
+    },
+    "POPCATUSDT": {
+     "n": 45,
+     "net_pct": -9.12
+    },
+    "TRUMPUSDT": {
+     "n": 49,
+     "net_pct": 8.72
+    },
+    "VINEUSDT": {
+     "n": 25,
+     "net_pct": 40.99
+    },
+    "WIFUSDT": {
+     "n": 93,
+     "net_pct": 28.78
+    },
+    "ZEREBROUSDT": {
+     "n": 30,
+     "net_pct": -23.15
+    }
+   },
+   "per_quarter": {
+    "2024Q1": {
+     "n": 31,
+     "net_pct": -19.09
+    },
+    "2024Q2": {
+     "n": 68,
+     "net_pct": 96.68
+    },
+    "2024Q3": {
+     "n": 98,
+     "net_pct": 54.37
+    },
+    "2024Q4": {
+     "n": 167,
+     "net_pct": -29.45
+    },
+    "2025Q1": {
+     "n": 325,
+     "net_pct": -229.87
+    },
+    "2025Q2": {
+     "n": 557,
+     "net_pct": -39.42
+    }
+   },
+   "top3_bp": [
+    3571.8,
+    2485.6,
+    2166.7
+   ],
+   "top3_days": {
+    "2025-03-02": 45.14,
+    "2024-08-05": 44.55,
+    "2025-05-09": 42.33
+   }
+  },
+  "K5_lim0.3%_H60": {
+   "n": 489,
+   "days": 65,
+   "net_sum_pct": -84.24,
+   "mean_bp": -17.2,
+   "median_bp": -76.1,
+   "win": 0.409,
+   "pf": 0.879,
+   "net_ex_top3_pct": -174.04,
+   "day_t": -0.72,
+   "stops": 193,
+   "fill_rate": 0.739,
+   "pass": false,
+   "gross_mean_bp": -6.1,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 31,
+     "net_pct": 25.72
+    },
+    "1000PEPEUSDT": {
+     "n": 41,
+     "net_pct": 9.24
+    },
+    "AI16ZUSDT": {
+     "n": 16,
+     "net_pct": -3.26
+    },
+    "BOMEUSDT": {
+     "n": 36,
+     "net_pct": -13.8
+    },
+    "CHILLGUYUSDT": {
+     "n": 25,
+     "net_pct": -8.95
+    },
+    "DOGEUSDT": {
+     "n": 29,
+     "net_pct": -19.22
+    },
+    "FARTCOINUSDT": {
+     "n": 13,
+     "net_pct": 3.71
+    },
+    "GOATUSDT": {
+     "n": 35,
+     "net_pct": -6.64
+    },
+    "GRIFFAINUSDT": {
+     "n": 19,
+     "net_pct": -18.55
+    },
+    "JELLYJELLYUSDT": {
+     "n": 7,
+     "net_pct": 8.7
+    },
+    "MELANIAUSDT": {
+     "n": 19,
+     "net_pct": -1.82
+    },
+    "MEWUSDT": {
+     "n": 19,
+     "net_pct": -10.52
+    },
+    "MOODENGUSDT": {
+     "n": 41,
+     "net_pct": -37.36
+    },
+    "MYROUSDT": {
+     "n": 24,
+     "net_pct": -4.35
+    },
+    "PENGUUSDT": {
+     "n": 14,
+     "net_pct": -21.35
+    },
+    "PNUTUSDT": {
+     "n": 23,
+     "net_pct": -24.69
+    },
+    "POPCATUSDT": {
+     "n": 20,
+     "net_pct": -8.63
+    },
+    "TRUMPUSDT": {
+     "n": 17,
+     "net_pct": 32.51
+    },
+    "VINEUSDT": {
+     "n": 15,
+     "net_pct": 20.59
+    },
+    "WIFUSDT": {
+     "n": 34,
+     "net_pct": 1.09
+    },
+    "ZEREBROUSDT": {
+     "n": 11,
+     "net_pct": -6.67
+    }
+   },
+   "per_quarter": {
+    "2024Q2": {
+     "n": 22,
+     "net_pct": 43.34
+    },
+    "2024Q3": {
+     "n": 24,
+     "net_pct": 4.32
+    },
+    "2024Q4": {
+     "n": 47,
+     "net_pct": -9.23
+    },
+    "2025Q1": {
+     "n": 154,
+     "net_pct": -80.05
+    },
+    "2025Q2": {
+     "n": 242,
+     "net_pct": -42.62
+    }
+   },
+   "top3_bp": [
+    4118.7,
+    2752.4,
+    2108.8
+   ],
+   "top3_days": {
+    "2025-04-23": 50.91,
+    "2024-05-23": 31.08,
+    "2025-05-09": 30.98
+   }
+  },
+  "K5_lim0.3%_H120": {
+   "n": 479,
+   "days": 65,
+   "net_sum_pct": -15.33,
+   "mean_bp": -3.2,
+   "median_bp": -146.3,
+   "win": 0.392,
+   "pf": 0.98,
+   "net_ex_top3_pct": -122.11,
+   "day_t": -0.1,
+   "stops": 220,
+   "fill_rate": 0.736,
+   "pass": false,
+   "gross_mean_bp": 8.0,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 30,
+     "net_pct": 34.71
+    },
+    "1000PEPEUSDT": {
+     "n": 40,
+     "net_pct": 17.61
+    },
+    "AI16ZUSDT": {
+     "n": 16,
+     "net_pct": 4.68
+    },
+    "BOMEUSDT": {
+     "n": 34,
+     "net_pct": -28.17
+    },
+    "CHILLGUYUSDT": {
+     "n": 25,
+     "net_pct": -4.68
+    },
+    "DOGEUSDT": {
+     "n": 28,
+     "net_pct": -24.61
+    },
+    "FARTCOINUSDT": {
+     "n": 13,
+     "net_pct": 6.72
+    },
+    "GOATUSDT": {
+     "n": 35,
+     "net_pct": -2.0
+    },
+    "GRIFFAINUSDT": {
+     "n": 19,
+     "net_pct": -14.41
+    },
+    "JELLYJELLYUSDT": {
+     "n": 7,
+     "net_pct": 17.45
+    },
+    "MELANIAUSDT": {
+     "n": 19,
+     "net_pct": -1.03
+    },
+    "MEWUSDT": {
+     "n": 19,
+     "net_pct": -16.57
+    },
+    "MOODENGUSDT": {
+     "n": 39,
+     "net_pct": -31.77
+    },
+    "MYROUSDT": {
+     "n": 24,
+     "net_pct": 9.92
+    },
+    "PENGUUSDT": {
+     "n": 14,
+     "net_pct": -18.05
+    },
+    "PNUTUSDT": {
+     "n": 23,
+     "net_pct": -27.64
+    },
+    "POPCATUSDT": {
+     "n": 18,
+     "net_pct": -4.53
+    },
+    "TRUMPUSDT": {
+     "n": 16,
+     "net_pct": 42.66
+    },
+    "VINEUSDT": {
+     "n": 15,
+     "net_pct": 22.38
+    },
+    "WIFUSDT": {
+     "n": 34,
+     "net_pct": 7.29
+    },
+    "ZEREBROUSDT": {
+     "n": 11,
+     "net_pct": -5.3
+    }
+   },
+   "per_quarter": {
+    "2024Q2": {
+     "n": 22,
+     "net_pct": 53.25
+    },
+    "2024Q3": {
+     "n": 24,
+     "net_pct": 0.2
+    },
+    "2024Q4": {
+     "n": 43,
+     "net_pct": 8.17
+    },
+    "2025Q1": {
+     "n": 153,
+     "net_pct": -140.63
+    },
+    "2025Q2": {
+     "n": 237,
+     "net_pct": 63.69
+    }
+   },
+   "top3_bp": [
+    4520.5,
+    3628.4,
+    2530.0
+   ],
+   "top3_days": {
+    "2025-04-23": 72.38,
+    "2025-05-09": 57.88,
+    "2024-05-23": 42.04
+   }
+  },
+  "K5_mkt_H60": {
+   "n": 646,
+   "days": 69,
+   "net_sum_pct": -92.94,
+   "mean_bp": -14.4,
+   "median_bp": -56.7,
+   "win": 0.429,
+   "pf": 0.893,
+   "net_ex_top3_pct": -176.33,
+   "day_t": -0.68,
+   "stops": 227,
+   "fill_rate": 1.0,
+   "pass": false,
+   "gross_mean_bp": -0.3,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 43,
+     "net_pct": 19.79
+    },
+    "1000PEPEUSDT": {
+     "n": 58,
+     "net_pct": 17.54
+    },
+    "AI16ZUSDT": {
+     "n": 23,
+     "net_pct": -0.92
+    },
+    "BOMEUSDT": {
+     "n": 49,
+     "net_pct": -11.46
+    },
+    "CHILLGUYUSDT": {
+     "n": 33,
+     "net_pct": -2.52
+    },
+    "DOGEUSDT": {
+     "n": 49,
+     "net_pct": -4.25
+    },
+    "FARTCOINUSDT": {
+     "n": 16,
+     "net_pct": 4.1
+    },
+    "GOATUSDT": {
+     "n": 41,
+     "net_pct": -9.84
+    },
+    "GRIFFAINUSDT": {
+     "n": 21,
+     "net_pct": -18.98
+    },
+    "JELLYJELLYUSDT": {
+     "n": 10,
+     "net_pct": 15.19
+    },
+    "MELANIAUSDT": {
+     "n": 21,
+     "net_pct": -9.73
+    },
+    "MEWUSDT": {
+     "n": 30,
+     "net_pct": -16.48
+    },
+    "MOODENGUSDT": {
+     "n": 44,
+     "net_pct": -50.18
+    },
+    "MYROUSDT": {
+     "n": 34,
+     "net_pct": 2.3
+    },
+    "PENGUUSDT": {
+     "n": 18,
+     "net_pct": -22.07
+    },
+    "PNUTUSDT": {
+     "n": 28,
+     "net_pct": -32.72
+    },
+    "POPCATUSDT": {
+     "n": 26,
+     "net_pct": -10.51
+    },
+    "TRUMPUSDT": {
+     "n": 31,
+     "net_pct": 24.47
+    },
+    "VINEUSDT": {
+     "n": 16,
+     "net_pct": 14.17
+    },
+    "WIFUSDT": {
+     "n": 42,
+     "net_pct": 0.73
+    },
+    "ZEREBROUSDT": {
+     "n": 13,
+     "net_pct": -1.57
+    }
+   },
+   "per_quarter": {
+    "2024Q2": {
+     "n": 35,
+     "net_pct": 89.23
+    },
+    "2024Q3": {
+     "n": 34,
+     "net_pct": 9.92
+    },
+    "2024Q4": {
+     "n": 61,
+     "net_pct": -31.09
+    },
+    "2025Q1": {
+     "n": 181,
+     "net_pct": -93.38
+    },
+    "2025Q2": {
+     "n": 335,
+     "net_pct": -67.62
+    }
+   },
+   "top3_bp": [
+    4069.1,
+    2707.4,
+    1562.7
+   ],
+   "top3_days": {
+    "2025-04-23": 56.33,
+    "2024-06-18": 34.73,
+    "2024-05-23": 29.18
+   }
+  },
+  "K5_mkt_H120": {
+   "n": 634,
+   "days": 69,
+   "net_sum_pct": -87.15,
+   "mean_bp": -13.7,
+   "median_bp": -143.6,
+   "win": 0.391,
+   "pf": 0.913,
+   "net_ex_top3_pct": -169.08,
+   "day_t": -0.55,
+   "stops": 285,
+   "fill_rate": 1.0,
+   "pass": false,
+   "gross_mean_bp": 0.5,
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 42,
+     "net_pct": 15.29
+    },
+    "1000PEPEUSDT": {
+     "n": 57,
+     "net_pct": 32.01
+    },
+    "AI16ZUSDT": {
+     "n": 23,
+     "net_pct": -0.97
+    },
+    "BOMEUSDT": {
+     "n": 47,
+     "net_pct": -21.99
+    },
+    "CHILLGUYUSDT": {
+     "n": 33,
+     "net_pct": 9.02
+    },
+    "DOGEUSDT": {
+     "n": 47,
+     "net_pct": -8.35
+    },
+    "FARTCOINUSDT": {
+     "n": 16,
+     "net_pct": 14.94
+    },
+    "GOATUSDT": {
+     "n": 41,
+     "net_pct": -5.67
+    },
+    "GRIFFAINUSDT": {
+     "n": 21,
+     "net_pct": -16.42
+    },
+    "JELLYJELLYUSDT": {
+     "n": 10,
+     "net_pct": 39.94
+    },
+    "MELANIAUSDT": {
+     "n": 21,
+     "net_pct": -8.79
+    },
+    "MEWUSDT": {
+     "n": 30,
+     "net_pct": -33.64
+    },
+    "MOODENGUSDT": {
+     "n": 42,
+     "net_pct": -42.71
+    },
+    "MYROUSDT": {
+     "n": 34,
+     "net_pct": 15.64
+    },
+    "PENGUUSDT": {
+     "n": 17,
+     "net_pct": -26.6
+    },
+    "PNUTUSDT": {
+     "n": 28,
+     "net_pct": -39.29
+    },
+    "POPCATUSDT": {
+     "n": 24,
+     "net_pct": -4.88
+    },
+    "TRUMPUSDT": {
+     "n": 30,
+     "net_pct": -6.88
+    },
+    "VINEUSDT": {
+     "n": 16,
+     "net_pct": 18.75
+    },
+    "WIFUSDT": {
+     "n": 42,
+     "net_pct": -15.67
+    },
+    "ZEREBROUSDT": {
+     "n": 13,
+     "net_pct": -0.88
+    }
+   },
+   "per_quarter": {
+    "2024Q2": {
+     "n": 35,
+     "net_pct": 88.71
+    },
+    "2024Q3": {
+     "n": 34,
+     "net_pct": 1.46
+    },
+    "2024Q4": {
+     "n": 57,
+     "net_pct": -10.6
+    },
+    "2025Q1": {
+     "n": 180,
+     "net_pct": -150.11
+    },
+    "2025Q2": {
+     "n": 328,
+     "net_pct": -16.61
+    }
+   },
+   "top3_bp": [
+    3590.8,
+    2485.6,
+    2116.9
+   ],
+   "top3_days": {
+    "2025-05-09": 43.76,
+    "2024-06-18": 40.43,
+    "2024-05-23": 40.1
+   }
+  }
+ }
+}

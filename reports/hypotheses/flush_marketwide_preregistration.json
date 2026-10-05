@@ -1,0 +1,23 @@
+{
+  "hypothesis": "H-FLUSH-MW: buying meme-perp flushes only when they are market-wide (many coins flushing together) is profitable after costs",
+  "registered": "2026-10-05",
+  "registered_before_computing": true,
+  "origin": "Inferred, untested lead from reports/failures/agent_flush.md: the busiest market-wide flush days in TRAIN were net positive while idiosyncratic flushes lost. Because it came from exploring train, train results are optimistic; validation is the real test.",
+  "parent": "flush_q2.5_* configs in research/observations/evidence_flush_train.json (all failed)",
+  "universe": "same 21 train coins / 22 validation coins as agent_flush (flush_fetch.UNIVERSE, PUMPUSDT only after 2025-07-10)",
+  "coin_flush": "per coin, at OI snapshot time s (metrics stamp + 5 min): z_OI <= -2.5 and z_P <= -2.5 with 30-day trailing sd strictly before s (identical to flush_sim.signals)",
+  "market_wide_rule": "a flush of coin c at snapshot time s is ELIGIBLE iff the number of distinct universe coins (including c) with a coin_flush at a snapshot time in (s - 30 min, s] is >= K. Only snapshots <= s are counted, all of which are visible at decision time s + 1 min (point in time). Coins that flushed earlier in the window before the count reached K are NOT entered retroactively.",
+  "entry": "T0 = s + 1 min; 'lim0.3%': resting bid at open(T0) * (1 - 0.003) for 5 one-minute bars, fills only if a bar low is strictly below; 'mkt': taker buy at open(T0) + 3 bp slippage",
+  "exit": "taker after H minutes from the fill bar, -3% stop checked from the fill bar (conservative), 3 bp slippage",
+  "costs": "HL tier 0 maker 1.5 bp / taker 4.5 bp, 5 bp venue-mismatch haircut per round trip, HL hourly funding (Binance settlements for DOGE/1000PEPE)",
+  "position_rule": "one position per coin; signals while a position or order is live are skipped",
+  "configs": [
+    "K3_lim0.3%_H60", "K3_lim0.3%_H120", "K3_mkt_H60", "K3_mkt_H120",
+    "K5_lim0.3%_H60", "K5_lim0.3%_H120", "K5_mkt_H60", "K5_mkt_H120"
+  ],
+  "n_configs": 8,
+  "bar": "n >= 50, net sum > 0, PF > 1.2, net with the 3 best trades removed > 0",
+  "splits": {"train": "<= 2025-06-30", "validation": "2025-07-01 .. 2026-03-31", "holdout": ">= 2026-04-01, never examined"},
+  "validation_protocol": "only configs passing the full bar on train are scored, once, on validation with the identical rule; no changes after seeing train",
+  "script": "scripts/research/flush_marketwide.py"
+}

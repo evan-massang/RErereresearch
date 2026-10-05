@@ -1,0 +1,58 @@
+{
+ "hypothesis": "H-FFDIFF-MAKER (ffdiff_maker)",
+ "frozen_at_utc": "2026-10-05T04:17:47.811029+00:00",
+ "parent": "H-FFDIFF iteration 2 (reports/failures/agent_ffdiff.md); failing run research/observations/evidence_ffdiff_train_slip5_iter2.json (L72 X40 flip stop40: n=140, net +0.033, PF 1.07, ex-top3 -0.044 at 39 bp taker round trip)",
+ "rationale": "Execution-only change. The iteration-2 signal collected ~54 bp funding per trade vs 39 bp taker costs; cost is the binding margin besides one liquidation. Maker entry/exit (coordinator request) attacks the cost side without touching the signal.",
+ "configs": [
+  {
+   "key": "L72_X40_Z14_lev1_flip_stop40_maker",
+   "L_h": 72,
+   "X_ann": 0.4,
+   "Z_days": 14,
+   "lev": 1,
+   "exit": "flip",
+   "stop": 0.4
+  },
+  {
+   "key": "L24_X40_Z14_lev1_flip_stop40_maker",
+   "L_h": 24,
+   "X_ann": 0.4,
+   "Z_days": 14,
+   "lev": 1,
+   "exit": "flip",
+   "stop": 0.4
+  },
+  {
+   "key": "L72_X80_Z14_lev1_flip_stop40_maker",
+   "L_h": 72,
+   "X_ann": 0.8,
+   "Z_days": 14,
+   "lev": 1,
+   "exit": "flip",
+   "stop": 0.4
+  }
+ ],
+ "signal_and_exit": "Unchanged from scripts/research/ffdiff_sim.py iteration 2: 4h decision clock; enter if s*D_L>=X and s*D_24>=X; exit signal when s*D_L<0 (flip) or held >= 14 d; pair stop when either leg's adverse close-to-entry move >= 40% (4h close); per-leg liquidation on 4h high/low with mm_HL=1/(2*maxLeverage), mm_BN=5%.",
+ "execution": {
+  "fees": {
+   "HL_maker": "0.015% tier 0, https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees (fetched 2026-10-05, shows 0.045% taker / 0.015% maker)",
+   "BN_maker": "0.0200% regular user USDS-M, https://www.binance.com/en/fee/futureFee (page is JS-gated from here, HTTP 202; value from the published schedule, not re-verified live)",
+   "HL_taker": "0.045%",
+   "BN_taker": "0.050%"
+  },
+  "resolution": "1h. 4h bars are too coarse: the 1-hour leg-completion rule cannot be judged inside a 4h bar. Binance 1h klines from data.binance.vision monthly archive. HL candleSnapshot serves only the latest 5000 candles (1h reaches back only to ~2026-03, i.e. none of train), so the HL leg's 1h path is proxied by the Binance 1h path relative to the decision close, with a buffer m = 0.44% = p99 of |HL/BN-1| on pooled train 4h closes (n=58,588; p50 0.06%, p90 0.19%).",
+  "maker_entry_and_signal_exit": "At decision boundary T post a maker limit on each leg at that venue's 4h close at T (proxy for the touch). A leg fills only if the 1h bar [T,T+1h) trades strictly through the limit: BN buy if BN low < limit, BN sell if BN high > limit; HL buy if BN_low/BN_T - 1 < -m, HL sell if BN_high/BN_T - 1 > m. Fill price = limit, plus 5 bp adverse-selection haircut, plus maker fee.",
+  "one_leg_filled": "The unfilled leg is completed as taker at the next 1h bar [T+1h,T+2h) worst price (high for a buy, low for a sell; HL: HL_T * BN_worst/BN_T * (1 +/- m)) plus 5 bp, plus taker fee.",
+  "neither_filled_entry": "No trade; the coin may signal again at the next 4h boundary.",
+  "neither_filled_exit": "Both legs completed as taker at the next 1h bar worst price plus 5 bp plus taker fee (an exit must happen).",
+  "urgent_exits": "Pair stop, split end and data gap exit as taker at the 4h close plus 5 bp plus taker fee (as before); liquidation unchanged (leg loses its margin, other leg taker at the 4h close + 5 bp).",
+  "funding": "Earned from prints after the fill hour: HL prints with floor-hour > T+1h, BN prints > T (BN settles on 4h/8h boundaries)."
+ },
+ "splits": {
+  "train": "entries < 2025-07-01",
+  "validation": "2025-07-01..2026-03-31, run ONCE only for configs passing the full bar on train",
+  "holdout": ">= 2026-04-01, never examined"
+ },
+ "bar": "n>=50, net>0, PF>1.2, net>0 without the 3 best trades",
+ "is_synthetic": false
+}
