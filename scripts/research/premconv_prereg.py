@@ -1,0 +1,93 @@
+"""H-PREMCONV: write the pre-registration (before any P&L is computed).
+
+    python scripts/research/premconv_prereg.py
+Writes reports/hypotheses/premconv_preregistration.json (refuses to overwrite).
+"""
+import datetime as dt
+import json
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+OUT = ROOT / "reports/hypotheses/premconv_preregistration.json"
+
+configs = []
+for sig in ("PI", "BAS"):
+    for extra in (0.0, 0.005):
+        for ex_thr, hold_h in ((0.0005, 4), (0.0005, 24), (0.0020, 24)):
+            key = f"{sig}_B{'+50' if extra else '0'}_X{int(ex_thr*1e4)}_H{hold_h}"
+            configs.append({"key": key, "signal": sig, "entry_extra_over_B": extra,
+                            "exit_signal_le": ex_thr, "max_hold_h": hold_h})
+assert len(configs) == 12
+
+prereg = {
+    "hypothesis": "H-PREMCONV (perp-spot premium-spike convergence, short perp + long spot)",
+    "frozen_at_utc": dt.datetime.now(dt.timezone.utc).isoformat(),
+    "source_lead": "sources/leads/documented_edges_round5.md, 'Idea 3. Premium-spike convergence' (task calls it idea 4); "
+                   "He, Manela, Ross, von Wachter, arXiv 2212.06888 v6 (threshold rule: open when spread exceeds the trading-cost "
+                   "bound, close when it returns); Binance funding/premium-index FAQ "
+                   "https://www.binance.com/en/support/faq/introduction-to-binance-futures-funding-rates-360033525031",
+    "status_at_freeze": "No P&L, price path or exit outcome has been computed. Only one sample month of DOGEUSDT files "
+                        "(2025-03) was opened to check file formats.",
+    "splits": {"train": "2023-01-01 .. 2025-06-30 (entries)", "validation": "2025-07-01 .. 2026-03-31",
+               "holdout": "2026-04-01 onward: never downloaded, never examined",
+               "boundary_rule": "any position still open at the last minute of its split is force-closed at that minute's close "
+                                "(both legs, same cost model), so no train trade reads validation prices and no validation trade "
+                                "reads holdout prices"},
+    "universe": {
+        "rule": "For each calendar month M, the top 30 Binance USDT-margined perpetual symbols by summed quote volume in month M-1 "
+                "(data.binance.vision futures/um/monthly/klines/<SYM>/1d), restricted to symbols that (a) have a Binance spot USDT "
+                "pair (same base, or base with a 1000/1000000/1M multiplier prefix mapped to the spot base with that multiplier), "
+                "(b) have a spot 1d archive file for M-1 with >= 28 daily rows and a perp 1d file for M-1 with >= 28 rows "
+                "(listed >= ~30 days on both), (c) are not stablecoin/fiat bases (USDC, FDUSD, TUSD, BUSD, USDP, DAI, EUR, AEUR, "
+                "USDE, PYUSD, USD1). Memes are included. Point in time: uses only M-1 data.",
+        "missing_data": "if a member's premiumIndexKlines, perp or spot 1m file for M is missing, it is dropped for M (no "
+                        "replacement) and the drop is reported",
+    },
+    "signals": {
+        "PI": "close of the 1m premiumIndexKlines bar (futures/um/monthly/premiumIndexKlines/<SYM>/1m); Binance's impact-price "
+              "premium over its multi-venue index",
+        "BAS": "same-minute Binance close basis: perp_close / (spot_close * multiplier) - 1 (the tradable venue pair)",
+    },
+    "costs": {
+        "fees": {"spot_taker": 0.0010, "perp_taker": 0.0005,
+                 "spot_source": "Binance spot fee schedule, regular user 0.100% maker/taker, https://www.binance.com/en/fee/schedule "
+                                "(as cited in documented_edges_round5.md, fetched 2026-10-05)",
+                 "perp_source": "Binance FAQ 360033544231, USDS-M regular user taker 0.05%, "
+                                "https://www.binance.com/en/support/articles/360033544231 (as cited in documented_edges_round5.md)",
+                 "round_trip_fee": 0.0030, "bnb_discount": "not applied in the primary run"},
+        "slippage_per_fill_by_liquidity": {
+            "liquidity_measure": "ADV = min(spot, perp) mean daily quote volume over the 7 full UTC days before the entry day (1m kline quote_volume, point in time)",
+            ">= $100M": 0.0003, "$20M-100M": 0.0005, "$2M-20M": 0.0015, "< $2M": "no trade",
+            "applied": "4 fills per round trip (2 legs x entry/exit); each fill price moved adversely by the tier slippage"},
+        "entry_bound_B": "B = round-trip fees 0.30% + 4 x slippage + 0.10% => 0.52% (>=$100M), 0.60% ($20-100M), 1.00% ($2-20M)",
+        "funding": "funding prints (futures/um/monthly/fundingRate) with calc_time in (entry fill, exit fill] are credited to the short "
+                   "perp as +rate x notional (negative rates debit)",
+    },
+    "trade_rule": {
+        "direction": "positive premium only: short perp, buy spot, equal notional, perp 1x isolated (capital = 2 x notional). "
+                     "The negative-premium mirror (short spot via margin borrow) is EXCLUDED: borrow availability and rates for the "
+                     "universe are not in the public archive and cannot be modelled point in time.",
+        "entry": "onset at signal bar t: signal_t >= B + entry_extra and signal_{t-1} < B + entry_extra; symbol in universe for t's month; "
+                 "ADV tier tradable; no open position in the symbol; >= 60 min since the previous exit in the symbol",
+        "fill": "both legs at the OPEN of bar t+1+L (L = latency in minutes), adjusted by slippage, plus taker fees",
+        "exit": "first of: signal_close <= exit_signal_le at bar u; held >= max_hold_h (decision at the bar where hold reaches the limit); "
+                "perp 1m high >= entry perp fill x 1.30 (stop); exit fill at the OPEN of bar u+1+L on both legs. "
+                "Data gap (missing bar for the fill) => fill at the next available open of each leg. Split boundary: forced close.",
+        "pnl": "per trade, in units of one leg's notional: (spot_exit/spot_entry - 1) - (perp_exit/perp_entry - 1) + funding "
+               "- fees (taker on each fill's notional) with slippage inside the fill prices",
+        "latencies_reported": [0, 1, 2],
+        "primary_latency": 1,
+    },
+    "configs": configs,
+    "bar": "On per-trade net returns at the primary latency L=1: n >= 50, net sum > 0, profit factor > 1.2, net sum with the 3 best "
+           "trades removed > 0. L=0 and L=2 reported alongside.",
+    "selection": "Run all 12 configs on train. Only configs meeting the bar on train at L=1 are evaluated on validation, once. "
+                 "No re-tuning after seeing train beyond this grid; any new variant must be a new pre-registration with a "
+                 "stated rationale and the failing run as parent.",
+    "reporting": "event counts (onsets per config/tier), per-coin and per-quarter concentration, event-day clustering, decay "
+                 "across years, latency sensitivity, and a BNB-discount sensitivity (spot 0.075%) as secondary only",
+}
+if OUT.exists():
+    raise SystemExit(f"{OUT} exists; refusing to overwrite a frozen pre-registration")
+OUT.write_text(json.dumps(prereg, indent=1))
+print("wrote", OUT, len(configs), "configs")

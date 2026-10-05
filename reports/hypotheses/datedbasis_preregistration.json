@@ -1,0 +1,48 @@
+{
+ "hypothesis": "H-DATEDBASIS (datedbasis)",
+ "frozen_at_utc": "2026-10-05T04:34:14Z",
+ "source_lead": "sources/leads/documented_edges_round5.md, 'Idea 1. Dated-futures cash-and-carry held to delivery on Binance (H-DATEDBASIS)' (the task brief calls it idea 2). Lead evidence: Christin et al. 2022 (CMU), BIS WP 1087. Both document modality, not validated.",
+ "frozen_before_pnl": "Written after listing the data.binance.vision archive (symbol names only) and probing URL availability; no price, basis or P&L value had been loaded or computed.",
+ "universe": {
+  "usdm": "USDS-M quarterly delivery contracts BTCUSDT_YYMMDD, ETHUSDT_YYMMDD (every one in the archive). BUSD monthly contracts (BTCBUSD_210129/210226) are excluded: not quarterly.",
+  "coinm": "Every COIN-M quarterly <COIN>USD_YYMMDD in the archive (ADA, BCH, BNB, BTC, DOT, EOS, ETC, ETH, FIL, LINK, LTC, SOL, TRX, XRP) whose <COIN>USDT spot 1h klines exist on Binance spot over the trade window.",
+  "spot_leg": "<COIN>USDT on Binance spot (1h klines).",
+  "trade_unit": "each (coin, contract, weekly entry). Effective n by (coin, contract) cluster and by delivery cycle also reported."
+ },
+ "splits": {
+  "train": "contracts with delivery date <= 2025-06-30",
+  "validation": "delivery 2025-07-01..2026-03-31 (250926, 251226, 260327); run ONCE, only for configs passing the full bar on train",
+  "holdout": "delivery >= 2026-04-01; never downloaded or examined"
+ },
+ "decision": "Every Monday 00:00 UTC. Prices: 1h close of the bar ending at 00:00 (open 23:00 Sunday) of the dated future and of spot. Requires both bars present and futures bar volume > 0 (stale-quote guard); else no decision (counted as skipped).",
+ "window": "days to delivery D = (delivery 08:00 UTC - decision time)/1 day, 21 <= D <= 120.",
+ "signal": "b = (F/S - 1) * 365 / D",
+ "entry": "b - c_rt*365/D >= h_t + margin. h_t = latest FRED DTB3 3-month T-bill value dated strictly before the decision date (percent/100). c_rt = round-trip cost: spot 0.10%x2 + futures taker 0.05% entry + settlement 0.05% + 4 x slip (slip = 2 bp BTC/ETH, 5 bp others).",
+ "fill": "Next 1h close (bar 00:00-01:00 Monday) on both legs; spot bought at close*(1+slip), future sold at close*(1-slip); futures fill bar must have volume > 0, else no trade. One position per (coin, contract, entry week); entries in successive weeks for the same contract are separate trades (overlap acknowledged).",
+ "hold_and_settlement": "To delivery. Settlement price P = mean of the Binance index 1m closes over 07:00-08:00 UTC on the delivery date (Binance Square post 42880 says 'average price of the last hour'; other sources say 30 min, reported as sensitivity). Spot sold at the mean of spot 1m closes over the same window *(1-slip) (TWAP proxy). Settlement fee 0.05% (assumption; one secondary source says 0.015%).",
+ "pnl": {
+  "usdm": "q coins long spot, q short future. Capital K = spot cost + 1x isolated margin (= futures notional at entry). P&L = q(S_exit - S_in) + q(F_in - P) - fees. Margin event: if a future 1h high >= 1.6 x F_in, close both legs at that bar's close, future +50 bp, spot -slip, taker fees.",
+  "coinm": "Short face V USD of inverse contracts at F_in; buy Q = V/F_in coins spot (exact USD hedge, no convexity residual) and post them as COIN-M collateral. Capital K = Q*S_in*(1+spot fee). Coin balance at delivery = V/P - fees in coin; sold on spot. No margin event (coin-collateralised 1x short keeps a constant margin ratio). Contract-size rounding ignored.",
+  "per_trade_return": "r_raw = net USD P&L / K",
+  "primary_metric": "r_ex = r_raw - h_t * days_held/365 (excess over T-bills on ALL capital tied up: spot and margin). The bar is applied to r_ex.",
+  "annualised": "capital-time-weighted: sum(P&L)/sum(K*years held), for r_raw and r_ex; plus per-trade r*365/days."
+ },
+ "variants": {
+  "V1_base": {"margin": 0.02, "early_exit": false, "coins": "all"},
+  "V2_cash_hurdle": {"margin": 0.0, "early_exit": false, "coins": "all"},
+  "V3_high_hurdle": {"margin": 0.05, "early_exit": false, "coins": "all"},
+  "V4_base_early_exit": {"margin": 0.02, "early_exit": "on each later Monday with D_rem >= 7: if (F/S - 1)*365/D_rem < h_t, close both legs at the next 1h close (spot fee + slip, futures taker 0.05% + slip; no settlement fee)", "coins": "all"},
+  "V5_btc_eth_only": {"margin": 0.02, "early_exit": false, "coins": "BTC, ETH (USDS-M and COIN-M)"}
+ },
+ "costs": {
+  "spot": "0.10% per side, Binance regular user, https://www.binance.com/en/fee/schedule (as cited in round-5 doc, fetched 2026-10-05)",
+  "futures": "taker 0.05% per side, USDS-M and COIN-M regular user, https://www.binance.com/en/support/articles/360033544231",
+  "settlement": "0.05% (assumption, taker rate)",
+  "slippage": "2 bp per leg BTC/ETH, 5 bp others",
+  "capital": "T-bill (DTB3, https://fred.stlouisfed.org/graph/fredgraph.csv?id=DTB3) on all capital for the holding time"
+ },
+ "sensitivities_not_selection": ["slippage x2", "spot fee 0.075% (BNB)", "settlement on 30-min index average", "USDS-M margin 0.5x notional", "cluster-level bar by (coin, contract)", "by calendar quarter / coin", "without 2024Q4"],
+ "bar": "n>=50, net r_ex sum > 0, PF(r_ex) > 1.2, sum r_ex > 0 without the 3 best trades",
+ "selection": "All variants that pass the bar on train go to validation once. No other tuning.",
+ "is_synthetic": false
+}

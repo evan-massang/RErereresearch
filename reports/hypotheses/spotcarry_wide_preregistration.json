@@ -1,0 +1,56 @@
+{
+ "hypothesis": "H-SPOTCARRY-WIDE (spotcarry)",
+ "frozen_at_utc": "2026-10-05T04:33:31.932969+00:00",
+ "frozen_before": "any spot/perp price data was downloaded and before any P&L, funding sum per episode or exit outcome was computed",
+ "source": "sources/leads/documented_edges_round5.md idea 2 (labelled 'idea 1' in the task; rank 1 in section 2). Parent: H-FUNDCARRY 1x (reports/failures/agent_fundcarry.md), failing on validation n (6-13) and DEX leg cost ~1.2%/round trip; failing run research/observations/evidence_fundcarry_validation_lev1.json.",
+ "rationale": "Remove fundcarry's two failure causes: CEX spot leg on the same venue (0.30% fees + tier slippage per round trip vs ~1.2%) and a 471+-symbol universe instead of 19 coins to get n. Literature leads: Christin et al. 2022; BIS WP 1087; He et al. arXiv 2212.06888.",
+ "universe": "Every Binance USDT-margined perpetual in data.binance.vision futures/um/monthly/fundingRate whose spot pair exists in spot/monthly/klines. Spot pair = same symbol, or for prefixed perps (1000X, 10000X, 1000000X, 1MX) spot X with price multiplier k (perp price/k). Delisted symbols included (archive keeps them). Point in time: eligible at decision hour h only if the first 1h bar of BOTH spot and perp is <= h-30d and both have a bar for hour h. Liquidity: trailing-7d mean daily spot quote volume (USDT) from the spot kline column, using bars closed by h: >=20M -> tier 1 (5 bp slippage per leg per side), 2M-20M -> tier 2 (15 bp), <2M -> excluded.",
+ "signal": "S72(h) = sum of funding prints with fundingTime in (h-72h, h], annualised x (365*24/72). Latest print r with interval I hours (time since previous print, rounded to 1, 4 or 8) -> 8h-equivalent r*8/I.",
+ "entry": "Decision at each hour boundary h: no open position in the symbol, S72 >= F and latest print 8h-equivalent >= 0.0001. Fill at the close of the next 1h bar (the bar opening at h, closing at h+1h) on both legs. Buy Q = N/spot_entry spot units and short Q units of the perp (equal units, 1x isolated, perp margin = Q*perp_entry). Capital = spot notional + perp margin (~2N).",
+ "exit": "First of, checked each hour boundary h after entry: (a) S72(h) < 10%/yr -> fill both legs at the next 1h close; (b) h - entry_fill >= Z days -> fill at next 1h close; (c) stop: perp 1h bar high >= 1.5 x perp entry -> perp fills at max(1.5 x entry, bar open), spot at that bar's close (same bar); if bar open >= liquidation price (approx entry*2/(1+mmr), mmr 2.5%) the perp margin is lost; (d) delisting/data end: if either leg's data ends, close at the last common bar minus 2% of capital; (e) split end: force close at the last bar of the split. Re-entry allowed from the next decision hour after an exit (same as ffdiff).",
+ "funding_income": "Short receives rate x Q x perp close of the 1h bar ending at the print (mark-price proxy) for every print strictly after the entry fill time and at or before the exit fill time.",
+ "costs": {
+  "spot_taker": "0.100% per side, Binance regular user https://www.binance.com/en/fee/schedule (round-5 doc, fetched 2026-10-05); sensitivity 0.075% (BNB)",
+  "perp_taker": "0.050% per side, Binance USDS-M regular user, Binance FAQ 360033544231 (round-5 doc)",
+  "slippage": "per leg per side by liquidity tier at entry: 5 bp tier 1, 15 bp tier 2 (applied to entry and exit, 4 leg-sides); sensitivity x2",
+  "borrow": "none: spot is bought outright with cash, perp margin posted in USDT; no borrowing. Opportunity cost of capital not charged (reported separately as a T-bill hurdle note).",
+  "delisting_penalty": "2% of capital"
+ },
+ "pnl": "Per-episode return on capital = (Q*(spot_exit-spot_entry) - Q*(perp_exit-perp_entry) + funding - costs) / capital. Reported split into funding-only, basis/price, and costs.",
+ "configs": [
+  {
+   "key": "L72_F30_Z14_stop50",
+   "role": "primary (frozen round-5 rule)",
+   "L_h": 72,
+   "F_ann": 0.3,
+   "exit_ann": 0.1,
+   "Z_days": 14,
+   "stop": 0.5
+  },
+  {
+   "key": "L72_F50_Z14_stop50",
+   "role": "variant 1: fundcarry's 1x train-passing threshold",
+   "L_h": 72,
+   "F_ann": 0.5,
+   "exit_ann": 0.1,
+   "Z_days": 14,
+   "stop": 0.5
+  },
+  {
+   "key": "L72_F100_Z14_stop50",
+   "role": "variant 2: fundcarry's best train cell threshold",
+   "L_h": 72,
+   "F_ann": 1.0,
+   "exit_ann": 0.1,
+   "Z_days": 14,
+   "stop": 0.5
+  }
+ ],
+ "splits": {
+  "train": "entries up to 2025-06-30 23:00 UTC (positions force-closed at the boundary)",
+  "validation": "2025-07-01..2026-03-31, looked at once, only configs passing the bar on train",
+  "holdout": ">= 2026-04-01: never downloaded or examined"
+ },
+ "bar": "per-episode returns on capital: n >= 50, net > 0 (sum), PF > 1.2, net > 0 with the 3 best episodes removed. Also required to report: per quarter, per coin (top-3-coin share), by event day, decay over time, with/without 2024Q4.",
+ "no_tuning": "No parameter changes after seeing train P&L except a new pre-registered iteration with stated evidence-based rationale; cost sensitivities are reported, not selected on."
+}
