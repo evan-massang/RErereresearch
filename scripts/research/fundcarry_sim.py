@@ -182,8 +182,13 @@ def run(split, configs, dexes=(0.005,)):
 
 
 if __name__ == "__main__":
-    split = sys.argv[1]
-    coins, res = run(split, GRID, (0.005, 0.003, 0.01))
+    # usage: fundcarry_sim.py <split> <lev> [L,F,Z ...]
+    # Iteration 2 (rationale: at 2x, 22 of 141 train episodes of the best grid cell were liquidated and
+    # liquidations alone lost more than the whole config) reruns the same 12-cell grid at 1x isolated.
+    split, LEV = sys.argv[1], float(sys.argv[2])
+    STOP = 0.5 / LEV  # margin use >= 50% of initial margin
+    cfg = [tuple(float(v) if k == 1 else int(v) for k, v in enumerate(a.split(","))) for a in sys.argv[3:]] or GRID
+    coins, res = run(split, cfg, (0.005, 0.003, 0.01))
     for r in res:
         s = r["stats"]
         if s["n"]:
@@ -192,8 +197,8 @@ if __name__ == "__main__":
                   f"basis={s['basis_total']:+.3f} cost={s['cost_total']:.3f} win={s['win']:.2f} dd={s['max_dd']:.3f} "
                   f"worst={s['worst']['coin']}:{s['worst']['net']:+.3f}({s['worst']['reason']}) liq={s['liquidations']} "
                   f"pass={r['passes']}")
-    out = ROOT / f"research/observations/evidence_fundcarry_{split}.json"
-    out.write_text(json.dumps(dict(split=split, grid=GRID, exit_y=EXIT_Y, stop=STOP, lev=LEV,
+    out = ROOT / f"research/observations/evidence_fundcarry_{split}_lev{LEV:g}.json"
+    out.write_text(json.dumps(dict(split=split, grid=cfg, exit_y=EXIT_Y, stop=STOP, lev=LEV,
                                    perp_fee=PERP_FEE, perp_impact=PERP_IMPACT,
                                    coins={k: dict(venue=c["venue"], maxlev=c["maxlev"], hours=len(c["t"]),
                                                   first_ms=int(c["t"][0]), last_ms=int(c["t"][-1]),
