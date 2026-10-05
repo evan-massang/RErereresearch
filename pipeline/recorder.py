@@ -50,6 +50,10 @@ PUMPPORTAL_WS = "wss://pumpportal.fun/api/data"
 WSOL = "So11111111111111111111111111111111111111112"
 PUMP_PROGRAM = "6EF8rrecthR5Dkzon8Nwu78hRvfCKubJ14M5uBEwF6P"
 PUMPSWAP_PROGRAM = "pAMMBay6oceH9fJKBRHGP5D4bD4sWpmSwMn52FMfXEA"
+# creator-fee events kept raw for later study (discriminators from pump-fun/pump-public-docs IDLs):
+# curve CollectCreatorFeeEvent, PumpSwap CollectCoinCreatorFeeEvent, fee-sharing DistributeCreatorFeesEvent
+FEE_EVENT_DISCS = {bytes([122, 2, 127, 1, 14, 191, 12, 175]), bytes([232, 245, 194, 238, 234, 218, 58, 89]),
+                   bytes([165, 55, 129, 112, 4, 179, 202, 40])}
 LAUNCHLAB_PROGRAM = "LanMV9sAd7wArD4vJFi2qDdfnVhFxYSUg6eADduJ3uj"   # Raydium LaunchLab (bonk.fun etc.)
 
 
@@ -157,6 +161,7 @@ class Recorder:
         self.amm = Sink("pumpswap_raw")
         self.lab = Sink("launchlab_raw")
         self.live = Sink("pump_live")
+        self.fees = Sink("fee_events")
         self.token_watch_s = token_watch_s
         self.max_tokens = max_tokens
         self.watched: dict[str, float] = {}         # mint -> watch until (monotonic)
@@ -241,6 +246,12 @@ class Recorder:
                                 continue
                             data = line[14:]
                             row = {"recv": recv, "slot": slot, "sig": v["signature"]}
+                            try:
+                                if base64.b64decode(data[:12])[:8] in FEE_EVENT_DISCS:
+                                    self.fees.write({"recv": recv, "slot": slot, "sig": v["signature"], "program": program,
+                                                     "data": data})
+                            except ValueError:
+                                pass
                             ev = decode_pump_event(data) if decode else None
                             if ev is not None:
                                 row.update(ev)
@@ -388,7 +399,7 @@ class Recorder:
         while time.monotonic() < self.stop_at:
             path.write_text(json.dumps({**self.status, "watched_tokens": len(self.watched),
                                         "at": datetime.now(timezone.utc).isoformat()}))
-            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live):
+            for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live, self.fees):
                 sink._fh and sink._fh.flush()
             await asyncio.sleep(30)
 
@@ -399,7 +410,7 @@ class Recorder:
                              self.chain_logs(PUMPSWAP_PROGRAM, self.amm, decode=False),
                              self.chain_logs(LAUNCHLAB_PROGRAM, self.lab, decode=False))
         await asyncio.sleep(0)
-        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live):
+        for sink in (self.kol, self.pp, self.pump, self.amm, self.tw, self.lab, self.live, self.fees):
             sink.close()
 
 
