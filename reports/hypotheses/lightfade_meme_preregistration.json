@@ -1,0 +1,159 @@
+{
+ "hypothesis": "H-LIGHTFADE-MEME",
+ "parent": "H-LIGHTFADE",
+ "parent_file": "reports/hypotheses/lightfade_preregistration.json",
+ "parent_file_sha256": "338e9f4d683a6e536c1bcbca9a94d18037de077e825b0035ccad15e4df29bdb5",
+ "written_at_utc": "2026-10-05 ~09:35Z (container clock, which runs ~2.8 s slow per reports/paper/hllag_forward_audit.md). Written BEFORE scripts/research/memelag_recorder.py existed or recorded anything; the git commit that first contains this file is authoritative for the time.",
+ "written_before_data": "Written before any data for these coins was recorded by this project's memelag recorder. The author has opened no recorded price data (no parquet/part file under data/raw/web/multivenue/, data/raw/web/memelag/ or any HL collector directory). The only live market data seen were one-off top-of-book snapshots (one mid per coin per venue, 2026-10-05 ~09:30Z) used solely to verify symbol mapping and price scale (Lighter/Binance mid ratios 0.999-1.002, so the 1000x contracts are on the same scale on all three venues); no returns, triggers or outcomes were computed.",
+ "rationale": "Not an iteration on outcomes: no H-LIGHTLAG/H-LIGHTFADE result has been computed. The scope change to memecoins only (reports/scope_memecoins_20261005.md) leaves the parent with 2 coins (PUMP, DOGE), so n < 50 at validation is likely. This hypothesis applies the parent's rules unchanged to a separately recorded memecoin universe to get enough trades.",
+ "identical_to_parent": "statement, rule, grid, fill model, fees, size, position rules, gaps, kill tests, selection rule, validation bar and reporting are copied verbatim from the parent file; ONLY universe, data/recorder/T0/split and the pooled-coin count in kill-test wording differ. Rule-pointer additions only: rule.fees names this run's fee snapshot file. In copied text, 'H-LIGHTFADE is KILLED' / 'H-LIGHTFADE' means H-LIGHTFADE-MEME (the parent and this hypothesis are killed, selected and validated independently).",
+ "statement": "When Lighter's mid deviates from the Binance-implied fair value (Binance mid x a trailing point-in-time Lighter/Binance basis) by >= d bp for >= 200 ms while the Binance mid has been flat over the prior w seconds, a Lighter Standard-account taker order on the reverting side (toward fair value), arriving after our latency plus Lighter's 300 ms taker speed bump, and exited when the deviation has closed to <= d/4 (or at max hold T, or on a 2d stop), is profitable after crossing the recorded spread (0 fee).",
+ "source": "sources/leads/documented_edges_round7.md idea 4 (H-LIGHTFADE). Mechanism: Lighter-local flow (retail market orders, liquidation sweeps on a thin book) dislocates the Lighter mid while the leader (Binance) is quiet; short-horizon liquidity provision earns a reversal premium (Nagel RFS 2012, DATA) and cross-venue deviations revert (Makarov-Schoar JFE 2020, DATA). Parent failure that motivates the taker form: H-HLANCHOR (resting quotes adversely selected, markout -2.5 to -4.4 bp at 30 s).",
+ "universe": {
+  "coins": [
+   "WIF",
+   "1000BONK",
+   "FARTCOIN",
+   "PENGU",
+   "TRUMP",
+   "SPX",
+   "1000PEPE",
+   "1000SHIB",
+   "POPCAT",
+   "USELESS",
+   "1000FLOKI"
+  ],
+  "binance_symbols": {
+   "WIF": "WIFUSDT",
+   "1000BONK": "1000BONKUSDT",
+   "FARTCOIN": "FARTCOINUSDT",
+   "PENGU": "PENGUUSDT",
+   "TRUMP": "TRUMPUSDT",
+   "SPX": "SPXUSDT",
+   "1000PEPE": "1000PEPEUSDT",
+   "1000SHIB": "1000SHIBUSDT",
+   "POPCAT": "POPCATUSDT",
+   "USELESS": "USELESSUSDT",
+   "1000FLOKI": "1000FLOKIUSDT"
+  },
+  "lighter_market_ids_at_2026-10-05": {
+   "WIF": 5,
+   "1000BONK": 18,
+   "FARTCOIN": 21,
+   "PENGU": 47,
+   "TRUMP": 15,
+   "SPX": 42,
+   "1000PEPE": 4,
+   "1000SHIB": 17,
+   "POPCAT": 23,
+   "USELESS": 66,
+   "1000FLOKI": 19
+  },
+  "hyperliquid_coins_recorded_not_scored": {
+   "WIF": "WIF",
+   "1000BONK": "kBONK",
+   "FARTCOIN": "FARTCOIN",
+   "PENGU": "PENGU",
+   "TRUMP": "TRUMP",
+   "SPX": "SPX",
+   "1000PEPE": "kPEPE",
+   "1000SHIB": "kSHIB",
+   "POPCAT": "POPCAT",
+   "USELESS": "USELESS",
+   "1000FLOKI": "kFLOKI"
+  },
+  "selection": {
+   "candidate_list": "Fixed list from the task brief / reports/scope_memecoins_20261005.md: WIF, BONK, FARTCOIN, PENGU, TRUMP, SPX, PEPE, SHIB, POPCAT, MOODENG, MEW, GOAT, BRETT, TURBO, USELESS, FLOKI, NEIRO, MELANIA (+ PIPPIN, found on Lighter and Binance during the listing check). PUMP and DOGE are excluded here because the running multivenue recorder already covers them.",
+   "rule": "Keep a coin if Lighter public REST /api/v1/orderBooks (unauthenticated, 2026-10-05 ~09:29Z) lists it as an ACTIVE perp with a non-empty top of book, AND Binance USD-M fstream !bookTicker (observed 20 s, 749 symbols) carries a <X>USDT perp for it.",
+   "kept": [
+    "WIF",
+    "1000BONK",
+    "FARTCOIN",
+    "PENGU",
+    "TRUMP",
+    "SPX",
+    "1000PEPE",
+    "1000SHIB",
+    "POPCAT",
+    "USELESS",
+    "1000FLOKI"
+   ],
+   "excluded": {
+    "MOODENG": "not listed on Lighter",
+    "MEW": "not listed on Lighter",
+    "GOAT": "not listed on Lighter",
+    "BRETT": "not listed on Lighter",
+    "TURBO": "not listed on Lighter",
+    "NEIRO": "not listed on Lighter",
+    "MELANIA": "not listed on Lighter",
+    "PIPPIN": "listed on Lighter (market_id 135) but its ticker returned an empty book (no bid/ask) at the check",
+    "other Lighter symbols (WEN, LAUNCHCOIN, YZY, ANSEM, CASHCAT, 1000NOT, 1000TOSHI, AI16Z)": "not in the candidate list; WEN/LAUNCHCOIN/YZY/ANSEM/CASHCAT/AI16Z also have no Binance USDT perp, 1000TOSHI is inactive on Lighter"
+   },
+   "lighter_fee_at_check": "taker_fee 0.0000, maker_fee 0.0000 for all 11 kept markets (orderBooks REST)"
+  },
+  "pooling_with_PUMP_DOGE": "PUMP and DOGE (recorded by scripts/research/multivenue_recorder.py, T0 = 2026-10-05T07:19:14Z) are NOT pooled into this hypothesis. Reason: different recorder, different T0 and therefore different day-1/day-2 windows; pooling would mix train and validation periods. They remain scored only under H-LIGHTLAG / H-LIGHTFADE (memecoin-restricted universe PUMP, DOGE, per reports/scope_memecoins_20261005.md). No result from either hypothesis may be used to choose a config for the other."
+ },
+ "data": {
+  "recorder": "scripts/research/memelag_recorder.py -> data/raw/web/memelag/<table>_<YYYY-MM-DD-HH>.parquet, tables binance_bbo, lighter_bbo, lighter_trades, hl_bbo (hour = UTC hour of ts_us). Same compaction as multivenue (price changes coalesced at 50 ms, size-only changes at 500 ms).",
+  "fair_value_source": "binance bbo (fstream <sym>@bookTicker), clock = local receive time ts_us",
+  "execution_venue": "lighter bbo (ticker/<market_id>, readonly WS), clock = local receive time ts_us; lighter trades used for diagnostics only (e.g. share of triggers preceded by a liquidation trade)",
+  "clock_rule": "All decisions and fills use our local receive timestamps ts_us (microseconds, same container clock for every venue). Venue timestamps (exch_ts_ms) are NEVER mixed with local timestamps in scoring (lesson of reports/paper/hllag_forward_audit.md: the container clock is ~2.8 s slow and drifts, so local-vs-exchange comparisons are biased). A venue state 'at time t' is the last recorded row with ts_us <= t. Recorded prices can be up to ~60 ms stale and top sizes up to ~0.5 s stale (recorder compaction); this is accepted, not corrected. Hyperliquid bbo is recorded for later use and is NOT part of this hypothesis.",
+  "split": {
+   "T0": "launch time of the 48-h memelag recorder run: the 'start' line (start_ts_us) in data/raw/web/memelag/recorder.log. Rows before T0 (test runs, which go to the scratchpad, not this directory) are never scored.",
+   "day1_train": "[T0, T0+24h): exploratory; all 12 configs are run and ONE is selected by the selection rule",
+   "day2_validation": "[T0+24h, T0+48h): the selected config only, run ONCE The basis window may use day-1 prices from the 10 min before T0+24h (prices only, point-in-time; no day-1 outcome enters day 2).",
+   "forward": "after day 2, freeze the selected config (scoring-module sha256 + params + frozen_at) and score only data received after the freeze time (needs a later recorder run; until then the forward record is empty)",
+   "early_stop": "If the recorder stops before T0+48h (disk guard, crash), day 2 is whatever was recorded in [T0+24h, stop) and this is reported; if < 12 h of day 2 exist, the validation is INCONCLUSIVE, not re-run on later data with re-selection."
+  },
+  "gaps": "If either venue has no bbo row for a coin for > 10 s, no trigger may be taken for that coin until 10 min of clean data have rebuilt the basis window; a position whose exit falls in a gap is closed at the first state after the gap and flagged."
+ },
+ "rule": {
+  "mids": "mid = (bid+ask)/2 on each venue.",
+  "basis": "b(t) = median over the 1-s grid points s in [t-600 s, t) of mid_L(s)/mid_B(s) - 1 (states as of each whole second). Requires >= 300 valid grid points, else no trigger. Strictly prior data only (the current second is excluded).",
+  "fair_value": "F(t) = mid_B(t) * (1 + b(t)).",
+  "deviation": "D(t) = mid_L(t)/F(t) - 1, evaluated at every recorded bbo row of either venue for the coin.",
+  "trigger": "Let t0 be the first row time at which |D| >= d with a given sign, and D has kept that sign and |D| >= d at every recorded row of either venue in [t0, t0+200 ms]. Decision time t = t0 + 200 ms (persistence filter; a single stale print does not count). Binance-flat filter at t: |mid_B(t)/mid_B(t-w) - 1| < d/4. Side s = -sign(D(t)) (buy Lighter if it is below fair value, sell if above).",
+  "entry": "IOC taker on Lighter sent at t, fill time t_in = t + L_total (600 ms). Limit price fixed at t: for a buy, limit = F(t) * (1 - |D(t)|/2); for a sell, limit = F(t) * (1 + |D(t)|/2). It fills at the last recorded Lighter best ask (buy) / best bid (sell) at t_in if that price is within the limit; otherwise it is a SKIP (counted, reported: 'arrived after half the gap closed'). F(t) and b(t) are frozen for the life of the trade.",
+  "exit": "Monitoring starts at t_in. Exit decision at the first recorded row tau > t_in where (a) |mid_L(tau)/(mid_B(tau)*(1+b(t))) - 1| <= d/4 (target), or (b) s*(mid_L(tau)/(mid_B(tau)*(1+b(t))) - 1) <= -2d (stop: deviation widened to 2d against), or (c) tau = t_in + T (time stop). Exit is a Lighter market taker, fill time tau + L_total, at the last recorded Lighter opposite best at that time (no limit).",
+  "position_rules": "one position per coin; cooldown 10 s per coin after an exit fill; a trigger during an open position or cooldown is ignored (counted).",
+  "size": "target $1,000 notional. Entry size = min($1,000, displayed opposite top-of-book notional at t_in). If the displayed top notional is < $100 the trigger is SKIPPED and counted. Exit: size up to the displayed opposite top at the exit fill fills at that price; any excess fills one full spread (ask-bid at that time) worse.",
+  "fees": "Lighter Standard account: 0 maker / 0 taker, 300 ms taker speed bump (DOC, reports/hypotheses/multivenue_plan.md section 4; all 11 markets 0/0 at the 2026-10-05 check); the fee follows the hourly Lighter orderBooks metadata snapshot (data/raw/web/memelag/meta_lighter.jsonl). Spread is paid by the fill model; no zero-impact fills.",
+  "funding": "ignored (holds <= T + 0.6 s <= 30.6 s; Lighter funding is hourly)",
+  "pnl_unit": "USD per round trip; bp = USD / notional * 1e4",
+  "point_in_time": "Every quantity at decision time uses only rows with ts_us <= that time. No outcome, label or future state enters a decision."
+ },
+ "grid": {
+  "d_bp": [
+   6,
+   10,
+   15
+  ],
+  "w_s": [
+   2,
+   5
+  ],
+  "T_s": [
+   5,
+   30
+  ],
+  "L_total_ms": 600,
+  "n_configs": 12,
+  "latency_note": "L_total = our order path (~300 ms assumed, unmeasured) + Lighter Standard taker speed bump 300 ms (DOC). The selected config is also reported at 900 ms as a robustness line; it does not change selection."
+ },
+ "kill_tests_day1": {
+  "order": "Run and report BEFORE any grid P&L.",
+  "K1_trigger_count": "Count triggers (no position rules, before the IOC skip) for d=6, w=2 pooled over the 11 coins on day 1. If < 15, H-LIGHTFADE is KILLED for insufficient opportunity (leads-file threshold >= 15/day).",
+  "K2_reversion_vs_half_spread": "For all d=10, w=2 triggers on day 1 (no position rules, no IOC skip): R_h = s * (mid_L(t+0.6 s+h)/mid_L(t+0.6 s) - 1) in bp for h in {5 s, 30 s}; HS = mean Lighter half-spread (ask-bid)/(2*mid) in bp at t+0.6 s over the same triggers. If mean R_h <= mean HS at BOTH h = 5 s and h = 30 s, H-LIGHTFADE is KILLED regardless of the grid (the reversion left after our arrival does not pay even one half-spread; a round trip pays two). If fewer than 30 such triggers exist, K2 is run on d=6, w=2 instead and that substitution is reported.",
+  "K2_diagnostics_reported_not_scored": "mean R at +0.6 s measured from t (how much reverted before we arrive), the same for 900 ms, markout at 30 s split by whether a Lighter liquidation trade occurred in [t0-1 s, t], and by coin."
+ },
+ "selection_rule_day1": "Same as H-LIGHTLAG: among configs with n >= 30 round trips on day 1, select the one with the highest profit factor (ties: larger n). If no config has net USD > 0 and PF > 1.0 on day 1, H-LIGHTFADE is KILLED and day 2 is not run for it. The selected config must also show net USD > 0 with +0.5 bp extra cost per round trip; if it does not, the next-best config by the same rule that does is taken.",
+ "validation_day2": "Run the selected config once on day 2. Bar: n >= 50 round trips, net USD > 0, PF > 1.2, net without the top-3 trades > 0. If n < 50 the result is INCONCLUSIVE (not a pass); the config is frozen anyway and the forward record continues until n >= 50; no re-selection. A failure is written to reports/failures/.",
+ "reporting": "Report the kill tests first, then all 12 day-1 configs (n, net, mean bp, PF, skips by reason: IOC-limit, size, cooldown/open position, gap; exits by reason: target/stop/time), by coin, then the day-2 result, including losses.",
+ "no_changes": "No change to grid, trigger, basis, fill model, fees, universe, split, kill tests or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run).",
+ "changes_vs_leads_file_inherited_from_parent": [
+  "Universe dimension (A/B) replaced by the fixed 7-coin crypto universe the recorder covers on Lighter (universes A/B are only partly recorded); a lookback-window dimension w for the Binance-flat filter takes its place in the grid.",
+  "The leads file's 'skip if at arrival the book has already closed half the gap' is not knowable when the order is sent (the order is inside the 300 ms speed bump). It is implemented as an IOC limit price fixed at decision time (see rule.entry), which is point-in-time and implementable.",
+  "Latency fixed at L_total = 600 ms (no latency dimension), as in the task brief; 900 ms is reported as a robustness line only, not selectable."
+ ],
+ "equity_arm": "none (parent's H-LIGHTFADE-EQ arm dropped: memecoins only)"
+}
