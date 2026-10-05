@@ -1,0 +1,82 @@
+{
+ "hypothesis": "H-CLOSEDPROXY",
+ "status": "FROZEN pre-registration (written before any recorded price row of any recorder was opened)",
+ "written_at_utc": "2026-10-05T09:05Z (approximate; the git commit time that first contains this file is authoritative)",
+ "is_synthetic": false,
+ "written_before_data": "No recorded price data was opened. Seen before writing: (1) docstrings of scripts/research/twapxyz_bbo_recorder.py, multivenue_recorder.py, betalag_recorder.py; (2) their recorder.log / events.jsonl text (start lines, stats counters, connect events) and directory file listings (names, sizes); (3) the PUBLIC HL info endpoint {type: meta, dex: xyz} at 2026-10-05T09:01Z: universe names, isDelisted, growthMode, deployerFeeScale, lastFeeScaleChangeTime only (the `meta` request carries no prices). No bbo, trades, ctx/meta parquet, mid, oracle or candle value was looked at.",
+ "statement": "On trade[XYZ] (HL HIP-3 dex 'xyz'), when a Korea-linked perp whose home cash market is OPEN (external oracle) moves >= theta within W and a linked perp whose home market is CLOSED (internal EWMA oracle) has not followed (< theta/2 in the same direction), a $1k taker order on the closed-market perp in the leader's direction, filled at the recorded opposite best 300 ms later and held H, is profitable after the 0.9 bp/side growth-mode fee, the recorded spread and funding.",
+ "source": "sources/leads/documented_edges_round8.md idea 3 (H-CLOSEDPROXY). Deviations from that rule, all forced by what the running recorders capture, stated here before any data: (a) the leader-price dimension {xyz mid, xyz oraclePx} is DROPPED - oraclePx is only in the 5-min twapxyz meta snapshot, not tick-level; replaced by the trigger window W in {60 s, 300 s}; (b) the per-pair beta from 'trailing 10 sessions of 5-min returns' is DROPPED - no pre-T0 data may be used (xyz 5m candles back to 2026-09-17 lie in the reserved >= 2026-04-01 window, counts only) and the recording holds 1-2 sessions per configuration; the follower filter uses the EQLAG form (follower's own move < theta/2, leverage-normalised); (c) SKHY is added as a US-hours leader: the idea's mechanism text lists it as open in US hours, the frozen-map bullet omitted it.",
+ "prior": "Low-moderate. 4pillars (lead, not verbatim) 45/62 open-direction calls vs Blockworks (verbatim) 50.7% / 0.4 bp - information content of closed-market perps is contested; no intraday cross-session study found. Gross 4-8 bp vs ~2.5-4 bp cost if it exists.",
+
+ "universe_and_pairs": {
+  "xyz_names_checked_in_public_meta_2026-10-05T09:01Z": "xyz:SMSN, xyz:SKHX, xyz:SKHY, xyz:EWY, xyz:MU, xyz:SOXL all listed, not delisted, growthMode 'enabled', deployerFeeScale 1.0. Also listed but EXCLUDED: xyz:KR200, xyz:HYUNDAI (thin, lead OWN-PRECHECK $0.1M/$0.2M 24h), xyz:KORU, xyz:SMH, xyz:DRAM, xyz:EWT, xyz:TSM (not in the lead's frozen map; no new names added after the idea was written except SKHY as a leader).",
+  "recorded": "All six are among the 110 non-delisted xyz coins subscribed by twapxyz_bbo_recorder.py (log: 'start: 110 xyz coins'; public meta at 09:01Z also shows 110 non-delisted of 131, and the recorder takes exactly the non-delisted universe). multivenue_recorder also records xyz:MU bbo (diagnostic only, not used).",
+  "leverage_factor_lambda": {"SOXL": 3, "SMSN": 1, "SKHX": 1, "SKHY": 1, "EWY": 1, "MU": 1, "note": "SOXL is a 3x leveraged semiconductor ETF; its returns are divided by 3 in trigger and filter. Structural constant, not tuned."},
+  "session_US": {
+   "hours_utc": "13:30-20:00 UTC on NYSE trading days (EDT; NYSE regular hours). 2026-10-05..10-08 are all NYSE trading days.",
+   "leaders": ["EWY", "MU", "SOXL", "SKHY"],
+   "followers": ["SMSN", "SKHX"],
+   "pairs": 8,
+   "follower_closed_check": "KRX regular session 00:00-06:30 UTC never overlaps 13:30-20:00 UTC, so the followers are always closed here."
+  },
+  "session_KR": {
+   "hours_utc": "00:00-06:30 UTC on KRX trading days (KRX regular 09:00-15:30 KST). In the split window these are 2026-10-06 (day 1), 2026-10-07 (day 2), 2026-10-08 (forward). The KRX calendar (free metadata) must be checked for these dates BEFORE scoring and the result written to the run report; a date that is a KRX holiday has no KR session (2026-10-09 Hangul Day is outside the recording). The KRX session of 2026-10-05 is before T0 and never scored.",
+   "leaders": ["SMSN", "SKHX"],
+   "followers": ["EWY", "SKHY", "MU", "SOXL"],
+   "pairs": 8,
+   "follower_closed_check": "00:00-06:30 UTC = 20:00-02:30 ET: NYSE regular session closed. US overnight/extended trading is treated as CLOSED (assumption: xyz uses its internal oracle outside regular hours; flagged as a risk, not verified)."
+  },
+  "no_other_times": "Outside the two sessions no trigger is taken."
+ },
+
+ "data": {
+  "recorder": "scripts/research/twapxyz_bbo_recorder.py (pid 14520, started 2026-10-05T07:40:53Z per recorder.log, --hours 75, end ~2026-10-08T10:40:53Z) -> data/raw/web/twapxyz/bbo_<YYYY-MM-DD-HH>.parquet (ts_us, coin, bid, ask, bid_sz, ask_sz, exch_ts_ms) and meta_<...>.parquet (5-min: growth_mode, fee_scale, funding, ...).",
+  "sampling": "bbo is SAMPLED every 2 s; a row is written for a coin only if its bid or ask PRICE changed since its last row. A state at time t = last row with ts_us <= t. A coin with no new row is assumed unchanged (not a gap). Recorded sizes are the sizes at the moment of the written row; pure size changes are NOT written, so a recorded size can be arbitrarily stale while price is unchanged.",
+  "clock_rule": "Local receive time ts_us only (exch_ts_ms runs ~2.6 s ahead; diagnostics only).",
+  "split": {
+   "T0": "2026-10-05T07:40:53Z (twapxyz recorder.log 'start' line). Rows before T0 never exist/are never scored.",
+   "day1_train": "[T0, T0+24h) = [2026-10-05T07:40:53Z, 2026-10-06T07:40:53Z): contains US session 2026-10-05 and KR session 2026-10-06. Kill test + all 12 configs; ONE config selected. Trades entered in day 1 whose exit would fall after T0+24h are closed by a taker exit at T0+24h (flagged), so no day-2 price is used in training.",
+   "day2_validation": "[T0+24h, T0+48h) = [2026-10-06T07:40:53Z, 2026-10-07T07:40:53Z): US session 2026-10-06 + KR session 2026-10-07. The selected config only, run ONCE.",
+   "forward": "Freeze after day 2 (module sha256 + params). Forward = [T0+48h, recorder end ~2026-10-08T10:40:53Z): US session 2026-10-07 + KR session 2026-10-08. Beyond that a new recorder is needed (NOT started by this pre-registration).",
+   "assignment": "A trade belongs to the window containing its trigger time t."
+  },
+  "gaps": "Feed gap = any interval between a websocket disconnect/error line and the next 'ws connected' line in data/raw/web/twapxyz/recorder.log, plus 10 s after reconnect, plus any interval > 10 s in which NO coin of the 110 has a bbo row (global stall). No trigger whose [t - W, t_in] overlaps a gap; a position whose exit falls in a gap is closed at the first state after the gap (flagged)."
+ },
+
+ "rule": {
+  "mid": "(bid + ask) / 2 from twapxyz bbo",
+  "trigger": "For each leader bbo row in an open session of that leader (decision time t = its ts_us), require t - W >= session open (the leader was open over the whole window). r_L = (mid_L(t)/mid_L(t-W) - 1) / lambda_L. Trigger if |r_L| >= theta; d = sign(r_L).",
+  "follower_filter": "For each follower paired with that leader in this session: r_F = (mid_F(t)/mid_F(t-W) - 1) / lambda_F; require d * r_F < theta/2. If several leaders trigger the same follower at the same t, it is one trigger (first row by ts_us).",
+  "entry": "Taker on the follower in direction d. Fill time t_in = t + 300 ms (L = 300 ms, our assumed order path; HL has no taker speed bump). Buy at the last recorded follower best ask with ts_us <= t_in, sell at best bid.",
+  "exit": "Exit decision at t_in + H; fill at t_out = t_in + H + 300 ms at the last recorded opposite best <= t_out. No stop, no session-end exit (the follower stays closed; leader session end does not change the follower).",
+  "position_rules": "one position per follower (across all leaders); cooldown H after the exit fill before a new entry on that follower.",
+  "size": "Target $1,000. Entry size = min($1,000, recorded opposite top-of-book notional at t_in). Skip (counted) if < $100. Exit: up to the recorded opposite top at t_out fills at that price; any excess fills one full spread (ask - bid at t_out) worse. ASSUMPTION stated now: recorded top sizes are those of the last price-change row (size-only updates are not recorded), so the size cap is approximate and may be stale in either direction.",
+  "staleness_assumption": "Because bbo is sampled every 2 s, the state 'at t_in' can be up to ~2 s older than t_in, and the trigger itself is only seen at the 2-s sample. Primary fill = last row <= t_in. A robustness line (REPORTED, never used for selection or the bar) fills entry and exit at the last row <= t + 2.3 s and <= t_in + H + 2.3 s (one full sampling period of extra delay).",
+  "fees_per_side": "0.9 bp x (deployerFeeScale / 1.0) taker, only if the latest twapxyz meta snapshot with ts <= t_in shows growthMode 'enabled' and not delisted; otherwise the trigger is SKIPPED (counted). If no meta snapshot exists <= t_in, the first snapshot after T0 is used. At 2026-10-05T09:01Z all six names showed growthMode enabled, deployerFeeScale 1.0.",
+  "funding": "If the position is open at an HL hourly funding time (top of the UTC hour), pay/receive notional x funding rate from the latest twapxyz meta snapshot <= that time, by side (longs pay positive funding).",
+  "pnl_unit": "USD per round trip; bp = USD / entry notional x 1e4"
+ },
+
+ "grid": {
+  "theta_bp": [10, 20],
+  "H_min": [1, 5, 15],
+  "W_s": [60, 300],
+  "L_ms": 300,
+  "n_configs": 12
+ },
+
+ "kill_test_day1": "Before any P&L: all day-1 triggers at theta = 10 bp, W = 60 s (no position rules, no cooldown, gaps excluded). Markout m = d x (mid_F(t + 5 min)/mid_F(t + 300 ms) - 1) in bp, mid-to-mid (before costs). If the mean m < 3 bp, OR fewer than 20 such triggers exist on day 1, H-CLOSEDPROXY is KILLED (fewer than 20 = killed for insufficient activity at the loosest threshold) and no config is selected. Also reported by session (US->KR followers vs KR->US followers) and by pair; diagnostic only.",
+ "selection_rule_day1": "If the kill test passes: among configs with n >= 30 round trips on day 1 (pooled over pairs and both sessions), select the highest profit factor (ties: larger n). If none has net USD > 0 and PF > 1.0, H-CLOSEDPROXY is KILLED and day 2 is not run. The selected config must also be net > 0 with +0.5 bp extra cost per round trip, else take the next-best that is.",
+ "validation_day2": "Selected config once on day 2. Bar: n >= 50, net USD > 0, PF > 1.2, net without the top-3 trades > 0. n < 50 = INCONCLUSIVE (not a pass); freeze anyway and continue forward (no re-selection) until n >= 50.",
+ "data_sufficiency": {
+  "names_recorded": "yes, all six (subscribed universe = all 110 non-delisted xyz coins).",
+  "sampling": "2-s sampling on price change: adequate for W = 60/300 s and H >= 1 min; it limits the 300 ms latency to a nominal value (see staleness_assumption).",
+  "size": "bid_sz/ask_sz recorded but stale between price changes (assumption stated).",
+  "oracle": "not tick-level (5-min meta only) -> the oraclePx leader dimension of the idea cannot be scored and was replaced.",
+  "beta": "no pre-T0 history allowed -> beta dropped.",
+  "sessions": "Each split day holds exactly one US and one KR session (~13 open-leader hours). With the lead's 10-30 triggers/day guess and cooldowns, day-2 n >= 50 is uncertain at theta = 20 bp; INCONCLUSIVE is a likely outcome. Forward after day 2 is ~1 more day (to ~2026-10-08T10:40Z) before the recorder stops.",
+  "verdict": "SCOREABLE with the stated substitutions; no new process is needed for day 1 / day 2."
+ },
+ "reporting": "All 12 day-1 configs by session and pair (n, net, mean bp, PF, net ex top-3, skips by reason: non-growth, size < $100, gap), the kill test, the robustness line, the KRX-calendar check, the day-2 result; losses and flash events (e.g. SKHX-type wicks) included.",
+ "no_changes": "No change to pairs, sessions, lambda, grid, trigger, fill model, fees, funding, split, kill test or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run)."
+}

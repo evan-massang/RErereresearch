@@ -1,0 +1,74 @@
+{
+ "hypothesis": "H-EQOFFREV",
+ "status": "FROZEN pre-registration (written before any recorded price row of any recorder was opened)",
+ "written_at_utc": "2026-10-05T09:08Z (approximate; the git commit time that first contains this file is authoritative)",
+ "is_synthetic": false,
+ "written_before_data": "No recorded price data was opened. Seen before writing: (1) docstrings of scripts/research/twapxyz_bbo_recorder.py, multivenue_recorder.py, betalag_recorder.py; (2) their recorder.log / events.jsonl text (start lines with symbol maps, stats counters, connect events) and directory file listings; (3) the PUBLIC HL info endpoint {type: meta, dex: xyz} at 2026-10-05T09:01Z: universe names, isDelisted, growthMode, deployerFeeScale only (no prices). No bbo, ctx/meta parquet, mid, oracle or candle value was looked at.",
+ "statement": "On trade[XYZ] equity perps, an off-hours mid move of at least k sigma over w minutes that is isolated (BTC quiet, the other large names not moving the same way) reverts: a $1k taker fade filled at the recorded opposite best 300 ms later and held H (or to the next cash open) is profitable after the 0.9 bp/side growth-mode fee, the recorded spread and funding.",
+ "source": "sources/leads/documented_edges_round8.md idea 5 (H-EQOFFREV). Deviations from that rule, all forced by what the running recorders capture, stated before any data: (a) the venue dimension {xyz, Lighter} is DROPPED - Lighter is recorded for only 4 of the 10 names (TSLA, NVDA, MU, INTC in multivenue_recorder, which also stops at 2026-10-07T07:19:14Z, before day 2 ends); replaced by the signal window w in {5, 15} min; (b) sigma is NOT the trailing 10-day sd (no pre-T0 data may be used: xyz 5m candles from 2026-09-17 lie in the reserved >= 2026-04-01 window, counts only); it is an expanding point-in-time sd from the recording itself (below); (c) the 60-h cap on 'until next cash open' never binds (no weekend in the window).",
+ "prior": "Contested. For: Blockworks (verbatim) 50.7% / 0.4 bp - off-hours perp prices carry little information; Nagel 2012 liquidity-provision reversal. Against: Allium (verbatim) Sunday perp gets to ~80 bp vs 113 bp - off-hours moves partly informed. Gross 8-20 bp if reversal exists vs ~2.5-4 bp cost.",
+
+ "universe": {
+  "names": ["TSLA", "NVDA", "AAPL", "AMZN", "GOOGL", "META", "MU", "AMD", "INTC", "PLTR"],
+  "xyz_coins": "xyz:<NAME> for each; all ten listed, not delisted, growthMode 'enabled', deployerFeeScale 1.0 in public meta at 2026-10-05T09:01Z",
+  "recorded": "all ten are among the 110 non-delisted xyz coins subscribed by twapxyz_bbo_recorder.py (log 'start: 110 xyz coins'; public meta shows 110 non-delisted)."
+ },
+
+ "data": {
+  "equity_perps": "scripts/research/twapxyz_bbo_recorder.py (pid 14520, start 2026-10-05T07:40:53Z, --hours 75, end ~2026-10-08T10:40:53Z) -> data/raw/web/twapxyz/bbo_*.parquet (ts_us, coin, bid, ask, bid_sz, ask_sz) and meta_*.parquet (5-min growth_mode, fee_scale, funding). bbo SAMPLED every 2 s, a row only on a bid/ask PRICE change; state at t = last row with ts_us <= t; sizes are those at the last price-change row (stale between).",
+  "crypto_filter": "scripts/research/betalag_recorder.py (pid 15410, start 2026-10-05T07:47:13Z per recorder.log, --hours 48, end 2026-10-07T07:47:13Z) -> data/raw/web/betalag/binance_bbo_*.parquet, coin BTC (Binance USD-M BTCUSDT bookTicker, 50-ms coalesced). BTC mid = (bid+ask)/2. multivenue_recorder does NOT record BTC (its log's binance map has no BTC).",
+  "clock_rule": "Local receive time ts_us on both recorders (same container clock). exch_ts_ms diagnostics only.",
+  "split": {
+   "T0": "2026-10-05T07:40:53Z (twapxyz recorder.log 'start' line).",
+   "day1_train": "[T0, T0+24h): kill test + all 12 configs; ONE config selected. Trades entered in day 1 whose exit would fall after T0+24h are closed by a taker exit at T0+24h (flagged), so training uses no day-2 price. BTC is unavailable before 2026-10-05T07:47:14Z (betalag connect), so no trigger before then.",
+   "day2_validation": "[T0+24h, T0+48h) = [2026-10-06T07:40:53Z, 2026-10-07T07:40:53Z): the selected config only, run ONCE. Exits may extend past T0+48h (up to the 2026-10-07 13:30Z open), within the twapxyz recording.",
+   "forward": "Freeze after day 2. The BTC filter stops at 2026-10-07T07:47:13Z (betalag end), so NO forward triggers are possible with the running recorders; forward needs a new BTC recorder, which this pre-registration does NOT start.",
+   "assignment": "A trade belongs to the window containing its trigger time t."
+  },
+  "gaps": "xyz: interval between a disconnect/error line and the next 'ws connected' line in data/raw/web/twapxyz/recorder.log + 10 s, and any > 10 s interval with no row for any of the 110 coins. BTC: betalag events.jsonl disconnect->connect intervals + 10 s, and any interval > 10 s with no BTC row. No trigger whose [t - w, t_in] overlaps a gap; a position whose exit falls in a gap closes at the first state after it (flagged)."
+ },
+
+ "calendar": {
+  "cash_open": "NYSE regular hours 13:30-20:00 UTC (EDT), Mon-Fri trading days; 2026-10-05..10-08 are all trading days.",
+  "off_hours": "all other times",
+  "allowed_trigger_window": "off_hours EXCLUDING [20:00, 22:00) UTC (after-hours earnings) and [12:00, 13:30) UTC (pre-open macro). On these weekdays: [22:00, 12:00) UTC. The whole signal window [t - w, t] must lie inside the allowed window.",
+  "next_cash_open": "the next 13:30:00 UTC of an NYSE trading day after t"
+ },
+
+ "rule": {
+  "mid": "(bid + ask) / 2",
+  "sigma": "Per name and per w: sd of non-overlapping, clock-aligned w-minute log mid returns over OFF-HOURS intervals (all of cash-closed time, incl. 12:00-13:30 and 20:00-22:00) from T0 up to the decision time t (expanding, point-in-time; only intervals fully ended <= t, none overlapping a gap). No trigger until >= 20 such returns exist for that name and w. sigma is floored at 2 bp.",
+  "signal": "At each xyz bbo row of a name (decision time t = its ts_us) inside the allowed window: r = mid(t)/mid(t - w) - 1; d = sign(r). Trigger if ALL of: (1) |r| >= k x sigma; (2) |BTC mid(t)/BTC mid(t - w) - 1| < 30 bp x sqrt(w / 15 min) (= 30 bp for w = 15, 17.3 bp for w = 5); (3) median over the OTHER 9 names of d x (mid_j(t)/mid_j(t - w) - 1) < |r| / 3.",
+  "entry": "Taker AGAINST the move (direction -d). Fill time t_in = t + 300 ms; buy at the last recorded best ask <= t_in, sell at best bid.",
+  "exit": "Exit decision at the earlier of t_in + H and next_cash_open; fill at decision + 300 ms at the last recorded opposite best. For H = 'open', the exit decision is next_cash_open (13:30:00Z).",
+  "position_rules": "one position per name; cooldown 5 min after the exit fill. Concurrent positions across names allowed ($1k each).",
+  "size": "Target $1,000. Entry size = min($1,000, recorded opposite top notional at t_in); skip (counted) if < $100. Exit excess over the recorded opposite top fills one full spread worse. ASSUMPTION: recorded top sizes are from the last price-change row (size-only updates not recorded), so the cap is approximate.",
+  "staleness_assumption": "2-s sampling: the state at t_in may be up to ~2 s old. Primary fill = last row <= t_in. Robustness line (REPORTED, not used for selection or the bar): entry at last row <= t + 2.3 s, exit at last row <= exit decision + 2.3 s.",
+  "fees_per_side": "0.9 bp x (deployerFeeScale / 1.0) taker, only if the latest twapxyz meta snapshot <= t_in shows growthMode 'enabled' and not delisted; otherwise SKIP (counted).",
+  "funding": "At each top-of-hour HL funding time while open: notional x funding rate from the latest twapxyz meta snapshot <= that time, by side. Holds reach ~15 h, so funding is material and always included.",
+  "pnl_unit": "USD per round trip; bp = USD / entry notional x 1e4"
+ },
+
+ "grid": {
+  "k": [2, 3],
+  "H": ["30 min", "2 h", "until next cash open"],
+  "w_min": [5, 15],
+  "venue": "xyz only (L = 300 ms)",
+  "n_configs": 12
+ },
+
+ "kill_test_day1": "Before any P&L: all day-1 triggers at k = 2, w = 15 min (no position rules). Fade markout m = -d x (mid(t + 30 min)/mid(t + 300 ms) - 1) in bp, mid-to-mid before costs (truncated at T0+24h if later). If mean m < 3 bp, OR fewer than 15 such triggers on day 1, H-EQOFFREV is KILLED and no config is selected. Also reported by name and by hour of day (diagnostic).",
+ "selection_rule_day1": "If the kill test passes: among configs with n >= 30 round trips on day 1 (pooled over names), select the highest PF (ties: larger n). If none has net USD > 0 and PF > 1.0, KILLED, day 2 not run. The selected config must also be net > 0 with +0.5 bp extra cost per round trip, else the next-best that is.",
+ "validation_day2": "Selected config once on day 2. Bar: n >= 50, net USD > 0, PF > 1.2, net without the top-3 trades > 0. n < 50 = INCONCLUSIVE (not a pass); freeze; forward continuation requires a new BTC recorder (not started).",
+ "data_sufficiency": {
+  "names_recorded": "yes, all ten xyz names (twapxyz, 2-s sampling); w = 5/15 min returns are well resolved.",
+  "btc": "yes, Binance BTCUSDT bbo from 2026-10-05T07:47:14Z to 2026-10-07T07:47:13Z (betalag); covers day 1 (except the first ~6 min) and all of day 2.",
+  "lighter": "NOT sufficient (4/10 names, ends before day 2 ends) -> venue dimension dropped.",
+  "sigma": "trailing 10-day sigma NOT available -> expanding in-recording sigma with a 20-return warm-up; on day 1 the 15-min sigma is ready by ~12:45Z 2026-10-05 (inside the excluded 12:00-13:30 window), so day-1 triggers effectively come only from [22:00Z 10-05, 07:40Z 10-06) (~9.7 h); for w = 5 the warm-up is ~1.7 h, so ~09:25-12:00Z 10-05 also counts.",
+  "allowed_hours": "~14 h/day minus warm-up on day 1 (~9.7-12 h); ~14 h on day 2 (07:40-12:00Z and 22:00-07:40Z).",
+  "n_outlook": "Lead estimate ~10 triggers/day at k = 2 before position rules -> day-1 n >= 30 and day-2 n >= 50 are UNLIKELY at k = 3 and uncertain at k = 2; INCONCLUSIVE (or a kill for < 30 n in every config) is the likely outcome. No forward data beyond day 2 without a new BTC recorder.",
+  "verdict": "SCOREABLE for day 1 / day 2 with the stated substitutions; underpowered; forward NOT scoreable with running recorders."
+ },
+ "reporting": "All 12 day-1 configs by name (n, net, mean bp, PF, net ex top-3, skips by reason: non-growth, size < $100, gap, sigma warm-up, BTC filter, cross-section filter), the kill test, the robustness line, the day-2 result; losses included. Known off-hours news events in the window, if any are found afterwards, are listed but no trade is removed.",
+ "no_changes": "No change to names, calendar, sigma method, filters, grid, fill model, fees, funding, split, kill test or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run)."
+}
