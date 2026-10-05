@@ -27,7 +27,7 @@ def load_symbol(sym):
     if not fs:
         return None
     df = pd.concat([pd.read_parquet(f) for f in fs]).drop_duplicates("t").sort_values("t")
-    k = (df.t.astype("int64") // 10**6).values
+    k = df.t.values.astype("datetime64[ms]").astype("int64")
     return dict(zip(k, df.o.values)), dict(zip(k, df.c.values))
 
 

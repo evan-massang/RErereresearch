@@ -1,0 +1,32 @@
+{
+ "hypothesis": "H-MOMENTUM XS_L7_LO one-time holdout",
+ "written_at_utc": "2026-10-05T06:04:44.163102+00:00",
+ "config": {
+  "key": "XS_L7_LO",
+  "family": "xs",
+  "L_days": 7,
+  "skip_days": 0,
+  "side": "long_only",
+  "role": "long-only variant"
+ },
+ "frozen_rule": "reports/candidates/momentum.md (section 'Frozen rule'); universe/cost constants in scripts/research/momentum_sim.py: N_UNIV=40, TAKER=5bp, slippage tiers 2/5/10/20 bp, 2% delisting penalty",
+ "window": {
+  "positions_from": "2026-04-01",
+  "positions_until_exclusive": "2026-09-28",
+  "last_rebalance": "2026-09-21",
+  "why_end": "latest Monday whose full week is in the archive: daily klines through 2026-10-03, fundingRate monthly through 2026-09 (no daily funding files exist)"
+ },
+ "data": "data.binance.vision futures/um monthly 1d klines and fundingRate 2026-04..2026-09 (plus the train/validation cache for history)",
+ "bar": "per episode: n>=50, net>0, PF>1.2, net>0 without the 3 best episodes",
+ "reported_variants": [
+  "funding excluded (ret - cost)",
+  "settlement episodes excluded (held past the coin's last nonzero-volume day)",
+  "equal-weight long benchmark of the same universe, same cost model"
+ ],
+ "no_tuning": "run once; nothing is changed afterwards; a failure goes to reports/failures/momentum_holdout.md",
+ "code_sha256": {
+  "scripts/research/momentum_sim.py": "57c48684be7694877254f7d0959fe10a1a7c482dc2216f320783d7d533db4911",
+  "scripts/research/momentum_fetch.py": "51363922aacb4fe19afc2f7d79925e44d9f1553e7d44583e438f5d8ea4225261",
+  "scripts/research/momentum_holdout.py": "0af1f7f82f9fb97da39b8304cc0a05227679deb9560aa29e27d505d633f1a2ef"
+ }
+}

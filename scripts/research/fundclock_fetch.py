@@ -147,8 +147,7 @@ def windows(cl, sym, month, fund):
     a = np.array([[float(x[0]), float(x[1]), float(x[2]), float(x[3]), float(x[4]), float(x[7])] for x in rows])
     t = a[:, 0].astype("int64")
     t = np.where(t > 10**14, t // 1000, t)  # microsecond timestamps in newer files
-    T = fund.t.dt.floor("min").astype("int64") // 10**6
-    T = T.values
+    T = fund.t.dt.round("min").values.astype("datetime64[ms]").astype("int64")
     lo = pd.Timestamp(month + "-01").value // 10**6 - WIN * 60000
     hi = (pd.Timestamp(month + "-01") + pd.offsets.MonthBegin(1)).value // 10**6 + WIN * 60000
     T = T[(T >= lo) & (T < hi)]

@@ -22,7 +22,9 @@ def min_tick(q: pd.DataFrame) -> float:
 
 
 def tick_arr(mid: np.ndarray, mt: float) -> np.ndarray:
-    return np.maximum(10.0 ** (np.floor(np.log10(mid)) - 4), mt)
+    # HL: 5 significant figures, but integer prices are always allowed -> cap the sig-fig tick at 1.0
+    # (bug fix 2026-10-05 after the first train/validation run: BTC > $100k was assigned a $10 tick).
+    return np.maximum(np.minimum(10.0 ** (np.floor(np.log10(mid)) - 4), 1.0), mt)
 
 
 def stats(coin: str, day: str) -> dict:

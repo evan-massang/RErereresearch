@@ -1,0 +1,196 @@
+{
+ "hypothesis": "H-PAIRS",
+ "preregistration": "reports/hypotheses/pairs_preregistration.json",
+ "code": [
+  "scripts/research/pairs_universe.py",
+  "scripts/research/pairs_hl_listing.py",
+  "scripts/research/pairs_fetch.py",
+  "scripts/research/pairs_sim.py"
+ ],
+ "data": "data.binance.vision USDT-M 5m klines 2024-06..2026-03 (128 symbols, 367 MB downloaded, 121 MB stored at data/raw/web/pairs/k5m); HL meta + daily candles via api.hyperliquid.xyz/info on 2026-10-05",
+ "modality": "document",
+ "is_synthetic": false,
+ "finding_type": "observed",
+ "units": "USD on $2,000 gross notional per pair trade; bp are of gross notional; HL cost = 4.5 bp taker + 1 bp slippage per leg per side (11 bp of gross per round trip); BINANCE = 5+1; HL_slip2 = 4.5+2",
+ "split": "validation 2025-07-01..2026-03-31 (run once on chosen config)",
+ "generated_utc": "2026-10-05T06:05:40.283199Z",
+ "config": "z3.0_o0.5_h2",
+ "results": {
+  "config": "z3.0_o0.5_h2",
+  "HL": {
+   "n": 3347,
+   "gross_usd": 2898.96,
+   "net_usd": -4464.44,
+   "gross_bp_per_trade": 4.33,
+   "net_bp_per_trade": -6.67,
+   "pf": 0.853,
+   "win_rate": 0.612,
+   "net_ex_top3": -4792.04,
+   "passes": false
+  },
+  "BINANCE": {
+   "n": 3347,
+   "gross_usd": 2898.96,
+   "net_usd": -5133.84,
+   "gross_bp_per_trade": 4.33,
+   "net_bp_per_trade": -7.67,
+   "pf": 0.832,
+   "win_rate": 0.606,
+   "net_ex_top3": -5460.84,
+   "passes": false
+  },
+  "HL_slip2": {
+   "n": 3347,
+   "gross_usd": 2898.96,
+   "net_usd": -5803.24,
+   "gross_bp_per_trade": 4.33,
+   "net_bp_per_trade": -8.67,
+   "pf": 0.812,
+   "win_rate": 0.598,
+   "net_ex_top3": -6129.64,
+   "passes": false
+  },
+  "by_year_HL": {
+   "2025": {
+    "n": 2364,
+    "gross_usd": 868.86,
+    "net_usd": -4331.94,
+    "gross_bp_per_trade": 1.84,
+    "net_bp_per_trade": -9.16,
+    "pf": 0.81,
+    "win_rate": 0.598,
+    "net_ex_top3": -4659.54,
+    "passes": false
+   },
+   "2026": {
+    "n": 983,
+    "gross_usd": 2030.1,
+    "net_usd": -132.5,
+    "gross_bp_per_trade": 10.33,
+    "net_bp_per_trade": -0.67,
+    "pf": 0.982,
+    "win_rate": 0.646,
+    "net_ex_top3": -348.39,
+    "passes": false
+   }
+  },
+  "exit_reasons": {
+   "revert": 2773,
+   "stop": 268,
+   "time": 154,
+   "week_end": 151,
+   "split_end": 1
+  },
+  "median_hold_bars": 57.0,
+  "trades_per_day": 12.26,
+  "delay2_informational": {
+   "HL": {
+    "n": 3344,
+    "gross_usd": 3377.04,
+    "net_usd": -3979.76,
+    "gross_bp_per_trade": 5.05,
+    "net_bp_per_trade": -5.95,
+    "pf": 0.864,
+    "win_rate": 0.598,
+    "net_ex_top3": -4804.27,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3344,
+    "gross_usd": 3377.04,
+    "net_usd": -4648.56,
+    "gross_bp_per_trade": 5.05,
+    "net_bp_per_trade": -6.95,
+    "pf": 0.842,
+    "win_rate": 0.587,
+    "net_ex_top3": -5472.47,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3344,
+    "gross_usd": 3377.04,
+    "net_usd": -5317.36,
+    "gross_bp_per_trade": 5.05,
+    "net_bp_per_trade": -7.95,
+    "pf": 0.821,
+    "win_rate": 0.58,
+    "net_ex_top3": -6140.67,
+    "passes": false
+   }
+  }
+ },
+ "gross_bp_by_exit_reason": {
+  "revert": {
+   "count": 2773,
+   "mean": 38.28,
+   "median": 39.52
+  },
+  "split_end": {
+   "count": 1,
+   "mean": 26.01,
+   "median": 26.01
+  },
+  "stop": {
+   "count": 268,
+   "mean": -156.29,
+   "median": -78.74
+  },
+  "time": {
+   "count": 154,
+   "mean": -284.13,
+   "median": -216.96
+  },
+  "week_end": {
+   "count": 151,
+   "mean": -40.05,
+   "median": -18.57
+  }
+ },
+ "formation_summary": {
+  "weeks": 40,
+  "mean_pairs_per_week": 22.2,
+  "most_frequent_pairs": [
+   [
+    "LTCUSDT/SOLUSDT",
+    9
+   ],
+   [
+    "LINKUSDT/ETHUSDT",
+    9
+   ],
+   [
+    "DOTUSDT/DOGEUSDT",
+    9
+   ],
+   [
+    "LTCUSDT/LINKUSDT",
+    7
+   ],
+   [
+    "FILUSDT/AVAXUSDT",
+    7
+   ],
+   [
+    "DOGEUSDT/AVAXUSDT",
+    6
+   ],
+   [
+    "LINKUSDT/SOLUSDT",
+    6
+   ],
+   [
+    "LTCUSDT/NEARUSDT",
+    6
+   ],
+   [
+    "BNBUSDT/SUIUSDT",
+    6
+   ],
+   [
+    "LTCUSDT/AVAXUSDT",
+    6
+   ]
+  ]
+ },
+ "verdict": "FAIL on validation (informational; train already failed): net -4,464 USD, PF 0.85"
+}

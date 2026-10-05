@@ -1,0 +1,34 @@
+{
+ "hypothesis": "H-HLLAG-NEWCOINS (addendum)",
+ "parent_preregistration": "reports/hypotheses/hllag_newcoins_preregistration.json",
+ "written_at_utc": "2026-10-05T06:03:00Z",
+ "decided_before_results": "This file was written before any PENGU, kSHIB, DOGE or kPEPE result was computed. Only sizing data already logged in data/raw/web/tardis/results/newcoins/fetch_log.json is known for these coins: Binance book_ticker raw size on 2025-10-01 (PENGU 42.3 MB, kSHIB 17.1 MB, kPEPE 68.8 MB, DOGE 103.8 MB). No trades were simulated for them.",
+ "known_at_writing": "The parent test's TRUMP and SPX results WERE known when this addendum was written: pooled train n=329 net +$286.4 PF 1.74; validation n=243 net +$136.4 PF 1.39 (PASS); both coins fail at L=800 ms. See reports/candidates/hllag_newcoins.md. That knowledge could bias the decision to run an addendum; it cannot change the frozen rule, days or bar, which are unchanged.",
+ "why": "PENGU and kSHIB passed the pre-registered liquidity rule and were cut only by the 1.45 GB download budget; DOGE and kPEPE only by the 60 MB file-size gate. Neither reason depends on results. The parent test covered only 2 coins, so the cross-section is thin. Disk is handled by processing one coin-day at a time and deleting raw files after extraction, with large files read in chunks.",
+ "unchanged_from_parent": {
+  "rule": "scripts/research/hlanchor_lib.py sim_lag, sha256 98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad (asserted at import, not modified)",
+  "params": {"theta_bp": 40.0, "L_ms": 300, "H_s": 30.0, "cooldown_s": 10.0, "close_bp": null, "info_lat_ms": 300},
+  "fill_and_fees": "unchanged (taker fill at first HL snapshot >= decision+300 ms, excess over top one spread worse, 4.5 bp taker each side, $1k units, max 2 units)",
+  "days": "same train_days and validation_days as the parent; holdout (2026-04-01 onward) NOT downloaded",
+  "extraction": "same columns and Binance change-dedup as hllag_newcoins.extract; chunked reading must give an identical result (dedup carries the previous row across chunk boundaries)",
+  "bar": "per split: n >= 50 round trips, net USD > 0, PF > 1.2, net without top-3 trades > 0",
+  "missing_days": "a coin-day with any of the 3 files unavailable is skipped and listed in coverage"
+ },
+ "deviations_from_parent": [
+  "The 1.45 GB download budget no longer applies to PENGU and kSHIB; the binding constraint is free disk > 2.5 GB, checked before every file.",
+  "The 60 MB size gate no longer applies to DOGE and kPEPE (stage B). This changes coin selection, not the rule."
+ ],
+ "stages": {
+  "A": {"coins": ["PENGU", "kSHIB"], "primary_test": "PENGU+kSHIB pooled must meet the bar on train AND on validation."},
+  "B": {"coins": ["DOGE", "kPEPE"], "condition": "only if disk allows after stage A; a coin is reported only if all its available days were processed, otherwise listed as not tested", "test": "each coin on its own, and DOGE+kPEPE pooled, train and validation, same bar"}
+ },
+ "reported": [
+  "per coin, train and validation, with a per-coin pass flag under the same bar (a coin 'passes on its own' only if it meets the bar on both splits)",
+  "stage A pair pooled (the primary addendum test)",
+  "stage B pair pooled, if run",
+  "informational only: +0.5 bp extra cost per round trip; L_ms = 800 re-simulated",
+  "informational only: all tested new coins pooled (TRUMP, SPX + addendum coins)"
+ ],
+ "interpretation": "A coin with n < 50 in a split cannot pass that split on its own; this is reported, not worked around. Failures are written to reports/failures/agent_hllag_newcoins_addendum.md.",
+ "no_changes": "No parameter, fee, fill-model, day or bar changes after this file is written."
+}

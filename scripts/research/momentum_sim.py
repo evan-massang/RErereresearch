@@ -19,25 +19,34 @@ SPLITS = {"train": (None, pd.Timestamp("2024-07-01")),            # [start, end)
           "validation": (pd.Timestamp("2024-07-01"), pd.Timestamp("2026-04-01"))}
 
 
-def load():
+def _read_merged(kind, sym, dirs):
+    parts = [pd.read_parquet(d / kind / f"{sym}.parquet") for d in dirs if (d / kind / f"{sym}.parquet").exists()]
+    return pd.concat(parts, ignore_index=True) if parts else None
+
+
+def load(extra=(), last_day="2026-03-31"):
+    """extra: further data roots (same layout as RAW) merged after RAW, e.g. the holdout or forward cache.
+    Defaults reproduce the train/validation data exactly."""
+    dirs = [RAW, *extra]
+    syms = sorted({f.stem for d in dirs for f in (d / "klines").glob("*.parquet")})
     cl, qv = {}, {}
-    for f in sorted((RAW / "klines").glob("*.parquet")):
-        s = f.stem
+    for s in syms:
         if s in EXCL or s[:-4] in STABLE_BASES:
             continue
-        d = pd.read_parquet(f)
+        d = _read_merged("klines", s, dirs)
         idx = pd.to_datetime(d.open_time, unit="ms").dt.normalize()
         d.index = idx
         d = d[~d.index.duplicated()]
         cl[s] = d.close; qv[s] = d.quote_volume
     C = pd.DataFrame(cl).sort_index(); Q = pd.DataFrame(qv).reindex(C.index)
-    C = C[C.index <= pd.Timestamp("2026-03-31")]; Q = Q.reindex(C.index)
+    C = C[C.index <= pd.Timestamp(last_day)]; Q = Q.reindex(C.index)
     fund = {}
-    for f in (RAW / "funding").glob("*.parquet"):
-        if f.stem in C.columns:
-            d = pd.read_parquet(f)
+    for s in C.columns:
+        d = _read_merged("funding", s, dirs)
+        if d is not None:
+            d = d.drop_duplicates("calc_time")
             t = pd.to_datetime(d.calc_time, unit="ms").dt.round("h")
-            fund[f.stem] = pd.Series(d.last_funding_rate.values, index=t).groupby(level=0).last()
+            fund[s] = pd.Series(d.last_funding_rate.values, index=t).groupby(level=0).last()
     return C, Q, fund
 
 

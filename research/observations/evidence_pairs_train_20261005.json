@@ -1,0 +1,979 @@
+{
+ "hypothesis": "H-PAIRS",
+ "preregistration": "reports/hypotheses/pairs_preregistration.json",
+ "code": [
+  "scripts/research/pairs_universe.py",
+  "scripts/research/pairs_hl_listing.py",
+  "scripts/research/pairs_fetch.py",
+  "scripts/research/pairs_sim.py"
+ ],
+ "data": "data.binance.vision USDT-M 5m klines 2024-06..2026-03 (128 symbols, 367 MB downloaded, 121 MB stored at data/raw/web/pairs/k5m); HL meta + daily candles via api.hyperliquid.xyz/info on 2026-10-05",
+ "modality": "document",
+ "is_synthetic": false,
+ "finding_type": "observed",
+ "units": "USD on $2,000 gross notional per pair trade; bp are of gross notional; HL cost = 4.5 bp taker + 1 bp slippage per leg per side (11 bp of gross per round trip); BINANCE = 5+1; HL_slip2 = 4.5+2",
+ "split": "train 2024-07-01..2025-06-30",
+ "generated_utc": "2026-10-05T06:05:40.253413Z",
+ "configs": {
+  "z2.0_o0.0_h2": {
+   "HL": {
+    "n": 3989,
+    "gross_usd": -2911.96,
+    "net_usd": -11687.76,
+    "gross_bp_per_trade": -3.65,
+    "net_bp_per_trade": -14.65,
+    "pf": 0.789,
+    "win_rate": 0.615,
+    "net_ex_top3": -12139.94,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3989,
+    "gross_usd": -2911.96,
+    "net_usd": -12485.56,
+    "gross_bp_per_trade": -3.65,
+    "net_bp_per_trade": -15.65,
+    "pf": 0.776,
+    "win_rate": 0.612,
+    "net_ex_top3": -12937.14,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3989,
+    "gross_usd": -2911.96,
+    "net_usd": -13283.36,
+    "gross_bp_per_trade": -3.65,
+    "net_bp_per_trade": -16.65,
+    "pf": 0.763,
+    "win_rate": 0.61,
+    "net_ex_top3": -13734.34,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1694,
+     "gross_usd": -3407.54,
+     "net_usd": -7134.34,
+     "gross_bp_per_trade": -10.06,
+     "net_bp_per_trade": -21.06,
+     "pf": 0.735,
+     "win_rate": 0.609,
+     "net_ex_top3": -7544.3,
+     "passes": false
+    },
+    "2025": {
+     "n": 2295,
+     "gross_usd": 495.58,
+     "net_usd": -4553.42,
+     "gross_bp_per_trade": 1.08,
+     "net_bp_per_trade": -9.92,
+     "pf": 0.84,
+     "win_rate": 0.62,
+     "net_ex_top3": -4960.5,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2836,
+    "stop": 684,
+    "time": 317,
+    "week_end": 141,
+    "split_end": 11
+   },
+   "median_hold_bars": 88.0,
+   "trades_per_day": 10.96
+  },
+  "z2.0_o0.0_h4": {
+   "HL": {
+    "n": 3843,
+    "gross_usd": -3396.87,
+    "net_usd": -11851.47,
+    "gross_bp_per_trade": -4.42,
+    "net_bp_per_trade": -15.42,
+    "pf": 0.782,
+    "win_rate": 0.619,
+    "net_ex_top3": -12303.66,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3843,
+    "gross_usd": -3396.87,
+    "net_usd": -12620.07,
+    "gross_bp_per_trade": -4.42,
+    "net_bp_per_trade": -16.42,
+    "pf": 0.769,
+    "win_rate": 0.616,
+    "net_ex_top3": -13071.66,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3843,
+    "gross_usd": -3396.87,
+    "net_usd": -13388.67,
+    "gross_bp_per_trade": -4.42,
+    "net_bp_per_trade": -17.42,
+    "pf": 0.756,
+    "win_rate": 0.614,
+    "net_ex_top3": -13839.66,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1631,
+     "gross_usd": -3424.41,
+     "net_usd": -7012.61,
+     "gross_bp_per_trade": -10.5,
+     "net_bp_per_trade": -21.5,
+     "pf": 0.732,
+     "win_rate": 0.613,
+     "net_ex_top3": -7422.58,
+     "passes": false
+    },
+    "2025": {
+     "n": 2212,
+     "gross_usd": 27.54,
+     "net_usd": -4838.86,
+     "gross_bp_per_trade": 0.06,
+     "net_bp_per_trade": -10.94,
+     "pf": 0.828,
+     "win_rate": 0.623,
+     "net_ex_top3": -5245.94,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2978,
+    "stop": 684,
+    "week_end": 139,
+    "time": 31,
+    "split_end": 11
+   },
+   "median_hold_bars": 86.0,
+   "trades_per_day": 10.56
+  },
+  "z2.0_o0.5_h2": {
+   "HL": {
+    "n": 4520,
+    "gross_usd": -2154.63,
+    "net_usd": -12098.63,
+    "gross_bp_per_trade": -2.38,
+    "net_bp_per_trade": -13.38,
+    "pf": 0.765,
+    "win_rate": 0.628,
+    "net_ex_top3": -12437.48,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 4520,
+    "gross_usd": -2154.63,
+    "net_usd": -13002.63,
+    "gross_bp_per_trade": -2.38,
+    "net_bp_per_trade": -14.38,
+    "pf": 0.75,
+    "win_rate": 0.625,
+    "net_ex_top3": -13340.88,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 4520,
+    "gross_usd": -2154.63,
+    "net_usd": -13906.63,
+    "gross_bp_per_trade": -2.38,
+    "net_bp_per_trade": -15.38,
+    "pf": 0.734,
+    "win_rate": 0.621,
+    "net_ex_top3": -14244.28,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1915,
+     "gross_usd": -2612.4,
+     "net_usd": -6825.4,
+     "gross_bp_per_trade": -6.82,
+     "net_bp_per_trade": -17.82,
+     "pf": 0.725,
+     "win_rate": 0.625,
+     "net_ex_top3": -7158.28,
+     "passes": false
+    },
+    "2025": {
+     "n": 2605,
+     "gross_usd": 457.77,
+     "net_usd": -5273.23,
+     "gross_bp_per_trade": 0.88,
+     "net_bp_per_trade": -10.12,
+     "pf": 0.803,
+     "win_rate": 0.631,
+     "net_ex_top3": -5565.47,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 3567,
+    "stop": 684,
+    "time": 150,
+    "week_end": 111,
+    "split_end": 8
+   },
+   "median_hold_bars": 57.0,
+   "trades_per_day": 12.42
+  },
+  "z2.0_o0.5_h4": {
+   "HL": {
+    "n": 4461,
+    "gross_usd": -2528.09,
+    "net_usd": -12342.29,
+    "gross_bp_per_trade": -2.83,
+    "net_bp_per_trade": -13.83,
+    "pf": 0.759,
+    "win_rate": 0.63,
+    "net_ex_top3": -12681.13,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 4461,
+    "gross_usd": -2528.09,
+    "net_usd": -13234.49,
+    "gross_bp_per_trade": -2.83,
+    "net_bp_per_trade": -14.83,
+    "pf": 0.744,
+    "win_rate": 0.627,
+    "net_ex_top3": -13572.73,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 4461,
+    "gross_usd": -2528.09,
+    "net_usd": -14126.69,
+    "gross_bp_per_trade": -2.83,
+    "net_bp_per_trade": -15.83,
+    "pf": 0.728,
+    "win_rate": 0.622,
+    "net_ex_top3": -14464.33,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1886,
+     "gross_usd": -2856.9,
+     "net_usd": -7006.1,
+     "gross_bp_per_trade": -7.57,
+     "net_bp_per_trade": -18.57,
+     "pf": 0.716,
+     "win_rate": 0.627,
+     "net_ex_top3": -7338.97,
+     "passes": false
+    },
+    "2025": {
+     "n": 2575,
+     "gross_usd": 328.81,
+     "net_usd": -5336.19,
+     "gross_bp_per_trade": 0.64,
+     "net_bp_per_trade": -10.36,
+     "pf": 0.8,
+     "win_rate": 0.632,
+     "net_ex_top3": -5628.43,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 3647,
+    "stop": 684,
+    "week_end": 113,
+    "time": 9,
+    "split_end": 8
+   },
+   "median_hold_bars": 56.0,
+   "trades_per_day": 12.26
+  },
+  "z2.5_o0.0_h2": {
+   "HL": {
+    "n": 3553,
+    "gross_usd": -1696.29,
+    "net_usd": -9512.89,
+    "gross_bp_per_trade": -2.39,
+    "net_bp_per_trade": -13.39,
+    "pf": 0.822,
+    "win_rate": 0.613,
+    "net_ex_top3": -9940.89,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3553,
+    "gross_usd": -1696.29,
+    "net_usd": -10223.49,
+    "gross_bp_per_trade": -2.39,
+    "net_bp_per_trade": -14.39,
+    "pf": 0.81,
+    "win_rate": 0.61,
+    "net_ex_top3": -10650.89,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3553,
+    "gross_usd": -1696.29,
+    "net_usd": -10934.09,
+    "gross_bp_per_trade": -2.39,
+    "net_bp_per_trade": -15.39,
+    "pf": 0.798,
+    "win_rate": 0.608,
+    "net_ex_top3": -11360.89,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1486,
+     "gross_usd": -3240.45,
+     "net_usd": -6509.65,
+     "gross_bp_per_trade": -10.9,
+     "net_bp_per_trade": -21.9,
+     "pf": 0.752,
+     "win_rate": 0.591,
+     "net_ex_top3": -6930.28,
+     "passes": false
+    },
+    "2025": {
+     "n": 2067,
+     "gross_usd": 1544.16,
+     "net_usd": -3003.24,
+     "gross_bp_per_trade": 3.74,
+     "net_bp_per_trade": -7.26,
+     "pf": 0.89,
+     "win_rate": 0.628,
+     "net_ex_top3": -3377.59,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2504,
+    "stop": 479,
+    "time": 371,
+    "week_end": 188,
+    "split_end": 11
+   },
+   "median_hold_bars": 112.0,
+   "trades_per_day": 9.76
+  },
+  "z2.5_o0.0_h4": {
+   "HL": {
+    "n": 3435,
+    "gross_usd": -2972.68,
+    "net_usd": -10529.68,
+    "gross_bp_per_trade": -4.33,
+    "net_bp_per_trade": -15.33,
+    "pf": 0.8,
+    "win_rate": 0.616,
+    "net_ex_top3": -10920.65,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3435,
+    "gross_usd": -2972.68,
+    "net_usd": -11216.68,
+    "gross_bp_per_trade": -4.33,
+    "net_bp_per_trade": -16.33,
+    "pf": 0.788,
+    "win_rate": 0.614,
+    "net_ex_top3": -11607.05,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3435,
+    "gross_usd": -2972.68,
+    "net_usd": -11903.68,
+    "gross_bp_per_trade": -4.33,
+    "net_bp_per_trade": -17.33,
+    "pf": 0.776,
+    "win_rate": 0.611,
+    "net_ex_top3": -12293.45,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1430,
+     "gross_usd": -3735.12,
+     "net_usd": -6881.12,
+     "gross_bp_per_trade": -13.06,
+     "net_bp_per_trade": -24.06,
+     "pf": 0.731,
+     "win_rate": 0.592,
+     "net_ex_top3": -7251.54,
+     "passes": false
+    },
+    "2025": {
+     "n": 2005,
+     "gross_usd": 762.44,
+     "net_usd": -3648.56,
+     "gross_bp_per_trade": 1.9,
+     "net_bp_per_trade": -9.1,
+     "pf": 0.865,
+     "win_rate": 0.633,
+     "net_ex_top3": -4022.92,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2724,
+    "stop": 480,
+    "week_end": 188,
+    "time": 32,
+    "split_end": 11
+   },
+   "median_hold_bars": 110.0,
+   "trades_per_day": 9.44
+  },
+  "z2.5_o0.5_h2": {
+   "HL": {
+    "n": 3814,
+    "gross_usd": -66.17,
+    "net_usd": -8456.97,
+    "gross_bp_per_trade": -0.09,
+    "net_bp_per_trade": -11.09,
+    "pf": 0.823,
+    "win_rate": 0.622,
+    "net_ex_top3": -8798.57,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3814,
+    "gross_usd": -66.17,
+    "net_usd": -9219.77,
+    "gross_bp_per_trade": -0.09,
+    "net_bp_per_trade": -12.09,
+    "pf": 0.808,
+    "win_rate": 0.62,
+    "net_ex_top3": -9560.77,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3814,
+    "gross_usd": -66.17,
+    "net_usd": -9982.57,
+    "gross_bp_per_trade": -0.09,
+    "net_bp_per_trade": -13.09,
+    "pf": 0.794,
+    "win_rate": 0.617,
+    "net_ex_top3": -10322.97,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1605,
+     "gross_usd": -1322.14,
+     "net_usd": -4853.14,
+     "gross_bp_per_trade": -4.12,
+     "net_bp_per_trade": -15.12,
+     "pf": 0.789,
+     "win_rate": 0.614,
+     "net_ex_top3": -5186.19,
+     "passes": false
+    },
+    "2025": {
+     "n": 2209,
+     "gross_usd": 1255.97,
+     "net_usd": -3603.83,
+     "gross_bp_per_trade": 2.84,
+     "net_bp_per_trade": -8.16,
+     "pf": 0.855,
+     "win_rate": 0.628,
+     "net_ex_top3": -3906.74,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 3024,
+    "stop": 478,
+    "time": 159,
+    "week_end": 144,
+    "split_end": 9
+   },
+   "median_hold_bars": 78.0,
+   "trades_per_day": 10.48
+  },
+  "z2.5_o0.5_h4": {
+   "HL": {
+    "n": 3767,
+    "gross_usd": -1330.94,
+    "net_usd": -9618.34,
+    "gross_bp_per_trade": -1.77,
+    "net_bp_per_trade": -12.77,
+    "pf": 0.8,
+    "win_rate": 0.623,
+    "net_ex_top3": -9940.63,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 3767,
+    "gross_usd": -1330.94,
+    "net_usd": -10371.74,
+    "gross_bp_per_trade": -1.77,
+    "net_bp_per_trade": -13.77,
+    "pf": 0.786,
+    "win_rate": 0.621,
+    "net_ex_top3": -10693.43,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 3767,
+    "gross_usd": -1330.94,
+    "net_usd": -11125.14,
+    "gross_bp_per_trade": -1.77,
+    "net_bp_per_trade": -14.77,
+    "pf": 0.771,
+    "win_rate": 0.617,
+    "net_ex_top3": -11446.23,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1579,
+     "gross_usd": -2084.97,
+     "net_usd": -5558.77,
+     "gross_bp_per_trade": -6.6,
+     "net_bp_per_trade": -17.6,
+     "pf": 0.761,
+     "win_rate": 0.615,
+     "net_ex_top3": -5856.49,
+     "passes": false
+    },
+    "2025": {
+     "n": 2188,
+     "gross_usd": 754.04,
+     "net_usd": -4059.56,
+     "gross_bp_per_trade": 1.72,
+     "net_bp_per_trade": -9.28,
+     "pf": 0.837,
+     "win_rate": 0.629,
+     "net_ex_top3": -4362.48,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 3128,
+    "stop": 478,
+    "week_end": 147,
+    "split_end": 9,
+    "time": 5
+   },
+   "median_hold_bars": 77.0,
+   "trades_per_day": 10.35
+  },
+  "z3.0_o0.0_h2": {
+   "HL": {
+    "n": 2609,
+    "gross_usd": -4164.24,
+    "net_usd": -9904.04,
+    "gross_bp_per_trade": -7.98,
+    "net_bp_per_trade": -18.98,
+    "pf": 0.782,
+    "win_rate": 0.594,
+    "net_ex_top3": -10515.13,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 2609,
+    "gross_usd": -4164.24,
+    "net_usd": -10425.84,
+    "gross_bp_per_trade": -7.98,
+    "net_bp_per_trade": -19.98,
+    "pf": 0.771,
+    "win_rate": 0.591,
+    "net_ex_top3": -11036.33,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 2609,
+    "gross_usd": -4164.24,
+    "net_usd": -10947.64,
+    "gross_bp_per_trade": -7.98,
+    "net_bp_per_trade": -20.98,
+    "pf": 0.761,
+    "win_rate": 0.589,
+    "net_ex_top3": -11557.53,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1150,
+     "gross_usd": -3871.59,
+     "net_usd": -6401.59,
+     "gross_bp_per_trade": -16.83,
+     "net_bp_per_trade": -27.83,
+     "pf": 0.73,
+     "win_rate": 0.579,
+     "net_ex_top3": -6822.28,
+     "passes": false
+    },
+    "2025": {
+     "n": 1459,
+     "gross_usd": -292.65,
+     "net_usd": -3502.45,
+     "gross_bp_per_trade": -1.0,
+     "net_bp_per_trade": -12.0,
+     "pf": 0.838,
+     "win_rate": 0.606,
+     "net_ex_top3": -4104.07,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 1756,
+    "time": 347,
+    "stop": 311,
+    "week_end": 185,
+    "split_end": 10
+   },
+   "median_hold_bars": 135.0,
+   "trades_per_day": 7.17
+  },
+  "z3.0_o0.0_h4": {
+   "HL": {
+    "n": 2543,
+    "gross_usd": -5602.46,
+    "net_usd": -11197.06,
+    "gross_bp_per_trade": -11.02,
+    "net_bp_per_trade": -22.02,
+    "pf": 0.754,
+    "win_rate": 0.599,
+    "net_ex_top3": -11681.13,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 2543,
+    "gross_usd": -5602.46,
+    "net_usd": -11705.66,
+    "gross_bp_per_trade": -11.02,
+    "net_bp_per_trade": -23.02,
+    "pf": 0.744,
+    "win_rate": 0.596,
+    "net_ex_top3": -12189.13,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 2543,
+    "gross_usd": -5602.46,
+    "net_usd": -12214.26,
+    "gross_bp_per_trade": -11.02,
+    "net_bp_per_trade": -24.02,
+    "pf": 0.734,
+    "win_rate": 0.595,
+    "net_ex_top3": -12697.13,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1121,
+     "gross_usd": -4395.37,
+     "net_usd": -6861.57,
+     "gross_bp_per_trade": -19.6,
+     "net_bp_per_trade": -30.6,
+     "pf": 0.71,
+     "win_rate": 0.586,
+     "net_ex_top3": -7272.83,
+     "passes": false
+    },
+    "2025": {
+     "n": 1422,
+     "gross_usd": -1207.08,
+     "net_usd": -4335.48,
+     "gross_bp_per_trade": -4.24,
+     "net_bp_per_trade": -15.24,
+     "pf": 0.801,
+     "win_rate": 0.61,
+     "net_ex_top3": -4793.71,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 1992,
+    "stop": 312,
+    "week_end": 198,
+    "time": 31,
+    "split_end": 10
+   },
+   "median_hold_bars": 133.0,
+   "trades_per_day": 6.99
+  },
+  "z3.0_o0.5_h2": {
+   "HL": {
+    "n": 2713,
+    "gross_usd": -2287.13,
+    "net_usd": -8255.73,
+    "gross_bp_per_trade": -4.22,
+    "net_bp_per_trade": -15.22,
+    "pf": 0.794,
+    "win_rate": 0.607,
+    "net_ex_top3": -8804.57,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 2713,
+    "gross_usd": -2287.13,
+    "net_usd": -8798.33,
+    "gross_bp_per_trade": -4.22,
+    "net_bp_per_trade": -16.22,
+    "pf": 0.782,
+    "win_rate": 0.602,
+    "net_ex_top3": -9346.57,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 2713,
+    "gross_usd": -2287.13,
+    "net_usd": -9340.93,
+    "gross_bp_per_trade": -4.22,
+    "net_bp_per_trade": -17.22,
+    "pf": 0.769,
+    "win_rate": 0.6,
+    "net_ex_top3": -9888.57,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1207,
+     "gross_usd": -2496.24,
+     "net_usd": -5151.64,
+     "gross_bp_per_trade": -10.34,
+     "net_bp_per_trade": -21.34,
+     "pf": 0.754,
+     "win_rate": 0.597,
+     "net_ex_top3": -5507.13,
+     "passes": false
+    },
+    "2025": {
+     "n": 1506,
+     "gross_usd": 209.11,
+     "net_usd": -3104.09,
+     "gross_bp_per_trade": 0.69,
+     "net_bp_per_trade": -10.31,
+     "pf": 0.838,
+     "win_rate": 0.616,
+     "net_ex_top3": -3629.25,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2113,
+    "stop": 311,
+    "week_end": 142,
+    "time": 139,
+    "split_end": 8
+   },
+   "median_hold_bars": 96.0,
+   "trades_per_day": 7.45
+  },
+  "z3.0_o0.5_h4": {
+   "HL": {
+    "n": 2695,
+    "gross_usd": -3480.18,
+    "net_usd": -9409.18,
+    "gross_bp_per_trade": -6.46,
+    "net_bp_per_trade": -17.46,
+    "pf": 0.768,
+    "win_rate": 0.607,
+    "net_ex_top3": -9826.42,
+    "passes": false
+   },
+   "BINANCE": {
+    "n": 2695,
+    "gross_usd": -3480.18,
+    "net_usd": -9948.18,
+    "gross_bp_per_trade": -6.46,
+    "net_bp_per_trade": -18.46,
+    "pf": 0.756,
+    "win_rate": 0.601,
+    "net_ex_top3": -10364.82,
+    "passes": false
+   },
+   "HL_slip2": {
+    "n": 2695,
+    "gross_usd": -3480.18,
+    "net_usd": -10487.18,
+    "gross_bp_per_trade": -6.46,
+    "net_bp_per_trade": -19.46,
+    "pf": 0.744,
+    "win_rate": 0.599,
+    "net_ex_top3": -10903.22,
+    "passes": false
+   },
+   "by_year_HL": {
+    "2024": {
+     "n": 1199,
+     "gross_usd": -3004.86,
+     "net_usd": -5642.66,
+     "gross_bp_per_trade": -12.53,
+     "net_bp_per_trade": -23.53,
+     "pf": 0.734,
+     "win_rate": 0.595,
+     "net_ex_top3": -5998.16,
+     "passes": false
+    },
+    "2025": {
+     "n": 1496,
+     "gross_usd": -475.32,
+     "net_usd": -3766.52,
+     "gross_bp_per_trade": -1.59,
+     "net_bp_per_trade": -12.59,
+     "pf": 0.806,
+     "win_rate": 0.616,
+     "net_ex_top3": -4142.18,
+     "passes": false
+    }
+   },
+   "exit_reasons": {
+    "revert": 2223,
+    "stop": 311,
+    "week_end": 147,
+    "split_end": 8,
+    "time": 6
+   },
+   "median_hold_bars": 96.0,
+   "trades_per_day": 7.4
+  }
+ },
+ "chosen_config": "z3.0_o0.5_h2",
+ "choice_rule": "highest train net USD under HL costs (no config met the bar)",
+ "chosen_gross_bp_by_exit_reason": {
+  "revert": {
+   "count": 2113,
+   "mean": 59.51,
+   "median": 60.64
+  },
+  "split_end": {
+   "count": 8,
+   "mean": -2.93,
+   "median": -5.5
+  },
+  "stop": {
+   "count": 311,
+   "mean": -194.47,
+   "median": -129.58
+  },
+  "time": {
+   "count": 139,
+   "mean": -493.66,
+   "median": -386.63
+  },
+  "week_end": {
+   "count": 142,
+   "mean": -56.73,
+   "median": -9.1
+  }
+ },
+ "chosen_delay2_informational": {
+  "HL": {
+   "n": 2713,
+   "gross_usd": -2496.32,
+   "net_usd": -8464.92,
+   "gross_bp_per_trade": -4.6,
+   "net_bp_per_trade": -15.6,
+   "pf": 0.782,
+   "win_rate": 0.601,
+   "net_ex_top3": -8955.36,
+   "passes": false
+  },
+  "BINANCE": {
+   "n": 2713,
+   "gross_usd": -2496.32,
+   "net_usd": -9007.52,
+   "gross_bp_per_trade": -4.6,
+   "net_bp_per_trade": -16.6,
+   "pf": 0.769,
+   "win_rate": 0.599,
+   "net_ex_top3": -9497.36,
+   "passes": false
+  },
+  "HL_slip2": {
+   "n": 2713,
+   "gross_usd": -2496.32,
+   "net_usd": -9550.12,
+   "gross_bp_per_trade": -4.6,
+   "net_bp_per_trade": -17.6,
+   "pf": 0.756,
+   "win_rate": 0.596,
+   "net_ex_top3": -10039.36,
+   "passes": false
+  },
+  "by_year_HL": {
+   "2024": {
+    "n": 1207,
+    "gross_usd": -2260.4,
+    "net_usd": -4915.8,
+    "gross_bp_per_trade": -9.36,
+    "net_bp_per_trade": -20.36,
+    "pf": 0.751,
+    "win_rate": 0.587,
+    "net_ex_top3": -5250.9,
+    "passes": false
+   },
+   "2025": {
+    "n": 1506,
+    "gross_usd": -235.92,
+    "net_usd": -3549.12,
+    "gross_bp_per_trade": -0.78,
+    "net_bp_per_trade": -11.78,
+    "pf": 0.813,
+    "win_rate": 0.612,
+    "net_ex_top3": -4039.56,
+    "passes": false
+   }
+  },
+  "exit_reasons": {
+   "revert": 2112,
+   "stop": 311,
+   "week_end": 143,
+   "time": 139,
+   "split_end": 8
+  },
+  "median_hold_bars": 96.0,
+  "trades_per_day": 7.45
+ },
+ "formation_summary": {
+  "weeks": 53,
+  "mean_pairs_per_week": 18.3,
+  "most_frequent_pairs": [
+   [
+    "ADAUSDT/DOGEUSDT",
+    10
+   ],
+   [
+    "BTCUSDT/LINKUSDT",
+    8
+   ],
+   [
+    "XRPUSDT/WIFUSDT",
+    8
+   ],
+   [
+    "ADAUSDT/LINKUSDT",
+    7
+   ],
+   [
+    "BTCUSDT/SOLUSDT",
+    7
+   ],
+   [
+    "TRUMPUSDT/DOGEUSDT",
+    7
+   ],
+   [
+    "ETHUSDT/ENAUSDT",
+    6
+   ],
+   [
+    "ONDOUSDT/AVAXUSDT",
+    6
+   ],
+   [
+    "ORDIUSDT/BNBUSDT",
+    5
+   ],
+   [
+    "FILUSDT/ORDIUSDT",
+    5
+   ]
+  ]
+ },
+ "verdict": "FAIL on train: all 12 configs have negative net; gross before costs is -11.0 to -0.1 bp per trade"
+}

@@ -112,3 +112,37 @@ if __name__ == "__main__":
         for i, (s, st) in enumerate(ex.map(lambda s: do_symbol(s, kind), syms)):
             if i % 50 == 0:
                 print(i, s, st, flush=True)
+
+
+def fetch_files(sym, kind, months=(), days=()):
+    """Direct GETs (no listing) of monthly and daily archive files; 404s are skipped.
+    kind 'klines' (1d) or 'funding' (monthly only: the archive has no daily fundingRate files)."""
+    keys = []
+    for m in months:
+        keys.append(f"data/futures/um/monthly/klines/{sym}/1d/{sym}-1d-{m}.zip" if kind == "klines"
+                    else f"data/futures/um/monthly/fundingRate/{sym}/{sym}-fundingRate-{m}.zip")
+    if kind == "klines":
+        keys += [f"data/futures/um/daily/klines/{sym}/1d/{sym}-1d-{d}.zip" for d in days]
+    frames = []
+    for k in keys:
+        txt = get_zip_csv(k)
+        if txt is None:
+            continue
+        if kind == "klines":
+            df = parse_csv(txt, KCOLS)
+            if df is not None:
+                frames.append(df[["open_time", "open", "high", "low", "close", "volume", "quote_volume"]])
+        else:
+            df = parse_csv(txt, ["calc_time", "funding_interval_hours", "last_funding_rate"])
+            if df is not None:
+                frames.append(df)
+    if not frames:
+        return None
+    return pd.concat(frames).drop_duplicates().reset_index(drop=True).apply(pd.to_numeric, errors="coerce")
+
+
+def current_symbols():
+    _, prefs = s3_list("data/futures/um/monthly/klines/")
+    _, prefs_d = s3_list("data/futures/um/daily/klines/")
+    syms = sorted({p.split("/")[-2] for p in prefs + prefs_d})
+    return [s for s in syms if s.endswith("USDT") and "_" not in s]
