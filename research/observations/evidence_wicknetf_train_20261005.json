@@ -1,0 +1,336 @@
+{
+ "hypotheses": [
+  "H-WICKNET-F"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "agent": "agent_wicknet",
+ "date": "2026-10-05",
+ "preregistration": "reports/hypotheses/wicknetf_preregistration.json (frozen before any WICKNET-F run; derived from WICKNET train observations, so train cannot validate)",
+ "scripts": [
+  "scripts/research/wicknetf_run.py",
+  "scripts/research/wicknet_sim.py"
+ ],
+ "hlanchor_lib_sha256": "98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad",
+ "data": "Cached Tardis HL quotes/trades + Binance-futures book_ticker (data/raw/web/tardis/parquet), BTCUSDT spot 1-s klines (data/raw/web/binance_spot/klines1s). No new downloads. Holdout never touched.",
+ "split": "train",
+ "role": "informational + selection only",
+ "n_coin_days": 22,
+ "results": [
+  {
+   "config": "f_d30_TK2",
+   "n": 166,
+   "net": -48.8,
+   "mean": -0.294,
+   "pf": 0.574,
+   "net_ex_top3": -56.8,
+   "win": 0.488,
+   "passes": false,
+   "markout_1s_bp": 9.984,
+   "markout_5s_bp": 4.091,
+   "markout_30s_bp": 3.742,
+   "markout_60s_bp": 4.782,
+   "n_entry_fills": 166,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 3.06,
+   "exit_mix": {
+    "time": 165,
+    "stop": 1
+   },
+   "days_positive": "3/8",
+   "by_day": {
+    "2024-11-01": 1.11,
+    "2024-12-01": 4.43,
+    "2025-01-01": -0.96,
+    "2025-02-01": -44.12,
+    "2025-03-01": -5.45,
+    "2025-04-01": -4.82,
+    "2025-05-01": -1.16,
+    "2025-06-01": 2.17
+   },
+   "by_coin": {
+    "FARTCOIN": -61.35,
+    "WIF": 11.95,
+    "kBONK": 0.6
+   },
+   "by_coin_n": {
+    "FARTCOIN": 117,
+    "WIF": 17,
+    "kBONK": 32
+   },
+   "top3": [
+    3.75,
+    2.28,
+    1.96
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 269044,
+   "post_only_rejects": 113,
+   "fills_through": 166,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0698
+  },
+  {
+   "config": "f_d30_TK5",
+   "n": 164,
+   "net": -63.96,
+   "mean": -0.39,
+   "pf": 0.562,
+   "net_ex_top3": -75.57,
+   "win": 0.463,
+   "passes": false,
+   "markout_1s_bp": 9.91,
+   "markout_5s_bp": 4.172,
+   "markout_30s_bp": 3.88,
+   "markout_60s_bp": 4.29,
+   "n_entry_fills": 164,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 2.1,
+   "exit_mix": {
+    "time": 157,
+    "stop": 7
+   },
+   "days_positive": "4/8",
+   "by_day": {
+    "2024-11-01": 1.15,
+    "2024-12-01": 0.75,
+    "2025-01-01": -8.41,
+    "2025-02-01": -46.9,
+    "2025-03-01": -5.78,
+    "2025-04-01": -8.7,
+    "2025-05-01": 2.86,
+    "2025-06-01": 1.08
+   },
+   "by_coin": {
+    "FARTCOIN": -68.44,
+    "WIF": 9.68,
+    "kBONK": -5.19
+   },
+   "by_coin_n": {
+    "FARTCOIN": 116,
+    "WIF": 17,
+    "kBONK": 31
+   },
+   "top3": [
+    5.1,
+    3.72,
+    2.79
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 268942,
+   "post_only_rejects": 111,
+   "fills_through": 164,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0698
+  },
+  {
+   "config": "f_d30_MK5",
+   "n": 165,
+   "net": -52.58,
+   "mean": -0.319,
+   "pf": 0.618,
+   "net_ex_top3": -62.34,
+   "win": 0.479,
+   "passes": false,
+   "markout_1s_bp": 9.968,
+   "markout_5s_bp": 4.141,
+   "markout_30s_bp": 3.915,
+   "markout_60s_bp": 4.92,
+   "n_entry_fills": 165,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 2.65,
+   "exit_mix": {
+    "time": 150,
+    "tp_maker": 9,
+    "stop": 6
+   },
+   "days_positive": "4/8",
+   "by_day": {
+    "2024-11-01": 1.15,
+    "2024-12-01": 0.75,
+    "2025-01-01": -8.41,
+    "2025-02-01": -35.79,
+    "2025-03-01": -4.77,
+    "2025-04-01": -8.7,
+    "2025-05-01": 2.11,
+    "2025-06-01": 1.08
+   },
+   "by_coin": {
+    "FARTCOIN": -57.07,
+    "WIF": 9.68,
+    "kBONK": -5.19
+   },
+   "by_coin_n": {
+    "FARTCOIN": 117,
+    "WIF": 17,
+    "kBONK": 31
+   },
+   "top3": [
+    3.72,
+    3.51,
+    2.52
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 269125,
+   "post_only_rejects": 121,
+   "fills_through": 165,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0698
+  },
+  {
+   "config": "f_d50_TK2",
+   "n": 41,
+   "net": 34.24,
+   "mean": 0.835,
+   "pf": 2.727,
+   "net_ex_top3": 24.6,
+   "win": 0.756,
+   "passes": false,
+   "markout_1s_bp": 23.275,
+   "markout_5s_bp": 15.735,
+   "markout_30s_bp": 8.994,
+   "markout_60s_bp": 1.389,
+   "n_entry_fills": 41,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 14.352,
+   "exit_mix": {
+    "time": 41
+   },
+   "days_positive": "5/6",
+   "by_day": {
+    "2024-12-01": 2.2,
+    "2025-01-01": 8.39,
+    "2025-02-01": -0.93,
+    "2025-04-01": 2.55,
+    "2025-05-01": 13.31,
+    "2025-06-01": 8.72
+   },
+   "by_coin": {
+    "FARTCOIN": 0.39,
+    "WIF": 21.92,
+    "kBONK": 11.94
+   },
+   "by_coin_n": {
+    "FARTCOIN": 28,
+    "WIF": 8,
+    "kBONK": 5
+   },
+   "top3": [
+    3.44,
+    3.26,
+    2.94
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 137452,
+   "post_only_rejects": 33,
+   "fills_through": 41,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0196
+  },
+  {
+   "config": "f_d50_TK5",
+   "n": 40,
+   "net": 21.74,
+   "mean": 0.544,
+   "pf": 1.789,
+   "net_ex_top3": 10.78,
+   "win": 0.675,
+   "passes": false,
+   "markout_1s_bp": 22.28,
+   "markout_5s_bp": 14.372,
+   "markout_30s_bp": 7.407,
+   "markout_60s_bp": -0.184,
+   "n_entry_fills": 40,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 11.436,
+   "exit_mix": {
+    "time": 39,
+    "stop": 1
+   },
+   "days_positive": "5/6",
+   "by_day": {
+    "2024-12-01": 0.79,
+    "2025-01-01": 3.53,
+    "2025-02-01": -4.54,
+    "2025-04-01": 2.75,
+    "2025-05-01": 12.15,
+    "2025-06-01": 7.06
+   },
+   "by_coin": {
+    "FARTCOIN": -7.58,
+    "WIF": 20.86,
+    "kBONK": 8.46
+   },
+   "by_coin_n": {
+    "FARTCOIN": 28,
+    "WIF": 8,
+    "kBONK": 4
+   },
+   "top3": [
+    4.48,
+    3.32,
+    3.16
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 137428,
+   "post_only_rejects": 33,
+   "fills_through": 40,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0196
+  },
+  {
+   "config": "f_d50_MK5",
+   "n": 40,
+   "net": 31.43,
+   "mean": 0.786,
+   "pf": 2.238,
+   "net_ex_top3": 17.2,
+   "win": 0.7,
+   "passes": false,
+   "markout_1s_bp": 22.28,
+   "markout_5s_bp": 14.372,
+   "markout_30s_bp": 7.407,
+   "markout_60s_bp": -0.184,
+   "n_entry_fills": 40,
+   "kill_test_mk30_pos": true,
+   "gross_bp_mean": 13.632,
+   "exit_mix": {
+    "time": 36,
+    "tp_maker": 3,
+    "stop": 1
+   },
+   "days_positive": "6/6",
+   "by_day": {
+    "2024-12-01": 0.79,
+    "2025-01-01": 3.53,
+    "2025-02-01": 4.23,
+    "2025-04-01": 3.67,
+    "2025-05-01": 12.15,
+    "2025-06-01": 7.06
+   },
+   "by_coin": {
+    "FARTCOIN": 2.11,
+    "WIF": 20.86,
+    "kBONK": 8.46
+   },
+   "by_coin_n": {
+    "FARTCOIN": 28,
+    "WIF": 8,
+    "kBONK": 4
+   },
+   "top3": [
+    5.53,
+    4.48,
+    4.22
+   ],
+   "passes_bar_and_kill": false,
+   "orders_placed": 137470,
+   "post_only_rejects": 33,
+   "fills_through": 40,
+   "fills_queue": 0,
+   "blocked_tick_share": 0.0196
+  }
+ ],
+ "selection": "Highest train PF among n >= 20: f_d50_TK2 (n 41, PF 2.727). d=30 configs n 164-166 but PF 0.56-0.62."
+}

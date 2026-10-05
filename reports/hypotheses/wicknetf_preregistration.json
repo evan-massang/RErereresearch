@@ -1,0 +1,33 @@
+{
+ "hypothesis": "H-WICKNET-F",
+ "frozen_at_utc": "2026-10-05T07:41:00Z",
+ "agent": "agent_wicknet (follow-up requested by coordinator)",
+ "is_synthetic": false,
+ "statement": "With the market-wide filter ON, deep post-only orders d bp from the Binance-implied fair on HL meme perps catch local wicks whose reversion is concentrated in the first seconds; a fast exit (<= 5 s) captures enough of it to beat fees.",
+ "derivation_disclosure": "DERIVED FROM THE H-WICKNET TRAIN OBSERVATIONS (reports/failures/agent_wicknet.md): filtered d=50 fills showed +22 bp at 1 s, +14 bp at 5 s, ~0 at 60 s markout. Train was therefore already seen for this family and CANNOT validate it; train is run for information and for the declared selection rule only. Validation (2025-07..2026-03) has never been looked at for WICKNET or WICKNET-F.",
+ "parent": "H-WICKNET (FAIL on train: n < 50 for every filter-on config; reports/failures/agent_wicknet.md)",
+ "data": {
+  "coins": ["WIF", "kBONK", "FARTCOIN", "PUMP"],
+  "source": "Cached Tardis free first-of-month HL quotes+trades and Binance-futures book_ticker (data/raw/web/tardis/parquet); BTCUSDT spot 1-s klines already cached (data/raw/web/binance_spot/klines1s). No new downloads.",
+  "train_days": ["2024-11-01", "2024-12-01", "2025-01-01", "2025-02-01", "2025-03-01", "2025-04-01", "2025-05-01", "2025-06-01"],
+  "validation_days": ["2025-07-01", "2025-08-01", "2025-09-01", "2025-10-01", "2025-11-01", "2025-12-01", "2026-01-01", "2026-02-01", "2026-03-01"],
+  "holdout": "2026-04-01 onward: never downloaded or examined"
+ },
+ "rule_and_fill_model": "Identical to reports/hypotheses/wicknet_preregistration.json (reference F, post-only quotes at F(1 -/+ d) rounded away, 300 ms place/cancel latency vs exchange clock, refresh when F moves > d/5, fills only on strict trade-through or after displayed queue at placement + own size has traded at our price, hard stop at adverse d from entry, taker via hlanchor_lib.taker_fill, HL maker 1.5 / taker 4.5 bp, $1k, one unit per coin, EOD flatten) except: filter always ON (|BTC 60-s| >= 30 bp or |coin Binance 10-s| >= d/2), refresh R = 2 s, and the exits below. Implementation: scripts/research/wicknet_sim.py (time stop now a config parameter H_s; WICKNET defaults unchanged) driven by scripts/research/wicknetf_run.py.",
+ "grid": {
+  "count": 6,
+  "configs": {
+   "f_d30_TK2": "d=30 bp, taker exit 2 s after the fill is learned",
+   "f_d30_TK5": "d=30 bp, taker exit 5 s after",
+   "f_d30_MK5": "d=30 bp, post-only TP at F, taker time stop 5 s",
+   "f_d50_TK2": "d=50 bp, taker exit 2 s",
+   "f_d50_TK5": "d=50 bp, taker exit 5 s",
+   "f_d50_MK5": "d=50 bp, post-only TP at F, taker time stop 5 s"
+  },
+  "time_resolution": "Exit decisions on the 250 ms decision clock; taker arrives 300 ms after the decision."
+ },
+ "selection": "Highest train PF among configs with train n >= 20 (tie: larger n). If none has n >= 20, validation is not run. Train is informational: no bar is applied to it for the verdict.",
+ "validation": "Run ONCE on the selected config only, on all four coins.",
+ "bar": "On validation: n >= 50 round trips, net > 0, PF > 1.2, net without the 3 best trades > 0 (hlanchor_lib.bar_stats). If validation n < 50 the result is INCONCLUSIVE, not a pass. Also reported (not part of the bar): +1/5/30 s entry-fill markouts, days positive, per coin.",
+ "verdict_rule": "PASS -> reports/candidates/wicknetf.md (still a candidate requiring forward test; holdout untouched). FAIL or INCONCLUSIVE -> reports/failures/agent_wicknetf.md."
+}

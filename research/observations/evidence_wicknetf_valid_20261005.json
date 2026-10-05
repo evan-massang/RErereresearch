@@ -1,0 +1,130 @@
+{
+ "hypotheses": [
+  "H-WICKNET-F"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "agent": "agent_wicknet",
+ "date": "2026-10-05",
+ "preregistration": "reports/hypotheses/wicknetf_preregistration.json (frozen before any WICKNET-F run; derived from WICKNET train observations, so train cannot validate)",
+ "scripts": [
+  "scripts/research/wicknetf_run.py",
+  "scripts/research/wicknet_sim.py"
+ ],
+ "hlanchor_lib_sha256": "98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad",
+ "data": "Cached Tardis HL quotes/trades + Binance-futures book_ticker (data/raw/web/tardis/parquet), BTCUSDT spot 1-s klines (data/raw/web/binance_spot/klines1s). No new downloads. Holdout never touched.",
+ "split": "validation",
+ "looks": 1,
+ "config": "f_d50_TK2",
+ "n_coin_days": 35,
+ "coin_days": [
+  "FARTCOIN:2025-07-01",
+  "FARTCOIN:2025-08-01",
+  "FARTCOIN:2025-09-01",
+  "FARTCOIN:2025-10-01",
+  "FARTCOIN:2025-11-01",
+  "FARTCOIN:2025-12-01",
+  "FARTCOIN:2026-01-01",
+  "FARTCOIN:2026-02-01",
+  "FARTCOIN:2026-03-01",
+  "PUMP:2025-08-01",
+  "PUMP:2025-09-01",
+  "PUMP:2025-10-01",
+  "PUMP:2025-11-01",
+  "PUMP:2025-12-01",
+  "PUMP:2026-01-01",
+  "PUMP:2026-02-01",
+  "PUMP:2026-03-01",
+  "WIF:2025-07-01",
+  "WIF:2025-08-01",
+  "WIF:2025-09-01",
+  "WIF:2025-10-01",
+  "WIF:2025-11-01",
+  "WIF:2025-12-01",
+  "WIF:2026-01-01",
+  "WIF:2026-02-01",
+  "WIF:2026-03-01",
+  "kBONK:2025-07-01",
+  "kBONK:2025-08-01",
+  "kBONK:2025-09-01",
+  "kBONK:2025-10-01",
+  "kBONK:2025-11-01",
+  "kBONK:2025-12-01",
+  "kBONK:2026-01-01",
+  "kBONK:2026-02-01",
+  "kBONK:2026-03-01"
+ ],
+ "result": {
+  "config": "f_d50_TK2",
+  "n": 122,
+  "net": -32.2,
+  "mean": -0.264,
+  "pf": 0.746,
+  "net_ex_top3": -45.21,
+  "win": 0.5,
+  "passes": false,
+  "markout_1s_bp": 13.261,
+  "markout_5s_bp": 4.73,
+  "markout_30s_bp": 2.568,
+  "markout_60s_bp": 4.703,
+  "n_entry_fills": 122,
+  "kill_test_mk30_pos": true,
+  "gross_bp_mean": 3.36,
+  "exit_mix": {
+   "time": 119,
+   "stop": 3
+  },
+  "days_positive": "2/8",
+  "by_day": {
+   "2025-08-01": 14.18,
+   "2025-09-01": -10.15,
+   "2025-10-01": -4.6,
+   "2025-11-01": 0.76,
+   "2025-12-01": -15.75,
+   "2026-01-01": -0.33,
+   "2026-02-01": -10.87,
+   "2026-03-01": -5.45
+  },
+  "by_coin": {
+   "FARTCOIN": 4.68,
+   "PUMP": -49.85,
+   "WIF": 6.73,
+   "kBONK": 6.23
+  },
+  "by_coin_n": {
+   "FARTCOIN": 62,
+   "PUMP": 49,
+   "WIF": 4,
+   "kBONK": 7
+  },
+  "top3": [
+   4.49,
+   4.44,
+   4.08
+  ],
+  "passes_bar_and_kill": false,
+  "orders_placed": 180772,
+  "post_only_rejects": 2,
+  "fills_through": 122,
+  "fills_queue": 0,
+  "blocked_tick_share": 0.0169
+ },
+ "bar": "n>=50, net>0, PF>1.2, net ex top-3 >0",
+ "verdict": "FAIL (n 122, net -32.20, PF 0.746, net ex top-3 -45.21)",
+ "post_hoc_not_a_test": {
+  "note": "Excluding PUMP (the only coin with no train days) gives n 73, net +17.64, PF 1.33, ex-top3 +4.63. This exclusion was chosen after seeing validation and does NOT count; recorded only so it is not rediscovered as a 'pass'.",
+  "per_coin_gross_bp": {
+   "FARTCOIN": 6.76,
+   "PUMP": -4.17,
+   "WIF": 22.83,
+   "kBONK": 14.9
+  },
+  "per_coin_n": {
+   "FARTCOIN": 62,
+   "PUMP": 49,
+   "WIF": 4,
+   "kBONK": 7
+  }
+ }
+}

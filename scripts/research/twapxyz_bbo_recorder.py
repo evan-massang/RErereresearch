@@ -14,7 +14,7 @@ Sources (public, unauthenticated, read-only):
     Sampled every 2 s: a row is written for a coin only if its bid or ask PRICE changed since its last row (sizes are
     the sizes at that moment; pure size changes are not written). A state at time t = last row with ts_us <= t.
     Note: HL `time` (exch_ts_ms) ran ~2.6 s ahead of the container clock in a test on 2026-10-05; use ts_us.
-  * HL info `metaAndAssetCtxs` dex "xyz" once a minute: growthMode, deployerFeeScale, lastFeeScaleChangeTime,
+  * HL info `metaAndAssetCtxs` dex "xyz" every 5 min: growthMode, deployerFeeScale, lastFeeScaleChangeTime,
     isDelisted, mark, mid, oracle, impact prices, 24h notional volume, funding.
 
 Output (hourly parquet chunks, UTC hour of receive time), data/raw/web/twapxyz/ (gitignored, data/raw/):
@@ -44,6 +44,7 @@ OUT = Path(os.environ.get("RR_TWAPXYZ_OUT", ROOT / "data/raw/web/twapxyz"))
 INFO = "https://api.hyperliquid.xyz/info"
 WS = "wss://api.hyperliquid.xyz/ws"
 SAMPLE_S = 2.0   # one row per coin per 2 s at most, only when bid or ask price changed (size kept on that row)
+META_S = 300     # xyz metaAndAssetCtxs every 5 min (1-min mids are already in twap_recorder ctx)
 
 
 def log(*a):
@@ -144,7 +145,7 @@ async def main(hours):
     while time.monotonic() < end:
         await asyncio.sleep(SAMPLE_S)
         store.sample()
-        if time.monotonic() - last_meta >= 60:
+        if time.monotonic() - last_meta >= META_S:
             last_meta = time.monotonic()
             try:
                 await asyncio.to_thread(meta_poll, store)
