@@ -1,0 +1,156 @@
+{
+ "hypothesis": "H-NIGHT: long tight-set memecoin perps in fixed UTC windows (overnight seasonality)",
+ "frozen_at_utc": "2026-10-05T10:35:44.249713+00:00",
+ "status_at_freeze": "No price return, P&L or funding value computed for this hypothesis. Read before freeze: Lighter orderBooks market list (market ids, fee fields 0.0000), the shapes/date ranges (first/last open_time only) of cached k1h parquet files in data/raw/web/lsratio and pumppulse, and secondary web summaries of the source paper (SSRN itself returned HTTP 403).",
+ "scope": "reports/scope_memecoins_20261005.md (memecoins only)",
+ "source_leads": [
+  {
+   "ref": "Padysak & Vojtko, 'Seasonality, Trend-following, and Mean reversion in Bitcoin', SSRN 4081000 (2022)",
+   "modality": "document",
+   "status": "NOT read in primary: SSRN and ResearchGate return HTTP 403 from this container. Secondary summaries disagree on the window: Quantpedia says 'open a long position in the BTC at 22:00 (UTC +0) and hold it for two hours' (MDD -34.04%, 'data from the text at page 9'); TradingView script IzFZxayj and paperswithbacktest say 21:00-23:00 UTC (MDD -22.45%). Likely an hour-label (bar open vs bar close) ambiguity. Both readings are pre-registered as arms (W2224, W2123)."
+  },
+  {
+   "ref": "sources/leads/documented_edges_round11.md idea 2",
+   "modality": "document"
+  },
+  {
+   "ref": "CoinDesk 2024-02-15 US-session demand (14-16 UTC arm)",
+   "modality": "document"
+  }
+ ],
+ "amendment_vs_lead_grid": "Lead grid was window(3) x universe(2) x hedge(2). Caller asked for basket vs per-coin instead of U1/U2, and the paper's window is ambiguous, so the grid is window(4: 22-24, 21-23, 23-24, 14-16) x variant(3: per-coin, basket, BTC-hedged basket) = 12. Decided before any data download.",
+ "universe": {
+  "binance_symbols": [
+   "PUMPUSDT",
+   "DOGEUSDT",
+   "FARTCOINUSDT",
+   "1000SHIBUSDT",
+   "TRUMPUSDT",
+   "1000PEPEUSDT",
+   "PENGUUSDT",
+   "WIFUSDT",
+   "1000BONKUSDT"
+  ],
+  "lighter_names": [
+   "PUMP",
+   "DOGE",
+   "FARTCOIN",
+   "1000SHIB",
+   "TRUMP",
+   "1000PEPE",
+   "PENGU",
+   "WIF",
+   "1000BONK"
+  ],
+  "hedge": "BTCUSDT (Lighter BTC market 1)",
+  "rule": "Fixed list (Lighter tight set + 1000BONK). A coin is tradable from its 8th day of Binance 1h history (listing week excluded). PUMP exists only from 2025-07, so it is in validation only."
+ },
+ "data": {
+  "klines": "data.binance.vision futures/um monthly 1h klines, months 2022-01..2026-03 ONLY (holdout guard: nothing >= 2026-04 is downloaded). Downloaded fresh to data/raw/web/night/ because cached lsratio/pumppulse k1h files are universe-membership slices with gaps (e.g. lsratio 1000SHIB ends 2025-06, PENGU ends 2026-01).",
+  "funding": "data.binance.vision futures/um monthly fundingRate archive, same months, as proxy for Lighter funding.",
+  "budget": "< 200 MB; stop if free disk < 2.5 GB"
+ },
+ "splits": {
+  "train": "trade dates 2022-01-01..2025-06-30",
+  "validation": "2025-07-01..2026-03-31 (run ONCE, selected config only)",
+  "holdout": "2026-04-01 onward, never downloaded or touched"
+ },
+ "trade": "Long at open of the 1h bar starting at entry_hour, exit at close of the bar starting at entry_hour+hours-1 (same UTC date). gross = close/open - 1. Both bars must exist, else no trade. Basket: equal-weight mean of available coin legs that day, needs >= 2 coins; hedged basket subtracts the BTCUSDT return over the same bars.",
+ "costs": {
+  "base": "Per coin: median $1,000 round-trip cost on Lighter (VWAP buy $1k - VWAP sell $1k)/mid, walking the public orderBookOrders book, from a REST sampler run now (2026-10-05, ~10 min, 20 s interval); this is >= the quoted spread. Lighter fee 0 bp (orderBooks taker_fee 0.0000). Basket cost = mean of member costs; hedged adds the BTC cost.",
+  "stress": "base round-trip cost x 1.5",
+  "funding": "long pays f_h x hours, where f_h = (sum of Binance funding rates settled in that coin's calendar month) / (hours in that month); negative f_h is a credit. Hedged: the BTC short receives BTC f_h x hours. Same-month mean is a cost proxy only (not used by any signal); documented as non-point-in-time for cost.",
+  "binance_informational": "Binance taker 5 bp per side (10 bp round trip) + same funding; information only."
+ },
+ "bar_per_split": "n >= 50 trades, mean net > 0, PF > 1.2, net sum excluding the top-3 trades > 0, all at BASE cost. Also reported: 1.5x stress net (must be > 0 to call it a candidate), daily-sum t-stat (effective n is days), by half-year, Binance variant.",
+ "placebo": "For every config, the same computation (same length, variant, cost model) for all 24 entry hours. Report the arm's rank among the 24 by mean gross and mean net, the mean of the 23 other hours, and the always-long mean per hour x length. Label 'seasonal' only if the arm ranks top-3 of 24 by mean gross on the split; otherwise the result is 'beta/noise' even if the bar passes.",
+ "lead_kill_test_informational": "W2224_PC train mean gross >= 2 x mean base cost and positive in >= 2/3 of train half-years.",
+ "selection": "On train: among configs that pass the bar, the one with the highest daily-sum t of net. Validation once on that config. If none passes on train, the highest-train-t config is run on validation once for information only and the verdict is FAIL.",
+ "grid": [
+  {
+   "id": "W2224_PC",
+   "entry_hour_utc": 22,
+   "hours": 2,
+   "variant": "PC",
+   "variant_desc": "per-coin trades, unhedged (trade unit = one coin-window)"
+  },
+  {
+   "id": "W2224_BK",
+   "entry_hour_utc": 22,
+   "hours": 2,
+   "variant": "BK",
+   "variant_desc": "equal-weight basket, unhedged (trade unit = one day)"
+  },
+  {
+   "id": "W2224_BKH",
+   "entry_hour_utc": 22,
+   "hours": 2,
+   "variant": "BKH",
+   "variant_desc": "equal-weight basket, short BTCUSDT 1:1 notional over the same window (trade unit = one day)"
+  },
+  {
+   "id": "W2123_PC",
+   "entry_hour_utc": 21,
+   "hours": 2,
+   "variant": "PC",
+   "variant_desc": "per-coin trades, unhedged (trade unit = one coin-window)"
+  },
+  {
+   "id": "W2123_BK",
+   "entry_hour_utc": 21,
+   "hours": 2,
+   "variant": "BK",
+   "variant_desc": "equal-weight basket, unhedged (trade unit = one day)"
+  },
+  {
+   "id": "W2123_BKH",
+   "entry_hour_utc": 21,
+   "hours": 2,
+   "variant": "BKH",
+   "variant_desc": "equal-weight basket, short BTCUSDT 1:1 notional over the same window (trade unit = one day)"
+  },
+  {
+   "id": "W2324_PC",
+   "entry_hour_utc": 23,
+   "hours": 1,
+   "variant": "PC",
+   "variant_desc": "per-coin trades, unhedged (trade unit = one coin-window)"
+  },
+  {
+   "id": "W2324_BK",
+   "entry_hour_utc": 23,
+   "hours": 1,
+   "variant": "BK",
+   "variant_desc": "equal-weight basket, unhedged (trade unit = one day)"
+  },
+  {
+   "id": "W2324_BKH",
+   "entry_hour_utc": 23,
+   "hours": 1,
+   "variant": "BKH",
+   "variant_desc": "equal-weight basket, short BTCUSDT 1:1 notional over the same window (trade unit = one day)"
+  },
+  {
+   "id": "W1416_PC",
+   "entry_hour_utc": 14,
+   "hours": 2,
+   "variant": "PC",
+   "variant_desc": "per-coin trades, unhedged (trade unit = one coin-window)"
+  },
+  {
+   "id": "W1416_BK",
+   "entry_hour_utc": 14,
+   "hours": 2,
+   "variant": "BK",
+   "variant_desc": "equal-weight basket, unhedged (trade unit = one day)"
+  },
+  {
+   "id": "W1416_BKH",
+   "entry_hour_utc": 14,
+   "hours": 2,
+   "variant": "BKH",
+   "variant_desc": "equal-weight basket, short BTCUSDT 1:1 notional over the same window (trade unit = one day)"
+  }
+ ],
+ "is_synthetic": false
+}

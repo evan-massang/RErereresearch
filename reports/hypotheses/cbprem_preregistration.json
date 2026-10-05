@@ -1,0 +1,57 @@
+{
+ "hypothesis": "H-CBPREM",
+ "source": "sources/leads/documented_edges_round11.md idea 4 (H-CBPREM); scope reports/scope_memecoins_20261005.md (memecoins only); cost conventions from reports/hypotheses/lightlag_meme_preregistration.json (Lighter Standard 0/0 fee, spread paid explicitly, no zero-impact fills).",
+ "written_at_utc": "2026-10-05 (container clock). Written BEFORE any Coinbase or Binance price/candle data for this hypothesis was downloaded or opened. Only seen before writing: Coinbase /products/DOGE-USD metadata (status online, no prices) and an HTTP 200 HEAD-style check of one data.binance.vision kline zip URL (not opened). The git commit that first contains this file is authoritative for the time.",
+ "changes_vs_leads_file": "Splits follow the task brief (train <= 2025-06-30, validation 2025-07-01..2026-03-31) instead of the leads file's (train <= 2025-12-31). The grid follows the task brief (z-window x k x H) instead of the leads file's US-hours-gate grid; the US-hours gate is not tested. Execution is a Lighter taker position priced on Binance perp 1m closes (no historical Lighter book exists).",
+ "statement": "For memecoins listed on Coinbase (USD spot), Binance USD-M (USDT perp) and Lighter, the de-meaned Coinbase USD premium over the Binance perp (USDT converted to USD with Coinbase USDT-USD) predicts the perp's return over the next 15-60 min in the premium's direction; a z-score threshold rule on it is profitable after Lighter's spread (x1.5 stress) and a funding proxy.",
+ "universe": {
+  "candidates": "The 13 memecoin perps on Lighter in scripts/research/memelead_spreads.py: DOGE, 1000PEPE, WIF, FARTCOIN, PUMP, POPCAT, 1000FLOKI, PENGU, SPX, TRUMP, 1000BONK, 1000SHIB, USELESS",
+  "coinbase_products": {"DOGE":"DOGE-USD","1000PEPE":"PEPE-USD","WIF":"WIF-USD","FARTCOIN":"FARTCOIN-USD","PUMP":"PUMP-USD","POPCAT":"POPCAT-USD","1000FLOKI":"FLOKI-USD","PENGU":"PENGU-USD","SPX":"SPX-USD","TRUMP":"TRUMP-USD","1000BONK":"BONK-USD","1000SHIB":"SHIB-USD","USELESS":"USELESS-USD"},
+  "binance_symbols": "<COIN>USDT (e.g. 1000PEPEUSDT); for 1000x contracts the Binance price is divided by 1000 before forming the premium",
+  "inclusion_rule": "A candidate is IN if (a) the Coinbase product exists on api.exchange.coinbase.com/products, (b) its first Coinbase 1m candle is on or before 2025-05-31 (>= 30 days of Coinbase history inside train), (c) Binance USD-M monthly 1m klines exist on data.binance.vision for the coin in train. Determined mechanically from candle timestamps only, recorded in the evidence file. Each coin's scoring starts at max(2024-10-01, first Coinbase candle + 30 days, first Binance kline + 30 days). Excluded coins are listed with reasons."
+ },
+ "data": {
+  "coinbase": "Coinbase Exchange public candles API GET /products/<P>/candles?granularity=60 (unauthenticated, 300 candles per request, <= ~7 req/s total), adapter pipeline/sources/coinbase.py. Closes only; minutes without trades have no candle (not forward-filled for the premium).",
+  "usdt_usd": "Coinbase USDT-USD 1m closes; forward-filled up to 60 min.",
+  "binance": "data.binance.vision futures/um monthly (daily if monthly missing) 1m klines; zips deleted after reduction to (open_time, close). Adapter pipeline/sources/binance_vision.py. fapi.binance.com is HTTP 451 here and is not used.",
+  "funding": "data.binance.vision futures/um monthly fundingRate files (proxy for Lighter funding).",
+  "range": "2024-09-20 (warm-up) to 2026-03-31 23:59 UTC. Nothing on or after 2026-04-01 is downloaded.",
+  "sampling": "None: full continuous history (the trailing 7-day windows need contiguous data). Declared up front.",
+  "storage": "data/raw/web/cbprem/ (stop if disk free < 2.5 GB; target < 500 MB)."
+ },
+ "splits": {
+  "train": "2024-10-01 00:00 .. 2025-06-30 23:59 UTC (decision time)",
+  "validation": "2025-07-01 .. 2026-03-31 23:59 UTC; selected config only, run ONCE",
+  "holdout": "2026-04-01 onward: NEVER downloaded or touched in this work",
+  "assignment": "A trade belongs to the split of its decision time; warm-up windows may read earlier data (point-in-time, past only)."
+ },
+ "rule": {
+  "premium": "p(m) = ln( CB_close(m) / ( BN_close(m)/scale * USDTUSD_close(m) ) ) for each 1m bar m (open-time minute) where both a Coinbase and a Binance candle exist; scale = 1000 for 1000x contracts else 1.",
+  "level": "At decision boundary t (every 15 min, t = minute multiple of 15): level(t) = median of p over bars with open time in [t-24h, t-1min]; requires >= 360 observations else no signal.",
+  "x": "x(t) = mean over bars with open time in [t-15, t-1] of (p - level(t)); requires >= 5 observations else no signal at t.",
+  "z": "z(t) = (x(t) - mean(x)) / sd(x), mean and sd over the boundary values x(s) for s in [t - W, t - 15min] (strictly earlier boundaries); requires >= 50% of those boundaries to have x, else no signal.",
+  "trigger": "If |z(t)| >= k and the coin has no open position, take a position d = sign(z) (premium positive -> long perp).",
+  "entry": "Price = Binance perp close of the bar opening at t (i.e. the price at t+1 min; one bar of latency). If that bar is missing, skip.",
+  "exit": "Price = Binance perp close of the bar opening at t+H (first available bar at or after it). Coin is busy until its exit; boundaries before exit are skipped.",
+  "position_rules": "One position per coin, no stop, $1,000 notional per trade, coins independent.",
+  "point_in_time": "Every input at decision t uses bars with open time <= t-1 min (closed by t). Entry/exit prices are the only post-t data and are used only for PnL."
+ },
+ "grid": {
+  "W_zwindow_days": [3, 7],
+  "k": [1.5, 2.5],
+  "H_min": [15, 30, 60],
+  "n_configs": 12
+ },
+ "costs": {
+  "lighter_spread": "Per-coin Lighter round-trip cost for $1,000 measured NOW (2026-10-05) from public orderBookOrders (walk the book: VWAP buy $1,000 minus VWAP sell $1,000, bp of mid), median over >= 10 snapshots ~20 s apart; written to data/raw/web/cbprem/lighter_spreads_*.jsonl. Lighter Standard fee 0/0.",
+  "primary_cost": "1.5 x measured per-coin round-trip cost (stress) + funding proxy. ALL bars and the selection rule use the primary cost.",
+  "informational": "(i) 1.0 x measured Lighter cost; (ii) Binance taker variant: 5 bp per side = 10 bp round trip, + funding proxy; (iii) gross.",
+  "funding_proxy": "Charge d * r_last * H/480, where r_last is the latest Binance 8h funding rate with fundingTime <= t (point-in-time); longs pay positive rates.",
+  "limitation": "Spreads measured in 2026-10 are applied to 2024-2026 history (no historical Lighter book is available); stated, not corrected."
+ },
+ "kill_test_train": "For the selected config's (W, H): pooled Pearson IC over all coins and all train boundaries with a valid z of corr(z(t), r_fwd) with r_fwd = ln(exit/entry) as defined above (no position rules), vs the momentum control IC corr(m(t), r_fwd) where m(t) = ln(BN_close(t-1)/BN_close(t-16)). KILLED unless IC_z > IC_mom AND IC_z > 0 in BOTH train halves (2024-10-01..2025-02-14 and 2025-02-15..2025-06-30).",
+ "selection_rule_train": "Among configs with train n >= 50, select the highest profit factor at primary cost (ties: larger n). If no config has net > 0 and PF > 1.0 at primary cost on train, H-CBPREM is KILLED and validation is not run.",
+ "validation": "Run the selected config once on validation. Bar per split (train for the selected config, and validation): n >= 50, net > 0, PF > 1.2, net excluding the 3 best trades > 0, all at primary cost. Validation n < 50 = INCONCLUSIVE (not a pass).",
+ "reporting": "All 12 train configs (n, net USD, mean bp, PF, net ex top-3, at primary/1.0x/Binance-taker/gross), the kill test, validation result, per-coin results, losses included. Evidence in research/observations/evidence_cbprem_*.json; reports/candidates/cbprem.md on pass else reports/failures/agent_cbprem.md.",
+ "no_changes": "No change to grid, rule, costs, universe rule, splits or selection after this file is written; a change requires a new hypothesis id with a rationale (parent + failing run)."
+}

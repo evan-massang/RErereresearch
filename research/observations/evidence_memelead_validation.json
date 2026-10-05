@@ -1,0 +1,516 @@
+{
+ "hypothesis": "H-MEMELEAD",
+ "split": "validation",
+ "days": [
+  "2025-07-08",
+  "2025-08-08",
+  "2025-09-08",
+  "2025-10-08",
+  "2025-11-08",
+  "2025-12-08",
+  "2026-01-08",
+  "2026-02-08",
+  "2026-03-08"
+ ],
+ "day_universe": [
+  {
+   "day": "2025-07-08",
+   "leaders": [
+    "1000PEPE",
+    "DOGE",
+    "FARTCOIN"
+   ],
+   "followers": [
+    "WIF",
+    "TRUMP",
+    "PENGU",
+    "1000BONK",
+    "SPX",
+    "1000SHIB",
+    "POPCAT",
+    "1000FLOKI"
+   ]
+  },
+  {
+   "day": "2025-08-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "PENGU"
+   ],
+   "followers": [
+    "1000BONK",
+    "FARTCOIN",
+    "WIF",
+    "TRUMP",
+    "1000SHIB",
+    "1000FLOKI",
+    "SPX",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2025-09-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "FARTCOIN"
+   ],
+   "followers": [
+    "PUMP",
+    "PENGU",
+    "WIF",
+    "TRUMP",
+    "1000BONK",
+    "1000SHIB",
+    "SPX",
+    "1000FLOKI",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2025-10-08",
+   "leaders": [
+    "DOGE",
+    "PUMP",
+    "1000PEPE"
+   ],
+   "followers": [
+    "FARTCOIN",
+    "PENGU",
+    "WIF",
+    "1000BONK",
+    "TRUMP",
+    "1000SHIB",
+    "1000FLOKI",
+    "SPX",
+    "USELESS",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2025-11-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "PUMP"
+   ],
+   "followers": [
+    "TRUMP",
+    "FARTCOIN",
+    "PENGU",
+    "WIF",
+    "1000BONK",
+    "1000SHIB",
+    "USELESS",
+    "1000FLOKI",
+    "SPX",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2025-12-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "PUMP"
+   ],
+   "followers": [
+    "FARTCOIN",
+    "TRUMP",
+    "WIF",
+    "PENGU",
+    "1000SHIB",
+    "1000BONK",
+    "SPX",
+    "POPCAT",
+    "USELESS",
+    "1000FLOKI"
+   ]
+  },
+  {
+   "day": "2026-01-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "FARTCOIN"
+   ],
+   "followers": [
+    "WIF",
+    "1000BONK",
+    "PENGU",
+    "PUMP",
+    "1000SHIB",
+    "TRUMP",
+    "1000FLOKI",
+    "USELESS",
+    "SPX",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2026-02-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "PUMP"
+   ],
+   "followers": [
+    "FARTCOIN",
+    "WIF",
+    "TRUMP",
+    "PENGU",
+    "1000BONK",
+    "1000SHIB",
+    "SPX",
+    "USELESS",
+    "1000FLOKI",
+    "POPCAT"
+   ]
+  },
+  {
+   "day": "2026-03-08",
+   "leaders": [
+    "DOGE",
+    "1000PEPE",
+    "PUMP"
+   ],
+   "followers": [
+    "WIF",
+    "TRUMP",
+    "1000SHIB",
+    "FARTCOIN",
+    "PENGU",
+    "1000BONK",
+    "USELESS",
+    "SPX",
+    "1000FLOKI",
+    "POPCAT"
+   ]
+  }
+ ],
+ "computed_at_utc": "2026-10-05T10:36:50.733487Z",
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "prereg": "reports/hypotheses/memelead_preregistration.json",
+ "prereg_sha256": "76d769e78868e9f22e090d42edc88df329b63454bdd4b9f75a6b660b65216ee1",
+ "script_sha256": "084457578db5a6b68bcd14e6da914c29a618d9840a274b610b3393f58405d62d",
+ "costs_bp_per_round_trip": [
+  {
+   "coin": "1000BONK",
+   "n_snapshots": 46,
+   "quoted_median_bp": 9.983,
+   "rt1000_median_bp": 10.028,
+   "rt1000_p90_bp": 12.536,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 15.042,
+   "stress_p90_cost_bp": 18.804
+  },
+  {
+   "coin": "1000FLOKI",
+   "n_snapshots": 46,
+   "quoted_median_bp": 28.669,
+   "rt1000_median_bp": 29.141,
+   "rt1000_p90_bp": 33.242,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 43.712,
+   "stress_p90_cost_bp": 49.863
+  },
+  {
+   "coin": "1000PEPE",
+   "n_snapshots": 46,
+   "quoted_median_bp": 4.431,
+   "rt1000_median_bp": 4.431,
+   "rt1000_p90_bp": 6.64,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 6.647,
+   "stress_p90_cost_bp": 9.96
+  },
+  {
+   "coin": "1000SHIB",
+   "n_snapshots": 46,
+   "quoted_median_bp": 3.354,
+   "rt1000_median_bp": 7.74,
+   "rt1000_p90_bp": 8.893,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 11.61,
+   "stress_p90_cost_bp": 13.339
+  },
+  {
+   "coin": "DOGE",
+   "n_snapshots": 46,
+   "quoted_median_bp": 3.114,
+   "rt1000_median_bp": 3.229,
+   "rt1000_p90_bp": 4.076,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 4.844,
+   "stress_p90_cost_bp": 6.114
+  },
+  {
+   "coin": "FARTCOIN",
+   "n_snapshots": 46,
+   "quoted_median_bp": 3.197,
+   "rt1000_median_bp": 3.541,
+   "rt1000_p90_bp": 4.884,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 5.311,
+   "stress_p90_cost_bp": 7.326
+  },
+  {
+   "coin": "PENGU",
+   "n_snapshots": 46,
+   "quoted_median_bp": 6.095,
+   "rt1000_median_bp": 6.257,
+   "rt1000_p90_bp": 8.401,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 9.386,
+   "stress_p90_cost_bp": 12.601
+  },
+  {
+   "coin": "POPCAT",
+   "n_snapshots": 46,
+   "quoted_median_bp": 38.599,
+   "rt1000_median_bp": 38.599,
+   "rt1000_p90_bp": 42.381,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 57.899,
+   "stress_p90_cost_bp": 63.571
+  },
+  {
+   "coin": "PUMP",
+   "n_snapshots": 46,
+   "quoted_median_bp": 3.121,
+   "rt1000_median_bp": 3.286,
+   "rt1000_p90_bp": 4.635,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 4.929,
+   "stress_p90_cost_bp": 6.953
+  },
+  {
+   "coin": "SPX",
+   "n_snapshots": 46,
+   "quoted_median_bp": 4.078,
+   "rt1000_median_bp": 21.356,
+   "rt1000_p90_bp": 25.795,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 32.034,
+   "stress_p90_cost_bp": 38.693
+  },
+  {
+   "coin": "TRUMP",
+   "n_snapshots": 46,
+   "quoted_median_bp": 4.809,
+   "rt1000_median_bp": 6.22,
+   "rt1000_p90_bp": 7.672,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 9.33,
+   "stress_p90_cost_bp": 11.508
+  },
+  {
+   "coin": "USELESS",
+   "n_snapshots": 46,
+   "quoted_median_bp": 11.093,
+   "rt1000_median_bp": 12.04,
+   "rt1000_p90_bp": 13.308,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 18.061,
+   "stress_p90_cost_bp": 19.962
+  },
+  {
+   "coin": "WIF",
+   "n_snapshots": 46,
+   "quoted_median_bp": 7.307,
+   "rt1000_median_bp": 7.323,
+   "rt1000_p90_bp": 10.829,
+   "first_ts": 1791195674.279,
+   "last_ts": 1791196562.79,
+   "primary_cost_bp": 10.985,
+   "stress_p90_cost_bp": 16.243
+  }
+ ],
+ "trades_file": "data/raw/web/memelead/trades_validation.parquet",
+ "results": {
+  "bT_th40_H60": {
+   "primary_1.5x_median": {
+    "n": 517,
+    "gross_mean_bp": 4.426682818155032,
+    "cost_mean_bp": 20.8261534274065,
+    "net_mean_bp": -16.399470609251463,
+    "net_sum_bp": -8478.526304983006,
+    "pf": 0.18391872270000545,
+    "net_ex_top3_bp": -8699.699021778697,
+    "win_rate": 0.2263056092843327,
+    "n_distinct_leader_triggers": 80,
+    "n_clusters": 80,
+    "cluster_t": -7.020918174467731,
+    "n_days": 9,
+    "days_positive": 0,
+    "per_day_net_bp": {
+     "2025-07-08": -184.8,
+     "2025-08-08": -626.5,
+     "2025-09-08": -883.3,
+     "2025-10-08": -977.9,
+     "2025-11-08": -1128.8,
+     "2025-12-08": -424.5,
+     "2026-01-08": -2193.0,
+     "2026-02-08": -730.3,
+     "2026-03-08": -1329.4
+    }
+   },
+   "cost_1x_median": {
+    "n": 517,
+    "gross_mean_bp": 4.426682818155032,
+    "cost_mean_bp": 13.884102284937663,
+    "net_mean_bp": -9.457419466782632,
+    "net_sum_bp": -4889.485864326621,
+    "pf": 0.3408282122488718,
+    "net_ex_top3_bp": -5122.110891964941,
+    "win_rate": 0.29593810444874274,
+    "n_distinct_leader_triggers": 80,
+    "n_clusters": 80,
+    "cluster_t": -4.221520247888288,
+    "n_days": 9,
+    "days_positive": 0,
+    "per_day_net_bp": {
+     "2025-07-08": -106.1,
+     "2025-08-08": -443.6,
+     "2025-09-08": -596.7,
+     "2025-10-08": -424.6,
+     "2025-11-08": -614.0,
+     "2025-12-08": -168.1,
+     "2026-01-08": -1209.7,
+     "2026-02-08": -433.8,
+     "2026-03-08": -892.8
+    }
+   },
+   "cost_1.5x_p90": {
+    "n": 517,
+    "gross_mean_bp": 4.426682818155032,
+    "cost_mean_bp": 24.770725191408523,
+    "net_mean_bp": -20.34404237325349,
+    "net_sum_bp": -10517.869906972055,
+    "pf": 0.13074103586280045,
+    "net_ex_top3_bp": -10729.868997992908,
+    "win_rate": 0.1760154738878143,
+    "n_distinct_leader_triggers": 80,
+    "n_clusters": 80,
+    "cluster_t": -8.466915124355507,
+    "n_days": 9,
+    "days_positive": 0,
+    "per_day_net_bp": {
+     "2025-07-08": -219.4,
+     "2025-08-08": -724.6,
+     "2025-09-08": -1058.9,
+     "2025-10-08": -1281.6,
+     "2025-11-08": -1418.0,
+     "2025-12-08": -562.0,
+     "2026-01-08": -2737.2,
+     "2026-02-08": -932.0,
+     "2026-03-08": -1584.3
+    }
+   },
+   "by_follower": {
+    "1000BONK": {
+     "n": 58,
+     "gross_mean_bp": 1.44,
+     "net_mean_bp": -13.6
+    },
+    "1000FLOKI": {
+     "n": 53,
+     "gross_mean_bp": 5.89,
+     "net_mean_bp": -37.82
+    },
+    "1000SHIB": {
+     "n": 42,
+     "gross_mean_bp": 2.4,
+     "net_mean_bp": -9.21
+    },
+    "FARTCOIN": {
+     "n": 41,
+     "gross_mean_bp": 5.84,
+     "net_mean_bp": 0.53
+    },
+    "PENGU": {
+     "n": 63,
+     "gross_mean_bp": 1.71,
+     "net_mean_bp": -7.68
+    },
+    "POPCAT": {
+     "n": 46,
+     "gross_mean_bp": 7.18,
+     "net_mean_bp": -50.72
+    },
+    "PUMP": {
+     "n": 24,
+     "gross_mean_bp": 5.95,
+     "net_mean_bp": 1.02
+    },
+    "SPX": {
+     "n": 54,
+     "gross_mean_bp": 8.42,
+     "net_mean_bp": -23.61
+    },
+    "TRUMP": {
+     "n": 30,
+     "gross_mean_bp": -0.76,
+     "net_mean_bp": -10.09
+    },
+    "USELESS": {
+     "n": 46,
+     "gross_mean_bp": 5.55,
+     "net_mean_bp": -12.51
+    },
+    "WIF": {
+     "n": 60,
+     "gross_mean_bp": 4.74,
+     "net_mean_bp": -6.24
+    }
+   },
+   "by_leader": {
+    "1000PEPE": {
+     "n": 77,
+     "gross_mean_bp": 4.67,
+     "net_mean_bp": -16.81
+    },
+    "DOGE": {
+     "n": 31,
+     "gross_mean_bp": -9.08,
+     "net_mean_bp": -31.46
+    },
+    "FARTCOIN": {
+     "n": 118,
+     "gross_mean_bp": 6.25,
+     "net_mean_bp": -15.28
+    },
+    "PENGU": {
+     "n": 8,
+     "gross_mean_bp": -2.87,
+     "net_mean_bp": -26.11
+    },
+    "PUMP": {
+     "n": 283,
+     "gross_mean_bp": 5.29,
+     "net_mean_bp": -14.83
+    }
+   },
+   "gross_only": {
+    "mean_bp": 4.426682818155032,
+    "median_bp": 2.9402362172314955
+   },
+   "passes_bar": false
+  }
+ }
+}

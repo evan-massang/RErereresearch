@@ -13,19 +13,32 @@ Decoders are imported, not copied: ``pipeline.recorder.decode_pump_event`` (curv
 amounts + creator, create-event reserves/creator/mayhem flag, PumpSwap fee amounts) are read here from the same bytes
 at the IDL offsets the decoders already use (see the layout notes in pipeline/market.py).
 
-Tables, data/raw/web/pumplean/<table>_<YYYY-MM-DD-HH>.parquet (UTC hour of recv_us), all amounts RAW integers
-(SOL in lamports = 1e-9 SOL, pump tokens in base units = 1e-6 token):
-  curve_trades     recv_us slot tx_seq ts mint user creator is_buy sol tok vsol vtok rsol rtok fee_bps fee cfee_bps cfee
+Tables, data/raw/web/pumplean/<table>_<YYYY-MM-DD-HH>.parquet (UTC hour of recv_us; 2-minute part files under
+parts/ until the hour is over), zstd. All amounts are RAW integers: SOL in lamports (1e-9), pump tokens in base units
+(1e-6). Some columns are stored as lossless offsets/residuals (they compress to ~0); the loader note
+reports/hypotheses/pumplean_notes.md rebuilds the plain columns:
+  curve_trades     recv_us slot tx_seq ts mint user creator is_buy sol tok vsol vtok vsol_less_rsol vtok_less_rtok
+                   fee_bps fee_resid cfee_bps cfee_resid        (rsol = vsol - vsol_less_rsol; fee = ceil(sol*bps/1e4)
+                                                                 + fee_resid; same for the creator fee)
   curve_creates    recv_us slot tx_seq ts mint curve user creator name symbol uri vtok vsol rtok supply is_mayhem
   curve_completes  recv_us slot tx_seq mint user
   amm_pools        recv_us slot tx_seq ts pool mint quote_mint creator coin_creator base_dec quote_dec base_in quote_in
-  amm_swaps        recv_us slot tx_seq ts pool user is_buy base quote user_quote pool_base pool_quote
-                   lp_bps lp_fee proto_bps proto_fee cc_bps cc_fee
-  pool_map         pool mint quote_mint coin_creator resolved_us src      (pools seen in swaps, resolved via RPC)
+  amm_swaps        recv_us slot tx_seq ts pool user is_buy base quote uq_less_q pool_base pool_quote lp_bps proto_bps
+                   cc_bps ev_len                                (user_quote = quote + uq_less_q)
+  amm_bars         recv_us(bucket start) pool kind n n_buy n_users base_buy base_sell quote_buy quote_sell first_slot
+                   last_slot open_pool_base open_pool_quote last_pool_base last_pool_quote last_is_buy last_base last_quote
+  pool_map         pool mint quote_mint coin_creator resolved_us src created_us
+Which PumpSwap swaps get a full amm_swaps row: swaps in "young" SOL-quoted pools, i.e. pools whose CreatePoolEvent
+is on file and < --young-days (7) old (seeded at start from data/market.duckdb amm_pools and earlier pumplean
+amm_pools chunks, then every CreatePoolEvent seen live), with gross SOL >= --dust-lamports (0.001 SOL). Everything
+else is aggregated, never silently dropped: young-pool dust -> amm_bars kind=young_dust_1m (1-minute buckets); swaps in
+all other pools (older, non-SOL-quoted, or created during old-recorder gaps) -> amm_bars kind=other_5m (5-minute
+buckets), and those pools are resolved to their base mint in pool_map. (Why: one hour of the full PumpSwap tape is
+~840k swaps; 56% are in pools older than the seed or non-SOL-quoted, and half of the young-pool swaps are < 0.001 SOL.)
 recv_us = our receive time (container clock, microseconds). ts = on-chain unix time from the event. tx_seq = per-process
 counter of log notifications (one per transaction): rows with equal (file pid, tx_seq) come from the same transaction.
 Signatures are NOT kept (incompressible, ~60 B/row). pool_base/pool_quote are the PumpSwap reserves AS LOGGED (pre-trade;
-see pipeline/market.py note) - post-trade reserves are derived in the loader note.
+see pipeline/market.py note); post-trade reserves are derived in the loader note.
 
 Gaps are declared, never silent: data/raw/web/pumplean/events.jsonl gets 'start', 'connect', 'disconnect' (with the
 error and the reconnect backoff), 'minute' (per-stream notification + decoded row counts, last slot, and silent=true
@@ -314,13 +327,27 @@ class Recorder:
         try:
             con = duckdb.connect(str(ROOT / "data/market.duckdb"), read_only=True)
             rows = con.execute("SELECT pool, mint, creator, recv FROM amm_pools WHERE recv >= ?", [cut]).fetchall()
+            n["market_duckdb_max_recv"] = utc(con.execute("SELECT max(recv) FROM amm_pools").fetchone()[0])
             con.close()
             for pool, mint, creator, recv in rows:
                 self.young.add(pool)
-                self.store.add("pool_map", (pool, mint, None, None, now_us(), "seed_market_duckdb", int(recv * 1e6)))
+                self.store.add("pool_map", (pool, mint, WSOL, None, now_us(), "seed_market_duckdb", int(recv * 1e6)))
             n["market_duckdb"] = len(rows)
         except Exception as e:  # noqa: BLE001
             n["market_duckdb_error"] = f"{type(e).__name__}: {e}"[:200]
+        seed = self.out / "seed_pools.parquet"      # CreatePoolEvents in raw files newer than market.duckdb
+        if seed.exists():
+            try:
+                import duckdb as _d
+                rows = _d.sql(f"SELECT pool, mint, created_us FROM read_parquet('{seed}') WHERE quote_mint = '{WSOL}' "
+                              f"AND created_us >= {int(cut * 1e6)}").fetchall()
+                for pool, mint, cus in rows:
+                    if pool not in self.young:
+                        self.young.add(pool)
+                        self.store.add("pool_map", (pool, mint, WSOL, None, now_us(), "seed_raw_pumpswap", cus))
+                n["seed_raw_pumpswap"] = len(rows)
+            except Exception as e:  # noqa: BLE001
+                n["seed_raw_error"] = f"{type(e).__name__}: {e}"[:200]
         try:
             files = sorted(self.out.glob("amm_pools_*.parquet"))
             if files:
