@@ -165,7 +165,9 @@ def score() -> dict:
         raise SystemExit("hlanchor_lib.py changed since freezing; scoring refused.")
     t0 = int(rec["frozen_at"] * 1_000_000)
     DAYS.mkdir(parents=True, exist_ok=True)
-    days = sorted({p.name.split("_")[1][:10] for p in CHUNKS.glob("*.parquet")})
+    import re
+    days = sorted({m.group(1) for p in CHUNKS.glob("*.parquet")
+                   if (m := re.search(r"_(\d{4}-\d{2}-\d{2})-\d{2}_", p.name))})
     for day in days:                                           # merge hour chunks -> day files, post-freeze only
         for kind in ("quotes", "trades", "book_ticker"):
             for coin in rec["coins"]:
