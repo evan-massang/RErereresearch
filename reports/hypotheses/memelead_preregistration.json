@@ -1,0 +1,173 @@
+{
+ "hypothesis": "H-MEMELEAD",
+ "written_at_utc": "2026-10-05 10:22Z (container clock; the git commit that first contains this file is authoritative)",
+ "written_before_data": "Written BEFORE any aggTrades archive was downloaded and before any intraday price of these coins was looked at. Seen so far: (a) HTTP HEAD content-lengths of candidate archives (to size the download budget, no prices), (b) trailing-30d daily quote volumes from the existing cache data/raw/web/momentum/klines (liquidity only, for the leader rule), (c) PUMPUSDT daily closes around 2025-07 to confirm the symbol changed token on 2025-07-11 (pre-2025-07-11 PUMPUSDT is a different asset), (d) one Lighter order-book snapshot to test the spread sampler. No returns, triggers or outcomes were computed.",
+ "statement": "Within the Binance USDT-M meme perp complex, when a leader meme's mid moves >= theta within 2 s and a follower meme has not yet moved (< theta*beta/2 in the same direction), a Lighter taker trade in the follower in the leader's direction, filled 600 ms after the decision and held H seconds, earns more than the follower's measured Lighter $1,000 round-trip spread cost (x1.5 stress), with 0 bp fee.",
+ "how_this_differs_from_earlier_failures": {
+  "H-XLEAD (reports/failures/agent_xlead.md)": "XLEAD regressed 1-minute kline returns on BTC/SOL/equal-weight meme index lags with an always-on threshold rule, entered at a kline close and paid HL taker 4.5 bp/side + slippage (13-19 bp RT). Its visible edge was continuation inside the kline-close minute that vanished at delay 1. H-MEMELEAD is event-driven on rare large 2-second leader shocks inside the meme complex (leaders chosen by liquidity, not BTC/SOL), uses second-level aggTrades so the 600 ms delay is modelled explicitly instead of a 1-minute delay, requires the follower to be still unmoved at decision time, holds 10-60 s, and executes at Lighter 0 fee where cost is only the spread. It directly tests XLEAD's open caveat ('a re-test is not recommended without tick data and sub-second execution').",
+  "H-SOLLEAD (agent_sollead.md)": "SOLLEAD used SOL/USD as leader for pump.fun bonding-curve / AMM tokens at 1-minute resolution with >= 2.5% curve fees; SOL barely moved. Here leaders and followers are both liquid meme perps, second resolution, perp spread costs.",
+  "sympathy (agent_sympathy.md)": "Sympathy bought narrative-matched copycat tokens on the pump.fun curve 5-30 min after a leader's market-cap milestone. Here: no narrative matching, no curve, 10-60 s horizon, perp venue.",
+  "H-LIGHTLAG / H-LIGHTFADE (lightlag_meme_preregistration.json)": "LIGHTLAG is SAME-coin cross-VENUE (Binance mid leads Lighter mid). H-MEMELEAD is CROSS-coin within one price source (Binance leader coin -> Binance follower coin as Lighter proxy). Only the Lighter cost/latency conventions are borrowed (0 fee, 300 ms speed bump + ~300 ms path = 600 ms, spread paid). No LIGHTLAG/LIGHTFADE result was used here (none was opened by this agent).",
+  "cost lessons (agent_itsm.md, agent_xsrev.md)": "Those failed because a 0-4 bp gross edge sat under 13 bp HL taker cost. Here the fee is 0 and cost is the measured Lighter spread per follower; the bar is judged at 1.5x measured spread, and gross per trade is reported alongside so the cost gap is visible."
+ },
+ "universe": {
+  "coins_13": [
+   "DOGE",
+   "1000PEPE",
+   "WIF",
+   "FARTCOIN",
+   "PUMP",
+   "POPCAT",
+   "1000FLOKI",
+   "PENGU",
+   "SPX",
+   "TRUMP",
+   "1000BONK",
+   "1000SHIB",
+   "USELESS"
+  ],
+  "why": "Memecoin perps that are active on Lighter (orderBooks REST 2026-10-05, all taker_fee 0.0000) AND have a Binance <X>USDT USD-M perp. Fixed before data. PUMP data before 2025-07-11 is excluded (different token under the same symbol).",
+  "binance_symbol": "<coin>USDT",
+  "lighter_market_ids": {
+   "DOGE": 3,
+   "1000PEPE": 4,
+   "WIF": 5,
+   "FARTCOIN": 21,
+   "PUMP": 45,
+   "POPCAT": 23,
+   "1000FLOKI": 19,
+   "PENGU": 47,
+   "SPX": 42,
+   "TRUMP": 15,
+   "1000BONK": 18,
+   "1000SHIB": 17,
+   "USELESS": 66
+  },
+  "leader_rule": "Point in time, per sample day d: rank the 13 coins that have >= 30 daily bars in d-30..d-1 by mean daily quote volume over d-30..d-1 (data/raw/web/momentum/klines, Binance daily klines). Leaders = top 3. Followers = all other ranked coins (rank >= 4). Coins with < 30 days history are not used that day."
+ },
+ "data": {
+  "source": "https://data.binance.vision/data/futures/um/daily/aggTrades/<SYM>/<SYM>-aggTrades-<day>.zip (fapi is 451-blocked).",
+  "sample_days": [
+   "2025-01-08",
+   "2025-02-08",
+   "2025-03-08",
+   "2025-04-08",
+   "2025-05-08",
+   "2025-06-08",
+   "2025-07-08",
+   "2025-08-08",
+   "2025-09-08",
+   "2025-10-08",
+   "2025-11-08",
+   "2025-12-08",
+   "2026-01-08",
+   "2026-02-08",
+   "2026-03-08"
+  ],
+  "sample_day_rule": "The 8th of every month 2025-01 .. 2026-03 (one fixed day per month). Chosen to keep TOTAL downloads under the 800 MB budget: HEAD sizes sum to ~681 MB for these 15 days vs ~1.5 GB for two days/month. Interpretation of the brief's '< 800 MB downloads' as a total cap (stricter of the two readings).",
+  "split": {
+   "train": "sample days <= 2025-06-30 (2025-01-08 .. 2025-06-08, 6 days)",
+   "validation": "2025-07-08 .. 2026-03-08 (9 days)",
+   "holdout": "2026-04-01 onward: NEVER downloaded or touched"
+  },
+  "processing": "Each coin-day zip is streamed, reduced to a 1-second table and deleted. Stored: data/raw/web/memelead/s1/<SYM>_<day>.parquet with one row per second of the UTC day: bid_c/ask_c = last seller-/buyer-initiated trade price at or before the end of the second (forward-filled; is_buyer_maker=True -> seller-initiated -> bid proxy), bid_6/ask_6 = same at or before second+600 ms, last_c, n_trades, quote_vol, bid_ts/ask_ts (second of last update of each side, for staleness). mid = (bid+ask)/2. Stop downloading if free disk < 2.5 GB.",
+  "price_proxy_risk": "Binance trade prices are a PROXY for Lighter prices. Risks: (1) Lighter follower books may re-price toward Binance with their own lag, so the real Lighter fill at t+600 ms may be better or worse than the Binance mid proxy; (2) mid proxy from last buy/sell trade prices is stale when a side has not traded; (3) Lighter spreads are measured NOW (2026-10-05) and applied to 2025-2026 history, when Lighter books may have been wider or the market not listed; (4) depth/impact beyond $1,000 is not modelled. All of these favour the backtest except possibly (1)."
+ },
+ "rule": {
+  "decision_grid": "Decisions at whole-second boundaries t (end of 1-s bar s), using only bars <= s.",
+  "leader_trigger": "r_L = mid_L(t)/mid_L(t-2s) - 1. Trigger if |r_L| >= theta. Direction d = sign(r_L). Both sides of leader and follower must have traded within the last 30 s at t (staleness filter). Per-leader cooldown 10 s after a trigger.",
+  "follower_filter": "r_F = mid_F(t)/mid_F(t-2s) - 1; require d*r_F < theta*beta/2.",
+  "beta": {
+   "fixed": "beta = 1",
+   "trailing": "per (leader, follower) pair, OLS slope (no intercept) of non-overlapping 10-s follower mid log returns on leader 10-s returns over [H0-2h, H0) where H0 is the last full UTC hour <= t; refreshed hourly; point in time. Triggers before 02:00 UTC are skipped in trailing-beta configs. beta clipped to <= 3; pairs with beta < 0.25 are not traded."
+  },
+  "entry": "Taker in direction d on the follower; fill price = follower Binance mid proxy at t + 600 ms (bid_6/ask_6 of second s+1).",
+  "exit": "Fill at follower mid proxy at t + 600 ms + H (bid_6/ask_6 of second s+1+H). Trades whose exit falls after the end of the UTC day are dropped.",
+  "position_rules": "One open position per follower; a follower already in a position is skipped. One leader trigger opens trades in every eligible follower (these are correlated: reported per trigger and per cluster).",
+  "fees": "Lighter Standard account 0 maker / 0 taker (orderBooks REST, 2026-10-05).",
+  "cost": "Per follower: c_coin = median over the spread-sampling window of the $1,000 round-trip cost ((VWAP_buy$1000 - VWAP_sell$1000)/mid) from Lighter public orderBookOrders snapshots taken 2026-10-05 (scripts/research/memelead_spreads.py -> data/raw/web/memelead/lighter_spreads_*.jsonl). PRIMARY cost = 1.5 x c_coin per round trip. Sensitivity reported at 1.0 x c_coin and at 1.5 x the coin's 90th-percentile snapshot. Gross (cost-free) also reported.",
+  "pnl_unit": "bp of notional per round trip; net = d*(exit_mid/entry_mid - 1)*1e4 - cost"
+ },
+ "grid": {
+  "configs": [
+   {
+    "id": "b1_th25_H10",
+    "beta": "fixed",
+    "theta_bp": 25,
+    "H_s": 10
+   },
+   {
+    "id": "b1_th25_H30",
+    "beta": "fixed",
+    "theta_bp": 25,
+    "H_s": 30
+   },
+   {
+    "id": "b1_th25_H60",
+    "beta": "fixed",
+    "theta_bp": 25,
+    "H_s": 60
+   },
+   {
+    "id": "b1_th40_H10",
+    "beta": "fixed",
+    "theta_bp": 40,
+    "H_s": 10
+   },
+   {
+    "id": "b1_th40_H30",
+    "beta": "fixed",
+    "theta_bp": 40,
+    "H_s": 30
+   },
+   {
+    "id": "b1_th40_H60",
+    "beta": "fixed",
+    "theta_bp": 40,
+    "H_s": 60
+   },
+   {
+    "id": "b1_th60_H10",
+    "beta": "fixed",
+    "theta_bp": 60,
+    "H_s": 10
+   },
+   {
+    "id": "b1_th60_H30",
+    "beta": "fixed",
+    "theta_bp": 60,
+    "H_s": 30
+   },
+   {
+    "id": "b1_th60_H60",
+    "beta": "fixed",
+    "theta_bp": 60,
+    "H_s": 60
+   },
+   {
+    "id": "bT_th40_H10",
+    "beta": "trailing",
+    "theta_bp": 40,
+    "H_s": 10
+   },
+   {
+    "id": "bT_th40_H30",
+    "beta": "trailing",
+    "theta_bp": 40,
+    "H_s": 30
+   },
+   {
+    "id": "bT_th40_H60",
+    "beta": "trailing",
+    "theta_bp": 40,
+    "H_s": 60
+   }
+  ],
+  "n_configs": 12
+ },
+ "bar_per_split": "n >= 50 round trips, net > 0, PF > 1.2, net without the top-3 trades > 0 (at the primary 1.5x cost).",
+ "selection_rule_train": "Among configs that pass the bar on train, select the one with the highest PF (ties: larger n). If none passes train, the hypothesis FAILS on train; validation is then run once on the config with the highest train PF among n >= 50 for information only (as in agent_itsm). Validation is run ONCE on exactly one config. No re-selection.",
+ "reporting": "All 12 train configs (n, gross, net mean bp, PF, net sum, net ex top-3, n distinct leader triggers, n clusters (triggers from any leader within 5 s merged), t-stat of per-cluster net sums, per-day net, per-follower and per-leader breakdown), cost sensitivities, and the single validation run. Losses reported.",
+ "no_changes": "No change to grid, rule, cost rule, days, split or selection after this file is written. A change needs a new hypothesis id with a rationale (parent + failing run).",
+ "is_synthetic": false
+}
