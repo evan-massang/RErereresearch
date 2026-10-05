@@ -71,7 +71,7 @@ def sim(coin: str, day: str, cfg: dict):
     R = int(cfg["R_s"] * 1_000_000)
     mk_exit = cfg["exit"] == "MK"
     filt = cfg["filt"]
-    H = (60 if mk_exit else 30) * 1_000_000
+    H = int(cfg.get("H_s", 60 if mk_exit else 30) * 1_000_000)
     bk_t, bk_c = load_btc(day)
 
     # local-sorted HL snapshots for decisions
