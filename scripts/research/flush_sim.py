@@ -37,6 +37,8 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[2]
 BF = ROOT / "data/raw/web/binance_fut"
 HL = ROOT / "data/raw/web/hyperliquid"
+TRD = BF / "flush_trades"
+TRD.mkdir(parents=True, exist_ok=True)
 sys.path.insert(0, str(Path(__file__).parent))
 from flush_fetch import UNIVERSE  # noqa: E402
 
@@ -141,8 +143,7 @@ def simulate(sym, hl, k, sig, c, slip, fund):
         hit = np.where(seg_l <= stop)[0]
         if len(hit):
             j = fi + hit[0]
-            first_bar = (j == fi and c["entry"] == "mkt")
-            ref = min(stop, o[j]) if not (j == fi and c["entry"] != "mkt") else stop
+            ref = stop if j == fi else min(stop, o[j])
             exit_px, ie, why = ref * (1 - slip), j, "stop"
         else:
             exit_px, why = cl[ie] * (1 - slip), "time"
@@ -213,7 +214,7 @@ if __name__ == "__main__":
                                  for p, g in tr.groupby(tr.t_in.dt.to_period("Q"))}
             st["top3_bp"] = [round(1e4 * v, 1) for v in np.sort(tr.net.values)[::-1][:3]]
             st["bottom3_bp"] = [round(1e4 * v, 1) for v in np.sort(tr.net.values)[:3]]
-            tr.to_csv(ROOT / f"data/raw/web/binance_fut/flush_trades_{split}_{name}_slip{int(slip*1e4)}.csv",
+            tr.to_csv(TRD / f"{split}_{name}_slip{int(slip*1e4)}.csv",
                       index=False)
         res[name] = st
     out = dict(split=split, slip_bp=slip * 1e4, n_configs=len(configs), coverage=cover,

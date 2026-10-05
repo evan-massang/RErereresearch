@@ -1,0 +1,1490 @@
+{
+ "split": "train",
+ "slip_bp": 2.9999999999999996,
+ "n_configs": 21,
+ "coverage": {
+  "1000BONKUSDT": [
+   "2023-12-12 14:50:00",
+   "2025-06-30 23:55:00",
+   162938
+  ],
+  "POPCATUSDT": [
+   "2024-09-11 13:10:00",
+   "2025-06-30 23:55:00",
+   84185
+  ],
+  "WIFUSDT": [
+   "2024-02-07 14:30:00",
+   "2025-06-30 23:55:00",
+   146535
+  ]
+ },
+ "event_counts": {
+  "1000BONKUSDT": {
+   "flush_q2.5": 281,
+   "flush_q3.0": 148,
+   "control_q2.5": 757
+  },
+  "POPCATUSDT": {
+   "flush_q2.5": 179,
+   "flush_q3.0": 89,
+   "control_q2.5": 347
+  },
+  "WIFUSDT": {
+   "flush_q2.5": 296,
+   "flush_q3.0": 166,
+   "control_q2.5": 632
+  }
+ },
+ "results": {
+  "flush_q2.5_mkt_H15": {
+   "n": 716,
+   "days": 277,
+   "net_sum_pct": -66.97,
+   "mean_bp": -9.4,
+   "median_bp": -16.4,
+   "win": 0.436,
+   "pf": 0.878,
+   "net_ex_top3_pct": -110.11,
+   "day_t": -1.13,
+   "stops": 86,
+   "signals_acted": 716,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 265,
+     "net_pct": -25.08
+    },
+    "POPCATUSDT": {
+     "n": 169,
+     "net_pct": -23.02
+    },
+    "WIFUSDT": {
+     "n": 282,
+     "net_pct": -18.87
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.53
+    },
+    "2024Q1": {
+     "n": 68,
+     "net_pct": 21.89
+    },
+    "2024Q2": {
+     "n": 89,
+     "net_pct": 8.73
+    },
+    "2024Q3": {
+     "n": 94,
+     "net_pct": 6.35
+    },
+    "2024Q4": {
+     "n": 182,
+     "net_pct": -46.82
+    },
+    "2025Q1": {
+     "n": 160,
+     "net_pct": -39.19
+    },
+    "2025Q2": {
+     "n": 120,
+     "net_pct": -8.39
+    }
+   },
+   "top3_bp": [
+    1525.3,
+    1477.7,
+    1310.8
+   ],
+   "bottom3_bp": [
+    -319.8,
+    -319.4,
+    -318.9
+   ]
+  },
+  "flush_q2.5_mkt_H60": {
+   "n": 675,
+   "days": 277,
+   "net_sum_pct": -14.47,
+   "mean_bp": -2.1,
+   "median_bp": -22.9,
+   "win": 0.462,
+   "pf": 0.981,
+   "net_ex_top3_pct": -72.34,
+   "day_t": -0.19,
+   "stops": 180,
+   "signals_acted": 675,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 247,
+     "net_pct": -43.37
+    },
+    "POPCATUSDT": {
+     "n": 162,
+     "net_pct": -24.44
+    },
+    "WIFUSDT": {
+     "n": 266,
+     "net_pct": 53.34
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.53
+    },
+    "2024Q1": {
+     "n": 62,
+     "net_pct": 20.86
+    },
+    "2024Q2": {
+     "n": 83,
+     "net_pct": 41.37
+    },
+    "2024Q3": {
+     "n": 90,
+     "net_pct": 25.22
+    },
+    "2024Q4": {
+     "n": 171,
+     "net_pct": -52.34
+    },
+    "2025Q1": {
+     "n": 151,
+     "net_pct": -18.04
+    },
+    "2025Q2": {
+     "n": 115,
+     "net_pct": -22.0
+    }
+   },
+   "top3_bp": [
+    2053.0,
+    1952.3,
+    1781.2
+   ],
+   "bottom3_bp": [
+    -319.8,
+    -319.8,
+    -319.7
+   ]
+  },
+  "flush_q2.5_mkt_H120": {
+   "n": 652,
+   "days": 277,
+   "net_sum_pct": -65.55,
+   "mean_bp": -10.1,
+   "median_bp": -85.3,
+   "win": 0.405,
+   "pf": 0.93,
+   "net_ex_top3_pct": -161.21,
+   "day_t": -0.68,
+   "stops": 247,
+   "signals_acted": 652,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 242,
+     "net_pct": -41.96
+    },
+    "POPCATUSDT": {
+     "n": 155,
+     "net_pct": -65.06
+    },
+    "WIFUSDT": {
+     "n": 255,
+     "net_pct": 41.47
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.53
+    },
+    "2024Q1": {
+     "n": 62,
+     "net_pct": 18.65
+    },
+    "2024Q2": {
+     "n": 81,
+     "net_pct": 45.02
+    },
+    "2024Q3": {
+     "n": 89,
+     "net_pct": 30.26
+    },
+    "2024Q4": {
+     "n": 164,
+     "net_pct": -59.58
+    },
+    "2025Q1": {
+     "n": 141,
+     "net_pct": -71.68
+    },
+    "2025Q2": {
+     "n": 112,
+     "net_pct": -18.69
+    }
+   },
+   "top3_bp": [
+    4766.9,
+    2946.0,
+    1853.1
+   ],
+   "bottom3_bp": [
+    -328.6,
+    -321.0,
+    -320.4
+   ]
+  },
+  "flush_q2.5_lim0.3%_H15": {
+   "n": 504,
+   "days": 220,
+   "net_sum_pct": -5.7,
+   "mean_bp": -1.1,
+   "median_bp": -13.7,
+   "win": 0.456,
+   "pf": 0.985,
+   "net_ex_top3_pct": -47.26,
+   "day_t": -0.1,
+   "stops": 70,
+   "signals_acted": 720,
+   "fill_rate": 0.7,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 186,
+     "net_pct": -6.91
+    },
+    "POPCATUSDT": {
+     "n": 119,
+     "net_pct": -8.79
+    },
+    "WIFUSDT": {
+     "n": 199,
+     "net_pct": 10.0
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 55,
+     "net_pct": 13.63
+    },
+    "2024Q2": {
+     "n": 63,
+     "net_pct": 27.13
+    },
+    "2024Q3": {
+     "n": 56,
+     "net_pct": 16.12
+    },
+    "2024Q4": {
+     "n": 136,
+     "net_pct": -25.61
+    },
+    "2025Q1": {
+     "n": 113,
+     "net_pct": -18.91
+    },
+    "2025Q2": {
+     "n": 78,
+     "net_pct": -8.6
+    }
+   },
+   "top3_bp": [
+    1566.5,
+    1518.7,
+    1071.0
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -316.4,
+    -315.9
+   ]
+  },
+  "flush_q2.5_lim0.3%_H60": {
+   "n": 481,
+   "days": 220,
+   "net_sum_pct": 7.85,
+   "mean_bp": 1.6,
+   "median_bp": -39.6,
+   "win": 0.443,
+   "pf": 1.014,
+   "net_ex_top3_pct": -51.29,
+   "day_t": 0.1,
+   "stops": 144,
+   "signals_acted": 691,
+   "fill_rate": 0.696,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 174,
+     "net_pct": -5.12
+    },
+    "POPCATUSDT": {
+     "n": 116,
+     "net_pct": -29.12
+    },
+    "WIFUSDT": {
+     "n": 191,
+     "net_pct": 42.09
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 51,
+     "net_pct": 17.81
+    },
+    "2024Q2": {
+     "n": 61,
+     "net_pct": 57.95
+    },
+    "2024Q3": {
+     "n": 54,
+     "net_pct": 8.26
+    },
+    "2024Q4": {
+     "n": 131,
+     "net_pct": -41.66
+    },
+    "2025Q1": {
+     "n": 108,
+     "net_pct": -12.11
+    },
+    "2025Q2": {
+     "n": 73,
+     "net_pct": -12.96
+    }
+   },
+   "top3_bp": [
+    2095.9,
+    1994.9,
+    1823.2
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -316.8,
+    -316.4
+   ]
+  },
+  "flush_q2.5_lim0.3%_H120": {
+   "n": 465,
+   "days": 220,
+   "net_sum_pct": 11.17,
+   "mean_bp": 2.4,
+   "median_bp": -105.3,
+   "win": 0.389,
+   "pf": 1.016,
+   "net_ex_top3_pct": -72.98,
+   "day_t": 0.12,
+   "stops": 183,
+   "signals_acted": 673,
+   "fill_rate": 0.691,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 169,
+     "net_pct": 10.58
+    },
+    "POPCATUSDT": {
+     "n": 110,
+     "net_pct": -59.47
+    },
+    "WIFUSDT": {
+     "n": 186,
+     "net_pct": 60.06
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 50,
+     "net_pct": 30.66
+    },
+    "2024Q2": {
+     "n": 59,
+     "net_pct": 74.48
+    },
+    "2024Q3": {
+     "n": 54,
+     "net_pct": 15.92
+    },
+    "2024Q4": {
+     "n": 125,
+     "net_pct": -43.22
+    },
+    "2025Q1": {
+     "n": 103,
+     "net_pct": -58.1
+    },
+    "2025Q2": {
+     "n": 71,
+     "net_pct": 0.86
+    }
+   },
+   "top3_bp": [
+    4818.9,
+    1895.3,
+    1700.8
+   ],
+   "bottom3_bp": [
+    -321.9,
+    -317.1,
+    -316.8
+   ]
+  },
+  "flush_q2.5_lim0.6%_H15": {
+   "n": 332,
+   "days": 162,
+   "net_sum_pct": 6.01,
+   "mean_bp": 1.8,
+   "median_bp": -10.7,
+   "win": 0.461,
+   "pf": 1.021,
+   "net_ex_top3_pct": -35.44,
+   "day_t": 0.12,
+   "stops": 52,
+   "signals_acted": 721,
+   "fill_rate": 0.46,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 128,
+     "net_pct": -5.73
+    },
+    "POPCATUSDT": {
+     "n": 77,
+     "net_pct": -0.78
+    },
+    "WIFUSDT": {
+     "n": 127,
+     "net_pct": 12.52
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 42,
+     "net_pct": 7.13
+    },
+    "2024Q2": {
+     "n": 49,
+     "net_pct": 29.73
+    },
+    "2024Q3": {
+     "n": 27,
+     "net_pct": 21.58
+    },
+    "2024Q4": {
+     "n": 90,
+     "net_pct": -5.69
+    },
+    "2025Q1": {
+     "n": 74,
+     "net_pct": -21.84
+    },
+    "2025Q2": {
+     "n": 47,
+     "net_pct": -15.45
+    }
+   },
+   "top3_bp": [
+    1601.5,
+    1553.5,
+    989.4
+   ],
+   "bottom3_bp": [
+    -316.4,
+    -315.9,
+    -315.2
+   ]
+  },
+  "flush_q2.5_lim0.6%_H60": {
+   "n": 317,
+   "days": 162,
+   "net_sum_pct": -1.52,
+   "mean_bp": -0.5,
+   "median_bp": -59.4,
+   "win": 0.432,
+   "pf": 0.996,
+   "net_ex_top3_pct": -59.61,
+   "day_t": -0.02,
+   "stops": 108,
+   "signals_acted": 702,
+   "fill_rate": 0.452,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 120,
+     "net_pct": -20.91
+    },
+    "POPCATUSDT": {
+     "n": 76,
+     "net_pct": -10.92
+    },
+    "WIFUSDT": {
+     "n": 121,
+     "net_pct": 30.31
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 37,
+     "net_pct": -4.91
+    },
+    "2024Q2": {
+     "n": 47,
+     "net_pct": 60.67
+    },
+    "2024Q3": {
+     "n": 27,
+     "net_pct": 12.77
+    },
+    "2024Q4": {
+     "n": 87,
+     "net_pct": -35.69
+    },
+    "2025Q1": {
+     "n": 69,
+     "net_pct": -14.23
+    },
+    "2025Q2": {
+     "n": 47,
+     "net_pct": -10.69
+    }
+   },
+   "top3_bp": [
+    2132.4,
+    2031.1,
+    1645.5
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -316.4,
+    -316.0
+   ]
+  },
+  "flush_q2.5_lim0.6%_H120": {
+   "n": 311,
+   "days": 162,
+   "net_sum_pct": -19.14,
+   "mean_bp": -6.2,
+   "median_bp": -136.9,
+   "win": 0.376,
+   "pf": 0.96,
+   "net_ex_top3_pct": -73.01,
+   "day_t": -0.26,
+   "stops": 133,
+   "signals_acted": 690,
+   "fill_rate": 0.451,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 118,
+     "net_pct": 22.18
+    },
+    "POPCATUSDT": {
+     "n": 75,
+     "net_pct": -54.43
+    },
+    "WIFUSDT": {
+     "n": 118,
+     "net_pct": 13.11
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 3,
+     "net_pct": -9.44
+    },
+    "2024Q1": {
+     "n": 37,
+     "net_pct": -6.37
+    },
+    "2024Q2": {
+     "n": 46,
+     "net_pct": 81.41
+    },
+    "2024Q3": {
+     "n": 27,
+     "net_pct": 15.97
+    },
+    "2024Q4": {
+     "n": 84,
+     "net_pct": -52.53
+    },
+    "2025Q1": {
+     "n": 67,
+     "net_pct": -60.81
+    },
+    "2025Q2": {
+     "n": 47,
+     "net_pct": 12.63
+    }
+   },
+   "top3_bp": [
+    1931.2,
+    1736.1,
+    1718.8
+   ],
+   "bottom3_bp": [
+    -317.8,
+    -317.1,
+    -317.0
+   ]
+  },
+  "flush_q3.0_mkt_H15": {
+   "n": 389,
+   "days": 188,
+   "net_sum_pct": -34.39,
+   "mean_bp": -8.8,
+   "median_bp": -15.4,
+   "win": 0.447,
+   "pf": 0.888,
+   "net_ex_top3_pct": -71.26,
+   "day_t": -0.87,
+   "stops": 54,
+   "signals_acted": 389,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 144,
+     "net_pct": -16.04
+    },
+    "POPCATUSDT": {
+     "n": 86,
+     "net_pct": -24.3
+    },
+    "WIFUSDT": {
+     "n": 159,
+     "net_pct": 5.95
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.17
+    },
+    "2024Q1": {
+     "n": 31,
+     "net_pct": -5.88
+    },
+    "2024Q2": {
+     "n": 47,
+     "net_pct": 30.88
+    },
+    "2024Q3": {
+     "n": 59,
+     "net_pct": 9.46
+    },
+    "2024Q4": {
+     "n": 106,
+     "net_pct": -23.97
+    },
+    "2025Q1": {
+     "n": 80,
+     "net_pct": -30.36
+    },
+    "2025Q2": {
+     "n": 65,
+     "net_pct": -11.36
+    }
+   },
+   "top3_bp": [
+    1477.7,
+    1310.8,
+    898.0
+   ],
+   "bottom3_bp": [
+    -319.8,
+    -318.9,
+    -317.9
+   ]
+  },
+  "flush_q3.0_mkt_H60": {
+   "n": 374,
+   "days": 188,
+   "net_sum_pct": 11.85,
+   "mean_bp": 3.2,
+   "median_bp": -28.1,
+   "win": 0.452,
+   "pf": 1.027,
+   "net_ex_top3_pct": -36.2,
+   "day_t": 0.2,
+   "stops": 103,
+   "signals_acted": 374,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 136,
+     "net_pct": -17.45
+    },
+    "POPCATUSDT": {
+     "n": 84,
+     "net_pct": -24.97
+    },
+    "WIFUSDT": {
+     "n": 154,
+     "net_pct": 54.27
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.17
+    },
+    "2024Q1": {
+     "n": 28,
+     "net_pct": -3.88
+    },
+    "2024Q2": {
+     "n": 46,
+     "net_pct": 36.91
+    },
+    "2024Q3": {
+     "n": 57,
+     "net_pct": 30.17
+    },
+    "2024Q4": {
+     "n": 100,
+     "net_pct": -10.92
+    },
+    "2025Q1": {
+     "n": 79,
+     "net_pct": -17.61
+    },
+    "2025Q2": {
+     "n": 63,
+     "net_pct": -19.65
+    }
+   },
+   "top3_bp": [
+    1952.3,
+    1499.8,
+    1353.6
+   ],
+   "bottom3_bp": [
+    -319.8,
+    -319.8,
+    -319.7
+   ]
+  },
+  "flush_q3.0_mkt_H120": {
+   "n": 365,
+   "days": 188,
+   "net_sum_pct": -7.09,
+   "mean_bp": -1.9,
+   "median_bp": -68.0,
+   "win": 0.414,
+   "pf": 0.986,
+   "net_ex_top3_pct": -68.57,
+   "day_t": -0.09,
+   "stops": 138,
+   "signals_acted": 365,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 134,
+     "net_pct": 6.53
+    },
+    "POPCATUSDT": {
+     "n": 81,
+     "net_pct": -40.73
+    },
+    "WIFUSDT": {
+     "n": 150,
+     "net_pct": 27.11
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.17
+    },
+    "2024Q1": {
+     "n": 28,
+     "net_pct": -10.09
+    },
+    "2024Q2": {
+     "n": 46,
+     "net_pct": 22.85
+    },
+    "2024Q3": {
+     "n": 56,
+     "net_pct": 33.57
+    },
+    "2024Q4": {
+     "n": 95,
+     "net_pct": -2.37
+    },
+    "2025Q1": {
+     "n": 77,
+     "net_pct": -40.75
+    },
+    "2025Q2": {
+     "n": 62,
+     "net_pct": -7.13
+    }
+   },
+   "top3_bp": [
+    2946.0,
+    1642.0,
+    1560.6
+   ],
+   "bottom3_bp": [
+    -321.0,
+    -320.4,
+    -320.1
+   ]
+  },
+  "flush_q3.0_lim0.3%_H15": {
+   "n": 281,
+   "days": 142,
+   "net_sum_pct": -14.99,
+   "mean_bp": -5.3,
+   "median_bp": -17.0,
+   "win": 0.445,
+   "pf": 0.935,
+   "net_ex_top3_pct": -49.11,
+   "day_t": -0.34,
+   "stops": 46,
+   "signals_acted": 392,
+   "fill_rate": 0.717,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 100,
+     "net_pct": -22.9
+    },
+    "POPCATUSDT": {
+     "n": 63,
+     "net_pct": -11.54
+    },
+    "WIFUSDT": {
+     "n": 118,
+     "net_pct": 19.45
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 26,
+     "net_pct": -15.39
+    },
+    "2024Q2": {
+     "n": 29,
+     "net_pct": 36.41
+    },
+    "2024Q3": {
+     "n": 36,
+     "net_pct": 13.02
+    },
+    "2024Q4": {
+     "n": 80,
+     "net_pct": -19.32
+    },
+    "2025Q1": {
+     "n": 66,
+     "net_pct": -17.42
+    },
+    "2025Q2": {
+     "n": 43,
+     "net_pct": -9.14
+    }
+   },
+   "top3_bp": [
+    1518.7,
+    956.2,
+    937.1
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -315.9,
+    -314.9
+   ]
+  },
+  "flush_q3.0_lim0.3%_H60": {
+   "n": 271,
+   "days": 142,
+   "net_sum_pct": -4.83,
+   "mean_bp": -1.8,
+   "median_bp": -46.9,
+   "win": 0.424,
+   "pf": 0.986,
+   "net_ex_top3_pct": -56.29,
+   "day_t": -0.08,
+   "stops": 85,
+   "signals_acted": 381,
+   "fill_rate": 0.711,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 95,
+     "net_pct": -19.57
+    },
+    "POPCATUSDT": {
+     "n": 62,
+     "net_pct": -19.66
+    },
+    "WIFUSDT": {
+     "n": 114,
+     "net_pct": 34.41
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 24,
+     "net_pct": -24.86
+    },
+    "2024Q2": {
+     "n": 29,
+     "net_pct": 41.51
+    },
+    "2024Q3": {
+     "n": 35,
+     "net_pct": 15.99
+    },
+    "2024Q4": {
+     "n": 76,
+     "net_pct": -8.88
+    },
+    "2025Q1": {
+     "n": 65,
+     "net_pct": -17.09
+    },
+    "2025Q2": {
+     "n": 41,
+     "net_pct": -8.36
+    }
+   },
+   "top3_bp": [
+    1994.9,
+    1610.4,
+    1540.9
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -316.8,
+    -316.2
+   ]
+  },
+  "flush_q3.0_lim0.3%_H120": {
+   "n": 264,
+   "days": 142,
+   "net_sum_pct": 0.2,
+   "mean_bp": 0.1,
+   "median_bp": -81.6,
+   "win": 0.394,
+   "pf": 1.001,
+   "net_ex_top3_pct": -49.66,
+   "day_t": 0.0,
+   "stops": 104,
+   "signals_acted": 374,
+   "fill_rate": 0.706,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 93,
+     "net_pct": -3.94
+    },
+    "POPCATUSDT": {
+     "n": 59,
+     "net_pct": -26.83
+    },
+    "WIFUSDT": {
+     "n": 112,
+     "net_pct": 30.97
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 24,
+     "net_pct": -33.61
+    },
+    "2024Q2": {
+     "n": 29,
+     "net_pct": 41.54
+    },
+    "2024Q3": {
+     "n": 35,
+     "net_pct": 15.36
+    },
+    "2024Q4": {
+     "n": 72,
+     "net_pct": 3.6
+    },
+    "2025Q1": {
+     "n": 63,
+     "net_pct": -35.86
+    },
+    "2025Q2": {
+     "n": 40,
+     "net_pct": 12.32
+    }
+   },
+   "top3_bp": [
+    1700.8,
+    1683.5,
+    1601.9
+   ],
+   "bottom3_bp": [
+    -321.9,
+    -317.1,
+    -316.8
+   ]
+  },
+  "flush_q3.0_lim0.6%_H15": {
+   "n": 185,
+   "days": 104,
+   "net_sum_pct": -11.27,
+   "mean_bp": -6.1,
+   "median_bp": -19.0,
+   "win": 0.427,
+   "pf": 0.934,
+   "net_ex_top3_pct": -46.4,
+   "day_t": -0.29,
+   "stops": 34,
+   "signals_acted": 391,
+   "fill_rate": 0.473,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 65,
+     "net_pct": -26.58
+    },
+    "POPCATUSDT": {
+     "n": 42,
+     "net_pct": -5.49
+    },
+    "WIFUSDT": {
+     "n": 78,
+     "net_pct": 20.8
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 21,
+     "net_pct": -12.94
+    },
+    "2024Q2": {
+     "n": 21,
+     "net_pct": 36.36
+    },
+    "2024Q3": {
+     "n": 17,
+     "net_pct": 14.66
+    },
+    "2024Q4": {
+     "n": 53,
+     "net_pct": -9.08
+    },
+    "2025Q1": {
+     "n": 45,
+     "net_pct": -15.88
+    },
+    "2025Q2": {
+     "n": 27,
+     "net_pct": -21.26
+    }
+   },
+   "top3_bp": [
+    1553.5,
+    989.4,
+    970.1
+   ],
+   "bottom3_bp": [
+    -315.9,
+    -314.9,
+    -314.3
+   ]
+  },
+  "flush_q3.0_lim0.6%_H60": {
+   "n": 179,
+   "days": 104,
+   "net_sum_pct": -8.19,
+   "mean_bp": -4.6,
+   "median_bp": -65.1,
+   "win": 0.425,
+   "pf": 0.966,
+   "net_ex_top3_pct": -60.71,
+   "day_t": -0.15,
+   "stops": 66,
+   "signals_acted": 384,
+   "fill_rate": 0.466,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 62,
+     "net_pct": -38.73
+    },
+    "POPCATUSDT": {
+     "n": 41,
+     "net_pct": -14.46
+    },
+    "WIFUSDT": {
+     "n": 76,
+     "net_pct": 45.0
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 19,
+     "net_pct": -17.71
+    },
+    "2024Q2": {
+     "n": 21,
+     "net_pct": 49.09
+    },
+    "2024Q3": {
+     "n": 17,
+     "net_pct": 16.91
+    },
+    "2024Q4": {
+     "n": 51,
+     "net_pct": -6.13
+    },
+    "2025Q1": {
+     "n": 43,
+     "net_pct": -21.44
+    },
+    "2025Q2": {
+     "n": 27,
+     "net_pct": -25.77
+    }
+   },
+   "top3_bp": [
+    2031.1,
+    1645.5,
+    1575.8
+   ],
+   "bottom3_bp": [
+    -316.8,
+    -316.0,
+    -315.9
+   ]
+  },
+  "flush_q3.0_lim0.6%_H120": {
+   "n": 176,
+   "days": 104,
+   "net_sum_pct": 5.81,
+   "mean_bp": 3.3,
+   "median_bp": -83.7,
+   "win": 0.392,
+   "pf": 1.022,
+   "net_ex_top3_pct": -45.11,
+   "day_t": 0.1,
+   "stops": 75,
+   "signals_acted": 380,
+   "fill_rate": 0.463,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 61,
+     "net_pct": -11.62
+    },
+    "POPCATUSDT": {
+     "n": 40,
+     "net_pct": -26.72
+    },
+    "WIFUSDT": {
+     "n": 75,
+     "net_pct": 44.15
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 1,
+     "net_pct": -3.14
+    },
+    "2024Q1": {
+     "n": 19,
+     "net_pct": -11.98
+    },
+    "2024Q2": {
+     "n": 21,
+     "net_pct": 58.02
+    },
+    "2024Q3": {
+     "n": 17,
+     "net_pct": 15.84
+    },
+    "2024Q4": {
+     "n": 49,
+     "net_pct": -3.16
+    },
+    "2025Q1": {
+     "n": 42,
+     "net_pct": -38.27
+    },
+    "2025Q2": {
+     "n": 27,
+     "net_pct": -11.51
+    }
+   },
+   "top3_bp": [
+    1736.1,
+    1718.8,
+    1637.0
+   ],
+   "bottom3_bp": [
+    -317.1,
+    -317.0,
+    -316.8
+   ]
+  },
+  "control_q2.5_mkt_H60": {
+   "n": 1435,
+   "days": 356,
+   "net_sum_pct": -82.91,
+   "mean_bp": -5.8,
+   "median_bp": -31.4,
+   "win": 0.45,
+   "pf": 0.95,
+   "net_ex_top3_pct": -134.36,
+   "day_t": -0.7,
+   "stops": 388,
+   "signals_acted": 1435,
+   "fill_rate": 1.0,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 620,
+     "net_pct": -19.86
+    },
+    "POPCATUSDT": {
+     "n": 299,
+     "net_pct": 34.83
+    },
+    "WIFUSDT": {
+     "n": 516,
+     "net_pct": -97.87
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 38,
+     "net_pct": -6.91
+    },
+    "2024Q1": {
+     "n": 223,
+     "net_pct": -72.46
+    },
+    "2024Q2": {
+     "n": 98,
+     "net_pct": -8.71
+    },
+    "2024Q3": {
+     "n": 168,
+     "net_pct": -59.16
+    },
+    "2024Q4": {
+     "n": 294,
+     "net_pct": 51.99
+    },
+    "2025Q1": {
+     "n": 319,
+     "net_pct": 20.89
+    },
+    "2025Q2": {
+     "n": 295,
+     "net_pct": -8.54
+    }
+   },
+   "top3_bp": [
+    1959.8,
+    1720.4,
+    1464.4
+   ],
+   "bottom3_bp": [
+    -322.9,
+    -322.8,
+    -321.9
+   ]
+  },
+  "control_q2.5_lim0.3%_H60": {
+   "n": 992,
+   "days": 286,
+   "net_sum_pct": 6.98,
+   "mean_bp": 0.7,
+   "median_bp": -21.5,
+   "win": 0.464,
+   "pf": 1.006,
+   "net_ex_top3_pct": -44.26,
+   "day_t": 0.07,
+   "stops": 307,
+   "signals_acted": 1498,
+   "fill_rate": 0.662,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 412,
+     "net_pct": -12.31
+    },
+    "POPCATUSDT": {
+     "n": 215,
+     "net_pct": 13.57
+    },
+    "WIFUSDT": {
+     "n": 365,
+     "net_pct": 5.73
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 34,
+     "net_pct": 1.92
+    },
+    "2024Q1": {
+     "n": 171,
+     "net_pct": -45.95
+    },
+    "2024Q2": {
+     "n": 56,
+     "net_pct": 0.53
+    },
+    "2024Q3": {
+     "n": 117,
+     "net_pct": -9.0
+    },
+    "2024Q4": {
+     "n": 208,
+     "net_pct": 53.16
+    },
+    "2025Q1": {
+     "n": 220,
+     "net_pct": 8.43
+    },
+    "2025Q2": {
+     "n": 186,
+     "net_pct": -2.12
+    }
+   },
+   "top3_bp": [
+    2218.4,
+    1505.4,
+    1400.8
+   ],
+   "bottom3_bp": [
+    -322.4,
+    -319.9,
+    -319.8
+   ]
+  },
+  "control_q2.5_lim0.6%_H60": {
+   "n": 645,
+   "days": 222,
+   "net_sum_pct": 60.75,
+   "mean_bp": 9.4,
+   "median_bp": -28.3,
+   "win": 0.459,
+   "pf": 1.073,
+   "net_ex_top3_pct": 19.23,
+   "day_t": 0.67,
+   "stops": 223,
+   "signals_acted": 1534,
+   "fill_rate": 0.42,
+   "pass": "False",
+   "per_coin": {
+    "1000BONKUSDT": {
+     "n": 262,
+     "net_pct": -7.05
+    },
+    "POPCATUSDT": {
+     "n": 143,
+     "net_pct": 53.12
+    },
+    "WIFUSDT": {
+     "n": 240,
+     "net_pct": 14.68
+    }
+   },
+   "per_quarter": {
+    "2023Q4": {
+     "n": 28,
+     "net_pct": -7.68
+    },
+    "2024Q1": {
+     "n": 126,
+     "net_pct": -26.69
+    },
+    "2024Q2": {
+     "n": 37,
+     "net_pct": -16.45
+    },
+    "2024Q3": {
+     "n": 68,
+     "net_pct": -0.49
+    },
+    "2024Q4": {
+     "n": 133,
+     "net_pct": 73.96
+    },
+    "2025Q1": {
+     "n": 143,
+     "net_pct": 20.56
+    },
+    "2025Q2": {
+     "n": 110,
+     "net_pct": 17.54
+    }
+   },
+   "top3_bp": [
+    1454.6,
+    1402.7,
+    1294.4
+   ],
+   "bottom3_bp": [
+    -322.4,
+    -319.8,
+    -318.5
+   ]
+  }
+ }
+}
