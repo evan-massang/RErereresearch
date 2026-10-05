@@ -125,7 +125,7 @@ def get_tx(rpc, sig):
     p = CACHE / "tx" / f"{sig}.json"
     if p.exists():
         return jload(p)
-    tx = rpc.call("getTransaction", [sig, {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 0,
+    tx = rpc.call("getTransaction", [sig, {"encoding": "jsonParsed", "maxSupportedTransactionVersion": 1,
                                            "commitment": "finalized"}])
     jsave(p, tx)
     return tx
