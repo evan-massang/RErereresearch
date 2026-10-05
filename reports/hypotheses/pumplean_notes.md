@@ -1,7 +1,12 @@
 # pumplean: lean forward tape for pump.fun tests (loader notes and split plan)
 
 **Recorder:** `scripts/research/pumplean_recorder.py`. It writes to `data/raw/web/pumplean/`.
-- **Launched:** 2026-10-05 10:43:17Z, `--hours 72`, PID 5427. Log: `recorder.log`. Gap log: `events.jsonl`.
+- **Launched:** 2026-10-05 10:43:17Z as PID 5427.
+- **Restarted:** gracefully at 11:03:36Z to add `resume` events, faster reconnects, and NULL-not-drop for out-of-range
+  residuals. The current run is PID 10353, `--hours 72`, ending 2026-10-08 11:03Z.
+  - PID 5427 dropped 3 absurd non-standard-curve trade rows (logged in `recorder.log`).
+  - The restart left a hole of about 4 s, declared in `events.jsonl` (`stop`/`start`).
+- **Logs:** `recorder.log` and `events.jsonl` (the gap log).
 - **Source:** public Solana RPC only. It uses websocket `logsSubscribe` at `confirmed` commitment, with one
   connection for the pump.fun curve program and one for PumpSwap. `getMultipleAccounts` resolves pools. There is
   no trading and no API keys.
@@ -121,16 +126,26 @@ The same pattern works for `curve_creates`, `curve_completes`, `amm_pools` and `
 | event | contents |
 |---|---|
 | `start`, `stop` | the seed counts and `market_duckdb_max_recv` are in `start` |
-| `connect`, `disconnect` | stream, error, how long the connection lived, last slot, backoff |
+| `connect`, `disconnect`, `resume` | stream, error, how long the connection lived, last slot, backoff; `resume` gives the first slot after a reconnect and the seconds since the disconnect |
 | `minute` | per stream: notifications, failed transactions, rows per table, swaps sent to bars, last slot, `silent` (list of streams with 0 messages that minute) |
 | `chunk` | an hourly merge, with its rows and bytes |
 | `disk_guard` | the stop when free disk is below 1.5 GB |
 
-**Reconnects:** a stream with no message for 45 s is reconnected. Backoff is 1, 2, 4 … 60 s, and resets after a
-connection that lived ≥ 120 s.
+**Reconnects:** a stream with no message for 45 s is reconnected. Backoff is 0.5, 1, 2 … 60 s, and resets after a
+connection that lived ≥ 60 s.
 
-**Gap rule for tests (fix it before scoring):** a covered minute is one where both streams have `msgs > 0` and no
-`disconnect` event falls inside it. A gap is more than 60 s with no curve trade, or a non-covered minute. List the gaps
+**Observed drop rate:** the public RPC drops each websocket every 1–9 min with error 1002. In the first 20 min there
+were 10 drops, and each hole lasted about 1–5 s. The hole is `disconnect.last_slot` .. `resume.first_slot`. Trades in
+it are lost, so a minute containing a hole is not fully covered. With holes this short, the minute rule below treats
+most minutes as covered only if you allow ≤ 5 s holes. Decide this per test before scoring, and state it in the
+pre-registration.
+
+**Gap rule for tests (default; a test may be stricter, and must fix its rule before scoring):** a covered minute is one
+where both streams have `msgs > 0` and the reconnect holes inside it (`disconnect` → `resume`) add up to ≤ 5 s per
+stream. A gap is a run of non-covered minutes, or more than 60 s with no curve trade.
+- **Short holes:** these lose the trades of a few seconds. Tests that count trades or holders must say whether they
+  tolerate that.
+- **Fills:** a fill must not use a state from inside a hole. List the gaps
 before any P&L, as `reports/failures/agent_cleanmig.md` did.
 
 **Limit of the source:** the public RPC `logsSubscribe` can silently drop notifications under load. This shows up only
@@ -140,8 +155,8 @@ below 30% of the median as suspect, and report it.
 ## Split plan for future forward pump.fun tests (declared 2026-10-05, before any of this tape is examined)
 
 T0 is the first clean minute after launch. A clean minute is a covered minute as defined above, with no recorder
-restart in the hour before it. For this run, T0 is expected at about 2026-10-05 10:44Z; confirm it from
-`events.jsonl`.
+restart in the hour before it. For this run, T0 is the first clean minute after the 11:03:39Z restart (expected 11:05Z).
+The no-restart rule excludes 10:43–11:03; confirm T0 from `events.jsonl`.
 
 | segment | window | use |
 |---|---|---|

@@ -1,0 +1,1896 @@
+{
+ "hypothesis": "H-LISTBASIS",
+ "generated": "2026-10-05T11:17:17.095408+00:00",
+ "doc": "H-LISTBASIS step 1: count clean Solana-memecoin perp listing events per split (no P&L, no prices beyond\nspot-availability probes around the listing date). Holdout rows record existence only.\n\nUniverse (declared before any outcome):\n  - Solana memecoin = CoinGecko category `solana-meme-coins` (api /coins/markets?category=solana-meme-coins,\n    fetched today). Venue base symbol (prefixes k / 1000 / 1000000 / 1M stripped) must match a coin in that\n    category, and that coin must be the largest-mcap CoinGecko coin with that symbol (listshort collision rule).\n  - Venues: Hyperliquid main dex (`meta`, first 1d candle via candleSnapshot), Binance USDT-M (S3 archive\n    data/futures/um/monthly/klines, first 1d kline), Lighter (`orderBooks.created_at`; matches first funding\n    stamps checked in PROPCARRY: PUMP 2025-07-14, PENGU 2025-07-23, TRUMP 2025-01-30).\n  - Event = (venue, coin) first trading day. Clean = spot history covers [listing, listing+21d] from Binance spot\n    archive, MEXC 60m klines or Gate 4h candlesticks; and coin not in round-3's 23 \"seen\" set.\n  - Splits: train <= 2025-06-30, validation 2025-07-01..2026-03-31, holdout >= 2026-04-01 (existence only,\n    no spot probe, no prices).\nCaches under data/raw/web/listbasis/. Writes research/observations/evidence_listbasis_counts.json.\n",
+ "n_solana_meme_category": 2012,
+ "counts": {
+  "train": {
+   "venue_events": 50,
+   "with_spot": 45,
+   "clean": 4,
+   "contaminated_with_spot": 41,
+   "distinct_coins_clean_or_contam_with_spot": 23,
+   "by_venue": {
+    "HL": 20,
+    "BN": 24,
+    "LT": 6
+   }
+  },
+  "validation": {
+   "venue_events": 12,
+   "with_spot": 7,
+   "clean": 3,
+   "contaminated_with_spot": 4,
+   "distinct_coins_clean_or_contam_with_spot": 5,
+   "by_venue": {
+    "HL": 2,
+    "BN": 3,
+    "LT": 7
+   }
+  }
+ },
+ "holdout_existence_only": [
+  "BN:GMEUSDT",
+  "BN:PENGUSDT",
+  "BN:WENUSDT",
+  "HL:CASHCAT",
+  "HL:USELESS",
+  "LT:ANSEM",
+  "LT:CASHCAT",
+  "LT:GME",
+  "LT:WEN"
+ ],
+ "events": [
+  {
+   "venue": "HL",
+   "symbol": "kBONK",
+   "base": "BONK",
+   "cg_id": "bonk",
+   "listing_utc": "2023-11-19T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000BONKUSDT",
+   "base": "BONK",
+   "cg_id": "bonk",
+   "listing_utc": "2023-11-22T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "WIF",
+   "base": "WIF",
+   "cg_id": "dogwifcoin",
+   "listing_utc": "2023-12-22T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": false
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "WIFUSDT",
+   "base": "WIF",
+   "cg_id": "dogwifcoin",
+   "listing_utc": "2024-01-18T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "MYRO",
+   "base": "MYRO",
+   "cg_id": "myro",
+   "listing_utc": "2024-03-05T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "MYROUSDT",
+   "base": "MYRO",
+   "cg_id": "myro",
+   "listing_utc": "2024-03-05T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "BOME",
+   "base": "BOME",
+   "cg_id": "book-of-meme",
+   "listing_utc": "2024-03-15T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "BOMEUSDT",
+   "base": "BOME",
+   "cg_id": "book-of-meme",
+   "listing_utc": "2024-03-16T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "POPCAT",
+   "base": "POPCAT",
+   "cg_id": "popcat",
+   "listing_utc": "2024-04-28T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "MEW",
+   "base": "MEW",
+   "cg_id": "cat-in-a-dogs-world",
+   "listing_utc": "2024-06-17T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "MEWUSDT",
+   "base": "MEW",
+   "cg_id": "cat-in-a-dogs-world",
+   "listing_utc": "2024-06-17T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "POPCATUSDT",
+   "base": "POPCAT",
+   "cg_id": "popcat",
+   "listing_utc": "2024-08-22T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "GOAT",
+   "base": "GOAT",
+   "cg_id": "goatseus-maximus",
+   "listing_utc": "2024-10-23T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "GOATUSDT",
+   "base": "GOAT",
+   "cg_id": "goatseus-maximus",
+   "listing_utc": "2024-10-24T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "MOODENG",
+   "base": "MOODENG",
+   "cg_id": "moo-deng",
+   "listing_utc": "2024-10-25T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "MOODENGUSDT",
+   "base": "MOODENG",
+   "cg_id": "moo-deng",
+   "listing_utc": "2024-10-25T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "PONKEUSDT",
+   "base": "PONKE",
+   "cg_id": "ponke",
+   "listing_utc": "2024-11-04T00:00:00+00:00",
+   "split": "train",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "PNUT",
+   "base": "PNUT",
+   "cg_id": "peanut-the-squirrel",
+   "listing_utc": "2024-11-11T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "ACTUSDT",
+   "base": "ACT",
+   "cg_id": "act-i-the-ai-prophecy",
+   "listing_utc": "2024-11-11T00:00:00+00:00",
+   "split": "train",
+   "seen23": false,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "PNUTUSDT",
+   "base": "PNUT",
+   "cg_id": "peanut-the-squirrel",
+   "listing_utc": "2024-11-11T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "BANUSDT",
+   "base": "BAN",
+   "cg_id": "comedian",
+   "listing_utc": "2024-11-18T00:00:00+00:00",
+   "split": "train",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "SLERFUSDT",
+   "base": "SLERF",
+   "cg_id": "slerf",
+   "listing_utc": "2024-11-21T00:00:00+00:00",
+   "split": "train",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "HL",
+   "symbol": "CHILLGUY",
+   "base": "CHILLGUY",
+   "cg_id": "chill-guy",
+   "listing_utc": "2024-11-25T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "CHILLGUYUSDT",
+   "base": "CHILLGUY",
+   "cg_id": "chill-guy",
+   "listing_utc": "2024-11-27T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "PENGU",
+   "base": "PENGU",
+   "cg_id": "pudgy-penguins",
+   "listing_utc": "2024-12-17T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "PENGUUSDT",
+   "base": "PENGU",
+   "cg_id": "pudgy-penguins",
+   "listing_utc": "2024-12-17T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "FARTCOIN",
+   "base": "FARTCOIN",
+   "cg_id": "fartcoin",
+   "listing_utc": "2024-12-20T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "FARTCOINUSDT",
+   "base": "FARTCOIN",
+   "cg_id": "fartcoin",
+   "listing_utc": "2024-12-20T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "AI16Z",
+   "base": "AI16Z",
+   "cg_id": "ai16z",
+   "listing_utc": "2025-01-01T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "HL",
+   "symbol": "ZEREBRO",
+   "base": "ZEREBRO",
+   "cg_id": "zerebro",
+   "listing_utc": "2025-01-02T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "GRIFFAIN",
+   "base": "GRIFFAIN",
+   "cg_id": "griffain",
+   "listing_utc": "2025-01-02T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "AI16ZUSDT",
+   "base": "AI16Z",
+   "cg_id": "ai16z",
+   "listing_utc": "2025-01-02T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "BN",
+   "symbol": "GRIFFAINUSDT",
+   "base": "GRIFFAIN",
+   "cg_id": "griffain",
+   "listing_utc": "2025-01-02T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "ZEREBROUSDT",
+   "base": "ZEREBRO",
+   "cg_id": "zerebro",
+   "listing_utc": "2025-01-02T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "WIF",
+   "base": "WIF",
+   "cg_id": "dogwifcoin",
+   "listing_utc": "2025-01-17T07:21:01.187000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "TRUMP",
+   "base": "TRUMP",
+   "cg_id": "official-trump",
+   "listing_utc": "2025-01-18T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "TRUMPUSDT",
+   "base": "TRUMP",
+   "cg_id": "official-trump",
+   "listing_utc": "2025-01-18T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "MELANIA",
+   "base": "MELANIA",
+   "cg_id": "melania-meme",
+   "listing_utc": "2025-01-20T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "MELANIAUSDT",
+   "base": "MELANIA",
+   "cg_id": "melania-meme",
+   "listing_utc": "2025-01-20T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "VINE",
+   "base": "VINE",
+   "cg_id": "vine",
+   "listing_utc": "2025-01-23T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "PIPPINUSDT",
+   "base": "PIPPIN",
+   "cg_id": "pippin",
+   "listing_utc": "2025-01-24T00:00:00+00:00",
+   "split": "train",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "VINEUSDT",
+   "base": "VINE",
+   "cg_id": "vine",
+   "listing_utc": "2025-01-24T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "JELLY",
+   "base": "JELLY",
+   "cg_id": "jelly-my-jelly",
+   "listing_utc": "2025-01-30T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "TRUMP",
+   "base": "TRUMP",
+   "cg_id": "official-trump",
+   "listing_utc": "2025-01-30T17:05:15.579000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "1000BONK",
+   "base": "BONK",
+   "cg_id": "bonk",
+   "listing_utc": "2025-01-31T21:27:27.767000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "FARTCOIN",
+   "base": "FARTCOIN",
+   "cg_id": "fartcoin",
+   "listing_utc": "2025-02-15T17:41:03.879000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "AI16Z",
+   "base": "AI16Z",
+   "cg_id": "ai16z",
+   "listing_utc": "2025-02-15T17:41:16.377000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "LT",
+   "symbol": "POPCAT",
+   "base": "POPCAT",
+   "cg_id": "popcat",
+   "listing_utc": "2025-02-15T17:41:28.846000+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "BN",
+   "symbol": "JELLYJELLYUSDT",
+   "base": "JELLYJELLY",
+   "cg_id": "jelly-my-jelly",
+   "listing_utc": "2025-03-26T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "LAUNCHCOIN",
+   "base": "LAUNCHCOIN",
+   "cg_id": "launch-coin-on-believe",
+   "listing_utc": "2025-05-14T00:00:00+00:00",
+   "split": "train",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "HL",
+   "symbol": "PUMP",
+   "base": "PUMP",
+   "cg_id": "pump-fun",
+   "listing_utc": "2025-07-10T00:00:00+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "BN",
+   "symbol": "PUMPUSDT",
+   "base": "PUMP",
+   "cg_id": "pump-fun",
+   "listing_utc": "2025-07-10T00:00:00+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "LT",
+   "symbol": "PUMP",
+   "base": "PUMP",
+   "cg_id": "pump-fun",
+   "listing_utc": "2025-07-14T17:38:13.101000+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "PENGU",
+   "base": "PENGU",
+   "cg_id": "pudgy-penguins",
+   "listing_utc": "2025-07-23T10:30:46.633000+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": true,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "LAUNCHCOIN",
+   "base": "LAUNCHCOIN",
+   "cg_id": "launch-coin-on-believe",
+   "listing_utc": "2025-07-29T17:13:05.849000+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "BN",
+   "symbol": "USELESSUSDT",
+   "base": "USELESS",
+   "cg_id": "useless-3",
+   "listing_utc": "2025-08-15T00:00:00+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "USELESS",
+   "base": "USELESS",
+   "cg_id": "useless-3",
+   "listing_utc": "2025-08-20T17:33:35.269000+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "HL",
+   "symbol": "YZY",
+   "base": "YZY",
+   "cg_id": "yzy",
+   "listing_utc": "2025-08-21T00:00:00+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "LT",
+   "symbol": "YZY",
+   "base": "YZY",
+   "cg_id": "yzy",
+   "listing_utc": "2025-08-21T10:28:33.977000+00:00",
+   "split": "validation",
+   "seen23": true,
+   "spot": {
+    "binance_spot": false,
+    "mexc": false,
+    "gate": false
+   },
+   "spot_ok": false
+  },
+  {
+   "venue": "BN",
+   "symbol": "BIRBUSDT",
+   "base": "BIRB",
+   "cg_id": "moonbirds",
+   "listing_utc": "2026-01-29T00:00:00+00:00",
+   "split": "validation",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": false
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "BIRB",
+   "base": "BIRB",
+   "cg_id": "moonbirds",
+   "listing_utc": "2026-02-05T19:08:40.252000+00:00",
+   "split": "validation",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  },
+  {
+   "venue": "LT",
+   "symbol": "PIPPIN",
+   "base": "PIPPIN",
+   "cg_id": "pippin",
+   "listing_utc": "2026-02-05T19:08:40.338000+00:00",
+   "split": "validation",
+   "seen23": false,
+   "spot": {
+    "binance_spot": false,
+    "mexc": true,
+    "gate": true
+   },
+   "spot_ok": true
+  }
+ ],
+ "dropped_symbol_collision": [
+  {
+   "venue": "HL",
+   "symbol": "BTC",
+   "base": "BTC",
+   "solana_meme_id": "batcat",
+   "largest_id": "bitcoin"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ETH",
+   "base": "ETH",
+   "solana_meme_id": "the-ticker-is-eth",
+   "largest_id": "ethereum"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ARB",
+   "base": "ARB",
+   "solana_meme_id": "arbitrage-loop",
+   "largest_id": "arbitrum"
+  },
+  {
+   "venue": "HL",
+   "symbol": "DOGE",
+   "base": "DOGE",
+   "solana_meme_id": "department-of-gov-efficiency",
+   "largest_id": "dogecoin"
+  },
+  {
+   "venue": "HL",
+   "symbol": "kPEPE",
+   "base": "PEPE",
+   "solana_meme_id": "pepe-sol",
+   "largest_id": "pepe"
+  },
+  {
+   "venue": "HL",
+   "symbol": "LOOM",
+   "base": "LOOM",
+   "solana_meme_id": "loom-4",
+   "largest_id": "loomdesk"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ORBS",
+   "base": "ORBS",
+   "solana_meme_id": "orbitopia",
+   "largest_id": "orbs"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ADA",
+   "base": "ADA",
+   "solana_meme_id": "ada-the-dog",
+   "largest_id": "cardano"
+  },
+  {
+   "venue": "HL",
+   "symbol": "MEME",
+   "base": "MEME",
+   "solana_meme_id": "mpx6900",
+   "largest_id": "memetoon"
+  },
+  {
+   "venue": "HL",
+   "symbol": "BADGER",
+   "base": "BADGER",
+   "solana_meme_id": "badger-badger-badger",
+   "largest_id": "badger-dao"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ZEN",
+   "base": "ZEN",
+   "solana_meme_id": "zen-2",
+   "largest_id": "zencash"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ALT",
+   "base": "ALT",
+   "solana_meme_id": "altcoin-2",
+   "largest_id": "altlayer"
+  },
+  {
+   "venue": "HL",
+   "symbol": "W",
+   "base": "W",
+   "solana_meme_id": "victorious",
+   "largest_id": "wormhole"
+  },
+  {
+   "venue": "HL",
+   "symbol": "PIXEL",
+   "base": "PIXEL",
+   "solana_meme_id": "pixelization",
+   "largest_id": "pixels"
+  },
+  {
+   "venue": "HL",
+   "symbol": "AI",
+   "base": "AI",
+   "solana_meme_id": "artificial-inu-2",
+   "largest_id": "artificial-inu-3"
+  },
+  {
+   "venue": "HL",
+   "symbol": "OMNI",
+   "base": "OMNI",
+   "solana_meme_id": "omni-2",
+   "largest_id": "omnicat"
+  },
+  {
+   "venue": "HL",
+   "symbol": "kDOGS",
+   "base": "DOGS",
+   "solana_meme_id": "dont-tread-on-me",
+   "largest_id": "dogs-2"
+  },
+  {
+   "venue": "HL",
+   "symbol": "kNEIRO",
+   "base": "NEIRO",
+   "solana_meme_id": "neiro-2",
+   "largest_id": "neiro-3"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ALGO",
+   "base": "ALGO",
+   "solana_meme_id": "dear-algorithm",
+   "largest_id": "algorand"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ME",
+   "base": "ME",
+   "solana_meme_id": "literally-me",
+   "largest_id": "magic-eden"
+  },
+  {
+   "venue": "HL",
+   "symbol": "ANIME",
+   "base": "ANIME",
+   "solana_meme_id": "anime-bitcoin",
+   "largest_id": "anime"
+  },
+  {
+   "venue": "HL",
+   "symbol": "TST",
+   "base": "TST",
+   "solana_meme_id": "test-4",
+   "largest_id": "test-3"
+  },
+  {
+   "venue": "HL",
+   "symbol": "BABY",
+   "base": "BABY",
+   "solana_meme_id": "baby",
+   "largest_id": "babylon"
+  },
+  {
+   "venue": "HL",
+   "symbol": "WLFI",
+   "base": "WLFI",
+   "solana_meme_id": "stupid-world-liberty-financial",
+   "largest_id": "world-liberty-financial"
+  },
+  {
+   "venue": "HL",
+   "symbol": "SKY",
+   "base": "SKY",
+   "solana_meme_id": "sky-super-cat",
+   "largest_id": "sky"
+  },
+  {
+   "venue": "HL",
+   "symbol": "STABLE",
+   "base": "STABLE",
+   "solana_meme_id": "stable-coin-4",
+   "largest_id": "stable-2"
+  },
+  {
+   "venue": "HL",
+   "symbol": "CHIP",
+   "base": "CHIP",
+   "solana_meme_id": "chip-the-wooly-mouse",
+   "largest_id": "chip-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000000BOBUSDT",
+   "base": "BOB",
+   "solana_meme_id": "bob-2",
+   "largest_id": "bob-build-on-bitcoin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000000MOGUSDT",
+   "base": "MOG",
+   "solana_meme_id": "mog",
+   "largest_id": "mog-coin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000CATUSDT",
+   "base": "CAT",
+   "solana_meme_id": "catching-absolute-tops",
+   "largest_id": "simon-s-cat"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000CHEEMSUSDT",
+   "base": "CHEEMS",
+   "solana_meme_id": "cheems",
+   "largest_id": "cheems-token"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000PEPEUSDT",
+   "base": "PEPE",
+   "solana_meme_id": "pepe-sol",
+   "largest_id": "pepe"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1000XUSDT",
+   "base": "X",
+   "solana_meme_id": "x-community",
+   "largest_id": "free-speech-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "1MBABYDOGEUSDT",
+   "base": "BABYDOGE",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "Baby Doge Coin is BSC-native (bridged copies only)"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ADAUSDT",
+   "base": "ADA",
+   "solana_meme_id": "ada-the-dog",
+   "largest_id": "cardano"
+  },
+  {
+   "venue": "BN",
+   "symbol": "AIUSDT",
+   "base": "AI",
+   "solana_meme_id": "artificial-inu-2",
+   "largest_id": "artificial-inu-3"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ALGOUSDT",
+   "base": "ALGO",
+   "solana_meme_id": "dear-algorithm",
+   "largest_id": "algorand"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ALICEUSDT",
+   "base": "ALICE",
+   "solana_meme_id": "alice-4",
+   "largest_id": "my-neighbor-alice"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ALPACAUSDT",
+   "base": "ALPACA",
+   "solana_meme_id": "alpaca-2",
+   "largest_id": "alpaca-finance"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ALPHAUSDT",
+   "base": "ALPHA",
+   "solana_meme_id": "alpha-3",
+   "largest_id": "alphablockai"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ALTUSDT",
+   "base": "ALT",
+   "solana_meme_id": "altcoin-2",
+   "largest_id": "altlayer"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ANIMEUSDT",
+   "base": "ANIME",
+   "solana_meme_id": "anime-bitcoin",
+   "largest_id": "anime"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ANTUSDT",
+   "base": "ANT",
+   "solana_meme_id": "antminer",
+   "largest_id": "autonomi"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ARBUSDT",
+   "base": "ARB",
+   "solana_meme_id": "arbitrage-loop",
+   "largest_id": "arbitrum"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ARIAUSDT",
+   "base": "ARIA",
+   "solana_meme_id": "aria",
+   "largest_id": "aria-ai"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BABAUSDT",
+   "base": "BABA",
+   "solana_meme_id": "baba",
+   "largest_id": "alibaba-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BABYUSDT",
+   "base": "BABY",
+   "solana_meme_id": "baby",
+   "largest_id": "babylon"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BADGERUSDT",
+   "base": "BADGER",
+   "solana_meme_id": "badger-badger-badger",
+   "largest_id": "badger-dao"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BANKUSDT",
+   "base": "BANK",
+   "solana_meme_id": "bankcoin-2",
+   "largest_id": "lorenzo-protocol"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BASEDUSDT",
+   "base": "BASED",
+   "solana_meme_id": "based",
+   "largest_id": "based-one"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BBUSDT",
+   "base": "BB",
+   "solana_meme_id": "backyard-bandwidth",
+   "largest_id": "bitboard"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BILLUSDT",
+   "base": "BILL",
+   "solana_meme_id": "bill-the-bear",
+   "largest_id": "billions-network"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BOBUSDT",
+   "base": "BOB",
+   "solana_meme_id": "bob-2",
+   "largest_id": "bob-build-on-bitcoin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BTCUSDT",
+   "base": "BTC",
+   "solana_meme_id": "batcat",
+   "largest_id": "bitcoin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BTWUSDT",
+   "base": "BTW",
+   "solana_meme_id": "banana-tape-wall",
+   "largest_id": "bitway"
+  },
+  {
+   "venue": "BN",
+   "symbol": "BUSDT",
+   "base": "B",
+   "solana_meme_id": "b",
+   "largest_id": "build-on"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CAPUSDT",
+   "base": "CAP",
+   "solana_meme_id": "capcat",
+   "largest_id": "cap-4"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CATUSDT",
+   "base": "CAT",
+   "solana_meme_id": "catching-absolute-tops",
+   "largest_id": "simon-s-cat"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CHIPUSDT",
+   "base": "CHIP",
+   "solana_meme_id": "chip-the-wooly-mouse",
+   "largest_id": "chip-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CLANKERUSDT",
+   "base": "CLANKER",
+   "solana_meme_id": "clanker",
+   "largest_id": "tokenbot-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "COINUSDT",
+   "base": "COIN",
+   "solana_meme_id": "8-bit-coin",
+   "largest_id": "coinbase-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "BN",
+   "symbol": "COSTUSDT",
+   "base": "COST",
+   "solana_meme_id": "costco-hot-dog",
+   "largest_id": "costco-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "BN",
+   "symbol": "COWUSDT",
+   "base": "COW",
+   "solana_meme_id": "perpetual-cow",
+   "largest_id": "cow-protocol"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CRCLUSDT",
+   "base": "CRCL",
+   "solana_meme_id": "just-a-circle",
+   "largest_id": "circle-internet-group-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "BN",
+   "symbol": "CRMUSDT",
+   "base": "CRM",
+   "solana_meme_id": "crypto-rug-muncher",
+   "largest_id": "salesforce-inc-robinhood-token"
+  },
+  {
+   "venue": "BN",
+   "symbol": "DEGENUSDT",
+   "base": "DEGEN",
+   "solana_meme_id": "degenerate",
+   "largest_id": "degen-base"
+  },
+  {
+   "venue": "BN",
+   "symbol": "DOGEUSDT",
+   "base": "DOGE",
+   "solana_meme_id": "department-of-gov-efficiency",
+   "largest_id": "dogecoin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "DOGSUSDT",
+   "base": "DOGS",
+   "solana_meme_id": "dont-tread-on-me",
+   "largest_id": "dogs-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ETHUSDT",
+   "base": "ETH",
+   "solana_meme_id": "the-ticker-is-eth",
+   "largest_id": "ethereum"
+  },
+  {
+   "venue": "BN",
+   "symbol": "FFUSDT",
+   "base": "FF",
+   "solana_meme_id": "financial-freedom-2",
+   "largest_id": "falcon-finance-ff"
+  },
+  {
+   "venue": "BN",
+   "symbol": "FIGHTUSDT",
+   "base": "FIGHT",
+   "solana_meme_id": "fight",
+   "largest_id": "fight-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "FOOTBALLUSDT",
+   "base": "FOOTBALL",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "pre-2023, unverifiable"
+  },
+  {
+   "venue": "BN",
+   "symbol": "GALUSDT",
+   "base": "GAL",
+   "solana_meme_id": "one-unchill-gal",
+   "largest_id": "project-galaxy"
+  },
+  {
+   "venue": "BN",
+   "symbol": "HOLOUSDT",
+   "base": "HOLO",
+   "solana_meme_id": "holo",
+   "largest_id": "holoworld"
+  },
+  {
+   "venue": "BN",
+   "symbol": "INUSDT",
+   "base": "IN",
+   "solana_meme_id": "incoin-2",
+   "largest_id": "infinit"
+  },
+  {
+   "venue": "BN",
+   "symbol": "JOEUSDT",
+   "base": "JOE",
+   "solana_meme_id": "emotiguy",
+   "largest_id": "joe"
+  },
+  {
+   "venue": "BN",
+   "symbol": "KAIAUSDT",
+   "base": "KAIA",
+   "solana_meme_id": "illusive-ai",
+   "largest_id": "kaia"
+  },
+  {
+   "venue": "BN",
+   "symbol": "LABUSDT",
+   "base": "LAB",
+   "solana_meme_id": "the-professor",
+   "largest_id": "lab"
+  },
+  {
+   "venue": "BN",
+   "symbol": "LOOMUSDT",
+   "base": "LOOM",
+   "solana_meme_id": "loom-4",
+   "largest_id": "loomdesk"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MANAUSDT",
+   "base": "MANA",
+   "solana_meme_id": "meme-anarchic-numismatic-asset",
+   "largest_id": "decentraland"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MASKUSDT",
+   "base": "MASK",
+   "solana_meme_id": "catwifmask",
+   "largest_id": "mask-network"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MEMEUSDT",
+   "base": "MEME",
+   "solana_meme_id": "mpx6900",
+   "largest_id": "memetoon"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MEUSDT",
+   "base": "ME",
+   "solana_meme_id": "literally-me",
+   "largest_id": "magic-eden"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MUBARAKUSDT",
+   "base": "MUBARAK",
+   "solana_meme_id": "mubarak-sol",
+   "largest_id": "mubarak"
+  },
+  {
+   "venue": "BN",
+   "symbol": "MUUSDT",
+   "base": "MU",
+   "solana_meme_id": "mini-mu",
+   "largest_id": "micron-technology-backpack-securities"
+  },
+  {
+   "venue": "BN",
+   "symbol": "NEIROUSDT",
+   "base": "NEIRO",
+   "solana_meme_id": "neiro-2",
+   "largest_id": "neiro-3"
+  },
+  {
+   "venue": "BN",
+   "symbol": "NOMUSDT",
+   "base": "NOM",
+   "solana_meme_id": "trust-in-nom",
+   "largest_id": "nomina"
+  },
+  {
+   "venue": "BN",
+   "symbol": "OMNIUSDT",
+   "base": "OMNI",
+   "solana_meme_id": "omni-2",
+   "largest_id": "omnicat"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ONEUSDT",
+   "base": "ONE",
+   "solana_meme_id": "if-memecoins-have-a-million-fans",
+   "largest_id": "cross-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ORBSUSDT",
+   "base": "ORBS",
+   "solana_meme_id": "orbitopia",
+   "largest_id": "orbs"
+  },
+  {
+   "venue": "BN",
+   "symbol": "PIXELUSDT",
+   "base": "PIXEL",
+   "solana_meme_id": "pixelization",
+   "largest_id": "pixels"
+  },
+  {
+   "venue": "BN",
+   "symbol": "RAMUSDT",
+   "base": "RAM",
+   "solana_meme_id": "ramcoin-2",
+   "largest_id": "ramses"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ROBOUSDT",
+   "base": "ROBO",
+   "solana_meme_id": "robo",
+   "largest_id": "robo-token-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "RONINUSDT",
+   "base": "RONIN",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "Ronin (gaming L1)"
+  },
+  {
+   "venue": "BN",
+   "symbol": "SCUSDT",
+   "base": "SC",
+   "solana_meme_id": "shark-cat",
+   "largest_id": "siacoin"
+  },
+  {
+   "venue": "BN",
+   "symbol": "SKYUSDT",
+   "base": "SKY",
+   "solana_meme_id": "sky-super-cat",
+   "largest_id": "sky"
+  },
+  {
+   "venue": "BN",
+   "symbol": "SONICUSDT",
+   "base": "SONIC",
+   "solana_meme_id": "sonic-solana",
+   "largest_id": "sonic-svm"
+  },
+  {
+   "venue": "BN",
+   "symbol": "STABLEUSDT",
+   "base": "STABLE",
+   "solana_meme_id": "stable-coin-4",
+   "largest_id": "stable-2"
+  },
+  {
+   "venue": "BN",
+   "symbol": "TOSHIUSDT",
+   "base": "TOSHI",
+   "solana_meme_id": "first-dog-to-buy-crypto",
+   "largest_id": "toshi"
+  },
+  {
+   "venue": "BN",
+   "symbol": "TSTUSDT",
+   "base": "TST",
+   "solana_meme_id": "test-4",
+   "largest_id": "test-3"
+  },
+  {
+   "venue": "BN",
+   "symbol": "WLFIUSDT",
+   "base": "WLFI",
+   "solana_meme_id": "stupid-world-liberty-financial",
+   "largest_id": "world-liberty-financial"
+  },
+  {
+   "venue": "BN",
+   "symbol": "WUSDT",
+   "base": "W",
+   "solana_meme_id": "victorious",
+   "largest_id": "wormhole"
+  },
+  {
+   "venue": "BN",
+   "symbol": "XAUUSDT",
+   "base": "XAU",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "Binance gold perp"
+  },
+  {
+   "venue": "BN",
+   "symbol": "XPDUSDT",
+   "base": "XPD",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "palladium perp"
+  },
+  {
+   "venue": "BN",
+   "symbol": "ZENUSDT",
+   "base": "ZEN",
+   "solana_meme_id": "zen-2",
+   "largest_id": "zencash"
+  },
+  {
+   "venue": "LT",
+   "symbol": "DOGE",
+   "base": "DOGE",
+   "solana_meme_id": "department-of-gov-efficiency",
+   "largest_id": "dogecoin"
+  },
+  {
+   "venue": "LT",
+   "symbol": "CRCL",
+   "base": "CRCL",
+   "solana_meme_id": "just-a-circle",
+   "largest_id": "circle-internet-group-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "LT",
+   "symbol": "CAP",
+   "base": "CAP",
+   "solana_meme_id": "capcat",
+   "largest_id": "cap-4"
+  },
+  {
+   "venue": "LT",
+   "symbol": "ADA",
+   "base": "ADA",
+   "solana_meme_id": "ada-the-dog",
+   "largest_id": "cardano"
+  },
+  {
+   "venue": "LT",
+   "symbol": "FF",
+   "base": "FF",
+   "solana_meme_id": "financial-freedom-2",
+   "largest_id": "falcon-finance-ff"
+  },
+  {
+   "venue": "LT",
+   "symbol": "CHIP",
+   "base": "CHIP",
+   "solana_meme_id": "chip-the-wooly-mouse",
+   "largest_id": "chip-2"
+  },
+  {
+   "venue": "LT",
+   "symbol": "BTC",
+   "base": "BTC",
+   "solana_meme_id": "batcat",
+   "largest_id": "bitcoin"
+  },
+  {
+   "venue": "LT",
+   "symbol": "ARB",
+   "base": "ARB",
+   "solana_meme_id": "arbitrage-loop",
+   "largest_id": "arbitrum"
+  },
+  {
+   "venue": "LT",
+   "symbol": "1000TOSHI",
+   "base": "TOSHI",
+   "solana_meme_id": "first-dog-to-buy-crypto",
+   "largest_id": "toshi"
+  },
+  {
+   "venue": "LT",
+   "symbol": "AI",
+   "base": "AI",
+   "solana_meme_id": "artificial-inu-2",
+   "largest_id": "artificial-inu-3"
+  },
+  {
+   "venue": "LT",
+   "symbol": "XAU",
+   "base": "XAU",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "Lighter gold perp, not gold-8"
+  },
+  {
+   "venue": "LT",
+   "symbol": "ROBO",
+   "base": "ROBO",
+   "solana_meme_id": "robo",
+   "largest_id": "robo-token-2"
+  },
+  {
+   "venue": "LT",
+   "symbol": "ETH",
+   "base": "ETH",
+   "solana_meme_id": "the-ticker-is-eth",
+   "largest_id": "ethereum"
+  },
+  {
+   "venue": "LT",
+   "symbol": "BB",
+   "base": "BB",
+   "solana_meme_id": "backyard-bandwidth",
+   "largest_id": "bitboard"
+  },
+  {
+   "venue": "LT",
+   "symbol": "1000PEPE",
+   "base": "PEPE",
+   "solana_meme_id": "pepe-sol",
+   "largest_id": "pepe"
+  },
+  {
+   "venue": "LT",
+   "symbol": "WLFI",
+   "base": "WLFI",
+   "solana_meme_id": "stupid-world-liberty-financial",
+   "largest_id": "world-liberty-financial"
+  },
+  {
+   "venue": "LT",
+   "symbol": "STABLE",
+   "base": "STABLE",
+   "solana_meme_id": "stable-coin-4",
+   "largest_id": "stable-2"
+  },
+  {
+   "venue": "LT",
+   "symbol": "DATA",
+   "base": "DATA",
+   "solana_meme_id": "data-center-coin",
+   "largest_id": "story-2"
+  },
+  {
+   "venue": "LT",
+   "symbol": "STONK",
+   "base": "STONK",
+   "solana_meme_id": "stonk-4",
+   "largest_id": "stonk-3"
+  },
+  {
+   "venue": "LT",
+   "symbol": "COIN",
+   "base": "COIN",
+   "solana_meme_id": "8-bit-coin",
+   "largest_id": "coinbase-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "LT",
+   "symbol": "XPD",
+   "base": "XPD",
+   "solana_meme_id": "identity_override_remove",
+   "largest_id": "palladium perp"
+  },
+  {
+   "venue": "LT",
+   "symbol": "BABA",
+   "base": "BABA",
+   "solana_meme_id": "baba",
+   "largest_id": "alibaba-robinhood-tokenized-stock"
+  },
+  {
+   "venue": "LT",
+   "symbol": "SKY",
+   "base": "SKY",
+   "solana_meme_id": "sky-super-cat",
+   "largest_id": "sky"
+  },
+  {
+   "venue": "LT",
+   "symbol": "MU",
+   "base": "MU",
+   "solana_meme_id": "mini-mu",
+   "largest_id": "micron-technology-backpack-securities"
+  }
+ ],
+ "bar": {
+  "validation_n_min": 50
+ },
+ "summary": {
+  "validation_all_venue_events_any_spot": 12,
+  "validation_with_probed_spot_21d": 7,
+  "validation_clean_not_round3_seen": 3,
+  "validation_distinct_coins": 7,
+  "train_all_venue_events": 50,
+  "train_with_probed_spot_21d": 45,
+  "train_clean_not_round3_seen": 4,
+  "verdict": "STOP: validation cannot reach n>=50 even counting every venue-coin listing (12), contaminated ones, and events whose spot probe failed. No P&L computed, no preregistration written, holdout untouched.",
+  "spot_probe_notes": "Probe = >=90% of 4h bars over [listing, listing+21d] with first bar <= listing+1d on Binance spot archive (1h months), MEXC or Gate. PUMP and YZY fail because spot trading began after the perp (pre-market perps); LAUNCHCOIN/AI16Z are under different spot tickers or delisted. Filling these gaps cannot add more than 5 validation events (max 12).",
+  "lighter_note": "Lighter dates are orderBooks.created_at; Lighter was in closed beta for its 2025-01/02 markets (train). Lighter listings of coins already trading elsewhere are re-listings, not new-asset listings.",
+  "holdout_note": "holdout_existence_only lists symbol matches only; identity not reviewed (e.g. GME is likely the stock perp), no data fetched."
+ }
+}
