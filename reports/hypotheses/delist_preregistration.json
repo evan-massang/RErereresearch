@@ -1,0 +1,148 @@
+{
+ "hypothesis": "H-DELIST: after Binance announces a spot token delisting or adds a token to the Monitoring Tag, the token drifts down vs the alt market over the following days as forced/deadline-bound holders unwind. Trade: short the token's Binance USDT-M perp, long an equal-notional equal-weight basket of the top-50 alt perps (market-neutral), enter at announcement + delay, exit after hold days, on a hard stop, or before the perp's own delisting/settlement.",
+ "source_lead": "sources/leads/documented_edges_round9.md idea 5 (H-DELIST). Leads are ANECDOTAL (The Block WAVES -30%, eldorado.io); no academic event study found.",
+ "lessons_applied": [
+  "reports/candidates/unlock.md: an unhedged short of weak alts is a beta bet; the bar is applied to the alt-basket-hedged P&L",
+  "reports/failures/agent_spotcarry.md and agent_listshort.md: delisting-squeeze names cause the large losses; a hard stop is mandatory and the perp is never held into settlement"
+ ],
+ "frozen_at_utc": "2026-10-05T09:20:59.533813+00:00",
+ "frozen_before": "any price return, P&L, funding sum or 1h kline was read for any event. Before freezing, the agent (a) downloaded the Binance CMS article lists (catalog 161 Delisting, catalog 49 Latest News) and some article bodies, (b) parsed token-level events from titles, (c) checked only the EXISTENCE of a Binance USDT-M perp daily bar on the announcement day and the perp's first-bar date (no prices, volumes or returns).",
+ "event_source": {
+  "endpoint": "https://www.binance.com/bapi/composite/v1/public/cms/article/list/query?type=1&catalogId={161,49}&pageNo=..&pageSize=50 (public, keyless; fetched 2026-10-05; cache data/raw/web/delist/cms/)",
+  "point_in_time": "announcement time = the article's releaseDate (ms UTC) from the API",
+  "parse": "titles 'Binance Will Delist X, Y on <date>' (incl. the 2025-04-08 'Vote to Delist Results and Will Delist ...') -> type delist; titles '... Extend the Monitoring Tag to Include X, Y ...' / '... Extend the Monitoring Tag to X' -> type monitor (only the tokens being added, not 'Remove the Monitoring/Seed Tag' parts). Excluded: margin/loan/staking/Alpha removals, spot trading-PAIR removals, leveraged tokens, stablecoin pair removals, perp-only (Futures) delistings, vote-to-delist candidate lists. Script: scripts/research/delist_events.py",
+  "start": "2023-07-26 (Monitoring Tag introduced). The 2023-07-26 introduction article's initial tag list is NOT used (its body is not parsed into events: the initial tagging of existing names is a program launch, not a token-specific announcement).",
+  "pre_freeze_event_counts_by_existence_only": {
+   "train_all_tokens": 141,
+   "train_with_binance_usdtm_perp_bar_on_ann_day": 65,
+   "validation_all_tokens": 53,
+   "validation_with_perp": 45,
+   "note": "validation has <= 45 eligible events before overlap/holdout truncation, so the n>=50 bar CANNOT be met on validation: validation can at best be 'inconclusive (n<50)', never a pass. Stated before any price was seen."
+  }
+ },
+ "universe": "Event token must have a Binance USDT-M perp (<T>USDT or 1000<T>USDT) with (i) first daily bar >= 30 days before the announcement day, (ii) a 1h bar with volume>0 at the entry time. HL is the fallback venue in the brief, but HL candleSnapshot serves only the last 5,000 bars (1h -> ~7 months), so no HL hourly history exists for train/validation; HL is not used. Events whose Binance perp does not survive to entry are skipped (counted).",
+ "overlap": "Per token, events in time order; an event is skipped (counted skipped_overlap) if its entry is before the exit of the previous taken trade in that token. Same-announcement multi-token batches are separate trades (clustered: the number of distinct announcements is reported as the effective n).",
+ "trade": {
+  "entry": "open of the first Binance 1h bar with open_time >= announcement_time + delay",
+  "short_leg": "short the token perp, notional 1",
+  "hedge_leg": "long notional 1 split equally across the top-50 alt perps: Binance USDT-M perps ranked by mean daily quote volume over the 30 full UTC days before the announcement day (daily archive), excluding BTC, ETH, stablecoin/fiat-pegged bases (USDC, FDUSD, TUSD, BUSD, USDP, DAI, EUR, AEUR, USDE, PAX, XAUT/PAXG), any token named in the same announcement and any token named in any parsed event (monitor or delist) announced in the 365 days before; member must have a 1h bar at entry. Members missing a bar at exit are closed at their last available close. Also excluded (not alts): index perps BTCDOM, DEFI, FOOTBALL, BLUEBIRD; commodity/equity perps XAU, XAG, XPT, XPD, PAXG, XAUT, COPPER, and equity tickers (TSLA, NVDA, MSTR, COIN, HOOD, AAPL, AMZN, GOOGL, META, MSFT, QQQ, SPY, CRCL, AMD, INTC, PLTR).",
+  "exit": "earliest of: (a) open of the first 1h bar with open_time >= entry + hold; (b) stop; (c) pre-settlement: the open of the bar 24 h before the token perp's last archived bar with volume>0 (settlement proxy; Binance announces perp delistings days in advance, so this time is public before it happens; stated as an approximation since futures-delist articles in the CMS catalog are incomplete); if the perp's last real bar is before entry+1h the event is skipped.",
+  "stop": "hard stop on the short leg: if a token 1h bar's high >= entry*(1+stop), the whole pair is closed: token at entry*(1+stop) (or at that bar's open if it opened above), plus an extra 1% slippage on the token leg; basket at that bar's close.",
+  "pnl": "pair P&L (fraction of the short notional) = -(Pt_exit/Pt_entry-1) + mean_i(Pi_exit/Pi_entry-1) + funding - costs. Unhedged short P&L is reported informationally only (never used for selection or the bar)."
+ },
+ "costs": {
+  "taker_bp_per_side_per_leg": 5,
+  "slippage_bp_per_side_by_trailing_30d_mean_daily_quote_volume": {
+   ">=200M": 3,
+   "50M-200M": 8,
+   "10M-50M": 15,
+   "<10M": 30
+  },
+  "basket_slippage": "mean of member tiers",
+  "round_trip": "2 sides x 2 legs",
+  "funding": "Binance fundingRate archive (data.binance.vision): short receives each last_funding_rate with calc_time in (entry, exit]; basket pays mean over members of their rates. Missing funding counted 0 and flagged.",
+  "source": "Binance USDT-M VIP0 taker 0.05% (https://www.binance.com/en/fee/futureFee, documented rate; not fetchable here). Slippage tiers as pre-registered for H-UNLOCK (assumption, not measured)."
+ },
+ "configs": [
+  {
+   "key": "d1h_h3d_s20",
+   "entry_delay_hours": 1,
+   "hold_days": 3,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d1h_h3d_s40",
+   "entry_delay_hours": 1,
+   "hold_days": 3,
+   "stop_adverse_pct": 40
+  },
+  {
+   "key": "d1h_h7d_s20",
+   "entry_delay_hours": 1,
+   "hold_days": 7,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d1h_h7d_s40",
+   "entry_delay_hours": 1,
+   "hold_days": 7,
+   "stop_adverse_pct": 40
+  },
+  {
+   "key": "d1h_h14d_s20",
+   "entry_delay_hours": 1,
+   "hold_days": 14,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d1h_h14d_s40",
+   "entry_delay_hours": 1,
+   "hold_days": 14,
+   "stop_adverse_pct": 40
+  },
+  {
+   "key": "d24h_h3d_s20",
+   "entry_delay_hours": 24,
+   "hold_days": 3,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d24h_h3d_s40",
+   "entry_delay_hours": 24,
+   "hold_days": 3,
+   "stop_adverse_pct": 40
+  },
+  {
+   "key": "d24h_h7d_s20",
+   "entry_delay_hours": 24,
+   "hold_days": 7,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d24h_h7d_s40",
+   "entry_delay_hours": 24,
+   "hold_days": 7,
+   "stop_adverse_pct": 40
+  },
+  {
+   "key": "d24h_h14d_s20",
+   "entry_delay_hours": 24,
+   "hold_days": 14,
+   "stop_adverse_pct": 20
+  },
+  {
+   "key": "d24h_h14d_s40",
+   "entry_delay_hours": 24,
+   "hold_days": 14,
+   "stop_adverse_pct": 40
+  }
+ ],
+ "n_configs": 12,
+ "splits": {
+  "train": "announcement <= 2025-06-30 23:59:59 UTC",
+  "validation": "2025-07-01 <= announcement <= 2026-03-31; an event whose planned exit (entry + hold) is after 2026-03-31 23:00 UTC is DROPPED (counted dropped_holdout_boundary) because no price at or after 2026-04-01 is read",
+  "holdout": "announcement >= 2026-04-01: NEVER touched (no prices downloaded or read)"
+ },
+ "bar_per_split": {
+  "n_min": 50,
+  "net_mean_gt": 0,
+  "profit_factor_gt": 1.2,
+  "net_sum_without_top3_gt": 0,
+  "applied_to": "hedged pair P&L"
+ },
+ "selection": "On train, among configs passing the bar, choose the one with the highest net_sum_without_top3; if none passes, choose the highest-PF config anyway, the verdict is FAIL at train, and validation is still run once for that config and reported. Validation is run exactly once for the one chosen config.",
+ "reported_not_selected": [
+  "unhedged short P&L (informational)",
+  "by event type (delist vs monitor)",
+  "by year",
+  "exit reasons",
+  "effective n = distinct announcements",
+  "gross / funding / cost decomposition"
+ ],
+ "data": {
+  "prices": "Binance USDT-M 1h klines monthly zips from data.binance.vision (months <= 2026-03 only), cache data/raw/web/delist/klines1h/",
+  "daily": "read-only reuse of data/raw/web/momentum/klines (daily, <= 2026-03) for basket ranking and liquidity tiers",
+  "funding": "read-only reuse of data/raw/web/momentum/funding",
+  "budget": "downloads < 500 MB; stop if free disk < 2.5 GB"
+ }
+}
