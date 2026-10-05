@@ -1,6 +1,6 @@
 {
  "hypothesis": "H-EQLAG",
- "written_at_utc": "2026-10-05T07:10:00Z",
+ "written_at_utc": "2026-10-05, before 07:03:44Z (in git commit 7485698 at that time; the earlier 07:10 stamp was a guess and was corrected to the commit time - no rule changed)",
  "written_before_data": "Written before scripts/research/multivenue_recorder.py recorded any data. Only the OWN-PRECHECK spread snapshot and the 2026-10-05 07:0x metaAndAssetCtxs/orderBooks metadata (fees, growth mode, market ids; no prices analysed) have been seen.",
  "statement": "On tokenized-equity and metal perps listed on Binance USD-M, Hyperliquid HIP-3 trade[XYZ] and Lighter, when the leading venue's mid moves >= theta bp within 2 s and a follower's mid has moved < theta/2, a follower taker order in the leader's direction, held H seconds, is profitable after fees and the recorded spread.",
  "source": "sources/leads/documented_edges_round7.md idea 2 (grid theta x H x follower kept as written there; the latency dimension is carried by the follower: xyz 300 ms, Lighter 300 + 300 ms speed bump).",

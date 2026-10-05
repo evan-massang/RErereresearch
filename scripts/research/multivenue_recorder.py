@@ -18,9 +18,9 @@ Tables (hourly parquet, zstd) data/raw/web/multivenue/<table>_<YYYY-MM-DD-HH>.pa
 
 Compaction rule (to stay < 300 MB/day), per venue x coin, relative to the last WRITTEN row:
   - unchanged repeats are dropped;
-  - a best bid/ask PRICE change is written if >= --price-coalesce-ms (default 20) after the last written row,
+  - a best bid/ask PRICE change is written if >= --price-coalesce-ms (default 50) after the last written row,
     otherwise it is held and the latest state is written (with its own receive time) once the window has passed:
-    sub-20-ms flickers are coalesced, and a recorded price is at most ~30 ms stale;
+    sub-50-ms flickers are coalesced, and a recorded price is at most ~60 ms stale;
   - a size-only change is written at most once per --size-throttle-ms (default 500), same holding rule, so a
     recorded top-of-book SIZE can be up to ~0.5 s stale.
   Trades are written in full. exch_ts is stored in ms (venue clocks are ms except Lighter's, which is truncated).
@@ -250,8 +250,10 @@ def lighter_handlers(store, ids):
 
 def hl_handlers(store):
     rev = {v: k for k, v in XYZ.items()}
+    snap_seen = set()     # the first trades message per coin after (re)subscribing is a history snapshot: skipped
 
     async def on_open(ws):
+        snap_seen.clear()
         for c in XYZ.values():
             await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "bbo", "coin": c}}))
             await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "trades", "coin": c}}))
@@ -264,7 +266,10 @@ def hl_handlers(store):
             b, a = d["bbo"]
             store.bbo("hl_bbo", rev[d["coin"]], ts, float(b["px"]), float(a["px"]), float(b["sz"]), float(a["sz"]),
                       int(d["time"]))
-        elif ch == "trades" and isinstance(d, list):
+        elif ch == "trades" and isinstance(d, list) and d:
+            if d[0].get("coin") not in snap_seen:
+                snap_seen.add(d[0].get("coin"))
+                return
             for t in d:
                 if t.get("coin") in rev:
                     store.trade("hl_trades", (ts, rev[t["coin"]], float(t["px"]), float(t["sz"]),
@@ -388,7 +393,7 @@ if __name__ == "__main__":
     ap.add_argument("--hours", type=float, default=48.0)
     ap.add_argument("--out", type=Path, default=DEFAULT_OUT)
     ap.add_argument("--size-throttle-ms", type=int, default=500)
-    ap.add_argument("--price-coalesce-ms", type=int, default=20)
+    ap.add_argument("--price-coalesce-ms", type=int, default=50)
     ap.add_argument("--min-free-gb", type=float, default=1.0)
     a = ap.parse_args()
     asyncio.run(run(a.hours, a.out, a.size_throttle_ms, a.price_coalesce_ms, a.min_free_gb))

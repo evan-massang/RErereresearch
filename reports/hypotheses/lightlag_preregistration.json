@@ -1,6 +1,6 @@
 {
  "hypothesis": "H-LIGHTLAG",
- "written_at_utc": "2026-10-05T07:05:00Z",
+ "written_at_utc": "2026-10-05, before 07:03:05Z (in git commit 6cf92db at that time; the earlier 07:05 stamp was a guess and was corrected to the commit time - no rule changed)",
  "written_before_data": "Written before scripts/research/multivenue_recorder.py recorded any data. No Lighter, Binance or Aster tick recorded by this project after 2026-10-05 06:18 UTC (the 10-min OWN-PRECHECK in sources/leads/documented_edges_round7.md) has been looked at.",
  "statement": "When the Binance USD-M perp mid moves >= theta bp within 2 s and Lighter's mid has not yet followed (< theta/2 in the same direction), a Lighter Standard-account taker order in the Binance direction, arriving after our latency plus Lighter's 300 ms taker speed bump and held H seconds, is profitable after crossing the recorded spread (0 fee).",
  "source": "sources/leads/documented_edges_round7.md idea 1; mechanism from reports/candidates/hlanchor.md (H-HLLAG). Changes vs the leads-file grid: the universe dimension (A/B) is replaced by a fixed 7-coin universe set by the recording brief, and a latency dimension is added because the main kill risk is latency (Lighter re-prices ~100 ms after Binance per Arrakis, a lead).",

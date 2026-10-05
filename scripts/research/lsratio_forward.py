@@ -319,6 +319,7 @@ def load_symbol_fwd(sym):
     k = pd.concat([pd.read_parquet(p) for p in kf]).drop_duplicates("open_time")
     k["t"] = pd.to_datetime(k.open_time, unit="ms")
     k = k.set_index("t").sort_index()
+    last_open = k.open.dropna().index.max()
     grid = pd.date_range(min(m.index.min(), k.index.min()), max(m.index.max(), k.index.max()), freq="h")
     m, k = m.reindex(grid), k.reindex(grid)
     f = pd.DataFrame(index=grid)
@@ -329,7 +330,7 @@ def load_symbol_fwd(sym):
     f[f"zC{L}"] = ls.tz(lnC - lnC.shift(L))
     f[f"zO{L}"] = ls.tz(lnO - lnO.shift(L))
     f["in_u"] = True
-    return f, k.index.max()
+    return f, last_open
 
 
 def lighter_funding(sym, market_id, start, end):
@@ -339,7 +340,8 @@ def lighter_funding(sym, market_id, start, end):
         b = min(end, a + pd.Timedelta(hours=500))
         r = _get(f"{LIGHTER}/fundings", params=dict(market_id=market_id, resolution="1h",
                                                     start_timestamp=int(a.timestamp()),
-                                                    end_timestamp=int(b.timestamp()), count_back=1000))
+                                                    end_timestamp=int(b.timestamp()),
+                                                    count_back=int((b - a) / pd.Timedelta(hours=1)) + 2))
         if r is None or r.status_code != 200:
             return None
         rows += r.json().get("fundings") or []
