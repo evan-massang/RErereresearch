@@ -27,14 +27,14 @@ usdt = usdt[~usdt.index.duplicated()].reindex(IDX).ffill(limit=60)
 
 def prep(coin):
     cb = load("cb", coin); bn = load("bn", coin); fu = load("fund", coin)
-    cbs = pd.Series(cb.close.values, pd.to_datetime(cb.t, unit="s", utc=True)).sort_index()
+    cbs = pd.Series(cb.close.values.astype(float), pd.to_datetime(cb.t, unit="s", utc=True)).sort_index()
     cbs = cbs[~cbs.index.duplicated()].reindex(IDX)
-    bns = pd.Series(bn.close.values, pd.to_datetime(bn.open_time_ms, unit="ms", utc=True)).sort_index()
+    bns = pd.Series(bn.close.values.astype(float), pd.to_datetime(bn.open_time_ms.astype("int64"), unit="ms", utc=True)).sort_index()
     bns = bns[~bns.index.duplicated()].reindex(IDX)
     scale = 1000.0 if coin.startswith("1000") else 1.0
     p = np.log(cbs / (bns / scale * usdt))
     level = p.rolling(1440, min_periods=360).median().shift(1)        # value at t covers [t-1440, t-1]
-    fr = pd.Series(fu.funding_rate.values, pd.to_datetime(fu.calc_time_ms, unit="ms", utc=True)).sort_index()
+    fr = pd.Series(fu.funding_rate.values.astype(float), pd.to_datetime(fu.calc_time_ms.astype("int64"), unit="ms", utc=True)).sort_index()
     cb_first = cbs.first_valid_index(); bn_first = bns.first_valid_index()
     start = max(pd.Timestamp("2024-10-01", tz="UTC"), cb_first + pd.Timedelta(days=30), bn_first + pd.Timedelta(days=30))
     B = IDX[(IDX.minute % 15 == 0)]

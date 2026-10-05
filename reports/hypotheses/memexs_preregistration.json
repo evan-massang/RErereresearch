@@ -1,0 +1,209 @@
+{
+ "hypothesis": "H-MEMEXS: weekly cross-sectional selection restricted to MEMECOIN perps on Binance USDT-M, market-neutral within memes",
+ "parent": "H-AGEDXS (sources/leads/documented_edges_round12.md idea 4); H-MOMENTUM (reports/candidates/momentum.md: broad-perp XS_L7_LO passed validation, failed holdout; long-short XS failed). Scope: reports/scope_memecoins_20261005.md",
+ "rationale": "Broad-perp momentum's long-only survivor was market beta + funding on squeezed coins; long-short failed. Memes are the user's scope and a more homogeneous, retail/attention-driven cross-section where 1-4w momentum or reversal, crowding (funding) and attention (volume growth) effects may differ. Testing within-meme neutral spreads removes meme-sector beta (the failure mode of XS_L7_LO).",
+ "frozen_at_utc": "2026-10-05T12:06:52.245241+00:00",
+ "frozen_before": "any meme-perp return, signal value or P&L was computed by this agent. Only identity classification (no prices) and per-week counts of liquidity-eligible memes (quote volume only, to set the min-universe rule) were looked at.",
+ "universe_classification": {
+  "source": "CoinGecko 'meme-token' category (/coins/markets?category=meme-token), cached at data/raw/web/coingecko/listshort_meme_category.json, fetched 2026-10-05 for H-LISTSHORT; rule + identity overrides exactly as scripts/research/listshort_classify.py (symbol match after stripping 1000/1000000/1M prefixes; on symbol collisions the meme coin must be the largest-cap CoinGecko coin with that symbol; documented REMOVE/ADD identity corrections).",
+  "look_ahead_risk": "This is TODAY's (2026-10-05) category list applied to history. Coins that were memes but died and left CoinGecko (or were never categorised) are missing; coins that became famous are in. Mitigation: every Binance USDT-M perp that ever existed in the data.binance.vision archive for a classified coin is included, delisted ones too (delisted while held -> exit at last close, 2% penalty). Residual survivorship toward still-listed CoinGecko coins remains and is stated in the report.",
+  "applied_to": "data/raw/web/momentum/symbols.json (900 archive USDT-M symbols incl. delisted, listed 2026-10-05); klines exist through 2026-03 for those listed before 2026-04.",
+  "meme_symbols": [
+   "1000000MOGUSDT",
+   "1000BONKUSDT",
+   "1000CATUSDT",
+   "1000CHEEMSUSDT",
+   "1000FLOKIUSDT",
+   "1000PEPEUSDT",
+   "1000SHIBUSDT",
+   "1000WHYUSDT",
+   "1MBABYDOGEUSDT",
+   "4USDT",
+   "ACTUSDT",
+   "AI16ZUSDT",
+   "AIXBTUSDT",
+   "ANIMEUSDT",
+   "BANANAS31USDT",
+   "BANUSDT",
+   "BIRBUSDT",
+   "BOMEUSDT",
+   "BRETTUSDT",
+   "BROCCOLI714USDT",
+   "BROCCOLIF3BUSDT",
+   "BULLAUSDT",
+   "BUSDT",
+   "CATUSDT",
+   "CHILLGUYUSDT",
+   "DEGENUSDT",
+   "DOGEUSDT",
+   "DOGSUSDT",
+   "FARTCOINUSDT",
+   "GHSTUSDT",
+   "GIGGLEUSDT",
+   "GOATUSDT",
+   "GRIFFAINUSDT",
+   "HIPPOUSDT",
+   "KOMAUSDT",
+   "MARSCOINUSDT",
+   "MELANIAUSDT",
+   "MEMEFIUSDT",
+   "MEMEUSDT",
+   "MEWUSDT",
+   "MOODENGUSDT",
+   "MUBARAKUSDT",
+   "MUSDT",
+   "MYROUSDT",
+   "NEIROETHUSDT",
+   "NEIROUSDT",
+   "NOTUSDT",
+   "ORDIUSDT",
+   "PENGUSDT",
+   "PENGUUSDT",
+   "PEOPLEUSDT",
+   "PIPPINUSDT",
+   "PNUTUSDT",
+   "PONKEUSDT",
+   "POPCATUSDT",
+   "PUMPUSDT",
+   "SIRENUSDT",
+   "SLERFUSDT",
+   "SPXUSDT",
+   "TOSHIUSDT",
+   "TRUMPUSDT",
+   "TSTUSDT",
+   "TURBOUSDT",
+   "TUTUSDT",
+   "USELESSUSDT",
+   "VINEUSDT",
+   "WENUSDT",
+   "WIFUSDT",
+   "ZEREBROUSDT",
+   "哈基米USDT",
+   "币安人生USDT",
+   "我踏马来了USDT",
+   "牛来USDT",
+   "龙虾USDT"
+  ],
+  "identity_doubtful_for_sensitivity": [
+   "GHSTUSDT (Aavegotchi, NFT-game)",
+   "ORDIUSDT (BRC-20 ordinals)",
+   "MUSDT (MemeCore L1)",
+   "BUSDT (BUILDon)",
+   "PEOPLEUSDT (ConstitutionDAO)",
+   "AIXBTUSDT/AI16ZUSDT/GRIFFAINUSDT/ZEREBROUSDT (AI-agent tokens)"
+  ]
+ },
+ "data": "Read-only reuse of data/raw/web/momentum/{klines,funding} (data.binance.vision futures/um monthly 1d klines and fundingRate, months <= 2026-03). Nothing from 2026-04 onward is read. Holdout cache data/raw/web/momentum/holdout is never opened.",
+ "eligibility": "Point in time at each rebalance t (Monday 00:00 UTC): >= 35 daily bars closed before t, a bar for day t-1, >= 25 of the last 30 days present, 30-day mean daily quote volume (days t-30..t-1) >= $5M. A week is traded only if >= 8 memes are eligible; otherwise the week is flat and excluded from Sharpe and week counts (number of skipped weeks reported).",
+ "signals": {
+  "R7": "close(t-1)/close(t-8)-1 (daily close of day d = price at 00:00 d+1)",
+  "R28": "close(t-1)/close(t-29)-1",
+  "FUND7": "sum of Binance funding prints with calc_time in [t-7d, t) (strictly before t); low = long",
+  "VOLG": "quote volume sum days t-7..t-1 divided by (quote volume sum days t-35..t-8)/4; high = long",
+  "direction": "mom: long highest signal; rev: long lowest; low_long: long lowest; high_long: long highest"
+ },
+ "portfolio": {
+  "k": "k = max(2, floor(n_eligible/5))",
+  "LS": "long top-k at +0.5/k each, short bottom-k at -0.5/k each (dollar-neutral, gross 1)",
+  "BASKET": "long top-k at +0.5/k each, short equal-weight basket of all n eligible memes at -0.5/n each; net per-coin weights traded (gross <= 1)"
+ },
+ "execution": "weights set at t, filled at close(t-1) (= open t) with costs, held to t+7 at constant notional (positions truncated at split end and force-closed there). No intra-week rebalancing or stops.",
+ "costs": {
+  "taker": "5 bp per side (Binance USDT-M VIP0 taker 0.05%)",
+  "slippage": "per side by 30d mean daily quote volume: >= $1B 2 bp; $200M-1B 5 bp; $50M-200M 10 bp; < $50M 20 bp (same tiers as H-MOMENTUM; assumption)",
+  "turnover": "cost = |w_new - w_old| * (taker + slippage), charged to the coin-week leg being entered/resized, or to the leg being closed on exit",
+  "funding": "w * rate for every fundingRate print with calc_time in (t, t+7d] while held (long pays positive)",
+  "delisting": "data ends while held -> exit at last close, 2% of |w| penalty",
+  "lighter_variant": "informational only, never used for selection: 0 bp fee (Lighter standard account taker 0) + same slippage tiers, Binance funding as proxy. Lighter lists only a subset of these memes; depth unverified."
+ },
+ "unit": "coin-week leg = one coin's nonzero net weight in one week. Leg P&L (fraction of capital) = w*r_week - funding - costs attributed.",
+ "splits": {
+  "train": "rebalances t with t < 2025-07-01 (first tradable week = first Monday with >= 8 eligible memes)",
+  "validation": "2025-07-01 <= t < 2026-04-01, positions truncated at 2026-04-01 00:00",
+  "holdout": "2026-04-01+ NEVER touched by this agent"
+ },
+ "bar": "per split: n (coin-week legs) >= 50, net > 0, profit factor > 1.2, net without the 3 best coin-week legs > 0. Also reported: weekly portfolio Sharpe (x sqrt 52), number of independent (traded) weeks, per-year net, long/short leg split, funding, costs.",
+ "configs": [
+  {
+   "key": "R7_mom_LS",
+   "signal": "R7",
+   "direction": "mom",
+   "portfolio": "LS"
+  },
+  {
+   "key": "R7_mom_BASKET",
+   "signal": "R7",
+   "direction": "mom",
+   "portfolio": "BASKET"
+  },
+  {
+   "key": "R7_rev_LS",
+   "signal": "R7",
+   "direction": "rev",
+   "portfolio": "LS"
+  },
+  {
+   "key": "R7_rev_BASKET",
+   "signal": "R7",
+   "direction": "rev",
+   "portfolio": "BASKET"
+  },
+  {
+   "key": "R28_mom_LS",
+   "signal": "R28",
+   "direction": "mom",
+   "portfolio": "LS"
+  },
+  {
+   "key": "R28_mom_BASKET",
+   "signal": "R28",
+   "direction": "mom",
+   "portfolio": "BASKET"
+  },
+  {
+   "key": "R28_rev_LS",
+   "signal": "R28",
+   "direction": "rev",
+   "portfolio": "LS"
+  },
+  {
+   "key": "R28_rev_BASKET",
+   "signal": "R28",
+   "direction": "rev",
+   "portfolio": "BASKET"
+  },
+  {
+   "key": "FUND7_low_long_LS",
+   "signal": "FUND7",
+   "direction": "low_long",
+   "portfolio": "LS"
+  },
+  {
+   "key": "FUND7_low_long_BASKET",
+   "signal": "FUND7",
+   "direction": "low_long",
+   "portfolio": "BASKET"
+  },
+  {
+   "key": "VOLG_high_long_LS",
+   "signal": "VOLG",
+   "direction": "high_long",
+   "portfolio": "LS"
+  },
+  {
+   "key": "VOLG_high_long_BASKET",
+   "signal": "VOLG",
+   "direction": "high_long",
+   "portfolio": "BASKET"
+  }
+ ],
+ "selection": "Run all 12 on train. Select ONE: among configs passing the bar on train, the highest train net-ex-top-3; if none pass, the highest train net-ex-top-3 config is still run on validation once FOR INFORMATION and the hypothesis is a FAIL. Validation run exactly once on that config.",
+ "diagnostics_not_for_selection": [
+  "Lighter-cost variant",
+  "slippage x2",
+  "funding excluded",
+  "excluding identity_doubtful coins",
+  "per-year and per-quarter breakdown"
+ ],
+ "multiple_testing": "12 configs; a single train pass among 12 is weak evidence; validation is the test."
+}

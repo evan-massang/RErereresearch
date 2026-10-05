@@ -1,11 +1,22 @@
 # pumplean: lean forward tape for pump.fun tests (loader notes and split plan)
 
 **Recorder:** `scripts/research/pumplean_recorder.py`. It writes to `data/raw/web/pumplean/`.
-- **Launched:** 2026-10-05 10:43:17Z as PID 5427.
-- **Restarted:** gracefully at 11:03:36Z to add `resume` events, faster reconnects, and NULL-not-drop for out-of-range
-  residuals. The current run is PID 10353, `--hours 72`, ending 2026-10-08 11:03Z.
-  - PID 5427 dropped 3 absurd non-standard-curve trade rows (logged in `recorder.log`).
-  - The restart left a hole of about 4 s, declared in `events.jsonl` (`stop`/`start`).
+- **Run history:** every start and stop is in `events.jsonl`.
+
+| PID | from (UTC) | to (UTC) | why it ended |
+|---|---|---|---|
+| 5427 | 10-05 10:43:17 | 10-05 11:03:36 | graceful restart to add `resume` events, faster reconnects, and NULL-not-drop for out-of-range residuals |
+| 10353 | 10-05 11:03:39 | 10-05 12:03:50 | killed by the container restart |
+| **18132** | **10-05 12:03:58** | **10-08 12:03:58** (`--hours 72`) | current run, restarted by the coordinator |
+
+  PID 5427 dropped 3 absurd non-standard-curve trade rows (logged in `recorder.log`). Since then, out-of-range
+  residuals are stored NULL instead.
+- **Declared outage, about 12:03Z** (container restart; see `reports/hypotheses/recorder_outage_20261005.md`):
+  - Last good data: the 12:02 minute (curve 5,203, amm 16,263 notifications). In the 12:03 minute only 61 and 210
+    arrived before both streams failed at 12:03:04–05Z (last slot 453573652). Reconnects were refused until PID
+    10353 stopped at 12:03:50Z.
+  - PID 18132 started at 12:03:58Z and both streams were connected at 12:03:59Z.
+  - **Gap:** 12:03:04Z → 12:03:59Z. No triggers or fills are allowed inside it.
 - **Logs:** `recorder.log` and `events.jsonl` (the gap log).
 - **Source:** public Solana RPC only. It uses websocket `logsSubscribe` at `confirmed` commitment, with one
   connection for the pump.fun curve program and one for PumpSwap. `getMultipleAccounts` resolves pools. There is
@@ -13,6 +24,28 @@
 - **Decoders:** imported from `pipeline/recorder.py` (`decode_pump_event`) and `pipeline/market.py` (`decode_amm`).
 - **Why it exists:** the full recorder has gaps and costs about 2 GB/day. See
   `reports/failures/agent_cleanmig.md`: train had only about 14.6 covered hours. This recorder targets ≤ 250 MB/day.
+
+## Size (measured)
+
+Hour 2026-10-05 11h, merged hourly files (the first full hour):
+
+| table | MB |
+|---|---|
+| `curve_trades` | 4.90 (141,044 rows) |
+| `amm_swaps` | 5.73 (148,326 rows) |
+| `amm_bars` | 0.63 |
+| `curve_creates` | 0.35 |
+| `pool_map` | 0.51 |
+| `amm_pools` + `curve_completes` | 0.03 |
+| **total** | **12.1 MB/h**, about 290 MB/day |
+
+- **Restarts add to `pool_map`:** each restart re-writes about 0.35 MB of seed rows there. This hour had one restart.
+  Without it the hour is about 11.8 MB/h.
+- **This is above the 250 MB/day target, by about 16%.** The young-pool swap volume grows as pools created during the
+  recording become hot.
+- **Knob:** `--dust-lamports` (raising it to 0.005 SOL cuts about 8% of `amm_swaps` rows on the 04h tape). It was not
+  changed mid-run, so the tape stays uniform across train and validation.
+- **Disk cost:** about 0.9 GB over the 72 h run.
 
 ## Files
 
@@ -134,19 +167,27 @@ The same pattern works for `curve_creates`, `curve_completes`, `amm_pools` and `
 **Reconnects:** a stream with no message for 45 s is reconnected. Backoff is 0.5, 1, 2 … 60 s, and resets after a
 connection that lived ≥ 60 s.
 
-**Observed drop rate:** the public RPC drops each websocket every 1–9 min with error 1002. In the first 20 min there
-were 10 drops, and each hole lasted about 1–5 s. The hole is `disconnect.last_slot` .. `resume.first_slot`. Trades in
-it are lost, so a minute containing a hole is not fully covered. With holes this short, the minute rule below treats
-most minutes as covered only if you allow ≤ 5 s holes. Decide this per test before scoring, and state it in the
-pre-registration.
+**Observed drop rate:** the public RPC drops each websocket every 1–9 min with error 1002. The hole is
+`disconnect.last_slot` .. `resume.first_slot`, and the trades in it are lost.
+
+In hour 11 (11:00–12:00Z):
+
+| measure | value |
+|---|---|
+| disconnects | 48 |
+| total hole time | 267 s (7.4% of the hour) |
+| longest hole | 61 s |
+| minutes with > 5 s of hole on a stream (non-covered under the rule below) | 8 of 60: 11:08–11:13 and 11:53–11:54 |
+
+Decide the tolerance per test before scoring, and state it in the pre-registration.
 
 **Gap rule for tests (default; a test may be stricter, and must fix its rule before scoring):** a covered minute is one
 where both streams have `msgs > 0` and the reconnect holes inside it (`disconnect` → `resume`) add up to ≤ 5 s per
 stream. A gap is a run of non-covered minutes, or more than 60 s with no curve trade.
 - **Short holes:** these lose the trades of a few seconds. Tests that count trades or holders must say whether they
   tolerate that.
-- **Fills:** a fill must not use a state from inside a hole. List the gaps
-before any P&L, as `reports/failures/agent_cleanmig.md` did.
+- **Fills:** a fill must not use a state from inside a hole.
+- **Gap list:** list the gaps before any P&L, as `reports/failures/agent_cleanmig.md` did.
 
 **Limit of the source:** the public RPC `logsSubscribe` can silently drop notifications under load. This shows up only
 as a lower per-minute count, not as a disconnect. Compare the `minute` counts with a rolling median; treat a minute
@@ -154,18 +195,22 @@ below 30% of the median as suspect, and report it.
 
 ## Split plan for future forward pump.fun tests (declared 2026-10-05, before any of this tape is examined)
 
-T0 is the first clean minute after launch. A clean minute is a covered minute as defined above, with no recorder
-restart in the hour before it. For this run, T0 is the first clean minute after the 11:03:39Z restart (expected 11:05Z).
-The no-restart rule excludes 10:43–11:03; confirm T0 from `events.jsonl`.
+T0 is the start of the first full minute after the last restart before scoring begins, here the 12:03:58Z restart.
 
-| segment | window | use |
+**T0 = 2026-10-05 12:04:00Z.** The boundaries are fixed wall-clock times, in line with the other forward tapes.
+
+| segment | window (UTC) | use |
 |---|---|---|
-| **train** | the first 24 h of clean recording after T0 (covered minutes only, counted until 24 h of coverage is reached) | fit, select and kill tests |
-| **validation** | the next 24 h of clean recording | examined once per pre-registered config set, only after the train kill test passes |
-| **forward** | everything after that | out-of-sample confirmation and paper tracking. It is never used to tune |
+| warm-up | 10-05 10:43:17 → 12:04:00 (three runs; outage at 12:03) | history only (curve and pool state before an entry). It is never scored: no entries are taken from it |
+| **train** | **10-05 12:04:00 → 10-06 12:04:00** | fit, select and kill tests |
+| **validation** | **10-06 12:04:00 → 10-07 12:04:00** | examined once per pre-registered config set, only after the train kill test passes |
+| **forward** | **10-07 12:04:00 → end of recording** (10-08 12:03:58 unless extended) | out-of-sample confirmation and paper tracking. It is never used to tune |
 
-- **Gaps:** when a gap falls inside a segment, the segment is extended until it holds 24 h of coverage. Lifecycles
-  (create → migration → entry → exit) that cross a gap follow the eligibility rules in `agent_cleanmig.md`.
-- **Fixing the boundaries:** the boundaries are fixed by writing the T0, train-end and validation-end timestamps into
-  the first pre-registration that uses this tape. They are computed from `events.jsonl` only, never from price data.
+- **Gaps:** the boundaries do not move for gaps. Non-covered minutes inside a segment (gap rule above) are excluded,
+  and each test reports the covered hours per segment. Lifecycles (create → migration → entry → exit) that cross a gap
+  follow the eligibility rules in `agent_cleanmig.md`.
+- **Lifecycles across boundaries:** an entry belongs to the segment of its entry time. Exits may run past the boundary,
+  but never past the end of the data.
+- **Fixing the boundaries:** the boundaries above are fixed now, from `events.jsonl` only and not from price data. Each
+  pre-registration copies them.
 - **Holdout:** the older holdout (`reports/hypotheses/holdout_plan.md`) is unaffected. This tape does not overlap it.
