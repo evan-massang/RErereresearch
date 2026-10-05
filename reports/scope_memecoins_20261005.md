@@ -17,6 +17,6 @@ the user chose "Memecoins only" (2026-10-05). From now on: Solana/pump.fun memec
 - H-HLLAG forward (WIF, kBONK, FARTCOIN, PUMP, TRUMP, SPX, PENGU, kSHIB): unchanged, already memecoins.
 - H-LIGHTLAG and H-LIGHTFADE: scoring universe restricted to the memecoins in the recording (PUMP, DOGE).
   The day-1 data has not been opened. Smaller n is expected; n < 50 at validation = inconclusive, as before.
-- H-TWAPRIDE / H-TWAPFADE: universe restricted to memecoin perps (list above plus any HL perp tagged as a meme
-  in the HL UI category at scoring time is NOT used — the fixed list above plus kPEPE, kFLOKI, kNEIRO, POPCAT,
-  MOODENG, MEW, GOAT, BRETT, TURBO, WLD-excluded). No price outcome had been computed.
+- H-TWAPRIDE / H-TWAPFADE: universe restricted to these Hyperliquid memecoin perps (fixed list, decided before
+  any price outcome was computed): WIF, kBONK, FARTCOIN, PUMP, PENGU, TRUMP, SPX, kPEPE, kSHIB, DOGE, POPCAT,
+  MOODENG, kFLOKI, kNEIRO, MEW, GOAT, BRETT, TURBO, MELANIA, USELESS.
