@@ -43,6 +43,15 @@ def load_pair(p):
         a = np.full(n, np.nan)
         a[s.h.to_numpy() - h0] = s[col].to_numpy().astype(float) / scale
         return a
+    # FIX (data artifact found on train, before validation): the archive keeps emitting flat filler bars
+    # (open==high==close, constant) after a perp is delisted/settled (e.g. AMB, STRAX). Runs of >= 24 such bars are
+    # treated as missing data, so the delisting rule (close at the last real bar, minus 2%) applies.
+    flat = ((pp.open == pp.high) & (pp.high == pp.close)).to_numpy()
+    grp = np.cumsum(~flat)
+    runlen = pd.Series(flat.astype(int)).groupby(grp).transform("sum").to_numpy()
+    pp = pp[~(flat & (runlen >= 24))]
+    if len(pp) < 800:
+        return None
     po, phi, pc = grid(pp, "open", k), grid(pp, "high", k), grid(pp, "close", k)
     sc, qv = grid(sp, "close"), grid(sp, "qv")
     th = np.rint(f.t_ms.to_numpy() / H_MS).astype(np.int64) - h0
@@ -97,7 +106,8 @@ def run_pair(P, cfg, split, spot_fee=SPOT_FEE, slipx=1.0):
         last_ok = T
         while True:
             # bar bb: open bb, close bb+1
-            if bb > P["last_common"] and delisted and bb < b:
+            # delisting / suspension: either leg has no bar for the next 24 hours (inside the split)
+            if bb + 24 <= b and (np.all(np.isnan(pc[bb:bb + 24])) or np.all(np.isnan(sc[bb:bb + 24]))):
                 reason, te, Pe, Se, pen = "delist", last_ok + 1, pc[last_ok], sc[last_ok], DELIST_PEN; break
             if bb + 1 > b:                           # split end: close at last bar of split
                 j = last_ok
@@ -107,9 +117,13 @@ def run_pair(P, cfg, split, spot_fee=SPOT_FEE, slipx=1.0):
                 mae = max(mae, phi[bb] / P0 - 1)
                 if phi[bb] >= STOP * P0:
                     if po[bb] >= liq:
-                        reason, te, Pe, Se = "liquidation", bb, None, sc[bb]
+                        reason, te, Pe, Se = "liquidation", bb, None, min(sc[bb], po[bb] * S0 / P0)
                     else:
-                        reason, te, Pe, Se = "stop", bb, max(STOP * P0, po[bb]), sc[bb]
+                        # FIX (before any aggregate P&L; seen only on 2 pairs' train episodes): selling spot at the
+                        # bar close after an intrabar perp stop credits the rest of the spike to the spot leg. Spot
+                        # is sold at the stop moment, proxied conservatively as min(bar close, perp fill * S0/P0).
+                        pf_ = max(STOP * P0, po[bb])
+                        reason, te, Pe, Se = "stop", bb, pf_, min(sc[bb], pf_ * S0 / P0)
                     break
                 last_ok = bb
             Tb = bb + 1                              # decision boundary after bar bb closes

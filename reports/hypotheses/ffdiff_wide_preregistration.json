@@ -1,0 +1,114 @@
+{
+ "hypothesis": "H-FFDIFF-WIDE (ffdiff_wide)",
+ "frozen_at_utc": "2026-10-05T05:13:01.938777+00:00",
+ "status_at_freeze": "Written before any data for this family was fetched and before any P&L was computed. Only ffdiff's published meme results (reports/failures/agent_ffdiff.md) and round-5's feature-only precheck were known.",
+ "parent": "H-FFDIFF iteration 2 (reports/failures/agent_ffdiff.md); failing run research/observations/evidence_ffdiff_train_slip5_iter2.json (L72 X40 flip stop40, memes only: n=140, net +0.033, PF 1.07, ex-top3 -0.044; one 1x liquidation, MOODENG 2024-11-15, decided it).",
+ "source": "sources/leads/documented_edges_round5.md, Idea 4 (H-FFDIFF-WIDE)",
+ "rationale": "Iteration 2 failed on (a) one per-leg liquidation at 1x and (b) thin margin of funding over cost on a 35-coin meme universe. Widening to every coin listed on both venues raises n; 0.5x effective leverage per leg (margin = 2x notional) puts the short-leg liquidation beyond +150%, above any observed 4h bar. Signal/exit are frozen and NOT re-tuned.",
+ "universe": {
+  "rule": "Every Hyperliquid perp in the cached meta (data/raw/web/hyperliquid/listshort_meta.json, delisted included) whose base (listshort_classify.hl_base: 'k' prefix = 1000x) equals the base of a Binance USDS-M USDT perp (listshort_classify.bn_base: 1000/1000000/1M prefixes) from data/raw/web/binance_fut/listshort_um_symbols.json.",
+  "identity_check": "Keep a pair only if median(HL 4h close / (BN 4h close * HLmult/BNmult)) over all common 4h bars before 2026-04-01 lies in [0.995, 1.005] and there are >= 42 common bars (7 days). This is a data-identity filter; it uses no returns or P&L.",
+  "meme_flag": "listshort_classify.candidates() 'meme' flag on the HL row (CoinGecko meme-token rule, unchanged).",
+  "tradable_bar": "As ffdiff: both venues have the 4h candle; HL has >= 20 prints in last 24h and BN >= 1 print in last 12h."
+ },
+ "rule_frozen": "scripts/research/ffdiff_sim.py iteration-2 rule unchanged: 4h decision clock; D_W = annualised HL funding (prints with floor-hour <= T-1h) minus annualised BN funding (prints < T) over trailing W h; s = sign(D72); enter if s*D72 >= X and s*D24 >= X; short the high-funding venue, long the other, equal notional N, filled at both venues' 4h close at T; one position per coin; exit at the first 4h boundary where s*D72 < 0 (flip), or held >= 14 d, or either leg's adverse close-to-entry move >= 40% (pair stop), or a leg liquidates, or data gap / split end. Funding marked at the close of the 4h bar containing each print. Basis = both perps' own closes.",
+ "leverage": "0.5 effective per leg: isolated margin = 2N on each venue. Per-leg liquidation exactly as ffdiff: short leg if a later 4h HIGH >= P0*(1+1/lev)/(1+mm); long leg if a later 4h LOW <= P0*(1-1/lev)/(1-mm) (impossible at lev 0.5). mm_HL = 1/(2*maxLeverage) (today's meta), mm_BN = 5% (assumed). A liquidated leg loses its whole margin (2N).",
+ "configs": [
+  {
+   "key": "A_all_L72_X40",
+   "universe": "all matched pairs",
+   "L_h": 72,
+   "X_ann": 0.4,
+   "Z_days": 14,
+   "lev": 0.5,
+   "exit": "flip",
+   "stop": 0.4,
+   "slip_mult": 1.0,
+   "role": "primary (task)"
+  },
+  {
+   "key": "B_nonmeme_L72_X40",
+   "universe": "non-meme matched pairs",
+   "L_h": 72,
+   "X_ann": 0.4,
+   "Z_days": 14,
+   "lev": 0.5,
+   "exit": "flip",
+   "stop": 0.4,
+   "slip_mult": 1.0,
+   "role": "round-5 primary (memes already spent on ffdiff train)"
+  },
+  {
+   "key": "C_all_L72_X80",
+   "universe": "all matched pairs",
+   "L_h": 72,
+   "X_ann": 0.8,
+   "Z_days": 14,
+   "lev": 0.5,
+   "exit": "flip",
+   "stop": 0.4,
+   "slip_mult": 1.0,
+   "role": "ffdiff iteration-2's other threshold"
+  },
+  {
+   "key": "D_all_L72_X40_slip2x",
+   "universe": "all matched pairs",
+   "L_h": 72,
+   "X_ann": 0.4,
+   "Z_days": 14,
+   "lev": 0.5,
+   "exit": "flip",
+   "stop": 0.4,
+   "slip_mult": 2.0,
+   "role": "cost stress of A; reported, not promoted on its own"
+  }
+ ],
+ "costs": {
+  "fees": {
+   "HL_taker": "0.045% tier 0, https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees",
+   "BN_taker": "0.0500% regular user USDS-M, https://www.binance.com/en/fee/futureFee"
+  },
+  "per_round_trip": "2 x (4.5 + 5.0) bp fees + 2 x slip_HL + 2 x slip_BN (each leg pays its venue's slippage on entry and exit). On liquidation: entry costs + the surviving leg's exit fee+slip.",
+  "slippage_model": {
+   "liquidity_proxy": "Per coin and per venue: V = median over train 4h bars (bar open < 2025-07-01, bar open >= 2024-06-01) of 4h quote volume / 4 (USD per hour). BN quote volume = kline field 7 (quote asset volume); HL quote volume = candle v (base volume) * c (close). If a coin has fewer than 42 train bars on a venue, V = median over that venue's first 180 4h bars (30 days) of available data before 2026-04-01.",
+   "assumed_order_size": "N = $10,000 per leg",
+   "mapping_bp_per_fill": [
+    [
+     "V >= $20M/h",
+     2
+    ],
+    [
+     "$5M <= V < $20M",
+     3
+    ],
+    [
+     "$1M <= V < $5M",
+     5
+    ],
+    [
+     "$250k <= V < $1M",
+     8
+    ],
+    [
+     "$50k <= V < $250k",
+     12
+    ],
+    [
+     "V < $50k",
+     15
+    ]
+   ],
+   "floor_cap": "floor 2 bp, cap 15 bp (round 5)",
+   "note": "Mapping frozen here before any volume or P&L of this family is computed. Not a book-depth measurement (bookDepth is not used); a tiered spread/impact proxy."
+  }
+ },
+ "splits": {
+  "train": "entries in [2024-06-23 (first HL 4h candle served), 2025-07-01)",
+  "validation": "2025-07-01..2026-03-31, examined ONCE, only for configs A/B/C passing the full bar on train",
+  "holdout": ">= 2026-04-01, never fetched to disk or examined"
+ },
+ "bar": "n >= 50, net > 0, PF > 1.2, net > 0 without the 3 best trades (per unit notional N, after all costs)",
+ "reporting": "top-3-coin share of gross profit and of net; meme vs non-meme; per-quarter n/net/funding per trade; exit mix; liquidations per leg; direction split.",
+ "multiple_testing": "3 promotable configs (A,B,C) on top of ffdiff's 18 meme configs; B overlaps A. Treat any single pass with that in mind.",
+ "is_synthetic": false
+}
