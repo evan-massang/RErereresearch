@@ -173,7 +173,7 @@ def funder_sigs(rpc, funder, sig):
 
 def fetch():
     s = pd.read_parquet(SAMPLE)
-    rpc = Rpc(rps=3.0)
+    rpc = Rpc(rps=4.0)
     # latest sampled launch per creator -> query before its create signature
     last = s.sort_values("ct").groupby("creator").tail(1)
     todo = list(last.itertuples())

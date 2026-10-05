@@ -46,7 +46,7 @@ import pandas as pd  # noqa: E402
 import event_studies as es  # noqa: E402
 from dev_funding_fetch import ALLOWED, CACHE, SAMPLE, funding_of, jload, split_of  # noqa: E402
 
-SCR = Path("/tmp/claude-0/-home-user-RErereresearch/f8ba0823-6528-5b3d-92e7-a2d8665674ee/scratchpad")
+SCR = Path("/tmp/claude-0/-home-user-RErereresearch/f8ba0823-6528-5b3d-92e7-a2d8665674ee/scratchpad/dev_funding")
 EXITS = (("tp50_sl20_300", 0.5, 0.2, 300.0), ("tp100_sl30_1800", 1.0, 0.3, 1800.0), ("tp200_sl50_1800", 2.0, 0.5, 1800.0))
 M2_VSOL = 30 * 2 ** 0.5
 
