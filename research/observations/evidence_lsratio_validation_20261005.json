@@ -1,0 +1,60 @@
+{
+ "hypothesis": "H-LSRATIO",
+ "split": "validation",
+ "window": [
+  "2025-07-01",
+  "2026-04-01"
+ ],
+ "is_synthetic": false,
+ "preregistration": "reports/hypotheses/lsratio_preregistration.json",
+ "selected": "oi_crowd_L4_H8",
+ "selected_passes_train": false,
+ "result": {
+  "n": 1625,
+  "sum": -0.6256390429695813,
+  "mean_bp": -3.8500864182743464,
+  "median_bp": -23.54818655834586,
+  "pf": 0.9714772999743644,
+  "sum_ex_top3": -1.909082132648681,
+  "win_rate": 0.4652307692307692,
+  "gross_mean_bp": 10.52124047403333,
+  "funding_mean_bp": 1.3713268923076922,
+  "n_long": 1002,
+  "n_short": 623,
+  "stops": 247,
+  "by_year": {
+   "2025": -1.1877716423869273,
+   "2026": 0.5621325994173427
+  },
+  "n_symbols": 80,
+  "n_days": 259,
+  "daily_sum_mean_bp": -24.15594760500326,
+  "daily_t": -0.2782274536864874,
+  "passes_bar": false,
+  "bn_cost_sum": -0.7881390429695833
+ },
+ "follow_the_crowd_informational": {
+  "n": 1628,
+  "sum": -4.3545701661133265,
+  "mean_bp": -26.747973993325104,
+  "median_bp": -25.22063862526525,
+  "pf": 0.8045860238822969,
+  "sum_ex_top3": -4.864579196555173,
+  "win_rate": 0.46007371007371006,
+  "gross_mean_bp": -15.0325534773546,
+  "funding_mean_bp": -1.2845794840294842,
+  "n_long": 622,
+  "n_short": 1006,
+  "stops": 256,
+  "by_year": {
+   "2025": -2.04752032380639,
+   "2026": -2.307049842306939
+  },
+  "n_symbols": 80,
+  "n_days": 259,
+  "daily_sum_mean_bp": -168.13012224375785,
+  "daily_t": -2.6360207055666174,
+  "passes_bar": false
+ },
+ "run_once": true
+}
