@@ -1,0 +1,288 @@
+{
+ "hypotheses": [
+  "H-HLLAG-NEWCOINS"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "date": "2026-10-05",
+ "preregistration": "reports/hypotheses/hllag_newcoins_preregistration.json",
+ "data": "Tardis.dev free first-of-month samples: hyperliquid quotes+trades, binance-futures book_ticker; extracted per coin-day to a temp dir, simulated, deleted. Per-trade results kept under data/raw/web/tardis/results/newcoins/ (gitignored)",
+ "rule": "hlanchor_lib.sim_lag frozen params theta_bp=40 L_ms=300 H_s=30 cooldown_s=10 close_bp=None info_lat_ms=300; lib sha256 98166e5f...c3ad unchanged; fees 4.5 bp taker each side; $1k units",
+ "bar": "per split, pooled across tested new coins: n>=50, net>0, PF>1.2, net ex top-3 >0",
+ "scripts": [
+  "scripts/research/hllag_newcoins.py",
+  "scripts/research/hlanchor_lib.py (frozen, imported)"
+ ],
+ "notes": [
+  "USELESS passed the liquidity rule but Tardis returned HTTP 400 for hyperliquid quotes on every day: no data, not tested.",
+  "DOGE and kPEPE excluded by the pre-registered 60 MB size gate; PENGU and kSHIB cut by the pre-registered 1.45 GB budget rule. Effective test is 2 coins: TRUMP and SPX.",
+  "mean is USD per $1,000 round trip (x10 = bp).",
+  "+0.5 bp and L=800 ms rows are informational only."
+ ],
+ "tested": [
+  "TRUMP",
+  "USELESS",
+  "SPX"
+ ],
+ "excluded": {
+  "DOGE": "size gate: 2025-10-01 DOGEUSDT book_ticker 103.8 MB > 60 MB",
+  "kPEPE": "size gate: 2025-10-01 book_ticker 68.8 MB > 60 MB"
+ },
+ "cut": [
+  "PENGU: expected 820 MB would exceed cap (spent 956 MB)",
+  "kSHIB: expected 393 MB would exceed cap (spent 1173 MB)"
+ ],
+ "missing": {
+  "TRUMP:2024-11-01": "hyperliquid quotes TRUMP: HTTP 400",
+  "TRUMP:2024-12-01": "hyperliquid quotes TRUMP: HTTP 400",
+  "TRUMP:2025-01-01": "hyperliquid quotes TRUMP: HTTP 400",
+  "USELESS:2024-11-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2024-12-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-01-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-02-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-03-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-04-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-05-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-06-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-07-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-08-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-09-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-10-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-11-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2025-12-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2026-01-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2026-02-01": "hyperliquid quotes USELESS: HTTP 400",
+  "USELESS:2026-03-01": "hyperliquid quotes USELESS: HTTP 400",
+  "SPX:2024-11-01": "hyperliquid quotes SPX: HTTP 400",
+  "SPX:2024-12-01": "hyperliquid quotes SPX: HTTP 400",
+  "SPX:2025-01-01": "hyperliquid quotes SPX: HTTP 400"
+ },
+ "bytes_downloaded": 1172650691,
+ "splits": {
+  "train": {
+   "coverage": [
+    "SPX:2025-02-01",
+    "SPX:2025-03-01",
+    "SPX:2025-04-01",
+    "SPX:2025-05-01",
+    "SPX:2025-06-01",
+    "TRUMP:2025-02-01",
+    "TRUMP:2025-03-01",
+    "TRUMP:2025-04-01",
+    "TRUMP:2025-05-01",
+    "TRUMP:2025-06-01"
+   ],
+   "pooled": {
+    "n": 329,
+    "net": 286.43,
+    "mean": 0.871,
+    "pf": 1.74,
+    "net_ex_top3": 231.57,
+    "win": 0.535,
+    "passes": true
+   },
+   "pooled_plus05bp": {
+    "n": 329,
+    "net": 269.98,
+    "mean": 0.821,
+    "pf": 1.684,
+    "net_ex_top3": 215.27,
+    "win": 0.532,
+    "passes": true
+   },
+   "pooled_L800": {
+    "n": 329,
+    "net": -188.97,
+    "mean": -0.574,
+    "pf": 0.688,
+    "net_ex_top3": -243.37,
+    "win": 0.328,
+    "passes": false
+   },
+   "per_coin": {
+    "SPX": {
+     "n": 178,
+     "net": 47.66,
+     "mean": 0.268,
+     "pf": 1.224,
+     "net_ex_top3": 15.21,
+     "win": 0.494,
+     "passes": true
+    },
+    "TRUMP": {
+     "n": 151,
+     "net": 238.77,
+     "mean": 1.581,
+     "pf": 2.371,
+     "net_ex_top3": 183.91,
+     "win": 0.583,
+     "passes": true
+    }
+   },
+   "per_coin_L800": {
+    "SPX": {
+     "n": 178,
+     "net": -230.65,
+     "mean": -1.296,
+     "pf": 0.341,
+     "net_ex_top3": -260.2,
+     "win": 0.236,
+     "passes": false
+    },
+    "TRUMP": {
+     "n": 151,
+     "net": 41.68,
+     "mean": 0.276,
+     "pf": 1.163,
+     "net_ex_top3": -12.72,
+     "win": 0.437,
+     "passes": false
+    }
+   },
+   "per_day_net": {
+    "2025-02-01": 172.84,
+    "2025-03-01": 44.16,
+    "2025-04-01": 19.34,
+    "2025-05-01": 15.75,
+    "2025-06-01": 34.35
+   },
+   "markout_bp_mean": {
+    "mk1": 13.363,
+    "mk5": 17.876,
+    "mk30": 20.226
+   },
+   "top_coin_day": {
+    "key": "TRUMP 2025-02-01",
+    "net": 168.13
+   },
+   "pooled_ex_top_coin_day": {
+    "n": 240,
+    "net": 118.3,
+    "mean": 0.493,
+    "pf": 1.434,
+    "net_ex_top3": 77.93,
+    "win": 0.533,
+    "passes": true
+   }
+  },
+  "validation": {
+   "coverage": [
+    "SPX:2025-07-01",
+    "SPX:2025-08-01",
+    "SPX:2025-09-01",
+    "SPX:2025-10-01",
+    "SPX:2025-11-01",
+    "SPX:2025-12-01",
+    "SPX:2026-01-01",
+    "SPX:2026-02-01",
+    "SPX:2026-03-01",
+    "TRUMP:2025-07-01",
+    "TRUMP:2025-08-01",
+    "TRUMP:2025-09-01",
+    "TRUMP:2025-10-01",
+    "TRUMP:2025-11-01",
+    "TRUMP:2025-12-01",
+    "TRUMP:2026-01-01",
+    "TRUMP:2026-02-01",
+    "TRUMP:2026-03-01"
+   ],
+   "pooled": {
+    "n": 243,
+    "net": 136.43,
+    "mean": 0.561,
+    "pf": 1.387,
+    "net_ex_top3": 63.93,
+    "win": 0.51,
+    "passes": true
+   },
+   "pooled_plus05bp": {
+    "n": 243,
+    "net": 124.28,
+    "mean": 0.511,
+    "pf": 1.347,
+    "net_ex_top3": 51.93,
+    "win": 0.51,
+    "passes": true
+   },
+   "pooled_L800": {
+    "n": 243,
+    "net": -218.11,
+    "mean": -0.898,
+    "pf": 0.572,
+    "net_ex_top3": -285.08,
+    "win": 0.305,
+    "passes": false
+   },
+   "per_coin": {
+    "SPX": {
+     "n": 196,
+     "net": 70.79,
+     "mean": 0.361,
+     "pf": 1.239,
+     "net_ex_top3": 17.4,
+     "win": 0.495,
+     "passes": true
+    },
+    "TRUMP": {
+     "n": 47,
+     "net": 65.64,
+     "mean": 1.397,
+     "pf": 2.167,
+     "net_ex_top3": 9.09,
+     "win": 0.574,
+     "passes": false
+    }
+   },
+   "per_coin_L800": {
+    "SPX": {
+     "n": 196,
+     "net": -207.96,
+     "mean": -1.061,
+     "pf": 0.494,
+     "net_ex_top3": -253.01,
+     "win": 0.296,
+     "passes": false
+    },
+    "TRUMP": {
+     "n": 47,
+     "net": -10.15,
+     "mean": -0.216,
+     "pf": 0.897,
+     "net_ex_top3": -64.62,
+     "win": 0.34,
+     "passes": false
+    }
+   },
+   "per_day_net": {
+    "2025-07-01": 44.36,
+    "2025-08-01": 46.88,
+    "2025-09-01": 5.3,
+    "2025-10-01": 48.61,
+    "2025-11-01": 49.57,
+    "2025-12-01": -8.07,
+    "2026-01-01": 12.61,
+    "2026-02-01": -33.27,
+    "2026-03-01": -29.56
+   },
+   "markout_bp_mean": {
+    "mk1": 12.24,
+    "mk5": 17.701,
+    "mk30": 19.109
+   },
+   "top_coin_day": {
+    "key": "SPX 2025-10-01",
+    "net": 48.61
+   },
+   "pooled_ex_top_coin_day": {
+    "n": 211,
+    "net": 87.82,
+    "mean": 0.416,
+    "pf": 1.277,
+    "net_ex_top3": 15.31,
+    "win": 0.507,
+    "passes": true
+   }
+  }
+ },
+ "verdict_pass": true
+}

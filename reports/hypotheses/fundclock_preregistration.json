@@ -1,0 +1,138 @@
+{
+ "hypothesis": "H-FUNDCLOCK: funding-settlement clock pressure on Binance USDT-M perps",
+ "frozen_at_utc": "2026-10-05T05:41:42.567738+00:00",
+ "status_at_freeze": "No price, P&L or exit outcome computed. No kline or funding data for this hypothesis downloaded yet. Only file sizes of BTCUSDT/WIFUSDT 1m monthly zips were listed (S3 listing) to plan the download budget.",
+ "mechanism": "Traders who would pay funding at settlement T close just before T and reopen after T. With funding strongly positive, longs exit pre-settlement (down pressure in the last minutes) and re-enter after (up pressure); mirror for negative funding.",
+ "source_leads": [
+  {
+   "ref": "He, Manela, Ross, von Wachter, 'Fundamentals of Perpetual Futures', arXiv 2212.06888",
+   "use": "funding mechanism (longs pay shorts when perp > spot); no settlement-clock price claim",
+   "modality": "document"
+  },
+  {
+   "ref": "'Temporal Dynamics of Market Microstructure in Cryptocurrency Perpetual Futures', Int. J. Financial Studies 14(5):103 (MDPI), https://www.mdpi.com/2227-7072/14/5/103",
+   "use": "search-result snippet only (page returned HTTP 403): funding-rate spreads reported to peak ~2h after standard settlement times (02:00/10:00/18:00 UTC). Not verified, not about price.",
+   "modality": "document"
+  },
+  {
+   "ref": "Binance Square practitioner posts on funding (https://www.binance.com/square/post/28903286409497) and Binance funding schedule 00/08/16 UTC",
+   "use": "practitioner framing that traders manage positions around funding; no quantified price pattern",
+   "modality": "document"
+  },
+  {
+   "ref": "WebSearch 2026-10-05",
+   "use": "no published study quantifying minute-level price pressure just before / after funding settlement was found; the hypothesis is therefore practitioner folklore, tested here from scratch",
+   "modality": "document"
+  }
+ ],
+ "splits": {
+  "train": "settlements 2023-01-01 .. 2025-06-30",
+  "validation": "2025-07-01 .. 2026-03-31",
+  "holdout": "2026-04-01 onward: never downloaded, never examined",
+  "boundary": "a trade belongs to the split of its settlement time T (train: T < 2025-07-01 00:00 UTC; validation: 2025-07-01 00:00 <= T <= 2026-03-31 23:59). Windows are within [T-30m, T+31m], so a PRE trade for T = 2025-07-01 00:00 reads only 2025-06-30 prices but belongs to validation, and no train trade reads validation prices (last train T = 2025-06-30 23:00 at most, exit <= 23:31). Validation T after 2026-03-31 23:00 are excluded so nothing reads 2026-04 prices."
+ },
+ "universe": {
+  "rule": "For each calendar month M (2023-01..2026-03), the top 20 Binance USDT-M perpetual symbols (name ends with USDT, no '_' delivery suffix) by summed quote volume in month M-1 from data.binance.vision futures/um/monthly/klines/<SYM>/1d, with >=28 daily rows in M-1, excluding stablecoin/fiat bases (USDC, FDUSD, TUSD, BUSD, USDP, DAI, EUR, AEUR, USDE, PYUSD, USD1, UST, USTC). Point in time (uses only M-1). Majors (BTC, ETH) are included.",
+  "reason_for_N": "download budget: ~1.85 MB per symbol-month 1m zip; 20 x 39 months ~ 1.45 GB streamed, nothing stored but window extracts",
+  "missing_data": "a member whose 1m kline or fundingRate file for M is missing is dropped for M and reported"
+ },
+ "data": {
+  "klines": "futures/um/monthly/klines/<SYM>/1m (streamed, only bars within [T-35m, T+35m] of each settlement kept)",
+  "funding": "futures/um/monthly/fundingRate/<SYM> (calc_time, rate). Settlement times T are the calc_time values floored to the minute; these follow Binance's published schedule (8h, or 4h/1h on symbols with other intervals), which is known in advance."
+ },
+ "signal": {
+  "PRE": "f = the most recent SETTLED funding rate before T (the print at the previous settlement). Fully point in time at T-k. The not-yet-settled rate at T is NOT used. Correlation of f with the rate at T is reported as a diagnostic only.",
+  "POST": "f = the rate settled at T (published at T; trade enters at T+1 min)."
+ },
+ "trade_rule": {
+  "PRE": "if f >= +thr: SHORT (against the paying long side, which is expected to sell before T); if f <= -thr: LONG. Entry at the OPEN of the 1m bar starting at T-k; exit at the CLOSE of the 1m bar starting at T-1 (i.e. strictly before settlement, no funding exchanged).",
+  "POST": "if f >= +thr: LONG (paying longs re-enter after T); if f <= -thr: SHORT. Entry at the OPEN of the 1m bar starting at T+1 min (strictly after settlement, no funding exchanged); exit at the CLOSE of the bar starting at T+m (hold ~m minutes).",
+  "max_trades": "1 trade per symbol per settlement per config",
+  "missing_bars": "if an entry or exit bar is missing the trade is skipped and counted"
+ },
+ "configs": [
+  {
+   "key": "PRE_w5_thr0.03pct",
+   "mode": "PRE",
+   "window_min": 5,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "PRE_w5_thr0.10pct",
+   "mode": "PRE",
+   "window_min": 5,
+   "abs_funding_threshold": 0.001
+  },
+  {
+   "key": "PRE_w15_thr0.03pct",
+   "mode": "PRE",
+   "window_min": 15,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "PRE_w15_thr0.10pct",
+   "mode": "PRE",
+   "window_min": 15,
+   "abs_funding_threshold": 0.001
+  },
+  {
+   "key": "PRE_w30_thr0.03pct",
+   "mode": "PRE",
+   "window_min": 30,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "PRE_w30_thr0.10pct",
+   "mode": "PRE",
+   "window_min": 30,
+   "abs_funding_threshold": 0.001
+  },
+  {
+   "key": "POST_w5_thr0.03pct",
+   "mode": "POST",
+   "window_min": 5,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "POST_w5_thr0.10pct",
+   "mode": "POST",
+   "window_min": 5,
+   "abs_funding_threshold": 0.001
+  },
+  {
+   "key": "POST_w15_thr0.03pct",
+   "mode": "POST",
+   "window_min": 15,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "POST_w15_thr0.10pct",
+   "mode": "POST",
+   "window_min": 15,
+   "abs_funding_threshold": 0.001
+  },
+  {
+   "key": "POST_w30_thr0.03pct",
+   "mode": "POST",
+   "window_min": 30,
+   "abs_funding_threshold": 0.0003
+  },
+  {
+   "key": "POST_w30_thr0.10pct",
+   "mode": "POST",
+   "window_min": 30,
+   "abs_funding_threshold": 0.001
+  }
+ ],
+ "costs": {
+  "taker_fee_per_side": 0.0005,
+  "slippage_per_side": 0.0002,
+  "round_trip": 0.0014,
+  "fee_source": "Binance USDS-M regular-user taker 0.05% (Binance FAQ 360033544231, as cited in reports/failures/agent_premconv.md)",
+  "maker_variant": "NOT run: modelling maker non-fill honestly would need queue/tick data; the taker-only cost is primary and only cost model"
+ },
+ "pnl": "per trade, fraction of notional: side * (exit/entry - 1) - 0.0014. Split totals reported as sums in % of notional.",
+ "bar": "per split: n >= 50, net sum > 0, PF > 1.2, net sum without the 3 best trades > 0",
+ "selection": "Run all 12 configs on train. Among configs meeting the bar on train, pick ONE: the highest train net sum (ties: higher PF). That single config is run on validation once. If no config meets the train bar, validation is not run (protocol precedent: agent_flush, agent_premconv) and the verdict is FAIL. No re-tuning; any variant needs a new pre-registration.",
+ "reporting": "per split: n, net sum %, mean bp, PF, net ex-top3, win rate, by year, by symbol (top contributors and share of net), top days, day-clustered t; gross (pre-cost) mean as a diagnostic of whether any pressure exists at all."
+}

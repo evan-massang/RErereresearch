@@ -110,5 +110,17 @@
  "bar": "n >= 50, net > 0, PF > 1.2, net > 0 without the 3 best trades (per unit notional N, after all costs)",
  "reporting": "top-3-coin share of gross profit and of net; meme vs non-meme; per-quarter n/net/funding per trade; exit mix; liquidations per leg; direction split.",
  "multiple_testing": "3 promotable configs (A,B,C) on top of ffdiff's 18 meme configs; B overlaps A. Treat any single pass with that in mind.",
- "is_synthetic": false
+ "is_synthetic": false,
+ "amendments_before_any_pnl": [
+  {
+   "at_utc": "2026-10-05T05:47:25.074331+00:00",
+   "change": "An HL 4h bar with volume v == 0 is treated as missing (not tradable, and excluded from the HL liquidity median), mirroring ffdiff's existing Binance filter (bars with qv == 0 dropped).",
+   "why": "Data inspection (no P&L computed yet): 14,638 of 636,195 HL 4h candles (56 coins; e.g. XLM, SAND, ALGO, IOTA, ICP, XMR, ZEC with up to 999 bars) have v = 0 while o/h/l/c move, i.e. untraded/oracle-only candles (pre-listing or post-delisting periods). Filling at such a close is not executable."
+  },
+  {
+   "at_utc": "2026-10-05T05:47:25.074376+00:00",
+   "change": "Data source note: data/raw/web/binance_carry/ (another family's cache) disappeared during this run; all inputs are now private compact copies under data/raw/web/ffdiff_wide/ (Binance funding re-fetched from data.binance.vision; ffdiff/fundcarry JSON caches converted).",
+   "why": "Robustness to shared-cache deletion. No rule change."
+  }
+ ]
 }

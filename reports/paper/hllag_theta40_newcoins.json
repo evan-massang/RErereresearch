@@ -1,0 +1,34 @@
+{
+ "name": "hllag_theta40_newcoins",
+ "module": "scripts/research/hlanchor_lib.py",
+ "function": "sim_lag",
+ "params": {
+  "theta_bp": 40.0,
+  "L_ms": 300,
+  "H_s": 30.0,
+  "cooldown_s": 10.0,
+  "close_bp": null,
+  "info_lat_ms": 300
+ },
+ "coins": {
+  "TRUMP": "TRUMPUSDT",
+  "SPX": "SPXUSDT"
+ },
+ "module_sha256": "98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad",
+ "frozen_at": 1791179261.8192768,
+ "frozen_at_utc": "2026-10-05T05:47:41Z",
+ "bar": {
+  "min_trades": 50,
+  "net_gt": 0.0,
+  "pf_gt": 1.2,
+  "net_ex_top3_gt": 0.0
+ },
+ "unit": "round trip of $1,000 notional; pnl in USD after 4.5 bp taker fees each side",
+ "source": "reports/candidates/hllag_newcoins.md (TRUMP+SPX: train PF 1.74 n=329, validation PF 1.39 n=243; only 2 coins)",
+ "caveats": [
+  "config added after the pre-registered grid failed",
+  "validation profit concentrated on 2025-08-01",
+  "fails at +0.5 bp cost or 800 ms latency",
+  "forward HL quotes are event-driven bbo, not 0.5 s snapshots"
+ ]
+}

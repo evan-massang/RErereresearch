@@ -1,0 +1,38 @@
+{
+ "hypothesis": "H-HLLAG-NEWCOINS",
+ "frozen_at_utc": "2026-10-05T05:45:00Z",
+ "statement": "The frozen H-HLLAG rule (Hyperliquid perp taker in the direction of a fast Binance USDT-M perp move that HL has not yet followed; 30-s time exit) is profitable on meme perps it was NOT developed on.",
+ "purpose": "Cross-sectional out-of-sample check. If it passes, the forward paper test may add these coins to reach 50 trades faster. No parameter changes allowed.",
+ "development_coins_excluded": ["WIF", "kBONK", "FARTCOIN", "PUMP"],
+ "frozen_rule": {
+  "module": "scripts/research/hlanchor_lib.py",
+  "module_sha256": "98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad",
+  "function": "sim_lag",
+  "params": {"theta_bp": 40.0, "L_ms": 300, "H_s": 30.0, "cooldown_s": 10.0, "close_bp": null, "info_lat_ms": 300},
+  "fill_and_fees": "unchanged from hlanchor_lib: taker fill at first HL top-of-book snapshot with exchange ts >= decision+300 ms, excess over displayed top one spread worse, 4.5 bp taker each side, $1,000 units, max 2 units per coin",
+  "reference": "reports/paper/hllag_theta40.json, reports/candidates/hlanchor.md"
+ },
+ "coin_selection_rule": {
+  "candidate_set": "Hyperliquid meme perps that have a Binance USDT-M perp counterpart, fixed list written before any download: DOGE/DOGEUSDT, kPEPE/1000PEPEUSDT, kSHIB/1000SHIBUSDT, kFLOKI/1000FLOKIUSDT, POPCAT/POPCATUSDT, MOODENG/MOODENGUSDT, PENGU/PENGUUSDT, TRUMP/TRUMPUSDT, SPX/SPXUSDT, PNUT/PNUTUSDT, GOAT/GOATUSDT, BRETT/BRETTUSDT, kNEIRO/NEIROUSDT, BOME/BOMEUSDT, TURBO/TURBOUSDT, MELANIA/MELANIAUSDT, USELESS/USELESSUSDT, minus the 4 development coins.",
+  "liquidity_rule": "Keep candidates with Hyperliquid 24h notional volume (dayNtlVlm, HL info metaAndAssetCtxs snapshot taken 2026-10-05T05:37Z, saved at data/raw/web/tardis/results/newcoins/hl_metaAndAssetCtxs_20261005T0537Z.json) >= $1.0M.",
+  "hl_24h_notional_musd_at_snapshot": {"DOGE": 24.26, "kPEPE": 9.30, "TRUMP": 2.75, "USELESS": 2.65, "PENGU": 2.52, "SPX": 1.35, "kSHIB": 1.12, "kFLOKI": 0.90, "BOME": 0.18, "POPCAT": 0.14, "GOAT": 0.13, "BRETT": 0.11, "kNEIRO": 0.10, "PNUT": 0.09, "MOODENG": 0.08, "TURBO": 0.07, "MELANIA": 0.06},
+  "passing_liquidity_rule_in_rank_order": ["DOGE", "kPEPE", "TRUMP", "USELESS", "PENGU", "SPX", "kSHIB"],
+  "size_gate": "Disk/download budget: a coin is excluded if its Binance book_ticker raw csv.gz for the reference day 2025-10-01 exceeds 60 MB (that day's file is downloaded first and, if kept, used as validation data). DOGE measured 103.8 MB on 2025-10-01 -> EXCLUDED before any result was computed.",
+  "budget_rule": "Coins are processed in rank order, all days of a coin before the next coin. Total new raw download capped at 1.45 GB (including ~0.12 GB of sizing probes already spent); stop before a coin whose expected size would breach it, and stop if free disk < 2.5 GB. A coin is reported only if all its available days were downloaded; any coin cut by budget is listed as not tested. No results are computed until downloads finish.",
+  "binance_symbol_map": {"kPEPE": "1000PEPEUSDT", "TRUMP": "TRUMPUSDT", "USELESS": "USELESSUSDT", "PENGU": "PENGUUSDT", "SPX": "SPXUSDT", "kSHIB": "1000SHIBUSDT"}
+ },
+ "data": {
+  "source": "Tardis.dev free first-of-month samples (no key): hyperliquid quotes + trades, binance-futures book_ticker; same extraction as scripts/research/hlanchor_fetch.py",
+  "train_days": ["2024-11-01", "2024-12-01", "2025-01-01", "2025-02-01", "2025-03-01", "2025-04-01", "2025-05-01", "2025-06-01"],
+  "validation_days": ["2025-07-01", "2025-08-01", "2025-09-01", "2025-10-01", "2025-11-01", "2025-12-01", "2026-01-01", "2026-02-01", "2026-03-01"],
+  "holdout": "2026-04-01 onward is NOT downloaded",
+  "missing_days": "a coin-day with any of the 3 files unavailable (coin not yet listed) is skipped and listed in coverage"
+ },
+ "pass_rule": {
+  "bar": "repo bar per split: n >= 50 round trips, net USD > 0, PF > 1.2, net without the top-3 trades > 0",
+  "applied_to": "pooled across all tested new coins, separately on train days and on validation days",
+  "verdict": "PASS only if both train and validation pooled results meet the bar. Per-coin results are reported but are not the test.",
+  "informational_only": ["+0.5 bp extra cost per round trip ($0.05 per $1,000 trade)", "L_ms = 800 latency (re-simulated)"]
+ },
+ "no_changes": "No parameter, fee, fill-model or coin-list changes after this file is written."
+}

@@ -35,10 +35,13 @@ import pandas as pd  # noqa: E402
 
 OUT = ROOT / "data/raw/web/hllag_forward"
 CHUNKS, DAYS = OUT / "chunks", OUT / "days"
-FREEZE = ROOT / "reports/paper/hllag_theta40.json"
 LIB = ROOT / "scripts/research/hlanchor_lib.py"
 # Hyperliquid coin -> Binance futures symbol (same pairs as the backtest)
 COINS = {"WIF": "WIFUSDT", "kBONK": "1000BONKUSDT", "FARTCOIN": "FARTCOINUSDT", "PUMP": "PUMPUSDT"}
+# Second frozen record (reports/candidates/hllag_newcoins.md): same rule, coins it was not developed on.
+NEW_COINS = {"TRUMP": "TRUMPUSDT", "SPX": "SPXUSDT"}
+RECORDS = {"hllag_theta40": COINS, "hllag_theta40_newcoins": NEW_COINS}
+ALL_COINS = {**COINS, **NEW_COINS}
 PARAMS = dict(theta_bp=40.0, L_ms=300, H_s=30.0, cooldown_s=10.0, close_bp=None, info_lat_ms=300)
 BAR = dict(min_trades=50, net_gt=0.0, pf_gt=1.2, net_ex_top3_gt=0.0)
 
@@ -78,8 +81,8 @@ class Buffer:
 
 async def binance(buf: Buffer, stop: float):
     import websockets
-    rev = {v.lower(): k for k, v in COINS.items()}
-    url = "wss://fstream.binance.com/stream?streams=" + "/".join(f"{s.lower()}@bookTicker" for s in COINS.values())
+    rev = {v.lower(): k for k, v in ALL_COINS.items()}
+    url = "wss://fstream.binance.com/stream?streams=" + "/".join(f"{s.lower()}@bookTicker" for s in ALL_COINS.values())
     while time.monotonic() < stop:
         try:
             async with websockets.connect(url, ssl=_ssl(), open_timeout=20, ping_interval=20) as ws:
@@ -103,7 +106,7 @@ async def hyperliquid(buf: Buffer, stop: float):
         try:
             async with websockets.connect("wss://api.hyperliquid.xyz/ws", ssl=_ssl(), open_timeout=20,
                                           ping_interval=20) as ws:
-                for c in COINS:
+                for c in ALL_COINS:
                     await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "bbo", "coin": c}}))
                     await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "trades", "coin": c}}))
                 async for raw in ws:
@@ -111,14 +114,14 @@ async def hyperliquid(buf: Buffer, stop: float):
                         return
                     m = json.loads(raw)
                     ch, d, now = m.get("channel"), m.get("data"), _now_us()
-                    if ch == "bbo" and d and d.get("coin") in COINS and all(d.get("bbo") or [None]):
+                    if ch == "bbo" and d and d.get("coin") in ALL_COINS and all(d.get("bbo") or [None]):
                         b, a = d["bbo"]
                         buf.add("quotes", d["coin"], dict(timestamp=int(d["time"]) * 1000, local_timestamp=now,
                                                           bid_price=float(b["px"]), ask_price=float(a["px"]),
                                                           bid_amount=float(b["sz"]), ask_amount=float(a["sz"])))
                     elif ch == "trades" and isinstance(d, list):
                         for t in d:
-                            if t.get("coin") in COINS:
+                            if t.get("coin") in ALL_COINS:
                                 buf.add("trades", t["coin"], dict(timestamp=int(t["time"]) * 1000, local_timestamp=now,
                                                                   side="buy" if t.get("side") == "B" else "sell",
                                                                   price=float(t["px"]), amount=float(t["sz"])))
@@ -143,24 +146,30 @@ def _sha() -> str:
     return hashlib.sha256(LIB.read_bytes()).hexdigest()
 
 
-def freeze():
+def _freeze_path(name: str) -> Path:
+    return ROOT / f"reports/paper/{name}.json"
+
+
+def freeze(name: str = "hllag_theta40"):
+    FREEZE = _freeze_path(name)
     if FREEZE.exists():
         raise SystemExit(f"{FREEZE} exists; frozen strategies are never changed.")
     FREEZE.parent.mkdir(parents=True, exist_ok=True)
-    rec = {"name": "hllag_theta40", "module": "scripts/research/hlanchor_lib.py", "function": "sim_lag",
-           "params": PARAMS, "coins": COINS, "module_sha256": _sha(), "frozen_at": time.time(),
+    rec = {"name": name, "module": "scripts/research/hlanchor_lib.py", "function": "sim_lag",
+           "params": PARAMS, "coins": RECORDS[name], "module_sha256": _sha(), "frozen_at": time.time(),
            "frozen_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "bar": BAR,
            "unit": "round trip of $1,000 notional; pnl in USD after 4.5 bp taker fees each side",
-           "source": "reports/candidates/hlanchor.md (passed train PF 1.204 n=721, validation PF 1.358 n=721; fragile)",
+           "source": "reports/candidates/hllag_newcoins.md (TRUMP+SPX: train PF 1.74 n=329, validation PF 1.39 n=243; only 2 coins)"
+           if name.endswith("newcoins") else "reports/candidates/hlanchor.md (passed train PF 1.204 n=721, validation PF 1.358 n=721; fragile)",
            "caveats": ["config added after the pre-registered grid failed", "validation profit concentrated on 2025-08-01",
                        "fails at +0.5 bp cost or 800 ms latency", "forward HL quotes are event-driven bbo, not 0.5 s snapshots"]}
     FREEZE.write_text(json.dumps(rec, indent=1))
     print(json.dumps(rec, indent=1))
 
 
-def score() -> dict:
+def score(name: str = "hllag_theta40") -> dict:
     import hlanchor_lib as hl
-    rec = json.loads(FREEZE.read_text())
+    rec = json.loads(_freeze_path(name).read_text())
     if _sha() != rec["module_sha256"]:
         raise SystemExit("hlanchor_lib.py changed since freezing; scoring refused.")
     t0 = int(rec["frozen_at"] * 1_000_000)
@@ -177,7 +186,7 @@ def score() -> dict:
                 df = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
                 df = df[df.local_timestamp >= t0]
                 if len(df):
-                    df.to_parquet(DAYS / f"{kind}_{day}_{coin}.parquet")
+                    df.to_parquet(DAYS / f"{kind}_{day}_{coin}.parquet")   # all coins share the same post-freeze cut
     hl.PQ = DAYS
     trades = []
     for day in days:
@@ -189,7 +198,7 @@ def score() -> dict:
     out = {"name": rec["name"], "frozen_at_utc": rec["frozen_at_utc"],
            "scored_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "days": days, **stats,
            "trades": trades}
-    (ROOT / "reports/paper/hllag_theta40_ledger.json").write_text(json.dumps(out, indent=1, default=str))
+    (ROOT / f"reports/paper/{name}_ledger.json").write_text(json.dumps(out, indent=1, default=str))
     return out
 
 
@@ -197,10 +206,11 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("cmd", choices=["collect", "freeze", "score"])
     ap.add_argument("--hours", type=float, default=1.9)
+    ap.add_argument("--name", default="hllag_theta40", choices=sorted(RECORDS))
     a = ap.parse_args()
     if a.cmd == "collect":
         asyncio.run(collect(a.hours))
     elif a.cmd == "freeze":
-        freeze()
+        freeze(a.name)
     else:
-        print(json.dumps({k: v for k, v in score().items() if k != "trades"}, indent=1))
+        print(json.dumps({k: v for k, v in score(a.name).items() if k != "trades"}, indent=1))

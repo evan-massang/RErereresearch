@@ -4,7 +4,7 @@ reports/hypotheses/ffdiff_wide_preregistration.json).
 Public, unauthenticated sources only:
   - Hyperliquid info API: fundingHistory (hourly) and candleSnapshot 4h (latest 5000 served -> from ~2024-06-24).
   - data.binance.vision futures/um monthly fundingRate and klines/4h.
-Read-only reuse of existing caches: data/raw/web/hyperliquid/{funding,candles_4h}_<coin>.json (fundcarry),
+Read-only reuse of existing caches (converted into private compact copies, since shared caches can vanish): data/raw/web/hyperliquid/{funding,candles_4h}_<coin>.json (fundcarry),
   data/raw/web/hyperliquid/ffdiff/*.json, data/raw/web/binance_fut/ffdiff/<SYM>_{funding,k4h}.parquet,
   data/raw/web/binance_carry/funding/<SYM>.parquet.
 New files: compact parquet under data/raw/web/ffdiff_wide/ (zips/JSON are never kept).
@@ -30,7 +30,6 @@ import listshort_classify as lc  # noqa: E402
 
 HL = ROOT / "data/raw/web/hyperliquid"
 BNF = ROOT / "data/raw/web/binance_fut/ffdiff"
-BNC = ROOT / "data/raw/web/binance_carry/funding"
 OUT = ROOT / "data/raw/web/ffdiff_wide"
 CUTOFF_MS = 1775001600000   # 2026-04-01T00:00:00Z
 START_MS = 1718236800000    # 2024-06-13 (>= 72h of funding before the first HL 4h candle, 2024-06-24)
@@ -75,8 +74,14 @@ def hl_cached(kind, coin):
 
 def hl_funding(cl, coin):
     f = OUT / "hl_funding" / f"{coin}.parquet"
-    if hl_cached("funding", coin) or f.exists():
+    if f.exists():
         return "cached"
+    c = hl_cached("funding", coin)
+    if c:  # convert the read-only ffdiff/fundcarry JSON cache to a compact private copy
+        d = pd.DataFrame([(x["time"], float(x["fundingRate"])) for x in json.loads(c.read_text())["rows"]],
+                         columns=["t_ms", "rate"]).drop_duplicates("t_ms")
+        d[(d.t_ms < CUTOFF_MS) & (d.t_ms >= START_MS)].to_parquet(f, index=False)
+        return "converted"
     rows, t = [], START_MS
     while t < CUTOFF_MS:
         b = post(cl, {"type": "fundingHistory", "coin": coin, "startTime": t, "endTime": CUTOFF_MS - 1})
@@ -96,8 +101,15 @@ def hl_funding(cl, coin):
 
 def hl_candles(cl, coin):
     f = OUT / "hl_k4h" / f"{coin}.parquet"
-    if hl_cached("candles_4h", coin) or f.exists():
+    if f.exists():
         return "cached"
+    c = hl_cached("candles_4h", coin)
+    if c:
+        d = pd.DataFrame([(x["t"], float(x["o"]), float(x["h"]), float(x["l"]), float(x["c"]), float(x["v"]))
+                          for x in json.loads(c.read_text())["rows"] if x["T"] < CUTOFF_MS],
+                         columns=["t", "o", "h", "l", "c", "v"])
+        d.to_parquet(f, index=False)
+        return "converted"
     b = post(cl, {"type": "candleSnapshot", "req": {"coin": coin, "interval": "4h",
                                                      "startTime": START_MS, "endTime": CUTOFF_MS - 1}})
     d = pd.DataFrame([(x["t"], float(x["o"]), float(x["h"]), float(x["l"]), float(x["c"]), float(x["v"]))
@@ -128,7 +140,7 @@ def bn_symbol(sym):
     base = "https://data.binance.vision/data/futures/um/monthly"
     ff, fk = OUT / "bn_funding" / f"{sym}.parquet", OUT / "bn_k4h" / f"{sym}.parquet"
     with httpx.Client(timeout=60) as cl:
-        if not ((BNC / f"{sym}.parquet").exists() or (BNF / f"{sym}_funding.parquet").exists() or ff.exists()):
+        if not ff.exists():
             rows = []
             for m in MONTHS:
                 for ln in bn_zip(cl, f"{base}/fundingRate/{sym}/{sym}-fundingRate-{m}.zip") or []:
@@ -137,7 +149,10 @@ def bn_symbol(sym):
             d = pd.DataFrame(rows, columns=["t", "interval_h", "rate"])
             d = d[d.t < CUTOFF_MS].sort_values("t").drop_duplicates("t")
             d.to_parquet(ff, index=False)
-        if not ((BNF / f"{sym}_k4h.parquet").exists() or fk.exists()):
+        if (BNF / f"{sym}_k4h.parquet").exists() and not fk.exists():  # private copy of the ffdiff cache
+            d = pd.read_parquet(BNF / f"{sym}_k4h.parquet")
+            d[(d.t + 4 * 3600_000 <= CUTOFF_MS) & (d.t >= START_MS)].to_parquet(fk, index=False)
+        if not fk.exists():
             rows = []
             for m in MONTHS:
                 for ln in bn_zip(cl, f"{base}/klines/{sym}/4h/{sym}-4h-{m}.zip") or []:

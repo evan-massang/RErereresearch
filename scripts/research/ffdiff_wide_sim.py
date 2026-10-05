@@ -57,20 +57,11 @@ def _hl_json(kind, coin):
 
 
 def load_pair(p):
-    rows = _hl_json("funding", p["hl"])
-    if rows is not None:
-        f = pd.DataFrame(rows)
-        f = pd.DataFrame({"t": pd.to_datetime(f.time, unit="ms"), "r": f.fundingRate.astype(float)}) if len(f) else None
-    else:
+    if True:
         q = W / "hl_funding" / f"{p['hl']}.parquet"
         f = pd.read_parquet(q) if q.exists() else None
         f = pd.DataFrame({"t": pd.to_datetime(f.t_ms, unit="ms"), "r": f.rate.astype(float)}) if f is not None and len(f) else None
-    rows = _hl_json("candles_4h", p["hl"])
-    if rows is not None:
-        k = pd.DataFrame(rows)
-        k = pd.DataFrame({"t": pd.to_datetime(k.t, unit="ms"), "h": k.h.astype(float), "l": k.l.astype(float),
-                          "c": k.c.astype(float), "v": k.v.astype(float)}) if len(k) else None
-    else:
+    if True:
         q = W / "hl_k4h" / f"{p['hl']}.parquet"
         k = pd.read_parquet(q) if q.exists() else None
         k = pd.DataFrame({"t": pd.to_datetime(k.t, unit="ms"), "h": k.h, "l": k.l, "c": k.c, "v": k.v}) if k is not None and len(k) else None
@@ -78,8 +69,9 @@ def load_pair(p):
         return None
     f["t"] = f.t.dt.floor("h")
     f = f[f.t < CUTOFF].drop_duplicates("t").set_index("t").r.sort_index()
-    k = k[k.t + 4 * H <= CUTOFF].drop_duplicates("t").set_index("t").sort_index()
-    for q in (BNC / f"{p['bn']}.parquet", BNF / f"{p['bn']}_funding.parquet", W / "bn_funding" / f"{p['bn']}.parquet"):
+    # amendment (pre-P&L): HL bars with zero volume are untraded oracle candles -> missing
+    k = k[(k.t + 4 * H <= CUTOFF) & (k.v > 0)].drop_duplicates("t").set_index("t").sort_index()
+    for q in (W / "bn_funding" / f"{p['bn']}.parquet",):
         if q.exists():
             bf = pd.read_parquet(q)
             break
@@ -88,7 +80,7 @@ def load_pair(p):
     tcol = "t_ms" if "t_ms" in bf else "t"
     bf = pd.DataFrame({"t": pd.to_datetime(bf[tcol], unit="ms"), "r": bf.rate.astype(float)}).drop_duplicates("t")
     bf = bf[bf.t < CUTOFF].set_index("t").r.sort_index()
-    for q in (BNF / f"{p['bn']}_k4h.parquet", W / "bn_k4h" / f"{p['bn']}.parquet"):
+    for q in (W / "bn_k4h" / f"{p['bn']}.parquet",):
         if q.exists():
             bk = pd.read_parquet(q)
             break
