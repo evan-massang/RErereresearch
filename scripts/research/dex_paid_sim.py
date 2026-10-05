@@ -177,7 +177,7 @@ def build(split, lag, which="prof", con=None, base=False):
         s = s[s.P.notna()]
         s = s[[seg_of(x, split) == g for x, g in zip(s.P, s.seg)]]
         s = s.assign(T=np.maximum(s.P + lag, s.t20))
-    s = s[[seg_of(x, split) == g for x, g in zip(s.T, s.seg)]]
+    s = s[[seg_of(x, split) == g for x, g in zip(s["T"], s.seg)]]
     s = s[s["T"] - s.ct >= 60]
     cu, am = tapes(con, s.mint, split)
     rows = []
