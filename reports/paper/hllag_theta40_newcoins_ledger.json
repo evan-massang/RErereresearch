@@ -1,0 +1,14 @@
+{
+ "name": "hllag_theta40_newcoins",
+ "frozen_at_utc": "2026-10-05T05:47:41Z",
+ "scored_at_utc": "2026-10-05T06:09:59Z",
+ "days": [
+  "2026-10-05"
+ ],
+ "n": 0,
+ "net": 0.0,
+ "pf": null,
+ "net_ex_top3": 0.0,
+ "passes": false,
+ "trades": []
+}
