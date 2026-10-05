@@ -78,7 +78,7 @@ def fetch_upbit(coin):
         to = oldest + "Z"
     df = pd.DataFrame(rows, columns=["minute", "o", "h", "l", "c", "krw"]).drop_duplicates("minute").sort_values("minute")
     df = df[df.minute >= start_ms // 60000]
-    df = df.astype({"minute": "int32", "o": "float64", "h": "float64", "l": "float64", "c": "float64", "krw": "float32"})
+    df = df[["minute", "c", "krw"]].astype({"minute": "int32", "c": "float64", "krw": "float32"})
     df.to_parquet(f, compression="zstd", index=False)
     return coin, len(df)
 
