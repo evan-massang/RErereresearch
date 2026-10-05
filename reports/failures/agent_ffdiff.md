@@ -164,3 +164,72 @@ Do not run validation or holdout for this family as specified. If revisited:
   with all episodes.
 - `research/observations/evidence_ffdiff_train_slip5_iter2.json` and `evidence_ffdiff_train_slip2_iter2.json`:
   iteration 2.
+
+---
+
+## Iteration 3: H-FFDIFF-MAKER (separately pre-registered). FAIL (train)
+
+**Pre-registration:** `reports/hypotheses/ffdiff_maker_preregistration.json`, written before any run.
+
+**What changed:** execution only. Both legs enter and exit with maker limits at the touch, proxied by the 4h close at
+the decision time.
+- **Fees:**
+  - HL maker 1.5 bp: [HL fees](https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees), fetched 2026-10-05.
+  - Binance maker 2.0 bp: [futureFee](https://www.binance.com/en/fee/futureFee). The page is JS-gated from here
+    (HTTP 202), so this is the published schedule value, not re-verified live.
+- **Signal, exit, stop and liquidation:** the same as iteration 2.
+- **Configs (3):** L72/X40, L24/X40 and L72/X80, all at 1x with the flip exit and the 40% stop.
+
+**Fill model: 1h, because 4h bars cannot judge the 1-hour leg rule.**
+- **The data limit.**
+  - Binance 1h klines come from the archive and cover train only.
+  - Hyperliquid serves only its latest 5000 1h candles (back to about 2026-03), so there are no HL 1h data in train.
+- **How HL fills are judged.** The HL leg's 1h path is proxied by the Binance 1h path, with a buffer m = 0.44%. That is
+  the p99 of |HL/BN − 1| over 58,588 pooled train 4h closes.
+- **Fill rules.**
+  - A leg fills only if bar [T, T+1h) trades *strictly through* its limit. A filled leg pays the 5 bp adverse-selection
+    haircut plus the maker fee.
+  - If one leg fills, the other is completed as a taker at the next 1h bar's worst price + 5 bp.
+  - If neither leg fills, the entry is skipped. On a close, both legs go taker at the next bar's worst price + 5 bp.
+  - Stop, split-end and gap exits are taker at the 4h close + 5 bp.
+- **Funding** is counted only from after the fill hour.
+
+### Train results (base model): 0 / 3 pass
+
+`research/observations/evidence_ffdiff_maker_train.json`
+
+| config | n | net | PF | ex top 3 | funding | basis incl. fills | fees | liq | one-leg opens / closes |
+|---|---|---|---|---|---|---|---|---|---|
+| L72 X40 | 139 | −1.009 | 0.30 | −1.082 | +0.74 | −1.62 | 0.14 | 1 | 21 / 20 |
+| L24 X40 | 355 | −5.103 | 0.10 | −5.274 | +1.03 | −5.81 | 0.32 | 4 | 83 / 69 |
+| L72 X80 | 36 | −0.030 | 0.85 | −0.099 | +0.23 | −0.23 | 0.04 | 0 | 5 / 3 |
+
+**When both legs fill, maker execution helps as expected.** The round trip costs about 27 bp (haircuts about 19 bp in
+the basis, plus fees) against 39 bp for taker.
+
+**When only one leg fills, it costs 2–8% per episode.** That happens on 15–25% of the trades, and it is legging risk:
+- the order that misses is the one the price moved away from;
+- the taker completion then sells the low or buys the high of a volatile meme hour.
+
+### Sensitivity (not pre-registered, not eligible): HL buffer m = 0
+
+`research/observations/evidence_ffdiff_maker_train_sensM0.json`
+
+| config | n | net | PF | ex top 3 |
+|---|---|---|---|---|
+| L72 X40 | 138 | +0.053 | 1.11 | −0.026 |
+| L24 X40 | 355 | −1.18 | 0.40 | |
+| L72 X80 | 36 | +0.161 | 3.93 | +0.091 |
+
+Even with optimistic HL fills, nothing passes:
+- **L72 X40 still fails.** The MOODENG 2024-11-15 liquidation (−0.25) still decides it.
+- **L72 X80 still fails on n.**
+
+**Validation was not opened, and the holdout was never examined.**
+
+**Conclusion:** cheaper execution does not rescue the family. Two things bind:
+- the tail risk of a separate-venue short being squeezed;
+- legging risk on fills, which replaces the taker cost saved.
+
+Files: `scripts/research/ffdiff_maker_sim.py` (adds a Binance 1h archive fetch:
+`binance_fut/ffdiff/<SYM>_k1h_train.parquet`, 2024-06..2025-07).
