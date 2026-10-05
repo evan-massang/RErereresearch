@@ -1,0 +1,178 @@
+{
+ "hypotheses": [
+  "H-HLANCHOR",
+  "H-HLLAG"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "data": "Tardis.dev free first-of-month samples: hyperliquid quotes+trades, binance-futures book_ticker; parquet under data/raw/web/tardis/parquet (raw csv deleted)",
+ "fill_model": {
+  "maker": "fill only on HL print strictly through quote while live; order live 300 ms after decision (local clock) vs HL exchange clock; cancels 300 ms; post-only",
+  "taker": "first HL top-of-book snapshot with exchange ts >= decision+latency; excess over displayed top size fills one spread worse",
+  "fees_bp": {
+   "maker": 1.5,
+   "taker": 4.5,
+   "source": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees (tier 0), via sources/leads/documented_edges_round4.md"
+  },
+  "unit_usd": 1000,
+  "max_units": 2,
+  "eod": "taker flatten",
+  "funding": "ignored (seconds holding)"
+ },
+ "bar": "n>=50 round trips, net>0, PF>1.2, net ex top-3 >0",
+ "scripts": [
+  "scripts/research/hlanchor_fetch.py",
+  "scripts/research/hlanchor_lib.py",
+  "scripts/research/hlanchor_run.py"
+ ],
+ "date": "2026-10-05",
+ "split": "validation (2025-07-01..2026-03-01), examined once, one config",
+ "coverage": [
+  "2025-07-01:WIF",
+  "2025-07-01:kBONK",
+  "2025-07-01:FARTCOIN",
+  "2025-08-01:WIF",
+  "2025-08-01:kBONK",
+  "2025-08-01:FARTCOIN",
+  "2025-08-01:PUMP",
+  "2025-09-01:WIF",
+  "2025-09-01:kBONK",
+  "2025-09-01:FARTCOIN",
+  "2025-09-01:PUMP",
+  "2025-10-01:WIF",
+  "2025-10-01:kBONK",
+  "2025-10-01:FARTCOIN",
+  "2025-10-01:PUMP",
+  "2025-11-01:WIF",
+  "2025-11-01:kBONK",
+  "2025-11-01:FARTCOIN",
+  "2025-11-01:PUMP",
+  "2025-12-01:WIF",
+  "2025-12-01:kBONK",
+  "2025-12-01:FARTCOIN",
+  "2025-12-01:PUMP",
+  "2026-01-01:WIF",
+  "2026-01-01:kBONK",
+  "2026-01-01:FARTCOIN",
+  "2026-01-01:PUMP",
+  "2026-02-01:WIF",
+  "2026-02-01:kBONK",
+  "2026-02-01:FARTCOIN",
+  "2026-02-01:PUMP",
+  "2026-03-01:WIF",
+  "2026-03-01:kBONK",
+  "2026-03-01:FARTCOIN",
+  "2026-03-01:PUMP"
+ ],
+ "configs": {
+  "lag_th40_L300_H30_timeonly": {
+   "n": 721,
+   "net": 362.67,
+   "mean": 0.503,
+   "pf": 1.358,
+   "net_ex_top3": 302.15,
+   "win": 0.501,
+   "passes": true,
+   "markout1s_bp_mean": 12.167,
+   "markout5s_bp_mean": 17.251,
+   "markout30s_bp_mean": 17.598,
+   "exit_mix": {
+    "time": 721
+   },
+   "by_coin": {
+    "FARTCOIN": 93.94,
+    "PUMP": 199.04,
+    "WIF": 37.02,
+    "kBONK": 32.67
+   },
+   "by_coin_n": {
+    "FARTCOIN": 366,
+    "PUMP": 298,
+    "WIF": 30,
+    "kBONK": 27
+   },
+   "days_positive": 5,
+   "days": 9
+  }
+ },
+ "diagnostics_selected": {
+  "by_day": {
+   "2025-07-01": [
+    18,
+    -12.58
+   ],
+   "2025-08-01": [
+    166,
+    302.54
+   ],
+   "2025-09-01": [
+    51,
+    27.75
+   ],
+   "2025-10-01": [
+    60,
+    40.95
+   ],
+   "2025-11-01": [
+    20,
+    -15.88
+   ],
+   "2025-12-01": [
+    288,
+    58.57
+   ],
+   "2026-01-01": [
+    26,
+    4.65
+   ],
+   "2026-02-01": [
+    24,
+    -36.81
+   ],
+   "2026-03-01": [
+    68,
+    -6.52
+   ]
+  },
+  "drop_best_day": {
+   "day": "2025-08-01",
+   "n": 555,
+   "net": 60.13,
+   "mean": 0.108,
+   "pf": 1.07,
+   "net_ex_top3": 8.11,
+   "win": 0.459,
+   "passes": false
+  },
+  "extra_cost": {
+   "0.5": {
+    "n": 721,
+    "net": 326.62,
+    "mean": 0.453,
+    "pf": 1.317,
+    "net_ex_top3": 266.25,
+    "win": 0.499,
+    "passes": true
+   },
+   "1": {
+    "n": 721,
+    "net": 290.57,
+    "mean": 0.403,
+    "pf": 1.277,
+    "net_ex_top3": 230.35,
+    "win": 0.495,
+    "passes": true
+   },
+   "2": {
+    "n": 721,
+    "net": 218.47,
+    "mean": 0.303,
+    "pf": 1.201,
+    "net_ex_top3": 158.55,
+    "win": 0.487,
+    "passes": true
+   }
+  }
+ },
+ "holdout": "2026-04-01 onward not downloaded or examined"
+}
