@@ -15,6 +15,7 @@ from __future__ import annotations
 
 import io
 import re
+import time
 import sys
 import zipfile
 from concurrent.futures import ThreadPoolExecutor
@@ -46,8 +47,15 @@ S = requests.Session()
 def list_keys(prefix: str) -> list[str]:
     keys, marker = [], ""
     while True:
-        r = S.get(LIST, params={"prefix": prefix, "marker": marker, "max-keys": 1000}, timeout=60)
-        r.raise_for_status()
+        for attempt in range(6):
+            try:
+                r = S.get(LIST, params={"prefix": prefix, "marker": marker, "max-keys": 1000}, timeout=60)
+                r.raise_for_status()
+                break
+            except Exception:
+                if attempt == 5:
+                    raise
+                time.sleep(5 * (attempt + 1))
         ks = re.findall(r"<Key>([^<]+)</Key>", r.text)
         keys += ks
         if "<IsTruncated>true</IsTruncated>" not in r.text or not ks:
@@ -69,6 +77,7 @@ def get_csv(key: str) -> pd.DataFrame | None:
             return pd.read_csv(io.BytesIO(raw), header=header)
         except Exception as e:  # retry
             err = e
+            time.sleep(3)
     print("FAILED", key, err, file=sys.stderr)
     return None
 
@@ -140,4 +149,7 @@ def fetch_symbol(sym: str) -> dict:
 if __name__ == "__main__":
     syms = sys.argv[1:] or list(UNIVERSE.values())
     for s in syms:
-        fetch_symbol(s)
+        try:
+            fetch_symbol(s)
+        except Exception as e:
+            print("SYMBOL FAILED", s, repr(e)[:200], flush=True)

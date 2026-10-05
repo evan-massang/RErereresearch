@@ -73,11 +73,20 @@ def load_funding(hl: str, sym: str) -> pd.Series:
     return pd.Series(f.rate.values, index=f.t.dt.floor("min")).sort_index()
 
 
+# PUMPUSDT before the 2025-07-10 relisting gap was a different asset (price ~0.05-0.16, flat in June);
+# pump.fun's PUMP starts after the gap.
+START = {"PUMPUSDT": pd.Timestamp("2025-07-10 08:00")}
+
+
 def signals(sym: str):
     k = pd.read_parquet(BF / "klines1m" / f"{sym}.parquet").set_index("t")
+    if sym in START:
+        k = k[k.index >= START[sym]]
     grid = pd.date_range(k.index.min(), k.index.max(), freq="min")
     k = k.reindex(grid)
     m = pd.read_parquet(BF / "metrics" / f"{sym}.parquet")
+    if sym in START:
+        m = m[m.ts >= START[sym]]
     s = (m.ts + pd.Timedelta(minutes=5)).values
     oi = pd.Series(m.oi.values, index=s)
     oi = oi[oi > 0]
@@ -206,7 +215,7 @@ if __name__ == "__main__":
         st = stats(tr) if len(tr) else dict(n=0)
         st["signals_acted"] = int(len(df))
         st["fill_rate"] = round(float(df.filled.mean()), 3) if len(df) else None
-        st["pass"] = passes(st) if st.get("n") else False
+        st["pass"] = bool(passes(st)) if st.get("n") else False
         if len(tr):
             st["per_coin"] = {s: dict(n=int(len(g)), net_pct=round(100 * g.net.sum(), 2))
                               for s, g in tr.groupby("sym")}
@@ -214,12 +223,12 @@ if __name__ == "__main__":
                                  for p, g in tr.groupby(tr.t_in.dt.to_period("Q"))}
             st["top3_bp"] = [round(1e4 * v, 1) for v in np.sort(tr.net.values)[::-1][:3]]
             st["bottom3_bp"] = [round(1e4 * v, 1) for v in np.sort(tr.net.values)[:3]]
-            tr.to_csv(TRD / f"{split}_{name}_slip{int(slip*1e4)}.csv",
+            tr.to_csv(TRD / f"{split}_{name}_slip{round(slip*1e4)}.csv",
                       index=False)
         res[name] = st
     out = dict(split=split, slip_bp=slip * 1e4, n_configs=len(configs), coverage=cover,
                event_counts=evcount, results=res)
-    tag = "" if slip == 3e-4 else f"_slip{int(slip*1e4)}"
+    tag = "" if round(slip * 1e4) == 3 else f"_slip{round(slip * 1e4)}"
     p = ROOT / f"research/observations/evidence_flush_{split}{tag}.json"
     if only:
         p = p.with_name(p.stem + "_subset.json")

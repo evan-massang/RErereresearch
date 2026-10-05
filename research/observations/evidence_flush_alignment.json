@@ -1,0 +1,215 @@
+{
+ "note": "metrics row stamped t vs close of the 1m bar opening at t+d (2025H1); best d=4 means the snapshot is at t+5min, so the signal is usable from t+5min.",
+ "results": {
+  "WIFUSDT": {
+   "-2": {
+    "median_abs_err_bp": 27.42,
+    "share_within_5bp": 0.1
+   },
+   "-1": {
+    "median_abs_err_bp": 25.51,
+    "share_within_5bp": 0.107
+   },
+   "0": {
+    "median_abs_err_bp": 22.49,
+    "share_within_5bp": 0.122
+   },
+   "1": {
+    "median_abs_err_bp": 18.98,
+    "share_within_5bp": 0.149
+   },
+   "2": {
+    "median_abs_err_bp": 14.93,
+    "share_within_5bp": 0.188
+   },
+   "3": {
+    "median_abs_err_bp": 10.07,
+    "share_within_5bp": 0.27
+   },
+   "4": {
+    "median_abs_err_bp": 2.72,
+    "share_within_5bp": 0.703
+   },
+   "5": {
+    "median_abs_err_bp": 12.43,
+    "share_within_5bp": 0.221
+   },
+   "6": {
+    "median_abs_err_bp": 17.39,
+    "share_within_5bp": 0.16
+   },
+   "7": {
+    "median_abs_err_bp": 20.66,
+    "share_within_5bp": 0.132
+   }
+  },
+  "1000BONKUSDT": {
+   "-2": {
+    "median_abs_err_bp": 23.71,
+    "share_within_5bp": 0.118
+   },
+   "-1": {
+    "median_abs_err_bp": 22.0,
+    "share_within_5bp": 0.127
+   },
+   "0": {
+    "median_abs_err_bp": 19.41,
+    "share_within_5bp": 0.143
+   },
+   "1": {
+    "median_abs_err_bp": 16.17,
+    "share_within_5bp": 0.176
+   },
+   "2": {
+    "median_abs_err_bp": 12.56,
+    "share_within_5bp": 0.218
+   },
+   "3": {
+    "median_abs_err_bp": 8.27,
+    "share_within_5bp": 0.326
+   },
+   "4": {
+    "median_abs_err_bp": 1.62,
+    "share_within_5bp": 0.86
+   },
+   "5": {
+    "median_abs_err_bp": 10.56,
+    "share_within_5bp": 0.257
+   },
+   "6": {
+    "median_abs_err_bp": 14.82,
+    "share_within_5bp": 0.187
+   },
+   "7": {
+    "median_abs_err_bp": 17.8,
+    "share_within_5bp": 0.157
+   }
+  },
+  "POPCATUSDT": {
+   "-2": {
+    "median_abs_err_bp": 34.86,
+    "share_within_5bp": 0.079
+   },
+   "-1": {
+    "median_abs_err_bp": 32.47,
+    "share_within_5bp": 0.085
+   },
+   "0": {
+    "median_abs_err_bp": 28.27,
+    "share_within_5bp": 0.097
+   },
+   "1": {
+    "median_abs_err_bp": 23.48,
+    "share_within_5bp": 0.119
+   },
+   "2": {
+    "median_abs_err_bp": 17.94,
+    "share_within_5bp": 0.153
+   },
+   "3": {
+    "median_abs_err_bp": 11.44,
+    "share_within_5bp": 0.243
+   },
+   "4": {
+    "median_abs_err_bp": 3.32,
+    "share_within_5bp": 0.638
+   },
+   "5": {
+    "median_abs_err_bp": 15.85,
+    "share_within_5bp": 0.174
+   },
+   "6": {
+    "median_abs_err_bp": 21.84,
+    "share_within_5bp": 0.127
+   },
+   "7": {
+    "median_abs_err_bp": 26.08,
+    "share_within_5bp": 0.106
+   }
+  },
+  "DOGEUSDT": {
+   "-2": {
+    "median_abs_err_bp": 15.69,
+    "share_within_5bp": 0.177
+   },
+   "-1": {
+    "median_abs_err_bp": 14.4,
+    "share_within_5bp": 0.19
+   },
+   "0": {
+    "median_abs_err_bp": 12.61,
+    "share_within_5bp": 0.218
+   },
+   "1": {
+    "median_abs_err_bp": 10.55,
+    "share_within_5bp": 0.262
+   },
+   "2": {
+    "median_abs_err_bp": 8.29,
+    "share_within_5bp": 0.327
+   },
+   "3": {
+    "median_abs_err_bp": 5.52,
+    "share_within_5bp": 0.463
+   },
+   "4": {
+    "median_abs_err_bp": 0.78,
+    "share_within_5bp": 0.965
+   },
+   "5": {
+    "median_abs_err_bp": 7.06,
+    "share_within_5bp": 0.375
+   },
+   "6": {
+    "median_abs_err_bp": 9.97,
+    "share_within_5bp": 0.274
+   },
+   "7": {
+    "median_abs_err_bp": 11.68,
+    "share_within_5bp": 0.231
+   }
+  },
+  "1000PEPEUSDT": {
+   "-2": {
+    "median_abs_err_bp": 21.62,
+    "share_within_5bp": 0.126
+   },
+   "-1": {
+    "median_abs_err_bp": 20.12,
+    "share_within_5bp": 0.134
+   },
+   "0": {
+    "median_abs_err_bp": 17.64,
+    "share_within_5bp": 0.155
+   },
+   "1": {
+    "median_abs_err_bp": 14.88,
+    "share_within_5bp": 0.186
+   },
+   "2": {
+    "median_abs_err_bp": 11.79,
+    "share_within_5bp": 0.237
+   },
+   "3": {
+    "median_abs_err_bp": 7.83,
+    "share_within_5bp": 0.34
+   },
+   "4": {
+    "median_abs_err_bp": 1.75,
+    "share_within_5bp": 0.854
+   },
+   "5": {
+    "median_abs_err_bp": 9.93,
+    "share_within_5bp": 0.275
+   },
+   "6": {
+    "median_abs_err_bp": 13.74,
+    "share_within_5bp": 0.198
+   },
+   "7": {
+    "median_abs_err_bp": 16.35,
+    "share_within_5bp": 0.169
+   }
+  }
+ }
+}
