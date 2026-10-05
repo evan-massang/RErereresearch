@@ -200,8 +200,13 @@ class Store:
     def add(self, table: str, row: tuple) -> None:
         self.rows[table].append(row)
 
-    def flush(self) -> None:
+    def take(self) -> dict:
+        """Swap the buffers (call on the event-loop thread, so no row is appended to a list being written)."""
         rows, self.rows = self.rows, defaultdict(list)
+        return rows
+
+    def flush(self, rows: dict | None = None) -> None:
+        rows = self.take() if rows is None else rows
         for table, rr in rows.items():
             if not rr:
                 continue
@@ -349,7 +354,6 @@ class Recorder:
             b[4] += row[7]
             b[6] += row[8]
         b[8] = row[1]
-        b[10:16] = [row[10], row[11], row[6], row[7], row[8]][:0] or b[10:16]
         b[11], b[12], b[13], b[14], b[15] = row[10], row[11], row[6], row[7], row[8]
 
     def on_msg(self, name: str, raw: str | bytes) -> None:
@@ -375,16 +379,21 @@ class Recorder:
             if out is None:
                 continue
             table, row = out
+            if table == "amm_swaps":
+                p = row[4]
+                if p not in self.young:
+                    self.bar(row)
+                    c["swaps_to_bars"] += 1
+                    if p not in self.known_pools:
+                        self.known_pools.add(p)
+                        self.unresolved[p] = None
+                    continue
+            elif table == "amm_pools":
+                self.young.add(row[4])
+                self.known_pools.add(row[4])
+                self.store.add("pool_map", (row[4], row[5], row[6], row[8], head[0], "create_event", head[0]))
             self.store.add(table, row)
             c[table] += 1
-            if table == "amm_pools":
-                self.known_pools.add(row[4])
-                self.store.add("pool_map", (row[4], row[5], row[6], row[8], head[0], "create_event"))
-            elif table == "amm_swaps":
-                p = row[4]
-                if p not in self.known_pools:
-                    self.known_pools.add(p)
-                    self.unresolved[p] = None
 
     async def stream(self, name: str, program: str) -> None:
         backoff = 1.0
@@ -452,13 +461,13 @@ class Recorder:
                 for p, acc in zip(batch, vals):
                     self.unresolved.pop(p, None)
                     if not acc:
-                        self.store.add("pool_map", (p, None, None, None, t, "rpc_missing"))
+                        self.store.add("pool_map", (p, None, None, None, t, "rpc_missing", None))
                         continue
                     b = base64.b64decode(acc["data"][0])
                     if len(b) < 243 or acc.get("owner") != PUMPSWAP_PROGRAM:
-                        self.store.add("pool_map", (p, None, None, None, t, "rpc_unparsed"))
+                        self.store.add("pool_map", (p, None, None, None, t, "rpc_unparsed", None))
                         continue
-                    self.store.add("pool_map", (p, _pkb(b, 43), _pkb(b, 75), _pkb(b, 211), t, "rpc_account"))
+                    self.store.add("pool_map", (p, _pkb(b, 43), _pkb(b, 75), _pkb(b, 211), t, "rpc_account", None))
                     self.minute["amm"]["pools_resolved"] += 1
 
     async def housekeeping(self, t_start: float) -> None:
@@ -480,7 +489,7 @@ class Recorder:
                     connected=dict(self.connected), silent=silent or None, unresolved_pools=len(self.unresolved))
             if time.monotonic() - last_flush >= 120:
                 last_flush = time.monotonic()
-                await asyncio.to_thread(self.store.flush)
+                await asyncio.to_thread(self.store.flush, self.store.take())
                 for d in await asyncio.to_thread(self.store.merge, False):
                     self.ev("chunk", **d)
                 size = dir_bytes(self.out)
@@ -504,8 +513,10 @@ class Recorder:
         for sig in (signal.SIGTERM, signal.SIGINT):
             loop.add_signal_handler(sig, self.stop.set)
         t_start = time.monotonic()
+        seed = self.seed_young()
         meta = {"pid": os.getpid(), "hours": hours, "out": str(self.out), "ws": WS_URL, "http": HTTP_URL,
-                "min_free_gb": self.min_free_gb, "start_ts_us": now_us(), "end_utc": utc(time.time() + hours * 3600)}
+                "min_free_gb": self.min_free_gb, "young_days": self.young_days, "seed": seed,
+                "start_ts_us": now_us(), "end_utc": utc(time.time() + hours * 3600)}
         self.ev("start", **meta)
         log("start", json.dumps(meta))
 
@@ -523,6 +534,8 @@ class Recorder:
         for t in tasks:
             t.cancel()
         await asyncio.gather(*tasks, return_exceptions=True)
+        if self.bars:
+            self.flush_bars()
         self.store.flush()
         for d in self.store.merge(final=True):
             self.ev("chunk", **d)
@@ -536,9 +549,10 @@ def main() -> None:
     ap.add_argument("--hours", type=float, default=72.0)
     ap.add_argument("--out", type=Path, default=OUT)
     ap.add_argument("--min-free-gb", type=float, default=1.5)
+    ap.add_argument("--young-days", type=float, default=7.0, help="keep every swap of pools created < this ago")
     a = ap.parse_args()
     a.out.mkdir(parents=True, exist_ok=True)
-    asyncio.run(Recorder(a.out, a.min_free_gb).run(a.hours))
+    asyncio.run(Recorder(a.out, a.min_free_gb, a.young_days).run(a.hours))
 
 
 if __name__ == "__main__":
