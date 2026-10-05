@@ -1,0 +1,27 @@
+{
+ "modality": "document",
+ "note": "Literature leads for the momentum family. Summaries are paraphrases from search-result abstracts (not verbatim quotes). These papers motivate the hypotheses; they are not evidence that the rules are profitable after costs on Binance perps.",
+ "retrieved_utc": "2026-10-05",
+ "papers": [
+  {"cite": "Liu, Y. and Tsyvinski, A. (2021). Risks and Returns of Cryptocurrency. Review of Financial Studies 34(6):2689-2727.",
+   "urls": ["https://ideas.repec.org/a/oup/rfinst/v34y2021i6p2689-2727..html", "https://www.nber.org/system/files/working_papers/w24877/w24877.pdf", "https://papers.ssrn.com/abstract=3226806"],
+   "paraphrase": "Documents strong time-series momentum in BTC/ETH/XRP returns at 1-8 week horizons; investor-attention proxies forecast returns.",
+   "relevance": "Motivates TS momentum (config family a) at weekly horizon."},
+  {"cite": "Liu, Y., Tsyvinski, A. and Wu, X. (2022). Common Risk Factors in Cryptocurrency. Journal of Finance 77(2). DOI 10.1111/jofi.13119.",
+   "urls": ["https://papers.ssrn.com/abstract=3379131", "https://www.nber.org/papers/w25882.pdf", "https://cowles.yale.edu/sites/default/files/2022-10/LiuTsyvinskiWu2019%20COMMON%20RISK%20FACTORS.pdf"],
+   "paraphrase": "A three-factor model (market, size, momentum) prices the cross-section of coin returns; momentum factor built from past 1-4 week returns, weekly rebalanced, on spot coins (CoinMarketCap data, 2014-2018 era).",
+   "relevance": "Motivates cross-sectional momentum (family b) with weekly rebalancing and L of 1-4 weeks."},
+  {"cite": "Moskowitz, T., Ooi, Y.H. and Pedersen, L.H. (2012). Time Series Momentum. Journal of Financial Economics 104(2):228-250.",
+   "urls": ["https://www.aqr.com/Insights/Datasets/Time-Series-Momentum-Original-Paper-Data"],
+   "paraphrase": "Past 12-month excess return predicts next-month return across 58 futures; positions volatility-scaled to a constant target.",
+   "relevance": "Source of the volatility-scaling construction used in family (a)."},
+  {"cite": "Grobys, K. and Sapkota, N. (2019). Cryptocurrencies and momentum. Economics Letters 180:6-10.",
+   "urls": ["https://ideas.repec.org/a/eee/ecolet/v180y2019icp6-10.html", "https://osuva.uwasa.fi/handle/11111/2278"],
+   "paraphrase": "143 coins 2014-2018: no significant cross-sectional momentum payoffs.",
+   "relevance": "Contrary evidence; reason to expect XS momentum may fail."},
+  {"cite": "Han, Kang and Ryu. Time-Series and Cross-Sectional Momentum in the Cryptocurrency Market (working paper / AUT ACFR conference).",
+   "urls": ["https://acfr.aut.ac.nz/__data/assets/pdf_file/0009/918729/Time_Series_and_Cross_Sectional_Momentum_in_the_Cryptocurrency_Market_with_IA.pdf"],
+   "paraphrase": "TS momentum evidence strong, XS momentum weak; after transaction costs and intraday liquidations many significant gross returns become insignificant.",
+   "relevance": "Cost realism warning; motivates explicit fees, slippage and funding."}
+ ]
+}
