@@ -1,0 +1,119 @@
+{
+ "hypothesis": "H-LSRATIO: per-symbol time-series contrarian on Binance positioning metrics. When the crowd (global account) long/short ratio rises sharply relative to the top-trader position ratio, or open interest jumps together with a crowd tilt, price subsequently moves against the crowd (sources/leads/documented_edges_round6.md idea 6, adapted from cross-sectional to per-symbol time series at the requester's instruction).",
+ "frozen_at_utc": "2026-10-05T06:09:04.130258+00:00",
+ "frozen_before": "any metrics file or 1h kline was downloaded for this test and before any signal, return or P&L was computed. Only one metrics file (BTCUSDT 4 sample days) was fetched to read the column layout and file size. Daily klines (data/raw/web/momentum/klines, read-only reuse) were used to size the universe and download budget.",
+ "rationale": "Lead idea 6 (DATA-weak: Dunbar and Owusu-Amoako 2023 abstract; practitioner/marketing claims that crowd ratios precede corrections). No parent hypothesis or failing run in this repo for this signal. The lead's main kill risk (signal is a proxy for past returns) is addressed by the pre-registered residual check below.",
+ "data": {
+  "metrics": "data.binance.vision futures/um/daily/metrics/<SYM>/<SYM>-metrics-<YYYY-MM-DD>.zip (5-min rows: create_time, sum_open_interest, sum_open_interest_value, count_toptrader_long_short_ratio, sum_toptrader_long_short_ratio, count_long_short_ratio, sum_taker_long_short_vol_ratio). Fetched only for symbol-days where the symbol is in the universe plus the 8 preceding days (z-score warm-up). Days 2022-12-24..2026-03-31 only. Aggregated to data/raw/web/lsratio/metrics/<SYM>.parquet; zips never kept.",
+  "prices": "data.binance.vision futures/um/monthly/klines/<SYM>/1h for the same symbols, months 2022-12..2026-03 only, compact parquet data/raw/web/lsratio/k1h/<SYM>.parquet.",
+  "funding": "data/raw/web/momentum/funding/<SYM>.parquet (Binance fundingRate archive, read-only reuse) as a proxy for HL funding.",
+  "daily_for_universe": "data/raw/web/momentum/klines/<SYM>.parquet (1d archive klines, read-only reuse).",
+  "hl_listing": "data/raw/web/hyperliquid/meta.json universe incl. delisted (fetched 2026-10). Mapping: NAME -> NAMEUSDT; kNAME -> 1000NAMEUSDT, falling back to NAMEUSDT if no 1000-prefixed archive symbol. CAVEAT: not point-in-time HL listing dates; stated, not corrected.",
+  "budget": "downloads < 800 MB total; stop if free disk < 2.5 GB. Train start set to 2023-01-01 (not the archive start ~2021-12) because 2021-12..2022-12 metrics for 30+ symbols would exceed the download budget."
+ },
+ "point_in_time": "A metrics row with create_time T is treated as known only at T + 5 min. Hourly decision at t (top of the UTC hour) uses the row with create_time = t - 5 min; if absent, the latest row with create_time in [t - 30 min, t - 5 min]; else no decision for that symbol-hour. Universe on day d uses daily bars d-30..d-1 only. Prices for entry are the open of the 1h kline starting at t (after all inputs are known).",
+ "universe": "Each UTC day d: among non-excluded, HL-mapped USDT perps in the daily archive, rank by sum of daily quote_volume over d-30..d-1 (>= 25 of 30 bars). Top 30 ranks (BTC and ETH included). Excluded: BTCDOMUSDT, DEFIUSDT, FOOTBALLUSDT, BLUEBIRDUSDT, USDCUSDT and USD-stablecoin bases.",
+ "signals": {
+  "notation": "For a metric X, at hourly decision time t: dX_L(t) = ln X(t) - ln X(t - L h), using the point-in-time hourly samples. z(v)(t) = (v(t) - mean(v)) / std(v) where mean and std are over the hourly values of v at times in [t - 168 h, t - 1 h] (trailing only, current excluded), requiring >= 120 valid values.",
+  "C": "count_long_short_ratio (global/crowd account ratio)",
+  "T": "sum_toptrader_long_short_ratio (top-trader position ratio)",
+  "OI": "sum_open_interest (contracts)",
+  "div": "zD = z(dC_L - dT_L). Short if zD >= 2.0; long if zD <= -2.0 (crowd got longer than top traders -> fade the crowd).",
+  "oi_crowd": "zO = z(dOI_L), zC = z(dC_L). Short if zO >= 1.5 and zC >= 1.5; long if zO >= 1.5 and zC <= -1.5 (OI jump driven by a crowd tilt -> fade the crowd)."
+ },
+ "configs": [
+  {
+   "key": "div_L1_H1",
+   "signal": "div",
+   "L_hours": 1,
+   "H_hours": 1
+  },
+  {
+   "key": "div_L1_H4",
+   "signal": "div",
+   "L_hours": 1,
+   "H_hours": 4
+  },
+  {
+   "key": "div_L1_H8",
+   "signal": "div",
+   "L_hours": 1,
+   "H_hours": 8
+  },
+  {
+   "key": "div_L4_H1",
+   "signal": "div",
+   "L_hours": 4,
+   "H_hours": 1
+  },
+  {
+   "key": "div_L4_H4",
+   "signal": "div",
+   "L_hours": 4,
+   "H_hours": 4
+  },
+  {
+   "key": "div_L4_H8",
+   "signal": "div",
+   "L_hours": 4,
+   "H_hours": 8
+  },
+  {
+   "key": "oi_crowd_L1_H1",
+   "signal": "oi_crowd",
+   "L_hours": 1,
+   "H_hours": 1
+  },
+  {
+   "key": "oi_crowd_L1_H4",
+   "signal": "oi_crowd",
+   "L_hours": 1,
+   "H_hours": 4
+  },
+  {
+   "key": "oi_crowd_L1_H8",
+   "signal": "oi_crowd",
+   "L_hours": 1,
+   "H_hours": 8
+  },
+  {
+   "key": "oi_crowd_L4_H1",
+   "signal": "oi_crowd",
+   "L_hours": 4,
+   "H_hours": 1
+  },
+  {
+   "key": "oi_crowd_L4_H4",
+   "signal": "oi_crowd",
+   "L_hours": 4,
+   "H_hours": 4
+  },
+  {
+   "key": "oi_crowd_L4_H8",
+   "signal": "oi_crowd",
+   "L_hours": 4,
+   "H_hours": 8
+  }
+ ],
+ "trade_rules": "Entry at the open of the 1h kline starting at t. Exit at the open of the kline starting at t + H h (if missing: last available close before it). One open position per symbol per config: signals while a position is open are ignored. No limit on concurrent positions across symbols; each trade is one unit of notional.",
+ "stop": "5% adverse per-trade disaster stop checked on 1h high/low of bars t..t+H-1; exit at the stop level, or at the bar open if it gaps through.",
+ "costs": {
+  "primary": "HL taker 4.5 bp + 2 bp slippage per side = 13 bp per round trip",
+  "funding": "long pays (short receives) last_funding_rate for each Binance funding print with calc_time in (entry_time, exit_time]; missing funding counted 0 and flagged",
+  "gross": "reported"
+ },
+ "trade_pnl": "side * (P_exit / P_entry - 1) - funding - 0.0013, fraction of notional",
+ "splits": {
+  "train": "2023-01-01 .. 2025-06-30 (decision time)",
+  "validation": "2025-07-01 .. 2026-03-31",
+  "holdout": "2026-04-01+ NEVER downloaded, read or evaluated by this test"
+ },
+ "bar_per_split": "n >= 50 trades, sum net P&L > 0, profit factor (sum wins / |sum losses|, net) > 1.2, sum net P&L excluding the 3 best trades > 0",
+ "selection": "On train only: among configs meeting the bar, pick the one with the highest mean net P&L per trade. Validation is run once, for that config only. If no config meets the bar on train the hypothesis FAILS on train; validation is then still run once for the config with the highest train mean net per trade, as information only (it cannot rescue the hypothesis).",
+ "informational_only": {
+  "follow_the_crowd": "Every config with the side flipped (trade with the crowd), same costs, reported on train (and on validation for the selected config). Never selected on.",
+  "residual_check": "Train, pooled over universe symbol-hours (every hour, not only signals): OLS of gross forward return ln(P(t+H)/P(t)) on the signal z (zD, or zC for oi_crowd rows with zO >= 1.5) plus z of the trailing L-h return, with standard errors clustered by day. Signal coefficient expected negative; if |t| < 2 after the past-return control, the signal is recorded as a past-return proxy.",
+  "cost_sensitivity": "Binance VIP0 taker 5 bp + 2 bp per side (14 bp RT) reported, never selected on."
+ },
+ "verdict": "CANDIDATE only if the selected config passes the bar on both train and validation. Otherwise FAIL, documented in reports/failures/agent_lsratio.md."
+}

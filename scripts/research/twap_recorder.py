@@ -188,7 +188,7 @@ class Recorder:
     def _track(self, key, minutes, coin, initial=False):
         user, placed = key
         self.track[key] = dict(end_ms=placed + minutes * 60_000, status=None, coin=coin)
-        due = now_ms() + (self.a.status_every * 1000 if initial else 0)   # new ones: query at once for twapId
+        due = now_ms() + self.a.status_every * 1000 if initial else 0     # new ones jump the queue (twapId now)
         self.user_due[user] = min(self.user_due.get(user, due), due)
 
     # ---------- twapHistory ----------
@@ -280,7 +280,7 @@ class Recorder:
     def run(self, hours):
         stop = time.monotonic() + hours * 3600
         nxt = defaultdict(float)
-        nxt["flush"], nxt["summary"] = time.monotonic() + 300, time.monotonic() + 3600
+        nxt["flush"], nxt["summary"], nxt["meta"] = (time.monotonic() + d for d in (300, 3600, 3600))
         self.refresh_meta()
         while time.monotonic() < stop:
             t = time.monotonic()

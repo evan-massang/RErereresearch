@@ -1,0 +1,395 @@
+{
+ "hypotheses": [
+  "H-QIMAKER"
+ ],
+ "is_synthetic": false,
+ "modality": "document",
+ "finding_type": "observed",
+ "preregistration": "reports/hypotheses/qimaker_preregistration.json (incl. amendment_1, frozen before any P&L)",
+ "data": "Tardis.dev free first-of-month samples: hyperliquid quotes (top-of-book snapshots, median cadence ~0.6 s) + trades. BTC/ETH/SOL parquet under data/raw/web/tardis/parquet_qimaker (raw csv.gz deleted; 0.33 GB raw downloaded incl. probes); PUMP from the HLANCHOR cache data/raw/web/tardis/parquet.",
+ "coin_selection": {
+  "rule": ">=70% of 1-s samples at exactly 1 tick and >=5,000 prints on first available day (train day for amendment candidates)",
+  "original_candidates": {
+   "WIF": {
+    "coin": "WIF",
+    "day": "2024-11-01",
+    "min_tick": 0.0001,
+    "frac_1tick": 0.3765,
+    "n_prints": 11445,
+    "n_snapshots": 122562,
+    "median_spread_bp": 0.872,
+    "qualifies": false
+   },
+   "kBONK": {
+    "coin": "kBONK",
+    "day": "2024-11-01",
+    "min_tick": 1e-06,
+    "frac_1tick": 0.2691,
+    "n_prints": 3523,
+    "n_snapshots": 107378,
+    "median_spread_bp": 1.492,
+    "qualifies": false
+   },
+   "FARTCOIN": {
+    "coin": "FARTCOIN",
+    "day": "2025-01-01",
+    "min_tick": 1e-05,
+    "frac_1tick": 0.0621,
+    "n_prints": 19795,
+    "n_snapshots": 114278,
+    "median_spread_bp": 4.371,
+    "qualifies": false
+   },
+   "PUMP": {
+    "coin": "PUMP",
+    "day": "2025-08-01",
+    "min_tick": 1e-06,
+    "frac_1tick": 0.7154,
+    "n_prints": 135234,
+    "n_snapshots": 141396,
+    "median_spread_bp": 3.857,
+    "qualifies": true
+   }
+  },
+  "amendment_candidates": {
+   "BTC": {
+    "coin": "BTC",
+    "day": "2024-11-01",
+    "min_tick": 1.0,
+    "frac_1tick": 0.9325,
+    "n_prints": 89674,
+    "n_snapshots": 126862,
+    "median_spread_bp": 0.144,
+    "qualifies": true
+   },
+   "ETH": {
+    "coin": "ETH",
+    "day": "2024-11-01",
+    "min_tick": 0.1,
+    "frac_1tick": 0.9276,
+    "n_prints": 38069,
+    "n_snapshots": 130920,
+    "median_spread_bp": 0.398,
+    "qualifies": true
+   },
+   "HYPE": {
+    "coin": "HYPE",
+    "day": "2025-01-01",
+    "min_tick": 0.001,
+    "frac_1tick": 0.177,
+    "n_prints": 188457,
+    "n_snapshots": 116990,
+    "median_spread_bp": 3.356,
+    "qualifies": false
+   },
+   "ZEC": {
+    "coin": "ZEC",
+    "qualifies": false,
+    "note": "no train day available"
+   },
+   "NEAR": {
+    "coin": "NEAR",
+    "day": "2024-11-01",
+    "min_tick": 0.0001,
+    "frac_1tick": 0.0822,
+    "n_prints": 2846,
+    "n_snapshots": 83760,
+    "median_spread_bp": 2.508,
+    "qualifies": false
+   },
+   "SOL": {
+    "coin": "SOL",
+    "day": "2024-11-01",
+    "min_tick": 0.01,
+    "frac_1tick": 0.9099,
+    "n_prints": 33313,
+    "n_snapshots": 118860,
+    "median_spread_bp": 0.6,
+    "qualifies": true
+   },
+   "XRP": {
+    "coin": "XRP",
+    "day": "2024-11-01",
+    "min_tick": 1e-05,
+    "frac_1tick": 0.1024,
+    "n_prints": 2777,
+    "n_snapshots": 43467,
+    "median_spread_bp": 1.745,
+    "qualifies": false
+   },
+   "SAND": {
+    "coin": "SAND",
+    "day": "2025-01-01",
+    "min_tick": 1e-05,
+    "frac_1tick": 0.0165,
+    "n_prints": 2067,
+    "n_snapshots": 90637,
+    "median_spread_bp": 1.746,
+    "qualifies": false
+   },
+   "SUI": {
+    "coin": "SUI",
+    "day": "2024-11-01",
+    "min_tick": 0.0001,
+    "frac_1tick": 0.3779,
+    "n_prints": 17593,
+    "n_snapshots": 123200,
+    "median_spread_bp": 1.021,
+    "qualifies": false
+   },
+   "ENA": {
+    "coin": "ENA",
+    "day": "2024-11-01",
+    "min_tick": 1e-05,
+    "frac_1tick": 0.0977,
+    "n_prints": 5007,
+    "n_snapshots": 88224,
+    "median_spread_bp": 3.01,
+    "qualifies": false
+   },
+   "WLD": {
+    "coin": "WLD",
+    "day": "2024-11-01",
+    "min_tick": 0.0001,
+    "frac_1tick": 0.4107,
+    "n_prints": 3311,
+    "n_snapshots": 113360,
+    "median_spread_bp": 1.047,
+    "qualifies": false
+   },
+   "DOGE": {
+    "coin": "DOGE",
+    "day": "2024-11-01",
+    "min_tick": 1e-05,
+    "frac_1tick": 0.2558,
+    "n_prints": 21583,
+    "n_snapshots": 133229,
+    "median_spread_bp": 1.836,
+    "qualifies": false
+   },
+   "LIT": {
+    "coin": "LIT",
+    "qualifies": false,
+    "note": "no train day available"
+   },
+   "PONS": {
+    "coin": "PONS",
+    "qualifies": false,
+    "note": "no train day available"
+   }
+  },
+  "final": [
+   "BTC",
+   "ETH",
+   "SOL",
+   "PUMP (validation only; no train data)"
+  ]
+ },
+ "fill_model": {
+  "latency_ms": 300,
+  "maker": "post-only at the touch; fills only on a print strictly through our price, or after cumulative prints AT our price exceed displayed queue ahead at arrival (Q0) + our size; no cancellations ahead assumed; cancel 300 ms with fills possible meanwhile",
+  "taker": "hlanchor_lib.taker_fill (reduce-only for exits)",
+  "fees_bp": {
+   "maker": 1.5,
+   "taker": 4.5,
+   "rebates": "none",
+   "source": "https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees (tier 0)"
+  },
+  "unit_usd": 1000,
+  "snapshot_limitation": "quotes are ~0.6 s top-of-book snapshots: the arrival snapshot is usually the decision snapshot, so post-only rejects and queue-ahead are measured at snapshot resolution; queue ahead is the displayed level size, cancellations unknown"
+ },
+ "bar": "n>=50 round trips, net>0, PF>1.2, net ex top-3 >0",
+ "scripts": [
+  "scripts/research/qimaker_coins.py",
+  "scripts/research/qimaker_fetch.py",
+  "scripts/research/qimaker_sim.py",
+  "scripts/research/hlanchor_lib.py (imported read-only, sha256 98166e5f6997f4e74228beb441c769bfef925c24853d46791b0ba75670ccc3ad)"
+ ],
+ "date": "2026-10-05",
+ "bug_fix_note": "First run used a tick rule that gave BTC a $10 tick above $100k (HL allows integer prices); fixed (cap sig-fig tick at 1.0) and the full train grid and the single selected validation config re-run. Selection unchanged. Pre-fix numbers kept below and in data/raw/web/tardis/results/qimaker/prefix_run/.",
+ "split": "validation (2025-07-01..2026-03-01, 9 days), ONE config selected on train, examined once (plus the pre-fix run, see bug_fix_note)",
+ "coverage": [
+  "2025-07-01:BTC",
+  "2025-07-01:ETH",
+  "2025-07-01:SOL",
+  "2025-08-01:BTC",
+  "2025-08-01:ETH",
+  "2025-08-01:PUMP",
+  "2025-08-01:SOL",
+  "2025-09-01:BTC",
+  "2025-09-01:ETH",
+  "2025-09-01:PUMP",
+  "2025-09-01:SOL",
+  "2025-10-01:BTC",
+  "2025-10-01:ETH",
+  "2025-10-01:PUMP",
+  "2025-10-01:SOL",
+  "2025-11-01:BTC",
+  "2025-11-01:ETH",
+  "2025-11-01:PUMP",
+  "2025-11-01:SOL",
+  "2025-12-01:BTC",
+  "2025-12-01:ETH",
+  "2025-12-01:PUMP",
+  "2025-12-01:SOL",
+  "2026-01-01:BTC",
+  "2026-01-01:ETH",
+  "2026-01-01:PUMP",
+  "2026-01-01:SOL",
+  "2026-02-01:BTC",
+  "2026-02-01:ETH",
+  "2026-02-01:PUMP",
+  "2026-02-01:SOL",
+  "2026-03-01:BTC",
+  "2026-03-01:ETH",
+  "2026-03-01:PUMP",
+  "2026-03-01:SOL"
+ ],
+ "configs": {
+  "th0.85_T30_nostop": {
+   "n": 21760,
+   "net": -16407.31,
+   "mean": -0.754,
+   "pf": 0.017,
+   "net_ex_top3": -16420.59,
+   "win": 0.028,
+   "passes": false,
+   "n_signals": 586358,
+   "n_orders": 677006,
+   "n_post_only_rejects": 9412,
+   "n_entry_fills": 21760,
+   "fill_markout1s_bp": -1.929,
+   "fill_markout5s_bp": -2.249,
+   "fill_markout30s_bp": -2.258,
+   "entry_fill_how": {
+    "through": 20452,
+    "queue": 1308
+   },
+   "signal_markout_bp1": 0.793,
+   "signal_markout_bp5": 1.206,
+   "signal_markout_bp30": 1.419,
+   "signal_markout_tk1": 2.195,
+   "signal_markout_tk5": 3.713,
+   "signal_markout_tk30": 4.547,
+   "exit_mix": {
+    "maker_exit": 19400,
+    "timeout": 2357,
+    "eod": 3
+   },
+   "by_coin": {
+    "BTC": {
+     "n": 5685,
+     "net": -3770.64
+    },
+    "ETH": {
+     "n": 7407,
+     "net": -5495.8
+    },
+    "PUMP": {
+     "n": 2090,
+     "net": -2224.57
+    },
+    "SOL": {
+     "n": 6578,
+     "net": -4916.3
+    }
+   },
+   "by_day": {
+    "2025-07-01": {
+     "n": 617,
+     "net": -425.97
+    },
+    "2025-08-01": {
+     "n": 3193,
+     "net": -2469.78
+    },
+    "2025-09-01": {
+     "n": 2559,
+     "net": -1882.33
+    },
+    "2025-10-01": {
+     "n": 2566,
+     "net": -1826.41
+    },
+    "2025-11-01": {
+     "n": 735,
+     "net": -554.4
+    },
+    "2025-12-01": {
+     "n": 3851,
+     "net": -2802.18
+    },
+    "2026-01-01": {
+     "n": 382,
+     "net": -360.34
+    },
+    "2026-02-01": {
+     "n": 4171,
+     "net": -3266.53
+    },
+    "2026-03-01": {
+     "n": 3686,
+     "net": -2819.38
+    }
+   },
+   "days_positive": 0,
+   "days": 9,
+   "gross_mean_bp_before_fees": -4.215,
+   "median_hold_s": 7.09,
+   "tick_bp_median_by_coinday": {
+    "2025-07-01:BTC": 0.094,
+    "2025-07-01:ETH": 0.409,
+    "2025-07-01:SOL": 0.673,
+    "2025-08-01:BTC": 0.087,
+    "2025-08-01:ETH": 0.276,
+    "2025-08-01:SOL": 0.594,
+    "2025-08-01:PUMP": 3.788,
+    "2025-09-01:BTC": 0.092,
+    "2025-09-01:ETH": 0.228,
+    "2025-09-01:SOL": 0.502,
+    "2025-09-01:PUMP": 2.95,
+    "2025-10-01:BTC": 0.086,
+    "2025-10-01:ETH": 0.233,
+    "2025-10-01:SOL": 0.46,
+    "2025-10-01:PUMP": 1.492,
+    "2025-11-01:BTC": 0.091,
+    "2025-11-01:ETH": 0.258,
+    "2025-11-01:SOL": 0.537,
+    "2025-11-01:PUMP": 2.187,
+    "2025-12-01:BTC": 0.116,
+    "2025-12-01:ETH": 0.355,
+    "2025-12-01:SOL": 0.79,
+    "2025-12-01:PUMP": 3.706,
+    "2026-01-01:BTC": 0.114,
+    "2026-01-01:ETH": 0.335,
+    "2026-01-01:SOL": 0.8,
+    "2026-01-01:PUMP": 4.979,
+    "2026-02-01:BTC": 0.128,
+    "2026-02-01:ETH": 0.418,
+    "2026-02-01:SOL": 0.957,
+    "2026-02-01:PUMP": 3.826,
+    "2026-03-01:BTC": 0.15,
+    "2026-03-01:ETH": 0.504,
+    "2026-03-01:SOL": 0.117,
+    "2026-03-01:PUMP": 5.188
+   }
+  }
+ },
+ "selected_config": "th0.85_T30_nostop (highest train net; no config met the bar)",
+ "sensitivity_through_only_fills_selected": {
+  "n": 21135,
+  "net": -16453.77,
+  "pf": 0.015,
+  "net_ex_top3": -16466.78,
+  "fill_markout5s_bp": -2.349,
+  "passes": false
+ },
+ "prefix_run_valid": {
+  "n": 20324,
+  "net": -15546.62,
+  "pf": 0.018,
+  "net_ex_top3": -15559.89,
+  "passes": false
+ },
+ "verdict": "FAIL: no config meets the bar on train; selected config fails validation (PF ~0.01-0.02, 0 positive days)"
+}
