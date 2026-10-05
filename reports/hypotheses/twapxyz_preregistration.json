@@ -1,0 +1,116 @@
+{
+ "hypothesis": "H-TWAPXYZ",
+ "status": "FROZEN pre-registration (no price outcome of any xyz TWAP computed before this)",
+ "drafted_at_utc": "2026-10-05T07:42:00Z",
+ "is_synthetic": false,
+ "computed_before_draft": "Outcome-free only. (1) Placement rows of data/raw/web/twap/twaps_*.parquet 06:07-07:27 UTC 2026-10-05 (read-only; recorder pid 25141 untouched): counts, coin, side, size, minutes, reduce-only, lag, announced notional (sz x ctx mark at/before first sight) and phi = notional / ctx day_ntl_vlm. (2) Presence/null-share of xyz ctx mids (no price path, return or drift computed). (3) HL metaAndAssetCtxs dex=xyz at 07:3x (growthMode, deployerFeeScale). (4) One l2Book snapshot of all 110 non-delisted xyz books 07:32-07:34 UTC (spread and $1k/$10k walk cost, reports/hypotheses/twapxyz_l2_snapshot_20261005T0732Z.csv, sha256 16f71495d44d2cc036918e33ff7b4c6c121c66557f40a7883fcd8ba7378c10a6). Scripts in the session scratchpad only.",
+ "sources": {
+  "idea": "sources/leads/documented_edges_round8.md idea 1 (H-TWAPXYZ)",
+  "template": "reports/hypotheses/twap_preregistration.json (H-TWAPRIDE, frozen 2026-10-05T07:03:05Z; not modified). Everything not stated here is identical to its 'common' and 'H-TWAPRIDE' blocks.",
+  "paper": "sources/leads/twap_paper_notes.md (Barone & Lillo, arXiv 2606.15715; DOCUMENT LEAD; validator perps only - HIP-3 TWAPs are NOT in its sample)",
+  "fees": "DOC https://docs.trade.xyz/perpetuals/mechanics/fees.md: growth-mode taker 0.0090% (0.9 bp) tier 0; MSTR-type and gold perps pay standard 9.0 bp (sources/leads/documented_edges_round8.md lines 40-41)",
+  "recorders": [
+   "scripts/research/twap_recorder.py (pid 25141; placements, twapHistory events, 1-min xyz ctx)",
+   "scripts/research/multivenue_recorder.py (pid 9984; hourly meta_xyz.jsonl from 07:19 UTC)",
+   "scripts/research/twapxyz_bbo_recorder.py (pid 14520, started 2026-10-05T07:40:53Z, --hours 75; xyz bbo every 2 s on price change + 5-min xyz meta) -> data/raw/web/twapxyz/"
+  ]
+ },
+ "statement": "Trading $1k as a taker on trade[XYZ] (HL HIP-3 dex 'xyz') in the direction of a freshly visible xyz TWAP on a growth-mode market, entered 1 s after first sight and held until at most H / its scheduled completion, earns more than the 0.9 bp/side fee, spread/slippage and funding, because the TWAP's own price impact builds during execution.",
+ "prior": "Unknown population. Paper (validator perps): 12-22 bp start->completion for 23 min-1 d TWAPs. Cost here ~2.5-4 bp round trip on liquid xyz books, ~8 bp by the frozen table in the 2-20M bucket where most TWAP names sit. Main kill risk: HIP-3 TWAPs are hedges by issuers/MMs with little drift. Small n.",
+ "ethics_gate": "Same as H-TWAPRIDE: paper only. RIDE is a predatory-trading-type strategy (Brunnermeier & Pedersen 2005) trading ahead of a disclosed order; the owner's ethics decision and jurisdiction check (sources/leads/twap_paper_notes.md section 3.4) are required before any live use, regardless of results. Equity-linked perps add a jurisdiction question (securities-like underlyings).",
+ "universe": "xyz builder-dex perps only (coin name prefix 'xyz:' or asset index in the xyz block of the recorder's meta). Main-dex, spot and other builder dexes (io, para, mkts, ...) excluded. Delisted names excluded.",
+ "qualifying_twap": [
+  "source row with initial == False",
+  "de-duplicate rows with identical hash (and, for hash-less 'hist' rows, identical user+block_time_ms); keep the first-seen",
+  "first_seen_ms - block_time_ms <= 60 s ('hist'-only rows tradeable under the same rule, as in TWAPRIDE)",
+  "reduce_only == False, error is null, no trigger (twapHistory trigger_px null and no 'waitingForTrigger' status known at decision)",
+  "30 <= minutes <= 1440",
+  "no terminal twapHistory status known at decision (events with poll_ms <= decision only)",
+  "growth mode at entry: the latest xyz meta snapshot with time <= decision (data/raw/web/twapxyz/meta_*, else data/raw/web/multivenue/meta_xyz.jsonl) shows growthMode == 'enabled' and not delisted. For decisions before the first snapshot (06:07-07:19 UTC 2026-10-05) the 07:19 snapshot is used; justified because at 07:32 every xyz market's lastFeeScaleChangeTime was <= 2026-10-01T00:59Z. Names not in growth mode at 07:32: xyz:GOLD, xyz:MSTR, xyz:BMNR, xyz:STRC, xyz:PURRDAT (+ 13 delisted). These are skipped (logged), not traded at 9 bp.",
+  "announced notional N = sz * xyz ctx mark (latest ctx poll with ts_ms <= first_seen_ms) >= 10,000 USD; if no xyz ctx poll within 180 s before first sight, skip (logged)",
+  "trailing 24h xyz notional V24 = ctx day_ntl_vlm at that same poll >= 2,000,000 USD (same as TWAPRIDE; the l2 snapshot shows median $1k side cost 5.0 bp, p90 37 bp below 2M)"
+ ],
+ "features_point_in_time": {
+  "phi": "N / V24, both from the xyz ctx poll at or before first sight (trailing, point-in-time)",
+  "session": "us_cash_open = decision time inside NYSE regular hours Mon-Fri 13:30-20:00 UTC (EDT; all split days 2026-10-05..10-09 are NYSE trading days); us_cash_closed = all other times. Applied to every xyz name, including non-US underlyings (CL, BRENTOIL, SILVER, FX, Korean/Japanese names) - per-asset-class results are a diagnostic only. During us_cash_closed the xyz price is formed by its own book (the oracle has no live cash reference), which is the case the session arm isolates.",
+  "rule": "No feature may use any ctx, meta, bbo, event or twap row with timestamp > decision time."
+ },
+ "decision_time": "first_seen_ms + 1,000 ms (as TWAPRIDE; the lead's +300 ms is only used in the informational bbo arm, since the primary price source is 1-min)",
+ "price_source": {
+  "primary": "xyz ctx 'mid' from data/raw/web/twap/ctx_*.parquet (twap_recorder polls metaAndAssetCtxs dex=xyz every ~60 s while any xyz TWAP is tracked; checked 06:07-07:27: 82 xyz polls = every main-dex minute, 131 coins, mids null only for delisted/halted names). Fill reference = mid of the FIRST xyz ctx poll with ts_ms >= decision (0-60 s late). Null mid or poll gap > 180 s -> skip (logged). Exits likewise use the first xyz ctx poll >= the exit time.",
+  "why_not_bbo_primary": "twapxyz_bbo_recorder started 07:40:53Z, after train began (06:07Z); using 1-min ctx mids keeps one price source across all splits, as TWAPRIDE."
+ },
+ "entry": "taker in TWAP direction (B -> long, A -> short) at the fill reference + per-side slippage + fee",
+ "exit": "taker at the earliest of: (a) grid H (first xyz ctx poll >= entry + H); (b) scheduled completion (block_time_ms + minutes*60,000), exit at first poll >= completion - 60 s; (c) first poll after a twapHistory event with poll_ms > entry shows terminated/stopped/error; (d) disaster stop: 3% adverse move on ctx mid -> exit at next poll. Not a grid parameter.",
+ "costs": {
+  "fee": "0.9 bp per side x deployerFeeScale (all 1.0 at 07:32) for growth-mode markets, from the latest meta snapshot at or before each fill; if growth mode is off at exit time, the exit pays 9.0 bp x deployerFeeScale (standard HIP-3 tier 0).",
+  "slippage_per_side_usd1k": {
+   "table_by_trailing_V24": {
+    "V24 >= 100M": 1.0,
+    "20M <= V24 < 100M": 2.0,
+    "2M <= V24 < 20M": 3.0
+   },
+   "evidence": "l2Book snapshot 2026-10-05 07:32-07:34 UTC (03:32 ET Monday, US cash closed), growth-mode names, max of buy/sell $1k walk cost vs mid, bp: >=100M n=1 0.16; 20-100M n=8 median 0.44 p90 1.31 max 1.98; 2-20M n=28 median 0.84 p90 3.01 max 36.4; <2M n=68 median 5.0 p90 37.4 (excluded by V24 filter). Table >= p90 of each bucket and >= max of the two upper buckets.",
+   "rule": "per side slippage = max(table, recorded half-spread from data/raw/web/twapxyz/bbo_* last row for the coin with ts_us <= fill time if that row is <= 60 s old). Where the bbo recorder has no row (before 07:40:53Z, gaps), table only. If top-of-book size on the taken side < $1k, add the table value again for that side (thin top).",
+   "cash_hours_check": "The bbo recorder measures spreads during 13:30-20:00 UTC; the per-trade max() rule above absorbs wider cash-hour spreads. The table itself is frozen and not revised."
+  },
+  "funding": "HIP-3 hourly funding on the position for every hour crossed, using the xyz ctx 'funding' of the last poll before the hour (sign by side).",
+  "no_zero_impact_fills": true
+ },
+ "position_sizing": "$1,000 notional per trade; at most one open position per name. A qualifying TWAP on a name with an open position is skipped (overlapping same-direction TWAPs count once; opposite-direction ones are skipped too), logged. Max 20 concurrent positions.",
+ "grid": {
+  "phi_min": [
+   0.003,
+   0.01
+  ],
+  "H": [
+   "30 min",
+   "2 h",
+   "completion capped at 6 h (min(completion - 60 s, entry + 6 h))"
+  ],
+  "session": [
+   "all hours",
+   "us_cash_closed only (decision time outside 13:30-20:00 UTC Mon-Fri)"
+  ],
+  "n_configs": 12,
+  "note": "Grid as written in documented_edges_round8.md idea 1. 30 min and 2 h are also capped by completion (exit rule a/b: earliest)."
+ },
+ "splits": {
+  "train": "recording days 1-2: decision time in [2026-10-05T06:07Z, 2026-10-07T06:07Z) AND scheduled latest exit < 2026-10-07T06:07Z (straddling trades dropped, logged)",
+  "validation": "recording day 3: decisions in [2026-10-07T06:07Z, 2026-10-08T06:07Z); exits may run past. Requires twap_recorder restart at its 48 h stop (twap_data_notes.md); gaps reported, not filled.",
+  "forward": "days after day 3, frozen selected config only",
+  "holdout": "none separate; forward plays that role. No re-tuning after freeze.",
+  "n_contingency_decided_now": "Decided now on COUNTS ONLY (no outcome is needed to apply it): if at 2026-10-07T06:07Z the train count of the loosest config (phi >= 0.3%, all hours, any H) is < 50, train is extended by whole recording days (day 3, then day 4, max to day 5 inclusive) until that count is >= 50, and validation becomes the next whole recording day, extendable as in TWAPRIDE by up to 2 more days for the selected config only. If the loosest config cannot reach 50 by day 5, the verdict is INSUFFICIENT-N and no config is scored. Counting uses only qualifying-rule fields (placement rows, ctx volume/mark, meta, twapHistory status), never prices after entry."
+ },
+ "bar_per_split": "n >= 50 round trips, net USD > 0 after all costs, profit factor > 1.2, net USD without the 3 best trades > 0 (same as TWAPRIDE)",
+ "selection": "Pick ONE config on train: among configs meeting the bar on train, highest train net USD (tie: higher PF). If none meets it, the highest-net train config is still run once on validation for documentation and the verdict is FAIL.",
+ "verdict": "PASS only if the selected config meets the bar on train AND on validation (run once). Validation n < 50 -> INSUFFICIENT-N, extendable by whole days to day 5 for that config only (as TWAPRIDE).",
+ "kill_test_from_lead": "Diagnostic computed on train only, after the first 30 qualifying trades in time order of config phi >= 0.3% / all hours / completion: if the mean signed xyz mid move fill-reference -> exit is < 4 bp, the forward test is not started regardless of the bar (reported as KILL). It cannot make a failing config pass.",
+ "diagnostics_reported": [
+  "per name-day net; net excluding the single most frequent name (CBRS had 18 of 82 xyz TWAPs running at recorder start)",
+  "name-day cluster bootstrap 90% CI of mean net bp",
+  "us_cash_open vs us_cash_closed and asset class (US single stock / index-ETF / commodity / FX / non-US equity)",
+  "gross signed drift entry->exit vs the paper-implied 10^-0.78 * phi^0.303 * sigma (paper is validator perps; comparison only)",
+  "secondary arm A (informational, never used for selection): same trades filled on recorded bbo at decision = first_seen + 300 ms (taker at ask/bid, + table value if top size < $1k), exit on bbo, fee 0.9 bp; only for trades fully inside bbo coverage",
+  "secondary arm B (informational): main-dex-style cost check, i.e. same trades at TWAPRIDE's 4.5 bp fee, to show how much of any edge is the fee",
+  "share of qualifying TWAPs later terminated vs finished; skip counts by reason (not growth mode, V24 < 2M, N < 10k, lag, open position, poll gap)",
+  "entry delay distribution and xyz ctx / bbo coverage gaps"
+ ],
+ "data_gaps_at_freeze": [
+  "xyz ctx in twap_recorder is polled only while an xyz TWAP is tracked; it was continuous 06:07-07:27 (xyz TWAPs of up to 10,080 min are running), but a stretch with no tracked xyz TWAP would have no xyz mids - harmless for entries (a new TWAP is tracked at first sight) except that V24/mark 'at or before first sight' may then be missing -> skip rule above.",
+  "twap_recorder ctx has no growthMode / deployerFeeScale / bid-ask: covered by multivenue meta_xyz.jsonl (hourly, from 07:19, pid 9984, 48 h) and twapxyz meta (5 min, from 07:40:53, pid 14520, 75 h).",
+  "No xyz bbo before 07:40:53Z, and none from multivenue except 8 names (TSLA, NVDA, MU, INTC, COIN, MSTR, GOLD, SILVER): slippage = table only for those early train trades.",
+  "No xyz trade prints for most names: no maker arm.",
+  "twapxyz_bbo_recorder stops after 75 h (~2026-10-08T10:41Z) and both other recorders after 48 h; any contingency extension needs restarts (gaps reported, not filled).",
+  "Slippage table rests on one off-hours snapshot.",
+  "Counts: one 24 h Hypurrscan snapshot (Sunday-Monday, current volume) + 1.3 h of recorded flow."
+ ],
+ "expected_trades": "OWN-PRECHECK (Hypurrscan 24 h to 07:10 UTC, current volume; documented_edges_round8.md): 73 xyz TWAPs, 19 builder-dex with phi >= 0.3% / >= 30 min / not reduce-only, ~8 with phi >= 1%. Recorded flow 06:10-07:27 (1.3 h, initial excluded): 13 new xyz placements, 8 reduce-only or 5 min; 3 qualifying (SKHX 30 min phi 0.78%, CBRS 90 min 0.38%, CRCL 210 min 0.40%, all growth mode, V24 5-47M), 0 at phi >= 1% -> ~55/day naive (Poisson 95% 11-160/day). Initial stock: 13 running xyz TWAPs would pass size/duration filters, 8 at phi >= 0.3%, 5 at >= 1%. Best guess after growth-mode, N >= 10k, V24 >= 2M and one-per-name caps: ~10-25/day at phi >= 0.3%, ~4-8/day at >= 1%; us_cash_closed arms roughly 60-70% of those. Train (2 days) is likely 20-50 at 0.3% and < 20 at 1%, so INSUFFICIENT-N and the count-only extension rule above are likely to bind.",
+ "open_items": [
+  "Add the hypothesis via `python -m pipeline add-hypothesis --rationale` (paper lead + round-8 lead as evidence).",
+  "Owner's ethics/jurisdiction answers (twap_paper_notes.md 3.4) gate anything beyond paper.",
+  "Check data/raw/web/twapxyz/ disk use after the first full cash session; if > 50 MB/day, stop pid 14520 and restart with SAMPLE_S = 5 (affects only the informational arm and the max() slippage rule, logged)."
+ ],
+ "no_changes": "No parameter, filter, fee, slippage table, price source, split, contingency or bar changes after freezing.",
+ "frozen_at_utc": "2026-10-05T07:42:36Z"
+}
