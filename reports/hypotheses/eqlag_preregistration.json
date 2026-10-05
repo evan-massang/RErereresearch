@@ -1,0 +1,61 @@
+{
+ "hypothesis": "H-EQLAG",
+ "written_at_utc": "2026-10-05T07:10:00Z",
+ "written_before_data": "Written before scripts/research/multivenue_recorder.py recorded any data. Only the OWN-PRECHECK spread snapshot and the 2026-10-05 07:0x metaAndAssetCtxs/orderBooks metadata (fees, growth mode, market ids; no prices analysed) have been seen.",
+ "statement": "On tokenized-equity and metal perps listed on Binance USD-M, Hyperliquid HIP-3 trade[XYZ] and Lighter, when the leading venue's mid moves >= theta bp within 2 s and a follower's mid has moved < theta/2, a follower taker order in the leader's direction, held H seconds, is profitable after fees and the recorded spread.",
+ "source": "sources/leads/documented_edges_round7.md idea 2 (grid theta x H x follower kept as written there; the latency dimension is carried by the follower: xyz 300 ms, Lighter 300 + 300 ms speed bump).",
+ "names": {
+  "TSLA": {"binance": "TSLAUSDT", "xyz": "xyz:TSLA", "lighter": "TSLA"},
+  "NVDA": {"binance": "NVDAUSDT", "xyz": "xyz:NVDA", "lighter": "NVDA"},
+  "MU": {"binance": "MUUSDT", "xyz": "xyz:MU", "lighter": "MU"},
+  "INTC": {"binance": "INTCUSDT", "xyz": "xyz:INTC", "lighter": "INTC"},
+  "COIN": {"binance": "COINUSDT", "xyz": "xyz:COIN", "lighter": "COIN"},
+  "MSTR": {"binance": "MSTRUSDT", "xyz": "xyz:MSTR", "lighter": "MSTR"},
+  "XAU": {"binance": "XAUUSDT", "xyz": "xyz:GOLD", "lighter": "XAU"},
+  "XAG": {"binance": "XAGUSDT", "xyz": "xyz:SILVER", "lighter": "XAG"}
+ },
+ "data": {
+  "recorder": "scripts/research/multivenue_recorder.py -> data/raw/web/multivenue/<venue>_<kind>_<YYYY-MM-DD-HH>.parquet",
+  "streams": "binance bbo (bookTicker), hyperliquid bbo + trades (coin xyz:<NAME>), lighter bbo (ticker channel) + trades; hourly xyz metaAndAssetCtxs and Lighter orderBooks metadata snapshots (meta_*.jsonl)",
+  "clock_rule": "Local receive timestamps (microseconds). A venue state 'at time t' is the last recorded row with ts_us <= t.",
+  "split": {
+   "T0": "launch time of the 48-h recorder run (recorder.log 'start' line; also in reports/hypotheses/multivenue_plan.md). Rows before T0 are never scored.",
+   "day1_train": "[T0, T0+24h): leader map (pre-check 0) + all 12 configs; ONE config selected",
+   "day2_validation": "[T0+24h, T0+48h): the selected config only, run ONCE, with the day-1 leader map unchanged",
+   "forward": "freeze after day 2; score only data received after the freeze time"
+  },
+  "sessions": "cash_open = Mon-Fri 13:30-20:00 UTC (NYSE regular hours, EDT); cash_closed = all other times. Used for the leader map and reported separately; the grid is not split by session.",
+  "gaps": "No trigger while any of the three venues has no bbo row for that name for > 30 s; positions crossing a gap close at the first state after it and are flagged."
+ },
+ "precheck0_leader_map_day1": {
+  "method": "For each name x session on day 1: sample each venue's mid on a 100 ms grid (last state), log returns; cross-correlation for each venue pair at lags -2 s..+2 s in 100 ms steps. Venue A leads B if sum of corr at lags where A precedes B exceeds the sum where B precedes A. The leader is the venue that leads both others.",
+  "fallback": "If no venue leads both others, or a name x session has < 1,000 non-zero 100 ms leader returns, the leader is Binance.",
+  "followers": "the venues among {xyz, lighter} that are not the leader",
+  "frozen": "the map is written to reports/hypotheses/eqlag_leader_map.json before any P&L is computed and is not changed afterwards"
+ },
+ "rule": {
+  "trigger": "At each leader bbo row (t = its ts_us): r = mid_lead(t)/mid_lead(t-2s) - 1; trigger if |r| >= theta, d = sign(r); require the follower's d * (mid_f(t)/mid_f(t-2s) - 1) < theta/2.",
+  "entry": "Follower taker in direction d. Fill time t_in = t + L (xyz: 300 ms; Lighter: 600 ms = ~300 ms ours + 300 ms Standard-account taker speed bump). Buy at the last recorded follower best ask at t_in, sell at best bid.",
+  "exit": "Exit decision at t_in + H; fill at t_out = t_in + H + L at the last recorded opposite best.",
+  "position_rules": "one position per name per follower; cooldown 10 s after exit fill",
+  "size": "target $1,000; entry size = min($1,000, displayed opposite top-of-book notional at t_in); skip (counted) if < $100. Exit size beyond the displayed opposite top at t_out fills one full spread worse.",
+  "fees_per_side": {
+   "lighter": "0 bp (Standard account, DOC)",
+   "xyz_growth_mode": "0.9 bp taker (tier 0, base rate, DOC) for names whose meta snapshot shows growthMode 'enabled'",
+   "xyz_standard": "9.0 bp taker (tier 0 standard HIP-3 = 2x validator fees, DOC) for names without growthMode enabled. At 2026-10-05 07:0x UTC this was xyz:GOLD and xyz:MSTR (the trade.xyz doc says gold and crypto-wrapper perps such as MSTR are not eligible for growth mode).",
+   "rule": "the fee for each trade uses the latest hourly meta snapshot at or before the entry time (growthMode and deployerFeeScale; the fee is multiplied by deployerFeeScale/1.0)"
+  },
+  "funding": "ignored (holds <= 31 s)",
+  "pnl_unit": "USD per round trip; bp = USD / notional * 1e4"
+ },
+ "grid": {
+  "theta_bp": [5, 10, 20],
+  "H_s": [5, 30],
+  "follower_and_latency": [{"follower": "xyz", "L_ms": 300}, {"follower": "lighter", "L_ms": 600}],
+  "n_configs": 12
+ },
+ "selection_rule_day1": "Among configs with n >= 30 round trips on day 1 (pooled over names), select the highest profit factor (ties: larger n). If none has net USD > 0 and PF > 1.0, H-EQLAG is KILLED and day 2 is not run. The selected config must also be net > 0 with +0.5 bp extra cost per round trip, else take the next-best that is.",
+ "validation_day2": "Selected config once on day 2. Bar: n >= 50, net USD > 0, PF > 1.2, net without top-3 trades > 0. n < 50 = INCONCLUSIVE; freeze anyway and continue forward until n >= 50, no re-selection.",
+ "reporting": "All 12 day-1 configs by name and session (n, net, mean bp, PF, skips), the leader map, the day-2 result; losses included.",
+ "no_changes": "No change to names, grid, fill model, fees rule, split, leader-map method or selection rule after this file is written."
+}
