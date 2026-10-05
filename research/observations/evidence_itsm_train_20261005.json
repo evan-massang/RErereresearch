@@ -1,0 +1,491 @@
+{
+ "hypothesis": "H-ITSM",
+ "split": "train",
+ "is_synthetic": false,
+ "modality": "document",
+ "source": "data.binance.vision USDT-M 15m klines; own computation",
+ "preregistration": "reports/hypotheses/itsm_preregistration.json",
+ "costs": "primary 13 bp round trip (HL 4.5 + 2 slip per side); *_binance 14 bp",
+ "results": {
+  "F30_L30_k0": {
+   "n": 37835,
+   "days": 1277,
+   "net_sum_pct": -4248.19,
+   "mean_bp": -11.23,
+   "gross_mean_bp": 1.77,
+   "mean_bp_binance": -12.23,
+   "net_sum_pct_binance": -4626.54,
+   "pf": 0.606,
+   "net_ex_top3_pct": -4284.81,
+   "win_rate": 0.374,
+   "daily_t": -10.21,
+   "pos_days": 0.262,
+   "long_mean_bp": -9.02,
+   "short_mean_bp": -13.55,
+   "n_long": 19357,
+   "by_year": {
+    "2022": {
+     "n": 10754,
+     "net_sum_pct": -1105.34,
+     "mean_bp": -10.28
+    },
+    "2023": {
+     "n": 10814,
+     "net_sum_pct": -1471.88,
+     "mean_bp": -13.61
+    },
+    "2024": {
+     "n": 10875,
+     "net_sum_pct": -1140.52,
+     "mean_bp": -10.49
+    },
+    "2025": {
+     "n": 5392,
+     "net_sum_pct": -530.46,
+     "mean_bp": -9.84
+    }
+   },
+   "pass": false
+  },
+  "F30_L30_k1": {
+   "n": 9112,
+   "days": 1178,
+   "net_sum_pct": -797.21,
+   "mean_bp": -8.75,
+   "gross_mean_bp": 4.25,
+   "mean_bp_binance": -9.75,
+   "net_sum_pct_binance": -888.33,
+   "pf": 0.711,
+   "net_ex_top3_pct": -815.95,
+   "win_rate": 0.391,
+   "daily_t": -3.6,
+   "pos_days": 0.368,
+   "long_mean_bp": -7.17,
+   "short_mean_bp": -10.48,
+   "n_long": 4768,
+   "by_year": {
+    "2022": {
+     "n": 2597,
+     "net_sum_pct": -150.44,
+     "mean_bp": -5.79
+    },
+    "2023": {
+     "n": 2755,
+     "net_sum_pct": -363.6,
+     "mean_bp": -13.2
+    },
+    "2024": {
+     "n": 2687,
+     "net_sum_pct": -245.8,
+     "mean_bp": -9.15
+    },
+    "2025": {
+     "n": 1073,
+     "net_sum_pct": -37.37,
+     "mean_bp": -3.48
+    }
+   },
+   "pass": false
+  },
+  "F60_L60_k0": {
+   "n": 37936,
+   "days": 1277,
+   "net_sum_pct": -4929.71,
+   "mean_bp": -12.99,
+   "gross_mean_bp": 0.01,
+   "mean_bp_binance": -13.99,
+   "net_sum_pct_binance": -5309.07,
+   "pf": 0.675,
+   "net_ex_top3_pct": -4964.76,
+   "win_rate": 0.414,
+   "daily_t": -7.87,
+   "pos_days": 0.324,
+   "long_mean_bp": -10.9,
+   "short_mean_bp": -15.06,
+   "n_long": 18811,
+   "by_year": {
+    "2022": {
+     "n": 10772,
+     "net_sum_pct": -1491.44,
+     "mean_bp": -13.85
+    },
+    "2023": {
+     "n": 10855,
+     "net_sum_pct": -1652.9,
+     "mean_bp": -15.23
+    },
+    "2024": {
+     "n": 10894,
+     "net_sum_pct": -1346.77,
+     "mean_bp": -12.36
+    },
+    "2025": {
+     "n": 5415,
+     "net_sum_pct": -438.6,
+     "mean_bp": -8.1
+    }
+   },
+   "pass": false
+  },
+  "F60_L60_k1": {
+   "n": 9338,
+   "days": 1164,
+   "net_sum_pct": -1046.76,
+   "mean_bp": -11.21,
+   "gross_mean_bp": 1.79,
+   "mean_bp_binance": -12.21,
+   "net_sum_pct_binance": -1140.14,
+   "pf": 0.742,
+   "net_ex_top3_pct": -1081.39,
+   "win_rate": 0.429,
+   "daily_t": -2.93,
+   "pos_days": 0.415,
+   "long_mean_bp": -7.58,
+   "short_mean_bp": -14.89,
+   "n_long": 4706,
+   "by_year": {
+    "2022": {
+     "n": 2665,
+     "net_sum_pct": -369.23,
+     "mean_bp": -13.85
+    },
+    "2023": {
+     "n": 2763,
+     "net_sum_pct": -502.68,
+     "mean_bp": -18.19
+    },
+    "2024": {
+     "n": 2649,
+     "net_sum_pct": -180.77,
+     "mean_bp": -6.82
+    },
+    "2025": {
+     "n": 1261,
+     "net_sum_pct": 5.92,
+     "mean_bp": 0.47
+    }
+   },
+   "pass": false
+  },
+  "PF_k0": {
+   "n": 37907,
+   "days": 1277,
+   "net_sum_pct": -4769.98,
+   "mean_bp": -12.58,
+   "gross_mean_bp": 0.42,
+   "mean_bp_binance": -13.58,
+   "net_sum_pct_binance": -5149.05,
+   "pf": 0.684,
+   "net_ex_top3_pct": -4805.03,
+   "win_rate": 0.41,
+   "daily_t": -7.65,
+   "pos_days": 0.321,
+   "long_mean_bp": -10.48,
+   "short_mean_bp": -14.68,
+   "n_long": 18916,
+   "by_year": {
+    "2022": {
+     "n": 10772,
+     "net_sum_pct": -1420.17,
+     "mean_bp": -13.18
+    },
+    "2023": {
+     "n": 10815,
+     "net_sum_pct": -1487.08,
+     "mean_bp": -13.75
+    },
+    "2024": {
+     "n": 10906,
+     "net_sum_pct": -1187.06,
+     "mean_bp": -10.88
+    },
+    "2025": {
+     "n": 5414,
+     "net_sum_pct": -675.66,
+     "mean_bp": -12.48
+    }
+   },
+   "pass": false
+  },
+  "PF_k1": {
+   "n": 9043,
+   "days": 1131,
+   "net_sum_pct": -1212.28,
+   "mean_bp": -13.41,
+   "gross_mean_bp": -0.41,
+   "mean_bp_binance": -14.41,
+   "net_sum_pct_binance": -1302.71,
+   "pf": 0.705,
+   "net_ex_top3_pct": -1245.72,
+   "win_rate": 0.411,
+   "daily_t": -3.62,
+   "pos_days": 0.393,
+   "long_mean_bp": -12.74,
+   "short_mean_bp": -14.09,
+   "n_long": 4575,
+   "by_year": {
+    "2022": {
+     "n": 2554,
+     "net_sum_pct": -400.31,
+     "mean_bp": -15.67
+    },
+    "2023": {
+     "n": 2647,
+     "net_sum_pct": -458.09,
+     "mean_bp": -17.31
+    },
+    "2024": {
+     "n": 2535,
+     "net_sum_pct": -169.15,
+     "mean_bp": -6.67
+    },
+    "2025": {
+     "n": 1307,
+     "net_sum_pct": -184.73,
+     "mean_bp": -14.13
+    }
+   },
+   "pass": false
+  },
+  "PL_k0": {
+   "n": 37695,
+   "days": 1277,
+   "net_sum_pct": -6204.53,
+   "mean_bp": -16.46,
+   "gross_mean_bp": -3.46,
+   "mean_bp_binance": -17.46,
+   "net_sum_pct_binance": -6581.48,
+   "pf": 0.479,
+   "net_ex_top3_pct": -6246.21,
+   "win_rate": 0.342,
+   "daily_t": -13.95,
+   "pos_days": 0.234,
+   "long_mean_bp": -14.1,
+   "short_mean_bp": -18.84,
+   "n_long": 18928,
+   "by_year": {
+    "2022": {
+     "n": 10726,
+     "net_sum_pct": -1811.45,
+     "mean_bp": -16.89
+    },
+    "2023": {
+     "n": 10733,
+     "net_sum_pct": -1496.56,
+     "mean_bp": -13.94
+    },
+    "2024": {
+     "n": 10859,
+     "net_sum_pct": -1761.62,
+     "mean_bp": -16.22
+    },
+    "2025": {
+     "n": 5377,
+     "net_sum_pct": -1134.9,
+     "mean_bp": -21.11
+    }
+   },
+   "pass": false
+  },
+  "PL_k1": {
+   "n": 8990,
+   "days": 1131,
+   "net_sum_pct": -1677.75,
+   "mean_bp": -18.66,
+   "gross_mean_bp": -5.66,
+   "mean_bp_binance": -19.66,
+   "net_sum_pct_binance": -1767.65,
+   "pf": 0.536,
+   "net_ex_top3_pct": -1719.44,
+   "win_rate": 0.361,
+   "daily_t": -5.62,
+   "pos_days": 0.337,
+   "long_mean_bp": -9.96,
+   "short_mean_bp": -27.15,
+   "n_long": 4439,
+   "by_year": {
+    "2022": {
+     "n": 2489,
+     "net_sum_pct": -385.96,
+     "mean_bp": -15.51
+    },
+    "2023": {
+     "n": 2705,
+     "net_sum_pct": -382.84,
+     "mean_bp": -14.15
+    },
+    "2024": {
+     "n": 2596,
+     "net_sum_pct": -474.41,
+     "mean_bp": -18.27
+    },
+    "2025": {
+     "n": 1200,
+     "net_sum_pct": -434.54,
+     "mean_bp": -36.21
+    }
+   },
+   "pass": false
+  },
+  "BOTH_k0": {
+   "n": 19151,
+   "days": 1262,
+   "net_sum_pct": -2802.56,
+   "mean_bp": -14.63,
+   "gross_mean_bp": -1.63,
+   "mean_bp_binance": -15.63,
+   "net_sum_pct_binance": -2994.07,
+   "pf": 0.516,
+   "net_ex_top3_pct": -2831.27,
+   "win_rate": 0.348,
+   "daily_t": -9.5,
+   "pos_days": 0.262,
+   "long_mean_bp": -12.86,
+   "short_mean_bp": -16.51,
+   "n_long": 9843,
+   "by_year": {
+    "2022": {
+     "n": 5654,
+     "net_sum_pct": -792.36,
+     "mean_bp": -14.01
+    },
+    "2023": {
+     "n": 5402,
+     "net_sum_pct": -787.78,
+     "mean_bp": -14.58
+    },
+    "2024": {
+     "n": 5452,
+     "net_sum_pct": -745.13,
+     "mean_bp": -13.67
+    },
+    "2025": {
+     "n": 2643,
+     "net_sum_pct": -477.29,
+     "mean_bp": -18.06
+    }
+   },
+   "pass": false
+  },
+  "BOTH_k1": {
+   "n": 1331,
+   "days": 447,
+   "net_sum_pct": -195.51,
+   "mean_bp": -14.69,
+   "gross_mean_bp": -1.69,
+   "mean_bp_binance": -15.69,
+   "net_sum_pct_binance": -208.82,
+   "pf": 0.63,
+   "net_ex_top3_pct": -211.53,
+   "win_rate": 0.34,
+   "daily_t": -3.08,
+   "pos_days": 0.38,
+   "long_mean_bp": -8.06,
+   "short_mean_bp": -21.51,
+   "n_long": 675,
+   "by_year": {
+    "2022": {
+     "n": 413,
+     "net_sum_pct": -60.35,
+     "mean_bp": -14.61
+    },
+    "2023": {
+     "n": 408,
+     "net_sum_pct": -94.46,
+     "mean_bp": -23.15
+    },
+    "2024": {
+     "n": 353,
+     "net_sum_pct": -26.24,
+     "mean_bp": -7.43
+    },
+    "2025": {
+     "n": 157,
+     "net_sum_pct": -14.46,
+     "mean_bp": -9.21
+    }
+   },
+   "pass": false
+  },
+  "US_k0": {
+   "n": 37776,
+   "days": 1277,
+   "net_sum_pct": -4519.77,
+   "mean_bp": -11.96,
+   "gross_mean_bp": 1.04,
+   "mean_bp_binance": -12.96,
+   "net_sum_pct_binance": -4897.53,
+   "pf": 0.627,
+   "net_ex_top3_pct": -4545.8,
+   "win_rate": 0.383,
+   "daily_t": -8.23,
+   "pos_days": 0.297,
+   "long_mean_bp": -12.46,
+   "short_mean_bp": -11.54,
+   "n_long": 17610,
+   "by_year": {
+    "2022": {
+     "n": 10733,
+     "net_sum_pct": -1614.4,
+     "mean_bp": -15.04
+    },
+    "2023": {
+     "n": 10755,
+     "net_sum_pct": -936.32,
+     "mean_bp": -8.71
+    },
+    "2024": {
+     "n": 10879,
+     "net_sum_pct": -1393.76,
+     "mean_bp": -12.81
+    },
+    "2025": {
+     "n": 5409,
+     "net_sum_pct": -575.28,
+     "mean_bp": -10.64
+    }
+   },
+   "pass": false
+  },
+  "US_k1": {
+   "n": 9311,
+   "days": 1041,
+   "net_sum_pct": -1273.9,
+   "mean_bp": -13.68,
+   "gross_mean_bp": -0.68,
+   "mean_bp_binance": -14.68,
+   "net_sum_pct_binance": -1367.01,
+   "pf": 0.622,
+   "net_ex_top3_pct": -1296.25,
+   "win_rate": 0.39,
+   "daily_t": -4.42,
+   "pos_days": 0.367,
+   "long_mean_bp": -13.53,
+   "short_mean_bp": -13.81,
+   "n_long": 4180,
+   "by_year": {
+    "2022": {
+     "n": 2702,
+     "net_sum_pct": -545.23,
+     "mean_bp": -20.18
+    },
+    "2023": {
+     "n": 2507,
+     "net_sum_pct": -176.81,
+     "mean_bp": -7.05
+    },
+    "2024": {
+     "n": 2695,
+     "net_sum_pct": -401.97,
+     "mean_bp": -14.92
+    },
+    "2025": {
+     "n": 1407,
+     "net_sum_pct": -149.89,
+     "mean_bp": -10.65
+    }
+   },
+   "pass": false
+  }
+ }
+}

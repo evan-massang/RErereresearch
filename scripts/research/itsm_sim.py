@@ -139,7 +139,7 @@ def run(split, only=None):
         name, k = c["id"].rsplit("_k", 1)
         T = trades(W, name, int(k))
         T = T[(T.day >= lo) & (T.day <= hi)]
-        s = stats(T); s["pass"] = passes(s)
+        s = stats(T); s["pass"] = bool(passes(s))
         out[c["id"]] = s
         T.to_parquet(D / f"trades_{split}_{c['id']}.parquet", index=False)
         print(c["id"], {k_: s.get(k_) for k_ in ("n", "net_sum_pct", "mean_bp", "gross_mean_bp", "pf", "net_ex_top3_pct", "daily_t", "pos_days", "pass")}, flush=True)
@@ -156,4 +156,4 @@ if __name__ == "__main__":
     (ROOT / f"research/observations/evidence_itsm_{split}{tag}_20261005.json").write_text(json.dumps({
         "hypothesis": "H-ITSM", "split": split, "is_synthetic": False, "modality": "document",
         "source": "data.binance.vision USDT-M 15m klines; own computation", "preregistration": "reports/hypotheses/itsm_preregistration.json",
-        "costs": "primary 13 bp round trip (HL 4.5 + 2 slip per side); *_binance 14 bp", "results": res}, indent=1))
+        "costs": "primary 13 bp round trip (HL 4.5 + 2 slip per side); *_binance 14 bp", "results": res}, indent=1, default=lambda o: o.item()))

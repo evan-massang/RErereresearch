@@ -1,0 +1,41 @@
+{
+ "hypothesis": "H-ITSM",
+ "split": "validation",
+ "is_synthetic": false,
+ "modality": "document",
+ "source": "data.binance.vision USDT-M 15m klines; own computation",
+ "preregistration": "reports/hypotheses/itsm_preregistration.json",
+ "costs": "primary 13 bp round trip (HL 4.5 + 2 slip per side); *_binance 14 bp",
+ "results": {
+  "F60_L60_k1": {
+   "n": 1756,
+   "days": 244,
+   "net_sum_pct": -435.88,
+   "mean_bp": -24.82,
+   "gross_mean_bp": -11.82,
+   "mean_bp_binance": -25.82,
+   "net_sum_pct_binance": -453.44,
+   "pf": 0.46,
+   "net_ex_top3_pct": -453.29,
+   "win_rate": 0.349,
+   "daily_t": -3.9,
+   "pos_days": 0.357,
+   "long_mean_bp": -26.81,
+   "short_mean_bp": -22.68,
+   "n_long": 911,
+   "by_year": {
+    "2025": {
+     "n": 1219,
+     "net_sum_pct": -305.24,
+     "mean_bp": -25.04
+    },
+    "2026": {
+     "n": 537,
+     "net_sum_pct": -130.64,
+     "mean_bp": -24.33
+    }
+   },
+   "pass": false
+  }
+ }
+}
