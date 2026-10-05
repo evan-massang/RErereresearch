@@ -1,0 +1,326 @@
+{
+ "what": "H-UPBITLEAD train results (12 pre-registered configs) + informational lead/lag profiles. Validation NOT examined (no config passed train). Holdout never downloaded.",
+ "is_synthetic": false,
+ "preregistration": "reports/hypotheses/upbitlead_preregistration.json",
+ "scripts": [
+  "scripts/research/upbitlead_select.py",
+  "scripts/research/upbitlead_fetch.py",
+  "scripts/research/upbitlead_sim.py"
+ ],
+ "data": {
+  "upbit": "api.upbit.com/v1/candles/minutes/1, 40 KRW markets + KRW-USDT, 2025-03-24..2026-03-31 (to=2026-04-01T00:00Z exclusive)",
+  "binance": "data.binance.vision futures/um monthly 1m klines + fundingRate 2025-03..2026-03",
+  "cache": "data/raw/web/upbitlead/ (427 MB)"
+ },
+ "train_window": "decision minutes 2025-04-01..2025-12-31 (275 days)",
+ "unit": "bp of notional per trade; net = sum over trades",
+ "trigger_counts_train_before_pnl": {
+  "Z3.0_R0.01_H5": {
+   "raw_trigger_minutes": 1346,
+   "per_day": 4.89
+  },
+  "Z3.0_R0.01_H30": {
+   "raw_trigger_minutes": 1346,
+   "per_day": 4.89
+  },
+  "Z3.0_R0.02_H5": {
+   "raw_trigger_minutes": 439,
+   "per_day": 1.6
+  },
+  "Z3.0_R0.02_H30": {
+   "raw_trigger_minutes": 439,
+   "per_day": 1.6
+  },
+  "Z3.0_R0.04_H5": {
+   "raw_trigger_minutes": 94,
+   "per_day": 0.34
+  },
+  "Z3.0_R0.04_H30": {
+   "raw_trigger_minutes": 94,
+   "per_day": 0.34
+  },
+  "Z4.5_R0.01_H5": {
+   "raw_trigger_minutes": 67,
+   "per_day": 0.24
+  },
+  "Z4.5_R0.01_H30": {
+   "raw_trigger_minutes": 67,
+   "per_day": 0.24
+  },
+  "Z4.5_R0.02_H5": {
+   "raw_trigger_minutes": 23,
+   "per_day": 0.08
+  },
+  "Z4.5_R0.02_H30": {
+   "raw_trigger_minutes": 23,
+   "per_day": 0.08
+  },
+  "Z4.5_R0.04_H5": {
+   "raw_trigger_minutes": 6,
+   "per_day": 0.02
+  },
+  "Z4.5_R0.04_H30": {
+   "raw_trigger_minutes": 6,
+   "per_day": 0.02
+  }
+ },
+ "train_configs": {
+  "Z3.0_R0.01_H5": {
+   "n": 943,
+   "net": -55689.65461873952,
+   "mean_net": -59.05583734754986,
+   "mean_gross": -1.8458696911341659,
+   "median_gross": -17.441149980361725,
+   "mean_cost": 57.21102863202545,
+   "win": 0.20996818663838812,
+   "pf": 0.2756676510146348,
+   "net_ex_top3": -56199.65461873952,
+   "passes": false,
+   "per_day": 3.429090909090909
+  },
+  "Z3.0_R0.01_H30": {
+   "n": 882,
+   "net": -52767.65810168657,
+   "mean_net": -59.82727675928182,
+   "mean_gross": -2.79293492254713,
+   "median_gross": -60.566693028636934,
+   "mean_cost": 57.018140589569164,
+   "win": 0.2709750566893424,
+   "pf": 0.35107740541330484,
+   "net_ex_top3": -53277.658101686546,
+   "passes": false,
+   "per_day": 3.207272727272727
+  },
+  "Z3.0_R0.02_H5": {
+   "n": 304,
+   "net": -22598.563799500662,
+   "mean_net": -74.33738091941007,
+   "mean_gross": -19.063050656252177,
+   "median_gross": -50.019114865650366,
+   "mean_cost": 55.26315789473684,
+   "win": 0.25,
+   "pf": 0.4144678243159375,
+   "net_ex_top3": -23708.56379950066,
+   "passes": false,
+   "per_day": 1.1054545454545455
+  },
+  "Z3.0_R0.02_H30": {
+   "n": 280,
+   "net": -20692.522135111278,
+   "mean_net": -73.90186476825457,
+   "mean_gross": -18.91038655396885,
+   "median_gross": -199.99999999999906,
+   "mean_cost": 54.964285714285715,
+   "win": 0.31785714285714284,
+   "pf": 0.5007194276710651,
+   "net_ex_top3": -21802.522135111274,
+   "passes": false,
+   "per_day": 1.018181818181818
+  },
+  "Z3.0_R0.04_H5": {
+   "n": 73,
+   "net": -4405.276737420974,
+   "mean_net": -60.34625667699965,
+   "mean_gross": -5.003790923574987,
+   "median_gross": -37.658055356533104,
+   "mean_cost": 55.342465753424655,
+   "win": 0.3424657534246575,
+   "pf": 0.6131549807812267,
+   "net_ex_top3": -6665.276737420975,
+   "passes": false,
+   "per_day": 0.26545454545454544
+  },
+  "Z3.0_R0.04_H30": {
+   "n": 69,
+   "net": -6543.165483716767,
+   "mean_net": -94.82848527125749,
+   "mean_gross": -39.31399251763429,
+   "median_gross": -141.27958034963584,
+   "mean_cost": 55.507246376811594,
+   "win": 0.36231884057971014,
+   "pf": 0.5576584342198289,
+   "net_ex_top3": -8803.165483716772,
+   "passes": false,
+   "per_day": 0.2509090909090909
+  },
+  "Z4.5_R0.01_H5": {
+   "n": 51,
+   "net": -3385.8623648953603,
+   "mean_net": -66.38945813520314,
+   "mean_gross": -6.385289507752166,
+   "median_gross": -15.9363761979181,
+   "mean_cost": 60.0,
+   "win": 0.19607843137254902,
+   "pf": 0.1969602886613867,
+   "net_ex_top3": -3805.8623648953603,
+   "passes": false,
+   "per_day": 0.18545454545454546
+  },
+  "Z4.5_R0.01_H30": {
+   "n": 47,
+   "net": -2978.167407155086,
+   "mean_net": -63.36526398202311,
+   "mean_gross": -3.3607405777677934,
+   "median_gross": -25.53210967452868,
+   "mean_cost": 60.0,
+   "win": 0.19148936170212766,
+   "pf": 0.28491083270592726,
+   "net_ex_top3": -3398.167407155088,
+   "passes": false,
+   "per_day": 0.1709090909090909
+  },
+  "Z4.5_R0.02_H5": {
+   "n": 18,
+   "net": -1719.8606043142775,
+   "mean_net": -95.5478113507932,
+   "mean_gross": -35.54781135079318,
+   "median_gross": -20.206992304995232,
+   "mean_cost": 60.0,
+   "win": 0.2222222222222222,
+   "pf": 0.2141030229554146,
+   "net_ex_top3": -2179.6766770125237,
+   "passes": false,
+   "per_day": 0.06545454545454546
+  },
+  "Z4.5_R0.02_H30": {
+   "n": 17,
+   "net": -1625.4459548722111,
+   "mean_net": -95.61446793365948,
+   "mean_gross": -35.61446793365948,
+   "median_gross": -199.99999999999906,
+   "mean_cost": 60.0,
+   "win": 0.29411764705882354,
+   "pf": 0.3545097444434817,
+   "net_ex_top3": -2451.552905854558,
+   "passes": false,
+   "per_day": 0.06181818181818182
+  },
+  "Z4.5_R0.04_H5": {
+   "n": 4,
+   "net": 116.69196789543389,
+   "mean_net": 29.172991973858473,
+   "mean_gross": 89.17299197385847,
+   "median_gross": 44.54848092453112,
+   "mean_cost": 60.0,
+   "win": 0.25,
+   "pf": 1.468380862977286,
+   "net_ex_top3": -218.2360217877532,
+   "passes": false,
+   "per_day": 0.014545454545454545
+  },
+  "Z4.5_R0.04_H30": {
+   "n": 4,
+   "net": -978.5006721847186,
+   "mean_net": -244.62516804617965,
+   "mean_gross": -184.62516804617965,
+   "median_gross": -207.4232017675981,
+   "mean_cost": 60.0,
+   "win": 0.25,
+   "pf": 0.016430407038104708,
+   "net_ex_top3": -460.00000000000034,
+   "passes": false,
+   "per_day": 0.014545454545454545
+  }
+ },
+ "chosen": null,
+ "validation": "not run: selection rule requires a config meeting the bar on train",
+ "info_upbit_burst_binance_profile_Z3_R1": {
+  "+1m_from_next_open": {
+   "n": 1346,
+   "mean_bp": 1.9590105844382486,
+   "median_bp": -2.7852506036452063
+  },
+  "+5m_from_next_open": {
+   "n": 1346,
+   "mean_bp": 13.23175858588296,
+   "median_bp": -8.922394535763601
+  },
+  "+30m_from_next_open": {
+   "n": 1346,
+   "mean_bp": 10.24257414867003,
+   "median_bp": -15.358450713646166
+  }
+ },
+ "info_upbit_burst_upbit_continuation_Z3_R1": {
+  "+1m_from_close": {
+   "n": 1346,
+   "mean_bp": -8.195924254836632,
+   "median_bp": -6.711409395973034
+  },
+  "+5m_from_close": {
+   "n": 1346,
+   "mean_bp": -10.051032728093393,
+   "median_bp": -28.36214859928465
+  },
+  "+30m_from_close": {
+   "n": 1346,
+   "mean_bp": -25.25102718710982,
+   "median_bp": -50.900510205156294
+  }
+ },
+ "info_binance_same_minute_over_upbit_return": {
+  "n": 1346,
+  "median": 0.5760396730322419,
+  "share_ge_half": 0.5661218424962853
+ },
+ "info_reverse_binance_burst_upbit_followup_Z3_R1": {
+  "events": 4406,
+  "+1m": {
+   "n": 4406,
+   "mean_bp": 4.973072899602394,
+   "median_bp": -0.5301643619315399
+  },
+  "+5m": {
+   "n": 4406,
+   "mean_bp": 22.89358630674014,
+   "median_bp": -4.653340575224707
+  },
+  "+30m": {
+   "n": 4406,
+   "mean_bp": 9.517888217642012,
+   "median_bp": -20.225295779153775
+  }
+ },
+ "coins_used": [
+  "AGLD",
+  "AKT",
+  "ANIME",
+  "ANKR",
+  "ARK",
+  "BIGTIME",
+  "BSV",
+  "CKB",
+  "ENS",
+  "G",
+  "GAS",
+  "GLM",
+  "HIVE",
+  "ID",
+  "IOST",
+  "IOTA",
+  "LAYER",
+  "LSK",
+  "ME",
+  "MEW",
+  "MOCA",
+  "MOVE",
+  "MTL",
+  "ONDO",
+  "ONG",
+  "POLYX",
+  "POWR",
+  "QTUM",
+  "SAFE",
+  "SONIC",
+  "STEEM",
+  "STX",
+  "T",
+  "VANA",
+  "VIRTUAL",
+  "VTHO",
+  "WAXP",
+  "XEC",
+  "ZETA",
+  "ZRX"
+ ]
+}
