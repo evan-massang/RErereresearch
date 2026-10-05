@@ -13,6 +13,13 @@ Evidence:
 
 No trading. Public data only._
 
+> **Update 2026-10-05 (post-hoc, informational, not the bar): honest capital top-ups break the pass.** The frozen rule
+> restores the short's 1x collateral each day without modelling where the money comes from. Moving it out of the LP
+> (and selling the withdrawn PUMP half at 30 bp) gives net **+$9.88**, PF **1.10**, net ex top-3 **−$47.55** on the
+> same 72 validation days. That **would fail** the bar. See `reports/paper/lphedge2_addendum.json`.
+> Frozen forward paper track: `reports/paper/lphedge2.json` (frozen 2026-10-05T12:28:49Z). Score it with
+> `python scripts/research/lphedge2_forward.py score`. It reaches n = 50 on about 2026-11-24.
+
 **Verdict: PASS on the single validation run** (2026-07-25 to 2026-10-05, 72 days, never examined before).
 
 | n pool-days | net $ (after setup) | PF | net ex top-3 $ | mean bp/day of LP value | win days | hedge trades | liquidations |

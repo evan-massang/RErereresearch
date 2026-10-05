@@ -1,0 +1,34 @@
+{
+ "hypothesis": "H-LPHEDGE-2",
+ "addendum_to": "reports/paper/lphedge2.json",
+ "written_at": "2026-10-05T12:39:56Z",
+ "forward_script_sha256": {
+  "scripts/research/lphedge2_forward.py": "d5bf4f46e9305f87449c6a152fbbe3933a1f6c6c3d0b9123971758b65c27594e"
+ },
+ "changes_after_freeze_before_any_forward_day": [
+  "LP-mint signature fetch limited to the forward window (speed; no effect on values).",
+  "score now verifies on every run that its engine (run_topups, topup=False) reproduces lphedge2_sim.run and the validated net (+$175.65) exactly; parity confirmed 175.6512 = 175.6512.",
+  "with_topups column: added the 30 bp pool swap cost on half of each capital transfer (a balanced withdraw yields half in PUMP that must be sold for USDC collateral)."
+ ],
+ "no_forward_day_scored_yet": true,
+ "informational_validation_with_topups": {
+  "note": "Post-hoc (validation already examined), NOT the bar, not used to change the frozen rule. Same rule, but the 1x collateral is restored each 00:00 UTC by moving capital out of/into the LP, so the LP shrinks when the short loses.",
+  "n_pool_days": 72,
+  "net_usd": 9.88,
+  "pf": 1.099,
+  "net_ex_top3_usd": -47.55,
+  "capital_moved_usd": 24044.72,
+  "components_usd": {
+   "fee": 266.23,
+   "funding": 63.58,
+   "lvr": -251.67,
+   "basis": -4.61,
+   "hcost": 3.05,
+   "gas": 6.83,
+   "transfer_swap_cost": 36.07
+  },
+  "reading": "With honest daily top-ups the validation result would NOT meet the bar. The frozen rule's pass relies on outside capital (about $4.6k) funding the short while the LP keeps compounding its size."
+ },
+ "smoke_test": "fetch + engine run on 2026-10-04 (inside the examined validation window): 96/96 pool and perp bars, fee consistent with validation after size scaling (ratio 1.85 = LP-value ratio).",
+ "expected_50_pool_days": "2026-11-24 is the 50th UTC day from 2026-10-06 if every day is scorable (train and validation had 0 unscored days under this coverage rule); the ledger can reach n=50 when score is run after 2026-11-25T01:00Z."
+}

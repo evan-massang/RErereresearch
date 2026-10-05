@@ -190,10 +190,10 @@ def fetch(t_from, t_to):
                 break
             sigs += page
             before = page[-1]["signature"]
-            if (page[-1].get("blockTime") or 0) < t_from - DAY or any(s["signature"] in have for s in page):
+            if (page[-1].get("blockTime") or 0) < t_from - DAY:
                 break
         for s in sigs:
-            if s.get("err") is not None or s["signature"] in have:
+            if s.get("err") is not None or s["signature"] in have or (s.get("blockTime") or 0) < t_from - DAY:
                 continue
             tx = rpc(cl, "getTransaction", [s["signature"], {"encoding": "json", "maxSupportedTransactionVersion": 1}])
             time.sleep(0.35)
@@ -355,6 +355,14 @@ def score():
     drift = {p: sha(p) for p in HASHED if sha(p) != fz["code_sha256"][p]}
     if drift:
         sys.exit(f"frozen code changed since freeze: {sorted(drift)}; score refused")
+    # guard: the forward engine (run_topups, topup=False) must reproduce the validated lphedge2_sim.run exactly
+    import lphedge2_sim as s2
+    val = json.loads((ROOT / "research/observations/evidence_lphedge2_validation.json").read_text())
+    a, sa, _ = run_topups(*s1.SPLITS["validation"], val["half_spreads"], topup=False)
+    b, sb, _, _ = s2.run(*s1.SPLITS["validation"], val["half_spreads"])
+    pa, pb = sum(d["pnl"] for d in a) - sa, sum(d["pnl"] for d in b) - sb
+    if abs(pa - pb) > 1e-6 or abs(pb - val["result"]["net_usd"]) > 0.01:
+        sys.exit(f"engine parity check failed ({pa:.4f} vs {pb:.4f} vs validated {val['result']['net_usd']}); score refused")
     first = int(datetime.strptime(fz["first_scorable_day"], "%Y-%m-%d").replace(tzinfo=timezone.utc).timestamp())
     now = int(time.time())
     last_end = (now - 3600) // DAY * DAY            # last complete UTC day, 1 h settle margin for data lags
