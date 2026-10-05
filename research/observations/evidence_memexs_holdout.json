@@ -1,0 +1,329 @@
+{
+ "plan": "reports/hypotheses/memexs_holdout_plan.json",
+ "config": "VOLG_high_long_LS",
+ "run_at_utc": "2026-10-05T12:12:39.817356+00:00",
+ "symbols_with_holdout_klines": [
+  "1000000MOGUSDT",
+  "1000BONKUSDT",
+  "1000CATUSDT",
+  "1000CHEEMSUSDT",
+  "1000FLOKIUSDT",
+  "1000PEPEUSDT",
+  "1000SHIBUSDT",
+  "1000WHYUSDT",
+  "1MBABYDOGEUSDT",
+  "4USDT",
+  "ACTUSDT",
+  "AI16ZUSDT",
+  "AIXBTUSDT",
+  "ANIMEUSDT",
+  "BANANAS31USDT",
+  "BANUSDT",
+  "BIRBUSDT",
+  "BOMEUSDT",
+  "BRETTUSDT",
+  "BROCCOLI714USDT",
+  "BROCCOLIF3BUSDT",
+  "BULLAUSDT",
+  "BUSDT",
+  "CATUSDT",
+  "CHILLGUYUSDT",
+  "DEGENUSDT",
+  "DOGEUSDT",
+  "DOGSUSDT",
+  "FARTCOINUSDT",
+  "GHSTUSDT",
+  "GIGGLEUSDT",
+  "GOATUSDT",
+  "GRIFFAINUSDT",
+  "HIPPOUSDT",
+  "KOMAUSDT",
+  "MARSCOINUSDT",
+  "MELANIAUSDT",
+  "MEMEFIUSDT",
+  "MEMEUSDT",
+  "MEWUSDT",
+  "MOODENGUSDT",
+  "MUBARAKUSDT",
+  "MUSDT",
+  "MYROUSDT",
+  "NEIROETHUSDT",
+  "NEIROUSDT",
+  "NOTUSDT",
+  "ORDIUSDT",
+  "PENGUSDT",
+  "PENGUUSDT",
+  "PEOPLEUSDT",
+  "PIPPINUSDT",
+  "PNUTUSDT",
+  "PONKEUSDT",
+  "POPCATUSDT",
+  "PUMPUSDT",
+  "SIRENUSDT",
+  "SLERFUSDT",
+  "SPXUSDT",
+  "TOSHIUSDT",
+  "TRUMPUSDT",
+  "TSTUSDT",
+  "TURBOUSDT",
+  "TUTUSDT",
+  "USELESSUSDT",
+  "VINEUSDT",
+  "WENUSDT",
+  "WIFUSDT",
+  "ZEREBROUSDT",
+  "哈基米USDT",
+  "币安人生USDT",
+  "我踏马来了USDT",
+  "牛来USDT",
+  "龙虾USDT"
+ ],
+ "window": {
+  "positions_from": "2026-04-01",
+  "positions_until_exclusive": "2026-09-28",
+  "first_rebalance": "2026-04-06",
+  "last_rebalance": "2026-09-21",
+  "why_end": "latest Monday whose full week is in the archive: fundingRate is monthly-only and published through 2026-09; week t=2026-09-28 would need October funding"
+ },
+ "bar": {
+  "n": 296,
+  "net": -0.3271,
+  "pf": 0.865,
+  "net_minus_top3": -0.7168,
+  "passes": false
+ },
+ "stats": {
+  "n": 296,
+  "net": -0.3271,
+  "pf": 0.865,
+  "net_minus_top3": -0.7168,
+  "top3_legs": [
+   0.1324,
+   0.1318,
+   0.1255
+  ],
+  "mean_leg_bp": -11.05,
+  "weekly_sharpe": -0.851,
+  "weeks_traded": 25,
+  "weeks_skipped": 0,
+  "mean_weekly_pnl_bp": -130.8,
+  "maxdd_additive": -0.6846,
+  "price_pnl": -0.2834,
+  "funding_paid": -0.0275,
+  "costs": 0.0712,
+  "long_legs": 0.3434,
+  "short_legs": -0.6705,
+  "mean_weekly_turnover": 1.218,
+  "mean_eligible": 31.6,
+  "delist_exits": 0,
+  "per_year": {
+   "2026": -0.3271
+  },
+  "per_quarter": {
+   "2026Q2": 0.0733,
+   "2026Q3": -0.4004
+  },
+  "top3_coins": {
+   "币安人生USDT": 0.2497,
+   "BUSDT": 0.0953,
+   "MUSDT": 0.0823
+  },
+  "worst3_coins": {
+   "龙虾USDT": -0.1234,
+   "BULLAUSDT": -0.1844,
+   "SIRENUSDT": -0.2018
+  },
+  "first_week": "2026-04-06",
+  "last_week": "2026-09-21",
+  "pass": false
+ },
+ "per_month": {
+  "2026-04": 0.2902,
+  "2026-05": 0.0058,
+  "2026-06": -0.2228,
+  "2026-07": 0.1079,
+  "2026-08": -0.4191,
+  "2026-09": -0.0892
+ },
+ "per_month_weeks": {
+  "2026-04": 4,
+  "2026-05": 4,
+  "2026-06": 5,
+  "2026-07": 4,
+  "2026-08": 5,
+  "2026-09": 3
+ },
+ "concentration": {
+  "by_coin_top10": {
+   "币安人生USDT": {
+    "count": 11,
+    "sum": 0.2497
+   },
+   "BUSDT": {
+    "count": 14,
+    "sum": 0.0953
+   },
+   "MUSDT": {
+    "count": 11,
+    "sum": 0.0823
+   },
+   "ZEREBROUSDT": {
+    "count": 8,
+    "sum": 0.0511
+   },
+   "BOMEUSDT": {
+    "count": 10,
+    "sum": 0.0492
+   },
+   "BANANAS31USDT": {
+    "count": 12,
+    "sum": 0.0399
+   },
+   "BROCCOLIF3BUSDT": {
+    "count": 3,
+    "sum": 0.0282
+   },
+   "GRIFFAINUSDT": {
+    "count": 2,
+    "sum": 0.0183
+   },
+   "PENGUUSDT": {
+    "count": 3,
+    "sum": 0.0158
+   },
+   "我踏马来了USDT": {
+    "count": 5,
+    "sum": 0.0155
+   }
+  },
+  "by_coin_bottom5": {
+   "PIPPINUSDT": {
+    "count": 14,
+    "sum": -0.0522
+   },
+   "MUBARAKUSDT": {
+    "count": 6,
+    "sum": -0.0675
+   },
+   "龙虾USDT": {
+    "count": 10,
+    "sum": -0.1234
+   },
+   "BULLAUSDT": {
+    "count": 11,
+    "sum": -0.1844
+   },
+   "SIRENUSDT": {
+    "count": 12,
+    "sum": -0.2018
+   }
+  },
+  "top3_coin_share_of_net": null,
+  "n_coins": 50
+ },
+ "diagnostic_ex_identity_doubtful": {
+  "n": 256,
+  "net": -0.7322,
+  "pf": 0.706,
+  "net_minus_top3": -1.116,
+  "passes": false,
+  "weekly_sharpe": -1.963,
+  "per_year": {
+   "2026": -0.7322
+  }
+ },
+ "top_legs": [
+  [
+   "币安人生USDT",
+   "2026-04-06",
+   "0.08333333333333333",
+   "0.13258735481362685",
+   "-1.4840833333333337e-05",
+   "0.00020833333333333332",
+   "0.13239386231362685"
+  ],
+  [
+   "BUSDT",
+   "2026-07-13",
+   "0.1",
+   "0.13253456221198162",
+   "0.000453982",
+   "0.00025",
+   "0.13183058021198163"
+  ],
+  [
+   "币安人生USDT",
+   "2026-04-13",
+   "0.08333333333333333",
+   "0.1255861279915973",
+   "6.066833333333333e-05",
+   "0.0",
+   "0.12552545965826395"
+  ],
+  [
+   "MUSDT",
+   "2026-06-29",
+   "0.08333333333333333",
+   "0.09259537775104024",
+   "1.8242500000000004e-05",
+   "0.00020833333333333332",
+   "0.0923688019177069"
+  ],
+  [
+   "TUTUSDT",
+   "2026-08-17",
+   "0.1",
+   "0.08578932010504814",
+   "0.00026585400000000005",
+   "0.0001",
+   "0.08542346610504814"
+  ]
+ ],
+ "worst_legs": [
+  [
+   "BULLAUSDT",
+   "2026-08-31",
+   "-0.08333333333333333",
+   "-0.3087424901595194",
+   "-0.0010476591666666664",
+   "0.0",
+   "-0.3076948309928527"
+  ],
+  [
+   "龙虾USDT",
+   "2026-08-24",
+   "-0.08333333333333333",
+   "-0.1595839504141298",
+   "-0.0020958274999999995",
+   "0.0004583333333333334",
+   "-0.15794645624746312"
+  ],
+  [
+   "SIRENUSDT",
+   "2026-06-01",
+   "-0.08333333333333333",
+   "-0.13610662358642972",
+   "-0.0006351999999999998",
+   "2.9761904761904762e-05",
+   "-0.1355011854911916"
+  ],
+  [
+   "TUTUSDT",
+   "2026-08-10",
+   "0.1",
+   "-0.08302793185419968",
+   "0.000266206",
+   "0.00015000000000000001",
+   "-0.08344413785419968"
+  ],
+  [
+   "SIRENUSDT",
+   "2026-06-08",
+   "0.08333333333333333",
+   "-0.07999744376278117",
+   "0.0002020558333333334",
+   "0.00025",
+   "-0.08044949959611451"
+  ]
+ ]
+}

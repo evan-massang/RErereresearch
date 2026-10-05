@@ -1,0 +1,128 @@
+{
+ "hypothesis": "H-LPHEDGE",
+ "kind": "fee schedule confirmation + forward exact-fee check",
+ "is_synthetic": false,
+ "modality": "onchain",
+ "computed_at_utc": "2026-10-05T12:12Z",
+ "fee_schedule_recent": {
+  "PUMP/USDC": {
+   "pool": "2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd",
+   "n_swaps": 60,
+   "n_tx_fetched": 80,
+   "tiers_lp_proto_creator_bps": {
+    "(25, 5, 0)": 60
+   },
+   "implied_lp_bps_min": 24.925234016645806,
+   "implied_lp_bps_max": 25.00358378777342,
+   "slot_range": [
+    453559240,
+    453561461
+   ]
+  },
+  "PENGU/SOL": {
+   "pool": "9qKxzRejsV6Bp2zkefXWCbGvg61c3hHei7ShXJ4FythA",
+   "n_swaps": 58,
+   "n_tx_fetched": 600,
+   "tiers_lp_proto_creator_bps": {
+    "(25, 5, 0)": 58
+   },
+   "implied_lp_bps_min": 24.92523128647243,
+   "implied_lp_bps_max": 25.000154243092513,
+   "slot_range": [
+    453552417,
+    453560805
+   ]
+  },
+  "Fartcoin/SOL": {
+   "pool": "eUsB7o5HXb4xj3RD4eZjumRV6T65PQELbhd8mNFRjk6",
+   "n_swaps": 60,
+   "n_tx_fetched": 61,
+   "tiers_lp_proto_creator_bps": {
+    "(20, 5, 90)": 16,
+    "(20, 5, 95)": 44
+   },
+   "implied_lp_bps_min": 19.762847149127683,
+   "implied_lp_bps_max": 20.000313268234315,
+   "slot_range": [
+    453545129,
+    453564385
+   ]
+  }
+ },
+ "fee_schedule_history": {
+  "PUMP_USDC": {
+   "n_swaps": 32,
+   "tiers": [
+    [
+     25,
+     5,
+     0
+    ]
+   ],
+   "dates": [
+    "2026-05-04",
+    "2026-06-19",
+    "2026-08-12",
+    "2026-08-22",
+    "2026-08-29",
+    "2026-09-19",
+    "2026-09-28",
+    "2026-10-05"
+   ]
+  },
+  "PENGU_SOL": {
+   "n_swaps": 32,
+   "tiers": [
+    [
+     25,
+     5,
+     0
+    ]
+   ],
+   "dates": [
+    "2026-04-20",
+    "2026-05-18",
+    "2026-05-29",
+    "2026-07-15",
+    "2026-08-01"
+   ]
+  }
+ },
+ "forward_exact_fee_check": {
+  "PUMP_USDC": {
+   "window_utc": [
+    1791196800,
+    1791202200
+   ],
+   "n_bars": 20,
+   "exact_sqrtk_growth_bp": 0.20003043019745093,
+   "pred_from_recorded_onchain_vol_bp": 0.1681760144751389,
+   "recorded_onchain_quote_vol": 188357.869612,
+   "gt_vol_same_window(usd for PENGU, USDC for PUMP)": 230536.55692200002,
+   "quote_reserve_mean": 14000054.511329,
+   "pred_from_gt_vol_bp": 0.20583541008308867,
+   "ratio_gt_pred_over_exact": 1.0290204839329078,
+   "ratio_recorded_pred_over_exact": 0.8407521511058674
+  },
+  "PENGU_SOL": {
+   "window_utc": [
+    1791197100,
+    1791201600
+   ],
+   "n_bars": 13,
+   "exact_sqrtk_growth_bp": 0.14205531838618057,
+   "pred_from_recorded_onchain_vol_bp": 0.12816255722175773,
+   "recorded_onchain_quote_vol": 74.3645338,
+   "gt_vol_same_window(usd for PENGU, USDC for PUMP)": 10126.44997297031,
+   "quote_reserve_mean": 7252.9504143055,
+   "ratio_recorded_pred_over_exact": 0.9022017526534625
+  }
+ },
+ "forward_note": "pumplean amm_bars other_5m (read-only), 2026-10-05 ~10:40-12:05Z (bars from just before T0 to the 12:03Z outage). sqrt(k) growth from logged reserves is exact (no LP events in the window: last Withdraw 08:54Z). PUMP/USDC: fee growth predicted from GeckoTerminal volume x 25 bp / (2 x quote reserve) = 1.03x the exact growth -> inside the pre-registered +-30% gate. Recorded on-chain volume gives 0.84x (public-RPC logsSubscribe drops). Window is 1.5 h, not the 24 h forward-train segment, which is not complete yet; forward P&L scoring is deferred and would be n<=1 pool-day per segment (inconclusive by construction).",
+ "sources": [
+  "data/raw/web/lphedge/fee_check.json",
+  "data/raw/web/lphedge/fee_history.json",
+  "data/raw/web/lphedge/gt_PUMP_USDC_5m_recent.json",
+  "data/raw/web/pumplean/amm_bars_2026-10-05-1[012].parquet"
+ ]
+}
