@@ -298,7 +298,7 @@ Roughly 13 open-leader hours a day across two sessions makes **10–30/day plaus
 
 ---
 
-### Idea 4. Cross-venue basis convergence between zero-fee equity perps: Lighter, Aster and trade[XYZ] (H-EQBASIS)
+### Idea 4. Cross-venue basis convergence between zero-fee equity perps: Lighter, Aster and trade[XYZ] (H-EQBASIS). Pre-check: weakened
 
 **Mechanism.**
 - The same stock perp lists on three cheap venues, each with **different off-hours anchors**:
@@ -368,7 +368,35 @@ retail flow in thin books: **≥ 10/day plausible at k = 6–10**.
 3. **Aster's real API fee and any speed bump are unverified.**
 4. **Capital sits on 2–3 venues and bridges**, which is operational, not P&L.
 
-**Addendum, OWN-PRECHECK 10-minute sampler:** _filled below (§1.4a)._
+**Addendum: OWN-PRECHECK 10-minute sampler. Result: weakened.**
+
+- **Method.** REST top-of-book for xyz, Lighter and Aster on 6 names, 07:13–07:23 UTC Monday with the cash market
+  closed. 64 snapshots per name, about 9 s apart.
+- **Median spreads** (bp):
+
+  | Venue | Range | By name |
+  |---|---|---|
+  | xyz | 0.4–1.7 | |
+  | Lighter | 0.9–2.4 | |
+  | Aster | 1.3–3.5 | COIN 9.1 |
+
+- **Basis against xyz** (median / sd / max |deviation from median|, in bp):
+
+  | Name | Lighter | Aster |
+  |---|---|---|
+  | TSLA | +0.5 / 0.7 / 2.4 | +7.0 / 0.7 / 2.4 |
+  | NVDA | +1.3 / 0.5 / 1.3 | +9.3 / 0.5 / 1.3 |
+  | HOOD | +6.7 / 0.7 / 2.4 | +11.3 / 1.4 / 2.6 |
+  | CRCL | +8.8 / 1.2 / 4.5 | +4.6 / 1.0 / 3.3 |
+  | MSTR | +0.9 / 2.0 / 7.0 | +8.5 / 1.8 / 6.3 |
+  | COIN | +0.5 / 0.8 / 2.5 | +13.9 / 1.8 / 5.1 |
+
+- **Deviations of 6 bp or more:** 2 in 768 name-venue snapshots, both on MSTR.
+- **Reading.** The bases are persistent levels with an sd of 0.5–2 bp, and k ≥ 6 bp almost never fires in a quiet
+  window. If it fires at all, it fires during off-hours bursts and the open, which is not yet measured. Snapshots
+  9 s apart also miss sub-second dislocations.
+- **Downgraded to rank 7.** Keep it only as a counting arm of the extended recorder. Do not freeze it until a full
+  day shows at least 10 deviations of 6 bp or more.
 
 ---
 
@@ -514,7 +542,7 @@ stop.
 
 ---
 
-### Idea 7. The Binance TradFi index as a visible cash-hours leader for equity perps (H-IDXLEAD), lowest
+### Idea 7. The Binance TradFi index as a visible cash-hours leader for equity perps (H-IDXLEAD), low prior
 
 **Mechanism.**
 - Round 7's EQLAG names its main kill risk: during cash hours all perp venues follow an **unseen** leader, the stock
@@ -564,8 +592,8 @@ The score is gross ÷ cost × evidence × time to 50 forward trades, and novelty
 | 3 | **H-BETALAG**: BTC → MSTR/COIN/HOOD/CRCL perps | b | Lighter 0 / xyz 0.9 | 2–4 bp | 3–10 bp | ~1–3× | Binance 1m 2026-02..03 (proxy venue), forward | ≥ 20 weekdays | 2–4 | OWN lag-1 corr 0.07–0.15 (stale-print caveat) | Lag is a stale-print illusion; MMs hedge off BTC |
 | 4 | **H-EQOFFREV**: fade isolated off-hours equity moves | b | xyz 0.9 / Lighter 0 | 1–4 bp | 8–20 bp if reversal exists | ~3–5× or < 1 | Counts only (reserved window) | ≈ 10 (to count) | 5–10 | DATA-weak (Blockworks vs Allium disagree), Nagel | Off-hours moves are informed (Allium) |
 | 5 | **H-CLOSEDPROXY**: open-market proxy → closed-market perp (US ↔ Korea) | b | xyz 0.9 | 2.5–4 bp | 4–8 bp | ~1.5–2.5× | Counts only | 10–30 (to count) | 2–5 | lead (4pillars 45/62, contested by Blockworks) | Weak intraday cross-session β; thin, flash-prone followers |
-| 6 | **H-EQBASIS**: two-leg convergence across Lighter/Aster/xyz | b | 0–0.9 per leg | 3–7 bp | 4.5–11 bp | ~1–3× | Forward only | ≥ 10 (to count) | 2–5 | DATA (Makarov–Schoar), OWN snapshot + sampler | Funding-driven persistent basis; legging; Aster API fees unverified |
-| 7 | **H-IDXLEAD**: Binance TradFi index leads perps in cash hours | b | Lighter 0 / xyz 0.9 | 0.5–4 bp | 2–5 bp if it leads | ~1–2× | Forward only | unknown | 1–5 | none (OWN reachability only) | Index lags the perps |
+| 6 | **H-IDXLEAD**: Binance TradFi index leads perps in cash hours | b | Lighter 0 / xyz 0.9 | 0.5–4 bp | 2–5 bp if it leads | ~1–2× | Forward only | unknown | 1–5 | none (OWN reachability only) | Index lags the perps |
+| 7 | **H-EQBASIS**: two-leg convergence across Lighter/Aster/xyz | b | 0–0.9 per leg | 3–7 bp | 4.5–11 bp | ~1–3× | Forward only | ≥ 10 (to count) | 2–5 | DATA (Makarov–Schoar); **OWN 10-min sampler: weakened** (basis sd 0.5–2 bp, 2/768 ≥ 6 bp) | Funding-driven persistent basis; legging; Aster API fees unverified |
 
 **Suggested order.**
 1. **H-WICKNET on train today.** It is the only idea with cached pre-holdout history (Tardis HL and Binance, 57+
