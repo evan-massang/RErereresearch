@@ -1,5 +1,10 @@
 # Candidate (conditional, fragile): VOLG_high_long_LS, weekly volume-growth spread within Binance meme perps (H-MEMEXS)
 
+> **Update 2026-10-05: the HOLDOUT FAILED** (n=296, net −0.33, PF 0.87, net ex top-3 −0.72). See `reports/failures/memexs_holdout.md`.
+> The rule is not tuned. A forward paper test of the frozen rule is set up: `reports/paper/memexs_volg.json`
+> (scored by `scripts/research/memexs_forward.py score`).
+
+
 _Agent: memexs, 2026-10-05. Pre-registration (frozen before any meme return, signal value or P&L was computed):
 `reports/hypotheses/memexs_preregistration.json`. Script: `scripts/research/memexs_sim.py`.
 Evidence: `research/observations/evidence_memexs_{train,validation,diag_train,diag_validation}.json`.
