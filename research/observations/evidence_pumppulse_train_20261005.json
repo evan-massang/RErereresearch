@@ -1,0 +1,1385 @@
+{
+ "prereg": "reports/hypotheses/pumppulse_preregistration.json",
+ "split": "train",
+ "is_synthetic": false,
+ "modality": "onchain+market (own computation)",
+ "activity_coverage": {
+  "first": "2024-03-01",
+  "last": "2026-03-31",
+  "missing_days": 2
+ },
+ "configs": {
+  "LZ_k1_H1_hedged": {
+   "n_episodes": 186,
+   "n_long_eps": 99,
+   "n_short_eps": 87,
+   "net": {
+    "n": 186,
+    "sum": -0.7009,
+    "mean_bp": -37.7,
+    "median_bp": -71.9,
+    "pf": 0.804,
+    "sum_ex_top3": -1.3967,
+    "win": 0.425,
+    "t": -0.97
+   },
+   "gross": {
+    "n": 186,
+    "sum": -0.0315,
+    "mean_bp": -1.7,
+    "median_bp": -37.6,
+    "pf": 0.99,
+    "sum_ex_top3": -0.7407,
+    "win": 0.462,
+    "t": -0.04
+   },
+   "net_lighter": {
+    "n": 186,
+    "sum": -0.2664,
+    "mean_bp": -14.3,
+    "median_bp": -50.8,
+    "pf": 0.92,
+    "sum_ex_top3": -0.9701,
+    "win": 0.441,
+    "t": -0.37
+   },
+   "funding_mean_bp": -0.58,
+   "cost_sum": 0.6586,
+   "episode_net": {
+    "n": 186,
+    "sum": -0.7009,
+    "mean_bp": -37.7,
+    "median_bp": -71.9,
+    "pf": 0.804,
+    "sum_ex_top3": -1.3967,
+    "win": 0.425,
+    "t": -0.97
+   },
+   "long": {
+    "n": 99,
+    "sum": -0.0719,
+    "mean_bp": -7.3,
+    "median_bp": -101.1,
+    "pf": 0.966,
+    "sum_ex_top3": -0.7677,
+    "win": 0.424,
+    "t": -0.11
+   },
+   "short": {
+    "n": 87,
+    "sum": -0.629,
+    "mean_bp": -72.3,
+    "median_bp": -35.9,
+    "pf": 0.567,
+    "sum_ex_top3": -0.8546,
+    "win": 0.425,
+    "t": -2.0
+   },
+   "mean_members": 4.62,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 118,
+      "sum": -0.416,
+      "mean_bp": -35.3,
+      "median_bp": -79.8,
+      "pf": 0.827,
+      "sum_ex_top3": -1.072,
+      "win": 0.39,
+      "t": -0.65
+     },
+     "gross_mean_bp": 0.0
+    },
+    "2025": {
+     "net": {
+      "n": 68,
+      "sum": -0.2849,
+      "mean_bp": -41.9,
+      "median_bp": -17.8,
+      "pf": 0.756,
+      "sum_ex_top3": -0.5597,
+      "win": 0.485,
+      "t": -0.87
+     },
+     "gross_mean_bp": -4.7
+    }
+   },
+   "pass": false
+  },
+  "LZ_k1_H3_hedged": {
+   "n_episodes": 85,
+   "n_long_eps": 43,
+   "n_short_eps": 42,
+   "net": {
+    "n": 255,
+    "sum": -0.2082,
+    "mean_bp": -8.2,
+    "median_bp": -26.6,
+    "pf": 0.953,
+    "sum_ex_top3": -0.9451,
+    "win": 0.467,
+    "t": -0.25
+   },
+   "gross": {
+    "n": 255,
+    "sum": 0.1025,
+    "mean_bp": 4.0,
+    "median_bp": -10.0,
+    "pf": 1.024,
+    "sum_ex_top3": -0.6419,
+    "win": 0.486,
+    "t": 0.12
+   },
+   "net_lighter": {
+    "n": 255,
+    "sum": -0.0097,
+    "mean_bp": -0.4,
+    "median_bp": -16.1,
+    "pf": 0.998,
+    "sum_ex_top3": -0.7504,
+    "win": 0.475,
+    "t": -0.01
+   },
+   "funding_mean_bp": -0.38,
+   "cost_sum": 0.3011,
+   "episode_net": {
+    "n": 85,
+    "sum": -0.2082,
+    "mean_bp": -24.5,
+    "median_bp": -150.6,
+    "pf": 0.925,
+    "sum_ex_top3": -0.993,
+    "win": 0.4,
+    "t": -0.26
+   },
+   "long": {
+    "n": 129,
+    "sum": 0.0692,
+    "mean_bp": 5.4,
+    "median_bp": -94.6,
+    "pf": 1.028,
+    "sum_ex_top3": -0.6676,
+    "win": 0.434,
+    "t": 0.1
+   },
+   "short": {
+    "n": 126,
+    "sum": -0.2774,
+    "mean_bp": -22.0,
+    "median_bp": -2.5,
+    "pf": 0.856,
+    "sum_ex_top3": -0.559,
+    "win": 0.5,
+    "t": -0.67
+   },
+   "mean_members": 4.62,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 156,
+      "sum": -0.1088,
+      "mean_bp": -7.0,
+      "median_bp": -43.8,
+      "pf": 0.963,
+      "sum_ex_top3": -0.8194,
+      "win": 0.429,
+      "t": -0.15
+     },
+     "gross_mean_bp": 5.2
+    },
+    "2025": {
+     "net": {
+      "n": 99,
+      "sum": -0.0994,
+      "mean_bp": -10.0,
+      "median_bp": 13.3,
+      "pf": 0.933,
+      "sum_ex_top3": -0.4284,
+      "win": 0.525,
+      "t": -0.26
+     },
+     "gross_mean_bp": 2.2
+    }
+   },
+   "pass": false
+  },
+  "LZ_k2_H1_hedged": {
+   "n_episodes": 42,
+   "n_long_eps": 27,
+   "n_short_eps": 15,
+   "net": {
+    "n": 42,
+    "sum": 0.1074,
+    "mean_bp": 25.6,
+    "median_bp": -34.6,
+    "pf": 1.123,
+    "sum_ex_top3": -0.4658,
+    "win": 0.476,
+    "t": 0.21
+   },
+   "gross": {
+    "n": 42,
+    "sum": 0.2662,
+    "mean_bp": 63.4,
+    "median_bp": 3.4,
+    "pf": 1.335,
+    "sum_ex_top3": -0.32,
+    "win": 0.524,
+    "t": 0.52
+   },
+   "net_lighter": {
+    "n": 42,
+    "sum": 0.2102,
+    "mean_bp": 50.0,
+    "median_bp": -8.2,
+    "pf": 1.256,
+    "sum_ex_top3": -0.3707,
+    "win": 0.476,
+    "t": 0.41
+   },
+   "funding_mean_bp": -1.24,
+   "cost_sum": 0.1536,
+   "episode_net": {
+    "n": 42,
+    "sum": 0.1074,
+    "mean_bp": 25.6,
+    "median_bp": -34.6,
+    "pf": 1.123,
+    "sum_ex_top3": -0.4658,
+    "win": 0.476,
+    "t": 0.21
+   },
+   "long": {
+    "n": 27,
+    "sum": 0.3119,
+    "mean_bp": 115.5,
+    "median_bp": 13.4,
+    "pf": 1.614,
+    "sum_ex_top3": -0.2613,
+    "win": 0.519,
+    "t": 0.64
+   },
+   "short": {
+    "n": 15,
+    "sum": -0.2045,
+    "mean_bp": -136.4,
+    "median_bp": -151.1,
+    "pf": 0.44,
+    "sum_ex_top3": -0.3185,
+    "win": 0.4,
+    "t": -1.29
+   },
+   "mean_members": 4.67,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 27,
+      "sum": 0.1268,
+      "mean_bp": 47.0,
+      "median_bp": -75.4,
+      "pf": 1.204,
+      "sum_ex_top3": -0.44,
+      "win": 0.444,
+      "t": 0.26
+     },
+     "gross_mean_bp": 84.9
+    },
+    "2025": {
+     "net": {
+      "n": 15,
+      "sum": -0.0195,
+      "mean_bp": -13.0,
+      "median_bp": 75.8,
+      "pf": 0.923,
+      "sum_ex_top3": -0.1692,
+      "win": 0.533,
+      "t": -0.12
+     },
+     "gross_mean_bp": 24.7
+    }
+   },
+   "pass": false
+  },
+  "LZ_k2_H3_hedged": {
+   "n_episodes": 27,
+   "n_long_eps": 18,
+   "n_short_eps": 9,
+   "net": {
+    "n": 81,
+    "sum": -0.1789,
+    "mean_bp": -22.1,
+    "median_bp": -43.5,
+    "pf": 0.9,
+    "sum_ex_top3": -0.8549,
+    "win": 0.444,
+    "t": -0.28
+   },
+   "gross": {
+    "n": 81,
+    "sum": -0.0727,
+    "mean_bp": -9.0,
+    "median_bp": -21.4,
+    "pf": 0.958,
+    "sum_ex_top3": -0.7565,
+    "win": 0.457,
+    "t": -0.11
+   },
+   "net_lighter": {
+    "n": 81,
+    "sum": -0.1145,
+    "mean_bp": -14.1,
+    "median_bp": -30.1,
+    "pf": 0.935,
+    "sum_ex_top3": -0.7942,
+    "win": 0.444,
+    "t": -0.18
+   },
+   "funding_mean_bp": -1.1,
+   "cost_sum": 0.0973,
+   "episode_net": {
+    "n": 27,
+    "sum": -0.1789,
+    "mean_bp": -66.3,
+    "median_bp": -172.1,
+    "pf": 0.855,
+    "sum_ex_top3": -0.7581,
+    "win": 0.444,
+    "t": -0.29
+   },
+   "long": {
+    "n": 54,
+    "sum": 0.1258,
+    "mean_bp": 23.3,
+    "median_bp": -63.0,
+    "pf": 1.104,
+    "sum_ex_top3": -0.5502,
+    "win": 0.426,
+    "t": 0.21
+   },
+   "short": {
+    "n": 27,
+    "sum": -0.3047,
+    "mean_bp": -112.8,
+    "median_bp": -14.5,
+    "pf": 0.477,
+    "sum_ex_top3": -0.4261,
+    "win": 0.481,
+    "t": -1.46
+   },
+   "mean_members": 4.41,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 54,
+      "sum": -0.1742,
+      "mean_bp": -32.3,
+      "median_bp": -87.1,
+      "pf": 0.873,
+      "sum_ex_top3": -0.8502,
+      "win": 0.407,
+      "t": -0.29
+     },
+     "gross_mean_bp": -19.4
+    },
+    "2025": {
+     "net": {
+      "n": 27,
+      "sum": -0.0047,
+      "mean_bp": -1.7,
+      "median_bp": 13.3,
+      "pf": 0.989,
+      "sum_ex_top3": -0.2026,
+      "win": 0.519,
+      "t": -0.02
+     },
+     "gross_mean_bp": 11.8
+    }
+   },
+   "pass": false
+  },
+  "CZ_k1_H1_hedged": {
+   "n_episodes": 100,
+   "n_long_eps": 47,
+   "n_short_eps": 53,
+   "net": {
+    "n": 100,
+    "sum": -0.4542,
+    "mean_bp": -45.4,
+    "median_bp": -83.4,
+    "pf": 0.767,
+    "sum_ex_top3": -0.7837,
+    "win": 0.43,
+    "t": -1.02
+   },
+   "gross": {
+    "n": 100,
+    "sum": -0.0985,
+    "mean_bp": -9.9,
+    "median_bp": -47.0,
+    "pf": 0.944,
+    "sum_ex_top3": -0.4401,
+    "win": 0.46,
+    "t": -0.22
+   },
+   "net_lighter": {
+    "n": 100,
+    "sum": -0.2183,
+    "mean_bp": -21.8,
+    "median_bp": -58.3,
+    "pf": 0.88,
+    "sum_ex_top3": -0.5557,
+    "win": 0.44,
+    "t": -0.49
+   },
+   "funding_mean_bp": 0.09,
+   "cost_sum": 0.3566,
+   "episode_net": {
+    "n": 100,
+    "sum": -0.4542,
+    "mean_bp": -45.4,
+    "median_bp": -83.4,
+    "pf": 0.767,
+    "sum_ex_top3": -0.7837,
+    "win": 0.43,
+    "t": -1.02
+   },
+   "long": {
+    "n": 47,
+    "sum": 0.0736,
+    "mean_bp": 15.7,
+    "median_bp": -106.3,
+    "pf": 1.082,
+    "sum_ex_top3": -0.2559,
+    "win": 0.468,
+    "t": 0.21
+   },
+   "short": {
+    "n": 53,
+    "sum": -0.5278,
+    "mean_bp": -99.6,
+    "median_bp": -58.1,
+    "pf": 0.499,
+    "sum_ex_top3": -0.6924,
+    "win": 0.396,
+    "t": -1.91
+   },
+   "mean_members": 4.83,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 53,
+      "sum": -0.0653,
+      "mean_bp": -12.3,
+      "median_bp": 100.6,
+      "pf": 0.93,
+      "sum_ex_top3": -0.3052,
+      "win": 0.547,
+      "t": -0.21
+     },
+     "gross_mean_bp": 21.6
+    },
+    "2025": {
+     "net": {
+      "n": 47,
+      "sum": -0.3889,
+      "mean_bp": -82.7,
+      "median_bp": -111.9,
+      "pf": 0.616,
+      "sum_ex_top3": -0.6826,
+      "win": 0.298,
+      "t": -1.21
+     },
+     "gross_mean_bp": -45.3
+    }
+   },
+   "pass": false
+  },
+  "CZ_k1_H3_hedged": {
+   "n_episodes": 66,
+   "n_long_eps": 39,
+   "n_short_eps": 27,
+   "net": {
+    "n": 198,
+    "sum": -1.161,
+    "mean_bp": -58.6,
+    "median_bp": -41.4,
+    "pf": 0.712,
+    "sum_ex_top3": -1.5041,
+    "win": 0.455,
+    "t": -1.53
+   },
+   "gross": {
+    "n": 198,
+    "sum": -0.9261,
+    "mean_bp": -46.8,
+    "median_bp": -35.0,
+    "pf": 0.763,
+    "sum_ex_top3": -1.2759,
+    "win": 0.465,
+    "t": -1.22
+   },
+   "net_lighter": {
+    "n": 198,
+    "sum": -1.0033,
+    "mean_bp": -50.7,
+    "median_bp": -37.7,
+    "pf": 0.746,
+    "sum_ex_top3": -1.3503,
+    "win": 0.455,
+    "t": -1.32
+   },
+   "funding_mean_bp": 0.16,
+   "cost_sum": 0.2379,
+   "episode_net": {
+    "n": 66,
+    "sum": -1.161,
+    "mean_bp": -175.9,
+    "median_bp": -156.5,
+    "pf": 0.601,
+    "sum_ex_top3": -1.7164,
+    "win": 0.409,
+    "t": -1.33
+   },
+   "long": {
+    "n": 117,
+    "sum": -0.0051,
+    "mean_bp": -0.4,
+    "median_bp": -32.2,
+    "pf": 0.997,
+    "sum_ex_top3": -0.3482,
+    "win": 0.47,
+    "t": -0.01
+   },
+   "short": {
+    "n": 81,
+    "sum": -1.1559,
+    "mean_bp": -142.7,
+    "median_bp": -42.4,
+    "pf": 0.464,
+    "sum_ex_top3": -1.3881,
+    "win": 0.432,
+    "t": -1.92
+   },
+   "mean_members": 4.71,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 114,
+      "sum": -0.8858,
+      "mean_bp": -77.7,
+      "median_bp": -42.2,
+      "pf": 0.663,
+      "sum_ex_top3": -1.1605,
+      "win": 0.447,
+      "t": -1.34
+     },
+     "gross_mean_bp": -67.1
+    },
+    "2025": {
+     "net": {
+      "n": 84,
+      "sum": -0.2752,
+      "mean_bp": -32.8,
+      "median_bp": -29.9,
+      "pf": 0.804,
+      "sum_ex_top3": -0.6005,
+      "win": 0.464,
+      "t": -0.73
+     },
+     "gross_mean_bp": -19.2
+    }
+   },
+   "pass": false
+  },
+  "CZ_k2_H1_hedged": {
+   "n_episodes": 25,
+   "n_long_eps": 15,
+   "n_short_eps": 10,
+   "net": {
+    "n": 25,
+    "sum": 0.0756,
+    "mean_bp": 30.2,
+    "median_bp": 100.6,
+    "pf": 1.207,
+    "sum_ex_top3": -0.1148,
+    "win": 0.56,
+    "t": 0.38
+   },
+   "gross": {
+    "n": 25,
+    "sum": 0.1629,
+    "mean_bp": 65.2,
+    "median_bp": 135.1,
+    "pf": 1.498,
+    "sum_ex_top3": -0.0383,
+    "win": 0.56,
+    "t": 0.83
+   },
+   "net_lighter": {
+    "n": 25,
+    "sum": 0.1318,
+    "mean_bp": 52.7,
+    "median_bp": 120.1,
+    "pf": 1.387,
+    "sum_ex_top3": -0.0653,
+    "win": 0.56,
+    "t": 0.67
+   },
+   "funding_mean_bp": -0.46,
+   "cost_sum": 0.0862,
+   "episode_net": {
+    "n": 25,
+    "sum": 0.0756,
+    "mean_bp": 30.2,
+    "median_bp": 100.6,
+    "pf": 1.207,
+    "sum_ex_top3": -0.1148,
+    "win": 0.56,
+    "t": 0.38
+   },
+   "long": {
+    "n": 15,
+    "sum": 0.0806,
+    "mean_bp": 53.8,
+    "median_bp": 92.1,
+    "pf": 1.42,
+    "sum_ex_top3": -0.1041,
+    "win": 0.533,
+    "t": 0.53
+   },
+   "short": {
+    "n": 10,
+    "sum": -0.005,
+    "mean_bp": -5.0,
+    "median_bp": 157.7,
+    "pf": 0.971,
+    "sum_ex_top3": -0.1192,
+    "win": 0.6,
+    "t": -0.04
+   },
+   "mean_members": 4.32,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 16,
+      "sum": 0.0905,
+      "mean_bp": 56.6,
+      "median_bp": 141.8,
+      "pf": 1.443,
+      "sum_ex_top3": -0.0772,
+      "win": 0.625,
+      "t": 0.59
+     },
+     "gross_mean_bp": 91.2
+    },
+    "2025": {
+     "net": {
+      "n": 9,
+      "sum": -0.0149,
+      "mean_bp": -16.6,
+      "median_bp": -95.6,
+      "pf": 0.908,
+      "sum_ex_top3": -0.152,
+      "win": 0.444,
+      "t": -0.11
+     },
+     "gross_mean_bp": 18.9
+    }
+   },
+   "pass": false
+  },
+  "CZ_k2_H3_hedged": {
+   "n_episodes": 21,
+   "n_long_eps": 15,
+   "n_short_eps": 6,
+   "net": {
+    "n": 63,
+    "sum": 0.0118,
+    "mean_bp": 1.9,
+    "median_bp": -26.6,
+    "pf": 1.014,
+    "sum_ex_top3": -0.1924,
+    "win": 0.492,
+    "t": 0.04
+   },
+   "gross": {
+    "n": 63,
+    "sum": 0.0863,
+    "mean_bp": 13.7,
+    "median_bp": -9.6,
+    "pf": 1.106,
+    "sum_ex_top3": -0.122,
+    "win": 0.492,
+    "t": 0.31
+   },
+   "net_lighter": {
+    "n": 63,
+    "sum": 0.059,
+    "mean_bp": 9.4,
+    "median_bp": -16.1,
+    "pf": 1.071,
+    "sum_ex_top3": -0.1475,
+    "win": 0.492,
+    "t": 0.21
+   },
+   "funding_mean_bp": -0.35,
+   "cost_sum": 0.0722,
+   "episode_net": {
+    "n": 21,
+    "sum": 0.0118,
+    "mean_bp": 5.6,
+    "median_bp": 13.8,
+    "pf": 1.019,
+    "sum_ex_top3": -0.3312,
+    "win": 0.524,
+    "t": 0.03
+   },
+   "long": {
+    "n": 45,
+    "sum": -0.1464,
+    "mean_bp": -32.5,
+    "median_bp": -39.0,
+    "pf": 0.792,
+    "sum_ex_top3": -0.3406,
+    "win": 0.444,
+    "t": -0.6
+   },
+   "short": {
+    "n": 18,
+    "sum": 0.1583,
+    "mean_bp": 87.9,
+    "median_bp": 145.1,
+    "pf": 2.046,
+    "sum_ex_top3": 0.0116,
+    "win": 0.611,
+    "t": 1.19
+   },
+   "mean_members": 4.48,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 39,
+      "sum": 0.0433,
+      "mean_bp": 11.1,
+      "median_bp": -26.6,
+      "pf": 1.086,
+      "sum_ex_top3": -0.1512,
+      "win": 0.487,
+      "t": 0.2
+     },
+     "gross_mean_bp": 22.9
+    },
+    "2025": {
+     "net": {
+      "n": 24,
+      "sum": -0.0315,
+      "mean_bp": -13.1,
+      "median_bp": -30.3,
+      "pf": 0.911,
+      "sum_ex_top3": -0.1778,
+      "win": 0.5,
+      "t": -0.18
+     },
+     "gross_mean_bp": -1.3
+    }
+   },
+   "pass": false
+  },
+  "LZ_k1_H1_unhedged": {
+   "n_episodes": 186,
+   "n_long_eps": 99,
+   "n_short_eps": 87,
+   "net": {
+    "n": 186,
+    "sum": -0.4564,
+    "mean_bp": -24.5,
+    "median_bp": -30.3,
+    "pf": 0.919,
+    "sum_ex_top3": -1.3708,
+    "win": 0.473,
+    "t": -0.41
+   },
+   "gross": {
+    "n": 186,
+    "sum": -0.0256,
+    "mean_bp": -1.4,
+    "median_bp": -5.9,
+    "pf": 0.995,
+    "sum_ex_top3": -0.95,
+    "win": 0.495,
+    "t": -0.02
+   },
+   "net_lighter": {
+    "n": 186,
+    "sum": -0.1712,
+    "mean_bp": -9.2,
+    "median_bp": -14.2,
+    "pf": 0.969,
+    "sum_ex_top3": -1.0915,
+    "win": 0.495,
+    "t": -0.15
+   },
+   "funding_mean_bp": -1.8,
+   "cost_sum": 0.3974,
+   "episode_net": {
+    "n": 186,
+    "sum": -0.4564,
+    "mean_bp": -24.5,
+    "median_bp": -30.3,
+    "pf": 0.919,
+    "sum_ex_top3": -1.3708,
+    "win": 0.473,
+    "t": -0.41
+   },
+   "long": {
+    "n": 99,
+    "sum": 0.6453,
+    "mean_bp": 65.2,
+    "median_bp": 41.1,
+    "pf": 1.251,
+    "sum_ex_top3": -0.2691,
+    "win": 0.515,
+    "t": 0.73
+   },
+   "short": {
+    "n": 87,
+    "sum": -1.1016,
+    "mean_bp": -126.6,
+    "median_bp": -47.9,
+    "pf": 0.638,
+    "sum_ex_top3": -1.5219,
+    "win": 0.425,
+    "t": -1.65
+   },
+   "mean_members": 4.62,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 118,
+      "sum": -0.4639,
+      "mean_bp": -39.3,
+      "median_bp": -51.7,
+      "pf": 0.871,
+      "sum_ex_top3": -1.3244,
+      "win": 0.441,
+      "t": -0.51
+     },
+     "gross_mean_bp": -16.3
+    },
+    "2025": {
+     "net": {
+      "n": 68,
+      "sum": 0.0075,
+      "mean_bp": 1.1,
+      "median_bp": 47.1,
+      "pf": 1.004,
+      "sum_ex_top3": -0.4849,
+      "win": 0.529,
+      "t": 0.01
+     },
+     "gross_mean_bp": 24.5
+    }
+   },
+   "pass": false
+  },
+  "LZ_k1_H3_unhedged": {
+   "n_episodes": 85,
+   "n_long_eps": 43,
+   "n_short_eps": 42,
+   "net": {
+    "n": 255,
+    "sum": -0.1707,
+    "mean_bp": -6.7,
+    "median_bp": -16.1,
+    "pf": 0.977,
+    "sum_ex_top3": -1.1488,
+    "win": 0.49,
+    "t": -0.13
+   },
+   "gross": {
+    "n": 255,
+    "sum": 0.0447,
+    "mean_bp": 1.8,
+    "median_bp": -15.9,
+    "pf": 1.006,
+    "sum_ex_top3": -0.9387,
+    "win": 0.49,
+    "t": 0.03
+   },
+   "net_lighter": {
+    "n": 255,
+    "sum": -0.0405,
+    "mean_bp": -1.6,
+    "median_bp": -16.1,
+    "pf": 0.994,
+    "sum_ex_top3": -1.0211,
+    "win": 0.49,
+    "t": -0.03
+   },
+   "funding_mean_bp": -1.33,
+   "cost_sum": 0.1815,
+   "episode_net": {
+    "n": 85,
+    "sum": -0.1707,
+    "mean_bp": -20.1,
+    "median_bp": -112.2,
+    "pf": 0.963,
+    "sum_ex_top3": -1.2064,
+    "win": 0.459,
+    "t": -0.13
+   },
+   "long": {
+    "n": 129,
+    "sum": 0.4873,
+    "mean_bp": 37.8,
+    "median_bp": -28.8,
+    "pf": 1.14,
+    "sum_ex_top3": -0.4626,
+    "win": 0.488,
+    "t": 0.5
+   },
+   "short": {
+    "n": 126,
+    "sum": -0.6579,
+    "mean_bp": -52.2,
+    "median_bp": -15.2,
+    "pf": 0.832,
+    "sum_ex_top3": -1.2076,
+    "win": 0.492,
+    "t": -0.79
+   },
+   "mean_members": 4.62,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 156,
+      "sum": -0.5346,
+      "mean_bp": -34.3,
+      "median_bp": -36.6,
+      "pf": 0.886,
+      "sum_ex_top3": -1.4232,
+      "win": 0.462,
+      "t": -0.52
+     },
+     "gross_mean_bp": -25.4
+    },
+    "2025": {
+     "net": {
+      "n": 99,
+      "sum": 0.3639,
+      "mean_bp": 36.8,
+      "median_bp": 13.6,
+      "pf": 1.135,
+      "sum_ex_top3": -0.2529,
+      "win": 0.535,
+      "t": 0.48
+     },
+     "gross_mean_bp": 44.5
+    }
+   },
+   "pass": false
+  },
+  "LZ_k2_H1_unhedged": {
+   "n_episodes": 42,
+   "n_long_eps": 27,
+   "n_short_eps": 15,
+   "net": {
+    "n": 42,
+    "sum": 0.6618,
+    "mean_bp": 157.6,
+    "median_bp": 74.4,
+    "pf": 1.71,
+    "sum_ex_top3": -0.1306,
+    "win": 0.571,
+    "t": 1.04
+   },
+   "gross": {
+    "n": 42,
+    "sum": 0.7678,
+    "mean_bp": 182.8,
+    "median_bp": 95.6,
+    "pf": 1.861,
+    "sum_ex_top3": -0.034,
+    "win": 0.595,
+    "t": 1.2
+   },
+   "net_lighter": {
+    "n": 42,
+    "sum": 0.7308,
+    "mean_bp": 174.0,
+    "median_bp": 87.0,
+    "pf": 1.808,
+    "sum_ex_top3": -0.0669,
+    "win": 0.595,
+    "t": 1.15
+   },
+   "funding_mean_bp": -2.74,
+   "cost_sum": 0.0945,
+   "episode_net": {
+    "n": 42,
+    "sum": 0.6618,
+    "mean_bp": 157.6,
+    "median_bp": 74.4,
+    "pf": 1.71,
+    "sum_ex_top3": -0.1306,
+    "win": 0.571,
+    "t": 1.04
+   },
+   "long": {
+    "n": 27,
+    "sum": 0.8336,
+    "mean_bp": 308.7,
+    "median_bp": 96.3,
+    "pf": 2.946,
+    "sum_ex_top3": 0.0412,
+    "win": 0.704,
+    "t": 1.45
+   },
+   "short": {
+    "n": 15,
+    "sum": -0.1718,
+    "mean_bp": -114.5,
+    "median_bp": -277.0,
+    "pf": 0.659,
+    "sum_ex_top3": -0.4381,
+    "win": 0.333,
+    "t": -0.67
+   },
+   "mean_members": 4.67,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 27,
+      "sum": 0.4046,
+      "mean_bp": 149.8,
+      "median_bp": 59.3,
+      "pf": 1.591,
+      "sum_ex_top3": -0.3793,
+      "win": 0.556,
+      "t": 0.68
+     },
+     "gross_mean_bp": 176.0
+    },
+    "2025": {
+     "net": {
+      "n": 15,
+      "sum": 0.2572,
+      "mean_bp": 171.5,
+      "median_bp": 104.6,
+      "pf": 2.043,
+      "sum_ex_top3": -0.0426,
+      "win": 0.6,
+      "t": 1.09
+     },
+     "gross_mean_bp": 195.0
+    }
+   },
+   "pass": false
+  },
+  "LZ_k2_H3_unhedged": {
+   "n_episodes": 27,
+   "n_long_eps": 18,
+   "n_short_eps": 9,
+   "net": {
+    "n": 81,
+    "sum": 0.0056,
+    "mean_bp": 0.7,
+    "median_bp": 8.4,
+    "pf": 1.002,
+    "sum_ex_top3": -0.8944,
+    "win": 0.531,
+    "t": 0.01
+   },
+   "gross": {
+    "n": 81,
+    "sum": 0.0839,
+    "mean_bp": 10.4,
+    "median_bp": 18.6,
+    "pf": 1.035,
+    "sum_ex_top3": -0.8222,
+    "win": 0.531,
+    "t": 0.1
+   },
+   "net_lighter": {
+    "n": 81,
+    "sum": 0.0482,
+    "mean_bp": 5.9,
+    "median_bp": 17.1,
+    "pf": 1.02,
+    "sum_ex_top3": -0.8542,
+    "win": 0.531,
+    "t": 0.06
+   },
+   "funding_mean_bp": -2.37,
+   "cost_sum": 0.0591,
+   "episode_net": {
+    "n": 27,
+    "sum": 0.0056,
+    "mean_bp": 2.1,
+    "median_bp": -302.6,
+    "pf": 1.004,
+    "sum_ex_top3": -0.8603,
+    "win": 0.444,
+    "t": 0.01
+   },
+   "long": {
+    "n": 54,
+    "sum": 0.4893,
+    "mean_bp": 90.6,
+    "median_bp": 79.0,
+    "pf": 1.333,
+    "sum_ex_top3": -0.4107,
+    "win": 0.574,
+    "t": 0.65
+   },
+   "short": {
+    "n": 27,
+    "sum": -0.4837,
+    "mean_bp": -179.2,
+    "median_bp": -156.1,
+    "pf": 0.504,
+    "sum_ex_top3": -0.7521,
+    "win": 0.444,
+    "t": -1.4
+   },
+   "mean_members": 4.41,
+   "by_year": {
+    "2024": {
+     "net": {
+      "n": 54,
+      "sum": 0.0396,
+      "mean_bp": 7.3,
+      "median_bp": -75.5,
+      "pf": 1.024,
+      "sum_ex_top3": -0.8604,
+      "win": 0.5,
+      "t": 0.05
+     },
+     "gross_mean_bp": 17.5
+    },
+    "2025": {
+     "net": {
+      "n": 27,
+      "sum": -0.034,
+      "mean_bp": -12.6,
+      "median_bp": 75.7,
+      "pf": 0.957,
+      "sum_ex_top3": -0.3444,
+      "win": 0.593,
+      "t": -0.09
+     },
+     "gross_mean_bp": -4.0
+    }
+   },
+   "pass": false
+  }
+ },
+ "passing": [],
+ "selected": "LZ_k2_H1_unhedged",
+ "selected_reason": "none passed; highest train net mean (validation for information only)",
+ "selected_slip_x2": {
+  "n_episodes": 42,
+  "n_long_eps": 27,
+  "n_short_eps": 15,
+  "net": {
+   "n": 42,
+   "sum": 0.6098,
+   "mean_bp": 145.2,
+   "median_bp": 62.7,
+   "pf": 1.64,
+   "sum_ex_top3": -0.1787,
+   "win": 0.571,
+   "t": 0.96
+  },
+  "gross": {
+   "n": 42,
+   "sum": 0.7678,
+   "mean_bp": 182.8,
+   "median_bp": 95.6,
+   "pf": 1.861,
+   "sum_ex_top3": -0.034,
+   "win": 0.595,
+   "t": 1.2
+  },
+  "net_lighter": {
+   "n": 42,
+   "sum": 0.7308,
+   "mean_bp": 174.0,
+   "median_bp": 87.0,
+   "pf": 1.808,
+   "sum_ex_top3": -0.0669,
+   "win": 0.595,
+   "t": 1.15
+  },
+  "funding_mean_bp": -2.74,
+  "cost_sum": 0.1465,
+  "episode_net": {
+   "n": 42,
+   "sum": 0.6098,
+   "mean_bp": 145.2,
+   "median_bp": 62.7,
+   "pf": 1.64,
+   "sum_ex_top3": -0.1787,
+   "win": 0.571,
+   "t": 0.96
+  },
+  "long": {
+   "n": 27,
+   "sum": 0.8009,
+   "mean_bp": 296.6,
+   "median_bp": 81.4,
+   "pf": 2.832,
+   "sum_ex_top3": 0.0124,
+   "win": 0.704,
+   "t": 1.39
+  },
+  "short": {
+   "n": 15,
+   "sum": -0.1911,
+   "mean_bp": -127.4,
+   "median_bp": -285.6,
+   "pf": 0.63,
+   "sum_ex_top3": -0.4534,
+   "win": 0.333,
+   "t": -0.75
+  },
+  "mean_members": 4.67,
+  "by_year": {
+   "2024": {
+    "net": {
+     "n": 27,
+     "sum": 0.3723,
+     "mean_bp": 137.9,
+     "median_bp": 51.2,
+     "pf": 1.533,
+     "sum_ex_top3": -0.4077,
+     "win": 0.556,
+     "t": 0.62
+    },
+    "gross_mean_bp": 176.0
+   },
+   "2025": {
+    "net": {
+     "n": 15,
+     "sum": 0.2375,
+     "mean_bp": 158.4,
+     "median_bp": 91.2,
+     "pf": 1.933,
+     "sum_ex_top3": -0.0582,
+     "win": 0.6,
+     "t": 1.01
+    },
+    "gross_mean_bp": 195.0
+   }
+  },
+  "pass": false
+ },
+ "selected_curve_volume_series_info_only": {
+  "n_episodes": 54,
+  "n_long_eps": 29,
+  "n_short_eps": 25,
+  "net": {
+   "n": 54,
+   "sum": 0.0072,
+   "mean_bp": 1.3,
+   "median_bp": 18.9,
+   "pf": 1.005,
+   "sum_ex_top3": -0.437,
+   "win": 0.5,
+   "t": 0.01
+  },
+  "gross": {
+   "n": 54,
+   "sum": 0.1389,
+   "mean_bp": 25.7,
+   "median_bp": 44.0,
+   "pf": 1.094,
+   "sum_ex_top3": -0.3126,
+   "win": 0.537,
+   "t": 0.25
+  },
+  "net_lighter": {
+   "n": 54,
+   "sum": 0.0921,
+   "mean_bp": 17.1,
+   "median_bp": 36.8,
+   "pf": 1.062,
+   "sum_ex_top3": -0.3564,
+   "win": 0.537,
+   "t": 0.17
+  },
+  "funding_mean_bp": -2.62,
+  "cost_sum": 0.1175,
+  "episode_net": {
+   "n": 54,
+   "sum": 0.0072,
+   "mean_bp": 1.3,
+   "median_bp": 18.9,
+   "pf": 1.005,
+   "sum_ex_top3": -0.437,
+   "win": 0.5,
+   "t": 0.01
+  },
+  "long": {
+   "n": 29,
+   "sum": 0.397,
+   "mean_bp": 136.9,
+   "median_bp": 117.5,
+   "pf": 1.603,
+   "sum_ex_top3": -0.0316,
+   "win": 0.655,
+   "t": 0.97
+  },
+  "short": {
+   "n": 25,
+   "sum": -0.3898,
+   "mean_bp": -155.9,
+   "median_bp": -131.2,
+   "pf": 0.554,
+   "sum_ex_top3": -0.7051,
+   "win": 0.32,
+   "t": -1.07
+  },
+  "mean_members": 4.98,
+  "by_year": {
+   "2024": {
+    "net": {
+     "n": 31,
+     "sum": 0.0344,
+     "mean_bp": 11.1,
+     "median_bp": 89.4,
+     "pf": 1.041,
+     "sum_ex_top3": -0.3857,
+     "win": 0.548,
+     "t": 0.08
+    },
+    "gross_mean_bp": 36.2
+   },
+   "2025": {
+    "net": {
+     "n": 23,
+     "sum": -0.0272,
+     "mean_bp": -11.8,
+     "median_bp": -8.3,
+     "pf": 0.961,
+     "sum_ex_top3": -0.3696,
+     "win": 0.435,
+     "t": -0.07
+    },
+    "gross_mean_bp": 11.6
+   }
+  },
+  "pass": false
+ },
+ "diagnostics_info_only": {
+  "n_days": 452,
+  "spearman_level_z_vs_next_hedged": -0.062,
+  "spearman_level_z_vs_next_basket": -0.01,
+  "spearman_level_z_vs_contemp_hedged": -0.007,
+  "spearman_level_z_vs_contemp_basket": 0.041,
+  "spearman_change_z_vs_next_hedged": 0.003,
+  "spearman_change_z_vs_next_basket": 0.045,
+  "spearman_change_z_vs_contemp_hedged": 0.077,
+  "spearman_change_z_vs_contemp_basket": 0.104
+ }
+}

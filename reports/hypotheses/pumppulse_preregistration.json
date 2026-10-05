@@ -1,0 +1,157 @@
+{
+ "hypothesis": "H-PUMPPULSE: pump.fun platform activity (DefiLlama daily bonding-curve revenue) z-score predicts next-day(s) returns of a memecoin perp basket, SOL-hedged or unhedged (sources/leads/documented_edges_round10.md idea 3; scope reports/scope_memecoins_20261005.md)",
+ "frozen_at_utc": "2026-10-05T09:46:36.385779+00:00",
+ "frozen_before": "any activity value, kline price, return or P&L was computed by this agent. Before freezing, only (a) HTTP status codes of DefiLlama endpoints, (b) JSON key structure, child-protocol names and first/last dates of the series, and (c) first/last dates of the existing daily kline/funding parquet files were inspected.",
+ "rationale": "Lead idea 3 (round 10): launchpad retail flow as a days-scale regime signal for the liquid meme complex. Evidence is weak (no published lead-lag). Main kill risk named in advance: reverse causality (meme prices move first, pump.fun activity follows), and one correlated bet per day. No parent hypothesis / failing run in this repo.",
+ "data": {
+  "activity": {
+   "primary": "https://api.llama.fi/summary/fees/pump?dataType=dailyRevenue -> totalDataChartBreakdown[ts]['Solana']['pump.fun'] (bonding-curve child only: protocol slice of curve trade fee + graduation + Mayhem fees). Parent total is NOT used because PumpSwap (from 2025-03) and Terminal enter as structural steps.",
+   "robustness_only": "https://api.llama.fi/summary/dexs/pump.fun totalDataChart (bonding-curve volume, starts 2024-04-26) = curve inflow proxy; run ONLY on the selected config, never selectable.",
+   "launches": "No unauthenticated DefiLlama endpoint gives daily pump.fun launch counts; not tested (NULL). Hourly curve SOL inflow from our recorder is forward-only and not part of this daily registration.",
+   "auth": "All three DefiLlama endpoints above returned HTTP 200 without a key (2026-10-05). api.llama.fi/summary/fees/pump-launchpad returned 400.",
+   "point_in_time": "DefiLlama daily values are UTC-day totals keyed by the day's 00:00 UTC timestamp. Day d is usable only after it closes; we assume a 6 h publication lag, so day d's value is used at 06:00 UTC on d+1. CAVEAT: the API serves the CURRENT revision (adapter back-fills/methodology changes, e.g. fee slice 1% -> 0.95% on 2025-05-13), not the vintage visible at the time; no vintage archive exists. This is a stated, unremovable look-ahead risk in the level of the series (not in timing).",
+   "cache": "data/raw/web/pumppulse/*.json"
+  },
+  "prices": "data.binance.vision USDT-M 1h klines (futures/um/monthly/klines/<SYM>/1h), months 2024-01..2026-03 only; rows >= 2026-04-01 dropped before writing. Cache data/raw/web/pumppulse/k1h/<SYM>.parquet. Daily klines for tiers reused read-only from data/raw/web/momentum/klines.",
+  "funding": "Binance fundingRate monthly archive, reused read-only from data/raw/web/momentum/funding/<SYM>.parquet (ends 2026-03).",
+  "download_guard": "< 300 MB total under data/raw/web/pumppulse/; stop if free disk < 2.5 GB."
+ },
+ "universe": {
+  "basket": [
+   "PUMPUSDT",
+   "WIFUSDT",
+   "1000BONKUSDT",
+   "FARTCOINUSDT",
+   "PENGUUSDT",
+   "TRUMPUSDT",
+   "1000PEPEUSDT",
+   "POPCATUSDT"
+  ],
+  "membership": "point in time: a symbol is in the basket for an episode if it has >= 30 daily bars with quote_volume > 0 before the entry day (counting only bars of the current contract) and an hourly bar at entry and exit. Equal weight at entry, no intra-episode rebalancing. Early train (2024) basket is only 1000PEPE/1000BONK/WIF; others join as they pass the 30-bar rule.",
+  "hedge": "SOLUSDT, notional equal to the basket notional (1:1)."
+ },
+ "signal": {
+  "A_d": "pump.fun curve revenue (USD) for UTC day d",
+  "level_z": "z_d = (ln A_d - mean(ln A_{d-28..d-1})) / std(ln A_{d-28..d-1})",
+  "change_z": "c_d = ln A_d - ln A_{d-1}; z_d = (c_d - mean(c_{d-28..d-1})) / std(c_{d-28..d-1})",
+  "missing": "if A_d is missing or <= 0, no signal that day; z requires >= 20 valid values in the window",
+  "window": "28 days (fixed, from the lead)"
+ },
+ "trade": {
+  "entry": "06:00 UTC on d+1 (1h kline open), using z_d",
+  "direction": "z_d >= k: long basket (short SOL if hedged); z_d <= -k: short basket (long SOL if hedged). Unhedged configs trade the basket alone, both directions.",
+  "exit": "06:00 UTC on d+1+H (open of that 1h bar)",
+  "overlap": "non-overlapping: signals are only evaluated while flat; the day after an exit the next signal is z of the latest closed day.",
+  "trade_unit": "each basket-day of an open position is one trade (daily mark-to-market slice at 06:00 UTC); entry costs charged to the first slice, exit costs to the last, funding to the slice in which it prints. Independent signals = episodes, also reported."
+ },
+ "costs": {
+  "primary_binance": "per leg per side: 5 bp taker + slippage tier by the symbol's trailing-30d mean daily quote volume (days before entry): >= $1B 2 bp; $200M-1B 5 bp; $50M-200M 10 bp; < $50M 20 bp (same tiers as momentum prereg). Basket legs weighted equally; SOL hedge leg charged on equal notional. Funding: every Binance funding print with calc_time in (entry, exit]; longs pay rate, shorts receive.",
+  "sensitivity": "slippage x2 reported for the selected config (never selected on).",
+  "lighter_info_only": "0 bp fee + 3 bp spread per leg per side, Binance funding as proxy. Information only; not a pass criterion."
+ },
+ "grid": {
+  "configs": [
+   {
+    "id": "LZ_k1_H1_hedged",
+    "signal": "level_z",
+    "k": 1,
+    "H": 1,
+    "hedge": "SOL"
+   },
+   {
+    "id": "LZ_k1_H3_hedged",
+    "signal": "level_z",
+    "k": 1,
+    "H": 3,
+    "hedge": "SOL"
+   },
+   {
+    "id": "LZ_k2_H1_hedged",
+    "signal": "level_z",
+    "k": 2,
+    "H": 1,
+    "hedge": "SOL"
+   },
+   {
+    "id": "LZ_k2_H3_hedged",
+    "signal": "level_z",
+    "k": 2,
+    "H": 3,
+    "hedge": "SOL"
+   },
+   {
+    "id": "CZ_k1_H1_hedged",
+    "signal": "change_z",
+    "k": 1,
+    "H": 1,
+    "hedge": "SOL"
+   },
+   {
+    "id": "CZ_k1_H3_hedged",
+    "signal": "change_z",
+    "k": 1,
+    "H": 3,
+    "hedge": "SOL"
+   },
+   {
+    "id": "CZ_k2_H1_hedged",
+    "signal": "change_z",
+    "k": 2,
+    "H": 1,
+    "hedge": "SOL"
+   },
+   {
+    "id": "CZ_k2_H3_hedged",
+    "signal": "change_z",
+    "k": 2,
+    "H": 3,
+    "hedge": "SOL"
+   },
+   {
+    "id": "LZ_k1_H1_unhedged",
+    "signal": "level_z",
+    "k": 1,
+    "H": 1,
+    "hedge": "none"
+   },
+   {
+    "id": "LZ_k1_H3_unhedged",
+    "signal": "level_z",
+    "k": 1,
+    "H": 3,
+    "hedge": "none"
+   },
+   {
+    "id": "LZ_k2_H1_unhedged",
+    "signal": "level_z",
+    "k": 2,
+    "H": 1,
+    "hedge": "none"
+   },
+   {
+    "id": "LZ_k2_H3_unhedged",
+    "signal": "level_z",
+    "k": 2,
+    "H": 3,
+    "hedge": "none"
+   }
+  ],
+  "n_configs": 12,
+  "not_in_grid": "long-only variants, other windows, curve-volume series: reported for information only if at all, never selectable."
+ },
+ "splits": {
+  "train": "episodes entered 2024-04-01 .. 2025-06-30 and exiting by 2025-06-30 23:59 UTC (first date set by 28-day warm-up from 2024-03-01 data start)",
+  "validation": "entered 2025-07-01 .. 2026-03-31, exit by 2026-03-31 23:59 UTC",
+  "holdout": "2026-04-01+ NEVER touched: no price for >= 2026-04-01 is downloaded or loaded; activity values for those dates exist in the cached JSON (the API returns the full history) but are dropped at load."
+ },
+ "bar": "per split, primary Binance costs, unit = basket-day trade: n >= 50, net sum > 0, PF > 1.2, net sum excluding the 3 best basket-days > 0. Also report episodes (independent signals), per-year results, daily t-stat, long/short split.",
+ "selection": "ONE config chosen on train: among configs passing the train bar, the highest train net mean per basket-day; if none pass, the config with the highest train net mean is run on validation for information only (verdict FAIL). Validation run exactly once for that config.",
+ "verdict": "PASS only if the selected config passes the bar on both train and validation. Otherwise FAIL -> reports/failures/agent_pumppulse.md.",
+ "amendments": [
+  {
+   "at_utc": "2026-10-05T09:46:54.483975+00:00",
+   "before": "any activity value, return or P&L was computed",
+   "change": "Removed an unverified claim that PUMP listed 2025-07-14. Archive check (dates, close level and volume only): PUMPUSDT bars 2025-04-12..2025-07-09 belong to an earlier, different contract (close ~0.12 then flat 0.0471 with zero volume); the pump.fun PUMP contract starts 2025-07-10 (close 0.0052). Rule: PUMPUSDT is used only from 2025-07-10; bars with zero quote volume never count toward the 30-bar rule."
+  }
+ ]
+}

@@ -1,0 +1,161 @@
+{
+ "id": "H-CLEANMIG",
+ "written_utc": "2026-10-05",
+ "written_before_any_pnl": true,
+ "source": "sources/leads/documented_edges_round10.md idea 2; task brief from orchestrator (agent cleanmig)",
+ "what_was_seen_before_writing": [
+  "market-wide tape gap list (amm_trades and curve_trades, holdout rows excluded)",
+  "counts of migrations, filter passers and eligible trades per split and config (no prices, no returns)"
+ ],
+ "data": {
+  "db": "data/market.duckdb read_only",
+  "tables": [
+   "amm_pools",
+   "amm_trades",
+   "curve_creates",
+   "curve_trades",
+   "curve_completes"
+  ],
+  "mayhem": "data/processed/mayhem_flags.parquet; is_mayhem True excluded, unknown kept (count reported)",
+  "reserve": "PumpSwap true SOL reserve = pool_sol_logged + 17.585 (re-verified in the sim on train sells)",
+  "fee": "fee_bps of the pool trade that defines the fill state (actual tier at fill time); fee_bps already = LP+protocol+creator"
+ },
+ "splits": {
+  "train": "recv < 1790882100 OR 1790899200 <= recv < 1790985600 (by migration time)",
+  "validation": "1790985600 <= recv < 1791072000 (by migration time)",
+  "holdout": "1790882100..1790899200 never loaded; every SQL query excludes it",
+  "split_assignment": "by migration time t_mig (amm_pools.recv)"
+ },
+ "tape_gaps": {
+  "rule": "a gap = > 60 s with no market-wide trade in amm_trades or curve_trades; holdout treated as a gap; declared before P&L",
+  "gaps_utc": [
+   "10-01 12:34:03 -> 12:41:36",
+   "10-01 19:14:59 -> 10-02 01:44:27 (contains holdout 19:15-21:15; rest is recorder gap)",
+   "10-02 07:41:42 -> 16:55:01",
+   "10-02 18:49:00 -> 10-03 00:33:28",
+   "10-04 01:12:07 -> 08:53:59",
+   "10-04 23:05:30 -> 23:06:49",
+   "10-05 01:03:47 -> 01:11:20"
+  ],
+  "covered_segments_utc": [
+   "10-01 12:19:31-12:34:03",
+   "10-01 12:41:36-19:14:59",
+   "10-02 01:44:27-07:41:42",
+   "10-02 16:55:01-18:49:00",
+   "10-03 00:33:28-10-04 01:12:07",
+   "10-04 08:53:59-23:05:30",
+   "10-04 23:06:49-10-05 01:03:47",
+   "10-05 01:11:20-03:40:44 (data end)"
+  ],
+  "note": "Train has only ~14.6 h of covered tape (Oct 1 12:19-19:15, Oct 2 01:44-07:41 and 16:55-18:49). Validation day is covered from 00:33."
+ },
+ "eligibility": [
+  "standard migration: amm_pools.quote_in within 0.05 of 84.99",
+  "token create event recorded, and token create, migration and entry (t_mig + D + 1 s) in ONE covered segment (curve history and entry state complete)",
+  "exit time (t_mig + D + H + 1 s) inside a covered segment and before data end; else skipped and counted",
+  "whole lifecycle [token create, exit] must not intersect the holdout; such trades are skipped (all Oct 1 pre-holdout migrations with 24 h holds)",
+  "holds MAY span a recorder gap (not the holdout) for fixed-time exits: only entry and exit states are needed. The stop variant requires the whole window in one covered segment.",
+  "train trades with 24 h holds exit on Oct 3 (validation day) and validation 24 h trades exit on Oct 4-5 (after the validation window). Only those pools' exit prices are read; no decision uses them. Disclosed: train and validation exit periods overlap in calendar time.",
+  "one trade per pool per config"
+ ],
+ "filters_point_in_time": {
+  "computed_from": "curve_trades with recv <= t_mig only; wallet balance = net curve buys - sells (transfers invisible)",
+  "base": {
+   "n_curve_trades_min": 20,
+   "creator_net_share_max": 0.001,
+   "top10_wallet_share_max": 0.3,
+   "launch_snipers_share_max": 0.03,
+   "launch_snipers_def": "wallets whose first curve buy was in the create slot or create slot + 1; their summed positive net balance / 1e9"
+  },
+  "strict": "base AND holders >= 150 (holder = wallet with net curve balance > 100 tokens)",
+  "supply": 1000000000.0
+ },
+ "trade": {
+  "size_sol": 0.5,
+  "decision": "t_mig + D",
+  "latency_s": 1,
+  "entry_fill": "exact constant product on the last pool state at t_mig + D + 1 s; fee on quote input",
+  "exit_fill": "exact constant product sell of all tokens on the last pool state at exit + 1 s",
+  "stale_state_rule": "if the last trade before a fill time lies before the covered segment of that time, use the pre-state of the first later trade in the segment; if none, use the last observed state and flag 'stale'",
+  "tx_cost": "tip/priority 0.001 SOL per tx (main) and 0.01 (sensitivity), plus 0.000005 SOL base fee per tx; 2 tx per trade"
+ },
+ "grid": {
+  "filter": [
+   "base",
+   "strict"
+  ],
+  "delay": [
+   "30 min",
+   "2 h"
+  ],
+  "exit": [
+   "hold 4 h",
+   "hold 24 h",
+   "hold 4 h with -40% stop (first pool trade whose post-trade mid <= 0.6 x pre-entry mid; sell at last state at trigger + 1 s)"
+  ],
+  "n_configs": 12,
+  "note": "The lead's '24 h with -40% stop' was replaced by '4 h with -40% stop' before any P&L because no 24 h window is fully covered by the tape on train (0 eligible)."
+ },
+ "eligible_counts_before_pnl": {
+  "note": "train/valid, base filter",
+  "D30_H4": [
+   10,
+   80
+  ],
+  "D30_H24": [
+   28,
+   71
+  ],
+  "D120_H4": [
+   2,
+   70
+  ],
+  "D120_H24": [
+   18,
+   70
+  ],
+  "strict": {
+   "D30_H4": [
+    10,
+    66
+   ],
+   "D30_H24": [
+    26,
+    61
+   ],
+   "D120_H4": [
+    2,
+    57
+   ],
+   "D120_H24": [
+    17,
+    60
+   ]
+  }
+ },
+ "sensitivities_reported_not_selected_on": [
+  "tip 0.01 SOL/tx",
+  "conservative fills (agent_amm_flow rule: entry at the higher of last state and first trade within 5 s; exit at the lower, marked down to next pre-state if >2% lower)",
+  "stale exits valued at 0",
+  "mid-to-mid gross return",
+  "descriptive reference groups at the same D/H: all eligible non-Mayhem standard migrations (unfiltered) and insider graduations (< 20 curve trades)"
+ ],
+ "kill_test": "Using train configs with n >= 10: if no config has mean net return (net SOL / 0.5, tip 0.001, main fills) above -2%, stop: verdict FAIL, validation not examined. The lead's median-lift test (filtered 4 h median >= unfiltered + 5 pp) is reported descriptively only.",
+ "selection": "If the kill test passes: pick ONE config on train = highest net-ex-top-3 SOL (tip 0.001, main fills) among configs with train n >= 10; ties -> larger n. Run validation once for that config only (plus descriptive reference groups).",
+ "bar_per_split": {
+  "n_min": 50,
+  "net_sol": "> 0",
+  "profit_factor": "> 1.2",
+  "net_ex_top3_sol": "> 0",
+  "tip": 0.001,
+  "also_required_for_pass": "conservative-fill net > 0 on the same split"
+ },
+ "known_limitation": "Train n is at most 28 for any config (tape coverage), so the train bar (n >= 50) cannot be met. Therefore the best possible verdict from this study is INCONCLUSIVE (validation evidence only), never PASS/candidate. A validation pass would justify forward collection, not a candidate.",
+ "verdict_rules": {
+  "FAIL": "kill test fails, or the chosen config fails the bar on validation (net <= 0 or PF <= 1.2 or net ex top3 <= 0)",
+  "INCONCLUSIVE": "chosen config passes validation bar but train n < 50 (unavoidable here), or validation n < 50",
+  "PASS": "not reachable in this study (see known_limitation)"
+ },
+ "rug_definition": "trade net return <= -90% of stake (before tips)",
+ "reporting": "per-trade distribution, by entry hour UTC, skip reasons, rugs and losses"
+}
