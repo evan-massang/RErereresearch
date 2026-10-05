@@ -1,0 +1,74 @@
+{
+ "hypothesis": "H-LIQMAP",
+ "frozen_at_utc": "2026-10-05T10:52:00Z",
+ "frozen_note": "Written BEFORE the recorder (scripts/research/liqmap_recorder.py) recorded any row. No liquidation-cluster, trigger or price-outcome statistic had been computed when this file was written. Live checks done before writing were limited to API shape: clearinghouseState returns position.liquidationPx (null when no liquidation price) on two addresses taken from FARTCOIN recentTrades; WS trades carry users=[buyer, seller]; metaAndAssetCtxs OI/24h volume for the 13 coins (used only to size the absolute cluster floor below).",
+ "agent": "agent_liqmap",
+ "source": "sources/leads/documented_edges_round11.md, Idea 6 (H-LIQMAP). Leads: Glassnode 'Pressure Points' 2025-09-23 (no hit rates); kiyotaka.ai / mmt.gg vendor 'magnet' claims (marketing-grade).",
+ "statement": "On Hyperliquid meme perps, when the HL mid comes within d bp of a dense cluster of PUBLICLY VISIBLE liquidation prices (from per-address clearinghouseState of addresses discovered on the public trades stream), price either continues through the cluster (cascade / magnet) or is rejected (support) often enough, within T, to trade the direction profitably after a measured Lighter spread.",
+ "parent_context": "Not an iteration of a failed rule. All earlier liquidation ideas were reactive (fade after the flush): H-FLUSH (FAIL train, reports/failures/agent_flush.md), H-WICKNET (FAIL train) and H-WICKNET-F (FAIL validation, gross +3.4 bp < cost). Lessons carried in: (1) gross must clearly exceed one round-trip spread, so the arms trade at minutes horizon (5-30 min) where the lead expects 30-200 bp on a breach, not seconds; (2) no tuning after seeing validation, coin exclusions post hoc do not count (WICKNET-F PUMP lesson); (3) local receive time only, never exchange timestamps mixed with local ones (reports/paper/hllag_forward_audit.md: container clock ~2.8 s slow and drifting); (4) parquet part files written in a worker thread so the event loop does not stall (hllag audit flush-stall lesson).",
+ "is_synthetic": false,
+ "universe": {
+  "hl_coins": ["WIF", "kBONK", "FARTCOIN", "PUMP", "PENGU", "TRUMP", "SPX", "kPEPE", "kSHIB", "POPCAT", "USELESS", "kFLOKI", "DOGE"],
+  "lighter_symbols": {"WIF": "WIF", "kBONK": "1000BONK", "FARTCOIN": "FARTCOIN", "PUMP": "PUMP", "PENGU": "PENGU", "TRUMP": "TRUMP", "SPX": "SPX", "kPEPE": "1000PEPE", "kSHIB": "1000SHIB", "POPCAT": "POPCAT", "USELESS": "USELESS", "kFLOKI": "1000FLOKI", "DOGE": "DOGE"},
+  "scope": "memecoins only (reports/scope_memecoins_20261005.md). Fixed before recording; no coin is added or dropped after data are seen."
+ },
+ "data_collection": {
+  "recorder": "scripts/research/liqmap_recorder.py via adapter pipeline/sources/hyperliquid_positions.py. Public unauthenticated HL endpoints only (POST https://api.hyperliquid.xyz/info, wss://api.hyperliquid.xyz/ws). No accounts, keys or orders.",
+  "address_discovery": "Every address in the `users` field ([buyer, seller]) of every HL WS `trades` message on the 13 coins becomes known at the local receive time of that message. No other discovery source (no leaderboards, no third-party explorers), so the tracked set is a sample biased toward recently active traders; this is a stated limitation, not corrected.",
+  "position_polling": {
+   "endpoint": "info {type: clearinghouseState, user} (HL documented weight 2).",
+   "budget": "This recorder spends at most 600 HL REST weight per minute per IP (HL limit 1200/min/IP shared with twap_recorder ~260/min and the other recorders' occasional REST): clearinghouseState capped by a token bucket at 270 calls/min (540 weight) + metaAndAssetCtxs once per minute (20 weight) = 560 weight/min. On HTTP 429 all polling pauses 60 s.",
+   "schedule": "Priority by due time (earliest first). New address: due at discovery. Address seen trading one of the 13 coins again: due at max(trade + 20 s, last poll + 60 s). After each poll the next routine poll is set by the address's meme exposure at that poll: any meme position whose liquidationPx is within 300 bp of the current HL mid -> 60 s; meme notional >= $100k -> 120 s; >= $10k -> 300 s; > 0 -> 900 s; no meme position -> not re-polled until it trades a meme coin again. If demand exceeds the budget the realised intervals stretch; realised poll age is recorded and enters the map rule below.",
+   "kept_fields": "per meme position: local receive ts, address, coin, szi, entryPx, liquidationPx (null kept as null), positionValue, leverage value, cross flag. Per poll (also polls with no meme position, so closes are visible): ts, address, ok, number of meme positions, meme notional, request latency, reason (new / trade / schedule)."
+  },
+  "market_data": "HL WS bbo for the 13 coins (written on best price change, coalesced 50 ms; size-only changes at most every 1 s), HL WS trades (px, sz, side, tid, buyer, seller), and metaAndAssetCtxs once per minute (mark, mid, oracle, openInterest, dayNtlVlm, funding) for coverage vs HL open interest.",
+  "lighter_quotes": "Lighter best bid/ask come from the already running recorders (data/raw/web/memelag/lighter_bbo_* for the 11 non-PUMP/DOGE coins, data/raw/web/multivenue/ for PUMP and DOGE), same container clock (local receive ts_us).",
+  "clock": "All rules use LOCAL RECEIVE time (time.time() of this container) for every stream; HL exchange timestamps are stored but never mixed in. The container clock runs ~2.8 s slow and drifts; since every stream shares it, only relative timing matters.",
+  "storage": "Compact zstd parquet under data/raw/web/liqmap/ (hourly files), target < 200 MB/day; recorder stops itself if free disk < 1.5 GB."
+ },
+ "point_in_time_map": {
+  "refresh": "Every 60 s of local time t, per coin, the map is rebuilt from the LATEST poll of each address with poll ts <= t. A position counts only if (a) its poll age at t is <= 20 min, (b) liquidationPx is not null, (c) it is on the liquidation side consistent with the current mid (long: liqPx < mid; short: liqPx > mid) and (d) |ln(liqPx/mid)| <= 10%. Notional = positionValue at its poll.",
+  "bins": "10-bp bins in log price: bin = floor(ln(liqPx) / ln(1.001)). Longs and shorts are binned separately (long-liq clusters lie below mid, short-liq clusters above).",
+  "cluster": "A cluster is a 30-bp window (3 consecutive bins) whose summed tracked notional >= threshold(X) = max($50,000, X x the coin's trailing-1h HL traded notional from the recorded trades stream, window (t-60 min, t]). Overlapping qualifying windows on the same side merge into one cluster; its near edge is the edge closest to the mid, its far edge the edge farthest from the mid. Cluster identity for the re-trigger lock = (coin, side, bin of its notional-weighted centre) +-3 bins.",
+  "cluster_threshold_choice": "The lead proposed X in {0.5, 2}. Changed BEFORE any data to X in {0.25, 1} with a $50k floor, from a density argument only: liq prices spread over roughly +-20-50% of price, so a uniform 30-bp slice of OI is ~0.1-0.3x the hourly volume on these coins (snapshot OI/24h-volume read 2026-10-05 10:50Z); 0.25x is already ~1-3x average density and 1x is a strong cluster, while 2x would rarely occur with a partial sample of addresses. The $50k floor prevents trivial clusters on thin coins (POPCAT, kFLOKI hourly volume < $50k)."
+ },
+ "trigger": "At any HL bbo update at local time t, with mid m = (bid+ask)/2: the nearest cluster in the current map (built at the last 60-s refresh <= t) has its near edge within d bp of m, and no trigger fired on the same cluster identity in the previous 30 min (per config). One open trade per (config, coin) at a time; triggers while a trade is open are skipped and counted. Warm-up: no triggers before T0 + 2 h (T0 = recorder start_ts_us in data/raw/web/liqmap/recorder.log).",
+ "arms": {
+  "toward": "Cascade/magnet: trade toward the cluster (long-liq cluster below -> SELL; short-liq cluster above -> BUY). Take-profit when the HL mid crosses the cluster's FAR edge; stop when the HL mid moves d bp against the entry mid; otherwise exit at T.",
+  "away": "Rejection/support: the exact mirror. Trade away from the cluster. Stop when the HL mid crosses the cluster's far edge; take-profit when the HL mid moves d bp in favour (away from the cluster) from the entry mid; otherwise exit at T."
+ },
+ "execution": {
+  "primary_venue": "Lighter taker, $1,000 notional, 0 bp fee (standard account). Total latency 600 ms on the local clock: entry/exit fill at the Lighter ask (buy) or bid (sell) of the latest recorded Lighter quote with receive ts <= decision time + 600 ms. The cost is the recorded spread crossed on both legs; no zero-impact mid fills.",
+  "fallback": "If no Lighter quote for the coin was received within the 10 s before the fill time (recorder gap or ended; multivenue ends ~2026-10-07 07:19Z, memelag ~09:37Z), that trade is filled on HL instead: HL ask/bid from the recorded HL bbo at decision + 600 ms, plus HL taker fee 4.5 bp per leg. The number of fallback trades is reported.",
+  "robustness_line": "Every config is also reported fully on HL taker (4.5 bp x 2 + HL spread). Information only; the bar uses the primary venue.",
+  "funding": "Ignored (holds <= 30 min; < 0.5 bp), stated.",
+  "size_note": "$1k cannot move price toward anyone's liquidation; any rule that adds size to cause a cascade is excluded."
+ },
+ "grid": {
+  "configs": 12,
+  "definition": "d in {50, 100} bp x X in {0.25, 1} x arm in {toward, away} at T = 30 min (8 configs) + toward at T = 5 min for the 4 (d, X) pairs (4 configs).",
+  "fixed": "bins 10 bp, cluster window 30 bp, $50k floor, 30-min re-trigger lock, 60-s map refresh, 20-min max poll age, 10% max distance, $1k size."
+ },
+ "split": {
+  "train": "Day 1: [T0 + 2 h, T0 + 26 h) on the local clock.",
+  "validation": "Day 2: [T0 + 26 h, T0 + 50 h). Evaluated ONCE, on the single config selected on train, after the selection is written to reports/hypotheses/liqmap_selection.json.",
+  "forward": "If validation passes, the config is frozen and scored only on data recorded after the freeze (a new recorder run). If it fails, a failure report goes to reports/failures/ and the rule is not re-tuned on these days.",
+  "holdout": "None separate: the forward period after freeze plays that role."
+ },
+ "kill_test_day1": {
+  "events": "Per (d, X) pair, the trigger set without the open-trade restriction (deduplicated by the 30-min lock).",
+  "breach": "Breach = the HL mid crosses the cluster's far edge within 30 min of the trigger.",
+  "control": "Mirror level: at the same trigger time, a virtual cluster of identical width at the same distance from the mid on the OPPOSITE side. Control breach = mid crosses the mirror far edge within 30 min.",
+  "rule": "Continue only if, at d = 100, X = 0.25: n_triggers >= 15 on day 1 AND |breach rate - control breach rate| >= 10 pp. A positive difference keeps only the toward arms for selection; a negative one keeps only the away arms. Otherwise stop: FAIL at kill test, validation not examined."
+ },
+ "selection_rule": "Among the configs of the arm kept by the kill test, the config with the highest train PF among those with train n >= 20 and train net > 0. If none, FAIL on train and validation is not examined.",
+ "bar": "A config passes (on validation, and later forward) only if all hold: n >= 50 trades; net > 0 after all costs; profit factor > 1.2; net > 0 with the 3 best trades removed. n < 50 on validation = INCONCLUSIVE (not pass), reported as such; forward recording may then continue under the same frozen rule.",
+ "reported_always": "Coverage per coin (tracked notional by side vs HL OI x mark), realised poll ages, triggers by coin, breach rates per arm, gross bp per trade, markouts at 1/5/15/30 min, fallback count, days/coins positive, skipped triggers. Losses and stalls are reported, not just winners.",
+ "known_limitations": [
+  "Only addresses that traded the 13 coins during the recording are visible; long-dormant large positions are missed until they trade.",
+  "Cross-margin liquidationPx depends on the whole account and moves with other coins' prices between polls; the snapshot value is stale by the poll age.",
+  "HL is a minority of total meme-perp open interest; Binance/Bybit liquidations are invisible.",
+  "Polling lag of 1-15 min by tier.",
+  "Only ~2 days of data: n >= 50 per config on one validation day may not be reached (inconclusive)."
+ ]
+}
