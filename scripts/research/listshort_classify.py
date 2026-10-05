@@ -99,6 +99,31 @@ def is_meme(sym, meme_by_sym, by_sym, caps):
     return (top_id in meme_ids), f"collision: largest={top_id}"
 
 
+# Documented identity corrections (made from asset identity only, before any price data was loaded).
+# Symbol matching can pick a different coin than the one the perp tracks; these fix that both ways.
+REMOVE = {
+    "AI": "Sleepless AI (perp asset), not the matched 'Artificial Inu'; Sleepless AI not in meme-token",
+    "OMNI": "Omni Network (perp asset), not 'OmniCat'; Omni Network not in meme-token",
+    "AMC": "US stock perp (AMC Entertainment), not a crypto memecoin",
+    "GME": "US stock perp (GameStop), not a crypto memecoin",
+    "HOOD": "US stock perp (Robinhood), not a crypto memecoin",
+    "COPPER": "commodity perp (copper), matched coin is a $9k 'Copper Inu'",
+    "XAU": "commodity perp (gold)", "XPD": "commodity perp (palladium)",
+    "FOOTBALL": "identity unverified; matched coin has a ~$3k market cap",
+    "MILK": "MilkyWay (liquid staking) perp, not 'Cool Cats Milk'",
+    "RONIN": "Ronin network perp, not the $0.4M 'RONIN' meme",
+    "RATS": "ordinals 'rats' perp; matched 'GoldenRat' is a different coin; rats not in meme-token",
+    "X": "X Empire perp; x-empire not in meme-token (matched 'Free Speech' is a different coin)",
+    "KORU": "identity unverified; matched coin has a ~$11k market cap",
+}
+ADD = {
+    "HPOS": "HarryPotterObamaSonic10Inu; CoinGecko symbol is BITCOIN, id harrypotterobamasonic10inu in meme-token",
+    "NEIROETH": "Neiro on Ethereum; venue suffix ETH; CoinGecko 'neiro' coins are in meme-token",
+    "BROCCOLI714": "Broccoli (BSC, contract ...714); Broccoli coins are in meme-token",
+    "BROCCOLIF3B": "Broccoli (BSC, contract ...f3b); Broccoli coins are in meme-token",
+}
+
+
 def candidates():
     meme_by_sym, by_sym = meme_symbols()
     hl = load(HL / "listshort_meta.json")["universe"]
@@ -116,6 +141,10 @@ def candidates():
     out = []
     for r in rows:
         ok, why = is_meme(r["base"], meme_by_sym, by_sym, caps)
+        if r["base"] in REMOVE:
+            ok, why = False, "override remove: " + REMOVE[r["base"]]
+        if r["base"] in ADD:
+            ok, why = True, "override add: " + ADD[r["base"]]
         r["meme"], r["meme_reason"] = ok, why
         out.append(r)
     return out
