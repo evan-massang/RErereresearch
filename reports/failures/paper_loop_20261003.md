@@ -210,3 +210,13 @@ Buy into a 40–60% crash within 10–30 s on an active token, with variants for
 - **24, Mayhem Mode:** the pump.fun agent wallet `BwWK17cbHxwWBKZkUYvzxLcNQ1YVyaFezduWbtm2de6s` trades only Mayhem tokens, every 3 slots, for a median of 44 s. Its direction is a coin flip that cannot be predicted from public state, and its sells drain the curve's real SOL. 40 configs, all negative on train (`reports/failures/agent_mayhem.md`). Mayhem tokens explain most of the curve-reserve anomalies in the data-quality note.
 - **12, livestream viewers (exploration):** viewers rise *after* buying. A coin first reaching 5 viewers precedes −19% over 15 min. Five never-traded, all-day streams from one operator account for 97.5% of curve-coin polls with ≥ 10 viewers. Dropped as an entry signal (`reports/live_viewers_exploration.md`).
 - **ML exits re-run without Mayhem tokens** (28.6% of snapshots): all 24 configs are still negative on train out-of-fold; best −0.012 SOL per trade, PF 0.82 (`research/observations/evidence_ml_exits_nomayhem_20261004.json`).
+
+## Data housekeeping (2026-10-05)
+
+Disk limits forced deleting raw stream files once they were fully loaded into `data/market.duckdb` (checked against `loaded_files` / `loaded_amm_files` with complete = true):
+- all Oct 1–3 `pump_curve` raw files;
+- most `pumpswap_raw` files.
+
+The database is now the only copy of that tape. Two consequences:
+- creator-fee claim events from before 2026-10-05 03:09 UTC are gone; since then the recorder writes them to the `fee_events` feed;
+- re-decoding those days with new event types is no longer possible.
