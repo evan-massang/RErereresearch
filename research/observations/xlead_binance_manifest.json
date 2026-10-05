@@ -1,0 +1,4120 @@
+{
+ "files": {
+  "BTCUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-01.zip",
+   "bytes": 1898532,
+   "sha256": "21eeac04a76a7a35b10467e5e752fb2f8cff77cdeb57df6b50a23ce8d69bb190",
+   "rows": 44640,
+   "fetched_at": 1791172298.2194078
+  },
+  "BTCUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-02.zip",
+   "bytes": 1770127,
+   "sha256": "1407acbf8ad99911bdf582805699b7e85fdbc346dbe12618ce8b6369f0d8058d",
+   "rows": 41760,
+   "fetched_at": 1791172298.251702
+  },
+  "BTCUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-03.zip",
+   "bytes": 1950611,
+   "sha256": "040b8e448e4243072b88b0d9908dfebed91bba943b75f4e831fa5337a2e1dab9",
+   "rows": 44640,
+   "fetched_at": 1791172297.5122972
+  },
+  "BTCUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-04.zip",
+   "bytes": 1870249,
+   "sha256": "6a41f002da0c8e3f60bd46c841ea4ed766fb195764ad3b6b10e4f508d29c2eb7",
+   "rows": 43200,
+   "fetched_at": 1791172297.9324768
+  },
+  "BTCUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-05.zip",
+   "bytes": 1896566,
+   "sha256": "42de617ed643def54b5a2c3fceb7cd2edec91aafaa01104a097b2ded5c5122d4",
+   "rows": 44640,
+   "fetched_at": 1791172298.328057
+  },
+  "BTCUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-06.zip",
+   "bytes": 1789499,
+   "sha256": "93499da4990fec5471bb0d73c91116e7d20a8b2697d7a4491665d6d1b8e85c85",
+   "rows": 43200,
+   "fetched_at": 1791172298.3569977
+  },
+  "BTCUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-07.zip",
+   "bytes": 1912408,
+   "sha256": "97f9cd5104a33828c5c2d8d03a2796d600102ab88737d1c6da515b9609540c3c",
+   "rows": 44640,
+   "fetched_at": 1791172299.3364637
+  },
+  "BTCUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-08.zip",
+   "bytes": 1919190,
+   "sha256": "f69dbcebfd7108dc97825bd6c35d8d9a51745082f66617cb69de888e867e8e89",
+   "rows": 44640,
+   "fetched_at": 1791172299.6578689
+  },
+  "BTCUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-09.zip",
+   "bytes": 1829434,
+   "sha256": "16fe2e13728236bfbd3efee99671612daadeea3b62dfd55d8874feae9faa4946",
+   "rows": 43200,
+   "fetched_at": 1791172300.140544
+  },
+  "BTCUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-10.zip",
+   "bytes": 1878910,
+   "sha256": "aa8c79ad120a8d870e23276d1ad5966f99f59bc0a1886ef5927a3808a5efee36",
+   "rows": 44640,
+   "fetched_at": 1791172300.042861
+  },
+  "BTCUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-11.zip",
+   "bytes": 1876449,
+   "sha256": "9c3dad038f4b043ec51d4200f57d15a0a07b3fc32b3ea3dca6a96543b9624941",
+   "rows": 43200,
+   "fetched_at": 1791172300.210358
+  },
+  "BTCUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2024-12.zip",
+   "bytes": 1929835,
+   "sha256": "bfce141d2a152c2b94d85b797fe18ebfa195fa0e6091a7ccc06663ae1309466f",
+   "rows": 44640,
+   "fetched_at": 1791172300.2184556
+  },
+  "BTCUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-01.zip",
+   "bytes": 1917878,
+   "sha256": "b69ca5b2c2d1ae00d68d2790d09138cb2a44085ff19e0da5dc98b569ea7e489e",
+   "rows": 44640,
+   "fetched_at": 1791172300.6846826
+  },
+  "BTCUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-02.zip",
+   "bytes": 1718529,
+   "sha256": "d84ca981d06ee6491e16597f8d43955f62cab399a9f4b6efc2ee1b4d3a37f0fc",
+   "rows": 40320,
+   "fetched_at": 1791172301.0310066
+  },
+  "BTCUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-03.zip",
+   "bytes": 1919175,
+   "sha256": "4837163333c9c9978255b8870a5a6de1bc48bd22a6c72fef54665a8d4e70b4df",
+   "rows": 44640,
+   "fetched_at": 1791172301.843068
+  },
+  "BTCUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-04.zip",
+   "bytes": 1846549,
+   "sha256": "87bca047ca7e8b1d27913091255018e121210276726c5aa445e85da6f56e2dcc",
+   "rows": 43200,
+   "fetched_at": 1791172301.5223396
+  },
+  "BTCUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-05.zip",
+   "bytes": 1904964,
+   "sha256": "7acab7e40a74db53a2d6c35373ebe327eefa85b98f8c92fbe58755881e3841ee",
+   "rows": 44640,
+   "fetched_at": 1791172301.6497865
+  },
+  "BTCUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-06.zip",
+   "bytes": 1817901,
+   "sha256": "78872b32c4d0bbc2d89a0459539b90cff47de08a9a56fdf8d233943a32e78efc",
+   "rows": 43200,
+   "fetched_at": 1791172301.969722
+  },
+  "BTCUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-07.zip",
+   "bytes": 1868400,
+   "sha256": "cf5fe0891c80e68d2d613eb5457100b7d886eee8cc913ccdd96ef45e757a5aaf",
+   "rows": 44640,
+   "fetched_at": 1791172302.1142347
+  },
+  "BTCUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-08.zip",
+   "bytes": 1871971,
+   "sha256": "eaf41354fc1aa96eac94ee50b3fda603cd595f95030ebf30b2ab5bea7a4462c3",
+   "rows": 44640,
+   "fetched_at": 1791172302.6428552
+  },
+  "BTCUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-09.zip",
+   "bytes": 1782066,
+   "sha256": "c296ba45c215934e9750ca82846c7b5d14be661649d8e4423eac834cf57330dc",
+   "rows": 43200,
+   "fetched_at": 1791172303.0717957
+  },
+  "BTCUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-10.zip",
+   "bytes": 1913274,
+   "sha256": "bb7f53350fe27b6d8e38b5856ffc43f9ecda9d568d5bf31d0db0cd011da7100f",
+   "rows": 44640,
+   "fetched_at": 1791172304.2183876
+  },
+  "BTCUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-11.zip",
+   "bytes": 1856815,
+   "sha256": "981da0b054f99b959fe6245fb363336b46908d358f37251d59bad308f375bc54",
+   "rows": 43200,
+   "fetched_at": 1791172303.2557542
+  },
+  "BTCUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2025-12.zip",
+   "bytes": 1868657,
+   "sha256": "2d5b2e1887dac1dfe450010877de7203a72e19df7a771067b980bbb07ad3069c",
+   "rows": 44640,
+   "fetched_at": 1791172303.4202993
+  },
+  "BTCUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-01.zip",
+   "bytes": 1852279,
+   "sha256": "58e9c620a6acda209d25766b3cf4262f3104649f5c26f247d933e0da8bb7946f",
+   "rows": 44640,
+   "fetched_at": 1791172303.541247
+  },
+  "BTCUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-02.zip",
+   "bytes": 1743792,
+   "sha256": "805626ad2dc5b704d52c211996d12e9e4b1be234998f3dba4b3d34ff79be0337",
+   "rows": 40320,
+   "fetched_at": 1791172304.525604
+  },
+  "BTCUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BTCUSDT/1m/BTCUSDT-1m-2026-03.zip",
+   "bytes": 1911731,
+   "sha256": "c472a865f230bf1b5b17e124770a83c083144e3e11a115733288fb8f3e3b8baa",
+   "rows": 44640,
+   "fetched_at": 1791172304.4511993
+  },
+  "ETHUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-01.zip",
+   "bytes": 1918758,
+   "sha256": "7fa68ec5fedc6eef175ed0af6e9f252062f6ceaca016106c265e6e4b724b5ef2",
+   "rows": 44640,
+   "fetched_at": 1791172304.9056268
+  },
+  "ETHUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-02.zip",
+   "bytes": 1796355,
+   "sha256": "de3f91fcd929d207b4382afd7a728c0f44527d6bdbcb0a585b01b0fe001e24ab",
+   "rows": 41760,
+   "fetched_at": 1791172305.0799112
+  },
+  "ETHUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-03.zip",
+   "bytes": 1977193,
+   "sha256": "dd10515a9b010920bac628f2ec600405ff8e41de7d0f81694fbf391ca54b86b2",
+   "rows": 44640,
+   "fetched_at": 1791172305.2757301
+  },
+  "ETHUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-04.zip",
+   "bytes": 1896608,
+   "sha256": "1856da8b501dbb831b9a5490e99be8564433c4a4d46de89200f0258c74dd4790",
+   "rows": 43200,
+   "fetched_at": 1791172305.595169
+  },
+  "ETHUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-05.zip",
+   "bytes": 1935350,
+   "sha256": "d512aa43b5b6a5168fa1b6242fe4cf01c88e51c78bb9f4d202f0ca2e42338f96",
+   "rows": 44640,
+   "fetched_at": 1791172305.906143
+  },
+  "ETHUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-06.zip",
+   "bytes": 1842414,
+   "sha256": "57e4b010904bbd754ee951ada7d9edd34bc4242379ae49fb66352e2c5f5cb525",
+   "rows": 43200,
+   "fetched_at": 1791172305.918037
+  },
+  "ETHUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-07.zip",
+   "bytes": 1934815,
+   "sha256": "34a3729eb2f6dd1563715e085eb936a4034357d95cba2605b96cf1cb5c533b65",
+   "rows": 44640,
+   "fetched_at": 1791172306.6875536
+  },
+  "ETHUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-08.zip",
+   "bytes": 1941203,
+   "sha256": "2ccc1d0c491c63a6bfbabda39e8bd41e555a87052d77120199133e9e81bbf36c",
+   "rows": 44640,
+   "fetched_at": 1791172306.4898686
+  },
+  "ETHUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-09.zip",
+   "bytes": 1852202,
+   "sha256": "317e18ce04f6312b4a3de3b5504bef2001a92bf72cb8e4988e160ee327c9c737",
+   "rows": 43200,
+   "fetched_at": 1791172305.989332
+  },
+  "ETHUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-10.zip",
+   "bytes": 1907533,
+   "sha256": "d1f340994285a075a97d7d0ed5e9aca3d82dadbba8f817b2f886188420a009f1",
+   "rows": 44640,
+   "fetched_at": 1791172306.40663
+  },
+  "ETHUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-11.zip",
+   "bytes": 1921220,
+   "sha256": "4170f68dd576e8af35ecc9b19808dcb673c0423838bd560c7c4c1fabefdad5ad",
+   "rows": 43200,
+   "fetched_at": 1791172307.4263783
+  },
+  "ETHUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2024-12.zip",
+   "bytes": 1981846,
+   "sha256": "82018947075e35e5ac0a771bb97a22118008db2c6fb6a94f8c1a2c4ebb34d12b",
+   "rows": 44640,
+   "fetched_at": 1791172306.8454819
+  },
+  "ETHUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-01.zip",
+   "bytes": 1962399,
+   "sha256": "05e33ba3568c5381a36764097ea93917a7f1a93fadd1a0018e64bedb042526f6",
+   "rows": 44640,
+   "fetched_at": 1791172307.4156406
+  },
+  "ETHUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-02.zip",
+   "bytes": 1786957,
+   "sha256": "79c07ecaaa04a04d815f428d0617b84cc536afe95f5cb2fc62bd93c10c3adfa1",
+   "rows": 40320,
+   "fetched_at": 1791172307.6315887
+  },
+  "ETHUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-03.zip",
+   "bytes": 1957769,
+   "sha256": "82351bb41febb62d3680c761cf7cf9e29182435d9b4843e674ded63de3b29a32",
+   "rows": 44640,
+   "fetched_at": 1791172307.923064
+  },
+  "ETHUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-04.zip",
+   "bytes": 1895060,
+   "sha256": "75ea6a45c8bed04294449ff7d56f047c235a36fac176736816c01d6892bd8687",
+   "rows": 43200,
+   "fetched_at": 1791172308.4069965
+  },
+  "ETHUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-05.zip",
+   "bytes": 1986381,
+   "sha256": "a2560653e2f602444d2201e44e77cdba6e48233649d22fb7e8c703ce9fc6277a",
+   "rows": 44640,
+   "fetched_at": 1791172307.4797683
+  },
+  "ETHUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-06.zip",
+   "bytes": 1904828,
+   "sha256": "189aa2e5daf3621f6f7f9fd58df763e0667592f3baf407270e0ad42399155c69",
+   "rows": 43200,
+   "fetched_at": 1791172308.118248
+  },
+  "ETHUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-07.zip",
+   "bytes": 1988465,
+   "sha256": "e3af3ee3ac3251d313ad8987169d5c02bfd8c094bf047bbce9373eaf19ee479c",
+   "rows": 44640,
+   "fetched_at": 1791172308.8669038
+  },
+  "ETHUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-08.zip",
+   "bytes": 2017496,
+   "sha256": "8cd85f1c417c4c65cd32348f3e4e23c8b35dd4e5e59a20a187e2a74777bd6664",
+   "rows": 44640,
+   "fetched_at": 1791172308.950016
+  },
+  "ETHUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-09.zip",
+   "bytes": 1900520,
+   "sha256": "dc1f5e05a0b873accd0ed2a854ee14086da03b08a581198b20b5658042c6dc5f",
+   "rows": 43200,
+   "fetched_at": 1791172308.4820504
+  },
+  "ETHUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-10.zip",
+   "bytes": 1996726,
+   "sha256": "c0b8d557384ce1cd77df8f08cb6775f350a531a1792fa9deceb05f51a3939438",
+   "rows": 44640,
+   "fetched_at": 1791172309.295572
+  },
+  "ETHUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-11.zip",
+   "bytes": 1931576,
+   "sha256": "2dd6ded997100a92d11394eddccc54f1070b0fcf029c5e126859b5af80f6329e",
+   "rows": 43200,
+   "fetched_at": 1791172309.7974553
+  },
+  "ETHUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2025-12.zip",
+   "bytes": 1941385,
+   "sha256": "8fc3e01faeb240ed9f77e4ba8bbcdf42bb7b0c7004d35fe8010bd0fd9090e4a9",
+   "rows": 44640,
+   "fetched_at": 1791172310.1433654
+  },
+  "ETHUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2026-01.zip",
+   "bytes": 1928094,
+   "sha256": "0dc9c455c6d0735fe7e177d98a5088ab473c7fc1fa723710e783ff5dd49df4bb",
+   "rows": 44640,
+   "fetched_at": 1791172310.1442313
+  },
+  "ETHUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2026-02.zip",
+   "bytes": 1790010,
+   "sha256": "2109cab7fa27eee904a7d6d6dd982633579fc4091765dc8fa16c001f2da8a1c2",
+   "rows": 40320,
+   "fetched_at": 1791172310.5693357
+  },
+  "ETHUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/ETHUSDT/1m/ETHUSDT-1m-2026-03.zip",
+   "bytes": 1958005,
+   "sha256": "d61eeba7aed3067525c6503bfbfd4f8d55585b846b67115eb85eeb1d2f857bf1",
+   "rows": 44640,
+   "fetched_at": 1791172310.664651
+  },
+  "SOLUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-01.zip",
+   "bytes": 1698240,
+   "sha256": "7f24af8fea65040962f7fc73c8d61fb6128c583e9d6c555d6ccca96b4d50995a",
+   "rows": 44640,
+   "fetched_at": 1791172310.6556015
+  },
+  "SOLUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-02.zip",
+   "bytes": 1567850,
+   "sha256": "d5a3bd5540af9a97a6fa06e23154a78f88dd7eec2092d49b0cc284ae7c39fe16",
+   "rows": 41760,
+   "fetched_at": 1791172310.46469
+  },
+  "SOLUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-03.zip",
+   "bytes": 1738207,
+   "sha256": "78a1baab910e7cfcf53b3f2a4fe7519febbb6cc7407a353f95c83d07eaef1809",
+   "rows": 44640,
+   "fetched_at": 1791172312.0246243
+  },
+  "SOLUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-04.zip",
+   "bytes": 1658919,
+   "sha256": "e19eed213f5030153fd5e28c8b8cd14c8e05a93cfd5a28f15a68066e458dd414",
+   "rows": 43200,
+   "fetched_at": 1791172312.1171942
+  },
+  "SOLUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-05.zip",
+   "bytes": 1681927,
+   "sha256": "3b62d6e6e687502f37c49eb635ca1dd2c5ac973c4bd3d820fe3700a126a46f98",
+   "rows": 44640,
+   "fetched_at": 1791172311.9891043
+  },
+  "SOLUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-06.zip",
+   "bytes": 1591430,
+   "sha256": "55bee5af4510c5c05186cd62343895ce0dfcd5ed1b442b901c6cc5db300d0582",
+   "rows": 43200,
+   "fetched_at": 1791172312.2557495
+  },
+  "SOLUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-07.zip",
+   "bytes": 1682413,
+   "sha256": "56f7b44a70d3a1eedeb43cde4e81a3deea6e1ff2406d332a9a8205082455758e",
+   "rows": 44640,
+   "fetched_at": 1791172312.2962584
+  },
+  "SOLUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-08.zip",
+   "bytes": 1694056,
+   "sha256": "4ec6ef5fbd00a1e596324ea24909347abd6a623889089e9ef6e2f71625947eda",
+   "rows": 44640,
+   "fetched_at": 1791172312.2497573
+  },
+  "SOLUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-09.zip",
+   "bytes": 1608317,
+   "sha256": "7c0b5f6a3c80684cbc733df88121ceefbb83645d9796db16107d1460e9a787c2",
+   "rows": 43200,
+   "fetched_at": 1791172313.7360625
+  },
+  "SOLUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-10.zip",
+   "bytes": 1602398,
+   "sha256": "f167b2be29ec4eef66fe38a17a6ade84034abf302c49deee31875a6f6cea6f53",
+   "rows": 44640,
+   "fetched_at": 1791172313.3555071
+  },
+  "SOLUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-11.zip",
+   "bytes": 1556146,
+   "sha256": "cc26ccf5eb442a5d66daa7396eb589d7c9934ba3301503a753c03ddbe94a4af0",
+   "rows": 43200,
+   "fetched_at": 1791172312.7933304
+  },
+  "SOLUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2024-12.zip",
+   "bytes": 1584587,
+   "sha256": "631fd8d38ebc10376e985bc232f64a388a8ae50ffeb588098c4bcf39de45e05e",
+   "rows": 44640,
+   "fetched_at": 1791172313.65349
+  },
+  "SOLUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-01.zip",
+   "bytes": 1599190,
+   "sha256": "b56b792f9fc9cd63dc0fef4841741692dc2e2cab3282faab66e9d0dc01ce58a1",
+   "rows": 44640,
+   "fetched_at": 1791172314.6118891
+  },
+  "SOLUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-02.zip",
+   "bytes": 1444191,
+   "sha256": "d513752226f0aef88958add63769a449ca835c5767a2f20c019eb1f8348da445",
+   "rows": 40320,
+   "fetched_at": 1791172313.8632789
+  },
+  "SOLUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-03.zip",
+   "bytes": 1545154,
+   "sha256": "185a2ae8698968f90512a392eda65fdcc04163d7385eae0348387aedcb0763cb",
+   "rows": 44640,
+   "fetched_at": 1791172314.1855447
+  },
+  "SOLUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-04.zip",
+   "bytes": 1688075,
+   "sha256": "e946bbf26b8faf4b0be15d2f7763515d358a04062ddd662ff4a3c286740612b3",
+   "rows": 43200,
+   "fetched_at": 1791172314.7045724
+  },
+  "SOLUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-05.zip",
+   "bytes": 1819534,
+   "sha256": "9e2baa8d15fed5768c72f1b97ad19b3119f87c90c8d9847ff3c628c2afb4d37c",
+   "rows": 44640,
+   "fetched_at": 1791172314.4698553
+  },
+  "SOLUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-06.zip",
+   "bytes": 1746877,
+   "sha256": "32c17d28dbcfd8ccd5dce996f610f588ff6ec9e969c6eac9c9b43232a543f7aa",
+   "rows": 43200,
+   "fetched_at": 1791172315.3743465
+  },
+  "SOLUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-07.zip",
+   "bytes": 1818115,
+   "sha256": "6a11ec2b081657fd4850b61cb1f28e2217913ac1a309c484169f080733320ee7",
+   "rows": 44640,
+   "fetched_at": 1791172315.5905082
+  },
+  "SOLUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-08.zip",
+   "bytes": 1848031,
+   "sha256": "9916be68e1e354b1d2ad30e09ca2f0552ddbf9a3ad64d2854bd54016463b56a6",
+   "rows": 44640,
+   "fetched_at": 1791172314.8373156
+  },
+  "SOLUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-09.zip",
+   "bytes": 1779913,
+   "sha256": "389290c0c468d168ea3b327d926e273aa9de639249e5101f443360eda4456b4e",
+   "rows": 43200,
+   "fetched_at": 1791172316.0959969
+  },
+  "SOLUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-10.zip",
+   "bytes": 1852486,
+   "sha256": "66542f68d37e6b8b071997ea07fa495abc01d3762acbf6476398c63f79128016",
+   "rows": 44640,
+   "fetched_at": 1791172316.2807457
+  },
+  "SOLUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-11.zip",
+   "bytes": 1769429,
+   "sha256": "dbadf06d740261c21299abc82f3adeae1b41e4dbbcee8a5adca3e761f1896ce7",
+   "rows": 43200,
+   "fetched_at": 1791172316.3621676
+  },
+  "SOLUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2025-12.zip",
+   "bytes": 1775230,
+   "sha256": "c9375b066069aaa4dbf33fbf7c79ca9db4a534b99d4ebd9f558ba2381e610636",
+   "rows": 44640,
+   "fetched_at": 1791172317.3709722
+  },
+  "SOLUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2026-01.zip",
+   "bytes": 1763272,
+   "sha256": "ac9cc536ec056e7c4fc4f391da5edbe778f59fb2a059670875d05285ebca3fcf",
+   "rows": 44640,
+   "fetched_at": 1791172317.0070415
+  },
+  "SOLUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2026-02.zip",
+   "bytes": 1608609,
+   "sha256": "ad93c921265eb4a473ba91d21f8d02346d77330475740977cc7541a0ac1ec05a",
+   "rows": 40320,
+   "fetched_at": 1791172316.647115
+  },
+  "SOLUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/SOLUSDT/1m/SOLUSDT-1m-2026-03.zip",
+   "bytes": 1748963,
+   "sha256": "d705ca5ec2de775733be12c6e3f29bcf3204be15d7b0b273ec87a013fcaa612f",
+   "rows": 44640,
+   "fetched_at": 1791172317.53563
+  },
+  "DOGEUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-01.zip",
+   "bytes": 1718596,
+   "sha256": "8c14611d5e997acc3ba80622718dcc1074b501c9021617efab1da6c5d06c7459",
+   "rows": 44640,
+   "fetched_at": 1791172317.6797202
+  },
+  "DOGEUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-02.zip",
+   "bytes": 1589022,
+   "sha256": "e09e8a298e3ea05fffa4098956fab52ecccc1a27ff7c8714dd49e5d027426c63",
+   "rows": 41760,
+   "fetched_at": 1791172317.7046998
+  },
+  "DOGEUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-03.zip",
+   "bytes": 1905538,
+   "sha256": "9d69b85fdbd548606d4588be6c1eeb221188ac221d078c62b75f59035f396487",
+   "rows": 44640,
+   "fetched_at": 1791172318.0535705
+  },
+  "DOGEUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-04.zip",
+   "bytes": 1797057,
+   "sha256": "7c2d63e1d177e440d14ee041b22f8d254d7d3fb89f5f555a1fe6b3352963a430",
+   "rows": 43200,
+   "fetched_at": 1791172318.388089
+  },
+  "DOGEUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-05.zip",
+   "bytes": 1816431,
+   "sha256": "3c4ecebd6b9959d5962d5044073d5ff957afc37caec1766962e27533abae9c2f",
+   "rows": 44640,
+   "fetched_at": 1791172318.731058
+  },
+  "DOGEUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-06.zip",
+   "bytes": 1686638,
+   "sha256": "e7f4ad585a013a7cb46aa266c4d0140f9fc02a23d7077d36e79e42076efd9f17",
+   "rows": 43200,
+   "fetched_at": 1791172318.124702
+  },
+  "DOGEUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-07.zip",
+   "bytes": 1761429,
+   "sha256": "cac7c6189b7723fe228ee75695634a7224e2325a24e2fc066dae37cf4fe008e3",
+   "rows": 44640,
+   "fetched_at": 1791172318.4983819
+  },
+  "DOGEUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-08.zip",
+   "bytes": 1740466,
+   "sha256": "5e7fd110ebd2cd99d3a43fb253206d96c6a2d694b16dbfd48e23a5b9076be49d",
+   "rows": 44640,
+   "fetched_at": 1791172319.3876946
+  },
+  "DOGEUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-09.zip",
+   "bytes": 1675680,
+   "sha256": "c5a42879a278e4b12a69d4156b6a6dec4ee4bde53be9bdbf05e5a6d661cf0e72",
+   "rows": 43200,
+   "fetched_at": 1791172320.5101314
+  },
+  "DOGEUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-10.zip",
+   "bytes": 1796269,
+   "sha256": "e37aeacb3b453a0800be4df79aae1b0637bd58441ba03e5fbd6f9b4bf8c7fc2a",
+   "rows": 44640,
+   "fetched_at": 1791172319.465002
+  },
+  "DOGEUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-11.zip",
+   "bytes": 1892782,
+   "sha256": "effde135f4c2497d6ccbc4b44d04e583dd3faeb21bb46f589e360aa2710b649b",
+   "rows": 43200,
+   "fetched_at": 1791172320.5663114
+  },
+  "DOGEUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2024-12.zip",
+   "bytes": 1913496,
+   "sha256": "1f6b940265db6d595f294e5752616c564bbf00ede60c676abdc3093c3e4e9729",
+   "rows": 44640,
+   "fetched_at": 1791172320.6041121
+  },
+  "DOGEUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-01.zip",
+   "bytes": 1888683,
+   "sha256": "221d5ef5c41fedfefc358790c0d5632b198b17d02187706c4a6de655019e06b5",
+   "rows": 44640,
+   "fetched_at": 1791172320.5719678
+  },
+  "DOGEUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-02.zip",
+   "bytes": 1675554,
+   "sha256": "15cdc4c2fd8340f5957f72164ef6af28e01f3396daebdd3d73fbb7faf4e28c4f",
+   "rows": 40320,
+   "fetched_at": 1791172321.6387367
+  },
+  "DOGEUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-03.zip",
+   "bytes": 1830184,
+   "sha256": "1a6f146aba835867a47220663d4cb72de99d6e8d166f4cb2bf145ca5ec7140d9",
+   "rows": 44640,
+   "fetched_at": 1791172322.7577882
+  },
+  "DOGEUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-04.zip",
+   "bytes": 1757299,
+   "sha256": "05389c77e27693c6cc89c4f38f0afe1e945414c1c145d93e050b478f95e4a947",
+   "rows": 43200,
+   "fetched_at": 1791172322.101409
+  },
+  "DOGEUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-05.zip",
+   "bytes": 1848516,
+   "sha256": "9e0b44b6ac09e3c09ad1385e39aa690f9624b6b703f2691b1b3e9e7fada508c7",
+   "rows": 44640,
+   "fetched_at": 1791172321.5250638
+  },
+  "DOGEUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-06.zip",
+   "bytes": 1746213,
+   "sha256": "d699cec9a9a89cb7b037c49943751806b5bc840335a7330b1d090494e247e6e9",
+   "rows": 43200,
+   "fetched_at": 1791172322.3611174
+  },
+  "DOGEUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-07.zip",
+   "bytes": 1858636,
+   "sha256": "6c6858a61ec39254b54a40fd864bef0cacd99a3a244bb9b0e5cec0acbe6eb631",
+   "rows": 44640,
+   "fetched_at": 1791172322.675419
+  },
+  "DOGEUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-08.zip",
+   "bytes": 1853649,
+   "sha256": "1a69ffc39419bb27c12e019de4809e086e40bf620e40e8a044762ba62095026e",
+   "rows": 44640,
+   "fetched_at": 1791172322.9583364
+  },
+  "DOGEUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-09.zip",
+   "bytes": 1790216,
+   "sha256": "34dac0a3873c158dd3e6126719e0e931ee305f6a1ce56e1a68c5c05b00284b3d",
+   "rows": 43200,
+   "fetched_at": 1791172323.0356297
+  },
+  "DOGEUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-10.zip",
+   "bytes": 1853116,
+   "sha256": "c2e2ef77ee80bd0d0fef438a5f24dc2f4765de6e3ef0ab36797d1bfb20731bd5",
+   "rows": 44640,
+   "fetched_at": 1791172323.7708755
+  },
+  "DOGEUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-11.zip",
+   "bytes": 1754855,
+   "sha256": "613eba1df328da3b171bd0fe975e2dd1047e0ac535c49a71aad0649ba3da4d6c",
+   "rows": 43200,
+   "fetched_at": 1791172324.052535
+  },
+  "DOGEUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2025-12.zip",
+   "bytes": 1744400,
+   "sha256": "c7d230dcded82fe00f47546094318bb67b7477fe202aac48075237f30cda8840",
+   "rows": 44640,
+   "fetched_at": 1791172324.531054
+  },
+  "DOGEUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2026-01.zip",
+   "bytes": 1758666,
+   "sha256": "b1461ec0ea96fe535e72780b698471907136df72c97a360628c6b65ae6dd5cae",
+   "rows": 44640,
+   "fetched_at": 1791172324.920199
+  },
+  "DOGEUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2026-02.zip",
+   "bytes": 1601407,
+   "sha256": "2fa5c67037194c73e823abb111331334e07e5d4f0eaa6704fd879983971e8755",
+   "rows": 40320,
+   "fetched_at": 1791172324.2866757
+  },
+  "DOGEUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGEUSDT/1m/DOGEUSDT-1m-2026-03.zip",
+   "bytes": 1749301,
+   "sha256": "ba4758aaa2fb1bd5be4f120d21cf5c94d7e315d38918080ee880b36dc60b7841",
+   "rows": 44640,
+   "fetched_at": 1791172324.9608133
+  },
+  "1000PEPEUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-01.zip",
+   "bytes": 1886709,
+   "sha256": "c9928a17bf71887eabf8714e51ab42b61b52f4c0656ab24a658ef3b3d6159a3a",
+   "rows": 44640,
+   "fetched_at": 1791172325.4386935
+  },
+  "1000PEPEUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-02.zip",
+   "bytes": 1784723,
+   "sha256": "547e88f18c7287cc5679528989ce4b0e011ad5d36da83d5c66002d307e177002",
+   "rows": 41760,
+   "fetched_at": 1791172326.1838017
+  },
+  "1000PEPEUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-03.zip",
+   "bytes": 2122980,
+   "sha256": "5e126846002a187ccca4c210c1d43364234cb4b2a1a8925d6ea42f5f1efe5a1b",
+   "rows": 44640,
+   "fetched_at": 1791172326.1929502
+  },
+  "1000PEPEUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-04.zip",
+   "bytes": 1999480,
+   "sha256": "d1c4fb550f7756e97f1acf8deb517bb5e1f62855598ab9ed8ba126617ef670c9",
+   "rows": 43200,
+   "fetched_at": 1791172326.3259177
+  },
+  "1000PEPEUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-05.zip",
+   "bytes": 2100774,
+   "sha256": "66147906e8597e7336a9dcc1d46309360ebf72a62938be806d9a1af3811679fd",
+   "rows": 44640,
+   "fetched_at": 1791172327.7376478
+  },
+  "1000PEPEUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-06.zip",
+   "bytes": 2008904,
+   "sha256": "ff1598f5233a7529be8ae084182c332bc38ac0a10d34c149e82b9d0a0180c02e",
+   "rows": 43200,
+   "fetched_at": 1791172326.4097662
+  },
+  "1000PEPEUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-07.zip",
+   "bytes": 2069763,
+   "sha256": "b7c782842a93386ef52452363d268a107a39cc693a679f598fdc89064a4021be",
+   "rows": 44640,
+   "fetched_at": 1791172327.451228
+  },
+  "1000PEPEUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-08.zip",
+   "bytes": 2055524,
+   "sha256": "2cd0a987d14057c70df41c5f32298adab1e38cd2e47c9e04c3f4ad3c0bd65cb5",
+   "rows": 44640,
+   "fetched_at": 1791172327.860502
+  },
+  "1000PEPEUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-09.zip",
+   "bytes": 1965095,
+   "sha256": "1f7a8628b91a7f72aa5ce35a89c1ce9531d4bb91848d1073326610034f2af12b",
+   "rows": 43200,
+   "fetched_at": 1791172327.7963746
+  },
+  "1000PEPEUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-10.zip",
+   "bytes": 2059151,
+   "sha256": "7f3f4135fd5161315ea97a8813632dbf5224b959dc881484038640c5cdbe3232",
+   "rows": 44640,
+   "fetched_at": 1791172328.550424
+  },
+  "1000PEPEUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-11.zip",
+   "bytes": 2053057,
+   "sha256": "ad8ed28a3e571392c38ded2900d70f6137bb37db82d33adfb51d8a45844abac4",
+   "rows": 43200,
+   "fetched_at": 1791172327.9486027
+  },
+  "1000PEPEUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2024-12.zip",
+   "bytes": 2121140,
+   "sha256": "01288b5fbb902b93444e1c0bb0a84c00576abaa4db1b2c4585f07a2a0a375735",
+   "rows": 44640,
+   "fetched_at": 1791172328.9574692
+  },
+  "1000PEPEUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-01.zip",
+   "bytes": 2079823,
+   "sha256": "e6f897f553e3999860e9bdd07768f30e1e65102cc9d5500252d4becd6eeca33b",
+   "rows": 44640,
+   "fetched_at": 1791172329.5812976
+  },
+  "1000PEPEUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-02.zip",
+   "bytes": 1866723,
+   "sha256": "10248c208e9bb94c54d46172e912099ec331c6786847cecaa53269e34a3343df",
+   "rows": 40320,
+   "fetched_at": 1791172329.280894
+  },
+  "1000PEPEUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-03.zip",
+   "bytes": 2052315,
+   "sha256": "3cbde4e9b719ecfdfe50a23aec5ec3bfd8375568fb10d750a7cd7e99d875e9c3",
+   "rows": 44640,
+   "fetched_at": 1791172329.259813
+  },
+  "1000PEPEUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-04.zip",
+   "bytes": 1981091,
+   "sha256": "48064f08dd0712d9e1e791ee0073b76a33bb52fb57fc1caba2179a8568707a7b",
+   "rows": 43200,
+   "fetched_at": 1791172329.6761274
+  },
+  "1000PEPEUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-05.zip",
+   "bytes": 2093567,
+   "sha256": "b720901b27ad0d2a80dc01027bb3311ad34054c940bbad37c8801ca03953dc85",
+   "rows": 44640,
+   "fetched_at": 1791172331.2183354
+  },
+  "1000PEPEUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-06.zip",
+   "bytes": 2001521,
+   "sha256": "975a78d9939d753b02ea22a910bdfefa245eff28c278af415cc39e4785602a8a",
+   "rows": 43200,
+   "fetched_at": 1791172330.354924
+  },
+  "1000PEPEUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-07.zip",
+   "bytes": 2075794,
+   "sha256": "9fbfda4efba8a57c08dce2bd884499daccbc1673d5976d06ae911f1158f882f2",
+   "rows": 44640,
+   "fetched_at": 1791172330.8505175
+  },
+  "1000PEPEUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-08.zip",
+   "bytes": 2035380,
+   "sha256": "8a4ebb7614b34760762b9037fcd3a468ca657ebed65e81230e4a5e42214599a1",
+   "rows": 44640,
+   "fetched_at": 1791172330.8218036
+  },
+  "1000PEPEUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-09.zip",
+   "bytes": 1943167,
+   "sha256": "a2030f2f86aebcc9c843fab0fcbe99495f4145fd60a9f1519a48b5536728fb91",
+   "rows": 43200,
+   "fetched_at": 1791172331.3457158
+  },
+  "1000PEPEUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-10.zip",
+   "bytes": 2011257,
+   "sha256": "84b4751a3fafd9e36e794b3835ed1983be3eba0a5c6544d3d73939ff561e4119",
+   "rows": 44640,
+   "fetched_at": 1791172331.0800955
+  },
+  "1000PEPEUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-11.zip",
+   "bytes": 1929411,
+   "sha256": "598354cef8644c46fdb8137aab16f9afd906cbc5afb355cfdb93f1d009385719",
+   "rows": 43200,
+   "fetched_at": 1791172331.07556
+  },
+  "1000PEPEUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2025-12.zip",
+   "bytes": 1955495,
+   "sha256": "5aa9f4b54ba1195b46051dc13001553534b711a51a190adfc7b0f32fc75a62f5",
+   "rows": 44640,
+   "fetched_at": 1791172332.346844
+  },
+  "1000PEPEUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2026-01.zip",
+   "bytes": 2006871,
+   "sha256": "90ec604948857db8af14f0fec581ec6d0e58a5e71c800e104aea1508604b1952",
+   "rows": 44640,
+   "fetched_at": 1791172332.3775132
+  },
+  "1000PEPEUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2026-02.zip",
+   "bytes": 1802585,
+   "sha256": "b516c6a7010a2e6eb2c14d3c1afb3fe8ea317a36d1bd2a006f5b6e567b276136",
+   "rows": 40320,
+   "fetched_at": 1791172332.5813773
+  },
+  "1000PEPEUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000PEPEUSDT/1m/1000PEPEUSDT-1m-2026-03.zip",
+   "bytes": 1958685,
+   "sha256": "7c713dc67f922244054acef973ec3b42203c8da2f9e0286b0d7236cfb8921ab4",
+   "rows": 44640,
+   "fetched_at": 1791172332.5668159
+  },
+  "1000SHIBUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-01.zip",
+   "bytes": 1734880,
+   "sha256": "0dad206f24320519311070b30e29e306b01d82e018384019c9ac5565a0bc3196",
+   "rows": 44640,
+   "fetched_at": 1791172332.124172
+  },
+  "1000SHIBUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-02.zip",
+   "bytes": 1597032,
+   "sha256": "367a72b3dfddd1c6e30fc48a9b10f19b269b5821c05688c2d9fad6a2fdcfceb0",
+   "rows": 41760,
+   "fetched_at": 1791172332.6680138
+  },
+  "1000SHIBUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-03.zip",
+   "bytes": 1965402,
+   "sha256": "f4e593380aa966a2928056530070dd1817da8c4a91e65369031fc97469169709",
+   "rows": 44640,
+   "fetched_at": 1791172333.5068738
+  },
+  "1000SHIBUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-04.zip",
+   "bytes": 1813079,
+   "sha256": "d94912ae1a3a92605e3473d0abdc2dfddb2d0cecde9ef7bb3e4725ef5a77bc3d",
+   "rows": 43200,
+   "fetched_at": 1791172333.764431
+  },
+  "1000SHIBUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-05.zip",
+   "bytes": 1852218,
+   "sha256": "7ba884aea34120377a092fdc9fcab8afedbb9e7de1a1b82234acd9881c6cbfba",
+   "rows": 44640,
+   "fetched_at": 1791172333.157586
+  },
+  "1000SHIBUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-06.zip",
+   "bytes": 1752028,
+   "sha256": "e5cd27a5fc9eaf8e0f0abc3ecc8dc8e322e6cdfb270e891b6145bc25d691d944",
+   "rows": 43200,
+   "fetched_at": 1791172334.0251114
+  },
+  "1000SHIBUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-07.zip",
+   "bytes": 1812795,
+   "sha256": "0f2433bfe57babe33b8d58fd7d17cc16c52a1165738f36016cbf1312e9237fc7",
+   "rows": 44640,
+   "fetched_at": 1791172333.9851472
+  },
+  "1000SHIBUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-08.zip",
+   "bytes": 1770048,
+   "sha256": "a45da9719baf7384a39bec0e43040850f04acdbdf08797ab22103a65ace98284",
+   "rows": 44640,
+   "fetched_at": 1791172333.3461862
+  },
+  "1000SHIBUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-09.zip",
+   "bytes": 1708028,
+   "sha256": "e719bd9cc5f2d1d984acdf7320ea1d20d6b2df68c8765e5bd42620312b30ca82",
+   "rows": 43200,
+   "fetched_at": 1791172335.0930614
+  },
+  "1000SHIBUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-10.zip",
+   "bytes": 1825066,
+   "sha256": "32ee21258a8ece434b1f413214c7904e3cdb6dbf3856b37962c886992f9a3017",
+   "rows": 44640,
+   "fetched_at": 1791172335.1198623
+  },
+  "1000SHIBUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-11.zip",
+   "bytes": 1837572,
+   "sha256": "6e7db71bc47698028d0fe539e88a8e4ebb85c3ea0358fca8790ba1f7e79f86e4",
+   "rows": 43200,
+   "fetched_at": 1791172335.4921947
+  },
+  "1000SHIBUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2024-12.zip",
+   "bytes": 1889153,
+   "sha256": "5df810a508df128352c30fbb51d733a619f26df12038bfbf8fe72a968a11a86d",
+   "rows": 44640,
+   "fetched_at": 1791172335.5126226
+  },
+  "1000SHIBUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-01.zip",
+   "bytes": 1829892,
+   "sha256": "021618a093538a11b7214db134287625dc8d69fe88208110bb89a88fed20f82c",
+   "rows": 44640,
+   "fetched_at": 1791172335.482061
+  },
+  "1000SHIBUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-02.zip",
+   "bytes": 1630474,
+   "sha256": "9a0315b112c39605b6a672cce201021ab04ad45da391d2ed0809b35e337302f2",
+   "rows": 40320,
+   "fetched_at": 1791172335.5349114
+  },
+  "1000SHIBUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-03.zip",
+   "bytes": 1776750,
+   "sha256": "44f58474048c33ae620f8840c383d7ce1ecfff2d882648f108e3d87921347234",
+   "rows": 44640,
+   "fetched_at": 1791172337.7064161
+  },
+  "1000SHIBUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-04.zip",
+   "bytes": 1713906,
+   "sha256": "bfb1d08624d91415e85b6e5cfa20c3ac816fbd152400a4e8c9c99a20fec959f8",
+   "rows": 43200,
+   "fetched_at": 1791172336.5441196
+  },
+  "1000SHIBUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-05.zip",
+   "bytes": 1798073,
+   "sha256": "5c3502825f5dfa73e1f3b5653d84bf491d7cf9041beba66c4a3d67f0518b14ef",
+   "rows": 44640,
+   "fetched_at": 1791172336.9568524
+  },
+  "1000SHIBUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-06.zip",
+   "bytes": 1687863,
+   "sha256": "8bd99a4b3d1eba69d5a06072fe456433caf6e19f48065ee3d006889ada8605ad",
+   "rows": 43200,
+   "fetched_at": 1791172336.9368536
+  },
+  "1000SHIBUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-07.zip",
+   "bytes": 1785816,
+   "sha256": "fb860d92adfc401001f901bb19062a40bb1e241177c1966094c69e29d9d09b48",
+   "rows": 44640,
+   "fetched_at": 1791172336.9975667
+  },
+  "1000SHIBUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-08.zip",
+   "bytes": 1762523,
+   "sha256": "6ba6b55ca69fdf87b47a8d0b326cd274db6d239771b9cd870f8f6adc05539bdc",
+   "rows": 44640,
+   "fetched_at": 1791172337.0350127
+  },
+  "1000SHIBUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-09.zip",
+   "bytes": 1674690,
+   "sha256": "2d486f8f04cae2af041c4f21b56c4ce3a99c4f5cd3d5957696626becacec69d9",
+   "rows": 43200,
+   "fetched_at": 1791172337.2305799
+  },
+  "1000SHIBUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-10.zip",
+   "bytes": 1741942,
+   "sha256": "3e7cc1b163f861ab1dbc1f8039756817ef8926e440ba3d0d1511a8a11189ebe5",
+   "rows": 44640,
+   "fetched_at": 1791172337.7141078
+  },
+  "1000SHIBUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-11.zip",
+   "bytes": 1679960,
+   "sha256": "988db713dffed4f3d868fc7bb3ab57f903dfa1b1bae8edb0610e26284cfc2e4d",
+   "rows": 43200,
+   "fetched_at": 1791172337.537013
+  },
+  "1000SHIBUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2025-12.zip",
+   "bytes": 1682354,
+   "sha256": "f2a6f308b923332393e5570028a8c398e1767df3a6215bc2a055dcbfb35b0e50",
+   "rows": 44640,
+   "fetched_at": 1791172338.5042536
+  },
+  "1000SHIBUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2026-01.zip",
+   "bytes": 1701479,
+   "sha256": "517914bdc10446b221cd78da7f0119394b21f52e8de90b6820d86bc8c978c421",
+   "rows": 44640,
+   "fetched_at": 1791172338.5843801
+  },
+  "1000SHIBUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2026-02.zip",
+   "bytes": 1534397,
+   "sha256": "9f0b5d62674db5dbd9125be6b24e7afd332c429f8e61446b7d3f1cf696f8c54e",
+   "rows": 40320,
+   "fetched_at": 1791172338.5564382
+  },
+  "1000SHIBUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000SHIBUSDT/1m/1000SHIBUSDT-1m-2026-03.zip",
+   "bytes": 1675263,
+   "sha256": "d1d76d3c9ede2dc1717b20ef3ee6a600f4745a4c4657a6d2ac6bd020e52f4edc",
+   "rows": 44640,
+   "fetched_at": 1791172338.3631742
+  },
+  "1000BONKUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-01.zip",
+   "bytes": 1871734,
+   "sha256": "9c191cda40d2529e24db7ff80c50e9e79d187c0c4607eb6a93f2cb9286479bd3",
+   "rows": 44640,
+   "fetched_at": 1791172338.5202246
+  },
+  "1000BONKUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-02.zip",
+   "bytes": 1705907,
+   "sha256": "36c6238d8d96ac0ee90c78a1ea1f79af0e967c7e427e2b1f954a262457ffa1ac",
+   "rows": 41760,
+   "fetched_at": 1791172339.0964556
+  },
+  "1000BONKUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-03.zip",
+   "bytes": 1952903,
+   "sha256": "924ec6ff2368c9b89da5e27809114fa7f86e3791856f5d1593d2fc89f9d48824",
+   "rows": 44640,
+   "fetched_at": 1791172340.0523937
+  },
+  "1000BONKUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-04.zip",
+   "bytes": 1825847,
+   "sha256": "3f5c5f7a3452988f9496131e47776781f267a4e986f6554fbad336e270963801",
+   "rows": 43200,
+   "fetched_at": 1791172340.2442582
+  },
+  "1000BONKUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-05.zip",
+   "bytes": 1929670,
+   "sha256": "5d2db5744b1bc5941ae81aac1ad8b7ac939f84043b58a05234c759c6940863d2",
+   "rows": 44640,
+   "fetched_at": 1791172340.2212105
+  },
+  "1000BONKUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-06.zip",
+   "bytes": 1824775,
+   "sha256": "7048a3be455ba00aa9002cd88a02cac9be43cf6efb3420eef90ddec1d0f4bbe2",
+   "rows": 43200,
+   "fetched_at": 1791172340.5523953
+  },
+  "1000BONKUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-07.zip",
+   "bytes": 1907121,
+   "sha256": "e6ea7544989309d85ba24de50abb8ffae0958bf05141e55e163f9913d6b7b0b9",
+   "rows": 44640,
+   "fetched_at": 1791172340.7170153
+  },
+  "1000BONKUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-08.zip",
+   "bytes": 1842708,
+   "sha256": "6e64eb1a69f38e347f3e52eebfdec1ee9f6bcd2384ee00c847b5dd25532719c7",
+   "rows": 44640,
+   "fetched_at": 1791172340.5867
+  },
+  "1000BONKUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-09.zip",
+   "bytes": 1753729,
+   "sha256": "c548a8bd4d9f1671f645f0054d9b314d72b1fb52d3042a79d2627b03c7943548",
+   "rows": 43200,
+   "fetched_at": 1791172341.4539623
+  },
+  "1000BONKUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-10.zip",
+   "bytes": 1867639,
+   "sha256": "f5cafff263665f0c6b5648a8a4c7da8bb601dd53c24e9d0b686943cb496bd0b4",
+   "rows": 44640,
+   "fetched_at": 1791172341.6155117
+  },
+  "1000BONKUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-11.zip",
+   "bytes": 1889902,
+   "sha256": "8dacab9212fbcbea85b3447de67a68828e6975a5885bd74909e33ee49137e4c2",
+   "rows": 43200,
+   "fetched_at": 1791172341.984784
+  },
+  "1000BONKUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2024-12.zip",
+   "bytes": 1924692,
+   "sha256": "7db0786ed6c16db9738035e0582755f5f49b8fcfe96d01dfde0c1be9ce191ddc",
+   "rows": 44640,
+   "fetched_at": 1791172342.9091606
+  },
+  "1000BONKUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-01.zip",
+   "bytes": 1901745,
+   "sha256": "833d225b80cddb3e35560f2d9daced363ef8d9771a94b46f528908757ac05c98",
+   "rows": 44640,
+   "fetched_at": 1791172342.0574908
+  },
+  "1000BONKUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-02.zip",
+   "bytes": 1661621,
+   "sha256": "3ba0c20f33aa11d90839c10c5f4abc6ceeca774abd0c79627a722d7dc64c468b",
+   "rows": 40320,
+   "fetched_at": 1791172341.3354137
+  },
+  "1000BONKUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-03.zip",
+   "bytes": 1811773,
+   "sha256": "6dbd7b125e1651e15c07b5c501f26461f1b10dd85fa0acccc02f572285888828",
+   "rows": 44640,
+   "fetched_at": 1791172342.708828
+  },
+  "1000BONKUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-04.zip",
+   "bytes": 1771075,
+   "sha256": "7034e718b7c72649c51b3466d5188c27e01e32671cd790f6d6a36955e1216f56",
+   "rows": 43200,
+   "fetched_at": 1791172342.9120886
+  },
+  "1000BONKUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-05.zip",
+   "bytes": 1876403,
+   "sha256": "b9137fb25141ac8947ad72d988451a601c1997e563d8b5bbec02737edc1e0d70",
+   "rows": 44640,
+   "fetched_at": 1791172343.2928097
+  },
+  "1000BONKUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-06.zip",
+   "bytes": 1749406,
+   "sha256": "70733869d7215452c3f32f324c58e5e4aed814ecbd3601eb267b2d61b0a49bab",
+   "rows": 43200,
+   "fetched_at": 1791172342.6705275
+  },
+  "1000BONKUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-07.zip",
+   "bytes": 1962590,
+   "sha256": "1d91eaf1d7b05dc5d0586609be32f1a38ab13e260ec97b533b103f01bc0b1f03",
+   "rows": 44640,
+   "fetched_at": 1791172343.8058395
+  },
+  "1000BONKUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-08.zip",
+   "bytes": 1888987,
+   "sha256": "11d08ab3273e6ba7b30ab068c91fc02954ee121ed863b30891e3f76c18c92fcc",
+   "rows": 44640,
+   "fetched_at": 1791172344.367423
+  },
+  "1000BONKUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-09.zip",
+   "bytes": 1789981,
+   "sha256": "020fa5881d4a98644d141e8effcef217823551c336cbebf7154e6af48c2c85b6",
+   "rows": 43200,
+   "fetched_at": 1791172345.3162494
+  },
+  "1000BONKUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-10.zip",
+   "bytes": 1843977,
+   "sha256": "0e861a7bc10588a4cb430435bb90c7ff58259186fab94567f18c9c68368b774e",
+   "rows": 44640,
+   "fetched_at": 1791172344.660518
+  },
+  "1000BONKUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-11.zip",
+   "bytes": 1744584,
+   "sha256": "620c185e76e41274c5d6cfedb90165e562bd586b93cd4600d7856fa42de1df8c",
+   "rows": 43200,
+   "fetched_at": 1791172343.706437
+  },
+  "1000BONKUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2025-12.zip",
+   "bytes": 1740172,
+   "sha256": "da261547de9ca397dfc1d993d8c19840a6adb3fa00413da40f8c03ec23d10fba",
+   "rows": 44640,
+   "fetched_at": 1791172344.9637942
+  },
+  "1000BONKUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2026-01.zip",
+   "bytes": 1787330,
+   "sha256": "03be90d2a52e4415ed2595a25a5892afb1cdee25e42fccb9d1b143f163825c89",
+   "rows": 44640,
+   "fetched_at": 1791172345.4348514
+  },
+  "1000BONKUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2026-02.zip",
+   "bytes": 1563065,
+   "sha256": "e24e716aea690a64eef64795c27fcd1c47d87cf5e8d4f9f6f0643008fdb7bf69",
+   "rows": 40320,
+   "fetched_at": 1791172345.0914242
+  },
+  "1000BONKUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000BONKUSDT/1m/1000BONKUSDT-1m-2026-03.zip",
+   "bytes": 1702536,
+   "sha256": "819e1bac69cf4da1311f60483f75ae43bb5076a92e9bcfe036482884b5a9c288",
+   "rows": 44640,
+   "fetched_at": 1791172346.1047804
+  },
+  "1000FLOKIUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-01.zip",
+   "bytes": 1547311,
+   "sha256": "3481b1b8130eb0ac98b847fa90d7fd3638ff0fbb492b23963b594b76354ac70e",
+   "rows": 44640,
+   "fetched_at": 1791172346.1949654
+  },
+  "1000FLOKIUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-02.zip",
+   "bytes": 1434327,
+   "sha256": "93e0eb3e51772c80c1d9e9226c7ad4254394b0bb6e7e3726fce5cd5697bde15a",
+   "rows": 41760,
+   "fetched_at": 1791172346.2507074
+  },
+  "1000FLOKIUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-03.zip",
+   "bytes": 1901127,
+   "sha256": "0c8b240153640558256bb1460e5c641c1551f304abc948da568e233fc964f9bc",
+   "rows": 44640,
+   "fetched_at": 1791172346.5229645
+  },
+  "1000FLOKIUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-04.zip",
+   "bytes": 1733524,
+   "sha256": "ca0ddaab425fba5dcbfa5bc65d0f753bfceb1d501b9ac3d310342dca45f80fc6",
+   "rows": 43200,
+   "fetched_at": 1791172346.7493973
+  },
+  "1000FLOKIUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-05.zip",
+   "bytes": 1815524,
+   "sha256": "2c9f6ed9c763972725bd3a8d7771a42b353f421c495d4cd3ea1f5a554e06bd59",
+   "rows": 44640,
+   "fetched_at": 1791172346.8611372
+  },
+  "1000FLOKIUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-06.zip",
+   "bytes": 1759036,
+   "sha256": "17e0450a89bd805eafc2371b2040c8d442993845295a716d70eb48127206d5ae",
+   "rows": 43200,
+   "fetched_at": 1791172347.6934745
+  },
+  "1000FLOKIUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-07.zip",
+   "bytes": 1789762,
+   "sha256": "5f095c48bd884902565e372e38ad589ec969a689f5428edc75fe33ff7f1eb3d7",
+   "rows": 44640,
+   "fetched_at": 1791172347.614132
+  },
+  "1000FLOKIUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-08.zip",
+   "bytes": 1771913,
+   "sha256": "626627e76c41bc8ef09c8cdafe5ca3f0b9b17f7fc81b4d7a2606bd52facc0651",
+   "rows": 44640,
+   "fetched_at": 1791172347.9339495
+  },
+  "1000FLOKIUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-09.zip",
+   "bytes": 1680563,
+   "sha256": "d2fa185e8f0009431dc9db7eacd0771f12ea69cfe382e46485547fce2b5b1b1a",
+   "rows": 43200,
+   "fetched_at": 1791172348.3760421
+  },
+  "1000FLOKIUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-10.zip",
+   "bytes": 1756747,
+   "sha256": "ce1b4ed4136373f30d14d3000e362b722b29c2acdcf0dab02dc2c56a4c512724",
+   "rows": 44640,
+   "fetched_at": 1791172348.1505418
+  },
+  "1000FLOKIUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-11.zip",
+   "bytes": 1770139,
+   "sha256": "d1a82ebd6c403da7ce06c96693f3164ecaf306b5d9bbc14e123254e63d8ebbe7",
+   "rows": 43200,
+   "fetched_at": 1791172348.2934458
+  },
+  "1000FLOKIUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2024-12.zip",
+   "bytes": 1810938,
+   "sha256": "c21cbf4d3f1b698f52cc138d9a1b1a9e9049713647d9f7e809f8b11d9ba1f502",
+   "rows": 44640,
+   "fetched_at": 1791172348.3039398
+  },
+  "1000FLOKIUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-01.zip",
+   "bytes": 1748560,
+   "sha256": "9ad0b995be4b5aee773df3282ba3ca1755b47c454e4af143761e1d56cd4f8c84",
+   "rows": 44640,
+   "fetched_at": 1791172349.3946352
+  },
+  "1000FLOKIUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-02.zip",
+   "bytes": 1561017,
+   "sha256": "f9c3a8f2740b22736f4cab225036b588d5cd09d1e6909687b0c3e44ff1aaef4b",
+   "rows": 40320,
+   "fetched_at": 1791172349.3743014
+  },
+  "1000FLOKIUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-03.zip",
+   "bytes": 1652672,
+   "sha256": "ec28f6eb994c68d36fc9643ca5c2b625e0529dbd3c18ff9ffeabe321c5daa810",
+   "rows": 44640,
+   "fetched_at": 1791172349.868612
+  },
+  "1000FLOKIUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-04.zip",
+   "bytes": 1585847,
+   "sha256": "36ac5a17fca1d2bcc1e8eda613efc919007bab296b8e7375a3c9dcd041651ba2",
+   "rows": 43200,
+   "fetched_at": 1791172349.8706028
+  },
+  "1000FLOKIUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-05.zip",
+   "bytes": 1715592,
+   "sha256": "5b7ff4d79fec79c424a6a6f574abda4e2c3a4e20e5d43947bcac9861b07dc3cc",
+   "rows": 44640,
+   "fetched_at": 1791172350.0462132
+  },
+  "1000FLOKIUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-06.zip",
+   "bytes": 1613257,
+   "sha256": "d3e7b72d2e67f3ff5330a0b8fda17dfa9301f674d269f661ec942c6127ee61ee",
+   "rows": 43200,
+   "fetched_at": 1791172350.0169158
+  },
+  "1000FLOKIUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-07.zip",
+   "bytes": 1762171,
+   "sha256": "da3f564c6b7504f6469806ea01e3a2d95d76d697108d96668651ded9455083bb",
+   "rows": 44640,
+   "fetched_at": 1791172351.1412213
+  },
+  "1000FLOKIUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-08.zip",
+   "bytes": 1705428,
+   "sha256": "d107be0020addc109913d48800a708e8bc9f2b39fcdf89ff3a5764e9b3b3843c",
+   "rows": 44640,
+   "fetched_at": 1791172350.9833512
+  },
+  "1000FLOKIUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-09.zip",
+   "bytes": 1593165,
+   "sha256": "6e8ba3ff10ba0cf8d6331c3e7f08920f41aea73d129104b92772ad33d54d6e66",
+   "rows": 43200,
+   "fetched_at": 1791172351.2754517
+  },
+  "1000FLOKIUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-10.zip",
+   "bytes": 1703771,
+   "sha256": "7b0c29056e0e3b5b8eb3d0f6fa2a5a90e9e858d3335afd8875f6d43e4a0f2122",
+   "rows": 44640,
+   "fetched_at": 1791172351.3079205
+  },
+  "1000FLOKIUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-11.zip",
+   "bytes": 1579702,
+   "sha256": "a34fc206bc4c10f8557c1b2092a71b424d6deb0866563d70678098008c7a4255",
+   "rows": 43200,
+   "fetched_at": 1791172351.7061734
+  },
+  "1000FLOKIUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2025-12.zip",
+   "bytes": 1551967,
+   "sha256": "03d42b7ca4c393454d2caffb15cc74f9f13813d99ddae72d5cf5678bbdb6d9e8",
+   "rows": 44640,
+   "fetched_at": 1791172351.9378767
+  },
+  "1000FLOKIUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2026-01.zip",
+   "bytes": 1581045,
+   "sha256": "888bd093a290b0abc79f0c1047c0355040a9c64617c84139654c6de8e6a810bf",
+   "rows": 44640,
+   "fetched_at": 1791172352.4258902
+  },
+  "1000FLOKIUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2026-02.zip",
+   "bytes": 1385465,
+   "sha256": "8d209a098845466ffe7e87f88445f5b7d2e667fd125e9e33d2d5aadfe7fdad64",
+   "rows": 40320,
+   "fetched_at": 1791172351.905168
+  },
+  "1000FLOKIUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/1000FLOKIUSDT/1m/1000FLOKIUSDT-1m-2026-03.zip",
+   "bytes": 1486035,
+   "sha256": "a2062a591df645fae2cfa0d2712a4280e978c2cecc14db9a8549eaca03ddc540",
+   "rows": 44640,
+   "fetched_at": 1791172352.5812483
+  },
+  "WIFUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-01.zip",
+   "bytes": 774813,
+   "sha256": "ff02a92125f7ac11beebd5c000801ef7bb6e04b6d3b51a4663c8bcc514ec1dc9",
+   "rows": 19305,
+   "fetched_at": 1791172352.7259867
+  },
+  "WIFUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-02.zip",
+   "bytes": 1685726,
+   "sha256": "09677bc6c7fb554d03c7bbd25ac9c35aa0801cd97ba56960e4e3ba5b75b848e0",
+   "rows": 41760,
+   "fetched_at": 1791172352.9618676
+  },
+  "WIFUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-03.zip",
+   "bytes": 1963417,
+   "sha256": "d9c12b04230f31081494ec5e3c40418e5bba679adb43410904d06d0c401d7155",
+   "rows": 44640,
+   "fetched_at": 1791172353.6315382
+  },
+  "WIFUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-04.zip",
+   "bytes": 1873692,
+   "sha256": "df5fb7142480b6004a5a44e5561bbf5d6ada2bb8de32f5d39ba170de1971e350",
+   "rows": 43200,
+   "fetched_at": 1791172353.6895792
+  },
+  "WIFUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-05.zip",
+   "bytes": 1911506,
+   "sha256": "36a8e5691dcc328e9e9cea3fef25dc9040112f43711402d673e68a8792f83eed",
+   "rows": 44640,
+   "fetched_at": 1791172353.8235667
+  },
+  "WIFUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-06.zip",
+   "bytes": 1825989,
+   "sha256": "bfe3c2a641bf8bdfbf111f8381d6a370caae29484bf7d1bb870f361b9e19f46c",
+   "rows": 43200,
+   "fetched_at": 1791172354.1842566
+  },
+  "WIFUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-07.zip",
+   "bytes": 1901262,
+   "sha256": "00dffd735ef192bc44cd0bd7c1edcb741f793d391f07d7910af2f67b6cb174fa",
+   "rows": 44640,
+   "fetched_at": 1791172353.6071026
+  },
+  "WIFUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-08.zip",
+   "bytes": 1893492,
+   "sha256": "a9273b74828601fd99415cf0738558b98b2930ff94e7c87683bd49db6ea920e4",
+   "rows": 44640,
+   "fetched_at": 1791172354.6427183
+  },
+  "WIFUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-09.zip",
+   "bytes": 1810645,
+   "sha256": "d9d79e4bb9fda5cd70bf4f2b6e19d9c2d72dd122dcc70138947185cfaeb197f6",
+   "rows": 43200,
+   "fetched_at": 1791172355.327753
+  },
+  "WIFUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-10.zip",
+   "bytes": 1896066,
+   "sha256": "8c22a34ffc633a0f101df3e598e393f4dee0ff1a13ddf3cc3c1db89fc34c0548",
+   "rows": 44640,
+   "fetched_at": 1791172355.38085
+  },
+  "WIFUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-11.zip",
+   "bytes": 1861995,
+   "sha256": "8c9d560aab68291624330caed41ecc4579cecdc295008a8ce5d84c72edbc7d3b",
+   "rows": 43200,
+   "fetched_at": 1791172355.4384606
+  },
+  "WIFUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2024-12.zip",
+   "bytes": 1896824,
+   "sha256": "452f3d4e757d6ebd3331cb113657ea52cc29b1afaab9f1c911c074427e31d569",
+   "rows": 44640,
+   "fetched_at": 1791172355.588101
+  },
+  "WIFUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-01.zip",
+   "bytes": 1873020,
+   "sha256": "1ae26aad52ba29a943e858dce13c21f89b2b1f5f7d375c187caee9a801fda8dd",
+   "rows": 44640,
+   "fetched_at": 1791172355.5835636
+  },
+  "WIFUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-02.zip",
+   "bytes": 1692224,
+   "sha256": "fb290cf05a7e2d75655d444a378831f1f5890865c9ddd1a1b5fe3a4da04254d0",
+   "rows": 40320,
+   "fetched_at": 1791172356.0400662
+  },
+  "WIFUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-03.zip",
+   "bytes": 1803144,
+   "sha256": "920d6a11d7fae4abe18b704be0538672b8d6fd29d79d3d658a292d682057f861",
+   "rows": 44640,
+   "fetched_at": 1791172356.6281848
+  },
+  "WIFUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-04.zip",
+   "bytes": 1727430,
+   "sha256": "9ac1e0b1594dfb0c172038e63b2a23d3ebb526a4e133766a259846d83a2a9812",
+   "rows": 43200,
+   "fetched_at": 1791172357.879834
+  },
+  "WIFUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-05.zip",
+   "bytes": 1870400,
+   "sha256": "a410bb2fe90ddbb1b305cda3c2bda5d89407b231ad4792f9368cad407ed69fab",
+   "rows": 44640,
+   "fetched_at": 1791172356.0705113
+  },
+  "WIFUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-06.zip",
+   "bytes": 1779702,
+   "sha256": "3eb20f1261325f63de9812200ae1bd0d6f32ce1d97677b31870a18417179ded9",
+   "rows": 43200,
+   "fetched_at": 1791172357.3841228
+  },
+  "WIFUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-07.zip",
+   "bytes": 1863154,
+   "sha256": "ed2dbc6806979d9a1609740688902dda813e4902496293cd027366f0f2a670ac",
+   "rows": 44640,
+   "fetched_at": 1791172358.3177612
+  },
+  "WIFUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-08.zip",
+   "bytes": 1810894,
+   "sha256": "60500feeace3bd94aedeb9c0553e05c9486fe398dadc274e4bb33b2e6c8b847b",
+   "rows": 44640,
+   "fetched_at": 1791172357.3040192
+  },
+  "WIFUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-09.zip",
+   "bytes": 1713409,
+   "sha256": "3715adc62e72fa8e1c854d41c9d99f952ebe8689faf5ba973a5d7a3874bf1bc7",
+   "rows": 43200,
+   "fetched_at": 1791172356.7361639
+  },
+  "WIFUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-10.zip",
+   "bytes": 1772553,
+   "sha256": "3b7028c05bd01be7356be67908a3689c0c8135c6f4d25c0027c39d8b1dc90561",
+   "rows": 44640,
+   "fetched_at": 1791172357.474784
+  },
+  "WIFUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-11.zip",
+   "bytes": 1682911,
+   "sha256": "f2e429e508d6da7a493c0b0da955781979cd0a097abdbf826faf5748ea05cb6f",
+   "rows": 43200,
+   "fetched_at": 1791172358.1616592
+  },
+  "WIFUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2025-12.zip",
+   "bytes": 1680581,
+   "sha256": "2fe1a28e2cd38ec9b24089bba9e5f5185c023338a1c6971842eeb0aed1d40b68",
+   "rows": 44640,
+   "fetched_at": 1791172358.9424381
+  },
+  "WIFUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2026-01.zip",
+   "bytes": 1697537,
+   "sha256": "6b79ceec07a05dae8cddf931a6b3564ae4fa7311e54fe24ddb41d54f8c106040",
+   "rows": 44640,
+   "fetched_at": 1791172358.7894459
+  },
+  "WIFUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2026-02.zip",
+   "bytes": 1497532,
+   "sha256": "212265f385e95b96ceaba9dabb0eeefc8f284a539fb61e7f0c5b3e5a2c2b3c0c",
+   "rows": 40320,
+   "fetched_at": 1791172358.5225277
+  },
+  "WIFUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/WIFUSDT/1m/WIFUSDT-1m-2026-03.zip",
+   "bytes": 1628014,
+   "sha256": "f59f954e6f481e9083be7412f035e3b262394696dcc5371139631d063bd799fb",
+   "rows": 44640,
+   "fetched_at": 1791172359.2110999
+  },
+  "BOMEUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-03.zip",
+   "bytes": 1003099,
+   "sha256": "22c84ca593fb528f5b6fcdf0f427f77fbbaea1fd75440d950ac2fad7e1454dc0",
+   "rows": 22290,
+   "fetched_at": 1791172360.046228
+  },
+  "BOMEUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-04.zip",
+   "bytes": 1869790,
+   "sha256": "783ad36a959473d8cf1f1a56f77a492b5e0a7e179cfea40a240164c1ff6d22d3",
+   "rows": 43200,
+   "fetched_at": 1791172360.1932724
+  },
+  "BOMEUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-05.zip",
+   "bytes": 1900597,
+   "sha256": "acf539030d9873b8b429dc67d8b83d60e5d866af4e62959e1a78014374d22c3e",
+   "rows": 44640,
+   "fetched_at": 1791172360.6429744
+  },
+  "BOMEUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-06.zip",
+   "bytes": 1794678,
+   "sha256": "6897ec0c0caef2e53e371517d877e226446c78df247e151d7892e428d319f0eb",
+   "rows": 43200,
+   "fetched_at": 1791172360.762036
+  },
+  "BOMEUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-07.zip",
+   "bytes": 1851997,
+   "sha256": "225068d629a0eeb3739d4e35dd80fe8d2add06a150a51d828433477d0c9985ca",
+   "rows": 44640,
+   "fetched_at": 1791172360.8559647
+  },
+  "BOMEUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-08.zip",
+   "bytes": 1837989,
+   "sha256": "01a9832e560b453a5918da8a3cd857792bd4ead7656d62bd42d6ad0ab9190e00",
+   "rows": 44640,
+   "fetched_at": 1791172360.6686914
+  },
+  "BOMEUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-09.zip",
+   "bytes": 1739183,
+   "sha256": "3eaf1cf04d2d5673d8e15f02f67b8e87345883160a4ffb75ef7beb0ef1734b2e",
+   "rows": 43200,
+   "fetched_at": 1791172361.8164523
+  },
+  "BOMEUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-10.zip",
+   "bytes": 1858889,
+   "sha256": "cff128490d7be0b4dab7a91cc3f35f4164c5ba06eb9ab8b4ca8dc963a8fe3ed9",
+   "rows": 44640,
+   "fetched_at": 1791172361.6411774
+  },
+  "BOMEUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-11.zip",
+   "bytes": 1829514,
+   "sha256": "d505d5c812df3ae382e12d0670c5d892b55d3d93721848030f7f191c4790e818",
+   "rows": 43200,
+   "fetched_at": 1791172362.1801722
+  },
+  "BOMEUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2024-12.zip",
+   "bytes": 1843024,
+   "sha256": "2e35fc76281d29b27d1eacd8dffed5be6673f80789c1ec36d3b18a06cd66aaba",
+   "rows": 44640,
+   "fetched_at": 1791172361.574918
+  },
+  "BOMEUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-01.zip",
+   "bytes": 1775618,
+   "sha256": "1967225ad7dc8f324b4ac6236902a5f2750d27e4d10fbe39e01d25311c621dd5",
+   "rows": 44640,
+   "fetched_at": 1791172362.1993208
+  },
+  "BOMEUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-02.zip",
+   "bytes": 1571363,
+   "sha256": "5837cce1f94c60bd7efb80f9088fc2164a9ba8dafa4c86c21f8506da9a45d9f6",
+   "rows": 40320,
+   "fetched_at": 1791172362.4730725
+  },
+  "BOMEUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-03.zip",
+   "bytes": 1679750,
+   "sha256": "b29e9d0caf02fcd78b372910fc7fc2663b3e53411faca6fa1128d3fa8c06969b",
+   "rows": 44640,
+   "fetched_at": 1791172362.9873273
+  },
+  "BOMEUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-04.zip",
+   "bytes": 1561990,
+   "sha256": "ad248d071a8b5b1674ff3bad22ccb38c546266b4e1d749c13bfbafc9d32e95b1",
+   "rows": 43200,
+   "fetched_at": 1791172363.3301105
+  },
+  "BOMEUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-05.zip",
+   "bytes": 1729691,
+   "sha256": "4568252314ab2f9d4177556acc7ce07e866f2796e6cf3933c6f913e707165eaf",
+   "rows": 44640,
+   "fetched_at": 1791172363.24272
+  },
+  "BOMEUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-06.zip",
+   "bytes": 1601113,
+   "sha256": "636ace8aedaa750757c158da88715ba278641d181026394f4c80c1e7fe74f2bc",
+   "rows": 43200,
+   "fetched_at": 1791172363.887829
+  },
+  "BOMEUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-07.zip",
+   "bytes": 1704465,
+   "sha256": "f16050d3c3664a635c8225993f79fad8024bbd9182d38b31ba0dc85fc0e7d58b",
+   "rows": 44640,
+   "fetched_at": 1791172363.7243893
+  },
+  "BOMEUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-08.zip",
+   "bytes": 1683866,
+   "sha256": "9a1b2bca2f13b5f92eda1e50ba885325193138e55db9a6aa3b415faa7017f15f",
+   "rows": 44640,
+   "fetched_at": 1791172363.9454036
+  },
+  "BOMEUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-09.zip",
+   "bytes": 1571118,
+   "sha256": "692faab930de976d4e3327596fb381c8811479e2a9f26cff993994e4d76f5f38",
+   "rows": 43200,
+   "fetched_at": 1791172363.6183598
+  },
+  "BOMEUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-10.zip",
+   "bytes": 1597416,
+   "sha256": "5b63fb6a5fdf4f3fcd60c38d5111df4100104fa1b892b76bbe4e3e54825d9dff",
+   "rows": 44640,
+   "fetched_at": 1791172365.0318851
+  },
+  "BOMEUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-11.zip",
+   "bytes": 1589845,
+   "sha256": "211828b8870e3f459376ab54e97ecd6a433da81e734eb8c1fd7f2ec95657fc9c",
+   "rows": 43200,
+   "fetched_at": 1791172364.9317076
+  },
+  "BOMEUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2025-12.zip",
+   "bytes": 1717923,
+   "sha256": "129957ddac33e3101cc7598517ec25c3afd5312b5e784d3d435fb2ac5d8a2451",
+   "rows": 44640,
+   "fetched_at": 1791172365.3647196
+  },
+  "BOMEUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2026-01.zip",
+   "bytes": 1750327,
+   "sha256": "5c0be50203d3c2baa735233c9d4ce428b0ce3e06a1ee8a52e5407a976c66172b",
+   "rows": 44640,
+   "fetched_at": 1791172365.207639
+  },
+  "BOMEUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2026-02.zip",
+   "bytes": 1522982,
+   "sha256": "33ede9949daa853a17220bf5bc3fea4b7a42dd465c232b0cd789b9aec65ecd9d",
+   "rows": 40320,
+   "fetched_at": 1791172364.8608599
+  },
+  "BOMEUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BOMEUSDT/1m/BOMEUSDT-1m-2026-03.zip",
+   "bytes": 1652089,
+   "sha256": "1ed6a54a3740427761cafc61523e3a2e553cfa3c79f71cac5234184ebd5fedc2",
+   "rows": 44640,
+   "fetched_at": 1791172365.6109664
+  },
+  "MEMEUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-01.zip",
+   "bytes": 1834493,
+   "sha256": "c1c6f500357639e69db912645dc0cdefafe05c3b2ffb17ef8cb61781c9997a8e",
+   "rows": 44640,
+   "fetched_at": 1791172366.310684
+  },
+  "MEMEUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-02.zip",
+   "bytes": 1673520,
+   "sha256": "24138bff4af912df602448f418115456e243ce6f0061083cd9205b726e956473",
+   "rows": 41760,
+   "fetched_at": 1791172366.2177546
+  },
+  "MEMEUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-03.zip",
+   "bytes": 1911861,
+   "sha256": "555ca1ee8e998d7166ddd6ff919fcb70d0fb505811433f04297d35d29c2689a9",
+   "rows": 44640,
+   "fetched_at": 1791172366.5294714
+  },
+  "MEMEUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-04.zip",
+   "bytes": 1794896,
+   "sha256": "b94d5308dd7d62da31f03827b0e33ec2e55f2f8250b70e76dfa1d4f6604a9ebf",
+   "rows": 43200,
+   "fetched_at": 1791172366.6237137
+  },
+  "MEMEUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-05.zip",
+   "bytes": 1812557,
+   "sha256": "03f8ac276c19f4d2327bbdd75f1a5644f8260023851457c6bcb95b5b60091af4",
+   "rows": 44640,
+   "fetched_at": 1791172367.3904812
+  },
+  "MEMEUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-06.zip",
+   "bytes": 1720489,
+   "sha256": "5399d2e576c7f6702a8d265c7cf86f72f58b7c34405ce42938b94541c2af826b",
+   "rows": 43200,
+   "fetched_at": 1791172367.3072217
+  },
+  "MEMEUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-07.zip",
+   "bytes": 1757111,
+   "sha256": "0b5924d34f0557ff20cadf56ddd2b1248a91436ca75165fd09ad1a19d14925cf",
+   "rows": 44640,
+   "fetched_at": 1791172368.8575468
+  },
+  "MEMEUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-08.zip",
+   "bytes": 1735743,
+   "sha256": "53307889d8ddf8d464e2832e56b52db2e99b1587d08e1759f5b167e9a40e9158",
+   "rows": 44640,
+   "fetched_at": 1791172367.0440023
+  },
+  "MEMEUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-09.zip",
+   "bytes": 1657495,
+   "sha256": "eddcfad6ea32a0cebe1e2694d09eff4ccebe23a4ed67280f2e910369b90e0daf",
+   "rows": 43200,
+   "fetched_at": 1791172367.9400463
+  },
+  "MEMEUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-10.zip",
+   "bytes": 1795821,
+   "sha256": "e520fb6c2cdef406effe67ecec46aa1e1bc1389dfd27e4d7ba9785c9b485f49e",
+   "rows": 44640,
+   "fetched_at": 1791172367.9614444
+  },
+  "MEMEUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-11.zip",
+   "bytes": 1782053,
+   "sha256": "2f5d737d3b2fb591c9caa2dc591611712ae3a46ef5357e5c02fc90708f098d2f",
+   "rows": 43200,
+   "fetched_at": 1791172367.6879857
+  },
+  "MEMEUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2024-12.zip",
+   "bytes": 1808230,
+   "sha256": "3bc5da41f339c986f33273771520d3887ae90721b6b23be9f668d3472422b5f0",
+   "rows": 44640,
+   "fetched_at": 1791172368.8317251
+  },
+  "MEMEUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-01.zip",
+   "bytes": 1738325,
+   "sha256": "b7cf5ea8170a1259850f8e9e333f590b563bb6020d0954906bf361aba381cdd4",
+   "rows": 44640,
+   "fetched_at": 1791172368.2328815
+  },
+  "MEMEUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-02.zip",
+   "bytes": 1567503,
+   "sha256": "99cd56413ad68134742f905668cda3b79195bee1104e56f5403cf816814bdb2b",
+   "rows": 40320,
+   "fetched_at": 1791172368.8489978
+  },
+  "MEMEUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-03.zip",
+   "bytes": 1655937,
+   "sha256": "cbfe46f6fc88a3142b87acf98947b81d4de6f7636a007de32b3bcf5ae4c8157d",
+   "rows": 44640,
+   "fetched_at": 1791172368.743639
+  },
+  "MEMEUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-04.zip",
+   "bytes": 1590440,
+   "sha256": "425d28f96f64716035bacb7391a56465db9b0b4ed88668009c46135c1080b014",
+   "rows": 43200,
+   "fetched_at": 1791172369.3235037
+  },
+  "MEMEUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-05.zip",
+   "bytes": 1700213,
+   "sha256": "cb8deba6319f0fe196b453c48e1d195db5cd37a7751e142bb28315c1e729b129",
+   "rows": 44640,
+   "fetched_at": 1791172369.9441462
+  },
+  "MEMEUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-06.zip",
+   "bytes": 1535667,
+   "sha256": "4a995a6f4ad5b9d4386ce070eafefdde46b495379a3b22b9729c4c957f3210db",
+   "rows": 43200,
+   "fetched_at": 1791172370.574501
+  },
+  "MEMEUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-07.zip",
+   "bytes": 1636801,
+   "sha256": "185f40e2cf497338523b7ca1018a3bbe1d52ffc81f4b509deec051abd6ea0e84",
+   "rows": 44640,
+   "fetched_at": 1791172369.7156153
+  },
+  "MEMEUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-08.zip",
+   "bytes": 1748296,
+   "sha256": "d67bdb52721dcdedad63b0285dd88446b77826d411be978fa1d273ea0e3db4ca",
+   "rows": 44640,
+   "fetched_at": 1791172370.6375031
+  },
+  "MEMEUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-09.zip",
+   "bytes": 1628972,
+   "sha256": "d09c6a53768ce12d3ae2e2e20496963a7ec375233963ea8c64eb2ba3db3d8c66",
+   "rows": 43200,
+   "fetched_at": 1791172370.3530283
+  },
+  "MEMEUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-10.zip",
+   "bytes": 1617306,
+   "sha256": "09e4012ea9ff193615f9fb5867c64cb363c2a873a6a07f1a16d99892f2b85840",
+   "rows": 44640,
+   "fetched_at": 1791172370.8431485
+  },
+  "MEMEUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-11.zip",
+   "bytes": 1526372,
+   "sha256": "a907daac5a6a82bee3c4c128dd6bdb20f3978103cf812a5c3c6bff3c669ef022",
+   "rows": 43200,
+   "fetched_at": 1791172371.0186076
+  },
+  "MEMEUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2025-12.zip",
+   "bytes": 1468369,
+   "sha256": "d0f73505a9eb33f65bf8bea79fd33b5d3ce36a0180f8a0d3f1891813596d18f8",
+   "rows": 44640,
+   "fetched_at": 1791172371.214042
+  },
+  "MEMEUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2026-01.zip",
+   "bytes": 1526795,
+   "sha256": "6b316b5b0e42d6f2c683d1bd42a24effe8731878b917987478978160f6b0fd0a",
+   "rows": 44640,
+   "fetched_at": 1791172371.0305324
+  },
+  "MEMEUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2026-02.zip",
+   "bytes": 1452522,
+   "sha256": "c3839ed2a9ac109d1810f195cfbff158c2c10a5c531ec8561eaec7c6867af827",
+   "rows": 40320,
+   "fetched_at": 1791172371.8677173
+  },
+  "MEMEUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEMEUSDT/1m/MEMEUSDT-1m-2026-03.zip",
+   "bytes": 1675244,
+   "sha256": "6e0965bc03d8526d7562491dcce095b9cc1c95ac0db540fecab7176beb09b880",
+   "rows": 44640,
+   "fetched_at": 1791172371.4653082
+  },
+  "PEOPLEUSDT-2024-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-01.zip",
+   "bytes": 1677786,
+   "sha256": "30cf3bb52cbe561346bd83f38d51f0ed4341f270c19d1cdfd4afcd0605284bdb",
+   "rows": 44640,
+   "fetched_at": 1791172372.383819
+  },
+  "PEOPLEUSDT-2024-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-02.zip",
+   "bytes": 1476219,
+   "sha256": "b2136d797809b435f8b760bd544cac2c87b136d3666a59b26aaa3a1cee527a03",
+   "rows": 41760,
+   "fetched_at": 1791172372.3568964
+  },
+  "PEOPLEUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-03.zip",
+   "bytes": 1658580,
+   "sha256": "765f8d47c03d46634af3e45668abb4d26728b5f8282ff0616894606bff80389f",
+   "rows": 44640,
+   "fetched_at": 1791172372.477383
+  },
+  "PEOPLEUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-04.zip",
+   "bytes": 1511935,
+   "sha256": "b5abf0990e4bc605306cc591df1fe20d20e4ddc33153c77bce420222f522ddb9",
+   "rows": 43200,
+   "fetched_at": 1791172371.9015489
+  },
+  "PEOPLEUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-05.zip",
+   "bytes": 1719272,
+   "sha256": "15d1328de841846e55f5b3be2f7b7bd9e6f68c4b0e2838a33a2971802eb6152b",
+   "rows": 44640,
+   "fetched_at": 1791172373.1730597
+  },
+  "PEOPLEUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-06.zip",
+   "bytes": 1720963,
+   "sha256": "3fc3ecd951a88e807b5e692f3f01cc3889a56b971b80151d13bb43cde82a8df2",
+   "rows": 43200,
+   "fetched_at": 1791172373.3273618
+  },
+  "PEOPLEUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-07.zip",
+   "bytes": 1727336,
+   "sha256": "a7d9fd65c605cfae5bd084c76f8dbbefabc7605d73e5cb0393ab377559694ec3",
+   "rows": 44640,
+   "fetched_at": 1791172373.2945864
+  },
+  "PEOPLEUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-08.zip",
+   "bytes": 1674167,
+   "sha256": "4fbab5f0a7f9f3af3f0bb3db98f91659a25650b99a3d54c10f7479b5e9e2eee9",
+   "rows": 44640,
+   "fetched_at": 1791172373.7067227
+  },
+  "PEOPLEUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-09.zip",
+   "bytes": 1625474,
+   "sha256": "c012ebe0baf8f2405eb8876112c8a57db27e40221da011e2ae8cb0979200e082",
+   "rows": 43200,
+   "fetched_at": 1791172373.6351178
+  },
+  "PEOPLEUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-10.zip",
+   "bytes": 1700632,
+   "sha256": "b4e00c26cb02ba6b4df9a772714265eee705da8da791cbd414b957d8512abe09",
+   "rows": 44640,
+   "fetched_at": 1791172373.0565112
+  },
+  "PEOPLEUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-11.zip",
+   "bytes": 1641804,
+   "sha256": "672c11546fe65ba1a5101235608371c13040956ac077baa8030e5b02026ba35f",
+   "rows": 43200,
+   "fetched_at": 1791172374.7483938
+  },
+  "PEOPLEUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2024-12.zip",
+   "bytes": 1650779,
+   "sha256": "91173a5dfe7074b37d3081c226c34aef6d3809513a559b7e30b5d31c2820834d",
+   "rows": 44640,
+   "fetched_at": 1791172374.9059196
+  },
+  "PEOPLEUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-01.zip",
+   "bytes": 1595785,
+   "sha256": "d0345800d73df418eedd324308029795d4a0f8c4a41ca922eee394b27941106e",
+   "rows": 44640,
+   "fetched_at": 1791172374.93853
+  },
+  "PEOPLEUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-02.zip",
+   "bytes": 1430022,
+   "sha256": "261065f048abfc01b3539d27e35c0746ed8016ba52ea533f26a898ad1debb4e9",
+   "rows": 40320,
+   "fetched_at": 1791172374.90354
+  },
+  "PEOPLEUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-03.zip",
+   "bytes": 1527301,
+   "sha256": "1c696366e31e8a729581238f8ad3f6cf53ba2382fff607ac120b2ffb3d5f35e7",
+   "rows": 44640,
+   "fetched_at": 1791172375.289759
+  },
+  "PEOPLEUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-04.zip",
+   "bytes": 1458739,
+   "sha256": "3d2bfdf146ff2e56b323a943574e39b0520ec20b7e9b5669102b0bf1dc7c323c",
+   "rows": 43200,
+   "fetched_at": 1791172375.2831435
+  },
+  "PEOPLEUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-05.zip",
+   "bytes": 1619854,
+   "sha256": "c3c43bfcb8a0c5399e25c9f403c1f809b33a191f6f67648afc0efb771e5ecf50",
+   "rows": 44640,
+   "fetched_at": 1791172376.2906523
+  },
+  "PEOPLEUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-06.zip",
+   "bytes": 1490414,
+   "sha256": "3fdab1e78367fe5f9dcb9cdac48c8dd81b2eee0d4ee0eca4e4d340b60b81fb9a",
+   "rows": 43200,
+   "fetched_at": 1791172376.540085
+  },
+  "PEOPLEUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-07.zip",
+   "bytes": 1545887,
+   "sha256": "ee79713cadb31c6e5cb5990c8c71a3bc735ef400a18702f4cf795e84132c1dfc",
+   "rows": 44640,
+   "fetched_at": 1791172376.6037555
+  },
+  "PEOPLEUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-08.zip",
+   "bytes": 1511482,
+   "sha256": "c3d7d9fd2483c81c84116964293ea854da01c8b72cc29c39298dfbf059e82f09",
+   "rows": 44640,
+   "fetched_at": 1791172376.1710384
+  },
+  "PEOPLEUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-09.zip",
+   "bytes": 1413858,
+   "sha256": "88f5c3c191e831191aeefddc08f21ec554996ebd69994b1a719eceffee814f4d",
+   "rows": 43200,
+   "fetched_at": 1791172376.2327836
+  },
+  "PEOPLEUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-10.zip",
+   "bytes": 1440372,
+   "sha256": "ef0d5972e8261713219628fd0322e70606531629dc953a55370689e6a4822787",
+   "rows": 44640,
+   "fetched_at": 1791172377.0186992
+  },
+  "PEOPLEUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-11.zip",
+   "bytes": 1387410,
+   "sha256": "04bf89b4cad1144c0c6a591d3d96048e2bd7af4153222b5e606d33dd1d60679f",
+   "rows": 43200,
+   "fetched_at": 1791172378.7853296
+  },
+  "PEOPLEUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2025-12.zip",
+   "bytes": 1350333,
+   "sha256": "43f3c69adbaa9394b994b64fe6b6d3a6f26293d85429c743bebe4caaa017b048",
+   "rows": 44640,
+   "fetched_at": 1791172376.9390464
+  },
+  "PEOPLEUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2026-01.zip",
+   "bytes": 1362415,
+   "sha256": "48d09750412da2fc5ffc15d8fdfe4f6151ed3c495d1e7b396ae4ffe6e10da1a4",
+   "rows": 44640,
+   "fetched_at": 1791172378.7976859
+  },
+  "PEOPLEUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2026-02.zip",
+   "bytes": 1137757,
+   "sha256": "051cb939d8a6f15967a3f0f39422d39dc057b85be658263b8695edd2f672fa32",
+   "rows": 40320,
+   "fetched_at": 1791172378.0857239
+  },
+  "PEOPLEUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PEOPLEUSDT/1m/PEOPLEUSDT-1m-2026-03.zip",
+   "bytes": 1269528,
+   "sha256": "7f50b09f320e32ae78284884485a31fcd03d3fda8c4d664f21ffc165d4ae9511",
+   "rows": 44640,
+   "fetched_at": 1791172377.651231
+  },
+  "MYROUSDT-2024-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-03.zip",
+   "bytes": 1583044,
+   "sha256": "bc484c03be4939d376f02f1ad8b9443cfdce765844f20f49ca5a442b6c3cc56d",
+   "rows": 38370,
+   "fetched_at": 1791172378.6985033
+  },
+  "MYROUSDT-2024-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-04.zip",
+   "bytes": 1697547,
+   "sha256": "45c023e2fca0ea0056d481348db0b84e9cdbb54e4b759b464d1cc6378948b518",
+   "rows": 43200,
+   "fetched_at": 1791172379.3886058
+  },
+  "MYROUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-05.zip",
+   "bytes": 1750040,
+   "sha256": "73a90252d637362c451c9193865f990dbb1892843ca05d7871978f37ae863abc",
+   "rows": 44640,
+   "fetched_at": 1791172378.5120656
+  },
+  "MYROUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-06.zip",
+   "bytes": 1643014,
+   "sha256": "3a51c3d219818fa14982bec9af358e1805fee02514998a6617603fa2b1a25195",
+   "rows": 43200,
+   "fetched_at": 1791172379.7006414
+  },
+  "MYROUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-07.zip",
+   "bytes": 1698013,
+   "sha256": "ed04447b0b9f4998ff3d3717c42073fd1445deeeeeff0c1a751f2899c6273b45",
+   "rows": 44640,
+   "fetched_at": 1791172379.215733
+  },
+  "MYROUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-08.zip",
+   "bytes": 1654585,
+   "sha256": "228f0b0b02352a3d035e469b8202c45381456ecf37a566ae993aef82a07b9920",
+   "rows": 44640,
+   "fetched_at": 1791172380.4360616
+  },
+  "MYROUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-09.zip",
+   "bytes": 1571360,
+   "sha256": "21b5cf23fd315899093a99c82ece3af2c29d875e086951c5bf1bedc511b0a821",
+   "rows": 43200,
+   "fetched_at": 1791172379.4942558
+  },
+  "MYROUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-10.zip",
+   "bytes": 1707483,
+   "sha256": "316a0bc91f07bd5832b863ac900fda35c591246e979beb3c8f9c4d7c77495017",
+   "rows": 44640,
+   "fetched_at": 1791172380.6015983
+  },
+  "MYROUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-11.zip",
+   "bytes": 1676342,
+   "sha256": "b1a938611b401ee9106be3f677288ee26ad38cce5b99d88128c1cad222a18d4c",
+   "rows": 43200,
+   "fetched_at": 1791172381.081373
+  },
+  "MYROUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2024-12.zip",
+   "bytes": 1674425,
+   "sha256": "64cd9036d9bdab57db9895de366c85c379747d29e72b02fe45ff183a5850fd85",
+   "rows": 44640,
+   "fetched_at": 1791172381.25422
+  },
+  "MYROUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-01.zip",
+   "bytes": 1589860,
+   "sha256": "8cfe890375dcd617d595025095f96131c57b6dabca4b7b478aad68eeae35f531",
+   "rows": 44640,
+   "fetched_at": 1791172381.1892037
+  },
+  "MYROUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-02.zip",
+   "bytes": 1389096,
+   "sha256": "21ffae1bb939ec9ff42211ec6692d2a4f8604a531d7834c9f6416901acc598c3",
+   "rows": 40320,
+   "fetched_at": 1791172380.5295138
+  },
+  "MYROUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-03.zip",
+   "bytes": 1466138,
+   "sha256": "94faabf77bd84c205cc00c9d6417bf889cd5cda4d2e75b926d6d6c56333145a7",
+   "rows": 44640,
+   "fetched_at": 1791172381.3376725
+  },
+  "MYROUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-04.zip",
+   "bytes": 1427193,
+   "sha256": "b74882933d77276a2726900058696733a4e1aea43ea6faa6cb37325e5a5cd156",
+   "rows": 43200,
+   "fetched_at": 1791172381.2927582
+  },
+  "MYROUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-05.zip",
+   "bytes": 1564551,
+   "sha256": "2325f4337c9d451e3da5602a316589f582323ea8cec9d9f92b27087c18f5e609",
+   "rows": 44640,
+   "fetched_at": 1791172381.4952068
+  },
+  "MYROUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-06.zip",
+   "bytes": 1387866,
+   "sha256": "cd6b93679fb74bc09dd047716251d8630a0293b67c08040ca7a889e9f89d961c",
+   "rows": 43200,
+   "fetched_at": 1791172381.9270232
+  },
+  "MYROUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-07.zip",
+   "bytes": 1477104,
+   "sha256": "62d0fb5455c600ce7b9c888639d5f28951df628bd586ea38d102d9cab43f6c75",
+   "rows": 44640,
+   "fetched_at": 1791172382.3042963
+  },
+  "MYROUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-08.zip",
+   "bytes": 1484344,
+   "sha256": "800b8d45bae4a05628d50d2a1bf0fce31862e974b8b2887eabc0e4c14f3f3540",
+   "rows": 44640,
+   "fetched_at": 1791172382.5640423
+  },
+  "MYROUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-09.zip",
+   "bytes": 1344224,
+   "sha256": "7a779e0a76bf76da2b1493161ed12eb1a376702154c6504a0e4babbab1d9ead8",
+   "rows": 43200,
+   "fetched_at": 1791172382.6479099
+  },
+  "MYROUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-10.zip",
+   "bytes": 1425265,
+   "sha256": "2a3470cc53d0f240ef3db573e20af2e8d583b2366c43abb8f875def694f79634",
+   "rows": 44640,
+   "fetched_at": 1791172382.70135
+  },
+  "MYROUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-11.zip",
+   "bytes": 748092,
+   "sha256": "c05aa680033479565df3b4071fe1fc5416b47d73505c5ec1c7c8190fc81e4afd",
+   "rows": 43200,
+   "fetched_at": 1791172382.816494
+  },
+  "MYROUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2025-12.zip",
+   "bytes": 236756,
+   "sha256": "1c8f93d52bf882c05e2c513714c9c079cb92b2cea29982ad24fd7b16c69a9620",
+   "rows": 44640,
+   "fetched_at": 1791172382.868584
+  },
+  "MYROUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2026-01.zip",
+   "bytes": 236697,
+   "sha256": "5c38665e6ec648a080af032e06b2ee3f4c25bafa3c39a0bf0e4f0fac83e18ab6",
+   "rows": 44640,
+   "fetched_at": 1791172382.8344767
+  },
+  "MYROUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2026-02.zip",
+   "bytes": 214073,
+   "sha256": "7bfeaf2437a49d3f7b179d9dd55f05838d1f21b4e6aca88a4ed2a2c888ff0a47",
+   "rows": 40320,
+   "fetched_at": 1791172383.255849
+  },
+  "MYROUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MYROUSDT/1m/MYROUSDT-1m-2026-03.zip",
+   "bytes": 236674,
+   "sha256": "e8a2c3d3fd6afc20d12015a6d523fe819cdaf687d4cdf18f3f00e586b10e053d",
+   "rows": 44640,
+   "fetched_at": 1791172383.871735
+  },
+  "POPCATUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2024-08.zip",
+   "bytes": 509743,
+   "sha256": "2216156bd0e4c6fe241ca8cd85adfc50b17e0e9dccd01c99278f08a97bde9a0b",
+   "rows": 13620,
+   "fetched_at": 1791172384.6456406
+  },
+  "POPCATUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2024-09.zip",
+   "bytes": 1618943,
+   "sha256": "9370a817c716bcd30196d4eff91881cfff8144666ce1afc8cbacd5793793ce7c",
+   "rows": 43200,
+   "fetched_at": 1791172384.9021165
+  },
+  "POPCATUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2024-10.zip",
+   "bytes": 1720352,
+   "sha256": "c200ad6842ab498944fcc03f9528912489aea33ddcc4bfbd6f7d5080c25fc477",
+   "rows": 44640,
+   "fetched_at": 1791172385.3322403
+  },
+  "POPCATUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2024-11.zip",
+   "bytes": 1676459,
+   "sha256": "d0b82f12d42fbf77ba69aeecb87cc66e744ca80e3b87ec843d16c623d450b650",
+   "rows": 43200,
+   "fetched_at": 1791172384.7392602
+  },
+  "POPCATUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2024-12.zip",
+   "bytes": 1693115,
+   "sha256": "f4d579d58b51e976e7be2da64d7dd6c77fe4b0e3ae0bdbfdb7c371a2f11d2ba6",
+   "rows": 44640,
+   "fetched_at": 1791172385.5956254
+  },
+  "POPCATUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-01.zip",
+   "bytes": 1676786,
+   "sha256": "ef078d8a319681058aeb17d6814dff25741079d31df4fe1f6642237eb67b8ffe",
+   "rows": 44640,
+   "fetched_at": 1791172385.4812546
+  },
+  "POPCATUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-02.zip",
+   "bytes": 1509958,
+   "sha256": "01e73bc5c1796908370c693c3167e5ceaaea748d7c20b6ecc21693236ad18e3b",
+   "rows": 40320,
+   "fetched_at": 1791172386.3620627
+  },
+  "POPCATUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-03.zip",
+   "bytes": 1586597,
+   "sha256": "4867eae5d9838a4d0d3f8ff2c0fcb3cd254ec2420b06c53a347e359b7cb0b748",
+   "rows": 44640,
+   "fetched_at": 1791172386.4738746
+  },
+  "POPCATUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-04.zip",
+   "bytes": 1576933,
+   "sha256": "77eff926c7792923a277a570d33e6dd8c363ee82719cbf7693e10f0d4b432c44",
+   "rows": 43200,
+   "fetched_at": 1791172385.7910812
+  },
+  "POPCATUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-05.zip",
+   "bytes": 1652629,
+   "sha256": "c01aa579c6b382582f9003438504a16d1988777d595718fc4edcf225b5822889",
+   "rows": 44640,
+   "fetched_at": 1791172386.743005
+  },
+  "POPCATUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-06.zip",
+   "bytes": 1545067,
+   "sha256": "b2a9ce5b143e4cb850a3410315fd61c6c4fa859e5b87a16c37ad004f48929b1b",
+   "rows": 43200,
+   "fetched_at": 1791172386.1259537
+  },
+  "POPCATUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-07.zip",
+   "bytes": 1609375,
+   "sha256": "c32899469b656b30aee8d667b981f4a5be4d6b5bcac75d8646c0ef3a6bb95a47",
+   "rows": 44640,
+   "fetched_at": 1791172387.2027502
+  },
+  "POPCATUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-08.zip",
+   "bytes": 1532466,
+   "sha256": "655944927480c03f0068c88930533ca276c7db0bafae8580e61641167d535222",
+   "rows": 44640,
+   "fetched_at": 1791172387.181482
+  },
+  "POPCATUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-09.zip",
+   "bytes": 1420973,
+   "sha256": "1f8ff2f4d92b7b6650d8e0b87c03001e33661543351aa0ecc20740257ac340c0",
+   "rows": 43200,
+   "fetched_at": 1791172387.6906786
+  },
+  "POPCATUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-10.zip",
+   "bytes": 1473478,
+   "sha256": "d4cb421bc47b074cc96e45525c3a90c4dea0bf6b84c6eca5a5d0181eb596bfa5",
+   "rows": 44640,
+   "fetched_at": 1791172387.6551535
+  },
+  "POPCATUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-11.zip",
+   "bytes": 1412164,
+   "sha256": "0f3063e52c0245ffa6fc0bea0cb4a31e81edb772597b0071ea93d12282a7adca",
+   "rows": 43200,
+   "fetched_at": 1791172387.8377967
+  },
+  "POPCATUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2025-12.zip",
+   "bytes": 1282484,
+   "sha256": "c307a3f20bd6e9735ba6984140aaa00898a697f9862806a23a8ee2babfe2f78f",
+   "rows": 44640,
+   "fetched_at": 1791172387.3517892
+  },
+  "POPCATUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2026-01.zip",
+   "bytes": 1306807,
+   "sha256": "765134d0c862f8db2c9e52f425f8a7f8a1116c5a9e0a8a777df75fad60ab3c83",
+   "rows": 44640,
+   "fetched_at": 1791172388.0224855
+  },
+  "POPCATUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2026-02.zip",
+   "bytes": 1288867,
+   "sha256": "018062f2a49d6851cffb511974854011b92b11faa58cc16730fcc7acbd82de8c",
+   "rows": 40320,
+   "fetched_at": 1791172388.436922
+  },
+  "POPCATUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/POPCATUSDT/1m/POPCATUSDT-1m-2026-03.zip",
+   "bytes": 1440652,
+   "sha256": "117e65212be79e8d9e7cac24a38c3a9e3d6d6b89ff29d69c3131ba2ac8e06d31",
+   "rows": 44640,
+   "fetched_at": 1791172389.3863232
+  },
+  "TURBOUSDT-2024-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-05.zip",
+   "bytes": 83214,
+   "sha256": "21a27bc1313d24eb671262c1814d3ed0c5a4f96a74b0d090a6a8ebf852981393",
+   "rows": 1950,
+   "fetched_at": 1791172389.0544093
+  },
+  "TURBOUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-06.zip",
+   "bytes": 1765167,
+   "sha256": "423926d3a56052de64a14174d72686c4b6f3a91ce7d4b36c1860e1c0c8b64623",
+   "rows": 43200,
+   "fetched_at": 1791172390.165412
+  },
+  "TURBOUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-07.zip",
+   "bytes": 1839811,
+   "sha256": "20102452b930d9ec297fc1eb14fa561d28f2c2f5c491b814e536bcd9ea99f0b1",
+   "rows": 44640,
+   "fetched_at": 1791172389.9600322
+  },
+  "TURBOUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-08.zip",
+   "bytes": 1772120,
+   "sha256": "522f3c8fc4cc4bf9476a17fbf9fc5eca8625cbdfc6e5c97f78e6353d41f830f1",
+   "rows": 44640,
+   "fetched_at": 1791172390.161908
+  },
+  "TURBOUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-09.zip",
+   "bytes": 1754147,
+   "sha256": "d81cec3ffff701f8653cec3384fbe3ad921ba17539519e444aa4537ef14c13f6",
+   "rows": 43200,
+   "fetched_at": 1791172390.098773
+  },
+  "TURBOUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-10.zip",
+   "bytes": 1999968,
+   "sha256": "b5638061d833215c603198dbc62d1264a35a10657c3fc996fb7249d85052dbd0",
+   "rows": 44640,
+   "fetched_at": 1791172390.931645
+  },
+  "TURBOUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-11.zip",
+   "bytes": 1932806,
+   "sha256": "ac5b88b2cbb9e370bf2f1e32eb8bbd9b3c7ef9987ffecc50a7ab8c0ebbf5b2de",
+   "rows": 43200,
+   "fetched_at": 1791172391.0599275
+  },
+  "TURBOUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2024-12.zip",
+   "bytes": 2002385,
+   "sha256": "91a8b3e05e3e37b4a6c2b2a7bffd60cd3af81855ae03d265a51e2828fd9e9b0a",
+   "rows": 44640,
+   "fetched_at": 1791172391.7451708
+  },
+  "TURBOUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-01.zip",
+   "bytes": 1937309,
+   "sha256": "9fe7f6e5b595e9a2461272b09052ac40d1101111e90b0919bbeafa3e5a7b201b",
+   "rows": 44640,
+   "fetched_at": 1791172391.8545976
+  },
+  "TURBOUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-02.zip",
+   "bytes": 1727300,
+   "sha256": "c7de4ef86da66f15e4f6e8b6d4c8875ef0998fd6be1540064175c8fe780200c3",
+   "rows": 40320,
+   "fetched_at": 1791172392.924992
+  },
+  "TURBOUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-03.zip",
+   "bytes": 1857006,
+   "sha256": "d210406e10b42037cee4328bc51511fb219ab39d8f959e46e37066dde63dadbf",
+   "rows": 44640,
+   "fetched_at": 1791172391.7213647
+  },
+  "TURBOUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-04.zip",
+   "bytes": 1815658,
+   "sha256": "fa32a9c458c56a1e845025d3432123a0d82c91317753a9174c2423d14050ff70",
+   "rows": 43200,
+   "fetched_at": 1791172391.6022532
+  },
+  "TURBOUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-05.zip",
+   "bytes": 1953707,
+   "sha256": "9c943f759192f0228736b5520bc0754158de0ffc868028d80049ce8b7f77b50c",
+   "rows": 44640,
+   "fetched_at": 1791172392.209727
+  },
+  "TURBOUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-06.zip",
+   "bytes": 1810725,
+   "sha256": "2b865208854de5402a40bc9f23d0237e557204997768bbd48aa1cbf9a4c6fa2a",
+   "rows": 43200,
+   "fetched_at": 1791172393.0704422
+  },
+  "TURBOUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-07.zip",
+   "bytes": 1912050,
+   "sha256": "49b51c708db49cdfa8d8141104ebe533486d0812e7f0d51031fb9ec0ae893153",
+   "rows": 44640,
+   "fetched_at": 1791172393.1938477
+  },
+  "TURBOUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-08.zip",
+   "bytes": 1852155,
+   "sha256": "ef70560f6be8f5ebb75e377c11a987285e4429737c08b3f02496488742e0e5c8",
+   "rows": 44640,
+   "fetched_at": 1791172393.1871006
+  },
+  "TURBOUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-09.zip",
+   "bytes": 1768222,
+   "sha256": "d744cc98ecd8ebd2f573c07b24dd2e712f0f7b373508f79998af7ea70ee50966",
+   "rows": 43200,
+   "fetched_at": 1791172392.526004
+  },
+  "TURBOUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-10.zip",
+   "bytes": 1829410,
+   "sha256": "0e85a758582b23ede2285d184cc5b422ae3dd92e244056de66457d342c7b78dd",
+   "rows": 44640,
+   "fetched_at": 1791172393.61467
+  },
+  "TURBOUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-11.zip",
+   "bytes": 1793524,
+   "sha256": "7cc84d6d9500b62792bb5d3a840f3805890aab2ad5de01f274efcb5428538261",
+   "rows": 43200,
+   "fetched_at": 1791172393.7807167
+  },
+  "TURBOUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2025-12.zip",
+   "bytes": 1846081,
+   "sha256": "5ae35897af07fbe302c30a47550f10e6023da398400dd29e47cda649ded40e1c",
+   "rows": 44640,
+   "fetched_at": 1791172394.3661134
+  },
+  "TURBOUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2026-01.zip",
+   "bytes": 1784499,
+   "sha256": "d79d527f94ccf202015548c8b13c91b1cd185168e75ffd484441e1363426a500",
+   "rows": 44640,
+   "fetched_at": 1791172394.8106568
+  },
+  "TURBOUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2026-02.zip",
+   "bytes": 1580077,
+   "sha256": "d3c88c6f96c373da724c7184778c0e938b76eee22c7d285ad33de385051599d4",
+   "rows": 40320,
+   "fetched_at": 1791172394.834729
+  },
+  "TURBOUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/TURBOUSDT/1m/TURBOUSDT-1m-2026-03.zip",
+   "bytes": 1757151,
+   "sha256": "5385d11a0074341a01f18d94b3197c6c4d561da2ce00dd929d5c6664785940cb",
+   "rows": 44640,
+   "fetched_at": 1791172395.0218706
+  },
+  "BRETTUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2024-08.zip",
+   "bytes": 600177,
+   "sha256": "08cd4da94cae61ea1f40c6848ffc45699285dc1f02f3e38d371066c75b7de693",
+   "rows": 16645,
+   "fetched_at": 1791172396.2107406
+  },
+  "BRETTUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2024-09.zip",
+   "bytes": 1516582,
+   "sha256": "2941bbd3e9d766ceca75a5cdf64971df1924d422c67c1be3068b5a8ac20037e4",
+   "rows": 43200,
+   "fetched_at": 1791172396.261773
+  },
+  "BRETTUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2024-10.zip",
+   "bytes": 1627355,
+   "sha256": "76d76f9be6160c00e79ae43e90111be27ada50d3f4d5f8ae3a96d3a622d8a35b",
+   "rows": 44640,
+   "fetched_at": 1791172396.6447902
+  },
+  "BRETTUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2024-11.zip",
+   "bytes": 1661636,
+   "sha256": "8dd1ffd1f1efb32acf66b1f0fedb475848b1e2121de2b4d403bf2b829c375a93",
+   "rows": 43200,
+   "fetched_at": 1791172396.7281196
+  },
+  "BRETTUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2024-12.zip",
+   "bytes": 1703815,
+   "sha256": "ad4824e825ccb97f4ee5d9157f4f76a50a40fd4b36a2c68398c1522d95aa6b30",
+   "rows": 44640,
+   "fetched_at": 1791172396.6309893
+  },
+  "BRETTUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-01.zip",
+   "bytes": 1663908,
+   "sha256": "003d3bf734d511136d75072db62b903d170f0302ba24fd553d6e2d2fb23ba4b3",
+   "rows": 44640,
+   "fetched_at": 1791172396.8561392
+  },
+  "BRETTUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-02.zip",
+   "bytes": 1489222,
+   "sha256": "7975a0601483a47912c0460fdf48ba08ea06b8111c92d4b9cbd9095a2814ba76",
+   "rows": 40320,
+   "fetched_at": 1791172397.4181685
+  },
+  "BRETTUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-03.zip",
+   "bytes": 1559125,
+   "sha256": "fda39a18f84ac78a866e7ec637472d4065247d2ddda544bf0c5c91112f0446a6",
+   "rows": 44640,
+   "fetched_at": 1791172397.6617587
+  },
+  "BRETTUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-04.zip",
+   "bytes": 1539486,
+   "sha256": "3b6333333e1a02e5916c3f731df9a40f74f75e918394743f1eff5f102ea59343",
+   "rows": 43200,
+   "fetched_at": 1791172398.1092427
+  },
+  "BRETTUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-05.zip",
+   "bytes": 1680944,
+   "sha256": "ba5299e045bc3f44f057575f4aecf969c5d3b388ab585a96c8a0bd3442fb099e",
+   "rows": 44640,
+   "fetched_at": 1791172398.089107
+  },
+  "BRETTUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-06.zip",
+   "bytes": 1576381,
+   "sha256": "04d5a255505331bf16820a797e8e137f1c4f7a8d9ccf502591fbf56518092e5f",
+   "rows": 43200,
+   "fetched_at": 1791172398.0724006
+  },
+  "BRETTUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-07.zip",
+   "bytes": 1636119,
+   "sha256": "978fcf05346fba848a9b6d1d14f51a18e8404831b98db65bd48d3e9564d657fa",
+   "rows": 44640,
+   "fetched_at": 1791172398.2817836
+  },
+  "BRETTUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-08.zip",
+   "bytes": 1608563,
+   "sha256": "4f756bf91e0e6d4fa7e4a950d54cfaf86d9a2eaa8fdddf327dbfa28aa4308f9f",
+   "rows": 44640,
+   "fetched_at": 1791172398.8319862
+  },
+  "BRETTUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-09.zip",
+   "bytes": 1509782,
+   "sha256": "3155c1ff754f1753685d62d602bc4db44182eacec5845983b6befb658fdc4060",
+   "rows": 43200,
+   "fetched_at": 1791172398.5336928
+  },
+  "BRETTUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-10.zip",
+   "bytes": 1562225,
+   "sha256": "f44effd0efca0da56c57e28aff53bc3140ebebd0c6a212f0a861c8a9fcfdec34",
+   "rows": 44640,
+   "fetched_at": 1791172399.4035664
+  },
+  "BRETTUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-11.zip",
+   "bytes": 1466503,
+   "sha256": "54b90110521ff93077b96c6c5beae6594b3e22975f87942dda41cada0b273097",
+   "rows": 43200,
+   "fetched_at": 1791172399.7089353
+  },
+  "BRETTUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2025-12.zip",
+   "bytes": 1426808,
+   "sha256": "1443a51ff553a448c11f9a451994c404054662bba1076feb1f82e324bdfad133",
+   "rows": 44640,
+   "fetched_at": 1791172398.8528953
+  },
+  "BRETTUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2026-01.zip",
+   "bytes": 1398546,
+   "sha256": "12431e381a0a7e26174030458f1983413f8e5166d20dc424ede8765c1db5a60d",
+   "rows": 44640,
+   "fetched_at": 1791172399.946384
+  },
+  "BRETTUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2026-02.zip",
+   "bytes": 1179233,
+   "sha256": "525850f78dce0d28aaf159ec29744c72de841327c86229b1cfa3a80044c102e2",
+   "rows": 40320,
+   "fetched_at": 1791172400.0909138
+  },
+  "BRETTUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/BRETTUSDT/1m/BRETTUSDT-1m-2026-03.zip",
+   "bytes": 1499078,
+   "sha256": "3c091824d318454c79b46fe9f97545e4ceaaec507dc13b1abe1dc29856e60d7c",
+   "rows": 44640,
+   "fetched_at": 1791172399.4884257
+  },
+  "MEWUSDT-2024-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-06.zip",
+   "bytes": 766011,
+   "sha256": "bf315a95b435514d5c2e3d1f916c7663f5253c9cf81a81b00cad10c0bd5321bc",
+   "rows": 19320,
+   "fetched_at": 1791172401.360489
+  },
+  "MEWUSDT-2024-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-07.zip",
+   "bytes": 1809076,
+   "sha256": "c83cda3fed6f34f373adcdaed6cb84ebb3bb133065cb5cc688bc1b2e9f0181cb",
+   "rows": 44640,
+   "fetched_at": 1791172401.4685483
+  },
+  "MEWUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-08.zip",
+   "bytes": 1827001,
+   "sha256": "539a77ea621ef49d36740a3a6cf13a4c89d8854145d49b79cb1eda34432d4077",
+   "rows": 44640,
+   "fetched_at": 1791172401.470484
+  },
+  "MEWUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-09.zip",
+   "bytes": 1712808,
+   "sha256": "633e0053a189d838b81d80929040b594457760de8ce713e29c23b9bd9f389d6f",
+   "rows": 43200,
+   "fetched_at": 1791172401.8896217
+  },
+  "MEWUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-10.zip",
+   "bytes": 1864627,
+   "sha256": "24e681207064bbc5d8ba6bbcead8efa0f89da58750c0b1ab247175fec552ce72",
+   "rows": 44640,
+   "fetched_at": 1791172401.8567865
+  },
+  "MEWUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-11.zip",
+   "bytes": 1792183,
+   "sha256": "5103c0e28a9176c31afc4b7062f2dc66279e409eb34851fbacd6b0ef12285e37",
+   "rows": 43200,
+   "fetched_at": 1791172401.697104
+  },
+  "MEWUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2024-12.zip",
+   "bytes": 1773009,
+   "sha256": "9a2ff1258ee7586918dd482ec27b0175a4e9d6e14a2f67a1023503dca2eb2849",
+   "rows": 44640,
+   "fetched_at": 1791172402.8056853
+  },
+  "MEWUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-01.zip",
+   "bytes": 1686822,
+   "sha256": "7ccba24a1acd8250d4dd92b7aaf8423ed51975ce8c69b21d6a5f6a24e49e6d2c",
+   "rows": 44640,
+   "fetched_at": 1791172402.2101388
+  },
+  "MEWUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-02.zip",
+   "bytes": 1485742,
+   "sha256": "65bfc65c599586205ab413301f9204fd56a13ee28cde185dfdb9c45ed8ed8668",
+   "rows": 40320,
+   "fetched_at": 1791172403.1055908
+  },
+  "MEWUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-03.zip",
+   "bytes": 1616744,
+   "sha256": "5184ff720470450b17fa8bfc800abccc99e4232c89415816912634da931cfc5f",
+   "rows": 44640,
+   "fetched_at": 1791172402.3476481
+  },
+  "MEWUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-04.zip",
+   "bytes": 1631450,
+   "sha256": "f6f5ec9071a9445ca9da4df8e37b024958303161dd5d92118062fb7c0303e178",
+   "rows": 43200,
+   "fetched_at": 1791172403.286283
+  },
+  "MEWUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-05.zip",
+   "bytes": 1707710,
+   "sha256": "ff0335496dba54438b05c7077dc96bc75ab3efe39df18db5b26ed15747744f7f",
+   "rows": 44640,
+   "fetched_at": 1791172403.3391285
+  },
+  "MEWUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-06.zip",
+   "bytes": 1564256,
+   "sha256": "1375c7f150be1548f43e544f05d877c73d2217429b2f778546453825b992f6d9",
+   "rows": 43200,
+   "fetched_at": 1791172402.8378818
+  },
+  "MEWUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-07.zip",
+   "bytes": 1669957,
+   "sha256": "2718b67d04142f77caff4277f65d8c9a80e95e1db30c275777a3ada7a44c2729",
+   "rows": 44640,
+   "fetched_at": 1791172403.8119478
+  },
+  "MEWUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-08.zip",
+   "bytes": 1569524,
+   "sha256": "e3c9d81912d76175b408e41d3ff85cb876090cbe48c223cb023f9d576c87bc1f",
+   "rows": 44640,
+   "fetched_at": 1791172403.5146394
+  },
+  "MEWUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-09.zip",
+   "bytes": 1436368,
+   "sha256": "3f26b28125eb6d8ed4a4865794589fea8b77721a75ed51dcea849020949f9add",
+   "rows": 43200,
+   "fetched_at": 1791172404.1281388
+  },
+  "MEWUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-10.zip",
+   "bytes": 1467766,
+   "sha256": "0f2d5ec9addf5e140d4dce52b3eb62d43e3c467c63acbf85a552ea794352e7d5",
+   "rows": 44640,
+   "fetched_at": 1791172404.3676982
+  },
+  "MEWUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-11.zip",
+   "bytes": 1388023,
+   "sha256": "e1aa20b47f0d3caa4e3bd83806b3cbc9767c08e195a338dd7cb7edc5c7d95ced",
+   "rows": 43200,
+   "fetched_at": 1791172403.918998
+  },
+  "MEWUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2025-12.zip",
+   "bytes": 1309001,
+   "sha256": "384f895eb717546e7b8ba4dc43cdc74b05c90ba55fd5c983b5f67384bb2e78d0",
+   "rows": 44640,
+   "fetched_at": 1791172404.6171045
+  },
+  "MEWUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2026-01.zip",
+   "bytes": 1355583,
+   "sha256": "7779a3eb65758fc2ff9b47bd5521fadd58c00cf32fd8d1b6ed60f83908f5d182",
+   "rows": 44640,
+   "fetched_at": 1791172404.1167097
+  },
+  "MEWUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2026-02.zip",
+   "bytes": 1332618,
+   "sha256": "884752b9d5c06050a17bcde4d2421f85f323aaa6e0f35da69320fd94ba283086",
+   "rows": 40320,
+   "fetched_at": 1791172404.3934462
+  },
+  "MEWUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MEWUSDT/1m/MEWUSDT-1m-2026-03.zip",
+   "bytes": 1543586,
+   "sha256": "c8ca81a41dc09a83dd5469a367975b07e7fccaa0d7c3f060ab48d49d71544b13",
+   "rows": 44640,
+   "fetched_at": 1791172405.2627177
+  },
+  "NEIROUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2024-09.zip",
+   "bytes": 984669,
+   "sha256": "956475286a0d8a9b5a92984480068d67e6bc393304932d696212cc1dbde15681",
+   "rows": 20908,
+   "fetched_at": 1791172405.71112
+  },
+  "NEIROUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2024-10.zip",
+   "bytes": 2099934,
+   "sha256": "f8ed4a46aae79b8935e1aad26e534b70eabdfdbe9e872b2d46dad8c798f785ab",
+   "rows": 44640,
+   "fetched_at": 1791172406.5304353
+  },
+  "NEIROUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2024-11.zip",
+   "bytes": 2037443,
+   "sha256": "87fe562adb676c2199e6637f03ce05cd881216fb5a68bb273b78ed9cdbc1bade",
+   "rows": 43200,
+   "fetched_at": 1791172407.0660446
+  },
+  "NEIROUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2024-12.zip",
+   "bytes": 2047945,
+   "sha256": "ad4a9befce0e9ecb905f1601a98f11e17707d93114e8bdd4d000c106e3104030",
+   "rows": 44640,
+   "fetched_at": 1791172406.895614
+  },
+  "NEIROUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-01.zip",
+   "bytes": 1997581,
+   "sha256": "a07475a26d921d27f2e54e52ec07dafbb3c24ff10a818ec688ca8aa4afb82e19",
+   "rows": 44640,
+   "fetched_at": 1791172408.2899904
+  },
+  "NEIROUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-02.zip",
+   "bytes": 1781507,
+   "sha256": "0bef361cb235efd7033bd9f00c03ec970c8a42a6ad9fcc282d194b457a70ef47",
+   "rows": 40320,
+   "fetched_at": 1791172407.2741752
+  },
+  "NEIROUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-03.zip",
+   "bytes": 1900450,
+   "sha256": "600f9bc810ffeacb26b89be1b3237f14c4ba61af736c1f511494baa24e00ab81",
+   "rows": 44640,
+   "fetched_at": 1791172407.3143895
+  },
+  "NEIROUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-04.zip",
+   "bytes": 1768635,
+   "sha256": "aa3eacafd7428d8902868b08578ea79beec89b2e496590701c8a8c70269c3723",
+   "rows": 43200,
+   "fetched_at": 1791172408.2531142
+  },
+  "NEIROUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-05.zip",
+   "bytes": 1973543,
+   "sha256": "4ed35758200e163e499794e76cc7f8c72b2c6e037d91a5d5de3b77d6f825bf64",
+   "rows": 44640,
+   "fetched_at": 1791172408.641291
+  },
+  "NEIROUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-06.zip",
+   "bytes": 1858475,
+   "sha256": "c04fb9f309f2533607664a44e0f48c05ecff80766d901bd5003121e685b939f7",
+   "rows": 43200,
+   "fetched_at": 1791172407.916869
+  },
+  "NEIROUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-07.zip",
+   "bytes": 1937886,
+   "sha256": "203998a323b92c1b794773934080ccfd908cd4245c5748be3de8f3eb6c607e06",
+   "rows": 44640,
+   "fetched_at": 1791172408.9430077
+  },
+  "NEIROUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-08.zip",
+   "bytes": 1853901,
+   "sha256": "06c5b19476f1369ec3dc297349fbc636f4b36390f8e8bd9f76e8dde439b94527",
+   "rows": 44640,
+   "fetched_at": 1791172409.0811963
+  },
+  "NEIROUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-09.zip",
+   "bytes": 1745981,
+   "sha256": "912a89e685f6d03dccfa276bc38bf2aed3246a15caff041fa87c0a22127057b8",
+   "rows": 43200,
+   "fetched_at": 1791172409.8399823
+  },
+  "NEIROUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-10.zip",
+   "bytes": 1798533,
+   "sha256": "982c99efe436e375b89029f60a8a782214bf33d7c6243c35961d6fa09d46fdb3",
+   "rows": 44640,
+   "fetched_at": 1791172409.622246
+  },
+  "NEIROUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-11.zip",
+   "bytes": 1705909,
+   "sha256": "96cae13937e735dd604210dedb050a01a69e642c1e290594b2ac55fa55518d69",
+   "rows": 43200,
+   "fetched_at": 1791172410.4000194
+  },
+  "NEIROUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2025-12.zip",
+   "bytes": 1676574,
+   "sha256": "761895665ca5c30a9b2c625744545cd73d8456b3103ec7435bdfea185f504336",
+   "rows": 44640,
+   "fetched_at": 1791172410.02469
+  },
+  "NEIROUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2026-01.zip",
+   "bytes": 1706545,
+   "sha256": "c44c6ce50096ed399547e0bb7799747b4bf9e4e55aa3f3efc382824e77f2da3e",
+   "rows": 44640,
+   "fetched_at": 1791172410.6711562
+  },
+  "NEIROUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2026-02.zip",
+   "bytes": 1486318,
+   "sha256": "05cb6780923d16f249dce9eec612590e28b7843d753b6400574c480975adccdf",
+   "rows": 40320,
+   "fetched_at": 1791172410.7209804
+  },
+  "NEIROUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/NEIROUSDT/1m/NEIROUSDT-1m-2026-03.zip",
+   "bytes": 1834665,
+   "sha256": "d17aa2fa98a9e4c53331afc81e0fc6af2eed0dd97a49d2876e6173a46617d2f5",
+   "rows": 44640,
+   "fetched_at": 1791172411.3976674
+  },
+  "GOATUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2024-10.zip",
+   "bytes": 422931,
+   "sha256": "8083e3155ed82f84062e1211e0be387d7c07e162fc3c4d1833ff165bad06f6ee",
+   "rows": 10710,
+   "fetched_at": 1791172411.6878803
+  },
+  "GOATUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2024-11.zip",
+   "bytes": 1710899,
+   "sha256": "5d41f81879b899a1df36b811524aeace7041ce199e5ce71bc2ce8b643b8e5591",
+   "rows": 43200,
+   "fetched_at": 1791172412.7551334
+  },
+  "GOATUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2024-12.zip",
+   "bytes": 1719080,
+   "sha256": "7f2b2776fd97b758a80a388e6b5ab889081cf81220cdc33c870f861bbfbdf244",
+   "rows": 44640,
+   "fetched_at": 1791172412.9672325
+  },
+  "GOATUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-01.zip",
+   "bytes": 1656253,
+   "sha256": "9d5d1f7f5bf892c4b98980e9eac1812bb9da77316a7f1db23f40af458b9832c6",
+   "rows": 44640,
+   "fetched_at": 1791172414.1077783
+  },
+  "GOATUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-02.zip",
+   "bytes": 1393276,
+   "sha256": "6e9a475b1ef07d4b7197d2a27b97515af79129356a2265e823c42572c4361b6a",
+   "rows": 40320,
+   "fetched_at": 1791172413.933949
+  },
+  "GOATUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-03.zip",
+   "bytes": 1421087,
+   "sha256": "e36f8ad1c4d640bbfa357e4768852f1d600bcd1d2a90734cd4a43227ea96b592",
+   "rows": 44640,
+   "fetched_at": 1791172413.3684287
+  },
+  "GOATUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-04.zip",
+   "bytes": 1473300,
+   "sha256": "fc50f5683dc0f67da0286247ebfad3921d59a78c9cefaa4c950b3202c399a59c",
+   "rows": 43200,
+   "fetched_at": 1791172414.2771068
+  },
+  "GOATUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-05.zip",
+   "bytes": 1773949,
+   "sha256": "dcd8b320a442131cc4e52bfc8557391384d80fe383ff19275d68f1f164ca1b7d",
+   "rows": 44640,
+   "fetched_at": 1791172414.33661
+  },
+  "GOATUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-06.zip",
+   "bytes": 1637207,
+   "sha256": "56232abaed017916ae8412ca84f2040cb2ed01703a293168dd190ec9940f7e28",
+   "rows": 43200,
+   "fetched_at": 1791172414.3701155
+  },
+  "GOATUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-07.zip",
+   "bytes": 1713662,
+   "sha256": "e8730a07b79d6e54df7e379e446748e00dac7354a33baebe88fbc7d010df25e2",
+   "rows": 44640,
+   "fetched_at": 1791172415.5458553
+  },
+  "GOATUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-08.zip",
+   "bytes": 1630082,
+   "sha256": "fe0e2954140a4d60b93e9b923556e298c843708de7de7adad681c8d9f65c4dd1",
+   "rows": 44640,
+   "fetched_at": 1791172414.74959
+  },
+  "GOATUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-09.zip",
+   "bytes": 1563074,
+   "sha256": "f82890f88d130e4e60fe1e5e219fcd6e45fec10af56a44ec4b89cda81b95f1c2",
+   "rows": 43200,
+   "fetched_at": 1791172415.7227726
+  },
+  "GOATUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-10.zip",
+   "bytes": 1580477,
+   "sha256": "7c20db765548012e54876881708b1d25be56c9129f1fc57e0de1157a973d17d8",
+   "rows": 44640,
+   "fetched_at": 1791172415.857152
+  },
+  "GOATUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-11.zip",
+   "bytes": 1475178,
+   "sha256": "6ad5cc0bfacc172339c8fbde9b4a79acff3cb4d11c321bfc5469620a290053f2",
+   "rows": 43200,
+   "fetched_at": 1791172416.0021262
+  },
+  "GOATUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2025-12.zip",
+   "bytes": 1372055,
+   "sha256": "2e6c91ffa3da7e4f1bcb279fab806a604fc0ffe237dbc28c3e99e26efd569ae8",
+   "rows": 44640,
+   "fetched_at": 1791172416.029976
+  },
+  "GOATUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2026-01.zip",
+   "bytes": 1372309,
+   "sha256": "406f59573749ce9a00c3a9d3dbc092d2b394806663d4349e5ec71813a876e851",
+   "rows": 44640,
+   "fetched_at": 1791172416.2342834
+  },
+  "GOATUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2026-02.zip",
+   "bytes": 1183074,
+   "sha256": "b80a797b9359d5c63f5fb4bb07c1639d7487d3f706fee48bd6d8e499d50c7b40",
+   "rows": 40320,
+   "fetched_at": 1791172416.9400244
+  },
+  "GOATUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/GOATUSDT/1m/GOATUSDT-1m-2026-03.zip",
+   "bytes": 1284356,
+   "sha256": "e5bcdcb9b5a2cbd2c0bd6d8b7a7febbd487905d1a533abae9346e64948e4381f",
+   "rows": 44640,
+   "fetched_at": 1791172418.182851
+  },
+  "MOODENGUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2024-10.zip",
+   "bytes": 409876,
+   "sha256": "95c1b21714323c00d7cc7a2f6e9cde3279eda3a1fdb39afea1cf11a8a6c22abd",
+   "rows": 9480,
+   "fetched_at": 1791172417.8344934
+  },
+  "MOODENGUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2024-11.zip",
+   "bytes": 1853716,
+   "sha256": "1aecbc93dfefaa781ad1b7b3d8b872c93bf7714018a7c90916ed8a5420f1e9f6",
+   "rows": 43200,
+   "fetched_at": 1791172418.1413891
+  },
+  "MOODENGUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2024-12.zip",
+   "bytes": 1849323,
+   "sha256": "39ecc426388f30d8d6430c95d57a7f74360178de8191e73eefb9d96e670af3ed",
+   "rows": 44640,
+   "fetched_at": 1791172418.375016
+  },
+  "MOODENGUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-01.zip",
+   "bytes": 1776837,
+   "sha256": "377b96d7975c27106f23d03a4a886dbbe2eb0fad6884f76e6d173a173476fe71",
+   "rows": 44640,
+   "fetched_at": 1791172418.688492
+  },
+  "MOODENGUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-02.zip",
+   "bytes": 1556500,
+   "sha256": "1cc5f494bc3e7884f95f55190bc353c873dc9e442f4ce116747285d6bf446643",
+   "rows": 40320,
+   "fetched_at": 1791172418.3376448
+  },
+  "MOODENGUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-03.zip",
+   "bytes": 1620520,
+   "sha256": "ae2b36edaf6ae25dd86ee51e5a7eebe014be4779b664e093f7ce377ecc04ded5",
+   "rows": 44640,
+   "fetched_at": 1791172419.6127465
+  },
+  "MOODENGUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-04.zip",
+   "bytes": 1563290,
+   "sha256": "6d5a89db74fff9745283c126a6f58bb13ce36177b945e08bfa50d6fa45cb4748",
+   "rows": 43200,
+   "fetched_at": 1791172420.2031708
+  },
+  "MOODENGUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-05.zip",
+   "bytes": 1849987,
+   "sha256": "4892e5b0b633a45b5877d57dab85b017457ba3442f75d92511bb9f151100ad30",
+   "rows": 44640,
+   "fetched_at": 1791172419.975271
+  },
+  "MOODENGUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-06.zip",
+   "bytes": 1733653,
+   "sha256": "cb4539aaa45b2eb1683b9a7c5d6cc8454fd31dafcde4cf8fd94fec92168ac539",
+   "rows": 43200,
+   "fetched_at": 1791172420.1224542
+  },
+  "MOODENGUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-07.zip",
+   "bytes": 1802866,
+   "sha256": "f2b0227fe608aecf38b2c3c7474619eeaac4a590415ed19294eabff3be2585a5",
+   "rows": 44640,
+   "fetched_at": 1791172420.2246172
+  },
+  "MOODENGUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-08.zip",
+   "bytes": 1702513,
+   "sha256": "dc5b166efe2236f8efca8364e4ba016fc030bc204c9ec22107ac72c84b894d8c",
+   "rows": 44640,
+   "fetched_at": 1791172420.0796547
+  },
+  "MOODENGUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-09.zip",
+   "bytes": 1638975,
+   "sha256": "08d0e0ce0764083249abf51aa5d09487685449c5aea98cd6d1b10250dfb2b83e",
+   "rows": 43200,
+   "fetched_at": 1791172421.5843177
+  },
+  "MOODENGUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-10.zip",
+   "bytes": 1687208,
+   "sha256": "bdda11c1a600e229640dc6c0535cc8e1f93e6c0e1e7a4b0745600a2d5a003445",
+   "rows": 44640,
+   "fetched_at": 1791172421.775177
+  },
+  "MOODENGUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-11.zip",
+   "bytes": 1591203,
+   "sha256": "3a2769ae7de18bcf560b33b5580672f1a3d85e6d232159ca1406771805b033bc",
+   "rows": 43200,
+   "fetched_at": 1791172421.4877093
+  },
+  "MOODENGUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2025-12.zip",
+   "bytes": 1616243,
+   "sha256": "83e54e8a8efc841bec346eb2c8f3a4c02944d3b292d27a89ac03841664d66b4b",
+   "rows": 44640,
+   "fetched_at": 1791172421.741766
+  },
+  "MOODENGUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2026-01.zip",
+   "bytes": 1579624,
+   "sha256": "354e68a7b03c81b37af0bb0ffc9cf181f603fa797549b0b532966d588b37ad6e",
+   "rows": 44640,
+   "fetched_at": 1791172421.182045
+  },
+  "MOODENGUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2026-02.zip",
+   "bytes": 1445551,
+   "sha256": "606c5134b5b0ded4e2575535bdc5193b1ba4032515e8e41ac2c01eddc952b607",
+   "rows": 40320,
+   "fetched_at": 1791172421.7136555
+  },
+  "MOODENGUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/MOODENGUSDT/1m/MOODENGUSDT-1m-2026-03.zip",
+   "bytes": 1531102,
+   "sha256": "19fcb38cae45beee8aef1e3f8f74f08698f18bba99f3d8da46ba96e94d561413",
+   "rows": 44640,
+   "fetched_at": 1791172422.5374246
+  },
+  "PNUTUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2024-11.zip",
+   "bytes": 1244386,
+   "sha256": "580831959242118140f7550c48ae46eebaf456545b253101d3104d24052d8da8",
+   "rows": 28050,
+   "fetched_at": 1791172423.612286
+  },
+  "PNUTUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2024-12.zip",
+   "bytes": 1915657,
+   "sha256": "c067d52a284d40027f57613e952c812e8ce44ef40a630befc3e0e9c62084efd0",
+   "rows": 44640,
+   "fetched_at": 1791172423.1496165
+  },
+  "PNUTUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-01.zip",
+   "bytes": 1885330,
+   "sha256": "967d12cb2667fb383f7c231398bda87cf92a674a5137cab5c6838bf7d20e8c0c",
+   "rows": 44640,
+   "fetched_at": 1791172423.8161387
+  },
+  "PNUTUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-02.zip",
+   "bytes": 1671929,
+   "sha256": "fe15ca1e4a64daf98ef704a1506546239583986ec5e7f89e42bfb888240685ce",
+   "rows": 40320,
+   "fetched_at": 1791172423.8775382
+  },
+  "PNUTUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-03.zip",
+   "bytes": 1850505,
+   "sha256": "83b73ee46a3fcc11e5c58b33b899fd94078122713bfa02fd10b04029f01141da",
+   "rows": 44640,
+   "fetched_at": 1791172424.1691902
+  },
+  "PNUTUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-04.zip",
+   "bytes": 1706703,
+   "sha256": "7ce62e741f6cbf079315246221a6ea94489366b403023999bb7095f2f21e3eea",
+   "rows": 43200,
+   "fetched_at": 1791172423.23817
+  },
+  "PNUTUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-05.zip",
+   "bytes": 1848203,
+   "sha256": "f1084478c7235241a27b9bad2ce9b3929f31cf2277faa3768639489e8e3eb877",
+   "rows": 44640,
+   "fetched_at": 1791172424.8653567
+  },
+  "PNUTUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-06.zip",
+   "bytes": 1731390,
+   "sha256": "905358ab2ae470c1f62399088e561f7718ac98ca3ef64b29d95f14d264a07624",
+   "rows": 43200,
+   "fetched_at": 1791172424.2380452
+  },
+  "PNUTUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-07.zip",
+   "bytes": 1813957,
+   "sha256": "d709fc9ad833dd4130e1e06ea337795f1b79f48a6df09af7a5e88ed127b9eeef",
+   "rows": 44640,
+   "fetched_at": 1791172425.2915545
+  },
+  "PNUTUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-08.zip",
+   "bytes": 1738289,
+   "sha256": "66d04d766efaf0ce8ba28503303b53b10b672986f64abadf0d89524000268fe9",
+   "rows": 44640,
+   "fetched_at": 1791172425.6952834
+  },
+  "PNUTUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-09.zip",
+   "bytes": 1659238,
+   "sha256": "dda4c2606f564d0f14070e627a44372cc31ff9733cd3d2d7d97d6df4282136a8",
+   "rows": 43200,
+   "fetched_at": 1791172425.0963266
+  },
+  "PNUTUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-10.zip",
+   "bytes": 1695589,
+   "sha256": "c316f611765392568a9ff6fb1e32a442456e128e8da5dff306ae2dabab8b2c77",
+   "rows": 44640,
+   "fetched_at": 1791172425.8949125
+  },
+  "PNUTUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-11.zip",
+   "bytes": 1618228,
+   "sha256": "dada8a42a872070f4c9a2779783cc992e240085295a98d56b81f75f8f47e6fbf",
+   "rows": 43200,
+   "fetched_at": 1791172425.662635
+  },
+  "PNUTUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2025-12.zip",
+   "bytes": 1593172,
+   "sha256": "192f6e55c0c233d31dd156087cbac982d5d3b6f421c9762a051c2881cec7ca6a",
+   "rows": 44640,
+   "fetched_at": 1791172426.5665464
+  },
+  "PNUTUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2026-01.zip",
+   "bytes": 1601738,
+   "sha256": "f83ba7e0d42a17622648054c4d84d7308cab1fc7cc8944c13fde2f23b11af80b",
+   "rows": 44640,
+   "fetched_at": 1791172426.7693024
+  },
+  "PNUTUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2026-02.zip",
+   "bytes": 1397537,
+   "sha256": "9080956c7e644fb7356c71cbda326f86b534ffac92de4ed954618c149a5b8e2e",
+   "rows": 40320,
+   "fetched_at": 1791172426.881338
+  },
+  "PNUTUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PNUTUSDT/1m/PNUTUSDT-1m-2026-03.zip",
+   "bytes": 1505581,
+   "sha256": "660e167a44afc17d7ef12fa03c98e7a643bbe07272adf687b152c4dbb665c9b0",
+   "rows": 44640,
+   "fetched_at": 1791172427.2238152
+  },
+  "CHILLGUYUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2024-11.zip",
+   "bytes": 186796,
+   "sha256": "2294d6b9371eb75a6fab93230aceb937256b4ea938c9519d90b0f355fc3ec98d",
+   "rows": 4875,
+   "fetched_at": 1791172427.5869594
+  },
+  "CHILLGUYUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2024-12.zip",
+   "bytes": 1658224,
+   "sha256": "13bdfd8359ca1383fddb661c0a33675c398f42fa1ab00339bf2c4b4903881f07",
+   "rows": 44640,
+   "fetched_at": 1791172429.0367746
+  },
+  "CHILLGUYUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-01.zip",
+   "bytes": 1580885,
+   "sha256": "66fdb7d602fc7eae67b16ffed913c45502d7cad693911eda86159f3909390591",
+   "rows": 44640,
+   "fetched_at": 1791172428.5907526
+  },
+  "CHILLGUYUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-02.zip",
+   "bytes": 1330321,
+   "sha256": "bf9f8a68b5fbeec8248610951948e6067dfa2b8b46c60bd68cd684650b626fc3",
+   "rows": 40320,
+   "fetched_at": 1791172428.8187973
+  },
+  "CHILLGUYUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-03.zip",
+   "bytes": 1326276,
+   "sha256": "28ab56c2d6d3a063b7136be257d619e795e838a2e701d6e8ad1c86cb520a9ee1",
+   "rows": 44640,
+   "fetched_at": 1791172428.048799
+  },
+  "CHILLGUYUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-04.zip",
+   "bytes": 1385886,
+   "sha256": "b399ec4ec45af6fd67fb1e0e0610edd93eb31aeae79ff8ee0c2d84aa1c9c58a3",
+   "rows": 43200,
+   "fetched_at": 1791172429.0112813
+  },
+  "CHILLGUYUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-05.zip",
+   "bytes": 1768776,
+   "sha256": "026851e8834c45dca96606f5387b2145000da985824894ccf6c7883d3d098b7c",
+   "rows": 44640,
+   "fetched_at": 1791172429.150556
+  },
+  "CHILLGUYUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-06.zip",
+   "bytes": 1600751,
+   "sha256": "a6fdead130f2e717ac3909bfd3d3e61cb01f27fbafc52a0f866528b39bcb3fc6",
+   "rows": 43200,
+   "fetched_at": 1791172429.558137
+  },
+  "CHILLGUYUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-07.zip",
+   "bytes": 1671879,
+   "sha256": "a36222effdceac7ad73ab1cf5ffe7da16cc414ff3ea0cda15729688834806a7a",
+   "rows": 44640,
+   "fetched_at": 1791172430.8065786
+  },
+  "CHILLGUYUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-08.zip",
+   "bytes": 1593079,
+   "sha256": "92d9414c572286650a13d1720401946f818aaaf152d1d9930085ab408962c715",
+   "rows": 44640,
+   "fetched_at": 1791172429.5770507
+  },
+  "CHILLGUYUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-09.zip",
+   "bytes": 1501569,
+   "sha256": "428cd780ea36527b972d04d02fcd2b6c4268cedd84e66032b7b952d809b45802",
+   "rows": 43200,
+   "fetched_at": 1791172430.3240874
+  },
+  "CHILLGUYUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-10.zip",
+   "bytes": 1527156,
+   "sha256": "bbc68b0134250f91f45ef330d9b839654bab4a4cd6d687927ccd461d50b13847",
+   "rows": 44640,
+   "fetched_at": 1791172431.5019288
+  },
+  "CHILLGUYUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-11.zip",
+   "bytes": 1439278,
+   "sha256": "63ec41d898be5eed43ce69bf5ffb33d8ae733aa0750b5bf2a90e48fc5250ebd1",
+   "rows": 43200,
+   "fetched_at": 1791172430.9784627
+  },
+  "CHILLGUYUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2025-12.zip",
+   "bytes": 1335000,
+   "sha256": "d7a47fb8edf08ae6eaef9238d4e0a89f97e6f7032c49e1ca7f6960ed5f240f66",
+   "rows": 44640,
+   "fetched_at": 1791172431.14055
+  },
+  "CHILLGUYUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2026-01.zip",
+   "bytes": 1392652,
+   "sha256": "2599f574484b5789c96221dc0e491109a9ff601b0003bb5b961eb8ddf7d1d154",
+   "rows": 44640,
+   "fetched_at": 1791172431.2044592
+  },
+  "CHILLGUYUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2026-02.zip",
+   "bytes": 1188121,
+   "sha256": "a8b00dee01530204575f96bbc4f40f5c0e46cbe25ea6d79d9a10f527d0723558",
+   "rows": 40320,
+   "fetched_at": 1791172431.841999
+  },
+  "CHILLGUYUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/CHILLGUYUSDT/1m/CHILLGUYUSDT-1m-2026-03.zip",
+   "bytes": 1276833,
+   "sha256": "67f848d237ac0f7164ee75765ce77d36403680dad249d5b2285bbe86c415e9d5",
+   "rows": 44640,
+   "fetched_at": 1791172432.4185548
+  },
+  "PENGUUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2024-12.zip",
+   "bytes": 910608,
+   "sha256": "3181c9e651984daf657e21a1b272b2bfec179afe676ed12da4fe8a2515eec653",
+   "rows": 20625,
+   "fetched_at": 1791172434.9173234
+  },
+  "PENGUUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-01.zip",
+   "bytes": 1935788,
+   "sha256": "912276de2394676a7f88400d076706c2970b79f128fe6cd9af24b017fa47a6e8",
+   "rows": 44640,
+   "fetched_at": 1791172434.8519292
+  },
+  "PENGUUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-02.zip",
+   "bytes": 1681767,
+   "sha256": "0ca2fe885c386e5c6c69d6f750578b98c30645a6e0fa5876eca093a0aa226ddc",
+   "rows": 40320,
+   "fetched_at": 1791172434.1876218
+  },
+  "PENGUUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-03.zip",
+   "bytes": 1787459,
+   "sha256": "d84a5e91408cb0a950e240d8befc801565ac1b442c6ba67002f1ba6bdb2312da",
+   "rows": 44640,
+   "fetched_at": 1791172434.969889
+  },
+  "PENGUUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-04.zip",
+   "bytes": 1714972,
+   "sha256": "802b10c8ab3dc5cf694f3bd86ad9b74aeb0d10881fe3fea4097d6f588b54de09",
+   "rows": 43200,
+   "fetched_at": 1791172434.450287
+  },
+  "PENGUUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-05.zip",
+   "bytes": 1864927,
+   "sha256": "c048879d11d26d5e4078f14ac04e58e4c78f0035a049d115e6b825c068b7e2af",
+   "rows": 44640,
+   "fetched_at": 1791172435.848108
+  },
+  "PENGUUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-06.zip",
+   "bytes": 1757331,
+   "sha256": "f059b7cc45157d86850fee2075ec8524fc5a7c6133f50a05876149510cc2f3fb",
+   "rows": 43200,
+   "fetched_at": 1791172436.3193865
+  },
+  "PENGUUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-07.zip",
+   "bytes": 1975595,
+   "sha256": "10f1c54558d457ccbe6c2c576b6d62686c70ff41ef4c0d9bd6c8459131346c70",
+   "rows": 44640,
+   "fetched_at": 1791172436.5554545
+  },
+  "PENGUUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-08.zip",
+   "bytes": 1922825,
+   "sha256": "73a35cd266042cce30a0b410c02df5ce38a393def63687e3782e3d1122a02b01",
+   "rows": 44640,
+   "fetched_at": 1791172437.2727547
+  },
+  "PENGUUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-09.zip",
+   "bytes": 1824706,
+   "sha256": "047321bbade6a5a9b96feea3ca3c273967e604f4c9f2c6048c8cfe8f85dc1cd3",
+   "rows": 43200,
+   "fetched_at": 1791172436.562643
+  },
+  "PENGUUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-10.zip",
+   "bytes": 1888136,
+   "sha256": "6424c0c587ab443d0f934e44ae60aaddab03588de603e3adb27ee1577152294e",
+   "rows": 44640,
+   "fetched_at": 1791172436.677316
+  },
+  "PENGUUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-11.zip",
+   "bytes": 1781623,
+   "sha256": "4c001d64314433cd76b7c0daec54f915f6b7c8ebb61c16e5adba135d8d35f717",
+   "rows": 43200,
+   "fetched_at": 1791172437.609337
+  },
+  "PENGUUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2025-12.zip",
+   "bytes": 1796014,
+   "sha256": "2c22fdf1a567685843d582b936ca798c713e2ef79d801f7b2de8951a0b5d21cb",
+   "rows": 44640,
+   "fetched_at": 1791172437.2051802
+  },
+  "PENGUUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2026-01.zip",
+   "bytes": 1806774,
+   "sha256": "ce98d3fed9a07624e5377d35725f86078709cee8963bd063fc7c012f1977eec1",
+   "rows": 44640,
+   "fetched_at": 1791172438.1068997
+  },
+  "PENGUUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2026-02.zip",
+   "bytes": 1594424,
+   "sha256": "57c344492f5e38bc42ac9f308030f5855b4d0ec3d8cb54bcf7c2e2b4181b51b5",
+   "rows": 40320,
+   "fetched_at": 1791172437.187222
+  },
+  "PENGUUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/PENGUUSDT/1m/PENGUUSDT-1m-2026-03.zip",
+   "bytes": 1737367,
+   "sha256": "03d74471e124444122860d7f41f5788229037246ce56b4f593832859413acd27",
+   "rows": 44640,
+   "fetched_at": 1791172438.2034416
+  },
+  "FARTCOINUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2024-12.zip",
+   "bytes": 675210,
+   "sha256": "0b1bbbaf0261fc39b70853dedfa904f5a8dd3e770262003545964d1896b8ed8c",
+   "rows": 16155,
+   "fetched_at": 1791172439.651091
+  },
+  "FARTCOINUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-01.zip",
+   "bytes": 1924060,
+   "sha256": "3e1333f8d34d977aecac78bf7b589ae175d971ae38b0dae9005b197461db865d",
+   "rows": 44640,
+   "fetched_at": 1791172438.9856496
+  },
+  "FARTCOINUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-02.zip",
+   "bytes": 1703789,
+   "sha256": "7c44028ff40b0a461c9cd0d6c9d382a49ffdd170ae104918051d4d3b456ace65",
+   "rows": 40320,
+   "fetched_at": 1791172439.5776916
+  },
+  "FARTCOINUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-03.zip",
+   "bytes": 1851349,
+   "sha256": "13cd6a734300011fced59544d2a00cbdab22435d8436f2127b516954f0eab0cc",
+   "rows": 44640,
+   "fetched_at": 1791172439.728037
+  },
+  "FARTCOINUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-04.zip",
+   "bytes": 1853822,
+   "sha256": "201f81545fe39d8c0b56ce04b700f5596ec3e6aee37dc518672b7e4e88bfd9fa",
+   "rows": 43200,
+   "fetched_at": 1791172440.1411312
+  },
+  "FARTCOINUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-05.zip",
+   "bytes": 1876378,
+   "sha256": "9fa8344e6de206329bbdd4ccb147bebc5713d202f96b1a482badea8f86b6e009",
+   "rows": 44640,
+   "fetched_at": 1791172439.7973263
+  },
+  "FARTCOINUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-06.zip",
+   "bytes": 1824388,
+   "sha256": "e69c73cac48450d14c9641f2a483bc775a31f8a3217ba1b98a4cc36b62a25cf1",
+   "rows": 43200,
+   "fetched_at": 1791172440.3743856
+  },
+  "FARTCOINUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-07.zip",
+   "bytes": 1884934,
+   "sha256": "48e0abc4e333ac9f6e34d58a01f6823d96df123d80874bd93a892e74d9bf7451",
+   "rows": 44640,
+   "fetched_at": 1791172441.341508
+  },
+  "FARTCOINUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-08.zip",
+   "bytes": 1860316,
+   "sha256": "999ac46ffbf8f8ab3b0733b1b883c5bcbddf607a91b2c8d4c43aa557d74c8753",
+   "rows": 44640,
+   "fetched_at": 1791172441.478852
+  },
+  "FARTCOINUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-09.zip",
+   "bytes": 1748724,
+   "sha256": "b9ab91641d46547c4346c8f99d00e86247f70e6d5fb67b28e620564a0f79000f",
+   "rows": 43200,
+   "fetched_at": 1791172441.5106018
+  },
+  "FARTCOINUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-10.zip",
+   "bytes": 1800069,
+   "sha256": "567716d6e9b102b6eaaf34057c48919f8df536f5875859b038da04b3c08f4185",
+   "rows": 44640,
+   "fetched_at": 1791172441.7241354
+  },
+  "FARTCOINUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-11.zip",
+   "bytes": 1716331,
+   "sha256": "fc95e7442796b2cb9a096394bb95fb3c80caef642846eb2da3ac4ee284482a7e",
+   "rows": 43200,
+   "fetched_at": 1791172440.9107437
+  },
+  "FARTCOINUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2025-12.zip",
+   "bytes": 1752543,
+   "sha256": "5fa9b88877eec5d41eb083651cab5b2ec1b4e5581abb8adccf9d806e587fe56c",
+   "rows": 44640,
+   "fetched_at": 1791172441.7776923
+  },
+  "FARTCOINUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2026-01.zip",
+   "bytes": 1742529,
+   "sha256": "d5f48ba59629bf7d453d0ab74b14007957fb5a832c5959a7f6dc4d995640c8dc",
+   "rows": 44640,
+   "fetched_at": 1791172442.6249878
+  },
+  "FARTCOINUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2026-02.zip",
+   "bytes": 1499644,
+   "sha256": "ca18f6fa064dd898426de2970d24aa4895ce981ccb92a2effa6c80db17db5180",
+   "rows": 40320,
+   "fetched_at": 1791172442.0643067
+  },
+  "FARTCOINUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/FARTCOINUSDT/1m/FARTCOINUSDT-1m-2026-03.zip",
+   "bytes": 1641346,
+   "sha256": "6e12dff5e3b05dd6dec992478c1ddbf05f804be5973546d70f74b6d937b06868",
+   "rows": 44640,
+   "fetched_at": 1791172442.8199577
+  },
+  "DOGSUSDT-2024-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2024-08.zip",
+   "bytes": 365553,
+   "sha256": "39a56bd537136605df4c18dd044d983e9e96e22376ae59bd694d31d0b7894ca1",
+   "rows": 7890,
+   "fetched_at": 1791172442.8903913
+  },
+  "DOGSUSDT-2024-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2024-09.zip",
+   "bytes": 1905026,
+   "sha256": "fd2d5221921f613b066b178cf3997de204c6e9077aaa433a85d300cdbeb1780c",
+   "rows": 43200,
+   "fetched_at": 1791172443.8869386
+  },
+  "DOGSUSDT-2024-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2024-10.zip",
+   "bytes": 1901746,
+   "sha256": "7ea5fffa7588df066fb8c35a7ed397415f09bc4a8490cd1ecb10e7f68344680f",
+   "rows": 44640,
+   "fetched_at": 1791172443.9503684
+  },
+  "DOGSUSDT-2024-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2024-11.zip",
+   "bytes": 1870123,
+   "sha256": "c94efc2200f6dfae390acbc0eb564b19ee1c4880aebf8edfdf500bcc38118f8e",
+   "rows": 43200,
+   "fetched_at": 1791172443.3100357
+  },
+  "DOGSUSDT-2024-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2024-12.zip",
+   "bytes": 1891591,
+   "sha256": "19f5ea06e69b5a39aea223ac8d8d1dbc22e3bbe957af3fe0bd677cf742ca4f01",
+   "rows": 44640,
+   "fetched_at": 1791172444.1464293
+  },
+  "DOGSUSDT-2025-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-01.zip",
+   "bytes": 1812207,
+   "sha256": "abad5966cbdb42083c0248c53df8f33a787f3b0957fb771f9d90589c31a6b20a",
+   "rows": 44640,
+   "fetched_at": 1791172444.243457
+  },
+  "DOGSUSDT-2025-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-02.zip",
+   "bytes": 1610495,
+   "sha256": "26071365783863f57423a43b0add9e42845deb1a4eda57f1caa1d766306bdf05",
+   "rows": 40320,
+   "fetched_at": 1791172443.6034365
+  },
+  "DOGSUSDT-2025-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-03.zip",
+   "bytes": 1762431,
+   "sha256": "179821e61251497778ab62cd8cff764f243fafc4e69f6178fa09d90d67959409",
+   "rows": 44640,
+   "fetched_at": 1791172445.1063068
+  },
+  "DOGSUSDT-2025-04": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-04.zip",
+   "bytes": 1621851,
+   "sha256": "a5cf7f67e35cea71840ab1b0b1182c6d9e3b274fb0621fa6daf0bd0419878d5b",
+   "rows": 43200,
+   "fetched_at": 1791172444.987212
+  },
+  "DOGSUSDT-2025-05": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-05.zip",
+   "bytes": 1764651,
+   "sha256": "5e0e3e2c2b56ede94821d41256fdf6b30b4e7a8a94f955b2fb56ec221ff4d21c",
+   "rows": 44640,
+   "fetched_at": 1791172444.7195668
+  },
+  "DOGSUSDT-2025-06": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-06.zip",
+   "bytes": 1593732,
+   "sha256": "3671a6380326d33598fbed02dc689e099bc131841f04c84d2d8776d1fbaef594",
+   "rows": 43200,
+   "fetched_at": 1791172445.4891453
+  },
+  "DOGSUSDT-2025-07": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-07.zip",
+   "bytes": 1696824,
+   "sha256": "3de28a7c646e582e6053a55953cacc8651776a78b57de6fd8c6bc28f3a4aca2d",
+   "rows": 44640,
+   "fetched_at": 1791172445.8218613
+  },
+  "DOGSUSDT-2025-08": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-08.zip",
+   "bytes": 1665167,
+   "sha256": "26426096bc248b6c7286e975e00d4f81c6cbfee6495b814b35d40fb85ae6ffab",
+   "rows": 44640,
+   "fetched_at": 1791172445.9039192
+  },
+  "DOGSUSDT-2025-09": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-09.zip",
+   "bytes": 1543228,
+   "sha256": "8bc0d10665f1ccfb62e8fedee12c17279d58ee0ade115d99239bad0d30b76cb7",
+   "rows": 43200,
+   "fetched_at": 1791172446.2952685
+  },
+  "DOGSUSDT-2025-10": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-10.zip",
+   "bytes": 1606604,
+   "sha256": "9f199e7f0dcc0b402ffde8d53e6274ae8737e71f5139a4ad8b38d600846aea6d",
+   "rows": 44640,
+   "fetched_at": 1791172446.6778483
+  },
+  "DOGSUSDT-2025-11": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-11.zip",
+   "bytes": 1478414,
+   "sha256": "19d4ec817eaa7bf248b0226ee17545e29489392b6bd1677ae8b7416147f7a64e",
+   "rows": 43200,
+   "fetched_at": 1791172447.8117993
+  },
+  "DOGSUSDT-2025-12": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2025-12.zip",
+   "bytes": 1472648,
+   "sha256": "b259af12e5626a1c7f26c8f8e642aba67b1621e547c6bb40a0aadb5e6c102125",
+   "rows": 44640,
+   "fetched_at": 1791172447.0153055
+  },
+  "DOGSUSDT-2026-01": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2026-01.zip",
+   "bytes": 1438116,
+   "sha256": "d48c746b481c8923e0e955efd81584d98187d97785b592614cc537d43c8c524e",
+   "rows": 44640,
+   "fetched_at": 1791172447.1491904
+  },
+  "DOGSUSDT-2026-02": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2026-02.zip",
+   "bytes": 1228555,
+   "sha256": "9a50aca7e80681112ce20e80c6b9d7174044f0fe55b87775722af2ef0691f37b",
+   "rows": 40320,
+   "fetched_at": 1791172446.5203905
+  },
+  "DOGSUSDT-2026-03": {
+   "url": "https://data.binance.vision/data/futures/um/monthly/klines/DOGSUSDT/1m/DOGSUSDT-1m-2026-03.zip",
+   "bytes": 1400308,
+   "sha256": "6a968a304c35a35ec8332f5593d5f0f4a8360beebb967528474d37f8f8587ad5",
+   "rows": 44640,
+   "fetched_at": 1791172447.9643335
+  }
+ },
+ "missing": [
+  "BOMEUSDT-2024-01",
+  "BOMEUSDT-2024-02",
+  "MYROUSDT-2024-01",
+  "MYROUSDT-2024-02",
+  "POPCATUSDT-2024-01",
+  "POPCATUSDT-2024-02",
+  "POPCATUSDT-2024-03",
+  "POPCATUSDT-2024-04",
+  "POPCATUSDT-2024-05",
+  "POPCATUSDT-2024-06",
+  "POPCATUSDT-2024-07",
+  "TURBOUSDT-2024-01",
+  "TURBOUSDT-2024-02",
+  "TURBOUSDT-2024-03",
+  "TURBOUSDT-2024-04",
+  "BRETTUSDT-2024-01",
+  "BRETTUSDT-2024-02",
+  "BRETTUSDT-2024-03",
+  "BRETTUSDT-2024-04",
+  "BRETTUSDT-2024-05",
+  "BRETTUSDT-2024-06",
+  "BRETTUSDT-2024-07",
+  "MEWUSDT-2024-01",
+  "MEWUSDT-2024-02",
+  "MEWUSDT-2024-03",
+  "MEWUSDT-2024-04",
+  "MEWUSDT-2024-05",
+  "NEIROUSDT-2024-01",
+  "NEIROUSDT-2024-02",
+  "NEIROUSDT-2024-03",
+  "NEIROUSDT-2024-04",
+  "NEIROUSDT-2024-05",
+  "NEIROUSDT-2024-06",
+  "NEIROUSDT-2024-07",
+  "NEIROUSDT-2024-08",
+  "GOATUSDT-2024-01",
+  "GOATUSDT-2024-02",
+  "GOATUSDT-2024-03",
+  "GOATUSDT-2024-04",
+  "GOATUSDT-2024-05",
+  "GOATUSDT-2024-06",
+  "GOATUSDT-2024-07",
+  "GOATUSDT-2024-08",
+  "GOATUSDT-2024-09",
+  "MOODENGUSDT-2024-01",
+  "MOODENGUSDT-2024-02",
+  "MOODENGUSDT-2024-03",
+  "MOODENGUSDT-2024-04",
+  "MOODENGUSDT-2024-05",
+  "MOODENGUSDT-2024-06",
+  "MOODENGUSDT-2024-07",
+  "MOODENGUSDT-2024-08",
+  "MOODENGUSDT-2024-09",
+  "PNUTUSDT-2024-01",
+  "PNUTUSDT-2024-02",
+  "PNUTUSDT-2024-03",
+  "PNUTUSDT-2024-04",
+  "PNUTUSDT-2024-05",
+  "PNUTUSDT-2024-06",
+  "PNUTUSDT-2024-07",
+  "PNUTUSDT-2024-08",
+  "PNUTUSDT-2024-09",
+  "PNUTUSDT-2024-10",
+  "CHILLGUYUSDT-2024-01",
+  "CHILLGUYUSDT-2024-02",
+  "CHILLGUYUSDT-2024-03",
+  "CHILLGUYUSDT-2024-04",
+  "CHILLGUYUSDT-2024-05",
+  "CHILLGUYUSDT-2024-06",
+  "CHILLGUYUSDT-2024-07",
+  "CHILLGUYUSDT-2024-08",
+  "CHILLGUYUSDT-2024-09",
+  "CHILLGUYUSDT-2024-10",
+  "PENGUUSDT-2024-01",
+  "PENGUUSDT-2024-02",
+  "PENGUUSDT-2024-03",
+  "PENGUUSDT-2024-04",
+  "PENGUUSDT-2024-05",
+  "PENGUUSDT-2024-06",
+  "PENGUUSDT-2024-07",
+  "PENGUUSDT-2024-08",
+  "PENGUUSDT-2024-09",
+  "PENGUUSDT-2024-10",
+  "PENGUUSDT-2024-11",
+  "FARTCOINUSDT-2024-01",
+  "FARTCOINUSDT-2024-02",
+  "FARTCOINUSDT-2024-03",
+  "FARTCOINUSDT-2024-04",
+  "FARTCOINUSDT-2024-05",
+  "FARTCOINUSDT-2024-06",
+  "FARTCOINUSDT-2024-07",
+  "FARTCOINUSDT-2024-08",
+  "FARTCOINUSDT-2024-09",
+  "FARTCOINUSDT-2024-10",
+  "FARTCOINUSDT-2024-11",
+  "DOGSUSDT-2024-01",
+  "DOGSUSDT-2024-02",
+  "DOGSUSDT-2024-03",
+  "DOGSUSDT-2024-04",
+  "DOGSUSDT-2024-05",
+  "DOGSUSDT-2024-06",
+  "DOGSUSDT-2024-07"
+ ],
+ "universe_rule": "H-XLEAD data fetch: Binance USD-M futures 1m klines from the public archive (data.binance.vision).\n\nUniverse (pre-declared before looking at any returns; selection rule):\n  leaders: BTCUSDT, ETHUSDT, SOLUSDT\n  memes:   Binance USD-M perps in the CoinGecko \"meme\" category that are (or were) also listed as Hyperliquid\n           perps (HL `meta` universe, delisted included, checked 2026-10-05) and whose Binance perp was listed\n           on or before 2024-12-31 (so each has >= 6 months of train). Fixed list of 22 below.\nMonths: 2024-01 .. 2026-03 only. Holdout (2026-04 onward) is NEVER downloaded.\nEach monthly zip is reduced to a parquet of (open_time, open, high, low, close, quote_volume, trades) and the zip is\ndeleted to save disk; URL, byte size and sha256 of every zip are kept in manifest.json.\n"
+}
