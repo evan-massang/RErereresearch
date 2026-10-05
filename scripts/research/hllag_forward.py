@@ -1,0 +1,204 @@
+"""Forward paper test of the frozen H-HLLAG candidate (reports/candidates/hlanchor.md).
+
+collect  Records live public feeds into the same schema as the Tardis parquet used in the backtest:
+         Binance USDⓈ-M bookTicker (wss://fstream.binance.com) -> book_ticker (local_timestamp, bid/ask px+qty)
+         Hyperliquid bbo + trades (wss://api.hyperliquid.xyz/ws) -> quotes (timestamp = HL exchange time,
+         local_timestamp, bid/ask px+qty) and trades (timestamp, local_timestamp, side, price, amount).
+         All timestamps are microseconds; local = this container's receive time. Hourly chunk files go to
+         data/raw/web/hllag_forward/chunks/<kind>_<YYYY-MM-DD-HH>_<COIN>.parquet.
+         Differences from the backtest data: HL quotes here are event-driven bbo updates (Tardis sampled ~0.5 s).
+freeze   Writes reports/paper/hllag_theta40.json: frozen parameters, sha256 of hlanchor_lib.py, frozen_at.
+         Refuses to overwrite.
+score    Merges chunks into per-day files, runs hlanchor_lib.sim_lag with the frozen parameters on data
+         received AFTER frozen_at only, and applies the bar. Refuses if hlanchor_lib.py changed.
+
+    python scripts/research/hllag_forward.py collect --hours 1.9
+    python scripts/research/hllag_forward.py freeze
+    python scripts/research/hllag_forward.py score
+"""
+import argparse
+import asyncio
+import hashlib
+import json
+import os
+import ssl
+import sys
+import time
+from collections import defaultdict
+from datetime import datetime, timezone
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+sys.path.insert(0, str(ROOT / "scripts/research"))
+import pandas as pd  # noqa: E402
+
+OUT = ROOT / "data/raw/web/hllag_forward"
+CHUNKS, DAYS = OUT / "chunks", OUT / "days"
+FREEZE = ROOT / "reports/paper/hllag_theta40.json"
+LIB = ROOT / "scripts/research/hlanchor_lib.py"
+# Hyperliquid coin -> Binance futures symbol (same pairs as the backtest)
+COINS = {"WIF": "WIFUSDT", "kBONK": "1000BONKUSDT", "FARTCOIN": "FARTCOINUSDT", "PUMP": "PUMPUSDT"}
+PARAMS = dict(theta_bp=40.0, L_ms=300, H_s=30.0, cooldown_s=10.0, close_bp=None, info_lat_ms=300)
+BAR = dict(min_trades=50, net_gt=0.0, pf_gt=1.2, net_ex_top3_gt=0.0)
+
+
+def _ssl():
+    return ssl.create_default_context(cafile=os.environ.get("SSL_CERT_FILE"))
+
+
+def _now_us() -> int:
+    return int(time.time() * 1_000_000)
+
+
+class Buffer:
+    def __init__(self):
+        self.rows = defaultdict(list)   # (kind, coin) -> rows
+        self.hour = None
+
+    def add(self, kind, coin, row):
+        h = datetime.now(timezone.utc).strftime("%Y-%m-%d-%H")
+        if self.hour and h != self.hour:
+            self.flush()
+        self.hour = h
+        self.rows[(kind, coin)].append(row)
+
+    def flush(self):
+        CHUNKS.mkdir(parents=True, exist_ok=True)
+        for (kind, coin), rows in self.rows.items():
+            if not rows:
+                continue
+            p = CHUNKS / f"{kind}_{self.hour}_{coin}.parquet"
+            df = pd.DataFrame(rows)
+            if p.exists():                                  # restart within the same hour: append
+                df = pd.concat([pd.read_parquet(p), df], ignore_index=True)
+            df.to_parquet(p)
+        self.rows = defaultdict(list)
+
+
+async def binance(buf: Buffer, stop: float):
+    import websockets
+    rev = {v.lower(): k for k, v in COINS.items()}
+    url = "wss://fstream.binance.com/stream?streams=" + "/".join(f"{s.lower()}@bookTicker" for s in COINS.values())
+    while time.monotonic() < stop:
+        try:
+            async with websockets.connect(url, ssl=_ssl(), open_timeout=20, ping_interval=20) as ws:
+                async for raw in ws:
+                    if time.monotonic() >= stop:
+                        return
+                    d = json.loads(raw).get("data") or {}
+                    coin = rev.get((d.get("s") or "").lower())
+                    if coin:
+                        buf.add("book_ticker", coin, dict(local_timestamp=_now_us(), bid_price=float(d["b"]),
+                                                          ask_price=float(d["a"]), bid_amount=float(d["B"]),
+                                                          ask_amount=float(d["A"])))
+        except Exception as e:  # noqa: BLE001
+            print("binance reconnect", type(e).__name__, str(e)[:120], flush=True)
+            await asyncio.sleep(3)
+
+
+async def hyperliquid(buf: Buffer, stop: float):
+    import websockets
+    while time.monotonic() < stop:
+        try:
+            async with websockets.connect("wss://api.hyperliquid.xyz/ws", ssl=_ssl(), open_timeout=20,
+                                          ping_interval=20) as ws:
+                for c in COINS:
+                    await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "bbo", "coin": c}}))
+                    await ws.send(json.dumps({"method": "subscribe", "subscription": {"type": "trades", "coin": c}}))
+                async for raw in ws:
+                    if time.monotonic() >= stop:
+                        return
+                    m = json.loads(raw)
+                    ch, d, now = m.get("channel"), m.get("data"), _now_us()
+                    if ch == "bbo" and d and d.get("coin") in COINS and all(d.get("bbo") or [None]):
+                        b, a = d["bbo"]
+                        buf.add("quotes", d["coin"], dict(timestamp=int(d["time"]) * 1000, local_timestamp=now,
+                                                          bid_price=float(b["px"]), ask_price=float(a["px"]),
+                                                          bid_amount=float(b["sz"]), ask_amount=float(a["sz"])))
+                    elif ch == "trades" and isinstance(d, list):
+                        for t in d:
+                            if t.get("coin") in COINS:
+                                buf.add("trades", t["coin"], dict(timestamp=int(t["time"]) * 1000, local_timestamp=now,
+                                                                  side="buy" if t.get("side") == "B" else "sell",
+                                                                  price=float(t["px"]), amount=float(t["sz"])))
+        except Exception as e:  # noqa: BLE001
+            print("hyperliquid reconnect", type(e).__name__, str(e)[:120], flush=True)
+            await asyncio.sleep(3)
+
+
+async def flusher(buf: Buffer, stop: float):
+    while time.monotonic() < stop:
+        await asyncio.sleep(60)
+        buf.flush()
+
+
+async def collect(hours: float):
+    buf, stop = Buffer(), time.monotonic() + hours * 3600
+    await asyncio.gather(binance(buf, stop), hyperliquid(buf, stop), flusher(buf, stop))
+    buf.flush()
+
+
+def _sha() -> str:
+    return hashlib.sha256(LIB.read_bytes()).hexdigest()
+
+
+def freeze():
+    if FREEZE.exists():
+        raise SystemExit(f"{FREEZE} exists; frozen strategies are never changed.")
+    FREEZE.parent.mkdir(parents=True, exist_ok=True)
+    rec = {"name": "hllag_theta40", "module": "scripts/research/hlanchor_lib.py", "function": "sim_lag",
+           "params": PARAMS, "coins": COINS, "module_sha256": _sha(), "frozen_at": time.time(),
+           "frozen_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "bar": BAR,
+           "unit": "round trip of $1,000 notional; pnl in USD after 4.5 bp taker fees each side",
+           "source": "reports/candidates/hlanchor.md (passed train PF 1.204 n=721, validation PF 1.358 n=721; fragile)",
+           "caveats": ["config added after the pre-registered grid failed", "validation profit concentrated on 2025-08-01",
+                       "fails at +0.5 bp cost or 800 ms latency", "forward HL quotes are event-driven bbo, not 0.5 s snapshots"]}
+    FREEZE.write_text(json.dumps(rec, indent=1))
+    print(json.dumps(rec, indent=1))
+
+
+def score() -> dict:
+    import hlanchor_lib as hl
+    rec = json.loads(FREEZE.read_text())
+    if _sha() != rec["module_sha256"]:
+        raise SystemExit("hlanchor_lib.py changed since freezing; scoring refused.")
+    t0 = int(rec["frozen_at"] * 1_000_000)
+    DAYS.mkdir(parents=True, exist_ok=True)
+    days = sorted({p.name.split("_")[1][:10] for p in CHUNKS.glob("*.parquet")})
+    for day in days:                                           # merge hour chunks -> day files, post-freeze only
+        for kind in ("quotes", "trades", "book_ticker"):
+            for coin in rec["coins"]:
+                parts = sorted(CHUNKS.glob(f"{kind}_{day}-??_{coin}.parquet"))
+                if not parts:
+                    continue
+                df = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
+                df = df[df.local_timestamp >= t0]
+                if len(df):
+                    df.to_parquet(DAYS / f"{kind}_{day}_{coin}.parquet")
+    hl.PQ = DAYS
+    trades = []
+    for day in days:
+        for coin in rec["coins"]:
+            d = hl.load_day(coin, day)
+            if d is not None:
+                trades += hl.sim_lag(d, **rec["params"])
+    stats = hl.bar_stats([t["pnl"] for t in trades])
+    out = {"name": rec["name"], "frozen_at_utc": rec["frozen_at_utc"],
+           "scored_at_utc": datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"), "days": days, **stats,
+           "trades": trades}
+    (ROOT / "reports/paper/hllag_theta40_ledger.json").write_text(json.dumps(out, indent=1, default=str))
+    return out
+
+
+if __name__ == "__main__":
+    ap = argparse.ArgumentParser()
+    ap.add_argument("cmd", choices=["collect", "freeze", "score"])
+    ap.add_argument("--hours", type=float, default=1.9)
+    a = ap.parse_args()
+    if a.cmd == "collect":
+        asyncio.run(collect(a.hours))
+    elif a.cmd == "freeze":
+        freeze()
+    else:
+        print(json.dumps({k: v for k, v in score().items() if k != "trades"}, indent=1))
