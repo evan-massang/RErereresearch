@@ -1,0 +1,128 @@
+{
+ "hypothesis": "H-MOMENTUM (momentum): documented crypto time-series and cross-sectional momentum on liquid Binance USDT-M perps, weekly rebalanced",
+ "frozen_at_utc": "2026-10-05T05:37:21.845441+00:00",
+ "frozen_before": "any kline or funding data was downloaded by this agent and before any return or P&L was computed",
+ "literature": "research/observations/evidence_momentum_literature.json (Liu & Tsyvinski 2021 RFS; Liu, Tsyvinski & Wu 2022 JF; Moskowitz, Ooi & Pedersen 2012 JFE; contrary: Grobys & Sapkota 2019; Han, Kang & Ryu)",
+ "rationale": "Peer-reviewed evidence of crypto momentum at 1-4 week horizons (spot data, mostly pre-2019). Untested here on tradable perps with fees, slippage and funding. No parent hypothesis in this repo.",
+ "data": "data.binance.vision futures/um/monthly/klines/<SYM>/1d (all USDT-quoted symbols listed in the archive, including delisted; dated *_YYMMDD contracts excluded) and futures/um/monthly/fundingRate/<SYM>. Months up to 2026-03 only; nothing from 2026-04 onward is downloaded.",
+ "excluded_symbols": "index/stable products: BTCDOMUSDT, DEFIUSDT, FOOTBALLUSDT, BLUEBIRDUSDT, USDCUSDT, any symbol whose base is a USD stablecoin (TUSD, BUSD, FDUSD, USDP, USDE)",
+ "universe": "Point in time at each rebalance time t (Monday 00:00 UTC): symbol must have >= 60 daily bars closed before t, the bar for day t-1, and >= 25 of the last 30 days. Rank by sum of quote volume over the 30 daily bars ending t-1; keep top N=40. Backtest starts at the first Monday with >= 40 eligible symbols.",
+ "signal": "R_L = close(t-1-skip)/close(t-1-skip-L) - 1 using daily closes (close of day d = price at 00:00 of d+1).",
+ "ts_rule": "For each universe coin: side = +1 if R_L > 0, -1 if R_L < 0 (long_only: 0 if R_L <= 0). Weight w = side * (1/N) * min(sigma_target/sigma_i, 1), sigma_target = 50%/yr, sigma_i = stdev of last 30 daily log returns * sqrt(365). Gross <= 1.",
+ "xs_rule": "Rank universe coins by R_L. long_short: long top quintile (8 coins) at +0.5/8 each, short bottom quintile at -0.5/8 each (gross 1, dollar neutral). long_only: top quintile at 1/8 each (gross 1). Equal weight, no vol scaling.",
+ "execution": "Weights set at t and filled at close of day t-1 (= open at t) plus costs; held one week to t+7 at constant notional (no intra-week rebalancing). Coins leaving the universe or flipping sign are closed at the rebalance.",
+ "trade_definition": "An episode = consecutive weeks a coin is held with the same sign. Episode P&L (fraction of capital) = sum over its weeks of w*r_week - funding - costs (entry, exit and resize costs charged to the episode). Episodes open at a split end are force-closed there.",
+ "funding": "Long pays (short receives) w * rate for every fundingRate print with calc_time in (t, t+7d] while held, from the monthly fundingRate archive (8h or 4h/1h intervals as printed). Notional at entry used (approximation, stated).",
+ "costs": {
+  "taker": "5 bp per side (Binance USDT-M regular VIP0 taker 0.05%, per the task; round-5 doc cites Binance FAQ 360033544231)",
+  "slippage": "per side by trailing-30d mean daily quote volume: >= $1B 2 bp; $200M-1B 5 bp; $50M-200M 10 bp; < $50M 20 bp (assumption, stated; sensitivity x2 reported, never selected on)",
+  "turnover": "cost = |w_new - w_old| * (taker + slippage) at each rebalance",
+  "delisting": "if a coin's data ends while held, exit at its last close and charge 2% of |w|"
+ },
+ "configs": [
+  {
+   "key": "TS_L7_LS",
+   "family": "ts",
+   "L_days": 7,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "grid"
+  },
+  {
+   "key": "TS_L14_LS",
+   "family": "ts",
+   "L_days": 14,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "grid"
+  },
+  {
+   "key": "TS_L28_LS",
+   "family": "ts",
+   "L_days": 28,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "primary TS (closest to Liu-Tsyvinski multi-week horizon)"
+  },
+  {
+   "key": "TS_L28_skip1_LS",
+   "family": "ts",
+   "L_days": 28,
+   "skip_days": 1,
+   "side": "long_short",
+   "role": "skip-1-day variant"
+  },
+  {
+   "key": "TS_L14_LO",
+   "family": "ts",
+   "L_days": 14,
+   "skip_days": 0,
+   "side": "long_only",
+   "role": "long-only variant"
+  },
+  {
+   "key": "TS_L28_LO",
+   "family": "ts",
+   "L_days": 28,
+   "skip_days": 0,
+   "side": "long_only",
+   "role": "long-only variant"
+  },
+  {
+   "key": "XS_L7_LS",
+   "family": "xs",
+   "L_days": 7,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "grid (LTW 1-week momentum)"
+  },
+  {
+   "key": "XS_L14_LS",
+   "family": "xs",
+   "L_days": 14,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "grid"
+  },
+  {
+   "key": "XS_L28_LS",
+   "family": "xs",
+   "L_days": 28,
+   "skip_days": 0,
+   "side": "long_short",
+   "role": "primary XS (LTW 3-4 week momentum)"
+  },
+  {
+   "key": "XS_L28_skip1_LS",
+   "family": "xs",
+   "L_days": 28,
+   "skip_days": 1,
+   "side": "long_short",
+   "role": "skip-1-day variant"
+  },
+  {
+   "key": "XS_L7_LO",
+   "family": "xs",
+   "L_days": 7,
+   "skip_days": 0,
+   "side": "long_only",
+   "role": "long-only variant"
+  },
+  {
+   "key": "XS_L28_LO",
+   "family": "xs",
+   "L_days": 28,
+   "skip_days": 0,
+   "side": "long_only",
+   "role": "long-only variant"
+  }
+ ],
+ "splits": {
+  "train": "rebalances with t <= 2024-06-30 (last week truncated at 2024-07-01 00:00)",
+  "validation": "2024-07-01 .. 2026-03-31, looked at once, only for configs passing the bar on train",
+  "holdout": ">= 2026-04-01: never downloaded or examined"
+ },
+ "bar": "per-episode P&L: n >= 50 episodes, net sum > 0, profit factor (sum wins / |sum losses|) > 1.2, net > 0 with the 3 best episodes removed. Also reported: weekly-return Sharpe (annualised sqrt(52)), max drawdown of the compounded-additive equity curve, per-year net, turnover, top-3-coin share of net P&L, long vs short legs.",
+ "multiple_testing": "12 configs; a pass on train by 1 of 12 is weak evidence. All 12 reported.",
+ "no_tuning": "No parameter changes after seeing train P&L; any iteration must be a new pre-registered hypothesis with an evidence-based rationale."
+}
