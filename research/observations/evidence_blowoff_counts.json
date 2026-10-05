@@ -1,0 +1,160 @@
+{
+ "hypothesis": "H-BLOWOFF",
+ "created": "2026-10-05",
+ "is_synthetic": false,
+ "note": "Feature-only event counts (no returns, prices after t, or outcomes used). Holdout (>= 2026-04-01) not loaded: all caches capped at 2026-03-31.",
+ "definitions": "Lead: sources/leads/documented_edges_round13.md idea 1. Universe: the frozen memexs meme list\n(reports/hypotheses/memexs_preregistration.json, CoinGecko meme-token rule of listshort_classify.py), Binance USDT-M.",
+ "splits": {
+  "train": "<= 2025-06-30",
+  "validation": "2025-07-01..2026-03-31"
+ },
+ "first_day_with_all_features": "2023-03-28",
+ "coverage_eligible_symbol_days": {
+  "train": {
+   "eligible_symbol_days": 16663,
+   "with_all_three_percentiles": 3856,
+   "missing_pO": 12807,
+   "missing_pF": 3233,
+   "symbols": 57
+  },
+  "validation": {
+   "eligible_symbol_days": 12490,
+   "with_all_three_percentiles": 1501,
+   "missing_pO": 10989,
+   "missing_pF": 573,
+   "symbols": 65
+  }
+ },
+ "counts": {
+  "short_q0.90": {
+   "raw_event_days": {
+    "train": 36,
+    "validation": 11
+   },
+   "accepted_H1": {
+    "train": 36,
+    "validation": 11
+   },
+   "accepted_H3": {
+    "train": 22,
+    "validation": 7
+   },
+   "accepted_H7": {
+    "train": 21,
+    "validation": 6
+   },
+   "symbols_with_events": {
+    "train": 8,
+    "validation": 4
+   },
+   "top_symbols_validation_H3": {
+    "DOGEUSDT": 3,
+    "1000PEPEUSDT": 2,
+    "1000BONKUSDT": 1,
+    "TRUMPUSDT": 1
+   },
+   "events_by_halfyear_H3": {
+    "2023H2": 5,
+    "2024H1": 5,
+    "2024H2": 12,
+    "2025H2": 5,
+    "2026H1": 2
+   }
+  },
+  "short_q0.95": {
+   "raw_event_days": {
+    "train": 13,
+    "validation": 3
+   },
+   "accepted_H1": {
+    "train": 13,
+    "validation": 3
+   },
+   "accepted_H3": {
+    "train": 10,
+    "validation": 2
+   },
+   "accepted_H7": {
+    "train": 10,
+    "validation": 1
+   },
+   "symbols_with_events": {
+    "train": 5,
+    "validation": 1
+   },
+   "top_symbols_validation_H3": {
+    "DOGEUSDT": 2
+   },
+   "events_by_halfyear_H3": {
+    "2023H2": 4,
+    "2024H1": 2,
+    "2024H2": 4,
+    "2025H2": 2
+   }
+  },
+  "long_q0.90": {
+   "raw_event_days": {
+    "train": 5,
+    "validation": 2
+   },
+   "accepted_H1": {
+    "train": 5,
+    "validation": 2
+   },
+   "accepted_H3": {
+    "train": 4,
+    "validation": 1
+   },
+   "accepted_H7": {
+    "train": 4,
+    "validation": 1
+   },
+   "symbols_with_events": {
+    "train": 3,
+    "validation": 1
+   },
+   "top_symbols_validation_H3": {
+    "WIFUSDT": 1
+   },
+   "events_by_halfyear_H3": {
+    "2023H2": 1,
+    "2024H2": 1,
+    "2025H1": 2,
+    "2025H2": 1
+   }
+  },
+  "long_q0.95": {
+   "raw_event_days": {
+    "train": 2,
+    "validation": 0
+   },
+   "accepted_H1": {
+    "train": 2,
+    "validation": 0
+   },
+   "accepted_H3": {
+    "train": 2,
+    "validation": 0
+   },
+   "accepted_H7": {
+    "train": 2,
+    "validation": 0
+   },
+   "symbols_with_events": {
+    "train": 2,
+    "validation": 0
+   },
+   "top_symbols_validation_H3": {},
+   "events_by_halfyear_H3": {
+    "2023H2": 1,
+    "2025H1": 1
+   }
+  }
+ },
+ "sources": [
+  "data/raw/web/momentum/klines (daily, read-only)",
+  "data/raw/web/momentum/funding (read-only)",
+  "data/raw/web/lsratio/metrics (read-only)",
+  "data/raw/web/blowoff/metrics (new, data.binance.vision)"
+ ]
+}

@@ -1,0 +1,216 @@
+{
+ "hypothesis": "H-LOTTOSHORT: weekly beta-neutral short of the Binance USDT-M meme-perp basket against a long BTC (or BTC/SOL) hedge sized to the basket's trailing beta, entered only when the basket's trailing funding is positive (shorts receive). Hold 1 week.",
+ "parent": "sources/leads/documented_edges_round13.md idea 2 (H-LOTTOSHORT). Lessons: reports/candidates/unlock.md (alt shorts in 2025-26 = market beta -> must be beta-neutral and say how much is bear market); reports/failures/memexs_holdout.md (2026-04..09 meme data already used). Scope: reports/scope_memecoins_20261005.md",
+ "rationale": "Lottery preference + leveraged-long crowding (positive funding) may keep the meme sector overpriced vs BTC. Literature leads conflict: Grobys & Junttila 2021 (low-MAX beats high-MAX, 20 coins 2016-19; obs_86d3f6acbd074968, obs_0e95bbd017324cdf) vs Ozdamar, Akdeniz & Sensoy 2021 (high-MAX beats low-MAX, up to 523 coins 2014-20; obs_b8b06e570c4c4b55, obs_ff3bbc36027d4ec0). Neither tests a meme sector vs BTC short; prior low-medium.",
+ "frozen_at_utc": "2026-10-05T12:44:28.418983+00:00",
+ "frozen_before": "any meme or BTC/SOL return, beta, funding value or P&L was computed by this agent. Only counts of liquidity-eligible memes per week (quote volume and bar presence only) were looked at, to set the minimum basket size and to state the n problem.",
+ "universe": {
+  "meme_symbols": [
+   "1000000MOGUSDT",
+   "1000BONKUSDT",
+   "1000CATUSDT",
+   "1000CHEEMSUSDT",
+   "1000FLOKIUSDT",
+   "1000PEPEUSDT",
+   "1000SHIBUSDT",
+   "1000WHYUSDT",
+   "1MBABYDOGEUSDT",
+   "4USDT",
+   "ACTUSDT",
+   "AI16ZUSDT",
+   "AIXBTUSDT",
+   "ANIMEUSDT",
+   "BANANAS31USDT",
+   "BANUSDT",
+   "BIRBUSDT",
+   "BOMEUSDT",
+   "BRETTUSDT",
+   "BROCCOLI714USDT",
+   "BROCCOLIF3BUSDT",
+   "BULLAUSDT",
+   "BUSDT",
+   "CATUSDT",
+   "CHILLGUYUSDT",
+   "DEGENUSDT",
+   "DOGEUSDT",
+   "DOGSUSDT",
+   "FARTCOINUSDT",
+   "GHSTUSDT",
+   "GIGGLEUSDT",
+   "GOATUSDT",
+   "GRIFFAINUSDT",
+   "HIPPOUSDT",
+   "KOMAUSDT",
+   "MARSCOINUSDT",
+   "MELANIAUSDT",
+   "MEMEFIUSDT",
+   "MEMEUSDT",
+   "MEWUSDT",
+   "MOODENGUSDT",
+   "MUBARAKUSDT",
+   "MUSDT",
+   "MYROUSDT",
+   "NEIROETHUSDT",
+   "NEIROUSDT",
+   "NOTUSDT",
+   "ORDIUSDT",
+   "PENGUSDT",
+   "PENGUUSDT",
+   "PEOPLEUSDT",
+   "PIPPINUSDT",
+   "PNUTUSDT",
+   "PONKEUSDT",
+   "POPCATUSDT",
+   "PUMPUSDT",
+   "SIRENUSDT",
+   "SLERFUSDT",
+   "SPXUSDT",
+   "TOSHIUSDT",
+   "TRUMPUSDT",
+   "TSTUSDT",
+   "TURBOUSDT",
+   "TUTUSDT",
+   "USELESSUSDT",
+   "VINEUSDT",
+   "WENUSDT",
+   "WIFUSDT",
+   "ZEREBROUSDT",
+   "哈基米USDT",
+   "币安人生USDT",
+   "我踏马来了USDT",
+   "牛来USDT",
+   "龙虾USDT"
+  ],
+  "classification": "Identical to H-MEMEXS (CoinGecko meme-token category cached 2026-10-05 + listshort_classify.py overrides). Look-ahead/survivorship risk as stated in memexs_preregistration.json; identity-doubtful members kept in the primary run.",
+  "identity_doubtful_diagnostic": [
+   "GHSTUSDT",
+   "ORDIUSDT",
+   "MUSDT",
+   "BUSDT",
+   "PEOPLEUSDT",
+   "AIXBTUSDT",
+   "AI16ZUSDT",
+   "GRIFFAINUSDT",
+   "ZEREBROUSDT"
+  ]
+ },
+ "data": "Read-only data/raw/web/momentum/{klines,funding} (data.binance.vision USDT-M monthly 1d klines and fundingRate), only days <= 2026-03-31. The holdout caches (data/raw/web/momentum/holdout, data/raw/web/memexs/holdout, anything 2026-04+) are never opened. No new price download is needed.",
+ "eligibility": "At each Monday 00:00 UTC rebalance t (point in time, days < t only): >= 35 daily bars, a bar for day t-1, >= 25 of last 30 days present, 30-day mean daily quote volume >= $5M. A week is tradable only if >= 3 memes are eligible (eligible counts were 2-3 in 2022 H1, so 2022 weeks are basically DOGE/1000SHIB/PEOPLE).",
+ "position": {
+  "basket": "short the eligible memes. EW: equal weights. IV: weights proportional to 1/std of daily returns over days t-30..t-1 (members with < 20 return days get the median vol).",
+  "beta": "beta = cov/var of daily simple returns over days t-W..t-1 (W = beta_window_days) between the basket (current members, current weights, mean over members with a return that day) and the hedge return (BTC, or 0.5*BTC + 0.5*SOL). Clipped to [0.25, 3.0].",
+  "sizing": "gross 1: short notional S = 1/(1+beta), hedge long notional H = beta/(1+beta) (BTCSOL: H split 50/50).",
+  "gate": "basket funding F = mean over basket members of (sum of funding prints with calc_time in [t-7d, t)) / 21 (per-8h equivalent). G1: trade iff F > 0. G2: trade iff F > 0.0001 (above the 0.01%/8h baseline). Gate off -> flat (all legs closed) that week.",
+  "execution": "fill at close(t-1) (= price at 00:00 on t), hold 7 days to close(t+6). Weekly rebalance to new target weights; costs charged on |change in weight| per symbol (both legs). Delisted while held: exit at last close, extra 2% of the leg's notional.",
+  "funding": "both legs: funding prints with calc_time in (t, t+7d] times signed weight (short receives positive funding, long BTC/SOL pays it)."
+ },
+ "costs": "Binance taker 5 bp per side + slippage per side by 30-day ADV tier: >= $1B 2 bp, $200M-1B 5 bp, $50-200M 10 bp, < $50M 20 bp (memexs tiers), applied per leg per side. Force-close at split end.",
+ "splits": {
+  "train": "rebalances with t >= 2022-01-03 and full holding week ending on or before 2025-06-30 (last rebalance 2025-06-23)",
+  "validation": "rebalances 2025-07-07 .. 2026-03-23 (full week ends by 2026-03-30 00:00 UTC); 38 possible weeks",
+  "holdout": "2026-04-01 onward: NEVER touched by this agent. Note: 2026-04..09 meme-perp data was already used by the H-MEMEXS holdout (meme-sector decline recorded there), so it is not a clean untouched period for meme-sector direction; the real out-of-sample judge would be forward data from 2026-10 on.",
+  "dropped": "the rebalance of 2025-06-30 belongs to neither split (its week straddles the boundary)."
+ },
+ "unit_and_n": {
+  "statement": "The bar asks for n >= 50 basket-weeks per split. Train has up to ~178 tradable basket-weeks, so train uses basket-weeks. Validation has at most 38 basket-weeks: n >= 50 basket-weeks is IMPOSSIBLE on validation. Pre-declared before any return was computed: on validation, n is counted in hedged coin-leg-weeks (one meme short leg held for one week, carrying its pro-rata share |w_i|/sum|w| of that week's hedge P&L, hedge costs and hedge funding). Legs within a week are one correlated bet, so a validation pass on the leg unit is labelled weak.",
+  "pass_conditions": "Train: basket-weeks traded >= 50, net > 0, PF > 1.2, net ex top-3 > 0, with net/PF/ex-top-3 computed on basket-weeks AND on hedged legs (both must pass). Validation: hedged coin-leg-weeks >= 50 (basket-weeks also reported), net > 0, PF > 1.2, net ex top-3 > 0, again on BOTH basket-weeks and legs.",
+  "P&L units": "fractions of gross capital 1 (additive sums)."
+ },
+ "bar": "n>=50 (unit as above), net>0, PF>1.2, net ex top-3 > 0",
+ "configs": [
+  {
+   "key": "G1_BTC_EW_b60",
+   "gate": "G1",
+   "hedge": "BTC",
+   "weighting": "EW",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G1_BTC_IV_b60",
+   "gate": "G1",
+   "hedge": "BTC",
+   "weighting": "IV",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G1_BTC_EW_b30",
+   "gate": "G1",
+   "hedge": "BTC",
+   "weighting": "EW",
+   "beta_window_days": 30
+  },
+  {
+   "key": "G1_BTCSOL_EW_b60",
+   "gate": "G1",
+   "hedge": "BTCSOL",
+   "weighting": "EW",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G1_BTCSOL_IV_b60",
+   "gate": "G1",
+   "hedge": "BTCSOL",
+   "weighting": "IV",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G1_BTCSOL_EW_b30",
+   "gate": "G1",
+   "hedge": "BTCSOL",
+   "weighting": "EW",
+   "beta_window_days": 30
+  },
+  {
+   "key": "G2_BTC_EW_b60",
+   "gate": "G2",
+   "hedge": "BTC",
+   "weighting": "EW",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G2_BTC_IV_b60",
+   "gate": "G2",
+   "hedge": "BTC",
+   "weighting": "IV",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G2_BTC_EW_b30",
+   "gate": "G2",
+   "hedge": "BTC",
+   "weighting": "EW",
+   "beta_window_days": 30
+  },
+  {
+   "key": "G2_BTCSOL_EW_b60",
+   "gate": "G2",
+   "hedge": "BTCSOL",
+   "weighting": "EW",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G2_BTCSOL_IV_b60",
+   "gate": "G2",
+   "hedge": "BTCSOL",
+   "weighting": "IV",
+   "beta_window_days": 60
+  },
+  {
+   "key": "G2_BTCSOL_EW_b30",
+   "gate": "G2",
+   "hedge": "BTCSOL",
+   "weighting": "EW",
+   "beta_window_days": 30
+  }
+ ],
+ "grid_note": "12 configs = gate {G1 >0, G2 >0.01%/8h} x hedge {BTC, BTC/SOL 50/50} x {EW beta60, IV beta60, EW beta30}. This covers gate threshold, beta window, hedge leg and weighting within 12.",
+ "selection": "Among train-passing configs, pick the one with the highest net ex top-3 basket-weeks. If none passes train, H-LOTTOSHORT fails at train; the config with the highest train net ex top-3 basket-weeks is still run ONCE on validation as a labelled diagnostic (it cannot pass). Validation is run once for one config only.",
+ "diagnostics_not_for_selection": [
+  "G0 (always on) for every hedge/weighting variant: shows what the funding gate adds.",
+  "Beta-neutrality: OLS of weekly P&L on same-week BTC return (and BTC/SOL hedge return); report beta, t, alpha, R2. Also the realised beta of the short leg vs hedge.",
+  "Bear-market share: (a) unhedged EW meme-basket short over the same weeks; (b) placebo: identical rule (same config, own funding gate) on an EW basket of all eligible NON-meme USDT-M perps (excluding BTC, ETH, SOL, BTCDOM, DEFI, stablecoins and dated contracts). Meme-specific excess = meme P&L - alt placebo P&L per week (mean, t). If the alt placebo earns as much, the result is 'alts underperformed BTC' (BTC-dominance trend), not a meme lottery premium.",
+  "Excluding identity-doubtful coins; slippage x2; funding excluded; P&L by half-year and the round-13 kill test (net > 0 in >= 3 of the train half-years from 2022H1, max drawdown < 0.35)."
+ ],
+ "multiple_testing": "12 configs on train; one validation run. A pass is a weak lead, to be judged by forward paper trading from 2026-10 (holdout period already contaminated for meme direction).",
+ "script": "scripts/research/lottoshort_sim.py"
+}
