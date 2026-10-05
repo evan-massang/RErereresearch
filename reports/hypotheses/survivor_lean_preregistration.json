@@ -1,0 +1,114 @@
+{
+ "id": "H-SURVIVOR-LEAN",
+ "written_utc": "2026-10-05T12:16Z",
+ "written_before_any_data_opened": true,
+ "status": "pre-registered; not scored",
+ "source": "sources/leads/documented_edges_round10.md idea 4 (H-SURVIVOR), adapted to the 72 h pumplean tape and its 24 h train/validation windows",
+ "what_was_seen_before_writing": [
+  "reports/hypotheses/pumplean_notes.md (loader notes, split plan, gap rule)",
+  "data/raw/web/pumplean/events.jsonl: start/stop events (seed counts, young_pools 3607 at PID 18132 start) and the number of disconnect events (71 so far); recorder.log tail (row counts per 2-min flush, no prices)",
+  "file listing of data/raw/web/pumplean/ (names only)",
+  "scripts/research/pumplean_recorder.py source (schemas, young-set and bar logic)",
+  "NO parquet file under data/raw/web/pumplean/ was opened; no count, price or return from the lean tape is known"
+ ],
+ "parents_and_difference": {
+  "parents": [
+   "iteration 8 (reports/failures/paper_loop_20261003.md; research/observations/evidence_post_migration_hours_train_20261003.txt): 1-24 h post-migration decisions on momentum / near-ATH / market cap, 4 h means -13% to -16%, medians -2%..+2%",
+   "H-CLEANMIG (reports/failures/agent_cleanmig.md): structural filter AT MIGRATION, entry 30 min / 2 h, holds 4/24 h, gross -24% to -39%; reserve already 20-50 SOL 30 min after migration"
+  ],
+  "how_this_differs": [
+   "Conditions on SURVIVAL, not on structure at migration: the pool must still hold a true SOL reserve >= Y (85 = the migration reserve, or 150) at age 6 h or 24 h, i.e. the 30-minute decay CLEANMIG measured has NOT happened to it.",
+   "Gate is a demand-breadth DERIVATIVE (distinct traders rising, net buying), not price momentum / near-ATH / market cap (iteration 8's filters).",
+   "Exact constant-product fills on logged reserves with the swap rows' real fee bps (iteration 8 used 15-min GeckoTerminal bar opens and a flat 2% per side).",
+   "Decision ages 6 h and 24 h: past the steepest hazard (68.7% of tokens stop trading on day 0, lead)."
+  ],
+  "honest_prior": "Low. Iteration 8's strongest subsets had ~0 medians and -13% to -16% means at 4 h because of collapses; the growth gate may not remove collapses. Ranked first only because it is the closest test of the round-10 survivor lead that this tape can score in 24 h windows."
+ },
+ "data": {
+  "tape": "data/raw/web/pumplean/ (hourly files + parts/), loaded with the views in reports/hypotheses/pumplean_notes.md",
+  "tables": ["amm_pools", "amm_swaps", "pool_map", "curve_creates", "events.jsonl"],
+  "pool_creation_sources": "data/market.duckdb amm_pools (read_only, created <= 2026-10-05 03:40Z, old-recorder gaps), data/raw/web/pumplean/seed_pools.parquet (Oct 5 03h-05h), pumplean amm_pools (live from 2026-10-05 10:43:17Z)",
+  "no_holdout_overlap": "the lean tape does not overlap holdout_plan.md windows; market.duckdb is used only for pool creation rows (pool, mint, recv, quote_in) of pools created before the tape, never for outcomes"
+ },
+ "splits": {
+  "T0": "2026-10-05T12:04:00Z",
+  "warmup": "2026-10-05 10:43:17 -> 12:04:00Z: history for features only, never an entry",
+  "train": "entries in [2026-10-05 12:04:00Z, 2026-10-06 12:04:00Z)",
+  "validation": "entries in [2026-10-06 12:04:00Z, 2026-10-07 12:04:00Z), examined once, only for the one config selected on train, only if the train kill test passes",
+  "forward": "entries from 2026-10-07 12:04:00Z to end of recording (2026-10-08 12:03:58Z unless extended); never used to tune",
+  "assignment": "a trade belongs to the segment of its entry time; exits may run past a boundary but never past the end of data (such trades are dropped and counted, outcome-blind)",
+  "disclosed_overlap": "12 h train exits fall in the validation calendar window; only those pools' exit states are read"
+ },
+ "coverage_rule": {
+  "covered_minute": "both streams have msgs > 0 in the events.jsonl 'minute' event AND the reconnect holes (disconnect.last_slot..resume.first_slot, timed disconnect -> resume) inside the minute sum to <= 5 s per stream AND neither stream's msgs is below 30% of its trailing 60-minute median (suspect minutes are treated as NOT covered)",
+  "gap": "a run of non-covered minutes, or > 60 s with no curve trade; the declared outage 2026-10-05 12:03:04-12:03:59Z is a gap",
+  "gap_list_first": "the full gap list and covered hours per segment are written to the evidence file before any price or P&L is computed",
+  "uncovered_minutes_excluded": "no decision, entry or exit may be taken in a non-covered minute",
+  "feature_window": "the 4 h feature window (t_d - 4 h, t_d] must have >= 90% covered minutes, else skip (counted). Trader counts are therefore approximate inside short holes; this is tolerated and stated.",
+  "fills_never_use_hole_states": "the fill state is the next swap's logged pre-trade reserves (an on-chain state observed after the fill time), never a state derived across a hole"
+ },
+ "universe": {
+  "pools": "SOL-quoted PumpSwap pools from standard pump.fun migrations: amm_pools.quote_in within 0.05 SOL of 84.99, CreatePoolEvent on file (one of the three creation sources), hence in the recorder's young set with every swap >= 0.001 SOL in amm_swaps",
+  "declared_holes": "pools created 2026-10-05 05:05Z-10:43:17Z and in old-recorder gaps (e.g. 10-04 01:12-08:54Z) have no CreatePoolEvent and only other_5m bars: EXCLUDED (creation-time based, outcome-blind). Their count is reported.",
+  "mayhem": "excluded when curve_creates.is_mayhem (lean tape) or data/processed/mayhem_flags.parquet says True; unknown kept and counted",
+  "one_trade_per_pool_per_config": true
+ },
+ "point_in_time_features": {
+  "computed_from": "amm_swaps rows of the pool with recv <= t_d (recv = recv_us/1e6); nothing after t_d",
+  "t_create": "pool CreatePoolEvent receive time (amm_pools.recv / recv_us; seed created_us)",
+  "t_d": "t_create + A rounded up to the next whole minute; if that minute is not covered, the first covered minute within 10 min, else skip (counted)",
+  "true_reserve_R": "pool_quote_logged + offset_pool, offset_pool = median over the pool's sells with recv <= t_d of quote*(pool_base+base)/base - pool_quote (exact sell identity, agent_amm_flow / agent_lpsell_clock); needs >= 3 sells with IQR <= 0.05 SOL, else 17.585 if quote_in = 84.99 +- 0.05 (re-verified in step 0 on train sells; if the identity's median relative error > 1e-4 the scorer stops and amends before any P&L)",
+  "R_at_t_d": "true reserve of the post-trade state of the last swap with recv <= t_d (token side = pre -/+ base; SOL side from the next swap's logged pre-state if it is in the same covered minute, else the documented ev_len rule)",
+  "active": ">= 10 swaps and >= 5 distinct users in (t_d - 60 min, t_d]",
+  "growth_gate": "distinct users in (t_d - 2 h, t_d] >= distinct users in (t_d - 4 h, t_d - 2 h] AND net buy SOL (gross buy SOL - gross sell SOL) over (t_d - 2 h, t_d] > 0",
+  "reserve_gate": "R(t_d) >= Y"
+ },
+ "trade": {
+  "size_sol": [0.5, 0.1],
+  "main_size_sol": 0.5,
+  "latency_s": 1,
+  "entry": "buy at t_d + 1 s",
+  "exit": "sell all tokens at t_d + H + 1 s; no stop (CLEANMIG and BOOST: stops gap through and cut recoveries)",
+  "fill_state": "conservative rule of agent_amm_flow: entry at the HIGHER-priced of (pool state at fill time = logged pre-trade reserves of the first swap with recv > fill time, + offset) and (state after the first swap within 5 s after the fill time); exit at the LOWER-priced of the same two, additionally marked down to the next swap's pre-trade state when that is > 2% lower",
+  "constant_product": "buy: x = size / (1 + f); tokens = T * x / (R + x).  sell: SOL = R * q / (T + q) * (1 - f). R, T = true reserves of the fill state.",
+  "fee_f": "(lp_bps + proto_bps + cc_bps)/1e4 of the swap row that defines the fill state (the pool's real tier at fill time). Step 0 re-verifies on train rows that |quote - user_quote| = total fee for both ev_len versions; if the buy-side form differs, the more expensive of x = size/(1+f) and x = size*(1-f) is used.",
+  "own_impact": "our buy is not added to the pool before the exit (conservative: the exit sells into a pool without our earlier buy)",
+  "stale_exit": "if no pool swap in [exit fill time, +60 min], sell into the last observed post-trade state and flag 'stale'; sensitivity values stale exits at 0",
+  "tx_costs": "2 tx per trade, each tip/priority fee 0.001 SOL (main) or 0.01 SOL (sensitivity) + 5,000 lamports base fee. ATA rent is refundable (account closed in the sell tx) and not charged."
+ },
+ "grid": {
+  "A_decision_age": ["6 h", "24 h"],
+  "Y_min_true_reserve_sol": [85, 150],
+  "H_hold": ["4 h", "12 h"],
+  "gate": "growth gate ON for all 8 A x Y x H configs (selectable)",
+  "controls": "growth gate OFF at A = 6 h, Y in {85, 150}, H in {4 h, 12 h}: 4 configs, NOT selectable (they measure what the gate adds)",
+  "n_configs": 12,
+  "n_selectable": 8
+ },
+ "step0_allowed_before_pnl": "gap list; covered hours per segment; offset/fee identity checks on train sells and buys (no returns); eligible counts per config per segment (no prices beyond the R >= Y gate, no returns). Any amendment (e.g. a config with 0 eligible trades replaced) must be written into this file with a timestamp BEFORE any return is computed, and may not grow the grid above 12.",
+ "kill_test_train": [
+  "K1: at least one selectable config with train n >= 20 has net SOL > 0 and PF > 1.0 (0.5 SOL, tip 0.001, main fills). Otherwise FAIL; validation not examined.",
+  "K2 (mechanism): pooled over Y and H at A = 6 h, the mean gross mid-to-mid return of gate-ON trades must exceed the gate-OFF controls' by >= 2 percentage points. Otherwise FAIL (the gate is the hypothesis)."
+ ],
+ "selection_rule": "If K1 and K2 pass: among selectable configs with train n >= 20 that meet net > 0, PF > 1.2 and net ex top-3 > 0 (0.5 SOL, tip 0.001), pick the ONE with the highest net ex top-3 SOL; ties -> larger n. If none meets it: FAIL, validation not examined. Train n < 50 is expected and is stated with the selection.",
+ "validation": "Score the one selected config once on validation. No parameter, filter or fill rule changes after this point.",
+ "bar": {
+  "applies_to": "validation (and forward continuation)",
+  "n_min": 50,
+  "net_sol": "> 0",
+  "profit_factor": "> 1.2",
+  "net_ex_top3_sol": "> 0",
+  "at": "0.5 SOL, tip 0.001 SOL/tx, main (conservative) fills",
+  "n_below_50": "INCONCLUSIVE; the frozen config continues unchanged on the forward segment and the bar is applied to validation + forward pooled once n >= 50 (forward-only figures also reported)",
+  "tip_and_size": "0.01 tip and 0.1 SOL results always reported; a PASS with net <= 0 at the 0.01 tip is labelled 'tip-fragile' and not promoted without review"
+ },
+ "reported_not_selected_on": [
+  "tip 0.01 SOL/tx; size 0.1 SOL",
+  "mid-to-mid gross return; main vs non-conservative fills",
+  "stale exits valued at 0",
+  "rugs (<= -90%) and collapses (<= -50%) per config",
+  "by-entry-hour table",
+  "skip reasons: excluded creation hole, mayhem, feature-window coverage, decision minute uncovered, exit past data end"
+ ],
+ "expected_n": "Unknown (tape not opened). Round-10 OWN counts on the old tape: 4-19 pools a creation day at 24 h with reserve >= 200; 10-71 with >= 10 trades. n >= 50 in one 24 h window is unlikely at A = 24 h; INCONCLUSIVE is a likely outcome and is acceptable."
+}

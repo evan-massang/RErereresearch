@@ -1,0 +1,108 @@
+{
+ "id": "H-LPAGED-LEAN",
+ "written_utc": "2026-10-05T12:16Z",
+ "written_before_any_data_opened": true,
+ "status": "pre-registered; not scored",
+ "source": "sources/leads/documented_edges_round12.md idea 6 (H-LPAGED), adapted to the 72 h pumplean tape (other_5m bars + young-pool swaps) and 24 h windows",
+ "what_was_seen_before_writing": [
+  "reports/hypotheses/pumplean_notes.md; scripts/research/pumplean_recorder.py source (bar schema: n, n_buy, n_users, base/quote buy/sell sums, open/last pool reserves, last swap; NO fee bps in bars)",
+  "data/raw/web/pumplean/events.jsonl start/stop events and disconnect count; recorder.log tail; file listing",
+  "NO parquet file under data/raw/web/pumplean/ was opened; the number of aged pools on the lean tape is unknown"
+ ],
+ "parent_and_iteration_reason": {
+  "parent": "H-LPSELL (reports/failures/agent_lpsell_clock.md), failing run research/observations/evidence_lpsell_train.json: 0/18 configs, best PF 0.55",
+  "evidence_based_reason": "LPSELL's pools were 10 min-4 h old and 97% of their sells were in the 125-bp fee tier that pays LPs 2 bp; drift (median price ratio 0.58 in 1 h) swamped fee growth (+0.24% to +1.5%). This iteration changes exactly those two measured causes: only the 20-bp LP tier (pool market cap >= 420 SOL) and only pools aged >= 3 or 7 days, past the steepest hazard. Most PumpSwap flow is in old pools (round 12 OWN: ~9,000 swaps/min in other_5m bars vs ~1,200 in young pools), which the old tape never held.",
+  "how_this_differs_from_failed_families": "Not a directional entry on a young pool (CLEANMIG, AMM_FLOW, BOOST, iteration 8): income is the LP fee, and the position is only half exposed to price. Not LPSELL: different fee tier (10x the LP rate) and pool age (>= 3 d vs <= 4 h).",
+  "honest_prior": "Very low for 12-24 h holds. Break-even arithmetic, stated before any data: round-trip cost at 0.5 SOL is about 0.5-0.6% (fee on the half-swap) + 0.5% (fee selling the withdrawn tokens) + 0.8% (4 tx x 0.001 SOL) = about 1.9%; at 20 bp LP the pool must turn over about 9.5x its TVL in 24 h with zero drift to break even. At 0.1 SOL the tips alone are 4%. It is still the half-long-decay LP that LPSELL found loses to drift. Registered because it is the only income-based (not price-prediction) design this tape can score, it is cheap, and its kill test also measures aged-pool drift, which H-SURVIVOR-LEAN needs as context."
+ },
+ "data": {
+  "tape": "data/raw/web/pumplean/ amm_bars (kind other_5m: all non-young pools, 5-min buckets) and amm_swaps (young pools), pool_map (pool -> base mint, quote mint)",
+  "pool_age_sources_in_order": [
+   "CreatePoolEvent on file: data/market.duckdb amm_pools (read_only), seed_pools.parquet, pumplean amm_pools",
+   "GeckoTerminal GET /api/v2/networks/solana/pools/{pool} attributes.pool_created_at (immutable creation time; fetched through an adapter in pipeline/sources/ after `python -m pipeline check-network`; the raw response is stored with fetch time; only pools passing every other eligibility condition are queried)",
+   "public RPC getSignaturesForAddress(pool) paged to the oldest signature's blockTime (slow, 429-limited)",
+   "unknown -> excluded and counted"
+  ],
+  "note": "A pool with no CreatePoolEvent on file is NOT assumed old: pools created in old-recorder gaps (Oct 1-5) and 2026-10-05 05:05-10:43Z also appear only in bars."
+ },
+ "splits": {
+  "T0": "2026-10-05T12:04:00Z",
+  "warmup": "2026-10-05 10:43:17 -> 12:04:00Z: history for features only",
+  "train": "entries in [2026-10-05 12:04:00Z, 2026-10-06 12:04:00Z)",
+  "validation": "entries in [2026-10-06 12:04:00Z, 2026-10-07 12:04:00Z), examined once for the one selected config, only if the train kill test passes",
+  "forward": "entries from 2026-10-07 12:04:00Z to end of recording; never used to tune",
+  "assignment": "by entry time; exits may run past a boundary but never past end of data (dropped and counted, outcome-blind)",
+  "disclosed_overlap": "train 12-24 h exits fall in the validation calendar window; only those pools' states are read",
+  "earliest_train_entry": "the 4 h feature window needs >= 90% covered minutes, so the first possible decision is about 2026-10-05 14:43Z (tape starts 10:43:17Z)"
+ },
+ "coverage_rule": {
+  "covered_minute": "both streams msgs > 0 in events.jsonl 'minute'; reconnect holes inside the minute <= 5 s per stream; neither stream below 30% of its trailing 60-min median (suspect = not covered)",
+  "gap": "run of non-covered minutes, or > 60 s with no curve trade; outage 2026-10-05 12:03:04-12:03:59Z is a gap",
+  "gap_list_first": "gap list and covered hours per segment written before any P&L",
+  "uncovered_minutes_excluded": "no decision, deposit, stop trigger or withdrawal in a non-covered minute; a 5-min bar is usable for a fill only if all 5 of its minutes are covered",
+  "fee_income_in_holes": "volume lost in holes is simply not credited (conservative); the share of non-covered minutes inside each position's life is reported"
+ },
+ "universe_and_eligibility": {
+  "pool": "PumpSwap pool, quote mint = WSOL (pool_map), base mint address ends with 'pump' (pump.fun mint), true SOL reserve >= 50",
+  "decision_times": "every 5-min bar boundary t in a covered minute; a pool is entered at the first boundary in the segment at which it is eligible; one position per pool per config per segment",
+  "age": "t - pool_created >= A",
+  "window_W": "(t - 4 h, t], >= 90% covered minutes",
+  "activity": ">= 24 of the 48 bars in W have n > 0, and sum of per-bar n_users over W >= 50 (per-bar distinct users summed: an over-count of distinct daily users, declared proxy for the lead's '>= 50 users/day')",
+  "fee_tier": "market cap mc = R_true/T * 1e9 SOL >= 420 at t and at >= 90% of active bar opens in W (the 20-bp LP tier per agent_lpsell_clock)",
+  "turnover": "daily-rate V/TVL = (sum over W of quote_buy + quote_sell, SOL as logged) / (2 * R_true(t)) * 6 >= v"
+ },
+ "reserves_and_fees": {
+  "true_reserve": "logged pool_quote + offset_pool; offset_pool from the exact sell identity offset = quote*(pool_base+base)/base - pool_quote on the pool's sells with recv <= t (young pools: amm_swaps rows; bars-only pools: bars whose last_is_buy = false, using last_quote, last_base, last_pool_base, last_pool_quote); >= 3 estimates with IQR <= 0.05 SOL required, else excluded and counted. Step 0 verifies on young-pool train sells that the logged 'quote' of 441-byte SellEvents satisfies the identity (median relative error < 1e-4); if instead user_quote does, the bar estimate is fee-adjusted, and that choice is written here before any P&L.",
+  "fee_bps_young_pools": "(lp_bps, proto_bps, cc_bps) of the actual swap rows",
+  "fee_bps_bars_only_pools": "bars carry no fee fields. Step 0 builds, from train amm_swaps rows only (cost data, no returns), the table market-cap bucket -> modal (lp, proto, cc) bps and its match rate. Bars-only pools use the table at each bar's open market cap. If the match rate in a bucket is < 95%, that bucket uses the LOWEST observed lp_bps and the HIGHEST observed total bps (conservative on both income and cost).",
+  "non_canonical_pools": "pools not created by a pump.fun migration may have other fee configs; not identifiable from bars. Declared limitation; the young-pool subset (exact bps) is reported separately."
+ },
+ "position_math": {
+  "budget": "S = 0.5 SOL (main) or 0.1 SOL, excluding tx costs",
+  "entry_state": "young pools: pool state at t + 1 s (logged pre-trade reserves of the first swap with recv > t + 1 s); bars-only pools: open_pool_base/open_pool_quote of the bar starting at t (state before the first swap at >= t; <= 1 s timing imprecision declared). Conservative sensitivity: the higher-priced of that state and the bar's last-swap pre-state.",
+  "half_swap": "pay q gross SOL: x = q/(1+f); a = T*x/(R+x) tokens; post-swap pool R1 = R + x*(1 + lp_bps/1e4), T1 = T - a. Solve q by bisection so that (S - q)/a = R1/T1; deposit d = S - q SOL and a tokens.",
+  "liquidity": "L = sqrt(d * a)",
+  "fee_growth_G": "young pools: product over consecutive swaps of sqrt(k_pre(i+1)/k_pre(i)) on exactly chained steps (next logged pre-trade token reserve equals derived post-trade within 1e-6 relative); broken steps (liquidity event or missed swap) credited 1.0 (agent_lpsell_clock method). Bars-only pools: G = product over bars of (1 + lp_bps_bar/1e4 * V_bar / (2 * R_bar)), V_bar = quote_buy + quote_sell, R_bar = true reserve at bar open (LPSELL validated sum lp*sol/(2R) against chained growth at correlation 0.999999).",
+  "exit_value": "withdraw L*G*sqrt(P1) SOL and L*G/sqrt(P1) tokens, P1 = R_e/T_e of the exit state; sell the tokens into (R_e, T_e) at fee f_e: SOL = R_e*b/(T_e+b)*(1-f_e). The recorded pool never contained our liquidity, so this is the pool net of our withdrawal.",
+  "exit_state": "young pools: lower-priced of state at exit + 1 s and state after the first swap within 5 s, marked down to the next pre-state if > 2% lower (agent_amm_flow); bars-only pools: open state of the first fully covered bar starting at or after the exit time, sensitivity the lower-priced of that bar's open and last-swap pre-state",
+  "stop": "when a post-trade mid (young) or a bar open/last mid (bars-only) is <= 0.6 x entry mid (agent_lpsell_clock stop): exit at the next fill state as above (gaps through honestly)",
+  "net": "SOL from withdrawal + token sale - S - tx costs",
+  "tx_costs": "4 tx (half-swap, deposit, withdraw, sell), each tip 0.001 SOL (main) or 0.01 (sensitivity) + 5,000 lamports. Sensitivity: 2 tx (swap+deposit and withdraw+sell bundled as instructions). LP-token and token account rent refundable, not charged.",
+  "rugs": "a rug (creator dump) appears as a price collapse and is charged through P1; liquidity removal by other LPs is handled by G (broken steps credited 1.0) and by the exit state"
+ },
+ "benchmarks_reported": ["cash (0)", "hold-token: buy S at the entry state, sell at the exit state, 2 tx, same fills"],
+ "grid": {
+  "A_min_pool_age": ["3 d", "7 d"],
+  "v_min_daily_V_over_TVL": [1, 3, 9],
+  "H_hold": ["12 h", "24 h"],
+  "stop": "on (0.6 x entry mid) in all configs, fixed from the parent",
+  "n_configs": 12,
+  "note": "v = 9 is the approximate zero-drift break-even turnover at 0.5 SOL for 24 h (stated before any data)"
+ },
+ "step0_allowed_before_pnl": "gap list; covered hours; offset identity check; fee-tier table and its match rate; pool-age lookups; eligible counts per config per segment (no returns). Amendments (e.g. replacing a config with 0 eligible pools) must be written here with a timestamp before any return or price change is computed; grid stays <= 12.",
+ "kill_test_train": [
+  "K1 (lead's test): on config A = 3 d, v = 1, H = 24 h (largest n), mean fee growth (G - 1) must be >= 2 x mean LP drift loss (1 - sqrt(P1/P0)), averaged per position. Needs n >= 20, else K1 is evaluated on the config with the largest n.",
+  "K2: at least one config with train n >= 20 has net SOL > 0 (0.5 SOL, tip 0.001, 4 tx).",
+  "Either fails -> FAIL; validation not examined."
+ ],
+ "selection_rule": "If K1 and K2 pass: among configs with train n >= 20 meeting net > 0, PF > 1.2 and net ex top-3 > 0 (0.5 SOL, tip 0.001, 4 tx), pick the ONE with the highest net ex top-3 SOL; ties -> larger n. None -> FAIL, validation not examined.",
+ "validation": "Score the one selected config once on validation. No changes afterwards.",
+ "bar": {
+  "n_min": 50,
+  "net_sol": "> 0",
+  "profit_factor": "> 1.2",
+  "net_ex_top3_sol": "> 0",
+  "at": "0.5 SOL, tip 0.001 SOL/tx, 4 tx, main fills",
+  "n_below_50": "INCONCLUSIVE; frozen config continues on forward, bar applied to validation + forward pooled once n >= 50",
+  "tip_and_size": "0.01 tip and 0.1 SOL always reported; PASS with net <= 0 at 0.01 tip labelled 'tip-fragile'",
+  "plus": "the LP must also beat the hold-token benchmark's net on the same positions, otherwise the result is reported as 'directional, not LP income'"
+ },
+ "reported_not_selected_on": [
+  "fee growth, drift loss, IL and price ratio distributions per config",
+  "young-pool (exact bps) vs bars-only (table bps) subsets",
+  "stopped share; collapses (P1/P0 <= 0.5) and rugs (<= 0.1)",
+  "2-tx sensitivity; conservative bar fills; tip 0.01; size 0.1",
+  "skip reasons incl. unknown age, offset not determinable, coverage"
+ ],
+ "data_needed_not_on_tape": "pool creation times for bars-only pools (GeckoTerminal / RPC), fetched only for otherwise-eligible pools, through an adapter, after check-network"
+}

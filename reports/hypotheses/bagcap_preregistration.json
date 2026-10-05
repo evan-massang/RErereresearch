@@ -1,0 +1,107 @@
+{
+ "id": "H-BAGCAP",
+ "written_utc": "2026-10-05T12:16Z",
+ "written_before_any_data_opened": true,
+ "status": "pre-registered; not scored",
+ "statement": "In PumpSwap pools with strong, broad buy flow, the minutes-scale continuation that agent_amm_flow measured (positive median, 66-84% win) is destroyed only by a left tail of single large sells; if no visible holder can dump more than c of the pool's token reserve, that tail is cut and the mean turns positive after exact costs.",
+ "source": "own iteration of agent_amm_flow using the decoded bonding-curve tape (wallet bags since token creation), which amm_flow did not use",
+ "what_was_seen_before_writing": [
+  "reports/hypotheses/pumplean_notes.md; scripts/research/pumplean_recorder.py source",
+  "data/raw/web/pumplean/events.jsonl start/stop events and disconnect count; recorder.log tail; file listing",
+  "NO parquet file under data/raw/web/pumplean/ was opened"
+ ],
+ "parent_and_iteration_reason": {
+  "parent": "agent_amm_flow (reports/failures/agent_amm_flow.md), failing run research/observations/evidence_amm_flow_train_20261004.json; config family ofi_mom (5-min OFI >= 0.5/0.7, >= 10 buyers in 60 s)",
+  "evidence_based_reason": "amm_flow: 'In deep pools, high-OFI and many-buyer deciles have positive medians and win 70-84% of the time at 600 s. Their means are still negative because of a left tail of drops of 50-100%: rug-like single sells or liquidity pulls.' Best ofi_mom config: 66% win, mean -0.0088 SOL/trade. A single sell can only move a constant-product price by a factor (T/(T+b))^2, so a holder must own b >= 0.41 T tokens to halve the price. The decoded curve tape + young-pool swaps let us see every wallet's bag from token creation; amm_flow had no bag information.",
+  "how_this_differs_from_failed_families": [
+   "vs AMM_FLOW: adds a point-in-time cap on the largest visible bag relative to POOL DEPTH (the mechanism of the left tail); the uncapped rule is kept as a non-selectable control so the cap's effect is measured, not assumed.",
+   "vs CLEANMIG: CLEANMIG filtered supply shares ONCE AT MIGRATION and held 4-24 h through organic decay. Here the bag is measured at the decision time (including AMM-phase accumulation and the bundle cluster), relative to the current pool token reserve, and the hold is 10-30 min, where amm_flow found a positive median rather than decay.",
+   "vs curve-flow / early-detector / aged-demand / crash-bounce: no curve-phase entry and no wallet-copy signal; the curve tape is used only to measure who can dump."
+  ],
+  "honest_prior": "Low. amm_flow's gross on its best rules was only +0.2-0.5% before conservative fills against about 2-2.5% round-trip fees outside deep pools. Cutting the tail must lift the mean by several percent. Insiders can also move tokens by transfer to fresh wallets, which the tape cannot see (those wallets appear as sellers with negative balance)."
+ },
+ "data": {
+  "tape": "data/raw/web/pumplean/ curve_creates, curve_trades, curve_completes, amm_pools, amm_swaps, pool_map, events.jsonl",
+  "views": "as in reports/hypotheses/pumplean_notes.md; std_curve rows only for curve balances",
+  "not_used": "data/market.duckdb (curve history before 10:43:17Z is incomplete in the lean tape, so such tokens are ineligible)"
+ },
+ "splits": {
+  "T0": "2026-10-05T12:04:00Z",
+  "warmup": "2026-10-05 10:43:17 -> 12:04:00Z: history only (tokens created here are eligible, entries are not)",
+  "train": "entries in [2026-10-05 12:04:00Z, 2026-10-06 12:04:00Z)",
+  "validation": "entries in [2026-10-06 12:04:00Z, 2026-10-07 12:04:00Z), examined once for one selected config, only if the train kill test passes",
+  "forward": "2026-10-07 12:04:00Z to end of recording; never used to tune",
+  "assignment": "by entry time; holds of <= 30 min fit inside each window; a trade whose exit passes end of data is dropped and counted"
+ },
+ "coverage_rule": {
+  "covered_minute": "both streams msgs > 0 in events.jsonl 'minute'; reconnect holes inside the minute <= 5 s per stream; neither stream below 30% of its trailing 60-min median (suspect = not covered)",
+  "gap": "run of non-covered minutes, or > 60 s with no curve trade; outage 2026-10-05 12:03:04-12:03:59Z is a gap",
+  "gap_list_first": "gap list and covered hours per segment written before any P&L",
+  "lifecycle": "token create -> decision: >= 95% of minutes covered and no non-covered run > 3 min (bags are sums over every trade, so holes bias them; this tolerance is fixed now)",
+  "trade_window": "the decision minute, every minute of the 300 s OFI window, the entry minute and every minute of the hold up to the exit fill must be covered (holds are <= 30 min)",
+  "fills_never_use_hole_states": true
+ },
+ "universe": {
+  "token": "pump.fun token whose CreateEvent is in the lean tape (create recv >= 2026-10-05 10:43:17Z), standard curve (vsol - rsol = 30 SOL, vtok - rtok = 279.9M on every curve trade, and vsol*vtok within 1% of its first print: agent_crash_bounce K_TOL), curve_creates.is_mayhem = false (NULL excluded)",
+  "pool": "its standard migration pool: CreatePoolEvent in the lean tape, quote mint WSOL, quote_in within 0.05 of 84.99; all swaps >= 0.001 SOL in amm_swaps",
+  "one_trade_per_pool_per_config": true
+ },
+ "point_in_time_features": {
+  "computed_from": "rows with recv <= t only",
+  "decision_grid": "every 15 s (t on :00/:15/:30/:45) while the pool is >= 600 s old (past the BOOST TWAP window, a separate failed family)",
+  "true_reserve": "logged pool_quote + per-pool offset (median exact-sell-identity estimate over the pool's sells up to t, >= 3 sells, else 17.585); R(t), T(t) from the last post-trade state",
+  "OFI_300": "(gross buy SOL - gross sell SOL)/(gross buy SOL + gross sell SOL) over swaps in (t-300 s, t]",
+  "buyers_60": "distinct buying wallets in (t-60 s, t]",
+  "balances": "per wallet: net tokens from std-curve trades (buys - sells) + net tokens from the pool's amm_swaps (buys - sells), recv <= t. Swaps < 0.001 SOL (young_dust bars) are not attributable to wallets and are ignored.",
+  "launch_cluster": "creator wallet + every wallet whose first curve buy is in the create slot or create slot + 1 (bundle proxy); its bag = sum of positive balances",
+  "boost_buyer_excluded": "a wallet whose first pool buy is within 20 s of pool creation, with >= 10 pool buys, cumulative pool buys >= 14 SOL and zero sells anywhere in the tape up to t, is treated as the pool's BOOST buyer (agent_boost: per-pool buy-only PDA) and excluded from bags. Sensitivity: counted as a bag.",
+  "bag_ratio_B": "max(largest single-wallet positive balance, launch-cluster bag) / T(t)",
+  "transfer_flag": "share of pool sell volume in (t-30 min, t] from wallets whose balance went negative (tokens received by transfer); reported, not gated"
+ },
+ "trigger": "first decision t with OFI_300 >= 0.5 AND buyers_60 >= 10 AND R(t) >= R_min AND B <= c (control: no B condition)",
+ "trade": {
+  "size_sol": [0.5, 0.1],
+  "main_size_sol": 0.5,
+  "latency_s": 1,
+  "entry": "buy at t + 1 s",
+  "exit": "sell all at t + 1 s + H; no stop, no take-profit (amm_flow: +/-5% stops do not avoid gap drops)",
+  "fill_state": "agent_amm_flow conservative rule: entry at the higher-priced of (state at fill time = logged pre-trade reserves of the first swap after it, + offset) and (state after the first swap within 5 s); exit at the lower-priced of the two, marked down to the next pre-trade state if > 2% lower",
+  "constant_product": "buy: x = size/(1+f), tokens = T*x/(R+x); sell: SOL = R*q/(T+q)*(1-f)",
+  "fee_f": "(lp_bps + proto_bps + cc_bps)/1e4 of the swap row defining the fill state; step 0 re-verifies the buy and sell fee identities on train rows (no returns)",
+  "own_impact": "not carried to the exit (conservative)",
+  "tx_costs": "2 tx, tip 0.001 SOL (main) or 0.01 (sensitivity) + 5,000 lamports each"
+ },
+ "grid": {
+  "c_max_bag_over_pool_tokens": [0.10, 0.25, "none (control)"],
+  "R_min_true_reserve_sol": [100, 300],
+  "H_hold": ["600 s", "1800 s"],
+  "n_configs": 12,
+  "n_selectable": 8,
+  "controls": "c = none: 4 configs (amm_flow's ofi_mom rule replicated on the lean tape), NOT selectable",
+  "why_c": "a full dump of 10% of T moves price by -17%; of 25%, by -36%; amm_flow's tail was -50% to -100%"
+ },
+ "step0_allowed_before_pnl": "gap list; covered hours; fee and offset identity checks; trigger counts per config per segment and the distribution of B at triggers (no prices after the trigger, no returns). Amendments only before any return is computed, grid <= 12, written here with a timestamp.",
+ "kill_test_train": [
+  "K1 (mechanism): pooled over R_min and H, the share of trades with gross mid-to-mid return <= -30% in the c = 0.25 and c = 0.10 configs must each be <= 0.5 x the control's share. Otherwise FAIL.",
+  "K2: at least one selectable config with train n >= 30 has net SOL > 0 (0.5 SOL, tip 0.001, conservative fills). Otherwise FAIL.",
+  "Either fails -> validation not examined."
+ ],
+ "selection_rule": "If K1 and K2 pass: among selectable configs with train n >= 30 meeting net > 0, PF > 1.2 and net ex top-3 > 0 (0.5 SOL, tip 0.001), pick the ONE with the highest net ex top-3 SOL; ties -> larger n. None -> FAIL, validation not examined.",
+ "validation": "Score the one selected config once on validation; no changes afterwards.",
+ "bar": {
+  "n_min": 50,
+  "net_sol": "> 0",
+  "profit_factor": "> 1.2",
+  "net_ex_top3_sol": "> 0",
+  "at": "0.5 SOL, tip 0.001 SOL/tx, conservative fills",
+  "n_below_50": "INCONCLUSIVE; frozen config continues on forward, bar applied to validation + forward pooled once n >= 50",
+  "tip_and_size": "0.01 tip and 0.1 SOL always reported; PASS with net <= 0 at 0.01 tip labelled 'tip-fragile'"
+ },
+ "reported_not_selected_on": [
+  "left-tail shares (<= -30%, <= -50%) per config and control",
+  "B distribution at triggers; transfer_flag split",
+  "BOOST buyer counted as bag (sensitivity)",
+  "mid-to-mid gross; tip 0.01; size 0.1",
+  "skip reasons: curve history before tape, non-standard curve, Mayhem, lifecycle coverage, trade-window coverage"
+ ]
+}
