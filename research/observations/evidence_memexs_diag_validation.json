@@ -1,0 +1,242 @@
+{
+ "split": "validation",
+ "config": "VOLG_high_long_LS",
+ "note": "diagnostics, not used for selection",
+ "results": {
+  "primary": {
+   "n": 686,
+   "net": 0.6387,
+   "pf": 1.253,
+   "net_minus_top3": 0.1801,
+   "top3_legs": [
+    0.2214,
+    0.1289,
+    0.1083
+   ],
+   "mean_leg_bp": 9.31,
+   "weekly_sharpe": 1.898,
+   "weeks_traded": 39,
+   "weeks_skipped": 0,
+   "mean_weekly_pnl_bp": 163.8,
+   "maxdd_additive": -0.1801,
+   "price_pnl": 0.6751,
+   "funding_paid": -0.062,
+   "costs": 0.0984,
+   "long_legs": 0.1202,
+   "short_legs": 0.5185,
+   "mean_weekly_turnover": 1.13,
+   "mean_eligible": 45.9,
+   "delist_exits": 0,
+   "per_year": {
+    "2025": 0.4081,
+    "2026": 0.2306
+   },
+   "per_quarter": {
+    "2025Q3": 0.0759,
+    "2025Q4": 0.3321,
+    "2026Q1": 0.2306
+   },
+   "top3_coins": {
+    "PIPPINUSDT": 0.4812,
+    "HIPPOUSDT": 0.1057,
+    "MUSDT": 0.0956
+   },
+   "worst3_coins": {
+    "BANUSDT": -0.0554,
+    "MOODENGUSDT": -0.0587,
+    "ZEREBROUSDT": -0.0965
+   },
+   "first_week": "2025-07-07",
+   "last_week": "2026-03-30",
+   "pass": true
+  },
+  "lighter_0fee": {
+   "n": 686,
+   "net": 0.6612,
+   "pf": 1.263,
+   "net_minus_top3": 0.2025,
+   "top3_legs": [
+    0.2214,
+    0.1289,
+    0.1083
+   ],
+   "mean_leg_bp": 9.64,
+   "weekly_sharpe": 1.966,
+   "weeks_traded": 39,
+   "weeks_skipped": 0,
+   "mean_weekly_pnl_bp": 169.5,
+   "maxdd_additive": -0.177,
+   "price_pnl": 0.6751,
+   "funding_paid": -0.062,
+   "costs": 0.0759,
+   "long_legs": 0.1324,
+   "short_legs": 0.5288,
+   "mean_weekly_turnover": 1.13,
+   "mean_eligible": 45.9,
+   "delist_exits": 0,
+   "per_year": {
+    "2025": 0.4226,
+    "2026": 0.2386
+   },
+   "per_quarter": {
+    "2025Q3": 0.0835,
+    "2025Q4": 0.3391,
+    "2026Q1": 0.2386
+   },
+   "top3_coins": {
+    "PIPPINUSDT": 0.4819,
+    "HIPPOUSDT": 0.1063,
+    "MUSDT": 0.0963
+   },
+   "worst3_coins": {
+    "BANUSDT": -0.0549,
+    "MOODENGUSDT": -0.0581,
+    "ZEREBROUSDT": -0.0959
+   },
+   "first_week": "2025-07-07",
+   "last_week": "2026-03-30",
+   "pass": true
+  },
+  "slipx2": {
+   "n": 686,
+   "net": 0.5628,
+   "pf": 1.219,
+   "net_minus_top3": 0.1044,
+   "top3_legs": [
+    0.2213,
+    0.1288,
+    0.1083
+   ],
+   "mean_leg_bp": 8.2,
+   "weekly_sharpe": 1.67,
+   "weeks_traded": 39,
+   "weeks_skipped": 0,
+   "mean_weekly_pnl_bp": 144.3,
+   "maxdd_additive": -0.1898,
+   "price_pnl": 0.6751,
+   "funding_paid": -0.062,
+   "costs": 0.1743,
+   "long_legs": 0.0796,
+   "short_legs": 0.4832,
+   "mean_weekly_turnover": 1.13,
+   "mean_eligible": 45.9,
+   "delist_exits": 0,
+   "per_year": {
+    "2025": 0.3592,
+    "2026": 0.2035
+   },
+   "per_quarter": {
+    "2025Q3": 0.0513,
+    "2025Q4": 0.3079,
+    "2026Q1": 0.2035
+   },
+   "top3_coins": {
+    "PIPPINUSDT": 0.4796,
+    "HIPPOUSDT": 0.1036,
+    "MUSDT": 0.0934
+   },
+   "worst3_coins": {
+    "BANUSDT": -0.0577,
+    "MOODENGUSDT": -0.0605,
+    "ZEREBROUSDT": -0.0989
+   },
+   "first_week": "2025-07-07",
+   "last_week": "2026-03-30",
+   "pass": true
+  },
+  "no_funding": {
+   "n": 686,
+   "net": 0.5767,
+   "pf": 1.227,
+   "net_minus_top3": 0.1335,
+   "top3_legs": [
+    0.2216,
+    0.1329,
+    0.0886
+   ],
+   "mean_leg_bp": 8.41,
+   "weekly_sharpe": 1.767,
+   "weeks_traded": 39,
+   "weeks_skipped": 0,
+   "mean_weekly_pnl_bp": 147.9,
+   "maxdd_additive": -0.1798,
+   "price_pnl": 0.6751,
+   "funding_paid": 0.0,
+   "costs": 0.0984,
+   "long_legs": 0.0581,
+   "short_legs": 0.5186,
+   "mean_weekly_turnover": 1.13,
+   "mean_eligible": 45.9,
+   "delist_exits": 0,
+   "per_year": {
+    "2025": 0.3145,
+    "2026": 0.2622
+   },
+   "per_quarter": {
+    "2025Q3": 0.0544,
+    "2025Q4": 0.2601,
+    "2026Q1": 0.2622
+   },
+   "top3_coins": {
+    "PIPPINUSDT": 0.466,
+    "HIPPOUSDT": 0.1093,
+    "MUSDT": 0.0847
+   },
+   "worst3_coins": {
+    "BANUSDT": -0.0544,
+    "MOODENGUSDT": -0.0609,
+    "ZEREBROUSDT": -0.0992
+   },
+   "first_week": "2025-07-07",
+   "last_week": "2026-03-30",
+   "pass": true
+  },
+  "ex_identity_doubtful": {
+   "n": 586,
+   "net": 0.7119,
+   "pf": 1.282,
+   "net_minus_top3": 0.209,
+   "top3_legs": [
+    0.2767,
+    0.1434,
+    0.0828
+   ],
+   "mean_leg_bp": 12.15,
+   "weekly_sharpe": 1.892,
+   "weeks_traded": 39,
+   "weeks_skipped": 0,
+   "mean_weekly_pnl_bp": 182.5,
+   "maxdd_additive": -0.1652,
+   "price_pnl": 0.7693,
+   "funding_paid": -0.0396,
+   "costs": 0.0971,
+   "long_legs": 0.1442,
+   "short_legs": 0.5677,
+   "mean_weekly_turnover": 1.139,
+   "mean_eligible": 39.3,
+   "delist_exits": 0,
+   "per_year": {
+    "2025": 0.477,
+    "2026": 0.2348
+   },
+   "per_quarter": {
+    "2025Q3": -0.0392,
+    "2025Q4": 0.5162,
+    "2026Q1": 0.2348
+   },
+   "top3_coins": {
+    "PIPPINUSDT": 0.5536,
+    "HIPPOUSDT": 0.1173,
+    "SIRENUSDT": 0.1128
+   },
+   "worst3_coins": {
+    "BANUSDT": -0.0533,
+    "BRETTUSDT": -0.0601,
+    "MOODENGUSDT": -0.069
+   },
+   "first_week": "2025-07-07",
+   "last_week": "2026-03-30",
+   "pass": true
+  }
+ }
+}
