@@ -43,7 +43,10 @@ see pipeline/market.py note); post-trade reserves are derived in the loader note
 Gaps are declared, never silent: data/raw/web/pumplean/events.jsonl gets 'start', 'connect', 'disconnect' (with the
 error and the reconnect backoff), 'minute' (per-stream notification + decoded row counts, last slot, and silent=true
 when a stream got nothing that minute), 'chunk', 'disk_guard', 'stop'. A stream with no message for 45 s is treated as
-dead and reconnected; backoff 1, 2, 4 ... 60 s, reset after a connection that lived >= 120 s.
+dead and reconnected; backoff 0.5, 1, 2 ... 60 s, reset after a connection that lived >= 60 s. After each reconnect a
+'resume' event gives the first slot received and the seconds since the disconnect (the declared hole is
+disconnect.last_slot .. resume.first_slot). The public RPC drops the websocket every few minutes (1002), so expect
+many short holes; tests must use the minute-level coverage rule in reports/hypotheses/pumplean_notes.md.
 Disk guard: stop when free disk < --min-free-gb (1.5).
 
     python scripts/research/pumplean_recorder.py --hours 0.08 --out <scratch dir>          # test
@@ -136,6 +139,11 @@ def _pkb(b: bytes, o: int) -> str:
 
 
 # ------------------------------------------------------------------------------------------------ decoding
+def _i64(x: int | None) -> int | None:
+    """Offsets/residuals outside int64 (only on absurd non-standard curves) are stored NULL, not dropped."""
+    return x if x is None or -2 ** 63 <= x < 2 ** 63 else None
+
+
 def _ceil_bps(x: int, bps: int | None) -> int:
     return -(-x * (bps or 0) // 10_000)
 
@@ -163,7 +171,8 @@ def curve_rows(data: str, head: tuple) -> tuple[str, tuple] | None:
             fee_r = fee - _ceil_bps(sol, ev["fee_bps"])
             cfee_r = cfee - _ceil_bps(sol, ev["cfee_bps"])
         return "curve_trades", head + (ev["ts"], ev["mint"], ev["user"], creator, ev["buy"], sol, tok, vs, vt,
-                                       vs - rs, vt - rt, ev["fee_bps"], fee_r, ev["cfee_bps"], cfee_r)
+                                       _i64(vs - rs), _i64(vt - rt), ev["fee_bps"], _i64(fee_r), ev["cfee_bps"],
+                                       _i64(cfee_r))
     if ev["e"] == "create":
         # after name/symbol/uri/mint/curve/user: creator pk, timestamp i64, virtual token/sol, real token, supply
         # u64, token_program pk, is_mayhem_mode bool (IDL order). Offsets found by walking the strings again.
@@ -311,6 +320,8 @@ class Recorder:
         self.minute: dict[str, dict] = {n: defaultdict(int) for n in ("curve", "amm")}
         self.last_slot: dict[str, int] = {}
         self.connected: dict[str, bool] = {"curve": False, "amm": False}
+        self.down_since: dict[str, float] = {}
+        self.need_resume: dict[str, bool] = {}
         self.known_pools: set[str] = set()
         self.unresolved: dict[str, None] = {}        # insertion-ordered set
         self.young: set[str] = set()                 # pools created < young_days ago: every swap kept
@@ -407,6 +418,9 @@ class Recorder:
             return
         slot = (res.get("context") or {}).get("slot")
         self.last_slot[name] = slot
+        if self.need_resume.get(name):
+            self.need_resume[name] = False
+            self.ev("resume", stream=name, first_slot=slot, since_disconnect_s=round(time.time() - self.down_since[name], 2))
         self.tx_seq += 1
         head = (now_us(), slot, self.tx_seq)
         dec = curve_rows if name == "curve" else amm_rows
@@ -439,7 +453,7 @@ class Recorder:
             c[table] += 1
 
     async def stream(self, name: str, program: str) -> None:
-        backoff = 1.0
+        backoff = 0.5
         while not self.stop.is_set():
             t_conn = time.monotonic()
             try:
@@ -448,6 +462,7 @@ class Recorder:
                     await ws.send(json.dumps({"jsonrpc": "2.0", "id": 1, "method": "logsSubscribe",
                                               "params": [{"mentions": [program]}, {"commitment": "confirmed"}]}))
                     self.connected[name] = True
+                    self.need_resume[name] = name in self.down_since
                     self.ev("connect", stream=name, program=program, url=WS_URL)
                     log(name, "connected")
                     while not self.stop.is_set():
@@ -461,8 +476,9 @@ class Recorder:
                 if self.stop.is_set():
                     break
                 lived = time.monotonic() - t_conn
-                if lived >= 120:
-                    backoff = 1.0
+                self.down_since[name] = time.time()
+                if lived >= 60:
+                    backoff = 0.5
                 self.ev("disconnect", stream=name, error=f"{type(e).__name__}: {e}"[:300], lived_s=round(lived, 1),
                         last_slot=self.last_slot.get(name), backoff_s=backoff)
                 log(name, "disconnect", type(e).__name__, str(e)[:160], f"backoff {backoff}s")
@@ -529,7 +545,8 @@ class Recorder:
                 c.clear()
             silent = [n for n, c in snap.items() if not c.get("msgs")]
             self.ev("minute", minute=utc(minute_start), counts=snap, last_slot=dict(self.last_slot),
-                    connected=dict(self.connected), silent=silent or None, unresolved_pools=len(self.unresolved))
+                    connected=dict(self.connected), silent=silent or None, unresolved_pools=len(self.unresolved),
+                    dropped_rows=dict(self.store.dropped) or None)
             if time.monotonic() - last_flush >= 120:
                 last_flush = time.monotonic()
                 await asyncio.to_thread(self.store.flush, self.store.take())
