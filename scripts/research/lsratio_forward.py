@@ -334,17 +334,21 @@ def load_symbol_fwd(sym):
 
 def lighter_funding(sym, market_id, start, end):
     """Signed hourly funding fraction (+ = longs pay). Lighter 'rate' is in percent; 'direction' long = longs pay."""
-    r = _get(f"{LIGHTER}/fundings", params=dict(market_id=market_id, resolution="1h",
-                                                start_timestamp=int(start.timestamp()),
-                                                end_timestamp=int(end.timestamp()), count_back=2000))
-    if r is None or r.status_code != 200:
-        return None
-    rows = r.json().get("fundings") or []
+    rows, a = [], start
+    while a < end:                                   # windows of 500 h (endpoint returns at most count_back rows)
+        b = min(end, a + pd.Timedelta(hours=500))
+        r = _get(f"{LIGHTER}/fundings", params=dict(market_id=market_id, resolution="1h",
+                                                    start_timestamp=int(a.timestamp()),
+                                                    end_timestamp=int(b.timestamp()), count_back=1000))
+        if r is None or r.status_code != 200:
+            return None
+        rows += r.json().get("fundings") or []
+        a = b
     if not rows:
         return None
     s = pd.Series({pd.Timestamp(x["timestamp"], unit="s"): (1 if x["direction"] == "long" else -1)
-                   * float(x["rate"]) / 100 for x in rows}).sort_index()
-    return s
+                   * float(x["rate"]) / 100 for x in rows})
+    return s[~s.index.duplicated()].sort_index()
 
 
 # ---------------------------------------------------------------- freeze / score
@@ -359,6 +363,9 @@ def freeze():
     mk = json.loads((OUT / "lighter_markets.json").read_text())
     sp = spread_table()
     sp = sp[sp.index.isin(u["forward_universe"])]
+    short = sorted(set(u["forward_universe"]) - set(sp[sp.n >= 5].index[sp[sp.n >= 5].rt1k_med_bp.notna()]))
+    if short:
+        raise SystemExit(f"fewer than 5 Lighter spread samples for {short}; run spreads first.")
     perps = lighter_perps(mk)
     rec = {
         "name": "lsratio_lc", "hypothesis": "H-LSRATIO-LC",
