@@ -1,0 +1,134 @@
+{
+ "hypothesis": "H-ITSM: per-coin intraday time-series momentum (first window of the session predicts the sign of the last window) on HL-listed Binance USDT-M perps",
+ "frozen_at_utc": "2026-10-05T06:52:28.932977+00:00",
+ "status_at_freeze": "No price, P&L or return computed for this hypothesis. Only S3 listing file sizes of BTCUSDT/WIFUSDT 5m/15m monthly zips (2024) were read to plan the budget, and HL info meta was fetched for the HL-listing filter.",
+ "source_leads": [
+  {
+   "ref": "Shen, Urquhart & Wang (2022), 'Bitcoin Intraday Time Series Momentum', Financial Review 57(2):319-344, DOI 10.1111/fire.12290",
+   "use": "first half-hour positively predicts last half-hour for BTC (lead summary in sources/leads/documented_edges_round6.md idea 7; paper not read here)",
+   "modality": "document"
+  },
+  {
+   "ref": "Gao, Han, Li & Zhou (2018), JFE, 'Market intraday momentum'",
+   "use": "template: r1 and r12 (previous-to-last half-hour) predict r13",
+   "modality": "document"
+  },
+  {
+   "ref": "Wen, Bouri, Xu & Zhao (2022)",
+   "use": "intraday momentum/reversal in BTC/ETH/LTC/XRP varies with jumps and liquidity",
+   "modality": "document"
+  }
+ ],
+ "universe": {
+  "rule": "For each calendar month M: Binance USDT-M perps (archive symbols incl. delisted; stablecoins excluded) with >=28 daily bars in M-1, mapped to a Hyperliquid perp (HL info meta incl. isDelisted, fetched 2026-10-05; HL name X -> XUSDT, kX -> 1000XUSDT), ranked by M-1 total quote volume (data.binance.vision 1d klines, reusing data/raw/web/momentum/klines read-only); top 30.",
+  "caveat": "HL listing is a 2026 snapshot including delisted coins, not point in time (HL perps did not exist in 2022). It only restricts the set of coins to ones tradable on HL at some point."
+ },
+ "data": "data.binance.vision futures/um monthly 15m klines, months 2021-12..2026-03 only (holdout guard). Zips streamed in memory, not kept. Compact parquet in data/raw/web/itsm/. Stop if free disk < 2.5 GB; download budget < 800 MB.",
+ "signal": "r_sig = close(last bar of signal window)/open(first bar of signal window) - 1 per coin per day. sigma = sample sd of the same coin's r_sig over the previous 30 days (needs >=20 observations, else no trade when k>0; k=0 needs no sigma). Trade if |r_sig| >= k*sigma and r_sig != 0.",
+ "trade": "Direction sign(r_sig). Enter at open of the first 15m bar of the trade window, exit at close of its last bar. Taker both sides. Missing bars -> no trade. A coin trades only on days in months where it is a universe member. At most one trade per coin per day per config.",
+ "costs": {
+  "primary": "HL taker 4.5 bp + 2 bp slippage per side = 13 bp round trip",
+  "sensitivity": "Binance taker 5 bp + 2 bp per side = 14 bp",
+  "funding": "none: trade windows start at an hour/half-hour after any settlement print and end at the bar close before the next hour boundary, so no 1h/4h/8h Binance print or HL hourly print falls inside a held window"
+ },
+ "grid": [
+  {
+   "id": "F30_L30_k0",
+   "signal_window_utc": "00:00-00:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 0,
+   "note": "Gao et al./Shen et al. template, UTC day"
+  },
+  {
+   "id": "F30_L30_k1",
+   "signal_window_utc": "00:00-00:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 1,
+   "note": "same, |r1|>=1 sigma"
+  },
+  {
+   "id": "F60_L60_k0",
+   "signal_window_utc": "00:00-01:00",
+   "trade_window_utc": "23:00-24:00",
+   "k": 0,
+   "note": "first hour predicts last hour"
+  },
+  {
+   "id": "F60_L60_k1",
+   "signal_window_utc": "00:00-01:00",
+   "trade_window_utc": "23:00-24:00",
+   "k": 1,
+   "note": ""
+  },
+  {
+   "id": "PF_k0",
+   "signal_window_utc": "00:15-01:15",
+   "trade_window_utc": "23:00-24:00",
+   "k": 0,
+   "note": "post-funding window: skips the first 15 min after the 00:00 settlement"
+  },
+  {
+   "id": "PF_k1",
+   "signal_window_utc": "00:15-01:15",
+   "trade_window_utc": "23:00-24:00",
+   "k": 1,
+   "note": ""
+  },
+  {
+   "id": "PL_k0",
+   "signal_window_utc": "23:00-23:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 0,
+   "note": "previous-to-last half-hour predictor (Gao et al. r12)"
+  },
+  {
+   "id": "PL_k1",
+   "signal_window_utc": "23:00-23:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 1,
+   "note": ""
+  },
+  {
+   "id": "BOTH_k0",
+   "signal_window_utc": "00:00-00:30 AND 23:00-23:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 0,
+   "note": "trade only when sign(r1)==sign(r12); k applies to both"
+  },
+  {
+   "id": "BOTH_k1",
+   "signal_window_utc": "00:00-00:30 AND 23:00-23:30",
+   "trade_window_utc": "23:30-24:00",
+   "k": 1,
+   "note": ""
+  },
+  {
+   "id": "US_k0",
+   "signal_window_utc": "09:30-10:00 America/New_York (13:30/14:30 UTC, DST-aware)",
+   "trade_window_utc": "15:30-16:00 America/New_York",
+   "k": 0,
+   "note": "US equity session anchor from lead (ii)"
+  },
+  {
+   "id": "US_k1",
+   "signal_window_utc": "09:30-10:00 America/New_York",
+   "trade_window_utc": "15:30-16:00 America/New_York",
+   "k": 1,
+   "note": ""
+  }
+ ],
+ "splits": {
+  "train": "trade days 2022-01-01..2025-06-30",
+  "validation": "2025-07-01..2026-03-31",
+  "holdout": "2026-04-01 onward: never downloaded, never examined"
+ },
+ "bar_per_split": "n >= 50 trades, net sum > 0, profit factor > 1.2, net sum without the 3 best trades > 0 (primary costs)",
+ "selection": "Among configs that pass the bar on train, pick the one with the highest t-statistic of daily net P&L (trades summed per day, because same-day trades across coins are one correlated bet). Run validation once on that config only. If none passes train, verdict FAIL; validation is run once on the config with the best train daily t-stat for information only.",
+ "reported_not_bar": [
+  "per-year split",
+  "Binance 14 bp costs",
+  "daily-aggregated t-stat and share of positive days",
+  "gross mean bp",
+  "long vs short legs"
+ ]
+}

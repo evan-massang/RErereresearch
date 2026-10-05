@@ -320,6 +320,10 @@ def coverage():
     span = int(ours.twap_id.max() - ours.twap_id.min() + 1) if len(ours) else 0
     out = dict(window_h=round((t1 - t0) / 3.6e6, 2), placements=len(live), via_hypurrscan=len(hs),
                via_history_only=int((live.source == "hist").sum()),
+               # a 'hist' row found within 60 s of placement is usually a race with the next Hypurrscan poll;
+               # one found later is a real Hypurrscan miss (the user was polled for another TWAP)
+               hist_found_after_60s=int(((live.source == "hist") &
+                                         (live.first_seen_ms - live.block_time_ms > 60_000)).sum()),
                hs_share_of_known=round(len(hs) / max(len(live), 1), 3),
                twap_id_span=span, distinct_ids_recorded=int(ours.twap_id.nunique()),
                id_coverage=round(ours.twap_id.nunique() / span, 3) if span else None,
