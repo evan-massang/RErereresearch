@@ -159,7 +159,7 @@ def outcomes(feat: pd.DataFrame, split: str) -> pd.DataFrame:
         _, sc = split_of(r.ct)
         tc = comp.get(r.mint)
         tc = tc if tc is not None and tc < sc else None
-        rec = {"mint": r.mint, "migrated": tc is not None}
+        rec = {"mint": r.mint, "migrated": tc is not None, "ttc": (tc - r.ct) if tc is not None else None}
         g = g_by.get(r.mint)
         # the curve starts at the initial state (vsol 30, vtok 1.073e9) before its first trade
         t0 = r.ct if g is None else min(r.ct, float(g.recv.iloc[0]))

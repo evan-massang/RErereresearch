@@ -59,9 +59,15 @@ def passes(s):
 
 def lift():
     d = pd.read_parquet(SCR / "dev_funding_train.parquet")
-    out = {"n_launches": len(d), "n_creators": int(d.creator.nunique()), "base_mig": round(float(d.migrated.mean()), 4)}
+    # a completion inside the create transaction (ttc < 1 s, a bundled buy of the whole curve) cannot be traded
+    d["instant"] = d.migrated & (d.ttc < 1.0)
+    d["mig_all"] = d.migrated
+    d["migrated"] = d.migrated & ~d.instant
+    print("instant completions", int(d.instant.sum()), "tradable migrations", int(d.migrated.sum()))
+    out = {"instant_completions": int(d.instant.sum()), "tradable_migrations": int(d.migrated.sum()),"n_launches": len(d), "n_creators": int(d.creator.nunique()), "base_mig": round(float(d.migrated.mean()), 4)}
     for col in ("funder_class", "creator_class"):
         t = d.groupby(col).agg(n=("mint", "size"), creators=("creator", "nunique"), mig=("migrated", "mean"),
+                               mig_incl_instant=("mig_all", "mean"), instant=("instant", "sum"),
                                peak2=("peak_x", lambda x: float((x >= 2).mean())),
                                tape_prior_med=("tape_prior", "median"))
         t["lift"] = t.mig / d.migrated.mean()

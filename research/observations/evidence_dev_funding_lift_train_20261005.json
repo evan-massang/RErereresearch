@@ -1,0 +1,188 @@
+{
+ "instant_completions": 33,
+ "tradable_migrations": 24,
+ "n_launches": 2500,
+ "n_creators": 1595,
+ "base_mig": 0.0096,
+ "funder_class": [
+  {
+   "funder_class": "cex",
+   "n": 219,
+   "creators": 183,
+   "mig": 0.0091,
+   "mig_incl_instant": 0.0228,
+   "instant": 3,
+   "peak2": 0.2466,
+   "tape_prior_med": 0.0,
+   "lift": 0.9513
+  },
+  {
+   "funder_class": "farm",
+   "n": 359,
+   "creators": 192,
+   "mig": 0.0,
+   "mig_incl_instant": 0.0139,
+   "instant": 5,
+   "peak2": 0.0529,
+   "tape_prior_med": 3.0,
+   "lift": 0.0
+  },
+  {
+   "funder_class": "fresh",
+   "n": 502,
+   "creators": 380,
+   "mig": 0.008,
+   "mig_incl_instant": 0.0259,
+   "instant": 9,
+   "peak2": 0.1414,
+   "tape_prior_med": 0.0,
+   "lift": 0.83
+  },
+  {
+   "funder_class": "other",
+   "n": 486,
+   "creators": 318,
+   "mig": 0.0082,
+   "mig_incl_instant": 0.0309,
+   "instant": 11,
+   "peak2": 0.1152,
+   "tape_prior_med": 1.0,
+   "lift": 0.8573
+  },
+  {
+   "funder_class": "unknown",
+   "n": 695,
+   "creators": 333,
+   "mig": 0.0187,
+   "mig_incl_instant": 0.023,
+   "instant": 3,
+   "peak2": 0.2619,
+   "tape_prior_med": 7.0,
+   "lift": 1.9484
+  },
+  {
+   "funder_class": "whale",
+   "n": 239,
+   "creators": 189,
+   "mig": 0.0042,
+   "mig_incl_instant": 0.0126,
+   "instant": 2,
+   "peak2": 0.0879,
+   "tape_prior_med": 0.0,
+   "lift": 0.4358
+  }
+ ],
+ "creator_class": [
+  {
+   "creator_class": "aged",
+   "n": 404,
+   "creators": 315,
+   "mig": 0.005,
+   "mig_incl_instant": 0.0074,
+   "instant": 1,
+   "peak2": 0.1213,
+   "tape_prior_med": 0.0,
+   "lift": 0.5157
+  },
+  {
+   "creator_class": "fresh",
+   "n": 900,
+   "creators": 685,
+   "mig": 0.0089,
+   "mig_incl_instant": 0.0444,
+   "instant": 32,
+   "peak2": 0.15,
+   "tape_prior_med": 0.0,
+   "lift": 0.9259
+  },
+  {
+   "creator_class": "heavy",
+   "n": 613,
+   "creators": 265,
+   "mig": 0.0196,
+   "mig_incl_instant": 0.0196,
+   "instant": 0,
+   "peak2": 0.261,
+   "tape_prior_med": 8.0,
+   "lift": 2.0392
+  },
+  {
+   "creator_class": "unknown",
+   "n": 35,
+   "creators": 34,
+   "mig": 0.0,
+   "mig_incl_instant": 0.0,
+   "instant": 0,
+   "peak2": 0.0,
+   "tape_prior_med": 0.0,
+   "lift": 0.0
+  },
+  {
+   "creator_class": "young",
+   "n": 548,
+   "creators": 300,
+   "mig": 0.0036,
+   "mig_incl_instant": 0.0036,
+   "instant": 0,
+   "peak2": 0.1077,
+   "tape_prior_med": 4.0,
+   "lift": 0.3802
+  }
+ ],
+ "filters": {
+  "all": {
+   "n": 2500,
+   "mig": 0.0096,
+   "lift": 1.0,
+   "mig_ci95": [
+    0.0058,
+    0.0136
+   ]
+  },
+  "cex": {
+   "n": 219,
+   "mig": 0.0091,
+   "lift": 0.951,
+   "mig_ci95": [
+    0.0,
+    0.0232
+   ]
+  },
+  "exch": {
+   "n": 458,
+   "mig": 0.0066,
+   "lift": 0.682,
+   "mig_ci95": [
+    0.0,
+    0.0155
+   ]
+  },
+  "aged": {
+   "n": 404,
+   "mig": 0.005,
+   "lift": 0.516,
+   "mig_ci95": [
+    0.0,
+    0.0128
+   ]
+  },
+  "real": {
+   "n": 674,
+   "mig": 0.0074,
+   "lift": 0.773,
+   "mig_ci95": [
+    0.0015,
+    0.0147
+   ]
+  },
+  "notfarm": {
+   "n": 529,
+   "mig": 0.0057,
+   "lift": 0.591,
+   "mig_ci95": [
+    0.0,
+    0.0131
+   ]
+  }
+ }
+}
