@@ -42,6 +42,12 @@ The container clock is not NTP-disciplined, so the scoring offset changes over t
 - Longer per-coin gaps have another cause. They are HL `bbo` quiet periods: `bbo` is event-driven, with up
   to 46 s between WIF updates and 62 gaps over 10 s on kBONK. Binance SPX also has quiet periods. None of
   them line up across streams.
+- **Second known restart, at about 07:22 to 07:23 UTC.** The collector was restarted to add PENGU and kSHIB
+  for the third frozen record, `hllag_theta40_addendum`. The chunks show a **39.5 s all-stream hole from
+  07:22:25 local clock**, and the local clock runs about 2.8 s behind true time. The new log
+  `hllag3.log` was empty at 07:24. This hole falls inside the scoring windows of both earlier records.
+  Both restart holes (05:47 and 07:22) are known, operator-caused gaps. Neither is a feed failure. At
+  07:24, HL `local − exch` was still about −2.6 s after the restart, so the restart did not fix the clock.
 
 **Event-loop stalls.**
 - There are 29 all-stream silences of 0.5 to 1.2 s. Late in each hour they recur every 60 s, which matches
@@ -180,8 +186,11 @@ All traffic goes through the agent proxy. The Cloudflare egress colo is IAD, in 
    the next 2 s.
 4. **Size.** Top-of-book was below $1k on 2 of 5 entries and on both SPX exits. There is no depth data to
    check the slippage proxy.
-5. **Flush stalls.** These stamp messages up to about 1 s late every minute, late in each hour. The 05:47
-   restart left a 35 s hole in the dev-coin window.
+5. **Flush stalls and restarts.** Flush stalls stamp messages up to about 1 s late every minute, late in
+   each hour. The restarts left a 35 s hole at 05:47 and a 39.5 s hole at 07:22. These are known gaps.
+   A trade whose 30 s hold spans a hole is filled at the first quote after the hole.
+7. **The addendum record (PENGU, kSHIB) inherits the same clock bias.** It is scored by the same code on
+   the same unsynced clock, so its official score has the same negative-latency problem.
 6. **Sample.** n = 5 against a bar of n ≥ 50. θ40 results are dominated by a single kBONK trade in every
    variant.
 

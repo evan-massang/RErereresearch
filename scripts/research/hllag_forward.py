@@ -45,6 +45,7 @@ ADD_COINS = {"PENGU": "PENGUUSDT", "kSHIB": "1000SHIBUSDT"}
 RECORDS = {"hllag_theta40": COINS, "hllag_theta40_newcoins": NEW_COINS, "hllag_theta40_addendum": ADD_COINS}
 ALL_COINS = {**COINS, **NEW_COINS, **ADD_COINS}
 PARAMS = dict(theta_bp=40.0, L_ms=300, H_s=30.0, cooldown_s=10.0, close_bp=None, info_lat_ms=300)
+HL_RESTAMP_US = 175_000
 BAR = dict(min_trades=50, net_gt=0.0, pf_gt=1.2, net_ex_top3_gt=0.0)
 
 
@@ -189,6 +190,11 @@ def score(name: str = "hllag_theta40") -> dict:
                     continue
                 df = pd.concat([pd.read_parquet(p) for p in parts], ignore_index=True)
                 df = df[df.local_timestamp >= t0]
+                if kind in ("quotes", "trades") and len(df):
+                    # Scoring amendment 1 (reports/paper/hllag_scoring_amendment.json): this container's clock is
+                    # ~2.8 s behind real time, so HL exchange times cannot be compared with our local times. Re-stamp
+                    # HL rows onto the local clock with the backtest's relation (Tardis receive - exchange ~ +175 ms).
+                    df = df.assign(timestamp=df.local_timestamp - HL_RESTAMP_US)
                 if len(df):
                     df.to_parquet(DAYS / f"{kind}_{day}_{coin}.parquet")   # all coins share the same post-freeze cut
     hl.PQ = DAYS
