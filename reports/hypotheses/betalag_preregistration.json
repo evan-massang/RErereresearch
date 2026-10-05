@@ -1,0 +1,61 @@
+{
+ "hypothesis": "H-BETALAG",
+ "written_at_utc": "2026-10-05T07:43Z (container clock, ~2.8 s slow), before scripts/research/betalag_recorder.py existed or recorded anything",
+ "written_before_data": "Written before any BTC-leader / HOOD / CRCL / MSTR / COIN tick of the betalag recording existed. No price data under data/raw/web/multivenue/ (which records MSTR and COIN but not BTC) has been opened by this session. Seen before writing: the round-8 OWN-PRECHECK 1-min last-trade correlations (sources/leads/documented_edges_round8.md idea 2) and a 2026-10-05 07:42Z metadata check (Lighter orderBooks: BTC 1, COIN 109, HOOD 108, CRCL 121, MSTR 122, all taker_fee 0.0000; xyz metaAndAssetCtxs: growthMode 'enabled' on xyz:COIN, xyz:HOOD, xyz:CRCL, absent on xyz:MSTR; deployerFeeScale 1.0 on all four; MARA and RIOT are listed on neither venue). No prices were analysed.",
+ "statement": "When the Binance USD-M BTCUSDT perp mid moves >= theta bp within 2 s and a crypto-beta equity perp (MSTR, COIN, HOOD, CRCL) on Lighter or trade[XYZ] has not yet followed (its mid has moved < theta*beta/2 in the same direction, beta = 1.0), a follower taker order in BTC's direction, arriving after our latency (plus Lighter's 300 ms Standard-account taker speed bump) and held H seconds, is profitable after fees and the recorded spread.",
+ "source": "sources/leads/documented_edges_round8.md idea 2 (H-BETALAG). Deviations from the leads-file rule, set by the recording brief and stated here before data: (1) BTC trigger window 2 s instead of 10 s (same trigger shape as H-LIGHTLAG/H-EQLAG); (2) beta fixed at 1.0 instead of a trailing 7-day session regression, because the forward recording has no 7-day history at T0 and a fixed beta adds no fitted parameter (no look-ahead possible); (3) entry fills at the displayed opposite best capped at displayed top size (H-LIGHTLAG fill model) instead of walking the book, because only top-of-book is recorded; (4) cooldown 10 s after exit fill (as H-LIGHTLAG) instead of H.",
+ "beta": {"value": 1.0, "type": "fixed, declared before data", "use": "follower filter only: require d * r_F < theta * beta / 2 = theta / 2", "not_used": "no trailing estimate; the beta of each name is not fitted on day 1 or later. A beta-scaled variant would be a new hypothesis id."},
+ "universe": {
+  "leader": {"venue": "binance usd-m", "symbol": "BTCUSDT", "stream": "wss://fstream.binance.com bookTicker (the /market route is the fallback if the legacy route delivers nothing)"},
+  "followers": {
+   "lighter": {"MSTR": 122, "COIN": 109, "HOOD": 108, "CRCL": 121},
+   "xyz": {"COIN": "xyz:COIN", "HOOD": "xyz:HOOD", "CRCL": "xyz:CRCL"}
+  },
+  "excluded": {
+   "xyz:MSTR": "not growth-mode eligible (trade.xyz doc: crypto-wrapper perps such as MSTR) -> 9.0 bp taker per side at tier 0; EXCLUDED from scoring. Its bbo is recorded as a diagnostic only.",
+   "MARA, RIOT": "not listed on Lighter or xyz at 2026-10-05 07:42Z",
+   "BMNR": "listed (Lighter 123, xyz:BMNR) but an ETH-treasury name, not a BTC-beta name; not recorded"
+  }
+ },
+ "data": {
+  "recorder": "scripts/research/betalag_recorder.py -> data/raw/web/betalag/<venue>_bbo_<YYYY-MM-DD-HH>.parquet (binance_bbo: BTC; lighter_bbo: MSTR COIN HOOD CRCL; xyz_bbo: COIN HOOD CRCL MSTR) + meta_xyz.jsonl, meta_lighter.jsonl (hourly) + events.jsonl (connect/disconnect times)",
+  "clock_rule": "All decisions and fills use our local receive timestamps ts_us (microseconds) only; venue timestamps (exch_ts_ms) are diagnostics (the container clock runs ~2.8 s behind venue clocks). A venue state 'at time t' is the last recorded row with ts_us <= t.",
+  "split": {
+   "T0": "start_ts_us of the 48-h betalag recorder run ('start' line in data/raw/web/betalag/recorder.log). Rows before T0 (test runs, kept in a scratch directory) are never scored.",
+   "day1_train": "[T0, T0+24h): exploratory; trigger counts first, then the kill test, then all 12 configs; ONE config selected by the selection rule",
+   "day2_validation": "[T0+24h, T0+48h): the selected config only, run ONCE",
+   "forward": "after day 2: freeze (sha256 of the scoring module, params, frozen_at) and score only data received after the freeze time"
+  },
+  "gaps": "A venue is in a gap from a disconnect event to the first bbo row after the next connect event (events.jsonl), or while the Binance BTC feed has no row for > 10 s. Follower books that are merely quiet (no change) are NOT gaps (the recorder drops unchanged repeats). No trigger may be taken while the leader or that follower venue is in a gap; a position whose entry or exit time falls in a gap is filled at the first state after the gap and flagged."
+ },
+ "sessions": "us_cash = Mon-Fri 13:30-20:00 UTC (NYSE regular hours under EDT, valid for the planned run 2026-10-05..07; if the forward record runs past 2026-11-01 it becomes 14:30-21:00 UTC; NYSE holidays count as off-hours); off_hours = all other times. Session is assigned by the trigger time t. Every result is reported for us_cash and off_hours separately as well as pooled. Session is NOT a grid dimension and NOT used for selection.",
+ "rule": {
+  "binance_mid": "(bid+ask)/2 of BTCUSDT from the binance bbo stream",
+  "trigger": "At each binance BTC bbo row (decision time t = its ts_us): r_B = mid_B(t)/mid_B(t-2s) - 1, with mid_B(t-2s) the last state at or before t-2 s. Trigger if |r_B| >= theta. Direction d = sign(r_B).",
+  "follower_filter": "For each follower f (name x venue) separately: r_F = mid_F(t)/mid_F(t-2s) - 1 with the follower's own last recorded states; require d * r_F < theta * beta / 2 (beta = 1.0). The follower must have a recorded bbo at or before t-2s on the current connection.",
+  "entry": "Taker in direction d on the follower venue. Fill time t_in = t + L (Lighter L = 600 ms = ~300 ms our path, assumed + 300 ms Standard taker speed bump, DOC; xyz L = 300 ms, assumed). Buy fills at the last recorded follower best ask at t_in, sell at best bid.",
+  "exit": "Exit decision at t_in + H; exit fill time t_out = t_in + H + L at the last recorded follower opposite best at t_out.",
+  "position_rules": "one position per name per venue; cooldown 10 s after the exit fill before that name x venue can trigger again; no stop; no early exit.",
+  "size": "target $1,000 notional. Entry size = min($1,000, displayed opposite top-of-book notional at t_in). If that displayed top notional is < $100 the trigger is SKIPPED and counted as a skip. Exit: size up to the displayed opposite top at t_out fills at that price; any excess fills one full spread (ask-bid at t_out) worse.",
+  "fees_per_side": {
+   "lighter": "0 bp (Standard account, DOC docs.lighter.xyz trading-fees and apidocs account-types; hourly orderBooks snapshot taker_fee is used if it changes)",
+   "xyz": "0.9 bp taker (growth mode, tier 0 base rate, DOC docs.trade.xyz fees) x deployerFeeScale, for names whose latest hourly meta snapshot at or before entry shows growthMode 'enabled'; 9.0 bp x deployerFeeScale otherwise (a name losing growth mode during the run pays 9 bp, it is not dropped).",
+   "note": "The spread is paid through the fill model; no zero-impact fills."
+  },
+  "funding": "ignored (holds <= 601 s); positions whose hold spans a venue funding timestamp are counted and reported.",
+  "pnl_unit": "USD per round trip; bp = USD / entry notional * 1e4"
+ },
+ "grid": {
+  "theta_bp": [10, 20],
+  "H_s": [30, 120, 600],
+  "venue_and_latency": [{"venue": "lighter", "names": ["MSTR", "COIN", "HOOD", "CRCL"], "L_ms": 600}, {"venue": "xyz", "names": ["COIN", "HOOD", "CRCL"], "L_ms": 300}],
+  "n_configs": 12,
+  "pooling": "within a config, round trips are pooled over that venue's names"
+ },
+ "kill_test_day1": "Before the grid: for all theta = 10 bp triggers on day 1 that pass the follower filter (no position rules, no size cap), the mean of d * (mid_F(t+120 s)/mid_F(t+L) - 1) in bp, pooled over each venue's names. If it is < 2.5 bp (about one recorded spread) on BOTH venues, H-BETALAG is KILLED regardless of the grid. A venue whose mean is < 2.5 bp is dropped from selection. Reported with n triggers, n distinct BTC triggers, and by session.",
+ "selection_rule_day1": "Among configs with n >= 30 round trips on day 1, select the one with the highest profit factor (ties: larger n). If no config has net USD > 0 and PF > 1.0 on day 1, H-BETALAG is KILLED and day 2 is not run. The selected config must also show net USD > 0 with +0.5 bp extra cost per round trip; if it does not, the next-best config by the same rule that does is taken.",
+ "validation_day2": "Run the selected config once on day 2. Bar: n >= 50 round trips, net USD > 0, PF > 1.2, net without the top-3 trades > 0. If n < 50 the result is INCONCLUSIVE (not a pass); the config is frozen anyway and the forward record continues until n >= 50; no re-selection. A failure is written to reports/failures/.",
+ "dependence_note": "One BTC trigger can open up to 4 (Lighter) or 3 (xyz) correlated positions. Report n round trips AND n distinct BTC triggers; the bar uses round trips (as H-LIGHTLAG/H-EQLAG), but a pass with < 20 distinct BTC triggers is reported as fragile.",
+ "reporting": "Report trigger counts first (BTC triggers per theta, per session; follower-filter pass rates per name x venue), then the kill test, then all 12 day-1 configs by name and session (n, net, mean bp, PF, skips, gap flags), then the day-2 result, losses included. xyz:MSTR is reported only as an unscored diagnostic with its 9 bp fee.",
+ "no_changes": "No change to the universe, beta, trigger, grid, fill model, fees rule, split, kill test or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run)."
+}
