@@ -1,0 +1,233 @@
+{
+ "hypothesis": "H-NARRPEAK",
+ "agent": "narrpeak",
+ "date": "2026-10-05",
+ "is_synthetic": false,
+ "purpose": "Data-completeness check: can the public pump.fun API give complete point-in-time daily copycat creation counts per parent ticker over 2024-2026?",
+ "raw_files": "data/raw/web/narrpeak/ (69 JSON responses, about 6 MB; ~75 requests at 3-4 s spacing; one HTTP 429 seen on an unknown-param probe)",
+ "endpoint_findings": {
+  "frontend-api-v3 /coins?searchTerm=X&sort=created_timestamp": "HTTP 200 but searchTerm is IGNORED: returns the newest coins on the site regardless of term (PENGU query returned MS/DICE/SDUST...). The round-12 lead that this path 'returns 200 with created_timestamp' was true but it is not a search.",
+  "frontend-api-v3 /coins/search": "404",
+  "frontend-api-v3 /coins/search-v2?searchTerm=X&sort=created_timestamp&order=DESC": "200; fuzzy search (e.g. PENGU matches 'Penguin', 'P/ACC Penguin Acceleration'); a few exact/relevance hits pinned at the top regardless of date; limit capped at 50 (limit=200 returned 50); offset is clamped at 500: offsets 500, 550, 600, 1000, 2000, 5000, 10000 for TRUMP all returned the identical page (first mint AcvnRE...). Maximum reachable = about 550 coins per (term, sort, order).",
+  "time-window params": "createdBefore, created_timestamp_lt, before, maxCreatedTimestamp, endTimestamp, cursor: all ignored (same page as no param).",
+  "other hosts": "frontend-api.pump.fun 530; frontend-api-v2.pump.fun 403; advanced-api-v2.pump.fun 530 (Cloudflare 1016).",
+  "aggregation": "search-v2 results include non-pump launchpads and other chains (program raydium_launchpad, meteora_dbc, EVM contract addresses, None). A pump-only count must filter program=='pump'."
+ },
+ "depth_reached_by_newest_550_results": {
+  "TRUMP": "2026-10-04T03:39Z (about 1 day)",
+  "PENGU": "2026-09-30T21:17Z (about 4.6 days; most results are fuzzy 'Penguin' matches)",
+  "POPCAT": "2026-08-17 (about 7 weeks; plus a few pinned older coins back to 2023-12-12)"
+ },
+ "overlap_vs_curve_creates": {
+  "match_rule": "ticker as whole word (regex (?<![a-z0-9])ticker(?![a-z0-9])) in lowercased name or symbol; curve_creates timed by recv; window clipped to the recorder's span 2026-10-01T12:17Z..2026-10-05T03:40Z and to the API's reachable depth",
+  "per_ticker": {
+   "PENGU": {
+    "api_unique_coins_fetched": 548,
+    "api_wordmatch": 86,
+    "api_oldest_created_utc": "2026-09-30T21:17:22",
+    "overlap_window_utc": [
+     "2026-10-01T12:17:18.661581",
+     "2026-10-05T03:40:42.306816"
+    ],
+    "api_in_window": 74,
+    "curve_creates_in_window": 19,
+    "both": 19,
+    "api_only": 55,
+    "curve_only": 0,
+    "per_day_api_curve_both": {
+     "2026-10-01": [
+      6,
+      1,
+      1
+     ],
+     "2026-10-02": [
+      40,
+      3,
+      3
+     ],
+     "2026-10-03": [
+      17,
+      8,
+      8
+     ],
+     "2026-10-04": [
+      7,
+      4,
+      4
+     ],
+     "2026-10-05": [
+      4,
+      3,
+      3
+     ]
+    }
+   },
+   "POPCAT": {
+    "api_unique_coins_fetched": 549,
+    "api_wordmatch": 360,
+    "api_oldest_created_utc": "2023-12-12T20:42:47",
+    "overlap_window_utc": [
+     "2026-10-01T12:17:18.661581",
+     "2026-10-05T03:40:42.306816"
+    ],
+    "api_in_window": 19,
+    "curve_creates_in_window": 5,
+    "both": 5,
+    "api_only": 14,
+    "curve_only": 0,
+    "per_day_api_curve_both": {
+     "2026-10-01": [
+      4,
+      3,
+      3
+     ],
+     "2026-10-02": [
+      1,
+      0,
+      0
+     ],
+     "2026-10-03": [
+      5,
+      1,
+      1
+     ],
+     "2026-10-04": [
+      9,
+      1,
+      1
+     ]
+    }
+   },
+   "TRUMP": {
+    "api_unique_coins_fetched": 548,
+    "api_wordmatch": 451,
+    "api_oldest_created_utc": "2026-10-04T03:39:32",
+    "overlap_window_utc": [
+     "2026-10-04T03:39:32",
+     "2026-10-05T03:40:42.306816"
+    ],
+    "api_in_window": 370,
+    "curve_creates_in_window": 200,
+    "both": 198,
+    "api_only": 172,
+    "curve_only": 2,
+    "per_day_api_curve_both": {
+     "2026-10-04": [
+      345,
+      181,
+      179
+     ],
+     "2026-10-05": [
+      25,
+      19,
+      19
+     ]
+    }
+   }
+  },
+  "api_only_diagnosis": {
+   "PENGU": {
+    "api_only_n": 55,
+    "api_only_program": {
+     "raydium_launchpad": 33,
+     "meteora_dbc": 5,
+     "pump": 12,
+     "None": 5
+    },
+    "both_program": {
+     "pump": 19
+    },
+    "api_only_quote_mint": {
+     "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv": 30,
+     "So11111111111111111111111111111111111111112": 6,
+     "11111111111111111111111111111111": 12,
+     "0x0bd7d308f8e1639fab988df18a8011f41eacad73": 2,
+     "XspzcW1PRtgf6Wj92HCiZdjzKCyFekVD8P5Ueh3dRMX": 1,
+     "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c": 3,
+     "HuAXPyDWDaMYFKuwQHpqL1oPnj93zdzWmtvFGzCeCUa7": 1
+    },
+    "both_quote_mint": {
+     "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W": 1,
+     "11111111111111111111111111111111": 14,
+     "None": 2,
+     "2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv": 2
+    },
+    "api_only_in_recorder_gap_gt120s": 37,
+    "api_only_mint_suffix_pump": 11
+   },
+   "POPCAT": {
+    "api_only_n": 14,
+    "api_only_program": {
+     "None": 12,
+     "pump": 1,
+     "meteora_dbc": 1
+    },
+    "both_program": {
+     "pump": 5
+    },
+    "api_only_quote_mint": {
+     "0x0bd7d308f8e1639fab988df18a8011f41eacad73": 6,
+     "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c": 6,
+     "11111111111111111111111111111111": 1,
+     "So11111111111111111111111111111111111111112": 1
+    },
+    "both_quote_mint": {
+     "11111111111111111111111111111111": 4,
+     "None": 1
+    },
+    "api_only_in_recorder_gap_gt120s": 10,
+    "api_only_mint_suffix_pump": 1
+   },
+   "TRUMP": {
+    "api_only_n": 172,
+    "api_only_program": {
+     "raydium_launchpad": 18,
+     "meteora_dbc": 12,
+     "None": 91,
+     "pump": 46,
+     "0x660eAaEdEBc968f8f3694354FA8EC0b4c5Ba8D12": 3,
+     "0x3f29dD25D1F6ad3D09d1d4A880F8a869E3039153": 2
+    },
+    "both_program": {
+     "pump": 198
+    },
+    "api_only_quote_mint": {
+     "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF": 19,
+     "USD1ttGY1N17NEEHLmELoaybftRBUSErhqYiQzvEmuB": 1,
+     "So11111111111111111111111111111111111111112": 13,
+     "0x3600000000000000000000000000000000000000": 9,
+     "0x1d11f0496982706c5e14a514d4e79f2e6bde4516": 2,
+     "11111111111111111111111111111111": 41,
+     "0x92fd66527192e3e61d4ddd13322aa222de86f9b5": 1,
+     "0xf2ec508422174ee564de98187db9359d318afb6b": 16,
+     "0xbb4cdb9cbd36b01bd1cbaebf2de08d9173bc095c": 35,
+     "0x4200000000000000000000000000000000000006": 8,
+     "0x0bd7d308f8e1639fab988df18a8011f41eacad73": 22,
+     "0xc02aaa39b223fe8d0a0e5c4f27ead9083c756cc2": 1,
+     "0x2d1f7226bd1f780af6b9a49dcc0ae00e8df4bdee": 1,
+     "0x4902c5ebc598265ed2212b559b042de8a5eeec3f": 1,
+     "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN": 1,
+     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 1
+    },
+    "both_quote_mint": {
+     "11111111111111111111111111111111": 171,
+     "DJTu7vi8norVzdVAffgvb39VP7wjKeTsgaMBJrzfxvoF": 13,
+     "None": 4,
+     "EPjFWdd5AufqSSqeM2qN1xzybapC8G4wEGGkZwyTDt1v": 3,
+     "6p6xgHyF7AeE6TZkSmFsko444wqoP15icUSqi2jfGiPN": 3,
+     "XsoCS1TfEyfFhfvj8EtZ528L3CaKBDBRqRapnBbDF2W": 4
+    },
+    "api_only_in_recorder_gap_gt120s": 49,
+    "api_only_mint_suffix_pump": 34
+   }
+  },
+  "reading": "Inside the overlap the API's pump-program coins contain every recorder coin for PENGU (19/19) and POPCAT (5/5) and 198/200 for TRUMP. The API-only extras are mostly other launchpads/chains plus pump coins created during recorder gaps (>120 s between recorded creates). So within the reachable window the API is at least as complete as the recorder; the failure is DEPTH, not recall."
+ },
+ "pump_program_api_only_counts_in_overlap": {
+  "PENGU": 12,
+  "POPCAT": 1,
+  "TRUMP": 46
+ },
+ "completeness_verdict": "NOT COMPLETE. With at most ~550 results per query and no working time filter, daily copycat counts cannot be reconstructed for 2024-2026 for any parent with more than a few hundred lifetime fuzzy matches. TRUMP (~350 word-matching launches on 2026-10-04 alone, all launchpads) is reachable only for its most recent day. No train (<=2025-06-30) or validation (2025-07-01..2026-03-31) counts are reachable. No P&L was computed.",
+ "not_tried": "Dune/Bitquery/Flipside (no API keys in the environment); full Solana RPC scan of pump-program create instructions since 2024-01 (hundreds of millions of signatures; not feasible within the 200 MB / politeness budget)."
+}
