@@ -164,6 +164,9 @@ def simulate(ev, n_h, hold_d, stop, lev=1.0):
     liq_px = pe * (1 + 1 / lev - 0.10)
     stop_px = pe * (1 + stop) if stop else None
     max_high, exit_reason, px, tx = pe, "time", None, None
+    # squeeze risk on the full intended hold path, ignoring any stop/liquidation exit
+    full = [b[3] for b in bars[ie + 1:] if b[0] < t_exit_min]
+    mae_full = (max(full) / pe - 1) if full else 0.0
     for b in bars[ie + 1:]:
         max_high = max(max_high, b[3])
         hit_stop = stop_px is not None and b[3] >= stop_px
@@ -211,7 +214,7 @@ def simulate(ev, n_h, hold_d, stop, lev=1.0):
             "contaminated": ev["contaminated"], "seen23": ev["seen23"], "res": ev["res"], "t_list": ev["t0"], "t_entry": te,
             "t_exit": tx, "entry": pe, "exit": px, "exit_reason": exit_reason,
             "price_ret": price_ret, "funding": fund, "fees": 2 * FEE[ev["venue"]] + 2 * SLIP,
-            "short_ret": short_ret, "eq_ret": eq_ret, "mae": mae, "lev": lev,
+            "short_ret": short_ret, "eq_ret": eq_ret, "mae": mae, "mae_full_window": mae_full, "lev": lev,
             "btc_ret": b1 / b0 - 1, "solEth_ret": 0.5 * (e1 / e0 - 1) + 0.5 * (s1 / s0 - 1)}
 
 
@@ -276,7 +279,13 @@ def run(split):
         counts[k] = counts.get(k, 0) + 1
     out = {"split": split, "beta_btc": beta_btc, "beta_btc_nobs": nb, "beta_solEth": beta_mix,
            "beta_solEth_nobs": nm, "event_counts": counts, "fetch_status": status, "configs": []}
-    for (n_h, hold_d, stop) in GRID:
+    grid = GRID
+    if split == "validation":  # only configs that passed the bar on train, evaluated once
+        tr = load(OBS / "evidence_listshort_train.json")
+        grid = [(c["N_h"], c["hold_d"], c["stop"]) for c in tr["configs"] if c["passes_bar_hedged_btc"]]
+        beta_btc, beta_mix = tr["beta_btc"], tr["beta_solEth"]  # frozen train betas
+        out["beta_btc"], out["beta_solEth"] = beta_btc, beta_mix
+    for (n_h, hold_d, stop) in grid:
         trs = [simulate(e, n_h, hold_d, stop) for e in events if e["split"] == split]
         trs = [t for t in trs if t]
         clean = [t for t in trs if not t["contaminated"]]
@@ -293,6 +302,12 @@ def run(split):
             "mae_median": float(np.median([t["mae"] for t in clean])) if clean else None,
             "mae_p90": float(np.percentile([t["mae"] for t in clean], 90)) if clean else None,
             "mae_max": float(max(t["mae"] for t in clean)) if clean else None,
+            "mae_full_window_median": float(np.median([t["mae_full_window"] for t in clean])) if clean else None,
+            "mae_full_window_p90": float(np.percentile([t["mae_full_window"] for t in clean], 90)) if clean else None,
+            "mae_full_window_max": float(max(t["mae_full_window"] for t in clean)) if clean else None,
+            "n_full_window_mae_ge_40": sum(t["mae_full_window"] >= 0.40 for t in clean),
+            "n_full_window_mae_ge_90": sum(t["mae_full_window"] >= 0.90 for t in clean),
+            "n_full_window_mae_ge_200": sum(t["mae_full_window"] >= 2.0 for t in clean),
             "n_liquidated_1x": sum(t["exit_reason"] == "liquidated" for t in clean),
             "n_mae_ge_40pct": sum(t["mae"] >= 0.40 for t in clean),
             "n_stopped": sum(t["exit_reason"] == "stop" for t in clean),
@@ -302,8 +317,26 @@ def run(split):
     return out
 
 
+def dump_universe():
+    from listshort_classify import ADD, REMOVE
+    events, status = build_events()
+    rows = [{"base": e["base"], "venue": e["venue"], "symbol": e["symbol"], "listing_utc_ms": e["t0"],
+             "split": e["split"], "contaminated": e["contaminated"], "seen23": e["seen23"], "bar_res": e["res"],
+             "n_funding_stamps_40d": len(e["funding"]), "other_listings": e["other_listings"]}
+            for e in sorted(events, key=lambda e: e["t0"])]
+    out = {"meme_source": "CoinGecko category meme-token (api /coins/markets?category=meme-token, 6403 coins, "
+                          "fetched 2026-10-05) + symbol-collision rule + documented identity overrides",
+           "overrides_remove": REMOVE, "overrides_add": ADD, "events": rows,
+           "not_simulated": status, "note": "holdout rows record existence only; no holdout prices fetched"}
+    (OBS / "evidence_listshort_universe.json").write_text(json.dumps(out, indent=1, default=str))
+    print(len(rows), "events;", len(status), "not simulated")
+
+
 if __name__ == "__main__":
     split = sys.argv[1]
+    if split == "universe":
+        dump_universe()
+        sys.exit(0)
     assert split in ("train", "validation"), "holdout is not examined"
     res = run(split)
     OBS.mkdir(parents=True, exist_ok=True)
@@ -318,5 +351,6 @@ if __name__ == "__main__":
               f"PF={r['pf']:.2f} ex3={r['net_ex_top3']:+.2f} med={r['median']:+.3f} | hedgedBTC net={h['net']:+.2f} "
               f"PF={h['pf']:.2f} ex3={h['net_ex_top3']:+.2f} | mix net={c['hedged_solEth']['net']:+.2f} "
               f"| MAE med={c['mae_median']:.2f} p90={c['mae_p90']:.2f} max={c['mae_max']:.2f} "
+              f"fullMAE med={c['mae_full_window_median']:.2f} max={c['mae_full_window_max']:.2f} n>=40%={c['n_full_window_mae_ge_40']} "
               f"liq={c['n_liquidated_1x']} stop={c['n_stopped']} fund={c['funding_mean']:+.3f} "
               f"PASS={c['passes_bar_hedged_btc']}")

@@ -1,0 +1,1161 @@
+{
+ "meme_source": "CoinGecko category meme-token (api /coins/markets?category=meme-token, 6403 coins, fetched 2026-10-05) + symbol-collision rule + documented identity overrides",
+ "overrides_remove": {
+  "AI": "Sleepless AI (perp asset), not the matched 'Artificial Inu'; Sleepless AI not in meme-token",
+  "OMNI": "Omni Network (perp asset), not 'OmniCat'; Omni Network not in meme-token",
+  "AMC": "US stock perp (AMC Entertainment), not a crypto memecoin",
+  "GME": "US stock perp (GameStop), not a crypto memecoin",
+  "HOOD": "US stock perp (Robinhood), not a crypto memecoin",
+  "COPPER": "commodity perp (copper), matched coin is a $9k 'Copper Inu'",
+  "XAU": "commodity perp (gold)",
+  "XPD": "commodity perp (palladium)",
+  "FOOTBALL": "identity unverified; matched coin has a ~$3k market cap",
+  "MILK": "MilkyWay (liquid staking) perp, not 'Cool Cats Milk'",
+  "RONIN": "Ronin network perp, not the $0.4M 'RONIN' meme",
+  "RATS": "ordinals 'rats' perp; matched 'GoldenRat' is a different coin; rats not in meme-token",
+  "X": "X Empire perp; x-empire not in meme-token (matched 'Free Speech' is a different coin)",
+  "KORU": "identity unverified; matched coin has a ~$11k market cap"
+ },
+ "overrides_add": {
+  "HPOS": "HarryPotterObamaSonic10Inu; CoinGecko symbol is BITCOIN, id harrypotterobamasonic10inu in meme-token",
+  "NEIROETH": "Neiro on Ethereum; venue suffix ETH; CoinGecko 'neiro' coins are in meme-token",
+  "BROCCOLI714": "Broccoli (BSC, contract ...714); Broccoli coins are in meme-token",
+  "BROCCOLIF3B": "Broccoli (BSC, contract ...f3b); Broccoli coins are in meme-token"
+ },
+ "events": [
+  {
+   "base": "DOGE",
+   "venue": "BN",
+   "symbol": "DOGEUSDT",
+   "listing_utc_ms": 1594371600000,
+   "split": "pre2023",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 121,
+   "other_listings": [
+    [
+     "HL",
+     "DOGE",
+     1597881599999
+    ]
+   ]
+  },
+  {
+   "base": "SHIB",
+   "venue": "BN",
+   "symbol": "1000SHIBUSDT",
+   "listing_utc_ms": 1620666000000,
+   "split": "pre2023",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 121,
+   "other_listings": [
+    [
+     "HL",
+     "kSHIB",
+     1620691199999
+    ]
+   ]
+  },
+  {
+   "base": "PEOPLE",
+   "venue": "BN",
+   "symbol": "PEOPLEUSDT",
+   "listing_utc_ms": 1640318400000,
+   "split": "pre2023",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 122,
+   "other_listings": [
+    [
+     "HL",
+     "PEOPLE",
+     1640390399999
+    ]
+   ]
+  },
+  {
+   "base": "PEPE",
+   "venue": "HL",
+   "symbol": "kPEPE",
+   "listing_utc_ms": 1683302400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 225,
+   "other_listings": [
+    [
+     "BN",
+     "1000PEPEUSDT",
+     1683302400000
+    ]
+   ]
+  },
+  {
+   "base": "FLOKI",
+   "venue": "BN",
+   "symbol": "1000FLOKIUSDT",
+   "listing_utc_ms": 1683388800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 120,
+   "other_listings": [
+    [
+     "HL",
+     "kFLOKI",
+     1683417599999
+    ]
+   ]
+  },
+  {
+   "base": "HPOS",
+   "venue": "HL",
+   "symbol": "HPOS",
+   "listing_utc_ms": 1683691200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 0,
+   "other_listings": []
+  },
+  {
+   "base": "SHIA",
+   "venue": "HL",
+   "symbol": "SHIA",
+   "listing_utc_ms": 1692734400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 848,
+   "other_listings": []
+  },
+  {
+   "base": "MEME",
+   "venue": "BN",
+   "symbol": "MEMEUSDT",
+   "listing_utc_ms": 1699012800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": [
+    [
+     "HL",
+     "MEME",
+     1699020000120
+    ]
+   ]
+  },
+  {
+   "base": "ORDI",
+   "venue": "BN",
+   "symbol": "ORDIUSDT",
+   "listing_utc_ms": 1699358400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": [
+    [
+     "HL",
+     "ORDI",
+     1699372800370
+    ]
+   ]
+  },
+  {
+   "base": "BONK",
+   "venue": "HL",
+   "symbol": "kBONK",
+   "listing_utc_ms": 1700434800148,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c1d",
+   "n_funding_stamps_40d": 936,
+   "other_listings": [
+    [
+     "BN",
+     "1000BONKUSDT",
+     1700661600000
+    ]
+   ]
+  },
+  {
+   "base": "WIF",
+   "venue": "HL",
+   "symbol": "WIF",
+   "listing_utc_ms": 1703257200182,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c1d",
+   "n_funding_stamps_40d": 944,
+   "other_listings": [
+    [
+     "BN",
+     "WIFUSDT",
+     1705586400000
+    ]
+   ]
+  },
+  {
+   "base": "MYRO",
+   "venue": "HL",
+   "symbol": "MYRO",
+   "listing_utc_ms": 1709625600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 943,
+   "other_listings": [
+    [
+     "BN",
+     "MYROUSDT",
+     1709625600000
+    ]
+   ]
+  },
+  {
+   "base": "BOME",
+   "venue": "HL",
+   "symbol": "BOME",
+   "listing_utc_ms": 1710522000168,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c1d",
+   "n_funding_stamps_40d": 942,
+   "other_listings": [
+    [
+     "BN",
+     "BOMEUSDT",
+     1710590400000
+    ]
+   ]
+  },
+  {
+   "base": "POPCAT",
+   "venue": "HL",
+   "symbol": "POPCAT",
+   "listing_utc_ms": 1714287600161,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c1d",
+   "n_funding_stamps_40d": 952,
+   "other_listings": [
+    [
+     "BN",
+     "POPCATUSDT",
+     1724331600000
+    ]
+   ]
+  },
+  {
+   "base": "NOT",
+   "venue": "HL",
+   "symbol": "NOT",
+   "listing_utc_ms": 1715860800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 932,
+   "other_listings": [
+    [
+     "BN",
+     "NOTUSDT",
+     1715868000000
+    ]
+   ]
+  },
+  {
+   "base": "TURBO",
+   "venue": "HL",
+   "symbol": "TURBO",
+   "listing_utc_ms": 1717070400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 920,
+   "other_listings": [
+    [
+     "BN",
+     "TURBOUSDT",
+     1717081200000
+    ]
+   ]
+  },
+  {
+   "base": "BRETT",
+   "venue": "HL",
+   "symbol": "BRETT",
+   "listing_utc_ms": 1718107200088,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c1d",
+   "n_funding_stamps_40d": 947,
+   "other_listings": [
+    [
+     "BN",
+     "BRETTUSDT",
+     1724148000000
+    ]
+   ]
+  },
+  {
+   "base": "MEW",
+   "venue": "HL",
+   "symbol": "MEW",
+   "listing_utc_ms": 1718625600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 80,
+   "other_listings": [
+    [
+     "BN",
+     "MEWUSDT",
+     1718632800000
+    ]
+   ]
+  },
+  {
+   "base": "DOGS",
+   "venue": "BN",
+   "symbol": "DOGSUSDT",
+   "listing_utc_ms": 1724673600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": [
+    [
+     "HL",
+     "kDOGS",
+     1725336000000
+    ]
+   ]
+  },
+  {
+   "base": "NEIROETH",
+   "venue": "HL",
+   "symbol": "NEIROETH",
+   "listing_utc_ms": 1725624000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 0,
+   "other_listings": [
+    [
+     "BN",
+     "NEIROETHUSDT",
+     1725631200000
+    ]
+   ]
+  },
+  {
+   "base": "NEIRO",
+   "venue": "BN",
+   "symbol": "NEIROUSDT",
+   "listing_utc_ms": 1726484400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": [
+    [
+     "HL",
+     "kNEIRO",
+     1729684800000
+    ]
+   ]
+  },
+  {
+   "base": "BABYDOGE",
+   "venue": "BN",
+   "symbol": "1MBABYDOGEUSDT",
+   "listing_utc_ms": 1726484400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "GHST",
+   "venue": "BN",
+   "symbol": "GHSTUSDT",
+   "listing_utc_ms": 1727096400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "CAT",
+   "venue": "BN",
+   "symbol": "1000CATUSDT",
+   "listing_utc_ms": 1729512000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "GOAT",
+   "venue": "HL",
+   "symbol": "GOAT",
+   "listing_utc_ms": 1729684800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 947,
+   "other_listings": [
+    [
+     "BN",
+     "GOATUSDT",
+     1729774800000
+    ]
+   ]
+  },
+  {
+   "base": "MOODENG",
+   "venue": "HL",
+   "symbol": "MOODENG",
+   "listing_utc_ms": 1729843200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 950,
+   "other_listings": [
+    [
+     "BN",
+     "MOODENGUSDT",
+     1729850400000
+    ]
+   ]
+  },
+  {
+   "base": "PURR",
+   "venue": "HL",
+   "symbol": "PURR",
+   "listing_utc_ms": 1730707200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 950,
+   "other_listings": []
+  },
+  {
+   "base": "PONKE",
+   "venue": "BN",
+   "symbol": "PONKEUSDT",
+   "listing_utc_ms": 1730721600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "MOG",
+   "venue": "BN",
+   "symbol": "1000000MOGUSDT",
+   "listing_utc_ms": 1730980800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "PNUT",
+   "venue": "HL",
+   "symbol": "PNUT",
+   "listing_utc_ms": 1731326400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 884,
+   "other_listings": [
+    [
+     "BN",
+     "PNUTUSDT",
+     1731326400000
+    ]
+   ]
+  },
+  {
+   "base": "ACT",
+   "venue": "BN",
+   "symbol": "ACTUSDT",
+   "listing_utc_ms": 1731326400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "HIPPO",
+   "venue": "BN",
+   "symbol": "HIPPOUSDT",
+   "listing_utc_ms": 1731499200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "DEGEN",
+   "venue": "BN",
+   "symbol": "DEGENUSDT",
+   "listing_utc_ms": 1731668400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "BAN",
+   "venue": "BN",
+   "symbol": "BANUSDT",
+   "listing_utc_ms": 1731927600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "SLERF",
+   "venue": "BN",
+   "symbol": "SLERFUSDT",
+   "listing_utc_ms": 1732186800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "CHILLGUY",
+   "venue": "HL",
+   "symbol": "CHILLGUY",
+   "listing_utc_ms": 1732507200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 954,
+   "other_listings": [
+    [
+     "BN",
+     "CHILLGUYUSDT",
+     1732716000000
+    ]
+   ]
+  },
+  {
+   "base": "CHEEMS",
+   "venue": "BN",
+   "symbol": "1000CHEEMSUSDT",
+   "listing_utc_ms": 1732532400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "WHY",
+   "venue": "BN",
+   "symbol": "1000WHYUSDT",
+   "listing_utc_ms": 1732532400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "SPX",
+   "venue": "HL",
+   "symbol": "SPX",
+   "listing_utc_ms": 1733832000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 282,
+   "other_listings": [
+    [
+     "BN",
+     "SPXUSDT",
+     1733832000000
+    ]
+   ]
+  },
+  {
+   "base": "KOMA",
+   "venue": "BN",
+   "symbol": "KOMAUSDT",
+   "listing_utc_ms": 1733832000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 239,
+   "other_listings": []
+  },
+  {
+   "base": "PENGU",
+   "venue": "HL",
+   "symbol": "PENGU",
+   "listing_utc_ms": 1734436800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 945,
+   "other_listings": [
+    [
+     "BN",
+     "PENGUUSDT",
+     1734451200000
+    ]
+   ]
+  },
+  {
+   "base": "FARTCOIN",
+   "venue": "HL",
+   "symbol": "FARTCOIN",
+   "listing_utc_ms": 1734681600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 948,
+   "other_listings": [
+    [
+     "BN",
+     "FARTCOINUSDT",
+     1734717600000
+    ]
+   ]
+  },
+  {
+   "base": "AIXBT",
+   "venue": "HL",
+   "symbol": "AIXBT",
+   "listing_utc_ms": 1734710400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 667,
+   "other_listings": [
+    [
+     "BN",
+     "AIXBTUSDT",
+     1734717600000
+    ]
+   ]
+  },
+  {
+   "base": "AI16Z",
+   "venue": "HL",
+   "symbol": "AI16Z",
+   "listing_utc_ms": 1735704000000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 955,
+   "other_listings": [
+    [
+     "BN",
+     "AI16ZUSDT",
+     1735822800000
+    ]
+   ]
+  },
+  {
+   "base": "ZEREBRO",
+   "venue": "HL",
+   "symbol": "ZEREBRO",
+   "listing_utc_ms": 1735819200000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 946,
+   "other_listings": [
+    [
+     "BN",
+     "ZEREBROUSDT",
+     1735826400000
+    ]
+   ]
+  },
+  {
+   "base": "GRIFFAIN",
+   "venue": "HL",
+   "symbol": "GRIFFAIN",
+   "listing_utc_ms": 1735819200000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 834,
+   "other_listings": [
+    [
+     "BN",
+     "GRIFFAINUSDT",
+     1735822800000
+    ]
+   ]
+  },
+  {
+   "base": "TRUMP",
+   "venue": "HL",
+   "symbol": "TRUMP",
+   "listing_utc_ms": 1737172800000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 954,
+   "other_listings": [
+    [
+     "BN",
+     "TRUMPUSDT",
+     1737205200000
+    ]
+   ]
+  },
+  {
+   "base": "MELANIA",
+   "venue": "HL",
+   "symbol": "MELANIA",
+   "listing_utc_ms": 1737331200000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 959,
+   "other_listings": [
+    [
+     "BN",
+     "MELANIAUSDT",
+     1737363600000
+    ]
+   ]
+  },
+  {
+   "base": "ANIME",
+   "venue": "HL",
+   "symbol": "ANIME",
+   "listing_utc_ms": 1737460800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 944,
+   "other_listings": [
+    [
+     "BN",
+     "ANIMEUSDT",
+     1737651600000
+    ]
+   ]
+  },
+  {
+   "base": "VINE",
+   "venue": "HL",
+   "symbol": "VINE",
+   "listing_utc_ms": 1737633600000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 944,
+   "other_listings": [
+    [
+     "BN",
+     "VINEUSDT",
+     1737712800000
+    ]
+   ]
+  },
+  {
+   "base": "PIPPIN",
+   "venue": "BN",
+   "symbol": "PIPPINUSDT",
+   "listing_utc_ms": 1737712800000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "JELLY",
+   "venue": "HL",
+   "symbol": "JELLY",
+   "listing_utc_ms": 1738209600000,
+   "split": "train",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c1h",
+   "n_funding_stamps_40d": 955,
+   "other_listings": []
+  },
+  {
+   "base": "TST",
+   "venue": "HL",
+   "symbol": "TST",
+   "listing_utc_ms": 1739088000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 948,
+   "other_listings": [
+    [
+     "BN",
+     "TSTUSDT",
+     1739106000000
+    ]
+   ]
+  },
+  {
+   "base": "MUBARAK",
+   "venue": "BN",
+   "symbol": "MUBARAKUSDT",
+   "listing_utc_ms": 1742216400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "TUT",
+   "venue": "BN",
+   "symbol": "TUTUSDT",
+   "listing_utc_ms": 1742461200000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "BROCCOLI714",
+   "venue": "BN",
+   "symbol": "BROCCOLI714USDT",
+   "listing_utc_ms": 1742547600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 243,
+   "other_listings": []
+  },
+  {
+   "base": "BROCCOLIF3B",
+   "venue": "BN",
+   "symbol": "BROCCOLIF3BUSDT",
+   "listing_utc_ms": 1742547600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 153,
+   "other_listings": []
+  },
+  {
+   "base": "BANANAS31",
+   "venue": "BN",
+   "symbol": "BANANAS31USDT",
+   "listing_utc_ms": 1742634000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 246,
+   "other_listings": []
+  },
+  {
+   "base": "SIREN",
+   "venue": "BN",
+   "symbol": "SIRENUSDT",
+   "listing_utc_ms": 1742634000000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 246,
+   "other_listings": []
+  },
+  {
+   "base": "MEMEFI",
+   "venue": "BN",
+   "symbol": "MEMEFIUSDT",
+   "listing_utc_ms": 1745564400000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "B",
+   "venue": "BN",
+   "symbol": "BUSDT",
+   "listing_utc_ms": 1747929600000,
+   "split": "train",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "BULLA",
+   "venue": "BN",
+   "symbol": "BULLAUSDT",
+   "listing_utc_ms": 1751619600000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "M",
+   "venue": "BN",
+   "symbol": "MUSDT",
+   "listing_utc_ms": 1751878800000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 456,
+   "other_listings": []
+  },
+  {
+   "base": "PUMP",
+   "venue": "HL",
+   "symbol": "PUMP",
+   "listing_utc_ms": 1752105600000,
+   "split": "validation",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 956,
+   "other_listings": []
+  },
+  {
+   "base": "USELESS",
+   "venue": "BN",
+   "symbol": "USELESSUSDT",
+   "listing_utc_ms": 1755259200000,
+   "split": "validation",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "YZY",
+   "venue": "HL",
+   "symbol": "YZY",
+   "listing_utc_ms": 1755734400000,
+   "split": "validation",
+   "contaminated": true,
+   "seen23": true,
+   "bar_res": "c4h",
+   "n_funding_stamps_40d": 956,
+   "other_listings": []
+  },
+  {
+   "base": "TOSHI",
+   "venue": "BN",
+   "symbol": "TOSHIUSDT",
+   "listing_utc_ms": 1758085200000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "4",
+   "venue": "BN",
+   "symbol": "4USDT",
+   "listing_utc_ms": 1759921200000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "GIGGLE",
+   "venue": "BN",
+   "symbol": "GIGGLEUSDT",
+   "listing_utc_ms": 1760000400000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "\u5e01\u5b89\u4eba\u751f",
+   "venue": "BN",
+   "symbol": "\u5e01\u5b89\u4eba\u751fUSDT",
+   "listing_utc_ms": 1760958000000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  },
+  {
+   "base": "\u6211\u8e0f\u9a6c\u6765\u4e86",
+   "venue": "BN",
+   "symbol": "\u6211\u8e0f\u9a6c\u6765\u4e86USDT",
+   "listing_utc_ms": 1769004000000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 274,
+   "other_listings": []
+  },
+  {
+   "base": "BIRB",
+   "venue": "BN",
+   "symbol": "BIRBUSDT",
+   "listing_utc_ms": 1769662800000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 354,
+   "other_listings": []
+  },
+  {
+   "base": "\u9f99\u867e",
+   "venue": "BN",
+   "symbol": "\u9f99\u867eUSDT",
+   "listing_utc_ms": 1773226800000,
+   "split": "validation",
+   "contaminated": false,
+   "seen23": false,
+   "bar_res": "1h",
+   "n_funding_stamps_40d": 240,
+   "other_listings": []
+  }
+ ],
+ "not_simulated": [
+  [
+   "HL",
+   "CASHCAT",
+   "no_data_before_holdout"
+  ],
+  [
+   "HL",
+   "USELESS",
+   "no_data_before_holdout"
+  ],
+  [
+   "BN",
+   "CATUSDT",
+   "holdout_listing"
+  ],
+  [
+   "BN",
+   "MARSCOINUSDT",
+   "holdout_listing"
+  ],
+  [
+   "BN",
+   "PENGUSDT",
+   "holdout_listing"
+  ],
+  [
+   "BN",
+   "PUMPUSDT",
+   "skipped_identity"
+  ],
+  [
+   "BN",
+   "WENUSDT",
+   "holdout_listing"
+  ],
+  [
+   "BN",
+   "\u54c8\u57fa\u7c73USDT",
+   "holdout_listing"
+  ],
+  [
+   "BN",
+   "\u725b\u6765USDT",
+   "holdout_listing"
+  ]
+ ],
+ "note": "holdout rows record existence only; no holdout prices fetched"
+}
