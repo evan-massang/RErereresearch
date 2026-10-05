@@ -1,0 +1,51 @@
+{
+ "hypothesis": "H-NIGHT",
+ "kind": "lead_verification",
+ "is_synthetic": false,
+ "modality": "document",
+ "paper": "Padysak & Vojtko, 'Seasonality, Trend-following, and Mean reversion in Bitcoin', SSRN 4081000 (2022)",
+ "primary_read": false,
+ "primary_access": {
+  "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4081000": "HTTP 403 (curl and WebFetch)",
+  "https://papers.ssrn.com/sol3/Delivery.cfm?abstractid=4081000": "HTTP 403",
+  "https://www.researchgate.net/publication/367721906_Seasonality_Trend-following_and_Mean_reversion_in_Bitcoin": "HTTP 403"
+ },
+ "page_refs": "None verifiable: the PDF was not obtained. Quantpedia attributes return, volatility and drawdown to 'page 9' of the paper (raw HTML; not in the trafilatura snapshot text, so not quote-verified).",
+ "secondary_quotes_verified": [
+  {
+   "observation_id": "obs_e730826faf724388",
+   "source": "Quantpedia (src_45b943f55dc1cad7)",
+   "quote": "In particular, the returns for 22:00 and 23:00 (UTC +0) seem to be the most economically significant."
+  },
+  {
+   "observation_id": "obs_8740801b76f44f50",
+   "source": "Quantpedia",
+   "quote": "To exploit the seasonality, open a long position in the BTC at 22:00 (UTC +0) and hold it for two hours."
+  },
+  {
+   "observation_id": "obs_7de3a1648d674f16",
+   "source": "Quantpedia (paper abstract)",
+   "quote": "The results point to a simple seasonality strategy that is based on holding BTC only for two hours per day."
+  },
+  {
+   "observation_id": "obs_1e492151f8414b4d",
+   "source": "TradingView script IzFZxayj (src_695ea3e78239ffd0)",
+   "quote": "Bitcoin exhibits higher-than-average returns from 21:00 UTC to 23:00 UTC"
+  },
+  {
+   "observation_id": "obs_edb6e6c68a7042af",
+   "source": "TradingView script IzFZxayj",
+   "quote": "maximum drawdown of -22.45%"
+  }
+ ],
+ "secondary_unverified_values": {
+  "Quantpedia raw HTML": "Indicative Performance 33%; Estimated Volatility 20.93%; Maximum Drawdown -34.04%; Sharpe Ratio 1.58; backtest 2015-2021; data from Gemini",
+  "paperswithbacktest blog (not snapshotted)": "21:00-23:00 UTC window; Gemini hourly data October 2015 to February 2022"
+ },
+ "discrepancies": [
+  "Window: Quantpedia 22:00->24:00 vs TradingView/paperswithbacktest 21:00->23:00 (likely bar open- vs close-time labelling of the '22:00 and 23:00' hours). Both tested as arms.",
+  "Max drawdown: -34.04% (Quantpedia) vs -22.45% (TradingView).",
+  "Round-11 lead's '33%/yr, Sharpe 1.58, MDD -34%' matches Quantpedia only."
+ ],
+ "status": "lead; the paper's own claims remain unverified in primary"
+}
