@@ -97,6 +97,7 @@ def episodes(c, L, F, Z, split, dex):
         pliq = p0 * (1 + 1 / LEV) / (1 + mm)
         fund, reason, j, liq = 0.0, None, e, False
         last_close = s0
+        miss = 0
         while True:
             j += 1
             if j > end_i or t[j] - t[j - 1] > 6 * H:   # split end or data gap/delisting: close at last good hour
@@ -104,6 +105,7 @@ def episodes(c, L, F, Z, split, dex):
                 reason = "split_end" if j == end_i else "data_gap"
                 break
             sj = close[j] if np.isfinite(close[j]) else last_close
+            miss += not np.isfinite(close[j])
             fund += rate[j] * sj / s0
             hj = high[j] if np.isfinite(high[j]) else sj
             if hj * (1 + max(prem[j], 0)) >= pliq:
@@ -134,7 +136,8 @@ def episodes(c, L, F, Z, split, dex):
             cost = (PERP_FEE + PERP_IMPACT) * (1 + r1 * (1 + b1)) + dex * (1 + r1) + fixed
         out.append(dict(coin=c.get("name"), entry_ms=int(t[e]), exit_ms=int(t[j]), hours=int((t[j] - t[e]) // H),
                         entry_sig=float(sig[e]), funding=float(fund), basis=float(basis), hedge=float(hedge),
-                        spot_move=float(r1 - 1), cost=float(cost), net=float(fund + hedge - cost), reason=reason))
+                        spot_move=float(r1 - 1), cost=float(cost), net=float(fund + hedge - cost), reason=reason,
+                        spot_missing_h=int(miss)))
         i = j + 1
     return out
 
@@ -156,7 +159,9 @@ def stats(eps):
                 max_dd=dd, worst=dict(coin=w["coin"], net=w["net"], reason=w["reason"], entry_ms=w["entry_ms"]),
                 coins=len({e["coin"] for e in eps}),
                 reasons={k: sum(e["reason"] == k for e in eps) for k in {e["reason"] for e in eps}},
-                liquidations=sum(e["reason"] == "liquidated" for e in eps))
+                liquidations=sum(e["reason"] == "liquidated" for e in eps),
+                spot_missing_h=int(sum(e["spot_missing_h"] for e in eps)),
+                held_h=int(sum(e["hours"] for e in eps)))
 
 
 def passes(s):
