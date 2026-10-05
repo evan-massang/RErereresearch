@@ -1,0 +1,107 @@
+{
+ "written": 1791168285.3586586,
+ "agent": "cto",
+ "universe": "1,124 recorded migrations with 15-min OHLCV (data/raw/web/ohlcv15), migrated 2026-10-01 12:19 to 2026-10-03 08:21 UTC",
+ "orders_queried": 1124,
+ "orders_errors": 0,
+ "orders_fetched_between_utc": [
+  1791167037.6057456,
+  1791168240.9573197
+ ],
+ "order_types": {
+  "tokenProfile/approved": 224,
+  "communityTakeover/approved": 1,
+  "tokenAd/approved": 2,
+  "tokenProfile/cancelled": 1,
+  "tokenProfile/on-hold": 1
+ },
+ "mints_with_boosts": 39,
+ "cto_orders": [
+  {
+   "mint": "5C7JRjLwW3GvEe1EP6ppok5o8BbcgWFBqLBF3KpjngKH",
+   "pool": "7HHZULU3qXW5oo3xwDXgYrQmtiuMoPspnQD8mizvcAuo",
+   "payment": 1790861314.098,
+   "migrated_recv": 1790881419.4,
+   "payment_minus_migration_min": -335.1,
+   "status": "approved",
+   "note": "paid before migration; excluded (not an abandoned migrated token at CTO time)"
+  }
+ ],
+ "cto_counts": {
+  "train": 0,
+  "validation": 0,
+  "before_migration_excluded": 1,
+  "after_1791072000": 0
+ },
+ "visibility_lag_s_sorted": [
+  39.49600005149841,
+  52.914000034332275,
+  80.27899980545044,
+  186.393000125885,
+  197.19799995422363,
+  330.6640000343323,
+  645.4830000400543,
+  1464.316999912262,
+  1612.651999950409,
+  5349.3259999752045
+ ],
+ "public_feed_sample": {
+  "fetched_utc": "2026-10-05 ~02:40",
+  "entries": [
+   {
+    "chain": "solana",
+    "mint": "H7wJ1wbbdu4ZCom6yegVaJxWBvdjLQ3NaNZbJsb8vAni",
+    "claimDate": "2026-10-04T21:37:06.998Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "BbJJUTuGV2B7tJ99YeryiCBFLG39Hoc4RTzEwchtpump",
+    "claimDate": "2026-10-04T21:34:29.714Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "89gZQFtEe3RJctXghdbEmht8SV2vQvcN4DNyjmappump",
+    "claimDate": "2026-10-04T21:17:33.198Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "ANLEpx1hMMGJ2vHwENrVhH1gkysDNwf5p4uNKJxGpump",
+    "claimDate": "2026-10-04T21:07:04.366Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "6YJKTPy3t5cz5Q2W3KDh7DHqHq2R1CPdKLbDSmSHpump",
+    "claimDate": "2026-10-04T19:01:05.177Z"
+   },
+   {
+    "chain": "robinhood",
+    "mint": "0x11B70d0243baf75E85CE03201A92b5B7C33BEB59",
+    "claimDate": "2026-10-04T18:46:36.953Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "8LrdSu2tYaehRRZxD8SDbBskXFEeCNd6n11PAJgtpump",
+    "claimDate": "2026-10-04T18:45:50.175Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "6rXCb1aK833n9Xy5Y6VPXpScNAuzQzu3jvSUs6cN2RGy",
+    "claimDate": "2026-10-04T15:16:57.214Z"
+   },
+   {
+    "chain": "solana",
+    "mint": "5tzjoTepg3tEupgKBjedF2SapniNaDrt1cVqdU4UfkjG",
+    "claimDate": "2026-10-04T14:34:48.824Z"
+   },
+   {
+    "chain": "ethereum",
+    "mint": "0x57737DED3870E43FEd7D80d31e0ced3d5Fb0cccC",
+    "claimDate": "2026-10-04T08:18:42.623Z"
+   }
+  ],
+  "note": "10 entries spanning 2026-10-04 08:18-21:37 UTC; 8 solana, 6 pump-suffix mints. Pair ages via /tokens/v1: of 5 pumpswap pairs only 1 was <1 day old (BbJJ.., 5 h); others 9 days to 17 months old."
+ },
+ "grid_configs_declared": 18,
+ "grid_run": false,
+ "reason": "0 CTO trades in train or validation"
+}

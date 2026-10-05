@@ -1,0 +1,95 @@
+{
+ "recv": 1791167037.7317271,
+ "rows": [
+  {
+   "chain": "solana",
+   "mint": "H7wJ1wbbdu4ZCom6yegVaJxWBvdjLQ3NaNZbJsb8vAni",
+   "claim": 1791149826.998,
+   "payments": [
+    1791144477.672
+   ],
+   "lag_s": 5349.3259999752045
+  },
+  {
+   "chain": "solana",
+   "mint": "BbJJUTuGV2B7tJ99YeryiCBFLG39Hoc4RTzEwchtpump",
+   "claim": 1791149669.714,
+   "payments": [
+    1791149024.231
+   ],
+   "lag_s": 645.4830000400543
+  },
+  {
+   "chain": "solana",
+   "mint": "89gZQFtEe3RJctXghdbEmht8SV2vQvcN4DNyjmappump",
+   "claim": 1791148653.198,
+   "payments": [
+    1791148613.702
+   ],
+   "lag_s": 39.49600005149841
+  },
+  {
+   "chain": "solana",
+   "mint": "ANLEpx1hMMGJ2vHwENrVhH1gkysDNwf5p4uNKJxGpump",
+   "claim": 1791148024.366,
+   "payments": [
+    1791147971.452
+   ],
+   "lag_s": 52.914000034332275
+  },
+  {
+   "chain": "solana",
+   "mint": "6YJKTPy3t5cz5Q2W3KDh7DHqHq2R1CPdKLbDSmSHpump",
+   "claim": 1791140465.177,
+   "payments": [
+    1791140278.784
+   ],
+   "lag_s": 186.393000125885
+  },
+  {
+   "chain": "robinhood",
+   "mint": "0x11B70d0243baf75E85CE03201A92b5B7C33BEB59",
+   "claim": 1791139596.953,
+   "payments": [
+    1791137984.301
+   ],
+   "lag_s": 1612.651999950409
+  },
+  {
+   "chain": "solana",
+   "mint": "8LrdSu2tYaehRRZxD8SDbBskXFEeCNd6n11PAJgtpump",
+   "claim": 1791139550.175,
+   "payments": [
+    1791139219.511
+   ],
+   "lag_s": 330.6640000343323
+  },
+  {
+   "chain": "solana",
+   "mint": "6rXCb1aK833n9Xy5Y6VPXpScNAuzQzu3jvSUs6cN2RGy",
+   "claim": 1791127017.214,
+   "payments": [
+    1791125552.897
+   ],
+   "lag_s": 1464.316999912262
+  },
+  {
+   "chain": "solana",
+   "mint": "5tzjoTepg3tEupgKBjedF2SapniNaDrt1cVqdU4UfkjG",
+   "claim": 1791124488.824,
+   "payments": [
+    1791124408.545
+   ],
+   "lag_s": 80.27899980545044
+  },
+  {
+   "chain": "ethereum",
+   "mint": "0x57737DED3870E43FEd7D80d31e0ced3d5Fb0cccC",
+   "claim": 1791101922.623,
+   "payments": [
+    1791101725.425
+   ],
+   "lag_s": 197.19799995422363
+  }
+ ]
+}
