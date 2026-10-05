@@ -1,0 +1,2892 @@
+{
+ "split": "validation",
+ "prereg": "reports/hypotheses/datedbasis_preregistration.json",
+ "is_synthetic": false,
+ "variants": {
+  "V1_base": {
+   "cfg": {
+    "margin": 0.02,
+    "early": false,
+    "coins": null
+   },
+   "skipped": {
+    "no_bar": 0,
+    "zero_vol": 22,
+    "no_settle": 0,
+    "no_spot": 0
+   },
+   "primary_r_ex": {
+    "n": 28,
+    "net": 0.0956944993370114,
+    "mean": 0.0034176606906075498,
+    "median": 0.00394897686908441,
+    "pf": 9.107921176811056,
+    "ex_top3": 0.0662648134192901,
+    "win": 0.75,
+    "ann_raw": 0.05142973258631368,
+    "ann_ex": 0.010768305810102996,
+    "worst": -0.0033181023165045117,
+    "clusters": 11
+   },
+   "raw_r": {
+    "n": 28,
+    "net": 0.34178227330961414,
+    "mean": 0.012206509761057648,
+    "median": 0.011936889801319212,
+    "pf": Infinity,
+    "ex_top3": 0.279226902460386,
+    "win": 1.0,
+    "ann_raw": 0.05142973258631368,
+    "ann_ex": 0.010768305810102996,
+    "worst": 0.004571944941288774,
+    "clusters": 11
+   },
+   "passes_bar": false,
+   "cluster_level": {
+    "n_clusters": 11,
+    "net": 0.0956944993370114,
+    "pf": 9.116791957299682,
+    "ex_top3": 0.034000582580107436
+   },
+   "exit_kinds": {
+    "delivery": 28
+   },
+   "by_entry_quarter": {
+    "2025Q2": {
+     "count": 3,
+     "sum": 0.00727
+    },
+    "2025Q3": {
+     "count": 20,
+     "sum": 0.06882
+    },
+    "2025Q4": {
+     "count": 5,
+     "sum": 0.0196
+    }
+   },
+   "by_coin": {
+    "ADA": {
+     "count": 1,
+     "sum": 0.00491,
+     "mean": 0.00491
+    },
+    "BTC": {
+     "count": 11,
+     "sum": 0.02638,
+     "mean": 0.0024
+    },
+    "ETH": {
+     "count": 6,
+     "sum": 0.02885,
+     "mean": 0.00481
+    },
+    "LINK": {
+     "count": 7,
+     "sum": 0.01723,
+     "mean": 0.00246
+    },
+    "XRP": {
+     "count": 3,
+     "sum": 0.01833,
+     "mean": 0.00611
+    }
+   },
+   "by_market": {
+    "cm": {
+     "count": 22,
+     "sum": 0.10748,
+     "mean": 0.00489
+    },
+    "um": {
+     "count": 6,
+     "sum": -0.01179,
+     "mean": -0.00196
+    }
+   },
+   "by_delivery": {
+    "2025-09-26": {
+     "count": 16,
+     "sum": 0.04554
+    },
+    "2025-12-26": {
+     "count": 12,
+     "sum": 0.05015
+    }
+   },
+   "without_2024Q4": {
+    "n": 28,
+    "net": 0.0956944993370114,
+    "mean": 0.0034176606906075498,
+    "median": 0.00394897686908441,
+    "pf": 9.107921176811056,
+    "ex_top3": 0.0662648134192901,
+    "win": 0.75,
+    "ann_raw": 0.05142973258631368,
+    "ann_ex": 0.010768305810102996,
+    "worst": -0.0033181023165045117,
+    "clusters": 11
+   },
+   "settle_vs_spot_bp": {
+    "count": 11.0,
+    "mean": 1.15,
+    "std": 6.16,
+    "min": -7.94,
+    "25%": -3.36,
+    "50%": 0.36,
+    "75%": 6.8,
+    "max": 7.37
+   },
+   "sensitivities": {
+    "slip_x2": {
+     "n": 17,
+     "net": 0.05211554223484423,
+     "mean": 0.0030656201314614253,
+     "median": 0.0037980819282084875,
+     "pf": 6.939402444859716,
+     "ex_top3": 0.025441175542463546,
+     "win": 0.6470588235294118,
+     "ann_raw": 0.05042742620132832,
+     "ann_ex": 0.010115675876847132,
+     "worst": -0.0017598592655983826,
+     "clusters": 9
+    },
+    "spot_fee_bnb": {
+     "n": 35,
+     "net": 0.13156646400634564,
+     "mean": 0.0037590418287527325,
+     "median": 0.004004955752913552,
+     "pf": 9.965684083336331,
+     "ex_top3": 0.09741701729887567,
+     "win": 0.7714285714285715,
+     "ann_raw": 0.05271296831939203,
+     "ann_ex": 0.011956335628461733,
+     "worst": -0.0030654435904717715,
+     "clusters": 12
+    },
+    "settle_30min": {
+     "n": 28,
+     "net": 0.0940859643531466,
+     "mean": 0.0033602130126123785,
+     "median": 0.003854495045303795,
+     "pf": 8.846545556880221,
+     "ex_top3": 0.06470956405593044,
+     "win": 0.7142857142857143,
+     "ann_raw": 0.05121611503610368,
+     "ann_ex": 0.010554688259892999,
+     "worst": -0.0033126825309866027,
+     "clusters": 11
+    },
+    "usdm_margin_0.5": {
+     "n": 28,
+     "net": 0.11338673659367422,
+     "mean": 0.004049526306916937,
+     "median": 0.00394897686908441,
+     "pf": 8791.37457033909,
+     "ex_top3": 0.08395705067595294,
+     "win": 0.9642857142857143,
+     "ann_raw": 0.05757014085989105,
+     "ann_ex": 0.016885729812983884,
+     "worst": -1.289896530419412e-05,
+     "clusters": 11
+    }
+   },
+   "trades": [
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.091981,
+     "hurdle": 0.0625,
+     "r_raw": 0.013557,
+     "r_ex": 0.004907
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.076163,
+     "hurdle": 0.0625,
+     "r_raw": 0.010223,
+     "r_ex": -0.003318
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.089278,
+     "hurdle": 0.0625,
+     "r_raw": 0.005875,
+     "r_ex": -0.001146
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.072456,
+     "hurdle": 0.0605,
+     "r_raw": 0.00978,
+     "r_ex": -0.003124
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083398,
+     "hurdle": 0.0594,
+     "r_raw": 0.009748,
+     "r_ex": -0.001294
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.079932,
+     "hurdle": 0.0587,
+     "r_raw": 0.007207,
+     "r_ex": -0.001412
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.077969,
+     "hurdle": 0.0625,
+     "r_raw": 0.019969,
+     "r_ex": 0.006428
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.086106,
+     "hurdle": 0.0624,
+     "r_raw": 0.011554,
+     "r_ex": 0.003737
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096127,
+     "hurdle": 0.0625,
+     "r_raw": 0.011818,
+     "r_ex": 0.004798
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.087012,
+     "hurdle": 0.0594,
+     "r_raw": 0.020889,
+     "r_ex": 0.009847
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.085009,
+     "hurdle": 0.0587,
+     "r_raw": 0.015981,
+     "r_ex": 0.007362
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.077871,
+     "hurdle": 0.0586,
+     "r_raw": 0.012361,
+     "r_ex": 0.004505
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.079144,
+     "hurdle": 0.0594,
+     "r_raw": 0.009546,
+     "r_ex": -0.001496
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096446,
+     "hurdle": 0.0625,
+     "r_raw": 0.012056,
+     "r_ex": 0.005035
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.097096,
+     "hurdle": 0.0614,
+     "r_raw": 0.007807,
+     "r_ex": 0.002556
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083885,
+     "hurdle": 0.0594,
+     "r_raw": 0.021111,
+     "r_ex": 0.010069
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.077539,
+     "hurdle": 0.0589,
+     "r_raw": 0.01719,
+     "r_ex": 0.007035
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.078415,
+     "hurdle": 0.0587,
+     "r_raw": 0.014267,
+     "r_ex": 0.005648
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.085468,
+     "hurdle": 0.0625,
+     "r_raw": 0.017702,
+     "r_ex": 0.004161
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.11618,
+     "hurdle": 0.0624,
+     "r_raw": 0.00846,
+     "r_ex": 0.000643
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.104392,
+     "hurdle": 0.0625,
+     "r_raw": 0.014379,
+     "r_ex": 0.007359
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-04 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 53.291667,
+     "basis_ann": 0.12134,
+     "hurdle": 0.0619,
+     "r_raw": 0.006105,
+     "r_ex": -1.3e-05
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.105703,
+     "hurdle": 0.0614,
+     "r_raw": 0.008514,
+     "r_ex": 0.003263
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.152369,
+     "hurdle": 0.0612,
+     "r_raw": 0.004572,
+     "r_ex": 0.000137
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.153022,
+     "hurdle": 0.061,
+     "r_raw": 0.005306,
+     "r_ex": 0.001678
+    },
+    {
+     "symbol": "XRPUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.109075,
+     "hurdle": 0.0624,
+     "r_raw": 0.013134,
+     "r_ex": 0.005317
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.085167,
+     "hurdle": 0.0594,
+     "r_raw": 0.020555,
+     "r_ex": 0.009514
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.082207,
+     "hurdle": 0.0587,
+     "r_raw": 0.012118,
+     "r_ex": 0.003499
+    }
+   ],
+   "top5": [
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.010069447932425767
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.009846720736332203
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.009513517248963321
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.0073622126500848695
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.007359084320081124
+    }
+   ],
+   "bottom5": [
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0033181023165045117
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.00312351024890385
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.001496088119121974
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0014121525618118764
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0012943302423602827
+    }
+   ]
+  },
+  "V2_cash_hurdle": {
+   "cfg": {
+    "margin": 0.0,
+    "early": false,
+    "coins": null
+   },
+   "skipped": {
+    "no_bar": 0,
+    "zero_vol": 22,
+    "no_settle": 0,
+    "no_spot": 0
+   },
+   "primary_r_ex": {
+    "n": 94,
+    "net": 0.09452871878211667,
+    "mean": 0.0010056246678948582,
+    "median": 0.0004830788871897757,
+    "pf": 1.774327316162226,
+    "ex_top3": 0.06191051716141788,
+    "win": 0.574468085106383,
+    "ann_raw": 0.03940899953688804,
+    "ann_ex": -0.0008758578067927027,
+    "worst": -0.013556055032065643,
+    "clusters": 15
+   },
+   "raw_r": {
+    "n": 94,
+    "net": 0.9187988557684181,
+    "mean": 0.00977445591242998,
+    "median": 0.008733192143819003,
+    "pf": 52.85205592242779,
+    "ex_top3": 0.8549617914013233,
+    "win": 0.9680851063829787,
+    "ann_raw": 0.03940899953688804,
+    "ann_ex": -0.0008758578067927027,
+    "worst": -0.007526468145502831,
+    "clusters": 15
+   },
+   "passes_bar": true,
+   "cluster_level": {
+    "n_clusters": 15,
+    "net": 0.09452871878211667,
+    "pf": 1.835304630741416,
+    "ex_top3": -0.02720406952896217
+   },
+   "exit_kinds": {
+    "delivery": 91,
+    "margin_event": 3
+   },
+   "by_entry_quarter": {
+    "2025Q2": {
+     "count": 14,
+     "sum": -0.01197
+    },
+    "2025Q3": {
+     "count": 62,
+     "sum": 0.10185
+    },
+    "2025Q4": {
+     "count": 17,
+     "sum": 0.00429
+    },
+    "2026Q1": {
+     "count": 1,
+     "sum": 0.00036
+    }
+   },
+   "by_coin": {
+    "ADA": {
+     "count": 8,
+     "sum": 0.02736,
+     "mean": 0.00342
+    },
+    "BTC": {
+     "count": 37,
+     "sum": 0.02275,
+     "mean": 0.00061
+    },
+    "ETH": {
+     "count": 28,
+     "sum": -0.01124,
+     "mean": -0.0004
+    },
+    "LINK": {
+     "count": 8,
+     "sum": 0.01579,
+     "mean": 0.00197
+    },
+    "LTC": {
+     "count": 4,
+     "sum": -0.00069,
+     "mean": -0.00017
+    },
+    "XRP": {
+     "count": 9,
+     "sum": 0.04057,
+     "mean": 0.00451
+    }
+   },
+   "by_market": {
+    "cm": {
+     "count": 64,
+     "sum": 0.207,
+     "mean": 0.00323
+    },
+    "um": {
+     "count": 30,
+     "sum": -0.11247,
+     "mean": -0.00375
+    }
+   },
+   "by_delivery": {
+    "2025-09-26": {
+     "count": 51,
+     "sum": 0.0245
+    },
+    "2025-12-26": {
+     "count": 38,
+     "sum": 0.07995
+    },
+    "2026-03-27": {
+     "count": 5,
+     "sum": -0.00992
+    }
+   },
+   "without_2024Q4": {
+    "n": 94,
+    "net": 0.09452871878211667,
+    "mean": 0.0010056246678948582,
+    "median": 0.0004830788871897757,
+    "pf": 1.774327316162226,
+    "ex_top3": 0.06191051716141788,
+    "win": 0.574468085106383,
+    "ann_raw": 0.03940899953688804,
+    "ann_ex": -0.0008758578067927027,
+    "worst": -0.013556055032065643,
+    "clusters": 15
+   },
+   "settle_vs_spot_bp": {
+    "count": 15.0,
+    "mean": 0.88,
+    "std": 5.83,
+    "min": -7.94,
+    "25%": -3.36,
+    "50%": 0.36,
+    "75%": 6.61,
+    "max": 7.37
+   },
+   "sensitivities": {
+    "slip_x2": {
+     "n": 72,
+     "net": 0.06848712816309746,
+     "mean": 0.0009512101133763536,
+     "median": 0.0007125458218880539,
+     "pf": 1.716762700628767,
+     "ex_top3": 0.038623074507224325,
+     "win": 0.5416666666666666,
+     "ann_raw": 0.03934389706544783,
+     "ann_ex": -0.0011451325227175308,
+     "worst": -0.012002076762809542,
+     "clusters": 13
+    },
+    "spot_fee_bnb": {
+     "n": 105,
+     "net": 0.1155074732992614,
+     "mean": 0.00110007117427868,
+     "median": 0.0007724384316920973,
+     "pf": 1.8646679845024408,
+     "ex_top3": 0.08135802659179146,
+     "win": 0.6,
+     "ann_raw": 0.03969829856924368,
+     "ann_ex": -0.0005205843598496124,
+     "worst": -0.013233598819913858,
+     "clusters": 16
+    },
+    "settle_30min": {
+     "n": 94,
+     "net": 0.09145122694377482,
+     "mean": 0.000972885393018881,
+     "median": 0.00046388176638039293,
+     "pf": 1.7447371932935085,
+     "ex_top3": 0.05891740683627211,
+     "win": 0.574468085106383,
+     "ann_raw": 0.03929391203226073,
+     "ann_ex": -0.000990945311420021,
+     "worst": -0.013556055032065643,
+     "clusters": 15
+    },
+    "usdm_margin_0.5": {
+     "n": 94,
+     "net": 0.14701769116169866,
+     "mean": 0.0015640179910819006,
+     "median": 0.000923453965843471,
+     "pf": 2.945572807746191,
+     "ex_top3": 0.11439948954099982,
+     "win": 0.648936170212766,
+     "ann_raw": 0.0450935015104776,
+     "ann_ex": 0.0047728323801308585,
+     "worst": -0.015741459390332526,
+     "clusters": 15
+    }
+   },
+   "trades": [
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.066367,
+     "hurdle": 0.0425,
+     "r_raw": 0.02176,
+     "r_ex": 0.008219
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-06-30 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.062987,
+     "hurdle": 0.042,
+     "r_raw": 0.00682,
+     "r_ex": -0.00334
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.091981,
+     "hurdle": 0.0425,
+     "r_raw": 0.013557,
+     "r_ex": 0.004907
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.088451,
+     "hurdle": 0.0424,
+     "r_raw": 0.008271,
+     "r_ex": 0.000454
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.091618,
+     "hurdle": 0.0425,
+     "r_raw": 0.019722,
+     "r_ex": 0.012702
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-08-04 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 53.291667,
+     "basis_ann": 0.083782,
+     "hurdle": 0.0419,
+     "r_raw": 0.006579,
+     "r_ex": 0.000461
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.09535,
+     "hurdle": 0.0414,
+     "r_raw": 0.008623,
+     "r_ex": 0.003373
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.09935,
+     "hurdle": 0.041,
+     "r_raw": 0.004209,
+     "r_ex": 0.000581
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.076163,
+     "hurdle": 0.0425,
+     "r_raw": 0.010223,
+     "r_ex": -0.003318
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.06645,
+     "hurdle": 0.0425,
+     "r_raw": 0.007958,
+     "r_ex": -0.004768
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.070293,
+     "hurdle": 0.0425,
+     "r_raw": 0.005414,
+     "r_ex": -0.003236
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.079967,
+     "hurdle": 0.0424,
+     "r_raw": 0.005624,
+     "r_ex": -0.002193
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.089278,
+     "hurdle": 0.0425,
+     "r_raw": 0.005875,
+     "r_ex": -0.001146
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.081679,
+     "hurdle": 0.0414,
+     "r_raw": 0.003663,
+     "r_ex": -0.001588
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.094493,
+     "hurdle": 0.041,
+     "r_raw": 0.002252,
+     "r_ex": -0.001375
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.072456,
+     "hurdle": 0.0405,
+     "r_raw": 0.00978,
+     "r_ex": -0.003124
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.070722,
+     "hurdle": 0.0392,
+     "r_raw": 0.008733,
+     "r_ex": -0.003005
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083398,
+     "hurdle": 0.0394,
+     "r_raw": 0.009748,
+     "r_ex": -0.001294
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.069844,
+     "hurdle": 0.0389,
+     "r_raw": 0.007435,
+     "r_ex": -0.002721
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.065407,
+     "hurdle": 0.0387,
+     "r_raw": 0.006075,
+     "r_ex": -0.003286
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.079932,
+     "hurdle": 0.0387,
+     "r_raw": 0.007207,
+     "r_ex": -0.001412
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.07351,
+     "hurdle": 0.0386,
+     "r_raw": 0.005455,
+     "r_ex": -0.002402
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-20 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.06023,
+     "hurdle": 0.0384,
+     "r_raw": 0.003908,
+     "r_ex": -0.003172
+    },
+    {
+     "symbol": "BTCUSDT_260327",
+     "entry": "2025-12-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.049709,
+     "hurdle": 0.0373,
+     "r_raw": 0.005559,
+     "r_ex": -0.006325
+    },
+    {
+     "symbol": "BTCUSDT_260327",
+     "entry": "2025-12-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.052017,
+     "hurdle": 0.0356,
+     "r_raw": 0.004495,
+     "r_ex": -0.004116
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.077969,
+     "hurdle": 0.0425,
+     "r_raw": 0.019969,
+     "r_ex": 0.006428
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.06915,
+     "hurdle": 0.0425,
+     "r_raw": 0.016046,
+     "r_ex": 0.00332
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.073835,
+     "hurdle": 0.0425,
+     "r_raw": 0.010763,
+     "r_ex": 0.002112
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.086106,
+     "hurdle": 0.0424,
+     "r_raw": 0.011554,
+     "r_ex": 0.003737
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096127,
+     "hurdle": 0.0425,
+     "r_raw": 0.011818,
+     "r_ex": 0.004798
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.083548,
+     "hurdle": 0.0414,
+     "r_raw": 0.006666,
+     "r_ex": 0.001415
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.078826,
+     "hurdle": 0.0412,
+     "r_raw": 0.003953,
+     "r_ex": -0.000482
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.09698,
+     "hurdle": 0.041,
+     "r_raw": 0.0037,
+     "r_ex": 7.3e-05
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.071951,
+     "hurdle": 0.0405,
+     "r_raw": 0.020966,
+     "r_ex": 0.008062
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.069857,
+     "hurdle": 0.0392,
+     "r_raw": 0.017944,
+     "r_ex": 0.006207
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.087012,
+     "hurdle": 0.0394,
+     "r_raw": 0.020889,
+     "r_ex": 0.009847
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.070585,
+     "hurdle": 0.0389,
+     "r_raw": 0.015654,
+     "r_ex": 0.005498
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.066287,
+     "hurdle": 0.0387,
+     "r_raw": 0.013391,
+     "r_ex": 0.00403
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.085009,
+     "hurdle": 0.0387,
+     "r_raw": 0.015981,
+     "r_ex": 0.007362
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.077871,
+     "hurdle": 0.0386,
+     "r_raw": 0.012361,
+     "r_ex": 0.004505
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-20 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.062585,
+     "hurdle": 0.0384,
+     "r_raw": 0.008882,
+     "r_ex": 0.001803
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-27 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.064622,
+     "hurdle": 0.0377,
+     "r_raw": 0.008219,
+     "r_ex": 0.001991
+    },
+    {
+     "symbol": "BTCUSD_260327",
+     "entry": "2025-12-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.05281,
+     "hurdle": 0.0373,
+     "r_raw": 0.011802,
+     "r_ex": -8.2e-05
+    },
+    {
+     "symbol": "BTCUSD_260327",
+     "entry": "2025-12-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.049654,
+     "hurdle": 0.0362,
+     "r_raw": 0.011079,
+     "r_ex": 0.00024
+    },
+    {
+     "symbol": "BTCUSD_260327",
+     "entry": "2026-01-05 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.056947,
+     "hurdle": 0.0354,
+     "r_raw": 0.008248,
+     "r_ex": 0.000364
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "days": 68.166667,
+     "basis_ann": 0.069344,
+     "hurdle": 0.0425,
+     "r_raw": -0.003706,
+     "r_ex": -0.011643
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "days": 60.708333,
+     "basis_ann": 0.056996,
+     "hurdle": 0.0425,
+     "r_raw": -0.006487,
+     "r_ex": -0.013556
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "days": 30.916667,
+     "basis_ann": 0.069557,
+     "hurdle": 0.0425,
+     "r_raw": -0.007526,
+     "r_ex": -0.011126
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.074515,
+     "hurdle": 0.0424,
+     "r_raw": 0.004946,
+     "r_ex": -0.002871
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.084806,
+     "hurdle": 0.0425,
+     "r_raw": 0.005309,
+     "r_ex": -0.001712
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.085049,
+     "hurdle": 0.0414,
+     "r_raw": 0.003536,
+     "r_ex": -0.001714
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.065154,
+     "hurdle": 0.0405,
+     "r_raw": 0.008733,
+     "r_ex": -0.00417
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.064254,
+     "hurdle": 0.0392,
+     "r_raw": 0.007969,
+     "r_ex": -0.003769
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.079144,
+     "hurdle": 0.0394,
+     "r_raw": 0.009546,
+     "r_ex": -0.001496
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.071251,
+     "hurdle": 0.0389,
+     "r_raw": 0.007438,
+     "r_ex": -0.002718
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.06155,
+     "hurdle": 0.0387,
+     "r_raw": 0.00576,
+     "r_ex": -0.003602
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.072828,
+     "hurdle": 0.0387,
+     "r_raw": 0.006422,
+     "r_ex": -0.002197
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.061055,
+     "hurdle": 0.0386,
+     "r_raw": 0.004437,
+     "r_ex": -0.00342
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.068429,
+     "hurdle": 0.0425,
+     "r_raw": 0.016526,
+     "r_ex": 0.002985
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.057994,
+     "hurdle": 0.0425,
+     "r_raw": 0.012961,
+     "r_ex": 0.000235
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.075521,
+     "hurdle": 0.0425,
+     "r_raw": 0.010856,
+     "r_ex": 0.002206
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.082076,
+     "hurdle": 0.0424,
+     "r_raw": 0.009803,
+     "r_ex": 0.001986
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096446,
+     "hurdle": 0.0425,
+     "r_raw": 0.012056,
+     "r_ex": 0.005035
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.097096,
+     "hurdle": 0.0414,
+     "r_raw": 0.007807,
+     "r_ex": 0.002556
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.078971,
+     "hurdle": 0.0412,
+     "r_raw": 0.004287,
+     "r_ex": -0.000148
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.084898,
+     "hurdle": 0.041,
+     "r_raw": 0.002478,
+     "r_ex": -0.00115
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.060739,
+     "hurdle": 0.0405,
+     "r_raw": 0.017865,
+     "r_ex": 0.004962
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.062532,
+     "hurdle": 0.0392,
+     "r_raw": 0.016234,
+     "r_ex": 0.004497
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083885,
+     "hurdle": 0.0394,
+     "r_raw": 0.021111,
+     "r_ex": 0.010069
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.077539,
+     "hurdle": 0.0389,
+     "r_raw": 0.01719,
+     "r_ex": 0.007035
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.066408,
+     "hurdle": 0.0387,
+     "r_raw": 0.013171,
+     "r_ex": 0.00381
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.078415,
+     "hurdle": 0.0387,
+     "r_raw": 0.014267,
+     "r_ex": 0.005648
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.067122,
+     "hurdle": 0.0386,
+     "r_raw": 0.010886,
+     "r_ex": 0.003029
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.085468,
+     "hurdle": 0.0425,
+     "r_raw": 0.017702,
+     "r_ex": 0.004161
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-06-30 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.063338,
+     "hurdle": 0.042,
+     "r_raw": 0.00872,
+     "r_ex": -0.00144
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.11618,
+     "hurdle": 0.0424,
+     "r_raw": 0.00846,
+     "r_ex": 0.000643
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.104392,
+     "hurdle": 0.0425,
+     "r_raw": 0.014379,
+     "r_ex": 0.007359
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-04 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 53.291667,
+     "basis_ann": 0.12134,
+     "hurdle": 0.0419,
+     "r_raw": 0.006105,
+     "r_ex": -1.3e-05
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.105703,
+     "hurdle": 0.0414,
+     "r_raw": 0.008514,
+     "r_ex": 0.003263
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.152369,
+     "hurdle": 0.0412,
+     "r_raw": 0.004572,
+     "r_ex": 0.000137
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.153022,
+     "hurdle": 0.041,
+     "r_raw": 0.005306,
+     "r_ex": 0.001678
+    },
+    {
+     "symbol": "LTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.062829,
+     "hurdle": 0.0425,
+     "r_raw": 0.014632,
+     "r_ex": 0.001091
+    },
+    {
+     "symbol": "LTCUSD_250926",
+     "entry": "2025-06-30 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.066237,
+     "hurdle": 0.042,
+     "r_raw": 0.009815,
+     "r_ex": -0.000345
+    },
+    {
+     "symbol": "LTCUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.071602,
+     "hurdle": 0.0424,
+     "r_raw": 0.005873,
+     "r_ex": -0.001944
+    },
+    {
+     "symbol": "LTCUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.091482,
+     "hurdle": 0.0412,
+     "r_raw": 0.00494,
+     "r_ex": 0.000505
+    },
+    {
+     "symbol": "XRPUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.109075,
+     "hurdle": 0.0424,
+     "r_raw": 0.013134,
+     "r_ex": 0.005317
+    },
+    {
+     "symbol": "XRPUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.09115,
+     "hurdle": 0.0425,
+     "r_raw": 0.00889,
+     "r_ex": 0.00187
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.070534,
+     "hurdle": 0.0405,
+     "r_raw": 0.020741,
+     "r_ex": 0.007838
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-08 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 109.291667,
+     "basis_ann": 0.064285,
+     "hurdle": 0.0392,
+     "r_raw": 0.013872,
+     "r_ex": 0.002134
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.085167,
+     "hurdle": 0.0394,
+     "r_raw": 0.020555,
+     "r_ex": 0.009514
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.076055,
+     "hurdle": 0.0389,
+     "r_raw": 0.017114,
+     "r_ex": 0.006959
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-29 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 88.291667,
+     "basis_ann": 0.067297,
+     "hurdle": 0.0387,
+     "r_raw": 0.01346,
+     "r_ex": 0.004098
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.082207,
+     "hurdle": 0.0387,
+     "r_raw": 0.012118,
+     "r_ex": 0.003499
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.065453,
+     "hurdle": 0.0386,
+     "r_raw": 0.007195,
+     "r_ex": -0.000662
+    }
+   ],
+   "top5": [
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.012702032951940855
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.010069447932425767
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.009846720736332203
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.009513517248963321
+    },
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.008218965396921442
+    }
+   ],
+   "bottom5": [
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "r_ex": -0.013556055032065643
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "r_ex": -0.01164309245333149
+    },
+    {
+     "symbol": "ETHUSDT_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "margin_event",
+     "r_ex": -0.01112635399025169
+    },
+    {
+     "symbol": "BTCUSDT_260327",
+     "entry": "2025-12-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.006325118967234702
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-09 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.004767601145867793
+    }
+   ]
+  },
+  "V3_high_hurdle": {
+   "cfg": {
+    "margin": 0.05,
+    "early": false,
+    "coins": null
+   },
+   "skipped": {
+    "no_bar": 0,
+    "zero_vol": 22,
+    "no_settle": 0,
+    "no_spot": 0
+   },
+   "primary_r_ex": {
+    "n": 2,
+    "net": 0.0018151369771133553,
+    "mean": 0.0009075684885566776,
+    "median": 0.0009075684885566776,
+    "pf": Infinity,
+    "ex_top3": 0.0,
+    "win": 1.0,
+    "ann_raw": 0.05036187959254113,
+    "ann_ex": 0.009252064252208165,
+    "worst": 0.00013683078603763266,
+    "clusters": 1
+   },
+   "raw_r": {
+    "n": 2,
+    "net": 0.009877534237387327,
+    "mean": 0.0049387671186936636,
+    "median": 0.0049387671186936636,
+    "pf": Infinity,
+    "ex_top3": 0.0,
+    "win": 1.0,
+    "ann_raw": 0.05036187959254113,
+    "ann_ex": 0.009252064252208165,
+    "worst": 0.004571944941288774,
+    "clusters": 1
+   },
+   "passes_bar": false,
+   "cluster_level": {
+    "n_clusters": 1,
+    "net": 0.0018151369771133553,
+    "pf": Infinity,
+    "ex_top3": 0.0
+   },
+   "exit_kinds": {
+    "delivery": 2
+   },
+   "by_entry_quarter": {
+    "2025Q3": {
+     "count": 2,
+     "sum": 0.00182
+    }
+   },
+   "by_coin": {
+    "LINK": {
+     "count": 2,
+     "sum": 0.00182,
+     "mean": 0.00091
+    }
+   },
+   "by_market": {
+    "cm": {
+     "count": 2,
+     "sum": 0.00182,
+     "mean": 0.00091
+    }
+   },
+   "by_delivery": {
+    "2025-09-26": {
+     "count": 2,
+     "sum": 0.00182
+    }
+   },
+   "without_2024Q4": {
+    "n": 2,
+    "net": 0.0018151369771133553,
+    "mean": 0.0009075684885566776,
+    "median": 0.0009075684885566776,
+    "pf": Infinity,
+    "ex_top3": 0.0,
+    "win": 1.0,
+    "ann_raw": 0.05036187959254113,
+    "ann_ex": 0.009252064252208165,
+    "worst": 0.00013683078603763266,
+    "clusters": 1
+   },
+   "settle_vs_spot_bp": {
+    "count": 1.0,
+    "mean": 6.75,
+    "std": NaN,
+    "min": 6.75,
+    "25%": 6.75,
+    "50%": 6.75,
+    "75%": 6.75,
+    "max": 6.75
+   },
+   "sensitivities": {
+    "slip_x2": {
+     "n": 0
+    },
+    "spot_fee_bnb": {
+     "n": 2,
+     "net": 0.002820327795829645,
+     "mean": 0.0014101638979148224,
+     "median": 0.0014101638979148224,
+     "pf": Infinity,
+     "ex_top3": 0.0,
+     "win": 1.0,
+     "ann_raw": 0.055487114062873155,
+     "ann_ex": 0.014377298722540195,
+     "worst": 0.0006392427383052216,
+     "clusters": 1
+    },
+    "settle_30min": {
+     "n": 2,
+     "net": 0.0015230507778921424,
+     "mean": 0.0007615253889460712,
+     "median": 0.0007615253889460712,
+     "pf": 167.0817495043428,
+     "ex_top3": 0.0,
+     "win": 0.5,
+     "ann_raw": 0.048872599873609056,
+     "ann_ex": 0.007762784533276092,
+     "worst": -9.170488524100698e-06,
+     "clusters": 1
+    },
+    "usdm_margin_0.5": {
+     "n": 2,
+     "net": 0.0018151369771133553,
+     "mean": 0.0009075684885566776,
+     "median": 0.0009075684885566776,
+     "pf": Infinity,
+     "ex_top3": 0.0,
+     "win": 1.0,
+     "ann_raw": 0.05036187959254113,
+     "ann_ex": 0.009252064252208165,
+     "worst": 0.00013683078603763266,
+     "clusters": 1
+    }
+   },
+   "trades": [
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.152369,
+     "hurdle": 0.0912,
+     "r_raw": 0.004572,
+     "r_ex": 0.000137
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.153022,
+     "hurdle": 0.091,
+     "r_raw": 0.005306,
+     "r_ex": 0.001678
+    }
+   ],
+   "top5": [
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.0016783061910757226
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.00013683078603763266
+    }
+   ],
+   "bottom5": [
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.00013683078603763266
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.0016783061910757226
+    }
+   ]
+  },
+  "V4_base_early_exit": {
+   "cfg": {
+    "margin": 0.02,
+    "early": true,
+    "coins": null
+   },
+   "skipped": {
+    "no_bar": 0,
+    "zero_vol": 22,
+    "no_settle": 0,
+    "no_spot": 0
+   },
+   "primary_r_ex": {
+    "n": 28,
+    "net": 0.09387127532113375,
+    "mean": 0.0033525455471833483,
+    "median": 0.003794849861430894,
+    "pf": 11.996112034348199,
+    "ex_top3": 0.06688507536226956,
+    "win": 0.7857142857142857,
+    "ann_raw": 0.054672476091866484,
+    "ann_ex": 0.013672661001269364,
+    "worst": -0.0033181023165045117,
+    "clusters": 11
+   },
+   "raw_r": {
+    "n": 28,
+    "net": 0.29400199449921594,
+    "mean": 0.010500071232114855,
+    "median": 0.009914754800515097,
+    "pf": Infinity,
+    "ex_top3": 0.23990945268741815,
+    "win": 1.0,
+    "ann_raw": 0.054672476091866484,
+    "ann_ex": 0.013672661001269364,
+    "worst": 0.004571944941288774,
+    "clusters": 11
+   },
+   "passes_bar": false,
+   "cluster_level": {
+    "n_clusters": 11,
+    "net": 0.09387127532113372,
+    "pf": 12.012752182128882,
+    "ex_top3": 0.03326652176231601
+   },
+   "exit_kinds": {
+    "delivery": 16,
+    "early": 12
+   },
+   "by_entry_quarter": {
+    "2025Q2": {
+     "count": 3,
+     "sum": 0.00727
+    },
+    "2025Q3": {
+     "count": 20,
+     "sum": 0.07032
+    },
+    "2025Q4": {
+     "count": 5,
+     "sum": 0.01628
+    }
+   },
+   "by_coin": {
+    "ADA": {
+     "count": 1,
+     "sum": 0.00491,
+     "mean": 0.00491
+    },
+    "BTC": {
+     "count": 11,
+     "sum": 0.02625,
+     "mean": 0.00239
+    },
+    "ETH": {
+     "count": 6,
+     "sum": 0.03288,
+     "mean": 0.00548
+    },
+    "LINK": {
+     "count": 7,
+     "sum": 0.01723,
+     "mean": 0.00246
+    },
+    "XRP": {
+     "count": 3,
+     "sum": 0.01261,
+     "mean": 0.0042
+    }
+   },
+   "by_market": {
+    "cm": {
+     "count": 22,
+     "sum": 0.10067,
+     "mean": 0.00458
+    },
+    "um": {
+     "count": 6,
+     "sum": -0.0068,
+     "mean": -0.00113
+    }
+   },
+   "by_delivery": {
+    "2025-09-26": {
+     "count": 16,
+     "sum": 0.04554
+    },
+    "2025-12-26": {
+     "count": 12,
+     "sum": 0.04833
+    }
+   },
+   "without_2024Q4": {
+    "n": 28,
+    "net": 0.09387127532113375,
+    "mean": 0.0033525455471833483,
+    "median": 0.003794849861430894,
+    "pf": 11.996112034348199,
+    "ex_top3": 0.06688507536226956,
+    "win": 0.7857142857142857,
+    "ann_raw": 0.054672476091866484,
+    "ann_ex": 0.013672661001269364,
+    "worst": -0.0033181023165045117,
+    "clusters": 11
+   },
+   "settle_vs_spot_bp": {
+    "count": 11.0,
+    "mean": 1.15,
+    "std": 6.16,
+    "min": -7.94,
+    "25%": -3.36,
+    "50%": 0.36,
+    "75%": 6.8,
+    "max": 7.37
+   },
+   "sensitivities": {
+    "slip_x2": {
+     "n": 17,
+     "net": 0.051475711461674574,
+     "mean": 0.0030279830271573278,
+     "median": 0.0037980819282084875,
+     "pf": 9.621295882635593,
+     "ex_top3": 0.026991196566839407,
+     "win": 0.7058823529411765,
+     "ann_raw": 0.05442869792279899,
+     "ann_ex": 0.01382286518169544,
+     "worst": -0.001521607269908556,
+     "clusters": 9
+    },
+    "spot_fee_bnb": {
+     "n": 35,
+     "net": 0.12981115806611362,
+     "mean": 0.0037088902304603893,
+     "median": 0.00376765128364689,
+     "pf": 12.735171039546586,
+     "ex_top3": 0.09595590716815589,
+     "win": 0.8,
+     "ann_raw": 0.05583985869236181,
+     "ann_ex": 0.01478668913086687,
+     "worst": -0.0030654435904717715,
+     "clusters": 12
+    },
+    "settle_30min": {
+     "n": 28,
+     "net": 0.09245876440909043,
+     "mean": 0.0033020987288960866,
+     "median": 0.0037738271093015483,
+     "pf": 11.650375886516722,
+     "ex_top3": 0.06553932900924217,
+     "win": 0.75,
+     "ann_raw": 0.054450281839030085,
+     "ann_ex": 0.013450466748432968,
+     "worst": -0.0033126825309866027,
+     "clusters": 11
+    },
+    "usdm_margin_0.5": {
+     "n": 28,
+     "net": 0.11057584170402303,
+     "mean": 0.003949137203715108,
+     "median": 0.004006904542336155,
+     "pf": 8573.45826283982,
+     "ex_top3": 0.08358964174515886,
+     "win": 0.9642857142857143,
+     "ann_raw": 0.061678259519742956,
+     "ann_ex": 0.020629084614612814,
+     "worst": -1.289896530419412e-05,
+     "clusters": 11
+    }
+   },
+   "trades": [
+    {
+     "symbol": "ADAUSD_250926",
+     "entry": "2025-07-14 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.091981,
+     "hurdle": 0.0625,
+     "r_raw": 0.013557,
+     "r_ex": 0.004907
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.076163,
+     "hurdle": 0.0625,
+     "r_raw": 0.010223,
+     "r_ex": -0.003318
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.089278,
+     "hurdle": 0.0625,
+     "r_raw": 0.005875,
+     "r_ex": -0.001146
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 105.0,
+     "basis_ann": 0.072456,
+     "hurdle": 0.0605,
+     "r_raw": 0.009107,
+     "r_ex": -0.002544
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 91.0,
+     "basis_ann": 0.083398,
+     "hurdle": 0.0594,
+     "r_raw": 0.009114,
+     "r_ex": -0.000709
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 70.0,
+     "basis_ann": 0.079932,
+     "hurdle": 0.0587,
+     "r_raw": 0.006615,
+     "r_ex": -0.000807
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.077969,
+     "hurdle": 0.0625,
+     "r_raw": 0.019969,
+     "r_ex": 0.006428
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.086106,
+     "hurdle": 0.0624,
+     "r_raw": 0.011554,
+     "r_ex": 0.003737
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096127,
+     "hurdle": 0.0625,
+     "r_raw": 0.011818,
+     "r_ex": 0.004798
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 56.0,
+     "basis_ann": 0.087012,
+     "hurdle": 0.0594,
+     "r_raw": 0.015295,
+     "r_ex": 0.00925
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 35.0,
+     "basis_ann": 0.085009,
+     "hurdle": 0.0587,
+     "r_raw": 0.010419,
+     "r_ex": 0.006708
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 28.0,
+     "basis_ann": 0.077871,
+     "hurdle": 0.0586,
+     "r_raw": 0.006814,
+     "r_ex": 0.003853
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 63.0,
+     "basis_ann": 0.079144,
+     "hurdle": 0.0594,
+     "r_raw": 0.008521,
+     "r_ex": 0.001721
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096446,
+     "hurdle": 0.0625,
+     "r_raw": 0.012056,
+     "r_ex": 0.005035
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.097096,
+     "hurdle": 0.0614,
+     "r_raw": 0.007807,
+     "r_ex": 0.002556
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 56.0,
+     "basis_ann": 0.083885,
+     "hurdle": 0.0594,
+     "r_raw": 0.016422,
+     "r_ex": 0.010377
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 49.0,
+     "basis_ann": 0.077539,
+     "hurdle": 0.0589,
+     "r_raw": 0.012515,
+     "r_ex": 0.007292
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 35.0,
+     "basis_ann": 0.078415,
+     "hurdle": 0.0587,
+     "r_raw": 0.009607,
+     "r_ex": 0.005896
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.085468,
+     "hurdle": 0.0625,
+     "r_raw": 0.017702,
+     "r_ex": 0.004161
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.11618,
+     "hurdle": 0.0624,
+     "r_raw": 0.00846,
+     "r_ex": 0.000643
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.104392,
+     "hurdle": 0.0625,
+     "r_raw": 0.014379,
+     "r_ex": 0.007359
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-04 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 53.291667,
+     "basis_ann": 0.12134,
+     "hurdle": 0.0619,
+     "r_raw": 0.006105,
+     "r_ex": -1.3e-05
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.105703,
+     "hurdle": 0.0614,
+     "r_raw": 0.008514,
+     "r_ex": 0.003263
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-18 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 39.291667,
+     "basis_ann": 0.152369,
+     "hurdle": 0.0612,
+     "r_raw": 0.004572,
+     "r_ex": 0.000137
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-08-25 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 32.291667,
+     "basis_ann": 0.153022,
+     "hurdle": 0.061,
+     "r_raw": 0.005306,
+     "r_ex": 0.001678
+    },
+    {
+     "symbol": "XRPUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.109075,
+     "hurdle": 0.0624,
+     "r_raw": 0.013134,
+     "r_ex": 0.005317
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 63.0,
+     "basis_ann": 0.085167,
+     "hurdle": 0.0594,
+     "r_raw": 0.013463,
+     "r_ex": 0.006663
+    },
+    {
+     "symbol": "XRPUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "days": 42.0,
+     "basis_ann": 0.082207,
+     "hurdle": 0.0587,
+     "r_raw": 0.005082,
+     "r_ex": 0.000629
+    }
+   ],
+   "top5": [
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": 0.01037723228542661
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": 0.009249883353356438
+    },
+    {
+     "symbol": "LINKUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.007359084320081124
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": 0.0072923197610651955
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": 0.006708274483502688
+    }
+   ],
+   "bottom5": [
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0033181023165045117
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": -0.002544034657890831
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0011455112380362323
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": -0.0008073727579093436
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "early",
+     "r_ex": -0.0007088496996506231
+    }
+   ]
+  },
+  "V5_btc_eth_only": {
+   "cfg": {
+    "margin": 0.02,
+    "early": false,
+    "coins": [
+     "BTC",
+     "ETH"
+    ]
+   },
+   "skipped": {
+    "no_bar": 0,
+    "zero_vol": 0,
+    "no_settle": 0,
+    "no_spot": 0
+   },
+   "primary_r_ex": {
+    "n": 17,
+    "net": 0.055229629886295886,
+    "mean": 0.003248801758017405,
+    "median": 0.004504855319974053,
+    "pf": 5.684568274786326,
+    "ex_top3": 0.027951248567453055,
+    "win": 0.6470588235294118,
+    "ann_raw": 0.04790361515918775,
+    "ann_ex": 0.007502198481178482,
+    "worst": -0.0033181023165045117,
+    "clusters": 7
+   },
+   "raw_r": {
+    "n": 17,
+    "net": 0.21738049746620455,
+    "mean": 0.012787088086247327,
+    "median": 0.011818116928950862,
+    "pf": Infinity,
+    "ex_top3": 0.1554120028758596,
+    "win": 1.0,
+    "ann_raw": 0.04790361515918775,
+    "ann_ex": 0.007502198481178482,
+    "worst": 0.005874751319041393,
+    "clusters": 7
+   },
+   "passes_bar": false,
+   "cluster_level": {
+    "n_clusters": 7,
+    "net": 0.05522962988629589,
+    "pf": 5.684568274786326,
+    "ex_top3": -0.004198365265984297
+   },
+   "exit_kinds": {
+    "delivery": 17
+   },
+   "by_entry_quarter": {
+    "2025Q2": {
+     "count": 2,
+     "sum": 0.00311
+    },
+    "2025Q3": {
+     "count": 11,
+     "sum": 0.03602
+    },
+    "2025Q4": {
+     "count": 4,
+     "sum": 0.0161
+    }
+   },
+   "by_coin": {
+    "BTC": {
+     "count": 11,
+     "sum": 0.02638,
+     "mean": 0.0024
+    },
+    "ETH": {
+     "count": 6,
+     "sum": 0.02885,
+     "mean": 0.00481
+    }
+   },
+   "by_market": {
+    "cm": {
+     "count": 11,
+     "sum": 0.06702,
+     "mean": 0.00609
+    },
+    "um": {
+     "count": 6,
+     "sum": -0.01179,
+     "mean": -0.00196
+    }
+   },
+   "by_delivery": {
+    "2025-09-26": {
+     "count": 7,
+     "sum": 0.01809
+    },
+    "2025-12-26": {
+     "count": 10,
+     "sum": 0.03714
+    }
+   },
+   "without_2024Q4": {
+    "n": 17,
+    "net": 0.055229629886295886,
+    "mean": 0.003248801758017405,
+    "median": 0.004504855319974053,
+    "pf": 5.684568274786326,
+    "ex_top3": 0.027951248567453055,
+    "win": 0.6470588235294118,
+    "ann_raw": 0.04790361515918775,
+    "ann_ex": 0.007502198481178482,
+    "worst": -0.0033181023165045117,
+    "clusters": 7
+   },
+   "settle_vs_spot_bp": {
+    "count": 7.0,
+    "mean": -0.02,
+    "std": 5.89,
+    "min": -7.94,
+    "25%": -3.36,
+    "50%": -0.03,
+    "75%": 3.61,
+    "max": 7.37
+   },
+   "sensitivities": {
+    "slip_x2": {
+     "n": 10,
+     "net": 0.041288855555962664,
+     "mean": 0.004128885555596267,
+     "median": 0.005121975031182465,
+     "pf": 9.234597030262254,
+     "ex_top3": 0.015845109928904682,
+     "win": 0.7,
+     "ann_raw": 0.05070232171357695,
+     "ann_ex": 0.010877169449716558,
+     "worst": -0.0017598592655983826,
+     "clusters": 6
+    },
+    "spot_fee_bnb": {
+     "n": 21,
+     "net": 0.06899320980558411,
+     "mean": 0.003285390943123053,
+     "median": 0.004242825952130472,
+     "pf": 5.701588111255882,
+     "ex_top3": 0.039482824401184176,
+     "win": 0.6190476190476191,
+     "ann_raw": 0.0479220258366958,
+     "ann_ex": 0.007468546423760177,
+     "worst": -0.0030654435904717715,
+     "clusters": 8
+    },
+    "settle_30min": {
+     "n": 17,
+     "net": 0.05473400616988526,
+     "mean": 0.0032196474217579566,
+     "median": 0.00444208729691729,
+     "pf": 5.629404884047633,
+     "ex_top3": 0.027565246940625936,
+     "win": 0.6470588235294118,
+     "ann_raw": 0.04781017238156759,
+     "ann_ex": 0.007408755703558327,
+     "worst": -0.0033126825309866027,
+     "clusters": 7
+    },
+    "usdm_margin_0.5": {
+     "n": 17,
+     "net": 0.07292186714295873,
+     "mean": 0.004289521596644631,
+     "median": 0.004504855319974053,
+     "pf": Infinity,
+     "ex_top3": 0.045643485824115905,
+     "win": 1.0,
+     "ann_raw": 0.056009698179259985,
+     "ann_ex": 0.015619704049077084,
+     "worst": 0.00014118210884709465,
+     "clusters": 7
+    }
+   },
+   "trades": [
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.076163,
+     "hurdle": 0.0625,
+     "r_raw": 0.010223,
+     "r_ex": -0.003318
+    },
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.089278,
+     "hurdle": 0.0625,
+     "r_raw": 0.005875,
+     "r_ex": -0.001146
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.072456,
+     "hurdle": 0.0605,
+     "r_raw": 0.00978,
+     "r_ex": -0.003124
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083398,
+     "hurdle": 0.0594,
+     "r_raw": 0.009748,
+     "r_ex": -0.001294
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.079932,
+     "hurdle": 0.0587,
+     "r_raw": 0.007207,
+     "r_ex": -0.001412
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 116.291667,
+     "basis_ann": 0.077969,
+     "hurdle": 0.0625,
+     "r_raw": 0.019969,
+     "r_ex": 0.006428
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-21 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 67.291667,
+     "basis_ann": 0.086106,
+     "hurdle": 0.0624,
+     "r_raw": 0.011554,
+     "r_ex": 0.003737
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096127,
+     "hurdle": 0.0625,
+     "r_raw": 0.011818,
+     "r_ex": 0.004798
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.087012,
+     "hurdle": 0.0594,
+     "r_raw": 0.020889,
+     "r_ex": 0.009847
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.085009,
+     "hurdle": 0.0587,
+     "r_raw": 0.015981,
+     "r_ex": 0.007362
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-13 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 74.291667,
+     "basis_ann": 0.077871,
+     "hurdle": 0.0586,
+     "r_raw": 0.012361,
+     "r_ex": 0.004505
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.079144,
+     "hurdle": 0.0594,
+     "r_raw": 0.009546,
+     "r_ex": -0.001496
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-07-28 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 60.291667,
+     "basis_ann": 0.096446,
+     "hurdle": 0.0625,
+     "r_raw": 0.012056,
+     "r_ex": 0.005035
+    },
+    {
+     "symbol": "ETHUSD_250926",
+     "entry": "2025-08-11 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 46.291667,
+     "basis_ann": 0.097096,
+     "hurdle": 0.0614,
+     "r_raw": 0.007807,
+     "r_ex": 0.002556
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 102.291667,
+     "basis_ann": 0.083885,
+     "hurdle": 0.0594,
+     "r_raw": 0.021111,
+     "r_ex": 0.010069
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 95.291667,
+     "basis_ann": 0.077539,
+     "hurdle": 0.0589,
+     "r_raw": 0.01719,
+     "r_ex": 0.007035
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "days": 81.291667,
+     "basis_ann": 0.078415,
+     "hurdle": 0.0587,
+     "r_raw": 0.014267,
+     "r_ex": 0.005648
+    }
+   ],
+   "top5": [
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.010069447932425767
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.009846720736332203
+    },
+    {
+     "symbol": "BTCUSD_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.0073622126500848695
+    },
+    {
+     "symbol": "ETHUSD_251226",
+     "entry": "2025-09-22 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.00703469826144462
+    },
+    {
+     "symbol": "BTCUSD_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": 0.0064277254649659984
+    }
+   ],
+   "bottom5": [
+    {
+     "symbol": "BTCUSDT_250926",
+     "entry": "2025-06-02 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0033181023165045117
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-01 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.00312351024890385
+    },
+    {
+     "symbol": "ETHUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.001496088119121974
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-10-06 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0014121525618118764
+    },
+    {
+     "symbol": "BTCUSDT_251226",
+     "entry": "2025-09-15 01:00:00+00:00",
+     "exit_kind": "delivery",
+     "r_ex": -0.0012943302423602827
+    }
+   ]
+  }
+ }
+}
