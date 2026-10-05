@@ -1,0 +1,62 @@
+{
+ "hypothesis": "H-LPHEDGE-2",
+ "status": "frozen forward paper rule (no trading)",
+ "frozen_at": "2026-10-05T12:28:49Z",
+ "frozen_at_unix": 1791203329,
+ "first_scorable_day": "2026-10-06",
+ "scoring": "every complete UTC pool-day whose 00:00 is after frozen_at; position opened at the first scored day's 00:00 with $5,000 of liquidity and held (setup cost charged once)",
+ "rule": {
+  "pool": "PumpSwap PUMP/USDC 2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd",
+  "hedge": "Lighter PUMP (market 45) short = LP token units",
+  "band_b": 0.05,
+  "check_interval": "1h UTC-aligned",
+  "size_usd": 5000,
+  "lp_fee_bps": 25,
+  "fee_model": "GeckoTerminal 15m USD volume x 25 bp x L_ours/(L_pool+L_ours); pool liquidity from Deposit/WithdrawEvents",
+  "coverage_rule": {
+   "rule": "A missing GeckoTerminal 15-min pool bar = zero volume, price carried forward (justified by the on-chain check). A pool-day is scored if the Lighter PUMP 15-min candles have >= 90 of 96 bars and the pool has >= 1 GeckoTerminal bar that day. Days failing are listed and not scored (the position is still carried).",
+   "min_perp_bars": 90,
+   "min_pool_bars": 1
+  },
+  "margin_model": "Short on Lighter at 1x: collateral = 1x short notional, reset to 1x of the current short notional at 00:00 UTC each day (capital moved between the LP wallet and Lighter; its transaction cost is inside the gas allowance). At every 15-min point, equity = collateral + hedge P&L since 00:00 - h x (Lighter candle HIGH of the coming bar - previous close). If equity < maintenance margin = 6% of h x high (Lighter orderBookDetails maintenance_margin_fraction 600, closeout 400, liquidation_fee 1.0 = 1%; data/raw/web/lphedge/lighter_orderbookdetails_PUMP.json), the short is liquidated: the whole remaining collateral is lost (conservative; covers the 1% fee), the LP is unhedged until the next 1h check, which re-opens the short at half spread. Collateral earns nothing.",
+  "costs": {
+   "lp_fee_bps": 25,
+   "lighter_fee": 0,
+   "hedge_spread": "half of the median measured $1k round trip: PUMP 1.877 bp per unit traded (76 snapshots, data/raw/web/memelead + data/raw/web/lphedge/lighter_spreads.jsonl)",
+   "gas": "2 tx/day x 0.0005 SOL at the Lighter SOL close",
+   "setup": "once: buy and later sell the token half through the pool (30 bp + constant-product impact) and open/close the short at half spread; included in net, excluded from PF"
+  },
+  "half_spread_bp_frozen": {
+   "PUMP": 1.8769007468611179,
+   "PENGU": 3.555105223312136,
+   "SOL": 0.23903152050251117
+  },
+  "pre_registration": "reports/hypotheses/lphedge2_preregistration.json",
+  "validation_evidence": "research/observations/evidence_lphedge2_validation.json"
+ },
+ "code_sha256": {
+  "scripts/research/lphedge_sim.py": "115382daea0817982f58ab139482f2aada97f68f6138ea7726165470527f2f9f",
+  "scripts/research/lphedge2_sim.py": "299c92fb17c527971e46e5f490332810ed3066e25d552080c4806b4267c2bc18"
+ },
+ "bar": {
+  "n_pool_days_min": 50,
+  "net_usd_gt": 0,
+  "profit_factor_gt": 1.2,
+  "net_excluding_top3_days_gt": 0,
+  "note": "verdict only once n >= 50 scored pool-days; before that the ledger is 'accumulating'"
+ },
+ "caveats": [
+  "Capital top-ups: in validation PUMP rose ~3.4x and the 1x short needed ~$4.6k of collateral top-ups financed by removing LP value; the frozen rule ignores the LP shrinkage. The ledger's 'with_topups' column models it (informational, not the bar).",
+  "Volume dependence: the edge is LP fee share minus LVR; it passed validation at volume/TVL ~0.30/day but the same rule made only +$52 (PF 1.17, fails) on train at ~0.12/day.",
+  "Fee model checked against exact on-chain fee growth only over 1.5 h (ratio 1.03).",
+  "Not modelled: hedge impact beyond $1k book depth, fee compounding, Lighter venue risk; funding sign convention inferred from Lighter docs."
+ ],
+ "validation_result": {
+  "n_pool_days": 72,
+  "net_usd": 175.65,
+  "pf": 1.572,
+  "net_ex_top3_usd": 93.66,
+  "mean_bp_per_day": 3.147
+ },
+ "how_to_score": "python scripts/research/lphedge2_forward.py score"
+}

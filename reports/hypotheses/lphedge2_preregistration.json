@@ -1,7 +1,7 @@
 {
  "hypothesis": "H-LPHEDGE-2",
  "parent": "H-LPHEDGE (reports/hypotheses/lphedge_preregistration.json; FAIL on train, reports/failures/agent_lphedge.md)",
- "written_at_utc": "2026-10-05T12:30Z",
+ "written_at_utc": "2026-10-05T12:24Z",
  "rationale_for_iteration": "Iteration 1 failed train on n (39 < 50 pool-days) because its coverage rule required >= 90/96 GeckoTerminal 15-min bars per day. The on-chain coverage check (research/observations/evidence_lphedge2_coverage.json) shows GeckoTerminal omits bars with no trades: 345/347 missing bars in 25 sampled train days had no vault-moving transaction (one exception is an LP withdrawal, at most one swap missed). The rule discarded valid quiet days; this iteration corrects only that rule and adds a margin model.",
  "what_has_been_seen": "Iteration 1's TRAIN results were seen, including a post-hoc all-days-scored diagnostic on train in which P1 b5 15m, P1 b10 15m, P1 b10 60m and P1+P2 b10 60m cleared the bar and P1 b5 60m did NOT (n 108, net +$52.04, PF 1.17, net ex top-3 -$7.05). The validation window 2026-07-25 to 2026-10-05 has never been examined: its pool OHLCV, liquidity history, Lighter candles and funding were downloaded in iteration 1 (same files) but no validation P&L, fee, volume or price statistic was computed.",
  "config": {
@@ -40,16 +40,17 @@
  "no_changes": "No change to this file after the validation run.",
  "amendments": [
   {
-   "at_utc": "2026-10-05T12:40Z",
+   "at_utc": "2026-10-05T12:24Z",
    "what": "Bug fix in lphedge_sim.series(): the carried-forward pool price was not seeded when the pool had no GeckoTerminal bar in the 15 min before the split start (2026-07-24 23:45Z bar absent = no trades), giving a NaN start price. The seed is now the latest earlier bar, which is what the pre-registered 'price carried forward' rule says.",
    "outcome_seen": "None. The first validation invocation crashed in the reporting step (NaN median TVL) before any result was printed or written; no P&L, fee or price statistic of the validation window was viewed. The train window is unaffected (its start bar exists; train smoke test reproduces +$52.04 before and after the fix).",
    "config_or_rule_changed": false
   },
   {
-   "at_utc": "2026-10-05T12:42Z",
+   "at_utc": "2026-10-05T12:25Z",
    "what": "Second invocation failed while serialising the evidence (numpy int64 not JSON serialisable) before anything was printed or written; encoder fixed. The simulation is deterministic, so the subsequent run is the single validation run.",
    "outcome_seen": "None.",
    "config_or_rule_changed": false
   }
- ]
+ ],
+ "timestamp_correction": "written_at/amendment times were first entered as estimates (12:30/12:40/12:42Z) that were later than the container clock; corrected from file mtimes: coverage evidence 12:24:16Z, this file first written ~12:24Z, seed fix in lphedge_sim.py 12:24:50Z, encoder fix 12:25:00Z, validation evidence written 12:25:01Z. Order unchanged: coverage check -> pre-registration -> fixes -> single validation."
 }

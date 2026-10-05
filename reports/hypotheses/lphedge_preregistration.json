@@ -1,65 +1,114 @@
 {
-  "hypothesis": "H-LPHEDGE",
-  "source": "sources/leads/documented_edges_round12.md idea 1 (H-LPHEDGE); scope reports/scope_memecoins_20261005.md",
-  "written_at_utc": "2026-10-05T11:35Z",
-  "written_before": "Any pool OHLCV, pool volume, pool liquidity history, Lighter candle or Lighter funding for this test was downloaded, and before any pumplean parquet file was opened. Only the fee SCHEDULE (step 1) and the Lighter order-book spread file of H-MEMELEAD (a cost input) had been read.",
-  "statement": "A full-range PumpSwap LP in a pool of a meme that has a Lighter perp, hedged delta-neutral with a Lighter short (plus a Lighter SOL short for SOL-quoted pools), earns LP fee share + funding on the shorts that exceeds loss-versus-rebalancing + hedge rebalancing cost + gas, per pool-day.",
-  "step1_fee_confirmation": {
-    "method": "scripts/research/lphedge_fee_check.py: recent pool signatures (public Solana RPC, 429 back-off) -> getTransaction -> PumpSwap Buy/SellEvent decoded with pipeline.market.decode_amm; the event carries lp_fee_basis_points AND the lp_fee amount, so lp_fee/quote_amount checks the bps exactly. Output data/raw/web/lphedge/fee_check.json.",
-    "PUMP_USDC": {"pool": "2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd", "n_swaps": 60, "lp_bps": 25, "protocol_bps": 5, "creator_bps": 0, "implied_lp_fee_over_quote_bps": [24.93, 25.004]},
-    "PENGU_SOL": {"pool": "9qKxzRejsV6Bp2zkefXWCbGvg61c3hHei7ShXJ4FythA", "n_swaps": 58, "lp_bps": 25, "protocol_bps": 5, "creator_bps": 0, "implied_lp_fee_over_quote_bps": [24.93, 25.0002]},
-    "Fartcoin_SOL_pumpswap": {"pool": "eUsB7o5HXb4xj3RD4eZjumRV6T65PQELbhd8mNFRjk6", "n_swaps": 60, "lp_bps": 20, "protocol_bps": 5, "creator_bps": "90 or 95", "note": "not in the universe (TVL about $50k < $1M)"},
-    "note": "The lead assumed 20 bp; the measured LP fee on both universe pools is 25 bp (pre-registered value). Fee schedule over the 180 days is checked by sampling swaps near each liquidity event (fee_history.json); if any sampled swap shows a different lp_bps, the sim uses the sampled value from that date on and says so."
+ "hypothesis": "H-LPHEDGE",
+ "source": "sources/leads/documented_edges_round12.md idea 1 (H-LPHEDGE); scope reports/scope_memecoins_20261005.md",
+ "written_at_utc": "2026-10-05T11:25Z",
+ "written_before": "Any pool OHLCV, pool volume, pool liquidity history, Lighter candle or Lighter funding for this test was downloaded, and before any pumplean parquet file was opened. Only the fee SCHEDULE (step 1) and the Lighter order-book spread file of H-MEMELEAD (a cost input) had been read.",
+ "statement": "A full-range PumpSwap LP in a pool of a meme that has a Lighter perp, hedged delta-neutral with a Lighter short (plus a Lighter SOL short for SOL-quoted pools), earns LP fee share + funding on the shorts that exceeds loss-versus-rebalancing + hedge rebalancing cost + gas, per pool-day.",
+ "step1_fee_confirmation": {
+  "method": "scripts/research/lphedge_fee_check.py: recent pool signatures (public Solana RPC, 429 back-off) -> getTransaction -> PumpSwap Buy/SellEvent decoded with pipeline.market.decode_amm; the event carries lp_fee_basis_points AND the lp_fee amount, so lp_fee/quote_amount checks the bps exactly. Output data/raw/web/lphedge/fee_check.json.",
+  "PUMP_USDC": {
+   "pool": "2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd",
+   "n_swaps": 60,
+   "lp_bps": 25,
+   "protocol_bps": 5,
+   "creator_bps": 0,
+   "implied_lp_fee_over_quote_bps": [
+    24.93,
+    25.004
+   ]
   },
-  "universe": {
-    "P1": "PumpSwap PUMP/USDC 2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd (base PUMP pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn, quote USDC); hedge Lighter PUMP (market 45).",
-    "P2": "PumpSwap PENGU/SOL 9qKxzRejsV6Bp2zkefXWCbGvg61c3hHei7ShXJ4FythA (base PENGU 2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv, quote WSOL); hedge Lighter PENGU (47) for the token side AND Lighter SOL (2) for the SOL side.",
-    "excluded": {
-      "TRUMP, BONK, WIF": "No PumpSwap pool of the real token in GeckoTerminal search (2026-10-05; only copycat tokens). Their pools are Meteora/Raydium/Orca and are out of this test.",
-      "FARTCOIN": "Only PumpSwap Fartcoin/SOL pools have TVL about $50k and $10k, below the lead's TVL >= $1M rule (our $5k would be about 10% of the pool).",
-      "concentrated pools": "Out of scope (lead: separate arm only if this passes)."
-    }
+  "PENGU_SOL": {
+   "pool": "9qKxzRejsV6Bp2zkefXWCbGvg61c3hHei7ShXJ4FythA",
+   "n_swaps": 58,
+   "lp_bps": 25,
+   "protocol_bps": 5,
+   "creator_bps": 0,
+   "implied_lp_fee_over_quote_bps": [
+    24.93,
+    25.0002
+   ]
   },
-  "data": {
-    "historical": {
-      "pool_ohlcv": "GeckoTerminal api/v2 ohlcv/minute aggregate=15 for P1 and P2, currency=usd (USD volume) and currency=token (price in quote token). Bar timestamp = bar start.",
-      "pool_liquidity_history": "PumpSwap Deposit/WithdrawEvents of each pool, found via the LP-mint's signatures (public RPC). Each event logs pool_base/pool_quote reserves and lp_mint_supply. Pool liquidity L_pool(t) = lp_supply(t) x [sqrt(base*quote)/lp_supply at the nearest event], linear in between. Pool TVL(t) = 2 x L_pool x sqrt(P_t). This replaces any TVL assumption; if an event cannot be decoded the gap is reported.",
-      "perp": "Lighter api/v1/candles 15m (PUMP, PENGU, SOL) for hedge-leg prices; Lighter api/v1/fundings 1h for funding.",
-      "period": "2026-04-08 00:00Z to 2026-10-05 00:00Z (180 UTC days).",
-      "holdout_overlap_statement": "This period overlaps the archive-perp holdout (>= 2026-04-01) declared by earlier perp tests (e.g. propcarry/fundcarry guarded Lighter funding < 2026-04-01). Those holdouts protect the Binance-archive/perp-carry hypotheses; this is a NEW dataset (PumpSwap pool OHLCV + liquidity history) for a new hypothesis, and per the user's instruction the overlap is irrelevant to it. No earlier hypothesis is re-tuned or re-scored here, and nothing here is fed back into them."
-    },
-    "forward": "pumplean tape (scripts/research/pumplean_recorder.py, data/raw/web/pumplean/, read-only): amm_bars kind other_5m for both pools give logged open/last reserves per 5-min bucket -> exact price path and exact per-LP fee growth (sqrt(k)/lp_supply)."
+  "Fartcoin_SOL_pumpswap": {
+   "pool": "eUsB7o5HXb4xj3RD4eZjumRV6T65PQELbhd8mNFRjk6",
+   "n_swaps": 60,
+   "lp_bps": 20,
+   "protocol_bps": 5,
+   "creator_bps": "90 or 95",
+   "note": "not in the universe (TVL about $50k < $1M)"
   },
-  "splits": {
-    "historical_train": "[2026-04-08 00:00Z, 2026-07-25 00:00Z) = 108 days (first 60%).",
-    "historical_validation": "[2026-07-25 00:00Z, 2026-10-05 00:00Z) = 72 days (last 40%). Examined ONCE, only for the single config chosen on train, only if that config passes the train bar.",
-    "forward_train": "pumplean: the first 24 h of covered minutes after T0 (T0 and coverage from events.jsonl only, per reports/hypotheses/pumplean_notes.md).",
-    "forward_validation": "pumplean: the next 24 h of covered minutes.",
-    "forward_role": "Exact-fee confirmation. 24 h gives at most 1 pool-day per pool per segment, so n >= 50 cannot be met: the forward P&L is reported but is inconclusive by construction. The forward GATE is the fee check: on forward-train hours, modelled fee income (GeckoTerminal-style volume x 25 bp x our share) must be within +-30% of the exact per-LP fee growth measured from reserves. If it is not, the historical result is flagged as unreliable (fee model biased) whatever its sign."
+  "note": "The lead assumed 20 bp; the measured LP fee on both universe pools is 25 bp (pre-registered value). Fee schedule over the 180 days is checked by sampling swaps near each liquidity event (fee_history.json); if any sampled swap shows a different lp_bps, the sim uses the sampled value from that date on and says so."
+ },
+ "universe": {
+  "P1": "PumpSwap PUMP/USDC 2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd (base PUMP pumpCmXqMfrsAkQ5r49WcJnRayYRqmXz6ae8H7H9Dfn, quote USDC); hedge Lighter PUMP (market 45).",
+  "P2": "PumpSwap PENGU/SOL 9qKxzRejsV6Bp2zkefXWCbGvg61c3hHei7ShXJ4FythA (base PENGU 2zMMhcVQEXDtdE6vsFS7S7D5oUodfJHE8vd1gnBouauv, quote WSOL); hedge Lighter PENGU (47) for the token side AND Lighter SOL (2) for the SOL side.",
+  "excluded": {
+   "TRUMP, BONK, WIF": "No PumpSwap pool of the real token in GeckoTerminal search (2026-10-05; only copycat tokens). Their pools are Meteora/Raydium/Orca and are out of this test.",
+   "FARTCOIN": "Only PumpSwap Fartcoin/SOL pools have TVL about $50k and $10k, below the lead's TVL >= $1M rule (our $5k would be about 10% of the pool).",
+   "concentrated pools": "Out of scope (lead: separate arm only if this passes)."
+  }
+ },
+ "data": {
+  "historical": {
+   "pool_ohlcv": "GeckoTerminal api/v2 ohlcv/minute aggregate=15 for P1 and P2, currency=usd (USD volume) and currency=token (price in quote token). Bar timestamp = bar start.",
+   "pool_liquidity_history": "PumpSwap Deposit/WithdrawEvents of each pool, found via the LP-mint's signatures (public RPC). Each event logs pool_base/pool_quote reserves and lp_mint_supply. Pool liquidity L_pool(t) = lp_supply(t) x [sqrt(base*quote)/lp_supply at the nearest event], linear in between. Pool TVL(t) = 2 x L_pool x sqrt(P_t). This replaces any TVL assumption; if an event cannot be decoded the gap is reported.",
+   "perp": "Lighter api/v1/candles 15m (PUMP, PENGU, SOL) for hedge-leg prices; Lighter api/v1/fundings 1h for funding.",
+   "period": "2026-04-08 00:00Z to 2026-10-05 00:00Z (180 UTC days).",
+   "holdout_overlap_statement": "This period overlaps the archive-perp holdout (>= 2026-04-01) declared by earlier perp tests (e.g. propcarry/fundcarry guarded Lighter funding < 2026-04-01). Those holdouts protect the Binance-archive/perp-carry hypotheses; this is a NEW dataset (PumpSwap pool OHLCV + liquidity history) for a new hypothesis, and per the user's instruction the overlap is irrelevant to it. No earlier hypothesis is re-tuned or re-scored here, and nothing here is fed back into them."
   },
-  "rule": {
-    "size": "Our LP = $5,000 deposited balanced at the start of each split (vs P1 TVL about $28M = 0.018%, P2 about $1.75M = 0.29%); our fee share = L_ours / (L_pool + L_ours) each bar. The position (our liquidity units L_ours) is held continuously through the split; the unit of account is the UTC pool-day (00:00-24:00) and its P&L in $ (also reported in bp of day-start LP value).",
-    "hedge": "Lighter short of h_tok = LP token units x = L_ours/sqrt(P) at the start of the split; for P2 also a Lighter SOL short h_sol = LP SOL units y = L_ours*sqrt(P). At each check (every interval, aligned to UTC, plus forced at 00:00 UTC each day): if |x_t - h_tok| > b * x_t set h_tok = x_t (same rule independently for the SOL leg). Shorts collateralised 1x (no interest on collateral).",
-    "pnl_per_pool_day": "LP value change 2*L_ours*(sqrt(P_end)-sqrt(P_start)) (in quote, x SOLUSD for P2) + fee income sum_bars(volume_usd * lp_bps/1e4 * share) + hedge P&L -sum h*(perp_close_next - perp_close) over check intervals + funding on the shorts - hedge trade cost - gas. Fees are counted as cash (no compounding into L_ours). LVR is not modelled separately: it is what LP value change + hedge P&L realises.",
-    "prices": "Pool price P_t = GeckoTerminal currency=token close (quote per token). Hedge legs use Lighter 15m candle closes (so pool-vs-perp basis is in the P&L). P2 LP value is converted to USD with the Lighter SOL close.",
-    "discretisation": "LP value is path-independent (exact given start/end price); hedge P&L and threshold checks use bar closes at the check interval, i.e. the strategy as specified, executed at the bar-close perp price plus half the measured round-trip spread. Bias: the true pool/perp prices at the moment of the check differ from bar closes by intra-bar noise (unbiased in expectation, adds variance); intra-interval delta drift is not traded, which is the policy itself. Fee share uses the bar's volume with the bar's liquidity.",
-    "missing_data": "A pool-day is scored only if >= 90 of 96 pool 15m bars and >= 90 of 96 Lighter 15m candles of each hedge market exist; missing pool bars = zero volume with price carried forward. Days failing this are listed, not scored, but the position is still carried (P&L across them is attributed to no day; reported)."
+  "forward": "pumplean tape (scripts/research/pumplean_recorder.py, data/raw/web/pumplean/, read-only): amm_bars kind other_5m for both pools give logged open/last reserves per 5-min bucket -> exact price path and exact per-LP fee growth (sqrt(k)/lp_supply)."
+ },
+ "splits": {
+  "historical_train": "[2026-04-08 00:00Z, 2026-07-25 00:00Z) = 108 days (first 60%).",
+  "historical_validation": "[2026-07-25 00:00Z, 2026-10-05 00:00Z) = 72 days (last 40%). Examined ONCE, only for the single config chosen on train, only if that config passes the train bar.",
+  "forward_train": "pumplean: the first 24 h of covered minutes after T0 (T0 and coverage from events.jsonl only, per reports/hypotheses/pumplean_notes.md).",
+  "forward_validation": "pumplean: the next 24 h of covered minutes.",
+  "forward_role": "Exact-fee confirmation. 24 h gives at most 1 pool-day per pool per segment, so n >= 50 cannot be met: the forward P&L is reported but is inconclusive by construction. The forward GATE is the fee check: on forward-train hours, modelled fee income (GeckoTerminal-style volume x 25 bp x our share) must be within +-30% of the exact per-LP fee growth measured from reserves. If it is not, the historical result is flagged as unreliable (fee model biased) whatever its sign."
+ },
+ "rule": {
+  "size": "Our LP = $5,000 deposited balanced at the start of each split (vs P1 TVL about $28M = 0.018%, P2 about $1.75M = 0.29%); our fee share = L_ours / (L_pool + L_ours) each bar. The position (our liquidity units L_ours) is held continuously through the split; the unit of account is the UTC pool-day (00:00-24:00) and its P&L in $ (also reported in bp of day-start LP value).",
+  "hedge": "Lighter short of h_tok = LP token units x = L_ours/sqrt(P) at the start of the split; for P2 also a Lighter SOL short h_sol = LP SOL units y = L_ours*sqrt(P). At each check (every interval, aligned to UTC, plus forced at 00:00 UTC each day): if |x_t - h_tok| > b * x_t set h_tok = x_t (same rule independently for the SOL leg). Shorts collateralised 1x (no interest on collateral).",
+  "pnl_per_pool_day": "LP value change 2*L_ours*(sqrt(P_end)-sqrt(P_start)) (in quote, x SOLUSD for P2) + fee income sum_bars(volume_usd * lp_bps/1e4 * share) + hedge P&L -sum h*(perp_close_next - perp_close) over check intervals + funding on the shorts - hedge trade cost - gas. Fees are counted as cash (no compounding into L_ours). LVR is not modelled separately: it is what LP value change + hedge P&L realises.",
+  "prices": "Pool price P_t = GeckoTerminal currency=token close (quote per token). Hedge legs use Lighter 15m candle closes (so pool-vs-perp basis is in the P&L). P2 LP value is converted to USD with the Lighter SOL close.",
+  "discretisation": "LP value is path-independent (exact given start/end price); hedge P&L and threshold checks use bar closes at the check interval, i.e. the strategy as specified, executed at the bar-close perp price plus half the measured round-trip spread. Bias: the true pool/perp prices at the moment of the check differ from bar closes by intra-bar noise (unbiased in expectation, adds variance); intra-interval delta drift is not traded, which is the policy itself. Fee share uses the bar's volume with the bar's liquidity.",
+  "missing_data": "A pool-day is scored only if >= 90 of 96 pool 15m bars and >= 90 of 96 Lighter 15m candles of each hedge market exist; missing pool bars = zero volume with price carried forward. Days failing this are listed, not scored, but the position is still carried (P&L across them is attributed to no day; reported)."
+ },
+ "grid": {
+  "dimensions": {
+   "universe": [
+    "P1 (PUMP/USDC only)",
+    "P1+P2 (pool-days of both pools pooled)"
+   ],
+   "band_b": [
+    0.02,
+    0.05,
+    0.1
+   ],
+   "check_interval": [
+    "15m",
+    "1h"
+   ]
   },
-  "grid": {
-    "dimensions": {"universe": ["P1 (PUMP/USDC only)", "P1+P2 (pool-days of both pools pooled)"], "band_b": [0.02, 0.05, 0.10], "check_interval": ["15m", "1h"]},
-    "n_configs": 12
-  },
-  "costs": {
-    "lp_fee_bps": 25,
-    "lighter_trading_fee": "0 maker / 0 taker (api/v1/orderBooks taker_fee 0.0000 for PUMP, PENGU, SOL on 2026-10-05)",
-    "hedge_spread": "Half of the median measured $1,000 round-trip cost per market, charged on every unit of perp traded (rebalances, daily reset, initial open and final close). Inputs: data/raw/web/memelead/lighter_spreads_20261005T1021Z.jsonl (PUMP median 3.29 bp RT, PENGU 6.26 bp RT, 46 snapshots each) pooled with a new poll of PUMP/PENGU/SOL (data/raw/web/lphedge/lighter_spreads.jsonl, 30 rounds). Stress row: 2x.",
-    "gas": "2 Solana transactions per pool-day (LP remove + add, conservative; continuous holding needs none) at 0.0005 SOL each (5000 lamports base + priority-fee allowance), priced at the day's Lighter SOL close.",
-    "setup": "Once per split: buying the token half of $5,000 through the pool (lp+protocol+creator = 30 bp + constant-product price impact at the start reserves) and selling it back at the end (same), plus opening/closing the shorts at half spread. Included in split net; excluded from per-day PF.",
-    "funding": "Lighter hourly funding: rate in percent per hour; direction 'long' = longs pay shorts (short receives rate% x notional), 'short' = shorts pay (inferred from Lighter docs, same convention as scripts/research/propcarry_sim.py). Notional = h x Lighter close at the hour."
-  },
-  "bar_per_split": {"n_pool_days_min": 50, "net_usd_gt": 0, "profit_factor_gt": 1.2, "net_excluding_top3_days_gt": 0, "pf_definition": "sum of positive pool-day P&L / |sum of negative pool-day P&L| (setup excluded)", "net_definition": "sum of pool-day P&L minus setup costs"},
-  "selection_rule_train": "Among the 12 configs, keep those passing the train bar; pick the one with the highest train net $ per pool-day; ties -> fewer hedge trades. If none passes, H-LPHEDGE FAILS on train and historical validation is NOT examined. Exactly one config goes to validation.",
-  "validation": "Run the chosen config once on 2026-07-25..2026-10-05. Pass = the same bar. No re-tuning after it.",
-  "reporting": "Per config: n pool-days, net $, mean bp/day of LP value, PF, net ex top-3, fee $, funding $, LP+hedge (LVR) $, hedge cost $, gas $, n hedge trades; decomposition per pool. Also an ex-post diagnostic (not used for selection): realised daily sigma and sigma^2/8 vs fee yield. Evidence JSON research/observations/evidence_lphedge_*.json; pass -> reports/candidates/lphedge.md, fail -> reports/failures/agent_lphedge.md.",
-  "no_changes": "No change to this file after any outcome is computed. Any bug fix after outcomes is recorded as an amendment with reason, keeping the original text."
+  "n_configs": 12
+ },
+ "costs": {
+  "lp_fee_bps": 25,
+  "lighter_trading_fee": "0 maker / 0 taker (api/v1/orderBooks taker_fee 0.0000 for PUMP, PENGU, SOL on 2026-10-05)",
+  "hedge_spread": "Half of the median measured $1,000 round-trip cost per market, charged on every unit of perp traded (rebalances, daily reset, initial open and final close). Inputs: data/raw/web/memelead/lighter_spreads_20261005T1021Z.jsonl (PUMP median 3.29 bp RT, PENGU 6.26 bp RT, 46 snapshots each) pooled with a new poll of PUMP/PENGU/SOL (data/raw/web/lphedge/lighter_spreads.jsonl, 30 rounds). Stress row: 2x.",
+  "gas": "2 Solana transactions per pool-day (LP remove + add, conservative; continuous holding needs none) at 0.0005 SOL each (5000 lamports base + priority-fee allowance), priced at the day's Lighter SOL close.",
+  "setup": "Once per split: buying the token half of $5,000 through the pool (lp+protocol+creator = 30 bp + constant-product price impact at the start reserves) and selling it back at the end (same), plus opening/closing the shorts at half spread. Included in split net; excluded from per-day PF.",
+  "funding": "Lighter hourly funding: rate in percent per hour; direction 'long' = longs pay shorts (short receives rate% x notional), 'short' = shorts pay (inferred from Lighter docs, same convention as scripts/research/propcarry_sim.py). Notional = h x Lighter close at the hour."
+ },
+ "bar_per_split": {
+  "n_pool_days_min": 50,
+  "net_usd_gt": 0,
+  "profit_factor_gt": 1.2,
+  "net_excluding_top3_days_gt": 0,
+  "pf_definition": "sum of positive pool-day P&L / |sum of negative pool-day P&L| (setup excluded)",
+  "net_definition": "sum of pool-day P&L minus setup costs"
+ },
+ "selection_rule_train": "Among the 12 configs, keep those passing the train bar; pick the one with the highest train net $ per pool-day; ties -> fewer hedge trades. If none passes, H-LPHEDGE FAILS on train and historical validation is NOT examined. Exactly one config goes to validation.",
+ "validation": "Run the chosen config once on 2026-07-25..2026-10-05. Pass = the same bar. No re-tuning after it.",
+ "reporting": "Per config: n pool-days, net $, mean bp/day of LP value, PF, net ex top-3, fee $, funding $, LP+hedge (LVR) $, hedge cost $, gas $, n hedge trades; decomposition per pool. Also an ex-post diagnostic (not used for selection): realised daily sigma and sigma^2/8 vs fee yield. Evidence JSON research/observations/evidence_lphedge_*.json; pass -> reports/candidates/lphedge.md, fail -> reports/failures/agent_lphedge.md.",
+ "no_changes": "No change to this file after any outcome is computed. Any bug fix after outcomes is recorded as an amendment with reason, keeping the original text.",
+ "timestamp_correction": "written_at was first entered as an estimate (11:35Z); corrected to the file mtime 11:25Z (container clock). The GeckoTerminal/Lighter fetch files are stamped 11:27-11:32Z, i.e. after this file."
 }
