@@ -171,31 +171,40 @@ def funder_sigs(rpc, funder, sig):
     return c
 
 
+def fetch_one(rpc, r):
+    c = creator_sigs(rpc, r.creator, r.sig)
+    if c["complete"]:
+        ok = [x for x in c["sigs"] if not x["err"]]
+        # earliest successful signature(s): try up to 3 oldest until a funding transfer is found
+        for x in list(reversed(ok))[:3]:
+            f = funding_of(get_tx(rpc, x["s"]), r.creator)
+            if f:
+                funder_sigs(rpc, f["funder"], x["s"])
+                break
+
+
 def fetch():
+    """Requests are paced globally at <= 4/s; the public RPC currently answers each call in ~5-12 s, so 10 worker
+    threads keep several requests in flight without exceeding the pace."""
+    from concurrent.futures import ThreadPoolExecutor, as_completed
     s = pd.read_parquet(SAMPLE)
     rpc = Rpc(rps=4.0)
     # latest sampled launch per creator -> query before its create signature
     last = s.sort_values("ct").groupby("creator").tail(1)
     todo = list(last.itertuples())
-    t0, n_err = time.time(), 0
-    for i, r in enumerate(todo):
-        try:
-            c = creator_sigs(rpc, r.creator, r.sig)
-            if c["complete"]:
-                ok = [x for x in c["sigs"] if not x["err"]]
-                # earliest successful signature(s): try up to 3 oldest until a funding transfer is found
-                for x in list(reversed(ok))[:3]:
-                    f = funding_of(get_tx(rpc, x["s"]), r.creator)
-                    if f:
-                        funder_sigs(rpc, f["funder"], x["s"])
-                        break
-        except SourceUnavailable as e:
-            n_err += 1
-            print("ERR", r.creator, e, flush=True)
-            time.sleep(10)
-        if i % 100 == 0:
-            print(f"{i}/{len(todo)} creators, {time.time() - t0:.0f}s, errors {n_err}", flush=True)
-    print("done", len(todo), "errors", n_err)
+    t0, n_err, n = time.time(), 0, 0
+    with ThreadPoolExecutor(max_workers=10) as pool:
+        futs = {pool.submit(fetch_one, rpc, r): r for r in todo}
+        for fu in as_completed(futs):
+            n += 1
+            try:
+                fu.result()
+            except Exception as e:  # noqa: BLE001 - logged; the creator stays unfetched (NULL), retried on rerun
+                n_err += 1
+                print("ERR", futs[fu].creator, repr(e)[:200], flush=True)
+            if n % 100 == 0:
+                print(f"{n}/{len(todo)} creators, {time.time() - t0:.0f}s, errors {n_err}", flush=True)
+    print("done", len(todo), "errors", n_err, flush=True)
 
 
 if __name__ == "__main__":
