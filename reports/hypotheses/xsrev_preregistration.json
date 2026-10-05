@@ -1,0 +1,137 @@
+{
+ "hypothesis": "H-XSREV: short-horizon (1-4 h) cross-sectional residual reversal among liquid Binance USDT-M perps also listed on Hyperliquid, split by liquidity tier (sources/leads/documented_edges_round6.md idea 4)",
+ "frozen_at_utc": "2026-10-05T05:51:28.182296+00:00",
+ "frozen_before": "any 1h kline was downloaded by this agent and before any return or P&L was computed. The daily klines used for ranking (data/raw/web/momentum/klines, read-only) were only checked for date coverage.",
+ "rationale": "Literature (Zaremba et al. 2021 IRFA; Kozlowski et al. 2020; Wen et al. 2022 NAJEF) reports daily reversal in less liquid coins and intraday reversal from overreaction; untested here at 1-4 h on tradable perps with costs. Distinct from H-MOMENTUM (weekly) and XLEAD (minute lead-lag). No parent hypothesis/failing run in this repo.",
+ "data": {
+  "hourly": "data.binance.vision futures/um/monthly/klines/<SYM>/1h for BTCUSDT and every HL-listed symbol (2023-01..2026-03 only; no month >= 2026-04 is downloaded). Compact parquet in data/raw/web/xsrev/k1h/, zips not kept.",
+  "daily_for_ranking": "data/raw/web/momentum/klines/<SYM>.parquet (1d archive klines, all USDT perps incl. delisted; read-only reuse)",
+  "funding": "data/raw/web/momentum/funding/<SYM>.parquet (Binance fundingRate archive, read-only reuse) as proxy for HL funding",
+  "hl_listing": "data/raw/web/ffdiff_wide/universe_raw.json pairs (HL perps incl. HL-delisted, mapped to Binance symbols with ratio). CAVEAT: this is HL's meta as fetched in 2026-10, not point-in-time HL listing dates; a coin may count as HL-listed before it was listed on HL. Stated, not corrected."
+ },
+ "excluded_symbols": "index/stable products (BTCDOMUSDT, DEFIUSDT, FOOTBALLUSDT, BLUEBIRDUSDT, USDCUSDT, any USD-stablecoin base), dated *_YYMMDD contracts",
+ "universe": "Each UTC day d (point in time): rank all archive USDT perps (excluded removed) by sum of daily quote_volume over days d-30..d-1, requiring >= 25 of those 30 daily bars. Tier A = ranks 11-50, tier B = ranks 51-150. Then keep only HL-listed symbols with >= 60 daily bars before d and a beta estimate. Membership is fixed for the day.",
+ "beta": "OLS slope (with intercept) of the coin's hourly simple return on BTCUSDT hourly return over the 720 hourly bars ending at 00:00 of day d; >= 500 valid pairs required, else coin ineligible that day.",
+ "signals": {
+  "btc_resid": "e_i = sum over the last L closed hourly bars before t of (r_i - beta_i * r_BTC)",
+  "ew_resid": "e_i = sum over the last L closed hourly bars before t of (r_i - mean_j r_j), mean over the tier's eligible coins at t"
+ },
+ "portfolio": "Rebalance every H hours on hours divisible by H (UTC). Coins need all L lookback bars and the bar starting at t. Long the n_per_side=5 lowest e, short the 5 highest e, equal notional per leg (1/10 of capital each, gross 1). Enter at the open of the hourly bar starting at t (signal uses only bars closed by t). A leg that stays on the same side at the next rebalance is kept without trading (notional not reset); legs leaving their bucket are closed at the open of the bar at the rebalance time.",
+ "stop": "15% per-leg disaster stop from the entry price, checked on hourly high/low; exit at the stop level, or at the bar open if it gaps through. A stopped coin may re-enter at a later rebalance.",
+ "delisting": "if a held coin has no bar at the exit time, exit at its last close and charge 2% of notional",
+ "trade_definition": "one coin-leg round trip (entry to exit, may span several rebalances when kept). Trade P&L = side*(P_exit/P_entry - 1) - funding - 2*cost_per_side, as a fraction of the leg notional. Also reported: per-rebalance basket return (mean over legs incl. carried ones, costs charged when traded).",
+ "funding": "long pays (short receives) last_funding_rate for each Binance funding print with calc_time in (entry, exit]; missing funding data counted as 0 and flagged",
+ "costs": {
+  "primary": "HL taker 4.5 bp + 2 bp slippage per side per leg = 13 bp per leg round trip",
+  "sensitivity_binance": "Binance VIP0 taker 5 bp + 2 bp slippage = 14 bp per leg round trip (reported, never selected on)",
+  "gross": "reported"
+ },
+ "configs": [
+  {
+   "key": "btc_resid_L1_H1_A",
+   "signal": "btc_resid",
+   "L_hours": 1,
+   "H_hours": 1,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L1_H4_A",
+   "signal": "btc_resid",
+   "L_hours": 1,
+   "H_hours": 4,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L4_H1_A",
+   "signal": "btc_resid",
+   "L_hours": 4,
+   "H_hours": 1,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L4_H4_A",
+   "signal": "btc_resid",
+   "L_hours": 4,
+   "H_hours": 4,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L1_H1_B",
+   "signal": "btc_resid",
+   "L_hours": 1,
+   "H_hours": 1,
+   "tier": "B",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L1_H4_B",
+   "signal": "btc_resid",
+   "L_hours": 1,
+   "H_hours": 4,
+   "tier": "B",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L4_H1_B",
+   "signal": "btc_resid",
+   "L_hours": 4,
+   "H_hours": 1,
+   "tier": "B",
+   "n_per_side": 5
+  },
+  {
+   "key": "btc_resid_L4_H4_B",
+   "signal": "btc_resid",
+   "L_hours": 4,
+   "H_hours": 4,
+   "tier": "B",
+   "n_per_side": 5
+  },
+  {
+   "key": "ew_resid_L1_H1_A",
+   "signal": "ew_resid",
+   "L_hours": 1,
+   "H_hours": 1,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "ew_resid_L4_H4_A",
+   "signal": "ew_resid",
+   "L_hours": 4,
+   "H_hours": 4,
+   "tier": "A",
+   "n_per_side": 5
+  },
+  {
+   "key": "ew_resid_L1_H1_B",
+   "signal": "ew_resid",
+   "L_hours": 1,
+   "H_hours": 1,
+   "tier": "B",
+   "n_per_side": 5
+  },
+  {
+   "key": "ew_resid_L4_H4_B",
+   "signal": "ew_resid",
+   "L_hours": 4,
+   "H_hours": 4,
+   "tier": "B",
+   "n_per_side": 5
+  }
+ ],
+ "splits": {
+  "train": "2023-02-01T00:00Z .. 2025-06-30T23:00Z (first month of 2023 used only for beta warm-up)",
+  "validation": "2025-07-01T00:00Z .. 2026-03-31T23:00Z",
+  "holdout": "2026-04-01 onward: NEVER downloaded or touched"
+ },
+ "split_rule": "trades assigned by entry time; open legs force-closed at the last bar of the split (at its close).",
+ "bar": "per split, at primary costs, on coin-leg trades: n >= 50, sum of net P&L > 0, profit factor (sum wins / |sum losses|) > 1.2, sum of net P&L without the 3 best trades > 0.",
+ "selection": "Run all 12 configs on train only. Among configs passing the train bar, choose the one with the highest mean net P&L per leg-trade. Run validation ONCE for that config. If no config passes train, the hypothesis fails on train; validation is then run once for the best-mean train config for information only and cannot produce a pass.",
+ "reporting": "by split and calendar year: n, mean gross/net bp, sum, PF, net without top 3, win rate, basket-level mean and Sharpe, Binance-cost sensitivity, funding share.",
+ "no_tuning": "no parameter is changed after seeing train results; any follow-up needs a new pre-registration with stated reason."
+}
