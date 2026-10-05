@@ -1,0 +1,55 @@
+{
+ "hypothesis": "H-LPHEDGE-2",
+ "parent": "H-LPHEDGE (reports/hypotheses/lphedge_preregistration.json; FAIL on train, reports/failures/agent_lphedge.md)",
+ "written_at_utc": "2026-10-05T12:30Z",
+ "rationale_for_iteration": "Iteration 1 failed train on n (39 < 50 pool-days) because its coverage rule required >= 90/96 GeckoTerminal 15-min bars per day. The on-chain coverage check (research/observations/evidence_lphedge2_coverage.json) shows GeckoTerminal omits bars with no trades: 345/347 missing bars in 25 sampled train days had no vault-moving transaction (one exception is an LP withdrawal, at most one swap missed). The rule discarded valid quiet days; this iteration corrects only that rule and adds a margin model.",
+ "what_has_been_seen": "Iteration 1's TRAIN results were seen, including a post-hoc all-days-scored diagnostic on train in which P1 b5 15m, P1 b10 15m, P1 b10 60m and P1+P2 b10 60m cleared the bar and P1 b5 60m did NOT (n 108, net +$52.04, PF 1.17, net ex top-3 -$7.05). The validation window 2026-07-25 to 2026-10-05 has never been examined: its pool OHLCV, liquidity history, Lighter candles and funding were downloaded in iteration 1 (same files) but no validation P&L, fee, volume or price statistic was computed.",
+ "config": {
+  "pool": "PumpSwap PUMP/USDC 2uF4Xh61rDwxnG9woyxsVQP7zuA6kLFpb3NvnRQeoiSd only (P1); hedge Lighter PUMP (market 45)",
+  "band_b": 0.05,
+  "check_interval": "1h (UTC-aligned)",
+  "why_this_config": "A-priori neutral choice: the middle of the band grid and the slower of the two check intervals, i.e. the lead's central case. It is explicitly NOT the best post-hoc config (that was P1 b10 60m in the all-days train diagnostic; P1 b5 60m did not even pass there). Chosen to avoid selecting on the seen train results; a barely-hedged 10% band is excluded because its train edge partly came from residual directional exposure."
+ },
+ "coverage_rule": {
+  "rule": "A missing GeckoTerminal 15-min pool bar = zero volume, price carried forward (justified by the on-chain check). A pool-day is scored if the Lighter PUMP 15-min candles have >= 90 of 96 bars and the pool has >= 1 GeckoTerminal bar that day. Days failing are listed and not scored (the position is still carried).",
+  "min_perp_bars": 90,
+  "min_pool_bars": 1
+ },
+ "data_and_method": "Identical to iteration 1 (scripts/research/lphedge_sim.py functions, imported unchanged): $5,000 of liquidity deposited balanced at 2026-07-25 00:00Z and held; fee income = GeckoTerminal 15m USD volume x 25 bp (measured) x L_ours/(L_pool+L_ours), pool liquidity from Deposit/WithdrawEvents; LP value exact from pool close; hedge P&L at Lighter 15m closes; Lighter hourly funding; unit = UTC pool-day. Script: scripts/research/lphedge2_sim.py.",
+ "costs": {
+  "lp_fee_bps": 25,
+  "lighter_fee": 0,
+  "hedge_spread": "half of the median measured $1k round trip: PUMP 1.877 bp per unit traded (76 snapshots, data/raw/web/memelead + data/raw/web/lphedge/lighter_spreads.jsonl)",
+  "gas": "2 tx/day x 0.0005 SOL at the Lighter SOL close",
+  "setup": "once: buy and later sell the token half through the pool (30 bp + constant-product impact) and open/close the short at half spread; included in net, excluded from PF",
+  "margin_model": "Short on Lighter at 1x: collateral = 1x short notional, reset to 1x of the current short notional at 00:00 UTC each day (capital moved between the LP wallet and Lighter; its transaction cost is inside the gas allowance). At every 15-min point, equity = collateral + hedge P&L since 00:00 - h x (Lighter candle HIGH of the coming bar - previous close). If equity < maintenance margin = 6% of h x high (Lighter orderBookDetails maintenance_margin_fraction 600, closeout 400, liquidation_fee 1.0 = 1%; data/raw/web/lphedge/lighter_orderbookdetails_PUMP.json), the short is liquidated: the whole remaining collateral is lost (conservative; covers the 1% fee), the LP is unhedged until the next 1h check, which re-opens the short at half spread. Collateral earns nothing."
+ },
+ "validation": {
+  "window": "[2026-07-25 00:00Z, 2026-10-05 00:00Z), 72 days, never examined",
+  "runs": "Exactly one run (the script refuses to overwrite its evidence file).",
+  "bar": {
+   "n_pool_days_min": 50,
+   "net_usd_gt": 0,
+   "profit_factor_gt": 1.2,
+   "net_excluding_top3_days_gt": 0
+  },
+  "reporting": "fees, funding, LVR (LP value change + hedge marked at POOL prices), basis (hedge at Lighter prices minus hedge at pool prices), hedge spread, gas, liquidation losses, setup; $ and bp/day of LP value; liquidations listed.",
+  "outcome_files": "pass -> reports/candidates/lphedge2.md; fail -> reports/failures/agent_lphedge2.md. No re-tuning after the run."
+ },
+ "holdout_overlap_statement": "The window overlaps the archive-perp holdout (>= 2026-04-01) of earlier perp hypotheses; irrelevant to this new pool dataset (as in iteration 1). No earlier hypothesis is touched.",
+ "no_changes": "No change to this file after the validation run.",
+ "amendments": [
+  {
+   "at_utc": "2026-10-05T12:40Z",
+   "what": "Bug fix in lphedge_sim.series(): the carried-forward pool price was not seeded when the pool had no GeckoTerminal bar in the 15 min before the split start (2026-07-24 23:45Z bar absent = no trades), giving a NaN start price. The seed is now the latest earlier bar, which is what the pre-registered 'price carried forward' rule says.",
+   "outcome_seen": "None. The first validation invocation crashed in the reporting step (NaN median TVL) before any result was printed or written; no P&L, fee or price statistic of the validation window was viewed. The train window is unaffected (its start bar exists; train smoke test reproduces +$52.04 before and after the fix).",
+   "config_or_rule_changed": false
+  },
+  {
+   "at_utc": "2026-10-05T12:42Z",
+   "what": "Second invocation failed while serialising the evidence (numpy int64 not JSON serialisable) before anything was printed or written; encoder fixed. The simulation is deterministic, so the subsequent run is the single validation run.",
+   "outcome_seen": "None.",
+   "config_or_rule_changed": false
+  }
+ ]
+}

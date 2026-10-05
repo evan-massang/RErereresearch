@@ -86,6 +86,15 @@ def series(pool, t0, t1):
     perp = {m: [] for m in lc}
     have_perp = {m: [] for m in lc}
     last = {"P": None, **{m: None for m in lc}}
+    # carry-forward seed: latest bar strictly before the first bar used (a quiet pool may have no bar at t0 - BAR;
+    # fix 2026-10-05, H-LPHEDGE-2 amendment 1)
+    prior = [k for k in gtok if k < t0 - BAR]
+    if prior:
+        last["P"] = gtok[max(prior)][4]
+    for m in lc:
+        pm = [k for k in lc[m] if k < t0 - BAR]
+        if pm:
+            last[m] = lc[m][max(pm)]
     for t in grid:
         b = t - BAR                         # bar that ends at t
         if b in gtok:

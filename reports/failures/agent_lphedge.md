@@ -1,5 +1,7 @@
 # H-LPHEDGE (delta-hedged PumpSwap LP, short on Lighter): FAIL on train (agent lphedge, 2026-10-05)
 
+> **Follow-up 2026-10-05:** iteration H-LPHEDGE-2 (corrected coverage rule, one a-priori config P1 b5 1h) PASSED its single validation run: see `reports/candidates/lphedge2.md`.
+
 **Verdict: FAIL on the pre-registered train test. 0 of 12 configs pass. Historical validation (2026-07-25 to 2026-10-05) was not examined.**
 - Every config fails on n: P1 has 39 scored pool-days, and P1+P2 has 46. The bar is 50.
 - Every config also fails on **net excluding the top 3 days**, which is −$35 to −$94 for all 12.

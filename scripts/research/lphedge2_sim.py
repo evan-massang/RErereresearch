@@ -148,8 +148,8 @@ def main():
            "window": [t0, t1], "config": "P1 PUMP/USDC, b=5%, check 1h", "is_synthetic": False,
            "computed_at_utc": time.strftime("%Y-%m-%dT%H:%MZ", time.gmtime()), "half_spreads": hs, "result": res,
            "daily": [{k: (round(v, 4) if isinstance(v, float) else v) for k, v in d.items()} for d in days]}
-    ev.write_text(json.dumps(out, indent=1))
-    print(json.dumps(res, indent=1))
+    ev.write_text(json.dumps(out, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o)))
+    print(json.dumps(res, indent=1, default=lambda o: o.item() if hasattr(o, "item") else str(o)))
 
 
 if __name__ == "__main__":
