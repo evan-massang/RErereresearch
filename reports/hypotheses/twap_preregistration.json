@@ -1,0 +1,133 @@
+{
+ "status": "FROZEN pre-registration (no price outcome computed before this)",
+ "drafted_at_utc": "2026-10-05T07:05:00Z",
+ "is_synthetic": false,
+ "computed_before_draft": "Outcome-free counts only, from the first 0.75 h of data/raw/web/twap/ (06:07-06:52 UTC 2026-10-05, read-only, recorder pid 25141 untouched): placement counts, announced notional (size x ctx mark nearest first sight), duration, phi = notional / trailing 24h notional volume, p = phi*1440/minutes, first-status-poll delay, twapHistory status mix. No price path, return or outcome of any TWAP was computed. Script lives in the session scratchpad only.",
+ "sources": {
+  "idea": "sources/leads/documented_edges_round6.md ideas 1-2",
+  "paper": "sources/leads/twap_paper_notes.md (Barone & Lillo, arXiv 2606.15715v1, read in full 2026-10-05; DOCUMENT LEAD)",
+  "data_notes": "reports/hypotheses/twap_data_notes.md",
+  "recorder": "scripts/research/twap_recorder.py"
+ },
+ "evidence_used_to_set_parameters": {
+  "impact_vs_size": "TWAP temporary impact (start->end, sigma units) = 10^-0.780 * phi^0.303 (paper p.8): ~10 bp at phi=0.1%, ~14 bp at 0.3%, ~21 bp at 1% for sigma_D=5%. Their phi uses forward 24h volume; ours uses trailing.",
+  "participation": "For TWAPs participation has no conditional effect (delta_TWAP=0.010+-0.011, p.15; Table 1 slope -0.00058 n.s.). So phi is the primary filter; p is only a grid arm.",
+  "duration": "Fig. 3 (our reading): TWAPs < 23 min peak ~4-11 bp (below round-trip cost); 23 min-1 d peak ~12-22 bp. Hence min duration 30 min. Paper sample capped at 24 h, hence max 1440 min.",
+  "path_shape": "Build-up fitted A*tau^gamma, gamma ~0.76-0.82 for 23 min-1 d (close to linear), so most of the move accrues across the whole execution; exit at completion captures most of it.",
+  "post_completion": "Long TWAPs retain ~65-95% of completion impact out to 4x duration (Fig. 6); reversal ~2-5 bp, mostly within 0.05-0.2 T. FADE expected gross is below cost; prior = FAIL.",
+  "trend_at_placement": "TWAPs start after +18.2 bp same-direction 30-min move (p.11): RIDE may partly capture continuation, not impact."
+ },
+ "common": {
+  "universe": "Main-dex HL perps only: asset index < 10000, or (for twapHistory-only rows with no asset index) coin name present in the main-dex ctx universe without a ':' builder prefix and not '@'/'/'-spot naming. Spot and builder-dex perps excluded.",
+  "qualifying_twap": [
+   "source row with initial == False (TWAPs already listed at a recorder (re)start are excluded: true first-sight time unknown)",
+   "first_seen_ms - block_time_ms <= 60 s",
+   "reduce_only == False, error is null",
+   "30 <= minutes <= 1440",
+   "no twapHistory status 'waitingForTrigger', 'error' or terminal status known at entry time (only events with poll_ms <= entry time are used; if none yet, assume active)",
+   "announced notional N = sz * ctx mark (latest ctx poll with ts_ms <= first_seen_ms) >= 10,000 USD",
+   "trailing 24h notional volume V24 = ctx day_ntl_vlm at that same poll >= 2,000,000 USD (keeps phi from being inflated by illiquid coins with large spreads)"
+  ],
+  "features_point_in_time": {
+   "phi": "N / V24 (announced notional over trailing 24h HL notional volume, both from the ctx poll at or before first sight)",
+   "p": "(N / minutes) / (V24 / 1440) = phi * 1440 / minutes",
+   "rule": "No feature may use any ctx, event or twap row with timestamp > the decision time. Strategies read only through a point-in-time view."
+  },
+  "price_source": "ctx_<hour>.parquet 'mid' (HL metaAndAssetCtxs, polled every ~60 s). Fill reference = mid of the FIRST ctx poll with ts_ms >= decision time (so fills are 0-60 s late; no look-back). If that mid is null or the poll gap exceeds 180 s, the trade is recorded as a skip with reason. OPEN ITEM 1 concerns finer price data.",
+  "costs": {
+   "fee": "HL tier-0 taker 4.5 bp per side (0.045%, https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees, fetched 2026-10-05 per ffdiff_maker_preregistration.json); maker 1.5 bp where a maker arm exists",
+   "half_spread_plus_depth_walk_per_side": "No L2 book is recorded, so slippage for a $1,000 order is a fixed conservative table by trailing V24 at entry: V24 >= 500M USD: 1.0 bp; 100M-500M: 2.0 bp; 20M-100M: 4.0 bp; 2M-20M: 8.0 bp. Applied on entry and exit for every taker fill (maker fills: 0). If OPEN ITEM 1 delivers bbo/l2 data before freezing, replace with: walk the recorded book for $1,000 at the fill time, with the table as a floor.",
+   "funding": "HL hourly funding charged on the position for every funding timestamp crossed, using the ctx 'funding' rate of the last poll before that hour (sign by position side).",
+   "no_zero_impact_fills": true
+  },
+  "position_sizing": "$1,000 notional per trade; at most one open position per coin per hypothesis; a qualifying TWAP on a coin with an open position is skipped (logged). Max 20 concurrent positions; beyond that, skip (logged).",
+  "trade_unit": "one round trip",
+  "disaster_stop": "3% adverse move on ctx mid -> taker exit at next ctx poll (both hypotheses; not a grid parameter)",
+  "splits": {
+   "train": "recording days 1-2: entries with decision time in [2026-10-05T06:07Z, 2026-10-07T06:07Z) AND scheduled latest exit < 2026-10-07T06:07Z (trades that would straddle the boundary are dropped from train, logged)",
+   "validation": "recording day 3: entries in [2026-10-07T06:07Z, 2026-10-08T06:07Z), exits may run past the day end. Requires the recorder to be restarted at the 48 h stop (twap_data_notes.md Plan step 1); any gap is reported, not filled.",
+   "forward": "Days after day 3, scored with the frozen selected config only.",
+   "holdout": "none separate; the forward days play that role. No re-tuning after freeze."
+  },
+  "bar_per_split": "n >= 50 round trips, net USD > 0 after all costs, profit factor > 1.2, net USD without the 3 best trades > 0",
+  "selection": "Pick ONE config per hypothesis on train: among configs meeting the bar on train, highest train net USD (tie: higher PF). If none meets the bar, the highest-net train config is still run once on validation for documentation and the verdict is FAIL.",
+  "verdict": "PASS only if the selected config meets the bar on train AND on validation (run once). If validation has n < 50 the verdict is INSUFFICIENT-N (not PASS); validation may then be extended by whole recorded days (max to day 5) for that one config only, decided now, not after seeing results.",
+  "diagnostics_reported": [
+   "per coin-day net (HYPE alone was 16 of 41 new main-dex placements in the first 0.75 h; overlapping same-coin TWAPs are correlated)",
+   "coin-day cluster bootstrap 90% CI of mean net bp",
+   "net excluding HYPE",
+   "gross signed drift entry->exit in bp vs the paper-implied 10^-0.78*phi^0.303*sigma (sigma = trailing Parkinson range, diagnostic only)",
+   "share of qualifying TWAPs later 'terminated' (cancelled) vs 'finished', and status-detection latency",
+   "entry delay distribution (decision -> ctx fill poll)",
+   "feed coverage and lag (twap_recorder.py coverage)"
+  ],
+  "no_changes": "No parameter, filter, fee, slippage table, price source, split or bar changes after freezing."
+ },
+ "H-TWAPRIDE": {
+  "statement": "Trading $1k as a taker in the direction of a freshly visible main-dex HL TWAP, entered 1 s after first sight and held until (at most) its scheduled completion, earns more than fees, spread and slippage, because the TWAP's own price impact (paper: ~10-21 bp start->end at phi 0.1-1%) builds during execution.",
+  "prior": "Thin: paper-implied gross ~14-21 bp at phi >= 0.3-1% vs ~11-25 bp round-trip cost. Expected net ~0 to +8 bp on liquid coins at best.",
+  "ethics_gate": "Paper only. RIDE is trading ahead of a disclosed order (predatory-trading-adjacent). The owner's ethics decision and jurisdiction check (sources/leads/twap_paper_notes.md section 3) are required before any live use, regardless of results.",
+  "decision_time": "first_seen_ms + 1,000 ms (first-seen = our receive time of the first Hypurrscan poll, or twapHistory poll for 'hist' rows, containing the placement)",
+  "entry": "taker in TWAP direction (B -> long, A -> short) at the ctx-poll fill reference (common.price_source) + half-spread/slippage + 4.5 bp fee",
+  "exit": "taker at the earliest of: (a) the grid exit time; (b) the first ctx poll after an event with poll_ms > entry shows status terminated/stopped/error (cancellation seen); (c) disaster stop. Scheduled completion = block_time_ms + minutes*60,000; exit (a) 'completion' uses the first ctx poll >= completion - 60 s (exit just before completion, paper shows a 2-5 bp post-completion step-down).",
+  "grid": {
+   "phi_min": [
+    0.001,
+    0.003,
+    0.01
+   ],
+   "p_min": [
+    0.0,
+    0.01
+   ],
+   "exit": [
+    "completion",
+    "min(entry + 60 min, completion)"
+   ],
+   "n_configs": 12
+  },
+  "expected_trades": "OWN-PRECHECK (0.75 h, very noisy): 30-1440 min main-dex placements with phi >= 0.1%: 5, >= 0.3%: 2, >= 1%: 2 -> roughly 60-160/day at 0.1%, 10-60/day at 1% before the per-coin cap and the 10k/2M filters. Train (2 days) should reach n >= 50 for phi_min 0.001-0.003; phi_min 0.01 and validation (1 day) may not."
+ },
+ "H-TWAPFADE": {
+  "statement": "After a main-dex HL TWAP's scheduled completion, trading against its direction captures the transient part of its impact.",
+  "prior": "FAIL expected. Paper Fig. 6: TWAPs of 23 min-1 d keep ~65-95% of completion impact to 4x duration; implied reversal ~2-5 bp vs >= 11 bp taker round-trip cost. Kept as a cheap control on the same data (and as the liquidity-providing, ethically uncontroversial side).",
+  "qualifying_extra": [
+   "common.qualifying_twap, judged at first sight",
+   "on-schedule at decision: latest twapHistory event with poll_ms <= decision shows status activated or finished and executed_sz >= 0.9 * sz * min(1, elapsed/duration) (the recorder polls every 30 min and at completion + 2 min, so this is the last known progress)",
+   "no terminated/stopped/error status known at decision"
+  ],
+  "signal": "impact proxy r = signed (TWAP direction) log return of ctx mid from the fill-reference poll at first sight + 1 s to the last ctx poll at or before completion - 60 s. Trade only if r >= m.",
+  "entry": "taker AGAINST the TWAP direction at decision time = scheduled completion + 1 s (fill reference = first ctx poll >= decision), + half-spread/slippage + 4.5 bp. Maker arm dropped: the recorder has no trade prints, so a trade-through maker fill cannot be simulated (see OPEN ITEM 1).",
+  "exit": "taker after H (first ctx poll >= entry + H), or disaster stop",
+  "grid": {
+   "m": [
+    0.0,
+    0.002,
+    0.005
+   ],
+   "H": [
+    "max(5 min, 0.1 * duration)",
+    "30 min",
+    "2 h",
+    "max(30 min, 1.0 * duration) capped at 6 h"
+   ],
+   "n_configs": 12
+  },
+  "expected_trades": "Completions ~ placements in steady state: tens per day at phi >= 0.1% before the m filter; the 30-min status-poll cadence may exclude some."
+ },
+ "open_items_before_freeze": [
+  "1. PRICE GRANULARITY. Only 1-min ctx mid is recorded; no bbo, trades or L2 for TWAP coins (hllag_forward.py records a fixed coin set for <2 h only). Decide before freeze: (a) accept 1-min mid + the fixed slippage table (current draft), or (b) start a separate HL bbo+trades recorder (new process; do NOT modify pid 25141) for all main-dex perps with an active qualifying TWAP, so validation/forward use measured spreads and a maker arm becomes possible. Train days would still use (a); the choice must be fixed now for each split.",
+  "2. Confirm the slippage table against outcome-free spread snapshots (e.g. a one-off l2Book sample of the top-40 main-dex coins) before freezing.",
+  "3. Resolve the twapId coverage gap (0.62 of ids seen in the first 40 min) on the 24 h coverage report; if large TWAPs are being missed the expected n changes, not the rule.",
+  "4. Decide whether 'hist'-only rows (found via twapHistory, not Hypurrscan) are tradeable. Draft: yes if lag <= 60 s, because a live system could poll the same endpoint.",
+  "5. Ethics and jurisdiction answers from the owner (twap_paper_notes.md section 3.4) - gate for anything beyond paper, not for the paper test.",
+  "6. Add both hypotheses via `python -m pipeline add-hypothesis --rationale` with the paper lead as evidence, then freeze."
+ ],
+ "frozen_at_utc": "2026-10-05T07:03:05Z",
+ "decisions_at_freeze": {
+  "price_data": "accept 1-minute mids + fixed per-side slippage table as drafted; no extra recorder",
+  "history_only_twaps": "tradeable if first seen within 60 s",
+  "secondary_cost_arm": "informational only, declared now: same rules priced at 0 bp fee + 2 bp/side (cheap-venue execution, e.g. Lighter) where the coin is listed there; never used for config choice",
+  "ethics": "paper research only; H-TWAPRIDE is a predatory-trading-type strategy (Brunnermeier & Pedersen) \u2014 any live use requires the user's jurisdiction/terms check (sources/leads/twap_paper_notes.md)"
+ }
+}

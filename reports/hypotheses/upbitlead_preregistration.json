@@ -1,0 +1,60 @@
+{
+ "hypothesis": "H-UPBITLEAD",
+ "frozen_at_utc": "2026-10-05T07:02:04Z (written before any Upbit minute candle or Binance 1m kline of the test period was downloaded; only connectivity probes of a few KRW-AXS candles were made)",
+ "statement": "Korean retail volume bursts on Upbit KRW markets lead Binance USDT-M perp prices on mid/small-cap coins at the 1-minute scale: trading the Binance perp in the direction of an Upbit burst minute, entered after that minute closes, is profitable after taker fees and liquidity-tier slippage.",
+ "source": "sources/leads/documented_edges_round7.md, Idea 3 (H-UPBITLEAD)",
+ "universe": {
+  "candidate_set": "Every KRW-X market in Upbit /v1/market/all (snapshot 2026-10-05, 291 KRW markets) excluding stablecoins/fiat-pegged and gold tokens (USDT, USDC, USD1, USDE, USDS, USDG, RLUSD, PYUSD, EURC, JPYC, XAUT), whose Binance USDT-M perp (XUSDT, or 1000XUSDT / 1000000XUSDT / 1MXUSDT with price multiplier) has a monthly 1d kline file for 2025-03 on data.binance.vision.",
+  "selection_rule_pre_train_only": "Using ONLY 2025-03 daily data (before the train window): Upbit daily candles (KRW notional / mean KRW-USDT close of the day) and Binance perp 1d kline quote volume. Drop majors: Binance perp mean daily quote volume in 2025-03 > $300M. Require Binance perp mean daily quote volume >= $2M and Upbit mean daily USD notional >= $0.5M and Upbit KRW market present on all 31 days. Rank by ratio (Upbit USD notional / Binance perp quote volume, March 2025 sums) and keep the top 40. The resulting list is written to the addendum field 'coin_list' of this file before any minute data is downloaded.",
+  "survivorship_note": "The candidate set comes from Upbit's CURRENT market list; markets delisted from Upbit between 2025-03 and 2026-10 cannot be enumerated and are missing (survivorship bias, direction unknown, stated as a limitation).",
+  "point_in_time_filter": "At decision minute t, a coin is tradable only if (a) its trailing 7 complete UTC days (d-7..d-1) of Upbit USD notional / Binance perp quote volume >= 0.2 and (b) Binance perp trailing-7-day mean daily quote volume >= $1M (else excluded), both computed from the downloaded minute data of those days only.",
+  "hl_mark": "Each coin is marked HL-listed if its name (or k-prefixed name) appears in Hyperliquid info 'meta' on 2026-10-05 (current listing; informational, not point-in-time)."
+ },
+ "data": {
+  "upbit": "https://api.upbit.com/v1/candles/minutes/1?market=KRW-X&count=200&to=... (unauthenticated, 'to' exclusive, paginated backwards from 2026-04-01T00:00:00Z; <= 8 req/s). Minutes with no trades are absent -> notional 0, price carried forward. Same for KRW-USDT (KRW->USD conversion: USD notional = KRW notional / KRW-USDT close of the latest minute <= t).",
+  "binance": "data.binance.vision futures/um monthly klines 1m (open/high/low/close/quote volume) and monthly fundingRate, months 2025-03 .. 2026-03 only.",
+  "holdout_protection": "Nothing at or after 2026-04-01T00:00:00Z is requested from either source.",
+  "cache": "data/raw/web/upbitlead/ (compact parquet, zips deleted after conversion), total < 600 MB; stop if disk free < 2.5 GB."
+ },
+ "splits": {
+  "train": "decision minutes in [2025-04-01, 2026-01-01). History is available further back (KRW-AXS candles served for 2024-06), but the start is set to 2025-04-01 because Upbit pagination (200 minutes/request, <= 10 req/s shared IP) makes each extra month ~8,800 requests for 40 coins; this choice is made before any P&L.",
+  "validation": "[2026-01-01, 2026-04-01), examined ONCE, only for the single config chosen on train",
+  "holdout": ">= 2026-04-01, never downloaded or examined"
+ },
+ "signal": {
+  "point_in_time": "Upbit 1m candle for minute t (t..t+60s) is known only after it closes at t+60s. Features use candles <= t only.",
+  "volume_z": "L_t = ln(1 + USD notional_t); z_t = (L_t - mean(L_{t-1440..t-1})) / std(L_{t-1440..t-1}); requires the KRW market to have existed for the full prior 1440 minutes and std > 0.",
+  "upbit_return_usd": "r_t = (P_t / K_t) / (P_{t-1} / K_{t-1}) - 1, P = Upbit KRW close (carried forward), K = KRW-USDT close (carried forward).",
+  "trigger": "z_t >= Z AND |r_t| >= R AND USD notional_t >= $10,000. Direction = sign(r_t).",
+  "no_gap_filter_in_grid": "The lead doc's 'Binance has moved less than half' gap condition is reported as INFORMATIONAL on train only; it is not selectable."
+ },
+ "execution": {
+  "venue": "Binance USDT-M perp taker (main). HL taker 4.5 bp reported as informational cost variant on HL-listed coins (still Binance prices).",
+  "entry": "Open of the Binance 1m bar starting at t+60s (the minute after the Upbit candle closes). A real order needs >= 2 s after the close to read the candle and send; the 1m open approximates a fill at t+60s+2s (stated approximation). Robustness: entry at the open of the following bar (t+120s, '+1 minute delay') reported for the chosen config on both splits.",
+  "exit": "Earliest of: TP at +2R from entry, SL at -R from entry (checked on 1m high/low of bars from entry bar onward; if both are touched in the same bar SL is assumed first; fill at the level, or at the bar open if the open is already beyond it), else time exit at the open of the bar H minutes after entry.",
+  "position_rule": "One position per coin; no new entry in a coin until its exit time. Positions in different coins may overlap. Unit notional per trade; P&L in bp of notional.",
+  "costs": {
+   "taker_fee": "5 bp per side, Binance USDS-M regular user (https://www.binance.com/en/support/articles/360033544231, as cited in reports/hypotheses/datedbasis_preregistration.json). HL variant 4.5 bp (https://hyperliquid.gitbook.io/hyperliquid-docs/trading/fees, tier 0).",
+   "slippage_tier_rule": "Per side, by Binance perp trailing-7-day mean daily quote volume (days d-7..d-1): >= $100M -> 10 bp; $30M-100M -> 15 bp; $10M-30M -> 20 bp; $1M-10M -> 25 bp; < $1M -> not traded. Applied to entry and exit fills (including TP/SL fills). Round trip 30-60 bp.",
+   "funding": "Binance funding rate charged if a funding timestamp falls in (entry, exit]: longs pay +rate, shorts receive it.",
+   "sensitivity": "slippage x2 reported for the chosen config (informational)."
+  }
+ },
+ "grid": {
+  "Z": [3.0, 4.5],
+  "R": [0.01, 0.02, 0.04],
+  "H_minutes": [5, 30],
+  "count": 12,
+  "naming": "Z{Z}_R{R}_H{H}"
+ },
+ "bar": "per split: n >= 50 trades, net bp sum > 0, profit factor > 1.2, net bp sum without the 3 best trades > 0",
+ "selection": "Event counts per config on train are reported before any P&L. Choose ONE config: among train configs meeting the full bar, the one with the highest train net bp sum. If none meets the bar on train, verdict FAIL and no validation P&L is computed. The chosen config is run on validation once. PASS only if it meets the bar on both train and validation.",
+ "informational_only": [
+  "Reverse direction: Binance perp burst minutes (same z/R definitions on Binance quote volume and return) and the subsequent Upbit USD return at +1/+5/+30 min, signed by Binance direction (train only).",
+  "Response profile of Binance perp after Upbit bursts at +1/+5/+30 min, signed, gross (train).",
+  "Same-minute Binance return as a fraction of Upbit return on trigger minutes (who moved first within the minute).",
+  "Gap filter (Binance same-minute signed return < R/2) applied to the chosen config on train.",
+  "HL fee variant, slippage x2, +1 minute delay."
+ ],
+ "no_changes": "No change to grid, costs, splits, exits or selection after this file is written. Any later deviation is listed as such in the report."
+}

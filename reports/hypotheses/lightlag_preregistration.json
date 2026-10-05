@@ -1,0 +1,47 @@
+{
+ "hypothesis": "H-LIGHTLAG",
+ "written_at_utc": "2026-10-05T07:05:00Z",
+ "written_before_data": "Written before scripts/research/multivenue_recorder.py recorded any data. No Lighter, Binance or Aster tick recorded by this project after 2026-10-05 06:18 UTC (the 10-min OWN-PRECHECK in sources/leads/documented_edges_round7.md) has been looked at.",
+ "statement": "When the Binance USD-M perp mid moves >= theta bp within 2 s and Lighter's mid has not yet followed (< theta/2 in the same direction), a Lighter Standard-account taker order in the Binance direction, arriving after our latency plus Lighter's 300 ms taker speed bump and held H seconds, is profitable after crossing the recorded spread (0 fee).",
+ "source": "sources/leads/documented_edges_round7.md idea 1; mechanism from reports/candidates/hlanchor.md (H-HLLAG). Changes vs the leads-file grid: the universe dimension (A/B) is replaced by a fixed 7-coin universe set by the recording brief, and a latency dimension is added because the main kill risk is latency (Lighter re-prices ~100 ms after Binance per Arrakis, a lead).",
+ "universe": {"coins": ["SOL", "XRP", "HYPE", "ENA", "PUMP", "DOGE", "SUI"],
+              "binance_symbols": {"SOL": "SOLUSDT", "XRP": "XRPUSDT", "HYPE": "HYPEUSDT", "ENA": "ENAUSDT", "PUMP": "PUMPUSDT", "DOGE": "DOGEUSDT", "SUI": "SUIUSDT"},
+              "lighter_market_ids_at_2026-10-05": {"SOL": 2, "XRP": 7, "HYPE": 24, "ENA": 29, "PUMP": 45, "DOGE": 3, "SUI": 16}},
+ "data": {
+  "recorder": "scripts/research/multivenue_recorder.py -> data/raw/web/multivenue/<venue>_<kind>_<YYYY-MM-DD-HH>.parquet",
+  "leader": "binance bbo (fstream <sym>@bookTicker), clock = local receive time ts_us",
+  "follower": "lighter bbo (ticker/<market_id> channel, readonly WS), clock = local receive time ts_us; lighter trades recorded for diagnostics only",
+  "clock_rule": "All decisions and fills use our local receive timestamps (microseconds). A venue state 'at time t' is the last recorded row with ts_us <= t.",
+  "split": {
+   "T0": "launch time of the 48-h recorder run, as written in data/raw/web/multivenue/recorder.log ('start' line) and in reports/hypotheses/multivenue_plan.md. Rows before T0 (test runs) are never scored.",
+   "day1_train": "[T0, T0+24h): exploratory; all 12 configs are run and ONE is selected by the selection rule below",
+   "day2_validation": "[T0+24h, T0+48h): the selected config only, run ONCE",
+   "forward": "after day 2, freeze the selected config (module sha256 + params) and score only data received after the freeze time"
+  },
+  "gaps": "Minutes where either venue has no bbo row for > 10 s (feed gap or reconnect) are excluded for that coin: no trigger may be taken in a gap, and a position whose entry or exit falls in a gap is closed at the first state after the gap and flagged."
+ },
+ "rule": {
+  "binance_mid": "(bid+ask)/2 from the binance bbo stream",
+  "trigger": "At each binance bbo row (decision time t = its ts_us) compute r_B = mid_B(t)/mid_B(t-2s) - 1 (mid_B(t-2s) = last state at or before t-2 s). Trigger if |r_B| >= theta. Direction d = sign(r_B).",
+  "follower_filter": "r_L = mid_L(t)/mid_L(t-2s) - 1 on Lighter; require d*r_L < theta/2.",
+  "entry": "Taker in direction d on Lighter. Fill time t_in = t + L_total. Buy fills at the last recorded Lighter best ask at t_in (sell at best bid).",
+  "exit": "Exit decision at t_in + H; exit fill time t_out = t_in + H + L_total, at the last recorded Lighter opposite best at t_out.",
+  "position_rules": "one position per coin; cooldown 10 s per coin after exit fill before a new trigger; no stop, no gap-close exit (HLLAG showed gap-close exits cut the gross).",
+  "size": "target $1,000 notional. Entry size = min($1,000, displayed opposite top-of-book notional at t_in). If the displayed top notional is < $100 the trigger is SKIPPED and counted as a skip. Exit: size up to the displayed opposite top at t_out fills at that price; any excess fills one full spread (ask-bid at t_out) worse.",
+  "fees": "Lighter Standard account: 0 maker / 0 taker (DOC, see plan). Spread is paid by the fill model; no zero-impact fills.",
+  "funding": "ignored (holds <= 32 s; Lighter funding is hourly)",
+  "pnl_unit": "USD per round trip; bp = USD / notional * 1e4"
+ },
+ "grid": {
+  "theta_bp": [15, 25, 40],
+  "L_total_ms": [600, 900],
+  "H_s": [5, 30],
+  "n_configs": 12,
+  "latency_note": "L_total = our order path (~300 ms assumed, unmeasured) + Lighter Standard taker speed bump 300 ms (DOC) = 600 ms; 900 ms is the pessimistic case (+300 ms for our real path / Lighter-to-us feed delay)."
+ },
+ "selection_rule_day1": "Among configs with n >= 30 round trips on day 1, select the one with the highest profit factor (ties: larger n). If no config has net USD > 0 and PF > 1.0 on day 1, H-LIGHTLAG is KILLED and day 2 is not run for it. The selected config must also show net USD > 0 with +0.5 bp extra cost per round trip; if it does not, the next-best config by the same rule that does is taken.",
+ "kill_test_day1": "Pre-registered in the leads file: for theta=25 triggers on day 1 (no position rules), mean d * (Lighter mid(t+30 s)/Lighter mid(t+600 ms) - 1) in bp. If < 3 bp, H-LIGHTLAG is KILLED regardless of the grid.",
+ "validation_day2": "Run the selected config once on day 2. Bar: n >= 50 round trips, net USD > 0, PF > 1.2, net without the top-3 trades > 0. If n < 50 the result is INCONCLUSIVE (not a pass); the config is frozen anyway and the forward record continues until n >= 50; no re-selection.",
+ "reporting": "Report all 12 day-1 configs (n, net, mean bp, PF, skips), the kill test, and the day-2 result, including losses. Aster (control, H-T2LAG) gets the same trigger and an Aster follower diagnostic, not scored against the bar.",
+ "no_changes": "No change to grid, trigger, fill model, fees, universe, split or selection rule after this file is written. A change requires a new hypothesis id with a rationale (parent + failing run)."
+}
