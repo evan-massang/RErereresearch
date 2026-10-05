@@ -75,6 +75,8 @@ def build_trades(fut, spot, dd, fr, split, cfg, slip_mult=1.0, spot_fee=SPOT_FEE
     trades, skipped = [], {"no_bar": 0, "zero_vol": 0, "no_settle": 0, "no_spot": 0}
     spot_by = {c: g.set_index("open_time").sort_index() for c, g in spot.groupby("coin")}
     for sym, g in fut.groupby("symbol"):
+        if sym.startswith("BTCBUSD_"):
+            continue  # monthly BUSD contracts: not quarterly (pre-registered exclusion)
         deliv = delivery_ts(sym)
         if (lo is not None and deliv < lo) or deliv > hi:
             continue

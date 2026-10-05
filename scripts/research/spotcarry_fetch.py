@@ -8,7 +8,7 @@ For every pair in data/raw/web/binance_carry/universe.json (built by spotcarry_u
 Zips are read in memory and never written to disk. Spot timestamps switch to microseconds in 2025; normalised.
 URL, bytes and sha256 per zip are kept in manifest_<dataset>.json.
 """
-import hashlib, io, json, os, sys, time, zipfile, urllib.request, urllib.error
+import hashlib, io, json, os, sys, time, zipfile, urllib.request, urllib.error, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 import numpy as np, pandas as pd
 
@@ -17,6 +17,7 @@ BASE = "https://data.binance.vision/data"
 
 
 def get(url):
+    url = urllib.parse.quote(url, safe=":/")
     for a in range(6):
         try:
             with urllib.request.urlopen(url, timeout=60) as r:
@@ -27,7 +28,7 @@ def get(url):
             time.sleep(2 + 3 * a)
         except Exception:
             time.sleep(2 + 3 * a)
-    raise RuntimeError(url)
+    return "ERR"
 
 
 def read_zip(raw):
@@ -53,8 +54,8 @@ def one(job):
         else:
             url = f"{BASE}/spot/monthly/klines/{sym}/1h/{sym}-1h-{m}.zip"
         raw = get(url)
-        if raw is None:
-            man[m] = None
+        if raw is None or raw == "ERR":
+            man[m] = None if raw is None else "ERR"
             continue
         man[m] = {"bytes": len(raw), "sha256": hashlib.sha256(raw).hexdigest()}
         df = read_zip(raw)
